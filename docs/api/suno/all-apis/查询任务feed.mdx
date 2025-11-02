@@ -1,18 +1,18 @@
 ---
-title: '查询任务(feed)'
-api: 'GET /v1/suno/feed'
-description: '查询任务(feed)'
+title: "Query Task(fetch)"
+api: "GET /v1/suno/fetch/${id}"
+description: "Query Task(fetch)"
 ---
 
 ## Overview
 
-This endpoint provides 查询任务(feed) functionality.
+This endpoint provides Query Task(fetch) functionality.
 
 ## Authentication
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
+<ParamField header="Authorization" default="sk-***********" type="string" required>
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
 
@@ -31,11 +31,11 @@ This endpoint requires authentication using a Bearer token.
 <ResponseField name="Success" type="200">
   Successful response
 
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+    "status": "success"
+  }
+  ```
 </ResponseField>
 
 ## Error Responses
@@ -51,6 +51,7 @@ This endpoint requires authentication using a Bearer token.
 }
 ```
 
+
 ```json 403 - Invalid Token
 {
   "error": {
@@ -59,6 +60,7 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
+
 
 ```json 403 - Insufficient balance
 {
@@ -69,6 +71,7 @@ This endpoint requires authentication using a Bearer token.
 }
 ```
 
+
 ```json 500 - Internal server error
 {
   "error": {
@@ -77,6 +80,7 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
+
 
 ```json 503 - Content policy violation
 {
@@ -88,4 +92,3 @@ This endpoint requires authentication using a Bearer token.
 ```
 
 </ResponseExample>
-
