@@ -822,7 +822,7 @@
                 "docs/api/gemini/gemini-25-flash-image/gptproto-format/Images-to-Image"
               ]
             },{
-              "group": "openai-format",
+              "group": "gptproto-format",
               "pages": [
                 "docs/api/gemini/gemini-25-flash-image/gptproto-format/text-to-image",
                 "docs/api/gemini/gemini-25-flash-image/gptproto-format/Images-to-Image"
@@ -834,7 +834,7 @@
                 "docs/api/gemini/gemini-25-flash-image/openai-format/Images-to-Image"
               ]
             },{
-              "group": "openai-format",
+              "group": "banana-format",
               "pages": [
                 "docs/api/gemini/gemini-25-flash-image/nano-banana-format/Query-Task",
                 "docs/api/gemini/gemini-25-flash-image/nano-banana-format/Images-to-Image"
@@ -878,6 +878,19 @@
                 "docs/api/gemini/gemini-25-flash-image/official-format/image-to-image"
               ]
             }
+          ]
+        },
+        {
+          "group": "gemini-2.5-flash-image-hd",
+          "pages": [
+	{
+              "group": "Official Format",
+              "pages": [
+                "docs/api/gemini/gemini-25-flash-image/official-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image/official-format/image-to-image"
+              ]
+            }
+
           ]
         },
         {
