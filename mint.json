@@ -811,33 +811,29 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-25-flash-image/official-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image/official-format/image-to-image",
-                "docs/api/gemini/gemini-25-flash-image/official-format/Images-to-Image"
+                "docs/api/gemini/gemini-25-flash-image-preview/official-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image-preview/official-format/image-to-image"
               ]
-            },{
-              "group": "gptproto-format",
+            },
+            {
+              "group": "chat format",
               "pages": [
-                "docs/api/gemini/gemini-25-flash-image/gptproto-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image/gptproto-format/Images-to-Image"
+                "docs/api/gemini/gemini-25-flash-image-preview/chat-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image-preview/chat-format/image-to-image"
               ]
-            },{
-              "group": "openai-format",
+            },
+            {
+              "group": "openai format",
               "pages": [
-                "docs/api/gemini/gemini-25-flash-image/gptproto-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image/gptproto-format/Images-to-Image"
+                "docs/api/gemini/gemini-25-flash-image-preview/openai-format/create-image",
+                "docs/api/gemini/gemini-25-flash-image-preview/openai-format/image-editing"
               ]
-            },{
-              "group": "openai-format",
+            },
+            {
+              "group": "Nano Banana",
               "pages": [
-                "docs/api/gemini/gemini-25-flash-image/openai-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image/openai-format/Images-to-Image"
-              ]
-            },{
-              "group": "openai-format",
-              "pages": [
-                "docs/api/gemini/gemini-25-flash-image/nano-banana-format/Query-Task",
-                "docs/api/gemini/gemini-25-flash-image/nano-banana-format/Images-to-Image"
+                "docs/api/gemini/gemini-25-flash-image-preview/nano-banana/multi-image-mode",
+                "docs/api/gemini/gemini-25-flash-image-preview/nano-banana/text-to-image"
               ]
             }
           ]
@@ -883,8 +879,13 @@
         {
           "group": "gemini-2.5-flash-image-hd",
           "pages": [
-            
-
+            {
+              "group": "Official Format",
+              "pages": [
+                "docs/api/gemini/gemini-25-flash-image-hd/official-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image-hd/official-format/image-to-image"
+              ]
+            }
           ]
         },
         {

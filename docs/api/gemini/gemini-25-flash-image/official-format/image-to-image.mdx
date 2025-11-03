@@ -12,17 +12,17 @@ This endpoint provides image to image functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required>
+<ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="contents" type="array" >
+<ParamField body="contents" type="array"  default="[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation&quot;}, {&quot;inline_data&quot;: {&quot;mime_type&quot;: &quot;image/jpeg&quot;, &quot;data&quot;: &quot;base64&quot;}}]}]">
   Contents parameter
 </ParamField>
 
-<ParamField body="generationConfig" type="object" >
+<ParamField body="generationConfig" type="object"  default="{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;]}">
   Generationconfig parameter
 </ParamField>
 
@@ -31,8 +31,8 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
-  -H "Authorization: YOUR_API_KEY" \
+curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "contents": [
@@ -63,7 +63,7 @@ curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generate
 import requests
 import json
 
-url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent"
+url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -99,7 +99,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent";
+const url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -151,7 +151,7 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent"
+    url := "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
 
     payload := []byte(`{
 "contents": [
@@ -211,58 +211,48 @@ func main() {
 
 <ResponseExample>
 
-
-
-
-
-
-
-{
-    "error": {
-        "message": "Internal server error",
-        "type": "500"
-    }
-}
-
-
-
-
-
-
-
 ```json 401 - Invalid signature
 {
-    "error": {
-        "message": "Invalid signature",
-        "type": "401"
-    }
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
 }
 ```
 
 ```json 403 - Invalid Token
 {
-    "error": {
-        "message": "Invalid Token",
-        "type": "403"
-    }
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
 }
 ```
 
 ```json 403 - Insufficient balance
 {
-    "error": {
-        "message": "Insufficient balance",
-        "type": "403"
-    }
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
 }
 ```
 
-```json 503 - Insufficient balance
+```json 500 - Internal server error
 {
-    "error": {
-        "message": "Input may not meet the guidelines. Please adjust and try again.",
-        "type": "503"
-    }
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
 }
 ```
 
