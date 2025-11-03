@@ -180,40 +180,11 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-```JSON
+```json
 {
-    "candidates": [
-        {
-            "content": {
-                "role": "model",
-                "parts": [
-                    {
-                        "inlineData": {
-                            "mimeType": "image/png",
-                            "data": "image base64"
-                        }
-                    }
-                ]
-            },
-            "finishReason": "STOP"
-        }
-    ],
-    "usageMetadata": {
-        "promptTokenCount": 16,
-        "candidatesTokenCount": 1290,
-        "totalTokenCount": 1306,
-        "thoughtsTokenCount": 0,
-        "promptTokensDetails": [
-            {
-                "modality": "TEXT",
-                "tokenCount": 16
-            }
-        ]
-    },
-    "modelVersion": "gemini-2.5-flash-image"
+  "status": "success"
 }
 ```
-
 </ResponseField>
 
 ## Error Responses
@@ -266,5 +237,4 @@ func main() {
 ```
 
 </ResponseExample>
-
 
