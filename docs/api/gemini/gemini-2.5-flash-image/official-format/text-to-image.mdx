@@ -12,17 +12,17 @@ This endpoint provides text to image functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
+<ParamField header="Authorization" type="string" required>
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="contents" type="array"  default="[{&quot;role&quot;: &quot;user&quot;, &quot;parts&quot;: [{&quot;text&quot;: &quot;Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?&quot;}]}]">
+<ParamField body="contents" type="array" >
   Contents parameter
 </ParamField>
 
-<ParamField body="generationConfig" type="object"  default="{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;]}">
+<ParamField body="generationConfig" type="object" >
   Generationconfig parameter
 </ParamField>
 
@@ -31,13 +31,12 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
+  -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "contents": [
     {
-      "role": "user",
       "parts": [
         {
           "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
@@ -49,7 +48,10 @@ curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
     "responseModalities": [
       "TEXT",
       "IMAGE"
-    ]
+    ],
+    "imageConfig": {
+      "aspectRatio": "16:9"
+    }
   }
 }'
 ```
@@ -58,7 +60,7 @@ curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
 import requests
 import json
 
-url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -67,7 +69,6 @@ headers = {
 data = {
   "contents": [
     {
-      "role": "user",
       "parts": [
         {
           "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
@@ -79,7 +80,10 @@ data = {
     "responseModalities": [
       "TEXT",
       "IMAGE"
-    ]
+    ],
+    "imageConfig": {
+      "aspectRatio": "16:9"
+    }
   }
 }
 
@@ -89,7 +93,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent";
+const url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -98,7 +102,6 @@ const headers = {
 const data = {
   "contents": [
     {
-      "role": "user",
       "parts": [
         {
           "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
@@ -110,7 +113,10 @@ const data = {
     "responseModalities": [
       "TEXT",
       "IMAGE"
-    ]
+    ],
+    "imageConfig": {
+      "aspectRatio": "16:9"
+    }
   }
 };
 
@@ -136,12 +142,11 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+    url := "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent"
 
     payload := []byte(`{
 "contents": [
 {
-"role": "user",
 "parts": [
 {
 "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
@@ -153,7 +158,10 @@ func main() {
 "responseModalities": [
 "TEXT",
 "IMAGE"
-]
+],
+"imageConfig": {
+"aspectRatio": "16:9"
+}
 }
 }`)
 
@@ -180,91 +188,71 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-```JSON
+```json
 {
-    "candidates": [
-        {
-            "content": {
-                "role": "model",
-                "parts": [
-                    {
-                        "inlineData": {
-                            "mimeType": "image/png",
-                            "data": "image base64"
-                        }
-                    }
-                ]
-            },
-            "finishReason": "STOP"
-        }
-    ],
-    "usageMetadata": {
-        "promptTokenCount": 16,
-        "candidatesTokenCount": 1290,
-        "totalTokenCount": 1306,
-        "thoughtsTokenCount": 0,
-        "promptTokensDetails": [
-            {
-                "modality": "TEXT",
-                "tokenCount": 16
-            }
-        ]
-    },
-    "modelVersion": "gemini-2.5-flash-image"
+  "status": "success"
 }
 ```
-
 </ResponseField>
 
 ## Error Responses
 
 <ResponseExample>
 
+
+
+
+
+
+
+{
+    "error": {
+        "message": "Internal server error",
+        "type": "500"
+    }
+}
+
+
+
+
+
+
+
 ```json 401 - Invalid signature
 {
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
+    "error": {
+        "message": "Invalid signature",
+        "type": "401"
+    }
 }
 ```
 
 ```json 403 - Invalid Token
 {
-  "error": {
-    "message": "Invalid Token",
-    "type": "403"
-  }
+    "error": {
+        "message": "Invalid Token",
+        "type": "403"
+    }
 }
 ```
 
 ```json 403 - Insufficient balance
 {
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
+    "error": {
+        "message": "Insufficient balance",
+        "type": "403"
+    }
 }
 ```
 
-```json 500 - Internal server error
+```json 503 - Insufficient balance
 {
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
+    "error": {
+        "message": "Input may not meet the guidelines. Please adjust and try again.",
+        "type": "503"
+    }
 }
 ```
 
 </ResponseExample>
-
 
