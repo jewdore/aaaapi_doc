@@ -146,7 +146,20 @@ The model defaults to returning text and image responses (i.e. `response_modalit
 
 ### Aspect ratios
 
-The model defaults to matching the output image size to that of your input image, or otherwise generates 1:1 squares. You can control the aspect ratio of the output image using the `aspect_ratio` field under `image_config` in the response request:
+The model defaults to matching the output image size to that of your input image, or otherwise generates 1:1 squares. You can control the aspect ratio of the output image using the `aspect_ratio` field under `image_config` in the response request: The different ratios available and the size of the image generated are listed in this table:
+
+| Aspect ratio | Resolution |
+| ------------ | ---------- |
+| 1:1          | 1024x1024  |
+| 2:3          | 832x1248   |
+| 3:2          | 1248x832   |
+| 3:4          | 864x1184   |
+| 4:3          | 1184x864   |
+| 4:5          | 896x1152   |
+| 5:4          | 1152x896   |
+| 9:16         | 768x1344   |
+| 16:9         | 1344x768   |
+| 21:9         | 1536x672   |
 
 <CodeGroup>
 
@@ -277,29 +290,6 @@ This endpoint requires authentication using a Bearer token.
 <ParamField body="generationConfig" default='{"responseModalities": ["Text","Image"],"imageConfig": {"aspectRatio": "16:9"}}' type="array">
   GenerationConfig parameter
 </ParamField>
-
-#### Optional configurations
-
-You can optionally configure the response modalities and aspect ratio of the model's output in the `config` field of `generate_content` calls.
-
-Output types
-
-The model defaults to returning text and image responses (i.e. `response_modalities=['Text', 'Image']`). You can configure the response to return only images without text using `response_modalities=['Image']`.
-
-The different ratios available and the size of the image generated are listed in this table:
-
-| Aspect ratio | Resolution |
-| ------------ | ---------- |
-| 1:1          | 1024x1024  |
-| 2:3          | 832x1248   |
-| 3:2          | 1248x832   |
-| 3:4          | 864x1184   |
-| 4:3          | 1184x864   |
-| 4:5          | 896x1152   |
-| 5:4          | 1152x896   |
-| 9:16         | 768x1344   |
-| 16:9         | 1344x768   |
-| 21:9         | 1536x672   |
 
 ## Request Example
 
