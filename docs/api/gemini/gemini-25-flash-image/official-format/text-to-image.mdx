@@ -1,8 +1,14 @@
 ---
-title: 'Text to Image'
-api: 'POST /v1beta/models/gemini-2.5-flash-image:generateContent'
-description: 'Text to Image'
+title: "Text to Image"
+api: "POST /v1beta/models/gemini-2.5-flash-image:generateContent"
+description: "Text to Image"
 ---
+
+## Supported inputs & outputs :
+
+Inputs: Text, Images
+
+Outputs: Text and image
 
 ## Overview
 
@@ -12,17 +18,17 @@ This endpoint provides text to image functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
+<ParamField header="Authorization" default="sk-***********" type="string" required>
+  Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="contents" type="array"  default="[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?&quot;}]}]">
+<ParamField body="contents" default='[{"parts": [{"text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"}]}]' type="array">
   Contents parameter
 </ParamField>
 
-<ParamField body="generationConfig" type="object"  default="{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;], &quot;imageConfig&quot;: {&quot;aspectRatio&quot;: &quot;16:9&quot;}}">
+<ParamField body="generationConfig" default='{"responseModalities": ["TEXT", "IMAGE"], "imageConfig": {"aspectRatio": "16:9"}}' type="object">
   Generationconfig parameter
 </ParamField>
 
@@ -55,6 +61,7 @@ curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
   }
 }'
 ```
+
 
 ```python Python
 import requests
@@ -91,6 +98,7 @@ response = requests.post(url, headers=headers, json=data)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
+
 
 ```javascript JavaScript
 const url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent";
@@ -129,6 +137,7 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
+
 
 ```go Go
 package main
@@ -188,11 +197,39 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+      "candidates": [
+          {
+              "content": {
+                  "role": "model",
+                  "parts": [
+                      {
+                          "inlineData": {
+                              "mimeType": "image/png",
+                              "data": "image base64"
+                          }
+                      }
+                  ]
+              },
+              "finishReason": "STOP"
+          }
+      ],
+      "usageMetadata": {
+          "promptTokenCount": 16,
+          "candidatesTokenCount": 1290,
+          "totalTokenCount": 1306,
+          "thoughtsTokenCount": 0,
+          "promptTokensDetails": [
+              {
+                  "modality": "TEXT",
+                  "tokenCount": 16
+              }
+          ]
+      },
+      "modelVersion": "gemini-2.5-flash-image"
+  }
+  ```
 </ResponseField>
 
 ## Error Responses
@@ -208,6 +245,7 @@ func main() {
 }
 ```
 
+
 ```json 403 - Invalid Token
 {
   "error": {
@@ -216,6 +254,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 403 - Insufficient balance
 {
@@ -226,6 +265,7 @@ func main() {
 }
 ```
 
+
 ```json 500 - Internal server error
 {
   "error": {
@@ -234,6 +274,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 503 - Content policy violation
 {
@@ -246,3 +287,40 @@ func main() {
 
 </ResponseExample>
 
+## Photorealistic scenes
+
+For realistic images, use photography terms. Mention camera angles, lens types, lighting, and fine details to guide the model toward a photorealistic result.
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "contents": [
+    {
+      "parts": [
+        {
+          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "responseModalities": [
+      "TEXT",
+      "IMAGE"
+    ],
+    "imageConfig": {
+      "aspectRatio": "16:9"
+    }
+  }
+}'
+```
+
+</CodeGroup>
+
+```
+![](https://ai.google.dev/static/gemini-api/docs/images/photorealistic_example.png)
+```
