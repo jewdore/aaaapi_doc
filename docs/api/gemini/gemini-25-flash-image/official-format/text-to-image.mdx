@@ -37,16 +37,7 @@ curl -X POST "https://gptproto/v1beta/models/gemini-2.5-flash-image:generateCont
         }
       ]
     }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  ]
 }'
 ```
 
@@ -70,16 +61,7 @@ data = {
         }
       ]
     }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  ]
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -104,16 +86,7 @@ const data = {
         }
       ]
     }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  ]
 };
 
 fetch(url, {
@@ -150,16 +123,7 @@ func main() {
 }
 ]
 }
-],
-"generationConfig": {
-"responseModalities": [
-"TEXT",
-"IMAGE"
-],
-"imageConfig": {
-"aspectRatio": "16:9"
-}
-}
+]
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
