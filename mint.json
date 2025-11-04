@@ -993,8 +993,7 @@
               "group": "Official Format",
               "pages": [
                 "docs/api/gemini/gemini-25-flash-image/official-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image/official-format/image-to-image",
-                "docs/api/gemini/gemini-25-flash-image/official-format/images-to-image"
+                "docs/api/gemini/gemini-25-flash-image/official-format/image-to-image"
               ]
             },
             {
