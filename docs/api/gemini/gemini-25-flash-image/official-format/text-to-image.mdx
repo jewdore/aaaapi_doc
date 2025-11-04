@@ -4,40 +4,28 @@ api: "POST /v1beta/models/gemini-2.5-flash-image:generateContent"
 description: "Text to Image"
 ---
 
+## Overview
+
+Gemini can generate and process images conversationally. You can prompt Gemini with text, images, or a combination of both allowing you to create, edit, and iterate on visuals with unprecedented control:
+
+- **Text-to-Image:** Generate high-quality images from simple or complex text descriptions.
+- **Image + Text-to-Image (Editing):** Provide an image and use text prompts to add, remove, or modify elements, change the style, or adjust the color grading.
+- **Multi-Image to Image (Composition & Style Transfer):** Use multiple input images to compose a new scene or transfer the style from one image to another.
+- **Iterative Refinement:** Engage in a conversation to progressively refine your image over multiple turns, making small adjustments until it's perfect.
+- **High-Fidelity Text Rendering:** Accurately generate images that contain legible and well-placed text, ideal for logos, diagrams, and posters.
+
 ## Supported inputs & outputs :
 
 Inputs: Text, Images
 
 Outputs: Text and image
 
-## Overview
-
-This endpoint provides text to image functionality.
-
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="contents" default='[{"parts": [{"text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"}]}]' type="array">
-  Contents parameter
-</ParamField>
-
-<ParamField body="generationConfig" default='{"responseModalities": ["TEXT", "IMAGE"], "imageConfig": {"aspectRatio": "16:9"}}' type="object">
-  Generationconfig parameter
-</ParamField>
-
-## Request Example
+# **Text-to-Image**
 
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+curl -X POST "https://gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -67,7 +55,7 @@ curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
 import requests
 import json
 
-url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+url = "https:gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -101,7 +89,7 @@ print(json.dumps(result, indent=2))
 
 
 ```javascript JavaScript
-const url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent";
+const url = "https:gptproto/v1beta/models/gemini-2.5-flash-image:generateContent";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -195,8 +183,6 @@ func main() {
 ## Response
 
 <ResponseField name="Success" type="200">
-  Successful response
-
   ```json
   {
       "candidates": [
@@ -230,9 +216,9 @@ func main() {
       "modelVersion": "gemini-2.5-flash-image"
   }
   ```
-</ResponseField>
 
-## ERROR Example
+  ## 
+</ResponseField>
 
 <ResponseExample>
 
@@ -287,6 +273,26 @@ func main() {
 
 </ResponseExample>
 
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" default="sk-***********" type="string" required>
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="contents" default='[{"parts": [{"text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"}]}]' type="array">
+  Contents parameter
+</ParamField>
+
+<ParamField body="generationConfig" default='{"responseModalities": ["TEXT", "IMAGE"], "imageConfig": {"aspectRatio": "16:9"}}' type="object">
+  Generationconfig parameter
+</ParamField>
+
+## Request Example
+
 ## Photorealistic scenes
 
 For realistic images, use photography terms. Mention camera angles, lens types, lighting, and fine details to guide the model toward a photorealistic result.
@@ -294,7 +300,7 @@ For realistic images, use photography terms. Mention camera angles, lens types, 
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+curl -X POST "https://gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
