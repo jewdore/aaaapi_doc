@@ -1,22 +1,25 @@
 ---
-title: "Nano-banana-text-to-image"
-api: "POST /api/v3/google/nano-banana/text-to-image"
-description: "Nano-banana-text-to-image"
+title: "Nano-banana-image-to-image"
+api: "POST /api/v3/google/nano-banana/image-to-image"
+description: "Nano-banana-image-to-image"
 ---
 
 ## Overview
 
 **Nano-Banana Text-to-Image** is Google’s lightweight yet powerful **AI image generation model**, built for creators who need fast, high-quality visuals from simple text prompts. It transforms words into expressive, realistic images with remarkable clarity, composition, and style diversity — all within seconds.
 
-- **Text-to-Image:** Generate high-quality images from simple or complex text descriptions.
+- **Image + Text-to-Image (Editing):** Provide an image and use text prompts to add, remove, or modify elements, change the style, or adjust the color grading.
+- **Multi-Image to Image (Composition & Style Transfer):** Use multiple input images to compose a new scene or transfer the style from one image to another.
+- **Iterative Refinement:** Engage in a conversation to progressively refine your image over multiple turns, making small adjustments until it's perfect.
+- **High-Fidelity  Text Rendering:** Accurately generate images that contain legible and well-placed text, ideal for logos, diagrams, and posters.
 
 ## Supported inputs & outputs :
 
-Inputs: Text
+Inputs: Text and Images
 
 Outputs: Text and image
 
-# **Text-to-Image**
+# Image to Image
 
 <CodeGroup>
 
@@ -158,7 +161,7 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 <ParamField body="enable_sync_mode" default="false" type="boolean">
-  If set to true, the function will wait for the result to be generated and uploaded before returning the response. It allows you to get the result directly in the response. This property is only available through the API.
+  1If set to true, the function will wait for the result to be generated and uploaded before returning the response. It allows you to get the result directly in the response. This property is only available through the API.
 </ParamField>
 
 <ParamField body="enable_base64_output" default="true" type="boolean">
