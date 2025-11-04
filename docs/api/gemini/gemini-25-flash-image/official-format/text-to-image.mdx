@@ -232,7 +232,7 @@ func main() {
   ```
 </ResponseField>
 
-## Error Responses
+## ERROR Example
 
 <ResponseExample>
 
@@ -289,38 +289,38 @@ func main() {
 
 ## Photorealistic scenes
 
-For realistic images, use photography terms. Mention camera angles, lens types, lighting, and fine details to guide the model toward a photorealistic result.
+<ScenesExample>
+  For realistic images, use photography terms. Mention camera angles, lens types, lighting, and fine details to guide the model toward a photorealistic result.
 
-<CodeGroup>
-
-```bash cURL
-curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "contents": [
-    {
-      "parts": [
+  <CodeGroup>
+    ```bash cURL
+    curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+      "contents": [
         {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
+          "parts": [
+            {
+              "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
+            }
+          ]
         }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
-}'
-```
+      ],
+      "generationConfig": {
+        "responseModalities": [
+          "TEXT",
+          "IMAGE"
+        ],
+        "imageConfig": {
+          "aspectRatio": "16:9"
+        }
+      }
+    }'
+    ```
+  </CodeGroup>
 
-</CodeGroup>
-
-```
-![](https://ai.google.dev/static/gemini-api/docs/images/photorealistic_example.png)
-```
+  ```
+  ![](https://ai.google.dev/static/gemini-api/docs/images/photorealistic_example.png)
+  ```
+</ScenesExample>
