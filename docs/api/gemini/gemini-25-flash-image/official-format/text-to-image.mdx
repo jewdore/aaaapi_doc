@@ -138,6 +138,8 @@ func main() {
 
 </CodeGroup>
 
+## Generate Content
+
 You can optionally configure the response modalities and aspect ratio of the model's output in the `config` field of `generate_content` calls.
 
 ### Output types
@@ -146,7 +148,7 @@ The model defaults to returning text and image responses (i.e. `response_modalit
 
 ### Aspect ratios
 
-The model defaults to matching the output image size to that of your input image, or otherwise generates 1:1 squares. You can control the aspect ratio of the output image using the `aspect_ratio` field under `image_config` in the response request: The different ratios available and the size of the image generated are listed in this table:
+The model defaults to  generates 1:1 squares. You can control the aspect ratio of the output image using the `aspect_ratio` field under `image_config` in the response request: The different ratios available and the size of the image generated are listed in this table:
 
 | Aspect ratio | Resolution |
 | ------------ | ---------- |

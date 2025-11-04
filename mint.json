@@ -1000,7 +1000,7 @@
               "group": "Gptproto Format",
               "pages": [
                 "docs/api/gemini/gemini-25-flash-image/gptproto-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image/gptproto-format/images-to-image"
+                "docs/api/gemini/gemini-25-flash-image/gptproto-format/image-to-image"
               ]
             },
             {

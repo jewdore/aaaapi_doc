@@ -1,7 +1,7 @@
 ---
 title: "Image to Image"
-api: "POST /v1beta/models/gemini-2.5-flash-image:generateContent"
-description: "Image to Image"
+api: "POST /v1/images/generations"
+description: "Images to Image"
 ---
 
 ## Overview
@@ -22,31 +22,13 @@ Outputs: Text and image
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+curl -X POST "https://gptproto.com/v1/images/generations" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off."
-        },
-        {
-          "inline_data": {
-            "mime_type": "image/jpeg",
-            "data": "base64"
-          }
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ]
-  }
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
+  "size": "16:9"
 }'
 ```
 
@@ -55,34 +37,16 @@ curl -X POST "https://gptproto/v1beta/models/gemini-2.5-flash-image:generateCont
 import requests
 import json
 
-url = "https://gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+url = "https://gptproto/v1/images/generations"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off."
-        },
-        {
-          "inline_data": {
-            "mime_type": "image/jpeg",
-            "data": "base64"
-          }
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ]
-  }
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
+  "size": "16:9"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -92,34 +56,16 @@ print(json.dumps(result, indent=2))
 
 
 ```javascript JavaScript
-const url = "https://gptproto/v1beta/models/gemini-2.5-flash-image:generateContent";
+const url = "https://gptproto/v1/images/generations";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off."
-        },
-        {
-          "inline_data": {
-            "mime_type": "image/jpeg",
-            "data": "base64"
-          }
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ]
-  }
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
+  "size": "16:9"
 };
 
 fetch(url, {
@@ -145,30 +91,12 @@ import (
 )
 
 func main() {
-    url := "https://gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+    url := "https://gptproto/v1/images/generations"
 
     payload := []byte(`{
-"contents": [
-{
-"parts": [
-{
-"text": "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off."
-},
-{
-"inline_data": {
-"mime_type": "image/jpeg",
-"data": "base64"
-}
-}
-]
-}
-],
-"generationConfig": {
-"responseModalities": [
-"TEXT",
-"IMAGE"
-]
-}
+"model": "gemini-2.5-flash-image",
+"prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
+"size": "16:9"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -189,17 +117,9 @@ func main() {
 
 </CodeGroup>
 
-## Generate Content
+## Size
 
-You can optionally configure the response modalities and aspect ratio of the model's output in the `config` field of `generate_content` calls.
-
-### Output types
-
-The model defaults to returning text and image responses (i.e. `response_modalities=['Text', 'Image']`). You can configure the response to return only images without text using `response_modalities=['Image']`.
-
-### Aspect ratios
-
-The model defaults to matching the output image size to that of your input image, or otherwise generates 1:1 squares. You can control the aspect ratio of the output image using the `aspect_ratio` field under `image_config` in the response request: The different ratios available and the size of the image generated are listed in this table:
+The model defaults to matching the output image size to that of your input image, or otherwise generates 1:1 squares. The size of the image generated are listed in this table:
 
 | Aspect ratio | Resolution |
 | ------------ | ---------- |
@@ -217,62 +137,65 @@ The model defaults to matching the output image size to that of your input image
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-      "contents": [{
-        "parts":[
-            {"text": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"},
-        ]
-      }],  
-      "generationConfig": {
-        "responseModalities": ["Text", "Image"],
-        "imageConfig": {"aspectRatio": "16:9"}
-       }
-    }'
+curl -X POST "https://gptproto.com/v1/images/generations" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
+  "size": "16:9"
+}'
 ```
 
 </CodeGroup>
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" default="sk-***********" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="model" default="gemini-2.5-flash-image" type="string" required>
+  The model to use for the request
+</ParamField>
+
+<ParamField body="prompt" default="image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment." type="string" required>
+  Prompt parameter
+</ParamField>
+
+<ParamField body="size" default="16:9" type="string">
+  Size parameter
+</ParamField>
+
+## Request Example
 
 ## Response
 
 <ResponseField name="Success" type="200">
   ```json
   {
-      "candidates": [
+      "created": 1762156444807,
+      "data": [
           {
-              "content": {
-                  "role": "model",
-                  "parts": [
-                      {
-                          "inlineData": {
-                              "mimeType": "image/png",
-                              "data": "image base64"
-                          }
-                      }
-                  ]
-              },
-              "finishReason": "STOP"
+              "b64_json": "image_base64"
           }
       ],
-      "usageMetadata": {
-          "promptTokenCount": 1302,
-          "candidatesTokenCount": 1290,
-          "totalTokenCount": 2592,
-          "thoughtsTokenCount": 0,
-          "promptTokensDetails": [
-              {
-                  "modality": "IMAGE",
-                  "tokenCount": 1290
-              },
-              {
-                  "modality": "TEXT",
-                  "tokenCount": 12
-              }
-          ]
-      },
-      "modelVersion": "gemini-2.5-flash-image"
+      "output_format": "png",
+      "quality": "high",
+      "size": "16:9",
+      "usage": {
+          "input_tokens": 535,
+          "input_tokens_details": {
+              "image_tokens": 516,
+              "text_tokens": 19
+          },
+          "output_tokens": 1291,
+          "total_tokens": 1826
+      }
   }
   ```
 </ResponseField>
@@ -330,24 +253,6 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
 
 </ResponseExample>
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `Bearer YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="contents" default='[{"parts":[{"text": "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like its sitting comfortably and not falling off."},{"inline_data":{"mime_type":"image/png","data": "emini_png_base64"}}]}]' type="array">
-  Contents parameter
-</ParamField>
-
-<ParamField body="generationConfig" default='{"responseModalities": ["TEXT", "IMAGE"]}' type="object">
-  Generationconfig parameter
-</ParamField>
-
 ## Request Example
 
 ## Adding and removing elements
@@ -361,18 +266,10 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
-      "contents": [{
-        "parts":[
-            {"text": "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off."},
-            {
-              "inline_data": {
-                "mime_type":"image/png",
-                "data": "{{gemini_png_base64}}"
-              }
-            }
-        ]
-      }]
-    }'
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1. Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off.",
+  "size": "1:1"
+}'
 ```
 
 </CodeGroup>
@@ -393,18 +290,10 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
-      "contents": [{
-        "parts":[
-            {"text": "Using the provided image of a living room, change only the blue sofa to be a vintage, brown leather chesterfield sofa. Keep the rest of the room, including the pillows on the sofa and the lighting, unchanged."},
-            {
-              "inline_data": {
-                "mime_type":"image/png",
-                "data": "{{gemini_png_base64}}"
-              }
-            }
-        ]
-      }]
-    }'
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1. Using the provided image of a living room, change only the blue sofa to be a vintage, brown leather chesterfield sofa. Keep the rest of the room, including the pillows on the sofa and the lighting, unchanged.",
+  "size": "1:1"
+}'
 ```
 
 </CodeGroup>
@@ -425,18 +314,10 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
-      "contents": [{
-        "parts":[
-            {"text": "Transform the provided photograph of a modern city street at night into the artistic style of Vincent van Gogh's 'Starry Night'. Preserve the original composition of buildings and cars, but render all elements with swirling, impasto brushstrokes and a dramatic palette of deep blues and bright yellows."},
-            {
-              "inline_data": {
-                "mime_type":"image/png",
-                "data": "{{gemini_png_base64}}"
-              }
-            }
-        ]
-      }]
-    }'
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1. Transform the provided photograph of a modern city street at night into the artistic style of Vincent van Gogh's 'Starry Night'. Preserve the original composition of buildings and cars, but render all elements with swirling, impasto brushstrokes and a dramatic palette of deep blues and bright yellows.",
+  "size": "1:1"
+}'
 ```
 
 </CodeGroup>
@@ -457,24 +338,10 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
-      "contents": [{
-        "parts":[
-            {
-              "inline_data": {
-                "mime_type":"image/png",
-                "data": "{{gemini_png_base64_1}}"
-              }
-            },
-            {
-              "inline_data": {
-                "mime_type":"image/png",
-                "data": "{{gemini_png_base64_2}}"
-              }
-            },
-            {"text": "Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment."}
-        ]
-      }]
-    }'
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1,image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
+  "size": "1:1"
+}'
 ```
 
 </CodeGroup>
@@ -495,25 +362,10 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
-      "contents": [{
-        "parts":[
-            {
-              "inline_data": {
-                "mime_type":"image/png",
-                "data": "{{gemini_png_base64_1}}"
-              }
-            },
-            {
-              "inline_data": {
-                "mime_type":"image/png",
-                "data": "{{gemini_png_base64_2}}"
-              }
-            },
-            {"text": "Take the first image of the woman with brown hair, blue eyes, and a neutral expression. Add the logo from the second image onto her black t-shirt. Ensure the woman's face and features remain completely unchanged. The logo should look like it's naturally printed on the fabric, following the folds of the shirt."},
-            
-        ]
-      }]
-    }'
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1,image_url2. Take the first image of the woman with brown hair, blue eyes, and a neutral expression. Add the logo from the second image onto her black t-shirt. Ensure the woman's face and features remain completely unchanged. The logo should look like it's naturally printed on the fabric, following the folds of the shirt.",
+  "size": "1:1"
+}'
 ```
 
 </CodeGroup>
