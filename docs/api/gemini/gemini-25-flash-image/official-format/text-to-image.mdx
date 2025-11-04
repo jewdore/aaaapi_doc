@@ -161,7 +161,7 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
         ]
       }],  
       "generationConfig": {
-        "responseModalities": ["Image"],
+        "responseModalities": ["Text", "Image"],
         "imageConfig": {"aspectRatio": "16:9"}
        }
     }'
@@ -274,17 +274,17 @@ This endpoint requires authentication using a Bearer token.
   Contents parameter
 </ParamField>
 
-<ParamField body="generationConfig" default='{"responseModalities": ["Image"],"imageConfig": {"aspectRatio": "16:9"}}' type="array">
-  Contents parameter
-
-  #### Optional configurations
-
-  You can optionally configure the response modalities and aspect ratio of the model's output in the `config` field of `generate_content` calls.
-
-  Output types
-
-  The model defaults to returning text and image responses (i.e. `response_modalities=['Text', 'Image']`). You can configure the response to return only images without text using `response_modalities=['Image']`.
+<ParamField body="generationConfig" default='{"responseModalities": ["Text","Image"],"imageConfig": {"aspectRatio": "16:9"}}' type="array">
+  GenerationConfig parameter
 </ParamField>
+
+#### Optional configurations
+
+You can optionally configure the response modalities and aspect ratio of the model's output in the `config` field of `generate_content` calls.
+
+Output types
+
+The model defaults to returning text and image responses (i.e. `response_modalities=['Text', 'Image']`). You can configure the response to return only images without text using `response_modalities=['Image']`.
 
 The different ratios available and the size of the image generated are listed in this table:
 
