@@ -9,7 +9,7 @@ description: "Images to Image"
 - **Image + Text-to-Image (Editing):** Provide an image and use text prompts to add, remove, or modify elements, change the style, or adjust the color grading.
 - **Multi-Image to Image (Composition & Style Transfer):** Use multiple input images to compose a new scene or transfer the style from one image to another.
 - **Iterative Refinement:** Engage in a conversation to progressively refine your image over multiple turns, making small adjustments until it's perfect.
-- **High-Fidelity**\*\* Text Rendering:\*\* Accurately generate images that contain legible and well-placed text, ideal for logos, diagrams, and posters.
+- **High-Fidelity  Text Rendering:** Accurately generate images that contain legible and well-placed text, ideal for logos, diagrams, and posters.
 
 ## Supported inputs & outputs :
 
@@ -262,7 +262,7 @@ Provide an image and describe your change. The model will match the original ima
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
+curl --location 'https://gptproto.com/v1/images/generations' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -286,7 +286,7 @@ Conversationally define a "mask" to edit a specific part of an image while leavi
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
+curl --location 'https://gptproto.com/v1/images/generations' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -310,7 +310,7 @@ Provide an image and ask the model to recreate its content in a different artist
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
+curl --location 'https://gptproto.com/v1/images/generations' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -334,7 +334,7 @@ Provide multiple images as context to create a new, composite scene. This is per
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
+curl --location 'https://gptproto.com/v1/images/generations' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -358,7 +358,7 @@ To ensure critical details (like a face or logo) are preserved during an edit, d
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
+curl --location 'https://gptproto.com/v1/images/generations' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{

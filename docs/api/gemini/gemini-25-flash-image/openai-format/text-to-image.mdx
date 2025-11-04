@@ -1,37 +1,27 @@
 ---
-title: 'Text to Image'
-api: 'POST /v1/chat/completions'
-description: 'Text to Image'
+title: "Text to Image"
+api: "POST /v1/chat/completions"
+description: "Text to Image"
 ---
 
 ## Overview
 
-This endpoint provides text to image functionality.
+- **Text-to-Image:** Generate high-quality images from simple or complex text descriptions.
 
-## Authentication
+## Supported inputs & outputs :
 
-This endpoint requires authentication using a Bearer token.
+Inputs: Text
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
-</ParamField>
+Outputs: Text and image
 
-## Request Body
+# **Text-to-Image**
 
-<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme&quot;}]">
-  Array of message objects for the conversation
-</ParamField>
-
-<ParamField body="model" type="string" required default="gemini-2.5-flash-image">
-  The model to use for the request
-</ParamField>
-
-## Request Example
+The default output size for chat mode is 1:1 (1024x1024)
 
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1/chat/completions" \
+curl -X POST "https://gptproto/v1/chat/completions" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -45,11 +35,12 @@ curl -X POST "gptproto/v1/chat/completions" \
 }'
 ```
 
+
 ```python Python
 import requests
 import json
 
-url = "gptproto/v1/chat/completions"
+url = "https://gptproto/v1/chat/completions"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -70,8 +61,9 @@ result = response.json()
 print(json.dumps(result, indent=2))
 ```
 
+
 ```javascript JavaScript
-const url = "gptproto/v1/chat/completions";
+const url = "https://gptproto/v1/chat/completions";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -97,6 +89,7 @@ fetch(url, {
   .catch(error => console.error("Error:", error));
 ```
 
+
 ```go Go
 package main
 
@@ -109,7 +102,7 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1/chat/completions"
+    url := "https://gptproto/v1/chat/completions"
 
     payload := []byte(`{
 "messages": [
@@ -139,19 +132,61 @@ func main() {
 
 </CodeGroup>
 
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" default="sk-***********" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="messages" default='[{"role": "user", "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"}]' type="array" required>
+  Array of message objects for the conversation
+</ParamField>
+
+<ParamField body="model" default="gemini-2.5-flash-image" type="string" required>
+  The model to use for the request
+</ParamField>
+
 ## Response
 
 <ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+      "choices": [
+          {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                  "content": "Here's your nano banana dish in a fancy restaurant with a Gemini theme! \n![image](data:image/png;base64,iVBORw0....)",
+                  "role": "assistant"
+              }
+          }
+      ],
+      "created": 1762163196,
+      "id": "chatcmpl-20251103174627570914749cO7T1Yq5",
+      "model": "gemini-2.5-flash-image",
+      "object": "chat.completion",
+      "usage": {
+          "completion_tokens": 1307,
+          "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 16,
+          "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+          },
+          "total_tokens": 1323
+      }
+  }
+  ```
 </ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -164,6 +199,7 @@ func main() {
 }
 ```
 
+
 ```json 403 - Invalid Token
 {
   "error": {
@@ -172,6 +208,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 403 - Insufficient balance
 {
@@ -182,6 +219,7 @@ func main() {
 }
 ```
 
+
 ```json 500 - Internal server error
 {
   "error": {
@@ -190,6 +228,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 503 - Content policy violation
 {
@@ -202,3 +241,154 @@ func main() {
 
 </ResponseExample>
 
+## Scenes Example
+
+## Photorealistic scenes
+
+For realistic images, use photography terms. Mention camera angles, lens types, lighting, and fine details to guide the model toward a photorealistic result.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "A photorealistic close-up portrait of an elderly Japanese ceramicist with deep, sun-etched wrinkles and a warm, knowing smile. He is carefully inspecting a freshly glazed tea bowl. The setting is his rustic, sun-drenched workshop with pottery wheels and shelves of clay pots in the background. The scene is illuminated by soft, golden hour light streaming through a window, highlighting the fine texture of the clay and the fabric of his apron. Captured with an 85mm portrait lens, resulting in a soft, blurred background (bokeh). The overall mood is serene and masterful."
+    }
+  ],
+  "model": "gemini-2.5-flash-image"
+}'
+```
+
+</CodeGroup>
+
+![Alt text describing the image](/images/gemini_photorealistic.png)
+
+## Stylized illustrations & stickers
+
+To create stickers, icons, or assets, be explicit about the style and request a transparent background.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "A kawaii-style sticker of a happy red panda wearing a tiny bamboo hat. It'"'"'s munching on a green bamboo leaf. The design features bold, clean outlines, simple cel-shading, and a vibrant color palette. The background must be white."
+    }
+  ],
+  "model": "gemini-2.5-flash-image"
+}'
+```
+
+</CodeGroup>
+
+![Alt text describing the image](/images/gemini_Stylized.png)
+
+## Accurate text in images
+
+Gemini excels at rendering text. Be clear about the text, the font style (descriptively), and the overall design.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Create a modern, minimalist logo for a coffee shop called '"'"'The Daily Grind'"'"'. The text should be in a clean, bold, sans-serif font. The design should feature a simple, stylized icon of a a coffee bean seamlessly integrated with the text. The color scheme is black and white."
+    }
+  ],
+  "model": "gemini-2.5-flash-image"
+}'
+```
+
+</CodeGroup>
+
+![Alt text describing the image](/images/gemini_Accurate.png)
+
+## Product mockups & commercial photography
+
+Gemini excels at rendering text. Be clear about the text, the font style (descriptively), and the overall design.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "A high-resolution, studio-lit product photograph of a minimalist ceramic coffee mug in matte black, presented on a polished concrete surface. The lighting is a three-point softbox setup designed to create soft, diffused highlights and eliminate harsh shadows. The camera angle is a slightly elevated 45-degree shot to showcase its clean lines. Ultra-realistic, with sharp focus on the steam rising from the coffee. Square image."
+    }
+  ],
+  "model": "gemini-2.5-flash-image"
+}'
+```
+
+</CodeGroup>
+
+![Alt text describing the image](/images/gemini_Product.png)
+
+## Minimalist & negative space design
+
+Excellent for creating backgrounds for websites, presentations, or marketing materials where text will be overlaid.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "A minimalist composition featuring a single, delicate red maple leaf positioned in the bottom-right of the frame. The background is a vast, empty off-white canvas, creating significant negative space for text. Soft, diffused lighting from the top left. Square image."
+    }
+  ],
+  "model": "gemini-2.5-flash-image"
+}'
+```
+
+</CodeGroup>
+
+![Alt text describing the image](/images/gemini_Minimalist.png)
+
+## Sequential art (Comic panel / Storyboard)
+
+Builds on character consistency and scene description to create panels for visual storytelling.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "A single comic book panel in a gritty, noir art style with high-contrast black and white inks. In the foreground, a detective in a trench coat stands under a flickering streetlamp, rain soaking his shoulders. In the background, the neon sign of a desolate bar reflects in a puddle. A caption box at the top reads \"The city was a tough place to keep secrets.\" The lighting is harsh, creating a dramatic, somber mood. Landscape."
+    }
+  ],
+  "model": "gemini-2.5-flash-image"
+}'
+```
+
+</CodeGroup>
+
+![Alt text describing the image](/images/gemini_Sequential.png)

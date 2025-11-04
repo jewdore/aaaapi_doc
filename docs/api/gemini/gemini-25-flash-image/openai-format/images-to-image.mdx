@@ -1,79 +1,59 @@
 ---
-title: 'Images to Image'
-api: 'POST /v1/chat/completions'
-description: 'Images to Image'
+title: "Image to Image"
+api: "POST /v1/chat/completions"
+description: "Image to Image"
 ---
 
 ## Overview
 
-This endpoint provides images to image functionality.
+- **Image + Text-to-Image (Editing):** Provide an image and use text prompts to add, remove, or modify elements, change the style, or adjust the color grading.
+- **Multi-Image to Image (Composition & Style Transfer):** Use multiple input images to compose a new scene or transfer the style from one image to another.
+- **Iterative Refinement:** Engage in a conversation to progressively refine your image over multiple turns, making small adjustments until it's perfect.
+- **High-Fidelity Text Rendering:** Accurately generate images that contain legible and well-placed text, ideal for logos, diagrams, and posters.
 
-## Authentication
+## Supported inputs & outputs :
 
-This endpoint requires authentication using a Bearer token.
+Inputs: Text and Images
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
-</ParamField>
+Outputs: Text and image
 
-## Request Body
+## Image to Image
 
-<ParamField body="messages" type="array" required default="[{&quot;id&quot;: &quot;LDjJB5IKMK40f1vr&quot;, &quot;createdAt&quot;: &quot;2025-10-15T08:57:45.308Z&quot;, &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Two people standing together 9:16&quot;, &quot;experimental_attachments&quot;: [{&quot;name&quot;: &quot;image-1760156153251.png&quot;, &quot;contentType&quot;: &quot;image/png&quot;, &quot;url&quot;: &quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png&quot;}, {&quot;name&quot;: &quot;-a18dda5f-df30-4d9c-ad5e-ddc5b6e07029.jpeg&quot;, &quot;contentType&quot;: &quot;image/jpeg&quot;, &quot;url&quot;: &quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg&quot;}]}]">
-  Array of message objects for the conversation
-</ParamField>
-
-<ParamField body="chatId" type="string"  default="eacf4fbe-068b-4964-b880-87bca57b3064">
-  Chatid parameter
-</ParamField>
-
-<ParamField body="userId" type="string"  default="27349c00-ef7a-44a1-8416-1407fcee8569">
-  Userid parameter
-</ParamField>
-
-<ParamField body="model" type="string" required default="gemini-2.5-flash-image-preview">
-  The model to use for the request
-</ParamField>
-
-## Request Example
+The default output size for chat mode is 1:1 (1024x1024)
 
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1/chat/completions" \
+curl -X POST "https://gptproto/v1/chat/completions" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "messages": [
     {
-      "id": "LDjJB5IKMK40f1vr",
-      "createdAt": "2025-10-15T08:57:45.308Z",
       "role": "user",
-      "content": "Two people standing together 9:16",
+      "content": "Two people standing together",
       "experimental_attachments": [
         {
-          "name": "image-1760156153251.png",
           "contentType": "image/png",
           "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png"
         },
         {
-          "name": "-a18dda5f-df30-4d9c-ad5e-ddc5b6e07029.jpeg",
           "contentType": "image/jpeg",
           "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
         }
-      ]
+      ],
+  	  "model": "gemini-2.5-flash-image-preview"
     }
-  ],
-  "chatId": "eacf4fbe-068b-4964-b880-87bca57b3064",
-  "userId": "27349c00-ef7a-44a1-8416-1407fcee8569",
-  "model": "gemini-2.5-flash-image-preview"
+  ]
 }'
 ```
+
 
 ```python Python
 import requests
 import json
 
-url = "gptproto/v1/chat/completions"
+url = "https://gptproto/v1/chat/completions"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -82,26 +62,20 @@ headers = {
 data = {
   "messages": [
     {
-      "id": "LDjJB5IKMK40f1vr",
-      "createdAt": "2025-10-15T08:57:45.308Z",
       "role": "user",
-      "content": "Two people standing together 9:16",
+      "content": "Two people standing together",
       "experimental_attachments": [
         {
-          "name": "image-1760156153251.png",
           "contentType": "image/png",
           "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png"
         },
         {
-          "name": "-a18dda5f-df30-4d9c-ad5e-ddc5b6e07029.jpeg",
           "contentType": "image/jpeg",
           "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
         }
       ]
     }
   ],
-  "chatId": "eacf4fbe-068b-4964-b880-87bca57b3064",
-  "userId": "27349c00-ef7a-44a1-8416-1407fcee8569",
   "model": "gemini-2.5-flash-image-preview"
 }
 
@@ -110,8 +84,9 @@ result = response.json()
 print(json.dumps(result, indent=2))
 ```
 
+
 ```javascript JavaScript
-const url = "gptproto/v1/chat/completions";
+const url = "https://gptproto/v1/chat/completions";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -120,26 +95,20 @@ const headers = {
 const data = {
   "messages": [
     {
-      "id": "LDjJB5IKMK40f1vr",
-      "createdAt": "2025-10-15T08:57:45.308Z",
       "role": "user",
-      "content": "Two people standing together 9:16",
+      "content": "Two people standing together",
       "experimental_attachments": [
         {
-          "name": "image-1760156153251.png",
           "contentType": "image/png",
           "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png"
         },
         {
-          "name": "-a18dda5f-df30-4d9c-ad5e-ddc5b6e07029.jpeg",
           "contentType": "image/jpeg",
           "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
         }
       ]
     }
   ],
-  "chatId": "eacf4fbe-068b-4964-b880-87bca57b3064",
-  "userId": "27349c00-ef7a-44a1-8416-1407fcee8569",
   "model": "gemini-2.5-flash-image-preview"
 };
 
@@ -153,6 +122,7 @@ fetch(url, {
   .catch(error => console.error("Error:", error));
 ```
 
+
 ```go Go
 package main
 
@@ -165,31 +135,25 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1/chat/completions"
+    url := "https://gptproto/v1/chat/completions"
 
     payload := []byte(`{
 "messages": [
 {
-"id": "LDjJB5IKMK40f1vr",
-"createdAt": "2025-10-15T08:57:45.308Z",
 "role": "user",
-"content": "Two people standing together 9:16",
+"content": "Two people standing together",
 "experimental_attachments": [
 {
-"name": "image-1760156153251.png",
 "contentType": "image/png",
 "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png"
 },
 {
-"name": "-a18dda5f-df30-4d9c-ad5e-ddc5b6e07029.jpeg",
 "contentType": "image/jpeg",
 "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
 }
 ]
 }
 ],
-"chatId": "eacf4fbe-068b-4964-b880-87bca57b3064",
-"userId": "27349c00-ef7a-44a1-8416-1407fcee8569",
 "model": "gemini-2.5-flash-image-preview"
 }`)
 
@@ -211,16 +175,66 @@ func main() {
 
 </CodeGroup>
 
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" default="sk-***********" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="messages" default='[{ "role": "user", "content": "Two people standing together ", "experimental_attachments": [{ "contentType": "image/png", "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png"}, { "contentType": "image/jpeg", "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"}]}]' type="array" required>
+  Array of message objects for the conversation
+</ParamField>
+
+<ParamField body="model" default="gemini-2.5-flash-image-preview" type="string" required>
+  The model to use for the request
+</ParamField>
+
+## Request Example
+
 ## Response
 
 <ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+    "candidates": [
+        {
+            "content": {
+                "role": "model",
+                "parts": [
+                    {
+                        "inlineData": {
+                            "mimeType": "image/png",
+                            "data": "image base64"
+                        }
+                    }
+                ]
+            },
+            "finishReason": "STOP"
+        }
+    ],
+    "usageMetadata": {
+        "promptTokenCount": 1302,
+        "candidatesTokenCount": 1290,
+        "totalTokenCount": 2592,
+        "thoughtsTokenCount": 0,
+        "promptTokensDetails": [
+            {
+                "modality": "IMAGE",
+                "tokenCount": 1290
+            },
+            {
+                "modality": "TEXT",
+                "tokenCount": 12
+            }
+        ]
+    },
+    "modelVersion": "gemini-2.5-flash-image"
+  }
+  ```
 </ResponseField>
 
 ## Error Responses
@@ -236,6 +250,7 @@ func main() {
 }
 ```
 
+
 ```json 403 - Invalid Token
 {
   "error": {
@@ -244,6 +259,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 403 - Insufficient balance
 {
@@ -254,6 +270,7 @@ func main() {
 }
 ```
 
+
 ```json 500 - Internal server error
 {
   "error": {
@@ -262,6 +279,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 503 - Content policy violation
 {
@@ -274,3 +292,200 @@ func main() {
 
 </ResponseExample>
 
+## Request Example
+
+## Adding and removing elements
+
+Provide an image and describe your change. The model will match the original image's style, lighting, and perspective.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off.",
+      "experimental_attachments": [
+        {
+          "contentType": "image/png",
+          "url": "image_url"
+        }
+      ],
+  	  "model": "gemini-2.5-flash-image-preview"
+    }
+  ]
+}'
+```
+
+</CodeGroup>
+
+| Input                                              | Output                                                                        |
+| -------------------------------------------------- | ----------------------------------------------------------------------------- |
+| ![Input](/images/gemini_Input_1.png)               | ![Output](/images/gemini_Output_1.png)                                        |
+| A photorealistic picture of a fluffy ginger cat... | Using the provided image of my cat, please add a small, knitted wizard hat... |
+
+## Inpainting (Semantic masking)
+
+Conversationally define a "mask" to edit a specific part of an image while leaving the rest untouched.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Using the provided image of a living room, change only the blue sofa to be a vintage, brown leather chesterfield sofa. Keep the rest of the room, including the pillows on the sofa and the lighting, unchanged.",
+      "experimental_attachments": [
+        {
+          "contentType": "image/png",
+          "url": "image_url"
+        }
+      ],
+  	  "model": "gemini-2.5-flash-image-preview"
+    }
+  ]
+}'
+```
+
+</CodeGroup>
+
+| Input                                            | Output                                                                                                                   |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| ![Input](/images/gemini_Input_2.png)             | ![Output](/images/gemini_Output_2.png)                                                                                   |
+| A wide shot of a modern, well-lit living room... | Using the provided image of a living room, change only the blue sofa to be a vintage, brown leather chesterfield sofa... |
+
+## Style transfer
+
+Provide an image and ask the model to recreate its content in a different artistic style.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Transform the provided photograph of a modern city street at night into the artistic style of Vincent van Gogh's 'Starry Night'. Preserve the original composition of buildings and cars, but render all elements with swirling, impasto brushstrokes and a dramatic palette of deep blues and bright yellows.",
+      "experimental_attachments": [
+        {
+          "contentType": "image/png",
+          "url": "image_url"
+        }
+      ],
+  	  "model": "gemini-2.5-flash-image-preview"
+    }
+  ]
+}'
+```
+
+</CodeGroup>
+
+| Input                                                                 | Output                                                                |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| ![Input](/images/gemini_Input_3.png)                                  | ![Output](/images/gemini_Output_3.png)                                |
+| A photorealistic, high-resolution photograph of a busy city street... | Transform the provided photograph of a modern city street at night... |
+
+## Advanced composition: Combining multiple images
+
+Provide multiple images as context to create a new, composite scene. This is perfect for product mockups or creative collages.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
+      "experimental_attachments": [
+        {
+          "contentType": "image/png",
+          "url": "image_url_1"
+        },{
+          "contentType": "image/png",
+          "url": "image_url_2"
+        }
+      ],
+  	  "model": "gemini-2.5-flash-image-preview"
+    }
+  ]
+}'
+```
+
+</CodeGroup>
+
+| Input1                                                       | Input2                                              | Output                                            |
+| ------------------------------------------------------------ | --------------------------------------------------- | ------------------------------------------------- |
+| ![Input](/images/gemini_Input_4_1.png)                       | ![Input](/images/gemini_Input_4_2.png)              | ![Output](/images/gemini_Output_4.png)            |
+| A professionally shot photo of a blue floral summer dress... | Full-body shot of a woman with her hair in a bun... | Create a professional e-commerce fashion photo... |
+
+## High-fidelity detail preservation
+
+To ensure critical details (like a face or logo) are preserved during an edit, describe them in great detail along with your edit request.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Take the first image of the woman with brown hair, blue eyes, and a neutral expression. Add the logo from the second image onto her black t-shirt. Ensure the woman's face and features remain completely unchanged. The logo should look like it's naturally printed on the fabric, following the folds of the shirt.",
+      "experimental_attachments": [
+        {
+          "contentType": "image/png",
+          "url": "image_url_1"
+        },{
+          "contentType": "image/png",
+          "url": "image_url_2"
+        }
+      ],
+  	  "model": "gemini-2.5-flash-image-preview"
+    }
+  ]
+}'
+```
+
+</CodeGroup>
+
+| Input1                                                              | Input2                                                | Output                                                                                    |
+| ------------------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| ![Input](/images/gemini_Input_5.png)                                | ![Input](/images/gemini_Input_5_2.png)                | ![Output](/images/gemini_Output_5.png)                                                    |
+| A professional headshot of a woman with brown hair and blue eyes... | A simple, modern logo with the letters 'G' and 'A'... | Take the first image of the woman with brown hair, blue eyes, and a neutral expression... |
+
+#### Best Practices
+
+To elevate your results from good to great, incorporate these professional strategies into your workflow.
+
+- **Be Hyper-Specific:** The more detail you provide, the more control you have. Instead of "fantasy armor," describe it: "ornate elven plate armor, etched with silver leaf patterns, with a high collar and pauldrons shaped like falcon wings."
+- **Provide Context and Intent:** Explain the _purpose_ of the image. The model's understanding of context will influence the final output. For example, "Create a logo for a high-end, minimalist skincare brand" will yield better results than just "Create a logo."
+- **Iterate and Refine:** Don't expect a perfect image on the first try. Use the conversational nature of the model to make small changes. Follow up with prompts like, "That's great, but can you make the lighting a bit warmer?" or "Keep everything the same, but change the character's expression to be more serious."
+- **Use Step-by-Step Instructions:** For complex scenes with many elements, break your prompt into steps. "First, create a background of a serene, misty forest at dawn. Then, in the foreground, add a moss-covered ancient stone altar. Finally, place a single, glowing sword on top of the altar."
+- **Use "Semantic Negative Prompts":** Instead of saying "no cars," describe the desired scene positively: "an empty, deserted street with no signs of traffic."
+- **Control the Camera:** Use photographic and cinematic language to control the composition. Terms like `wide-angle shot`, `macro shot`, `low-angle perspective`.
+
+#### Limitations
+
+- For best performance, use the following languages: EN, es-MX, ja-JP, zh-CN, hi-IN.
+- Image generation does not support audio or video inputs.
+- The model won't always follow the exact number of image outputs that the user explicitly asks for.
+- The model works best with up to 3 images as an input.
+- When generating text for an image, Gemini works best if you first generate the text and then ask for an image with the text.
+- Uploading images of children is not currently supported in EEA, CH, and UK.
