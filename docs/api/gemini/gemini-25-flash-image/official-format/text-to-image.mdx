@@ -289,38 +289,44 @@ func main() {
 
 ## Photorealistic scenes
 
-<ScenesExample>
-  For realistic images, use photography terms. Mention camera angles, lens types, lighting, and fine details to guide the model toward a photorealistic result.
+For realistic images, use photography terms. Mention camera angles, lens types, lighting, and fine details to guide the model toward a photorealistic result.
 
-  <CodeGroup>
-    ```bash cURL
-    curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
-      -H "Authorization: Bearer YOUR_API_KEY" \
-      -H "Content-Type: application/json" \
-      -d '{
-      "contents": [
+<CodeGroup>
+
+```bash cURL
+curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "contents": [
+    {
+      "parts": [
         {
-          "parts": [
-            {
-              "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-            }
-          ]
+          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
         }
-      ],
-      "generationConfig": {
-        "responseModalities": [
-          "TEXT",
-          "IMAGE"
-        ],
-        "imageConfig": {
-          "aspectRatio": "16:9"
-        }
-      }
-    }'
-    ```
-  </CodeGroup>
+      ]
+    }
+  ],
+  "generationConfig": {
+    "responseModalities": [
+      "TEXT",
+      "IMAGE"
+    ],
+    "imageConfig": {
+      "aspectRatio": "16:9"
+    }
+  }
+}'
+```
 
-  ```
-  ![](https://ai.google.dev/static/gemini-api/docs/images/photorealistic_example.png)
-  ```
-</ScenesExample>
+</CodeGroup>
+
+```
+![Alt text describing the image](/images/gemini_photorealistic.png)
+<img 
+src="/images/gemini_photorealistic.png" 
+alt="Main dashboard interface"
+style={{height: "300px", width: "400px"}}
+className="rounded-lg"
+/>
+```
