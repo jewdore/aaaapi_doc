@@ -1677,54 +1677,6 @@
       "group": "Sora",
       "pages": [
         {
-          "group": "sora2-pro-15-small",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/sora/sora2-pro-15-small/gptproto-format/text-to-video-pro",
-                "docs/api/sora/sora2-pro-15-small/gptproto-format/image-to-video-pro"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "sora2-pro-15-large",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/sora/sora2-pro-15-large/gptproto-format/text-to-video-pro",
-                "docs/api/sora/sora2-pro-15-large/gptproto-format/image-to-video-pro"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "sora2-pro-10-small",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/sora/sora2-pro-10-small/gptproto-format/text-to-video-pro",
-                "docs/api/sora/sora2-pro-10-small/gptproto-format/image-to-video-pro"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "sora2-pro-10-large",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/sora/sora2-pro-10-large/gptproto-format/text-to-video-pro",
-                "docs/api/sora/sora2-pro-10-large/gptproto-format/image-to-video-pro"
-              ]
-            }
-          ]
-        },
-        {
           "group": "sora-2",
           "pages": [
             {

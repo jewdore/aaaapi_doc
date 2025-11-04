@@ -1,40 +1,50 @@
 ---
-title: 'Nano-banana-text-to-image'
-api: 'POST /api/v3/google/nano-banana/text-to-image'
-description: 'Nano-banana-text-to-image'
+title: "Nano-banana-text-to-image"
+api: "POST /api/v3/google/nano-banana/text-to-image"
+description: "Nano-banana-text-to-image"
 ---
 
 ## Overview
 
-This endpoint provides nano-banana-text-to-image functionality.
+Image generation with Gemini (aka Nano Banana)
+
+- **Text-to-Image:** Generate high-quality images from simple or complex text descriptions.
+
+## Supported inputs & outputs :
+
+Inputs: Text
+
+Outputs: Text and image
+
+# **Text-to-Image**
 
 ## Authentication
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
+<ParamField header="Authorization" default="sk-***********" type="string" required>
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="prompt" type="string" required default="The cat is climbing on the tree">
+<ParamField body="prompt" default="The cat is climbing on the tree" type="string" required>
   Prompt parameter
 </ParamField>
 
-<ParamField body="aspect_ratio" type="string"  default="3:2">
+<ParamField body="aspect_ratio" default="1:1" type="string">
   Aspect Ratio parameter
 </ParamField>
 
-<ParamField body="output_format" type="string"  default="jpeg">
+<ParamField body="output_format" default="jpeg" type="string">
   Output Format parameter
 </ParamField>
 
-<ParamField body="enable_sync_mode" type="boolean"  default="false">
+<ParamField body="enable_sync_mode" default="false" type="boolean">
   Enable Sync Mode parameter
 </ParamField>
 
-<ParamField body="enable_base64_output" type="boolean"  default="true">
+<ParamField body="enable_base64_output" default="true" type="boolean">
   Enable Base64 Output parameter
 </ParamField>
 
@@ -54,6 +64,7 @@ curl -X POST "gptproto/api/v3/google/nano-banana/text-to-image" \
   "enable_base64_output": true
 }'
 ```
+
 
 ```python Python
 import requests
@@ -77,6 +88,7 @@ response = requests.post(url, headers=headers, json=data)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
+
 
 ```javascript JavaScript
 const url = "gptproto/api/v3/google/nano-banana/text-to-image";
@@ -102,6 +114,7 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
+
 
 ```go Go
 package main
@@ -148,11 +161,11 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+    "status": "success"
+  }
+  ```
 </ResponseField>
 
 ## Error Responses
@@ -168,6 +181,7 @@ func main() {
 }
 ```
 
+
 ```json 403 - Invalid Token
 {
   "error": {
@@ -176,6 +190,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 403 - Insufficient balance
 {
@@ -186,6 +201,7 @@ func main() {
 }
 ```
 
+
 ```json 500 - Internal server error
 {
   "error": {
@@ -194,6 +210,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 503 - Content policy violation
 {
@@ -205,4 +222,3 @@ func main() {
 ```
 
 </ResponseExample>
-
