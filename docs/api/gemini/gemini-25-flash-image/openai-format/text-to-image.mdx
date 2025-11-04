@@ -21,7 +21,7 @@ The default output size for chat mode is 1:1 (1024x1024)
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto/v1/chat/completions" \
+curl -X POST "https://gptproto.com/v1/chat/completions" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -40,7 +40,7 @@ curl -X POST "https://gptproto/v1/chat/completions" \
 import requests
 import json
 
-url = "https://gptproto/v1/chat/completions"
+url = "https://gptproto.com/v1/chat/completions"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -63,7 +63,7 @@ print(json.dumps(result, indent=2))
 
 
 ```javascript JavaScript
-const url = "https://gptproto/v1/chat/completions";
+const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -102,7 +102,7 @@ import (
 )
 
 func main() {
-    url := "https://gptproto/v1/chat/completions"
+    url := "https://gptproto.com/v1/chat/completions"
 
     payload := []byte(`{
 "messages": [
@@ -250,7 +250,7 @@ For realistic images, use photography terms. Mention camera angles, lens types, 
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -275,7 +275,7 @@ To create stickers, icons, or assets, be explicit about the style and request a 
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -300,7 +300,7 @@ Gemini excels at rendering text. Be clear about the text, the font style (descri
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -325,7 +325,7 @@ Gemini excels at rendering text. Be clear about the text, the font style (descri
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -350,7 +350,7 @@ Excellent for creating backgrounds for websites, presentations, or marketing mat
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -375,7 +375,7 @@ Builds on character consistency and scene description to create panels for visua
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{

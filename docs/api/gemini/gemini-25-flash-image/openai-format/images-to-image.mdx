@@ -24,7 +24,7 @@ The default output size for chat mode is 1:1 (1024x1024)
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto/v1/chat/completions" \
+curl -X POST "https://gptproto.com/v1/chat/completions" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -53,7 +53,7 @@ curl -X POST "https://gptproto/v1/chat/completions" \
 import requests
 import json
 
-url = "https://gptproto/v1/chat/completions"
+url = "https://gptproto.com/v1/chat/completions"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -86,7 +86,7 @@ print(json.dumps(result, indent=2))
 
 
 ```javascript JavaScript
-const url = "https://gptproto/v1/chat/completions";
+const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -135,7 +135,7 @@ import (
 )
 
 func main() {
-    url := "https://gptproto/v1/chat/completions"
+    url := "https://gptproto.com/v1/chat/completions"
 
     payload := []byte(`{
 "messages": [
@@ -301,7 +301,7 @@ Provide an image and describe your change. The model will match the original ima
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -335,7 +335,7 @@ Conversationally define a "mask" to edit a specific part of an image while leavi
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -369,7 +369,7 @@ Provide an image and ask the model to recreate its content in a different artist
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -403,7 +403,7 @@ Provide multiple images as context to create a new, composite scene. This is per
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -440,7 +440,7 @@ To ensure critical details (like a face or logo) are preserved during an edit, d
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: sk-xxxx' \
 --header 'Content-Type: application/json' \
 --data '{
