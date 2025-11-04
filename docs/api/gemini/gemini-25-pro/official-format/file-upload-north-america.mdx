@@ -12,8 +12,18 @@ This endpoint provides file upload （north america） functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required>
+<ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="displayName" type="string" required default="test.pdf">
+  displayName parameter
+</ParamField>
+
+<ParamField body="file" type="file" required default="cmMtdXBsb2FkLTE3NjEwMjc5MTU1MzAtMg==/343019_3_art_0_py4t4l_convrt.pdf">
+  file parameter
 </ParamField>
 
 ## Response
@@ -32,11 +42,32 @@ This endpoint requires authentication using a Bearer token.
 
 <ResponseExample>
 
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
 
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
 
-
-
-
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
 
 ```json 500 - Internal server error
 {
@@ -47,44 +78,12 @@ This endpoint requires authentication using a Bearer token.
 }
 ```
 
-
-
-
-
-
-```json 401 - Invalid signature
+```json 503 - Content policy violation
 {
-    "error": {
-        "message": "Invalid signature",
-        "type": "401"
-    }
-}
-```
-
-```json 403 - Invalid Token
-{
-    "error": {
-        "message": "Invalid Token",
-        "type": "403"
-    }
-}
-```
-
-```json 403 - Insufficient balance
-{
-    "error": {
-        "message": "Insufficient balance",
-        "type": "403"
-    }
-}
-```
-
-```json 503 - Insufficient balance
-{
-    "error": {
-        "message": "Input may not meet the guidelines. Please adjust and try again.",
-        "type": "503"
-    }
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
 }
 ```
 

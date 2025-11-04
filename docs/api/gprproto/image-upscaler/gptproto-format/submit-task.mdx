@@ -1,12 +1,12 @@
 ---
-title: 'Text to Image'
-api: 'POST /v1beta/models/gemini-2.5-flash-image:generateContent'
-description: 'Text to Image'
+title: 'Submit task'
+api: 'POST /api/v3/image-upscaler'
+description: 'Submit task'
 ---
 
 ## Overview
 
-This endpoint provides text to image functionality.
+This endpoint provides submit task functionality.
 
 ## Authentication
 
@@ -18,12 +18,28 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="contents" type="array"  default="[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?&quot;}]}]">
-  Contents parameter
+<ParamField body="image" type="string"  default="https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png">
+  Image parameter
 </ParamField>
 
-<ParamField body="generationConfig" type="object"  default="{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;], &quot;imageConfig&quot;: {&quot;aspectRatio&quot;: &quot;16:9&quot;}}">
-  Generationconfig parameter
+<ParamField body="creativity" type="integer"  default="0">
+  Creativity parameter
+</ParamField>
+
+<ParamField body="target_resolution" type="string"  default="2k">
+  Target Resolution parameter
+</ParamField>
+
+<ParamField body="output_format" type="string"  default="jpeg">
+  Output Format parameter
+</ParamField>
+
+<ParamField body="enable_base64_output" type="boolean"  default="false">
+  Enable Base64 Output parameter
+</ParamField>
+
+<ParamField body="enable_sync_mode" type="boolean"  default="false">
+  Enable Sync Mode parameter
 </ParamField>
 
 ## Request Example
@@ -31,28 +47,16 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+curl -X POST "https://gptproto.com/api/v3/image-upscaler" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "creativity": 0,
+  "target_resolution": "2k",
+  "output_format": "jpeg",
+  "enable_base64_output": false,
+  "enable_sync_mode": false
 }'
 ```
 
@@ -60,31 +64,19 @@ curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
 import requests
 import json
 
-url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+url = "https://gptproto.com/api/v3/image-upscaler"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "creativity": 0,
+  "target_resolution": "2k",
+  "output_format": "jpeg",
+  "enable_base64_output": false,
+  "enable_sync_mode": false
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -93,31 +85,19 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent";
+const url = "https://gptproto.com/api/v3/image-upscaler";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "creativity": 0,
+  "target_resolution": "2k",
+  "output_format": "jpeg",
+  "enable_base64_output": false,
+  "enable_sync_mode": false
 };
 
 fetch(url, {
@@ -142,27 +122,15 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+    url := "https://gptproto.com/api/v3/image-upscaler"
 
     payload := []byte(`{
-"contents": [
-{
-"parts": [
-{
-"text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-}
-]
-}
-],
-"generationConfig": {
-"responseModalities": [
-"TEXT",
-"IMAGE"
-],
-"imageConfig": {
-"aspectRatio": "16:9"
-}
-}
+"image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+"creativity": 0,
+"target_resolution": "2k",
+"output_format": "jpeg",
+"enable_base64_output": false,
+"enable_sync_mode": false
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

@@ -1,12 +1,12 @@
 ---
-title: 'Text to Image'
-api: 'POST /v1beta/models/gemini-2.5-flash-image:generateContent'
-description: 'Text to Image'
+title: 'Images to Image'
+api: 'POST /v1/images/generations'
+description: 'Images to Image'
 ---
 
 ## Overview
 
-This endpoint provides text to image functionality.
+This endpoint provides images to image functionality.
 
 ## Authentication
 
@@ -18,12 +18,16 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="contents" type="array"  default="[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?&quot;}]}]">
-  Contents parameter
+<ParamField body="model" type="string" required default="gemini-2.5-flash-image">
+  The model to use for the request
 </ParamField>
 
-<ParamField body="generationConfig" type="object"  default="{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;], &quot;imageConfig&quot;: {&quot;aspectRatio&quot;: &quot;16:9&quot;}}">
-  Generationconfig parameter
+<ParamField body="prompt" type="string" required default="image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="size" type="string"  default="16:9">
+  Size parameter
 </ParamField>
 
 ## Request Example
@@ -31,28 +35,13 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+curl -X POST "gptproto/v1/images/generations" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
+  "size": "16:9"
 }'
 ```
 
@@ -60,31 +49,16 @@ curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
 import requests
 import json
 
-url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+url = "gptproto/v1/images/generations"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
+  "size": "16:9"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -93,31 +67,16 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent";
+const url = "gptproto/v1/images/generations";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "model": "gemini-2.5-flash-image",
+  "prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
+  "size": "16:9"
 };
 
 fetch(url, {
@@ -142,27 +101,12 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+    url := "gptproto/v1/images/generations"
 
     payload := []byte(`{
-"contents": [
-{
-"parts": [
-{
-"text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-}
-]
-}
-],
-"generationConfig": {
-"responseModalities": [
-"TEXT",
-"IMAGE"
-],
-"imageConfig": {
-"aspectRatio": "16:9"
-}
-}
+"model": "gemini-2.5-flash-image",
+"prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
+"size": "16:9"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

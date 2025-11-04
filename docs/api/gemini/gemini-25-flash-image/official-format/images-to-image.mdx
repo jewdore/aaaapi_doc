@@ -1,12 +1,12 @@
 ---
-title: 'Text to Image'
+title: 'Images to Image'
 api: 'POST /v1beta/models/gemini-2.5-flash-image:generateContent'
-description: 'Text to Image'
+description: 'Images to Image'
 ---
 
 ## Overview
 
-This endpoint provides text to image functionality.
+This endpoint provides images to image functionality.
 
 ## Authentication
 
@@ -18,11 +18,11 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="contents" type="array"  default="[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?&quot;}]}]">
+<ParamField body="contents" type="array"  default="[{&quot;parts&quot;: [{&quot;inline_data&quot;: {&quot;mime_type&quot;: &quot;image/png&quot;, &quot;data&quot;: &quot;{{gemini_png_base64_1}}&quot;}}, {&quot;inline_data&quot;: {&quot;mime_type&quot;: &quot;image/png&quot;, &quot;data&quot;: &quot;{{gemini_png_base64_2}}&quot;}}, {&quot;text&quot;: &quot;Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.&quot;}]}]">
   Contents parameter
 </ParamField>
 
-<ParamField body="generationConfig" type="object"  default="{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;], &quot;imageConfig&quot;: {&quot;aspectRatio&quot;: &quot;16:9&quot;}}">
+<ParamField body="generationConfig" type="object"  default="{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;]}">
   Generationconfig parameter
 </ParamField>
 
@@ -39,7 +39,19 @@ curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
     {
       "parts": [
         {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
+          "inline_data": {
+            "mime_type": "image/png",
+            "data": "{{gemini_png_base64_1}}"
+          }
+        },
+        {
+          "inline_data": {
+            "mime_type": "image/png",
+            "data": "{{gemini_png_base64_2}}"
+          }
+        },
+        {
+          "text": "Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment."
         }
       ]
     }
@@ -48,10 +60,7 @@ curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
     "responseModalities": [
       "TEXT",
       "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
+    ]
   }
 }'
 ```
@@ -71,7 +80,19 @@ data = {
     {
       "parts": [
         {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
+          "inline_data": {
+            "mime_type": "image/png",
+            "data": "{{gemini_png_base64_1}}"
+          }
+        },
+        {
+          "inline_data": {
+            "mime_type": "image/png",
+            "data": "{{gemini_png_base64_2}}"
+          }
+        },
+        {
+          "text": "Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment."
         }
       ]
     }
@@ -80,10 +101,7 @@ data = {
     "responseModalities": [
       "TEXT",
       "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
+    ]
   }
 }
 
@@ -104,7 +122,19 @@ const data = {
     {
       "parts": [
         {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
+          "inline_data": {
+            "mime_type": "image/png",
+            "data": "{{gemini_png_base64_1}}"
+          }
+        },
+        {
+          "inline_data": {
+            "mime_type": "image/png",
+            "data": "{{gemini_png_base64_2}}"
+          }
+        },
+        {
+          "text": "Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment."
         }
       ]
     }
@@ -113,10 +143,7 @@ const data = {
     "responseModalities": [
       "TEXT",
       "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
+    ]
   }
 };
 
@@ -149,7 +176,19 @@ func main() {
 {
 "parts": [
 {
-"text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
+"inline_data": {
+"mime_type": "image/png",
+"data": "{{gemini_png_base64_1}}"
+}
+},
+{
+"inline_data": {
+"mime_type": "image/png",
+"data": "{{gemini_png_base64_2}}"
+}
+},
+{
+"text": "Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment."
 }
 ]
 }
@@ -158,10 +197,7 @@ func main() {
 "responseModalities": [
 "TEXT",
 "IMAGE"
-],
-"imageConfig": {
-"aspectRatio": "16:9"
-}
+]
 }
 }`)
 

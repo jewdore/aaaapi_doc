@@ -1,12 +1,12 @@
 ---
-title: 'Text to Image'
-api: 'POST /v1beta/models/gemini-2.5-flash-image:generateContent'
-description: 'Text to Image'
+title: 'Submit task'
+api: 'POST /api/v3/image-background-remover'
+description: 'Submit task'
 ---
 
 ## Overview
 
-This endpoint provides text to image functionality.
+This endpoint provides submit task functionality.
 
 ## Authentication
 
@@ -18,12 +18,16 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="contents" type="array"  default="[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?&quot;}]}]">
-  Contents parameter
+<ParamField body="image" type="string"  default="The URL of the image to generate an image from.">
+  Image parameter
 </ParamField>
 
-<ParamField body="generationConfig" type="object"  default="{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;], &quot;imageConfig&quot;: {&quot;aspectRatio&quot;: &quot;16:9&quot;}}">
-  Generationconfig parameter
+<ParamField body="enable_base64_output" type="boolean"  default="false">
+  Enable Base64 Output parameter
+</ParamField>
+
+<ParamField body="enable_sync_mode" type="boolean"  default="false">
+  Enable Sync Mode parameter
 </ParamField>
 
 ## Request Example
@@ -31,28 +35,13 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+curl -X POST "https://gptproto.com/api/v3/image-background-remover" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "image": "The URL of the image to generate an image from.",
+  "enable_base64_output": false,
+  "enable_sync_mode": false
 }'
 ```
 
@@ -60,31 +49,16 @@ curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
 import requests
 import json
 
-url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+url = "https://gptproto.com/api/v3/image-background-remover"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "image": "The URL of the image to generate an image from.",
+  "enable_base64_output": false,
+  "enable_sync_mode": false
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -93,31 +67,16 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent";
+const url = "https://gptproto.com/api/v3/image-background-remover";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "image": "The URL of the image to generate an image from.",
+  "enable_base64_output": false,
+  "enable_sync_mode": false
 };
 
 fetch(url, {
@@ -142,27 +101,12 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+    url := "https://gptproto.com/api/v3/image-background-remover"
 
     payload := []byte(`{
-"contents": [
-{
-"parts": [
-{
-"text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-}
-]
-}
-],
-"generationConfig": {
-"responseModalities": [
-"TEXT",
-"IMAGE"
-],
-"imageConfig": {
-"aspectRatio": "16:9"
-}
-}
+"image": "The URL of the image to generate an image from.",
+"enable_base64_output": false,
+"enable_sync_mode": false
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

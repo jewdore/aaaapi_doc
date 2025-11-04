@@ -1,12 +1,12 @@
 ---
-title: 'Text to Image'
-api: 'POST /v1beta/models/gemini-2.5-flash-image:generateContent'
-description: 'Text to Image'
+title: 'Text To Video'
+api: 'POST /api/v3/openai/sora-2/text-to-video'
+description: 'Text To Video'
 ---
 
 ## Overview
 
-This endpoint provides text to image functionality.
+This endpoint provides text to video functionality.
 
 ## Authentication
 
@@ -18,12 +18,16 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="contents" type="array"  default="[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?&quot;}]}]">
-  Contents parameter
+<ParamField body="prompt" type="string" required default="A video of a horse dancing.">
+  Prompt parameter
 </ParamField>
 
-<ParamField body="generationConfig" type="object"  default="{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;], &quot;imageConfig&quot;: {&quot;aspectRatio&quot;: &quot;16:9&quot;}}">
-  Generationconfig parameter
+<ParamField body="size" type="string"  default="720*1280">
+  Size parameter
+</ParamField>
+
+<ParamField body="duration" type="integer"  default="4">
+  Duration parameter
 </ParamField>
 
 ## Request Example
@@ -31,28 +35,13 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+curl -X POST "gptproto/api/v3/openai/sora-2/text-to-video" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "prompt": "A video of a horse dancing.",
+  "size": "720*1280",
+  "duration": 4
 }'
 ```
 
@@ -60,31 +49,16 @@ curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
 import requests
 import json
 
-url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+url = "gptproto/api/v3/openai/sora-2/text-to-video"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "prompt": "A video of a horse dancing.",
+  "size": "720*1280",
+  "duration": 4
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -93,31 +67,16 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent";
+const url = "gptproto/api/v3/openai/sora-2/text-to-video";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "TEXT",
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9"
-    }
-  }
+  "prompt": "A video of a horse dancing.",
+  "size": "720*1280",
+  "duration": 4
 };
 
 fetch(url, {
@@ -142,27 +101,12 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+    url := "gptproto/api/v3/openai/sora-2/text-to-video"
 
     payload := []byte(`{
-"contents": [
-{
-"parts": [
-{
-"text": "Hi, can you create a 3d rendered image of a pig with wings and a top hat flying over a happy futuristic scifi city with lots of greenery?"
-}
-]
-}
-],
-"generationConfig": {
-"responseModalities": [
-"TEXT",
-"IMAGE"
-],
-"imageConfig": {
-"aspectRatio": "16:9"
-}
-}
+"prompt": "A video of a horse dancing.",
+"size": "720*1280",
+"duration": 4
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

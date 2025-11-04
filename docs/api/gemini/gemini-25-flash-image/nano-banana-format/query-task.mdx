@@ -1,12 +1,12 @@
 ---
-title: '查询任务(feed)'
-api: 'GET /v1/suno/feed'
-description: '查询任务(feed)'
+title: 'Query Task'
+api: 'GET /api/v3/predictions/e2e61cbf-XXX/result'
+description: 'Nano-banana  Query TaskIf enable_sync_mode set to true, the function will wait for the result to be generated and uploaded before returning the response. It allows you to get the result directly in the response. This property is only available through the API.'
 ---
 
 ## Overview
 
-This endpoint provides 查询任务(feed) functionality.
+Nano-banana  Query TaskIf enable_sync_mode set to true, the function will wait for the result to be generated and uploaded before returning the response. It allows you to get the result directly in the response. This property is only available through the API.
 
 ## Authentication
 
@@ -14,16 +14,6 @@ This endpoint requires authentication using a Bearer token.
 
 <ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `Bearer YOUR_API_KEY`
-</ParamField>
-
-## Query Parameters
-
-<ParamField query="ids" type="string">
-  Task ID, multiple separated by comma `,`
-</ParamField>
-
-<ParamField query="remove_watermark" type="string">
-  Whether to remove watermark
 </ParamField>
 
 ## Response
