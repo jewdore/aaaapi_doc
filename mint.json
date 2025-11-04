@@ -43,6 +43,9 @@
       ]
     },
     {
+      "group": "API Reference",
+      "pages": [
+            {
       "group": "Claude",
       "pages": [
         {
@@ -1929,6 +1932,11 @@
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755663073115-111.png"
     }
+        
+      ]
+      
+    }
+
   ],
   "footerSocials": {
     "twitter": "https://x.com/GPT_Proto",
