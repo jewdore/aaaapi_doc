@@ -10,7 +10,7 @@ description: "Text to Image"
 
 ## Supported inputs & outputs :
 
-Inputs: Text, Images
+Inputs: Text
 
 Outputs: Text and image
 
@@ -319,6 +319,7 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
 ## Stylized illustrations & stickers
 
 To create stickers, icons, or assets, be explicit about the style and request a transparent background.
+
 <CodeGroup>
 
 ```bash cURL
@@ -333,12 +334,15 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
     }]
   }'
 ```
+
 </CodeGroup>
+
 ![Alt text describing the image](/images/gemini_Stylized.png)
 
 ## Accurate text in images
 
 Gemini excels at rendering text. Be clear about the text, the font style (descriptively), and the overall design.
+
 <CodeGroup>
 
 ```bash cURL
@@ -353,13 +357,15 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
     }]
   }'
 ```
-</CodeGroup>
-![Alt text describing the image](/images/gemini_Accurate.png)
 
+</CodeGroup>
+
+![Alt text describing the image](/images/gemini_Accurate.png)
 
 ## Product mockups & commercial photography
 
 Gemini excels at rendering text. Be clear about the text, the font style (descriptively), and the overall design.
+
 <CodeGroup>
 
 ```bash cURL
@@ -374,12 +380,15 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
     }]
   }'
 ```
+
 </CodeGroup>
+
 ![Alt text describing the image](/images/gemini_Product.png)
 
 ## Minimalist & negative space design
 
 Excellent for creating backgrounds for websites, presentations, or marketing materials where text will be overlaid.
+
 <CodeGroup>
 
 ```bash cURL
@@ -394,12 +403,15 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
     }]
   }'
 ```
+
 </CodeGroup>
+
 ![Alt text describing the image](/images/gemini_Minimalist.png)
 
 ## Sequential art (Comic panel / Storyboard)
 
 Builds on character consistency and scene description to create panels for visual storytelling.
+
 <CodeGroup>
 
 ```bash cURL
@@ -414,5 +426,7 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
     }]
   }'
 ```
+
 </CodeGroup>
+
 ![Alt text describing the image](/images/gemini_Sequential.png)
