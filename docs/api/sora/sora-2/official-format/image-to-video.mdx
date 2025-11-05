@@ -1,7 +1,7 @@
 ---
-title: 'Image to Video'
-api: 'POST /v1/videos'
-description: 'Image to Video'
+title: "Image to Video"
+api: "POST /v1/videos"
+description: "Image to Video"
 ---
 
 ## Overview
@@ -12,26 +12,26 @@ This endpoint provides image to video functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
+<ParamField header="Authorization" default="sk-***********" type="string" required>
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="model" type="string" required default="sora-2">
-  model parameter
+<ParamField body="prompt" default="The character walks slowly and then sits on the ground" type="string" required>
+  Text prompt that describes the video to generate.
 </ParamField>
 
-<ParamField body="prompt" type="string" required default="The character walks slowly and then sits on the ground">
-  prompt parameter
+<ParamField body="input_reference" default="/Users/Downloads/20251014-010839.jpeg" type="string" required>
+  Optional image reference that guides generation.
 </ParamField>
 
-<ParamField body="input_reference" type="string" required default="/Users/Downloads/20251014-010839.jpeg">
-  input_reference parameter
+<ParamField body="model" default="sora-2" type="string" required>
+  The video generation model to use. Defaults to sora-2.
 </ParamField>
 
-<ParamField body="size" type="string" required default="720x1280">
-  size parameter
+<ParamField body="size" default="720x1280" type="string" required>
+  Output resolution formatted as width x height. Defaults to 720x1280. Only supports 720x1280 , 1280x720
 </ParamField>
 
 ## Response
@@ -39,11 +39,11 @@ This endpoint requires authentication using a Bearer token.
 <ResponseField name="Success" type="200">
   Successful response
 
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+    "status": "success"
+  }
+  ```
 </ResponseField>
 
 ## Error Responses
@@ -59,6 +59,7 @@ This endpoint requires authentication using a Bearer token.
 }
 ```
 
+
 ```json 403 - Invalid Token
 {
   "error": {
@@ -67,6 +68,7 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
+
 
 ```json 403 - Insufficient balance
 {
@@ -77,6 +79,7 @@ This endpoint requires authentication using a Bearer token.
 }
 ```
 
+
 ```json 500 - Internal server error
 {
   "error": {
@@ -85,6 +88,7 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
+
 
 ```json 503 - Content policy violation
 {
@@ -96,4 +100,3 @@ This endpoint requires authentication using a Bearer token.
 ```
 
 </ResponseExample>
-
