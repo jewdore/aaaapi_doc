@@ -5,6 +5,7 @@ description: "Image to Image"
 ---
 
 ## Overview
+Google Gemini 2.5 Flash Image preview, a powerful new image generation and editing model with advanced features and creative control.
 
 - **Image + Text-to-Image (Editing):** Provide an image and use text prompts to add, remove, or modify elements, change the style, or adjust the color grading.
 - **Multi-Image to Image (Composition & Style Transfer):** Use multiple input images to compose a new scene or transfer the style from one image to another.
@@ -16,10 +17,45 @@ description: "Image to Image"
 Inputs: Text and Images
 
 Outputs: Text and image
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" default="sk-***********" type="string" required>
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="messages" type="array" required>
+  Array of message objects for the conversation
+      <Expandable title="properties" >
+        <ParamField body="role" type="string" required>
+          role of user.
+        </ParamField>
+        <ParamField body="content" type="string" required>
+          The prompt for the generation.
+        </ParamField>
+        <ParamField body="experimental_attachments" type="array" required>
+                <Expandable title="properties" >
+                <ParamField body="contentType" type="string" required>
+                  Supported MIME types:image/png, image/jpeg, image/webp
+                </ParamField>
+                <ParamField body="url" type="string" required>
+                  image url.
+                </ParamField>
+              </Expandable>
+        </ParamField>
+      </Expandable>
+</ParamField>
+
+<ParamField body="model" default="gemini-2.5-flash-image" type="string" required>
+</ParamField>
 
 ## Image to Image
 
 The default output size for chat mode is 1:1 (1024x1024)
+
 
 <CodeGroup>
 
@@ -42,7 +78,7 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
           "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
         }
       ],
-  	  "model": "gemini-2.5-flash-image-preview"
+  	  "model": "gemini-2.5-flash-image"
     }
   ]
 }'
@@ -76,7 +112,7 @@ data = {
       ]
     }
   ],
-  "model": "gemini-2.5-flash-image-preview"
+  "model": "gemini-2.5-flash-image"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -109,7 +145,7 @@ const data = {
       ]
     }
   ],
-  "model": "gemini-2.5-flash-image-preview"
+  "model": "gemini-2.5-flash-image"
 };
 
 fetch(url, {
@@ -154,7 +190,7 @@ func main() {
 ]
 }
 ],
-"model": "gemini-2.5-flash-image-preview"
+"model": "gemini-2.5-flash-image"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -175,25 +211,6 @@ func main() {
 
 </CodeGroup>
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `Bearer YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="messages" default='[{ "role": "user", "content": "Two people standing together ", "experimental_attachments": [{ "contentType": "image/png", "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png"}, { "contentType": "image/jpeg", "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"}]}]' type="array" required>
-  Array of message objects for the conversation
-</ParamField>
-
-<ParamField body="model" default="gemini-2.5-flash-image-preview" type="string" required>
-  The model to use for the request
-</ParamField>
-
-## Request Example
 
 ## Response
 
@@ -208,7 +225,7 @@ This endpoint requires authentication using a Bearer token.
                     {
                         "inlineData": {
                             "mimeType": "image/png",
-                            "data": "image base64"
+                            "data": "base64"
                         }
                     }
                 ]

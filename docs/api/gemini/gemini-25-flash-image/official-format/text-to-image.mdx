@@ -16,7 +16,7 @@ Inputs: Text
 
 Outputs: Text and image
 
-### Authentication
+## Authentication
 
 This endpoint requires authentication using a Bearer token.
 
@@ -30,7 +30,7 @@ This endpoint requires authentication using a Bearer token.
   <Expandable title="properties">
     <ParamField body="parts" type="array" required>
       <Expandable title="properties" defaultOpen="true">
-        <ParamField body="text" default="Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme" type="string" required>
+        <ParamField body="text" type="string" required>
           The prompt for the generation.
         </ParamField>
       </Expandable>
@@ -40,13 +40,13 @@ This endpoint requires authentication using a Bearer token.
 
 <ParamField body="generationConfig" type="object">
   <Expandable title="properties">
-    <ParamField body="responseModalities" default='["Text", "Image"]' type="array">
+    <ParamField body="responseModalities" type="array">
       The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`).
     </ParamField>
     <ParamField body="imageConfig" type="object">
       <Expandable title="properties" defaultOpen="true">
-        <ParamField body="aspectRatio" default="1:1" type="string">
-          1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
+        <ParamField body="aspectRatio" type="string">
+          1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9.  default 1:1
         </ParamField>
       </Expandable>
     </ParamField>
