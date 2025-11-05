@@ -40,7 +40,7 @@ This endpoint requires authentication using a Bearer token.
 
 <ParamField body="generationConfig" type="object">
   <Expandable title="properties">
-    <ParamField body="responseModalities" type="array">
+    <ParamField body="responseModalities" type="string[]">
       The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`).
     </ParamField>
     <ParamField body="imageConfig" type="object">

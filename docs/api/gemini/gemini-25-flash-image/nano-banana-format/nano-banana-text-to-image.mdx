@@ -15,6 +15,35 @@ description: "Nano-banana-text-to-image"
 Inputs: Text
 
 Outputs: Text and image
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" default="sk-***********" type="string" required>
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" default="The cat is climbing on the tree" type="string" required>
+  Prompt parameter
+</ParamField>
+
+<ParamField body="aspect_ratio" default="1:1" type="string">
+  Aspect Ratio parameter  1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9. default 1:1
+</ParamField>
+
+<ParamField body="output_format" default="jpeg" type="string">
+  Output Format parameter  png, jpeg  Default png
+</ParamField>
+
+<ParamField body="enable_sync_mode" default="false" type="boolean">
+  If set to true, the function will wait for the result to be generated and uploaded before returning the response. It allows you to get the result directly in the response. This property is only available through the API.
+</ParamField>
+
+<ParamField body="enable_base64_output" default="true" type="boolean">
+  If enabled, the output will be encoded into a BASE64 string instead of a URL. This property is only available through the API.
+</ParamField>
 
 # **Text-to-Image**
 
@@ -22,7 +51,7 @@ Outputs: Text and image
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/google/nano-banana/text-to-image" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "prompt": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme",
@@ -40,7 +69,7 @@ import json
 
 url = "https://gptproto.com/api/v3/google/nano-banana/text-to-image"
 headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
+    "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
@@ -61,7 +90,7 @@ print(json.dumps(result, indent=2))
 ```javascript JavaScript
 const url = "https://gptproto.com/api/v3/google/nano-banana/text-to-image";
 const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
+  "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
@@ -107,7 +136,7 @@ func main() {
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Authorization", "YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -134,36 +163,6 @@ curl --location 'https://gptproto.com/api/v3/predictions/e2e61cbf-XXX/result' \
 ```
 
 </CodeGroup>
-
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `Bearer YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="prompt" default="The cat is climbing on the tree" type="string" required>
-  Prompt parameter
-</ParamField>
-
-<ParamField body="aspect_ratio" default="1:1" type="string">
-  Aspect Ratio parameter  1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
-</ParamField>
-
-<ParamField body="output_format" default="jpeg" type="string">
-  Output Format parameter  png, jpeg  Default png
-</ParamField>
-
-<ParamField body="enable_sync_mode" default="false" type="boolean">
-  If set to true, the function will wait for the result to be generated and uploaded before returning the response. It allows you to get the result directly in the response. This property is only available through the API.
-</ParamField>
-
-<ParamField body="enable_base64_output" default="true" type="boolean">
-  If enabled, the output will be encoded into a BASE64 string instead of a URL. This property is only available through the API.
-</ParamField>
 
 ### Aspect ratio
 
@@ -278,143 +277,3 @@ The model defaults to generates 1:1 squares. The different ratios available and 
 ```
 
 </ResponseExample>
-
-## Request Example
-
-## Photorealistic scenes
-
-For realistic images, use photography terms. Mention camera angles, lens types, lighting, and fine details to guide the model toward a photorealistic result.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/api/v3/google/nano-banana/text-to-image' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-  "prompt": "A photorealistic close-up portrait of an elderly Japanese ceramicist with deep, sun-etched wrinkles and a warm, knowing smile. He is carefully inspecting a freshly glazed tea bowl. The setting is his rustic, sun-drenched workshop with pottery wheels and shelves of clay pots in the background. The scene is illuminated by soft, golden hour light streaming through a window, highlighting the fine texture of the clay and the fabric of his apron. Captured with an 85mm portrait lens, resulting in a soft, blurred background (bokeh). The overall mood is serene and masterful.",
-  "aspect_ratio": "1:1",
-  "output_format": "jpeg",
-  "enable_sync_mode": false,
-  "enable_base64_output": false
-}'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_photorealistic.png)
-
-## Stylized illustrations & stickers
-
-To create stickers, icons, or assets, be explicit about the style and request a transparent background.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/api/v3/google/nano-banana/text-to-image' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-  "prompt": "A kawaii-style sticker of a happy red panda wearing a tiny bamboo hat. It'"'"'s munching on a green bamboo leaf. The design features bold, clean outlines, simple cel-shading, and a vibrant color palette. The background must be white.",
-  "aspect_ratio": "1:1",
-  "output_format": "jpeg",
-  "enable_sync_mode": false,
-  "enable_base64_output": false
-}'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_Stylized.png)
-
-## Accurate text in images
-
-Gemini excels at rendering text. Be clear about the text, the font style (descriptively), and the overall design.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/api/v3/google/nano-banana/text-to-image' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-  "prompt": "Create a modern, minimalist logo for a coffee shop called '"'"'The Daily Grind'"'"'. The text should be in a clean, bold, sans-serif font. The design should feature a simple, stylized icon of a a coffee bean seamlessly integrated with the text. The color scheme is black and white.",
-  "aspect_ratio": "1:1",
-  "output_format": "jpeg",
-  "enable_sync_mode": false,
-  "enable_base64_output": false
-}'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_Accurate.png)
-
-## Product mockups & commercial photography
-
-Gemini excels at rendering text. Be clear about the text, the font style (descriptively), and the overall design.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/api/v3/google/nano-banana/text-to-image' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-  "prompt": "A high-resolution, studio-lit product photograph of a minimalist ceramic coffee mug in matte black, presented on a polished concrete surface. The lighting is a three-point softbox setup designed to create soft, diffused highlights and eliminate harsh shadows. The camera angle is a slightly elevated 45-degree shot to showcase its clean lines. Ultra-realistic, with sharp focus on the steam rising from the coffee. Square image.",
-  "aspect_ratio": "1:1",
-  "output_format": "jpeg",
-  "enable_sync_mode": false,
-  "enable_base64_output": false
-}'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_Product.png)
-
-## Minimalist & negative space design
-
-Excellent for creating backgrounds for websites, presentations, or marketing materials where text will be overlaid.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/api/v3/google/nano-banana/text-to-image' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-  "prompt": "A minimalist composition featuring a single, delicate red maple leaf positioned in the bottom-right of the frame. The background is a vast, empty off-white canvas, creating significant negative space for text. Soft, diffused lighting from the top left. Square image.",
-  "aspect_ratio": "1:1",
-  "output_format": "jpeg",
-  "enable_sync_mode": false,
-  "enable_base64_output": false
-}'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_Minimalist.png)
-
-## Sequential art (Comic panel / Storyboard)
-
-Builds on character consistency and scene description to create panels for visual storytelling.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/api/v3/google/nano-banana/text-to-image' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-  "prompt": "A single comic book panel in a gritty, noir art style with high-contrast black and white inks. In the foreground, a detective in a trench coat stands under a flickering streetlamp, rain soaking his shoulders. In the background, the neon sign of a desolate bar reflects in a puddle. A caption box at the top reads \"The city was a tough place to keep secrets.\" The lighting is harsh, creating a dramatic, somber mood. Landscape.",
-  "aspect_ratio": "1:1",
-  "output_format": "jpeg",
-  "enable_sync_mode": false,
-  "enable_base64_output": false
-}'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_Sequential.png)
