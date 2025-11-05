@@ -560,28 +560,6 @@
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/2025/05/30/a0ffa3b5d65f4f23a40698c445048c67.png"
     },
     {
-      "group": "GPT",
-      "pages": [
-        {
-          "group": "gpt-4o-mini-tts",
-          "pages": [
-            {
-              "group": "Official Format Copy",
-              "pages": [
-                "docs/api/gpt/gpt-4o-mini-tts/official-format-copy/text-to-audio"
-              ]
-            },
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gpt/gpt-4o-mini-tts/gptproto-format/text-to-audio"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "group": "Gemini",
       "pages": [
         {
@@ -1339,15 +1317,78 @@
     {
       "group": "OpenAI",
       "pages": [
+
         {
-          "group": "gpt-4o-image",
+          "group": "sora-2",
           "pages": [
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/openai/gpt-4o-image/official-format/text-to-image",
-                "docs/api/openai/gpt-4o-image/official-format/image-to-image",
-                "docs/api/openai/gpt-4o-image/official-format/chat-mode"
+                "docs/api/sora/sora-2/official-format/text-to-video",
+                "docs/api/sora/sora-2/official-format/image-to-video",
+                "docs/api/sora/sora-2/official-format/query-task",
+                "docs/api/sora/sora-2/official-format/get-video",
+                "docs/api/sora/sora-2/official-format/get-thumbnail",
+                "docs/api/sora/sora-2/official-format/get-spritesheet"
+              ]
+            },
+            {
+              "group": "Gptproto Format",
+              "pages": [
+                "docs/api/sora/sora-2/gptproto-format/image-to-video",
+                "docs/api/sora/sora-2/gptproto-format/text-to-video",
+                "docs/api/sora/sora-2/gptproto-format/query-task"
+              ]
+            },
+            {
+              "group": "Openai Format",
+              "pages": [
+                "docs/api/sora/sora-2/openai-format/chat-mode"
+              ]
+            },
+            {
+              "group": "Reverse Format",
+              "pages": [
+                "docs/api/sora/sora-2/reverse-format/submit-task",
+                "docs/api/sora/sora-2/reverse-format/query-result"
+              ]
+            }
+          ]
+        },
+
+        {
+          "group": "sora-2-pro",
+          "pages": [
+            {
+              "group": "Official Format",
+              "pages": [
+                "docs/api/sora/sora-2-pro/official-format/text-to-video",
+                "docs/api/sora/sora-2-pro/official-format/image-to-video",
+                "docs/api/sora/sora-2-pro/official-format/query-task",
+                "docs/api/sora/sora-2-pro/official-format/get-video",
+                "docs/api/sora/sora-2-pro/official-format/get-thumbnail",
+                "docs/api/sora/sora-2-pro/official-format/get-spritesheet"
+              ]
+            },
+            {
+              "group": "Gptproto Format",
+              "pages": [
+                "docs/api/sora/sora-2-pro/gptproto-format/text-to-video-pro",
+                "docs/api/sora/sora-2-pro/gptproto-format/image-to-video-pro",
+                "docs/api/sora/sora-2-pro/gptproto-format/query-task"
+              ]
+            },
+            {
+              "group": "Openai Format",
+              "pages": [
+                "docs/api/sora/sora-2-pro/openai-format/chat-mode"
+              ]
+            },
+            {
+              "group": "Reverse Format",
+              "pages": [
+                "docs/api/sora/sora-2-pro/reverse-format/submit-task",
+                "docs/api/sora/sora-2-pro/reverse-format/query-result"
               ]
             }
           ]
@@ -1361,6 +1402,19 @@
                 "docs/api/openai/gpt-image-1/official-format/text-to-image",
                 "docs/api/openai/gpt-image-1/official-format/image-to-image",
                 "docs/api/openai/gpt-image-1/official-format/chat-mode"
+              ]
+            }
+          ]
+        },
+        {
+          "group": "gpt-4o-image",
+          "pages": [
+            {
+              "group": "Official Format",
+              "pages": [
+                "docs/api/openai/gpt-4o-image/official-format/text-to-image",
+                "docs/api/openai/gpt-4o-image/official-format/image-to-image",
+                "docs/api/openai/gpt-4o-image/official-format/chat-mode"
               ]
             }
           ]
@@ -1630,6 +1684,23 @@
           ]
         },
         {
+          "group": "gpt-4o-mini-tts",
+          "pages": [
+            {
+              "group": "Official Format Copy",
+              "pages": [
+                "docs/api/gpt/gpt-4o-mini-tts/official-format-copy/text-to-audio"
+              ]
+            },
+            {
+              "group": "Gptproto Format",
+              "pages": [
+                "docs/api/gpt/gpt-4o-mini-tts/gptproto-format/text-to-audio"
+              ]
+            }
+          ]
+        },
+        {
           "group": "Our GPT models（GPT Series）",
           "pages": [
             {
@@ -1672,85 +1743,6 @@
         }
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Runway.png"
-    },
-    {
-      "group": "Sora",
-      "pages": [
-        {
-          "group": "sora-2",
-          "pages": [
-            {
-              "group": "Official Format",
-              "pages": [
-                "docs/api/sora/sora-2/official-format/text-to-video",
-                "docs/api/sora/sora-2/official-format/image-to-video",
-                "docs/api/sora/sora-2/official-format/query-task",
-                "docs/api/sora/sora-2/official-format/get-video",
-                "docs/api/sora/sora-2/official-format/get-thumbnail",
-                "docs/api/sora/sora-2/official-format/get-spritesheet"
-              ]
-            },
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/sora/sora-2/gptproto-format/image-to-video",
-                "docs/api/sora/sora-2/gptproto-format/text-to-video",
-                "docs/api/sora/sora-2/gptproto-format/query-task"
-              ]
-            },
-            {
-              "group": "Openai Format",
-              "pages": [
-                "docs/api/sora/sora-2/openai-format/chat-mode"
-              ]
-            },
-            {
-              "group": "Reverse Format",
-              "pages": [
-                "docs/api/sora/sora-2/reverse-format/submit-task",
-                "docs/api/sora/sora-2/reverse-format/query-result"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "sora-2-pro",
-          "pages": [
-            {
-              "group": "Official Format",
-              "pages": [
-                "docs/api/sora/sora-2-pro/official-format/text-to-video",
-                "docs/api/sora/sora-2-pro/official-format/image-to-video",
-                "docs/api/sora/sora-2-pro/official-format/query-task",
-                "docs/api/sora/sora-2-pro/official-format/get-video",
-                "docs/api/sora/sora-2-pro/official-format/get-thumbnail",
-                "docs/api/sora/sora-2-pro/official-format/get-spritesheet"
-              ]
-            },
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/sora/sora-2-pro/gptproto-format/text-to-video-pro",
-                "docs/api/sora/sora-2-pro/gptproto-format/image-to-video-pro",
-                "docs/api/sora/sora-2-pro/gptproto-format/query-task"
-              ]
-            },
-            {
-              "group": "Openai Format",
-              "pages": [
-                "docs/api/sora/sora-2-pro/openai-format/chat-mode"
-              ]
-            },
-            {
-              "group": "Reverse Format",
-              "pages": [
-                "docs/api/sora/sora-2-pro/reverse-format/submit-task",
-                "docs/api/sora/sora-2-pro/reverse-format/query-result"
-              ]
-            }
-          ]
-        }
-      ]
     },
     {
       "group": "Suno",
