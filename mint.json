@@ -101,43 +101,6 @@
           ]
         },
         {
-          "group": "claude-3-7-sonnet-all",
-          "pages": [
-            {
-              "group": "OpenAI Format Copy",
-              "pages": [
-                "docs/api/claude/claude-3-7-sonnet-all/openai-format-copy/text-to-text",
-                "docs/api/claude/claude-3-7-sonnet-all/openai-format-copy/pdf-analysis-exampleone",
-                "docs/api/claude/claude-3-7-sonnet-all/openai-format-copy/pdf-analysis-exampletwo"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "claude-3-7-sonnet-thinking",
-          "pages": [
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-3-7-sonnet-thinking/openai-format/text-to-text",
-                "docs/api/claude/claude-3-7-sonnet-thinking/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-3-7-sonnet-thinking/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "claude-3-7-sonnet-thinking-all",
-          "pages": [
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-3-7-sonnet-thinking-all/openai-format/text-to-text"
-              ]
-            }
-          ]
-        },
-        {
           "group": "claude-haiku-4-5-20251001",
           "pages": [
             {
@@ -146,19 +109,6 @@
                 "docs/api/claude/claude-haiku-4-5-20251001/openai-format/text-to-text",
                 "docs/api/claude/claude-haiku-4-5-20251001/openai-format/pdf-analysis-exampleone",
                 "docs/api/claude/claude-haiku-4-5-20251001/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "claude-opus-4",
-          "pages": [
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-opus-4/openai-format/text-to-text",
-                "docs/api/claude/claude-opus-4/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-opus-4/openai-format/pdf-analysis-exampletwo"
               ]
             }
           ]
@@ -216,19 +166,6 @@
           ]
         },
         {
-          "group": "claude-opus-4-thinking",
-          "pages": [
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-opus-4-thinking/openai-format/text-to-text",
-                "docs/api/claude/claude-opus-4-thinking/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-opus-4-thinking/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-          ]
-        },
-        {
           "group": "claude-sonnet-4-20250514",
           "pages": [
             {
@@ -276,19 +213,6 @@
                 "docs/api/claude/claude-sonnet-4-5-20250929-thinking/openai-format/text-to-text",
                 "docs/api/claude/claude-sonnet-4-5-20250929-thinking/openai-format/pdf-analysis-exampleone",
                 "docs/api/claude/claude-sonnet-4-5-20250929-thinking/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "claude-sonnet-4-thinking",
-          "pages": [
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-sonnet-4-thinking/openai-format/text-to-text",
-                "docs/api/claude/claude-sonnet-4-thinking/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-sonnet-4-thinking/openai-format/pdf-analysis-exampletwo"
               ]
             }
           ]
