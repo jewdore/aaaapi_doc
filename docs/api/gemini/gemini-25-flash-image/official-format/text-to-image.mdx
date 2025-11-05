@@ -14,6 +14,43 @@ Inputs: Text
 
 Outputs: Text and image
 
+### Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" default="sk-***********" type="string" required>
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ResponseField name="contents" type="array" required>
+  <Expandable title="properties">
+    <ResponseField name="parts" type="array" required>
+      <Expandable title="properties" defaultOpen="true">
+        <ResponseField name="text" type="string" default="Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme" required>
+          The prompt for the generation.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="generationConfig" type="object">
+  <Expandable title="properties">
+    <ResponseField name="responseModalities" type="array" default='["Text","Image"]'>
+      The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`).
+    </ResponseField>
+    <ResponseField name="imageConfig" type="object">
+      <Expandable title="properties" defaultOpen="true">
+        <ResponseField name="aspectRatio" type="string" default="1:1">
+          1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
 # **Text-to-Image**
 
 <CodeGroup>
@@ -30,7 +67,7 @@ curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generate
       }],  
       "generationConfig": {
         "responseModalities": ["Text", "Image"],
-        "imageConfig": {"aspectRatio": "16:9"}
+        "imageConfig": {"aspectRatio": "1:1"}
        }
     }'
 ```
@@ -54,7 +91,7 @@ data = {
       }],  
       "generationConfig": {
         "responseModalities": ["Text", "Image"],
-        "imageConfig": {"aspectRatio": "16:9"}
+        "imageConfig": {"aspectRatio": "1:1"}
        }
     }
 
@@ -79,7 +116,7 @@ const data = {
       }],  
       "generationConfig": {
         "responseModalities": ["Text", "Image"],
-        "imageConfig": {"aspectRatio": "16:9"}
+        "imageConfig": {"aspectRatio": "1:1"}
        }
     };
 
@@ -137,18 +174,6 @@ func main() {
 ```
 
 </CodeGroup>
-
-**Technical specifications**
-
-- Supported aspect ratios: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9
-
-## Generate Content
-
-You can optionally configure the response modalities and aspect ratio of the model's output in the `config` field of `generate_content` calls.
-
-### Output types
-
-The model defaults to returning text and image responses (i.e. `response_modalities=['Text', 'Image']`). You can configure the response to return only images without text using `response_modalities=['Image']`.
 
 ### Aspect ratios
 
@@ -257,24 +282,6 @@ The model defaults to  generates 1:1 squares. You can control the aspect ratio o
 ```
 
 </ResponseExample>
-
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="contents" default='[{"parts": [{"text": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"}]}]' type="array" required>
-  Contents parameter
-</ParamField>
-
-<ParamField body="generationConfig" default='{"responseModalities": ["Text","Image"],"imageConfig": {"aspectRatio": "16:9"}}' type="array">
-  GenerationConfig parameter
-</ParamField>
 
 ## Request Example
 
