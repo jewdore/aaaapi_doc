@@ -6,6 +6,8 @@ description: "Text to Image"
 
 ## Overview
 
+Google Gemini 2.5 Flash Image preview, a powerful new image generation and editing model with advanced features and creative control.
+
 - **Text-to-Image:** Generate high-quality images from simple or complex text descriptions.
 
 ## Supported inputs & outputs :
@@ -24,32 +26,32 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ResponseField name="contents" type="array" required>
+<ParamField body="contents" type="array" required>
   <Expandable title="properties">
-    <ResponseField name="parts" type="array" required>
+    <ParamField body="parts" type="array" required>
       <Expandable title="properties" defaultOpen="true">
-        <ResponseField name="text" type="string" default="Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme" required>
+        <ParamField body="text" default="Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme" type="string" required>
           The prompt for the generation.
-        </ResponseField>
+        </ParamField>
       </Expandable>
-    </ResponseField>
+    </ParamField>
   </Expandable>
-</ResponseField>
+</ParamField>
 
-<ResponseField name="generationConfig" type="object">
+<ParamField body="generationConfig" type="object">
   <Expandable title="properties">
-    <ResponseField name="responseModalities" type="array" default='["Text","Image"]'>
+    <ParamField body="responseModalities" default='["Text", "Image"]' type="array">
       The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`).
-    </ResponseField>
-    <ResponseField name="imageConfig" type="object">
+    </ParamField>
+    <ParamField body="imageConfig" type="object">
       <Expandable title="properties" defaultOpen="true">
-        <ResponseField name="aspectRatio" type="string" default="1:1">
+        <ParamField body="aspectRatio" default="1:1" type="string">
           1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
-        </ResponseField>
+        </ParamField>
       </Expandable>
-    </ResponseField>
+    </ParamField>
   </Expandable>
-</ResponseField>
+</ParamField>
 
 # **Text-to-Image**
 
@@ -282,143 +284,3 @@ The model defaults to  generates 1:1 squares. You can control the aspect ratio o
 ```
 
 </ResponseExample>
-
-## Request Example
-
-## Photorealistic scenes
-
-For realistic images, use photography terms. Mention camera angles, lens types, lighting, and fine details to guide the model toward a photorealistic result.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-    "contents": [{
-      "parts": [
-        {"text": "A photorealistic close-up portrait of an elderly Japanese ceramicist with deep, sun-etched wrinkles and a warm, knowing smile. He is carefully inspecting a freshly glazed tea bowl. The setting is his rustic, sun-drenched workshop with pottery wheels and shelves of clay pots in the background. The scene is illuminated by soft, golden hour light streaming through a window, highlighting the fine texture of the clay and the fabric of his apron. Captured with an 85mm portrait lens, resulting in a soft, blurred background (bokeh). The overall mood is serene and masterful."}
-      ]
-    }]
-  }'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_photorealistic.png)
-
-## Stylized illustrations & stickers
-
-To create stickers, icons, or assets, be explicit about the style and request a transparent background.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-    "contents": [{
-      "parts": [
-        {"text": "A kawaii-style sticker of a happy red panda wearing a tiny bamboo hat. It'"'"'s munching on a green bamboo leaf. The design features bold, clean outlines, simple cel-shading, and a vibrant color palette. The background must be white."}
-      ]
-    }]
-  }'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_Stylized.png)
-
-## Accurate text in images
-
-Gemini excels at rendering text. Be clear about the text, the font style (descriptively), and the overall design.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-    "contents": [{
-      "parts": [
-        {"text": "Create a modern, minimalist logo for a coffee shop called '"'"'The Daily Grind'"'"'. The text should be in a clean, bold, sans-serif font. The design should feature a simple, stylized icon of a a coffee bean seamlessly integrated with the text. The color scheme is black and white."}
-      ]
-    }]
-  }'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_Accurate.png)
-
-## Product mockups & commercial photography
-
-Gemini excels at rendering text. Be clear about the text, the font style (descriptively), and the overall design.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-    "contents": [{
-      "parts": [
-        {"text": "A high-resolution, studio-lit product photograph of a minimalist ceramic coffee mug in matte black, presented on a polished concrete surface. The lighting is a three-point softbox setup designed to create soft, diffused highlights and eliminate harsh shadows. The camera angle is a slightly elevated 45-degree shot to showcase its clean lines. Ultra-realistic, with sharp focus on the steam rising from the coffee. Square image."}
-      ]
-    }]
-  }'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_Product.png)
-
-## Minimalist & negative space design
-
-Excellent for creating backgrounds for websites, presentations, or marketing materials where text will be overlaid.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-    "contents": [{
-      "parts": [
-        {"text": "A minimalist composition featuring a single, delicate red maple leaf positioned in the bottom-right of the frame. The background is a vast, empty off-white canvas, creating significant negative space for text. Soft, diffused lighting from the top left. Square image."}
-      ]
-    }]
-  }'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_Minimalist.png)
-
-## Sequential art (Comic panel / Storyboard)
-
-Builds on character consistency and scene description to create panels for visual storytelling.
-
-<CodeGroup>
-
-```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-    "contents": [{
-      "parts": [
-        {"text": "A single comic book panel in a gritty, noir art style with high-contrast black and white inks. In the foreground, a detective in a trench coat stands under a flickering streetlamp, rain soaking his shoulders. In the background, the neon sign of a desolate bar reflects in a puddle. A caption box at the top reads \"The city was a tough place to keep secrets.\" The lighting is harsh, creating a dramatic, somber mood. Landscape."}
-      ]
-    }]
-  }'
-```
-
-</CodeGroup>
-
-![Alt text describing the image](/images/gemini_Sequential.png)
