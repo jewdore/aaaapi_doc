@@ -16,7 +16,14 @@ This endpoint requires authentication using a Bearer token.
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
 
+<ParamField header="Content-Type" default="multipart/form-data" type="string" required>
+</ParamField>
+
 ## Request Body
+
+<ParamField form="model" default="sora-2" type="string" required>
+  The video generation model to use. Defaults to sora-2.
+</ParamField>
 
 <ParamField body="prompt" default="The character walks slowly and then sits on the ground" type="string" required>
   Text prompt that describes the video to generate.
@@ -26,9 +33,6 @@ This endpoint requires authentication using a Bearer token.
   Optional image reference that guides generation.
 </ParamField>
 
-<ParamField body="model" default="sora-2" type="string" required>
-  The video generation model to use. Defaults to sora-2.
-</ParamField>
 
 <ParamField body="size" default="720x1280" type="string" required>
   Output resolution formatted as width x height. Defaults to 720x1280. Only supports 720x1280 , 1280x720

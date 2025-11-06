@@ -219,6 +219,7 @@
         }
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Claude.png"
+      
     },
     {
       "group": "DeepSeek",
@@ -245,7 +246,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755520099039-20250818-202809.png"
     },
     {
       "group": "Doubao",
@@ -968,7 +970,7 @@
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Gemini.png"
     },
     {
-      "group": "Gprproto",
+      "group": "Gptproto",
       "pages": [
         {
           "group": "image-background-remover",
@@ -995,7 +997,8 @@
           ]
         },
         "docs/api/gprproto/image-upscaler"
-      ]
+      ],
+      "icon": "https://oss.heyoos.com/2025/10/23/2df4295950b8433998e058f6539d9e1c.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill"
     },
     {
       "group": "Grok",
@@ -1149,20 +1152,20 @@
             {
               "group": "Task Submission",
               "pages": [
-                "docs/api/midjourney/midjourney/task-submission/blend",
-                "docs/api/midjourney/midjourney/task-submission/swapface",
-                "docs/api/midjourney/midjourney/task-submission/describe",
-                "docs/api/midjourney/midjourney/task-submission/imagine",
-                "docs/api/midjourney/midjourney/task-submission/modal",
-                "docs/api/midjourney/midjourney/task-submission/action",
-                "docs/api/midjourney/midjourney/task-submission/change"
+                "docs/api/midjourney/task-submission/blend",
+                "docs/api/midjourney/task-submission/swapface",
+                "docs/api/midjourney/task-submission/describe",
+                "docs/api/midjourney/task-submission/imagine",
+                "docs/api/midjourney/task-submission/modal",
+                "docs/api/midjourney/task-submission/action",
+                "docs/api/midjourney/task-submission/change"
               ]
             },
             {
               "group": "Task Query",
               "pages": [
-                "docs/api/midjourney/midjourney/task-query/listbycondition",
-                "docs/api/midjourney/midjourney/task-query/fetchfromtask"
+                "docs/api/midjourney/task-query/listbycondition",
+                "docs/api/midjourney/task-query/fetchfromtask"
               ]
             }
           ]
@@ -1248,33 +1251,33 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/sora/sora-2/official-format/text-to-video",
-                "docs/api/sora/sora-2/official-format/image-to-video",
-                "docs/api/sora/sora-2/official-format/query-task",
-                "docs/api/sora/sora-2/official-format/get-video",
-                "docs/api/sora/sora-2/official-format/get-thumbnail",
-                "docs/api/sora/sora-2/official-format/get-spritesheet"
+                "docs/api/openai/sora-2/official-format/text-to-video",
+                "docs/api/openai/sora-2/official-format/image-to-video",
+                "docs/api/openai/sora-2/official-format/query-task",
+                "docs/api/openai/sora-2/official-format/get-video",
+                "docs/api/openai/sora-2/official-format/get-thumbnail",
+                "docs/api/openai/sora-2/official-format/get-spritesheet"
               ]
             },
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/sora/sora-2/gptproto-format/image-to-video",
-                "docs/api/sora/sora-2/gptproto-format/text-to-video",
-                "docs/api/sora/sora-2/gptproto-format/query-task"
+                "docs/api/openai/sora-2/gptproto-format/image-to-video",
+                "docs/api/openai/sora-2/gptproto-format/text-to-video",
+                "docs/api/openai/sora-2/gptproto-format/query-task"
               ]
             },
             {
               "group": "Openai Format",
               "pages": [
-                "docs/api/sora/sora-2/openai-format/chat-mode"
+                "docs/api/openai/sora-2/openai-format/chat-mode"
               ]
             },
             {
               "group": "Reverse Format",
               "pages": [
-                "docs/api/sora/sora-2/reverse-format/submit-task",
-                "docs/api/sora/sora-2/reverse-format/query-result"
+                "docs/api/openai/sora-2/reverse-format/submit-task",
+                "docs/api/openai/sora-2/reverse-format/query-result"
               ]
             }
           ]
@@ -1286,33 +1289,33 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/sora/sora-2-pro/official-format/text-to-video",
-                "docs/api/sora/sora-2-pro/official-format/image-to-video",
-                "docs/api/sora/sora-2-pro/official-format/query-task",
-                "docs/api/sora/sora-2-pro/official-format/get-video",
-                "docs/api/sora/sora-2-pro/official-format/get-thumbnail",
-                "docs/api/sora/sora-2-pro/official-format/get-spritesheet"
+                "docs/api/openai/sora-2-pro/official-format/text-to-video",
+                "docs/api/openai/sora-2-pro/official-format/image-to-video",
+                "docs/api/openai/sora-2-pro/official-format/query-task",
+                "docs/api/openai/sora-2-pro/official-format/get-video",
+                "docs/api/openai/sora-2-pro/official-format/get-thumbnail",
+                "docs/api/openai/sora-2-pro/official-format/get-spritesheet"
               ]
             },
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/sora/sora-2-pro/gptproto-format/text-to-video-pro",
-                "docs/api/sora/sora-2-pro/gptproto-format/image-to-video-pro",
-                "docs/api/sora/sora-2-pro/gptproto-format/query-task"
+                "docs/api/openai/sora-2-pro/gptproto-format/text-to-video-pro",
+                "docs/api/openai/sora-2-pro/gptproto-format/image-to-video-pro",
+                "docs/api/openai/sora-2-pro/gptproto-format/query-task"
               ]
             },
             {
               "group": "Openai Format",
               "pages": [
-                "docs/api/sora/sora-2-pro/openai-format/chat-mode"
+                "docs/api/openai/sora-2-pro/openai-format/chat-mode"
               ]
             },
             {
               "group": "Reverse Format",
               "pages": [
-                "docs/api/sora/sora-2-pro/reverse-format/submit-task",
-                "docs/api/sora/sora-2-pro/reverse-format/query-result"
+                "docs/api/openai/sora-2-pro/reverse-format/submit-task",
+                "docs/api/openai/sora-2-pro/reverse-format/query-result"
               ]
             }
           ]
@@ -1613,13 +1616,13 @@
             {
               "group": "Official Format Copy",
               "pages": [
-                "docs/api/gpt/gpt-4o-mini-tts/official-format-copy/text-to-audio"
+                "docs/api/openai/gpt-4o-mini-tts/official-format-copy/text-to-audio"
               ]
             },
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/gpt/gpt-4o-mini-tts/gptproto-format/text-to-audio"
+                "docs/api/openai/gpt-4o-mini-tts/gptproto-format/text-to-audio"
               ]
             }
           ]
