@@ -6,7 +6,7 @@ description: 'Text To Video'
 
 ## Overview
 
-This endpoint provides text to video functionality.
+Sora 2 is a state-of-the-art video+audio generator. It advances prior video models with more accurate physics, sharper realism, synchronized audio, stronger steerability, and a wider stylistic range—built on the original Sora foundation.
 
 ## Authentication
 
@@ -19,15 +19,15 @@ This endpoint requires authentication using a Bearer token.
 ## Request Body
 
 <ParamField body="prompt" type="string" required default="A video of a horse dancing.">
-  Prompt parameter
+  The positive prompt for the generation.
 </ParamField>
 
 <ParamField body="size" type="string"  default="720*1280">
-  Size parameter
+  The size of the generated media in pixels (width*height).720*1280, 1280*720
 </ParamField>
 
 <ParamField body="duration" type="integer"  default="4">
-  Duration parameter
+  The duration of the generated video in seconds.4, 8, 12
 </ParamField>
 
 ## Request Example
@@ -35,7 +35,7 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/api/v3/openai/sora-2/text-to-video" \
+curl -X POST "https://gptproto.com/api/v3/openai/sora-2/text-to-video" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -49,7 +49,7 @@ curl -X POST "gptproto/api/v3/openai/sora-2/text-to-video" \
 import requests
 import json
 
-url = "gptproto/api/v3/openai/sora-2/text-to-video"
+url = "https://gptproto.com/api/v3/openai/sora-2/text-to-video"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -67,7 +67,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/api/v3/openai/sora-2/text-to-video";
+const url = "https://gptproto.com/api/v3/openai/sora-2/text-to-video";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -101,7 +101,7 @@ import (
 )
 
 func main() {
-    url := "gptproto/api/v3/openai/sora-2/text-to-video"
+    url := "https://gptproto.com/api/v3/openai/sora-2/text-to-video"
 
     payload := []byte(`{
 "prompt": "A video of a horse dancing.",
@@ -129,17 +129,12 @@ func main() {
 
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
+<ResponseField name="data.id" type="string">
+  Unique identifier for the prediction, Task Id
 
-```json
-{
-  "status": "success"
-}
-```
+
 </ResponseField>
 
-## Error Responses
 
 <ResponseExample>
 
