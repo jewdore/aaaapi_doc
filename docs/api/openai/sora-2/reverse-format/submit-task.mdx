@@ -13,29 +13,29 @@ This endpoint provides submit task functionality.
 This endpoint requires authentication using a Bearer token.
 
 <ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
+  Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
 <ParamField body="model" type="string" required default="sora-2">
-  The model to use for the request
+  The video generation model to use. 
 </ParamField>
 
 <ParamField body="orientation" type="string"  default="portrait">
-  Orientation parameter
+  portrait 、landscape
 </ParamField>
 
-<ParamField body="prompt" type="string" required default="A video of a horse dancing.">
-  Prompt parameter
+<ParamField body="prompt" type="string" required default="She turns around and smiles, then slowly walks out of the frame.">
+  The positive prompt for the generation.
 </ParamField>
 
-<ParamField body="images" type="array"  default="[&quot;https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png&quot;]">
+<ParamField body="images" type="string[]" required default="[&quot;https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png&quot;]">
   Images parameter
 </ParamField>
 
-<ParamField body="duration" type="integer"  default="15">
-  Duration parameter
+<ParamField body="duration" type="integer"  default="4">
+  The duration of the generated video in seconds.4, 8, 12
 </ParamField>
 
 ## Request Example
@@ -44,12 +44,12 @@ This endpoint requires authentication using a Bearer token.
 
 ```bash cURL
 curl -X POST "gptproto/v1/video/create" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "model": "sora-2",
   "orientation": "portrait",
-  "prompt": "A video of a horse dancing.",
+  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
     "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
   ],
@@ -63,14 +63,14 @@ import json
 
 url = "gptproto/v1/video/create"
 headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
+    "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
   "model": "sora-2",
   "orientation": "portrait",
-  "prompt": "A video of a horse dancing.",
+  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
     "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
   ],
@@ -85,14 +85,14 @@ print(json.dumps(result, indent=2))
 ```javascript JavaScript
 const url = "gptproto/v1/video/create";
 const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
+  "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
   "model": "sora-2",
   "orientation": "portrait",
-  "prompt": "A video of a horse dancing.",
+  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
     "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
   ],
@@ -126,7 +126,7 @@ func main() {
     payload := []byte(`{
 "model": "sora-2",
 "orientation": "portrait",
-"prompt": "A video of a horse dancing.",
+"prompt": "She turns around and smiles, then slowly walks out of the frame.",
 "images": [
 "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
 ],
@@ -134,7 +134,7 @@ func main() {
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Authorization", "YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -153,18 +153,29 @@ func main() {
 
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
-
+<ResponseField name="data.id" type="string">
 ```json
 {
-  "status": "success"
+    "data": {
+        "id": "sora-2:task_xxxx",
+        "model": "sora-2-pro",
+        "outputs": [],
+        "urls": {
+            "get": "https://gptproto.com/api/v3/predictions/sora-2:task_xxxx/result"
+        },
+        "hasNsfwContents": [],
+        "status": "processing",
+        "createdAt": "2025-10-16 21:03:10",
+        "executionTime": 0,
+        "timings": {
+            "inference": 0
+        }
+    },
+    "message": "success",
+    "code": 200
 }
 ```
 </ResponseField>
-
-## Error Responses
-
 <ResponseExample>
 
 ```json 401 - Invalid signature

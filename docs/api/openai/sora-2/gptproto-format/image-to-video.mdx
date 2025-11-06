@@ -1,19 +1,19 @@
 ---
-title: 'Image To Video'
-api: 'POST /api/v3/openai/sora-2/image-to-video'
-description: 'Image To Video'
+title: 'Text To Video'
+api: 'POST /api/v3/openai/sora-2/text-to-video'
+description: 'Text To Video'
 ---
 
 ## Overview
 
-Turn a single reference image into a coherent video clip with synchronized audio. Built on Sora 2’s core advances, the image-to-video pipeline preserves identity, lighting, and composition while synthesizing believable motion and camera dynamics.
+Sora 2 is a state-of-the-art video+audio generator. It advances prior video models with more accurate physics, sharper realism, synchronized audio, stronger steerability, and a wider stylistic range—built on the original Sora foundation.
 
 ## Authentication
 
 This endpoint requires authentication using a Bearer token.
 
 <ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
+  Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
@@ -22,8 +22,8 @@ This endpoint requires authentication using a Bearer token.
   The positive prompt for the generation.
 </ParamField>
 
-<ParamField body="image" type="string"  default="https://filesystem.site/cdn/202xxx/xxxx.png">
-  The image for generating the output.
+<ParamField body="size" type="string"  default="720*1280">
+  The size of the generated media in pixels (width*height).720*1280, 1280*720
 </ParamField>
 
 <ParamField body="duration" type="integer"  default="4">
@@ -35,12 +35,12 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+curl -X POST "https://gptproto.com/api/v3/openai/sora-2/text-to-video" \
+  -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "prompt": "A video of a horse dancing.",
-  "image": "https://filesystem.site/cdn/202xxx/xxxx.png",
+  "size": "720*1280",
   "duration": 4
 }'
 ```
@@ -49,15 +49,15 @@ curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video" \
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/openai/sora-2/image-to-video"
+url = "https://gptproto.com/api/v3/openai/sora-2/text-to-video"
 headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
+    "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
   "prompt": "A video of a horse dancing.",
-  "image": "https://filesystem.site/cdn/202xxx/xxxx.png",
+  "size": "720*1280",
   "duration": 4
 }
 
@@ -67,15 +67,15 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/openai/sora-2/image-to-video";
+const url = "https://gptproto.com/api/v3/openai/sora-2/text-to-video";
 const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
+  "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
   "prompt": "A video of a horse dancing.",
-  "image": "https://filesystem.site/cdn/202xxx/xxxx.png",
+  "size": "720*1280",
   "duration": 4
 };
 
@@ -101,16 +101,16 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/openai/sora-2/image-to-video"
+    url := "https://gptproto.com/api/v3/openai/sora-2/text-to-video"
 
     payload := []byte(`{
 "prompt": "A video of a horse dancing.",
-"image": "https://filesystem.site/cdn/202xxx/xxxx.png",
+"size": "720*1280",
 "duration": 4
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Authorization", "YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -132,7 +132,9 @@ func main() {
 <ResponseField name="data.id" type="string">
   Unique identifier for the prediction, Task Id
 
+
 </ResponseField>
+
 
 <ResponseExample>
 
