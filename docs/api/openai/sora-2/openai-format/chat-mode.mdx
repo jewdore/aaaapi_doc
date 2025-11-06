@@ -13,21 +13,42 @@ This endpoint provides chat mode functionality.
 This endpoint requires authentication using a Bearer token.
 
 <ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
+  Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
 <ParamField body="model" type="string" required default="sora-2">
-  The model to use for the request
+  The model to use for the request. `sora-2`
 </ParamField>
 
-<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;video of cow and horse dancing&quot;}, {&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: {&quot;url&quot;: &quot;https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png&quot;}}]}]">
+<ParamField body="messages" type="array" required>
   Array of message objects for the conversation
+            <Expandable title="properties">
+                <ParamField body="role" type="string" required>
+                </ParamField>
+
+                <ParamField body="content" type="array" required>
+
+                            <Expandable title="properties">
+
+                                  <ParamField body="type" type="string" required>
+                                     text , image_url 
+                                  </ParamField>
+                                  
+                                  <ParamField body="text" type="string" required>
+                                     * type:text,The positive prompt for the generation.
+                                     * type:image_url,Optional image reference that guides generation.
+                                  </ParamField>
+                            
+                            </Expandable>
+                </ParamField>
+
+            </Expandable>
 </ParamField>
 
 <ParamField body="stream" type="boolean"  default="true">
-  Whether to stream the response
+
 </ParamField>
 
 ## Request Example
@@ -35,8 +56,8 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1/chat/completions" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "model": "sora-2",
@@ -65,9 +86,9 @@ curl -X POST "gptproto/v1/chat/completions" \
 import requests
 import json
 
-url = "gptproto/v1/chat/completions"
+url = "https://gptproto.com/v1/chat/completions"
 headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
+    "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
@@ -99,9 +120,9 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1/chat/completions";
+const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
+  "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
@@ -149,7 +170,7 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1/chat/completions"
+    url := "https://gptproto.com/v1/chat/completions"
 
     payload := []byte(`{
 "model": "sora-2",
@@ -174,7 +195,7 @@ func main() {
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Authorization", "YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -193,17 +214,30 @@ func main() {
 
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
+```
 {
-  "status": "success"
+    "choices": [
+        {
+            "delta": {
+                "content": "> ✅ Video generated successfully, [click here](https://static.aiclound.vip/sora/XXXXX83.mp4) to view video~~~\n\n",
+                "role": "assistant"
+            },
+            "index": 0
+        }
+    ],
+    "created": 0,
+    "id": "39a5d-xxxxx",
+    "model": "sora-2-pro",
+    "object": "chat.completion.chunk"
 }
 ```
-</ResponseField>
 
-## Error Responses
+## F&Q
+Q: How to control the video duration?
+
+A:  Can control the duration. 
+you need to add a duration flag in the prompt, such as' duration: 5 seconds'. Sora-2 supports videos of up to 15 seconds.
+
 
 <ResponseExample>
 

@@ -34,6 +34,9 @@ This endpoint requires authentication using a Bearer token.
   image size 720x1280, 1280x720
 </ParamField>
 
+<ParamField body="seconds" type="string" default="4">
+  Clip duration in seconds. 4, 8, 12 . Defaults to 4 seconds.
+</ParamField>
 
 <ParamField body="size" default="720x1280" type="string" required>
   Output resolution formatted as width x height. Defaults to 720x1280. Only supports 720x1280 , 1280x720
@@ -45,7 +48,7 @@ curl -X POST "https//gptproto.com/v1/videos" \
   -H "Authorization: sk-xxx" \
   -H "Content-Type: multipart/form-data" \
   -F prompt="She turns around and smiles, then slowly walks out of the frame." \
-  -F model="sora-2-pro" \
+  -F model="sora-2" \
   -F size="1280x720" \
   -F seconds="8" \
   -F input_reference="@sample_720p.jpeg;type=image/jpeg"
