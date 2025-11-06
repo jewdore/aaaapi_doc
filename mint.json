@@ -219,6 +219,7 @@
         }
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Claude.png"
+      
     },
     {
       "group": "DeepSeek",
@@ -245,7 +246,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755520099039-20250818-202809.png"
     },
     {
       "group": "Doubao",
@@ -968,7 +970,7 @@
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Gemini.png"
     },
     {
-      "group": "Gprproto",
+      "group": "Gptproto",
       "pages": [
         {
           "group": "image-background-remover",
@@ -995,7 +997,8 @@
           ]
         },
         "docs/api/gprproto/image-upscaler"
-      ]
+      ],
+      "icon": "https://oss.heyoos.com/2025/10/23/2df4295950b8433998e058f6539d9e1c.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill"
     },
     {
       "group": "Grok",
