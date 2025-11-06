@@ -1,7 +1,7 @@
 ---
-title: 'Text to Video （9:16）'
-api: 'POST /v1/chat/completions'
-description: 'Text to Video （9:16）'
+title: "Text to Video （9:16）"
+api: "POST /v1/chat/completions"
+description: "Text to Video （9:16）"
 ---
 
 ## Overview
@@ -12,7 +12,7 @@ This endpoint provides text to video （9:16） functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
+<ParamField header="Authorization" default="sk-***********" type="string" required>
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
 
@@ -21,11 +21,40 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{}'
+curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    //veo3.1-pro
+    //Add "upsample" to the text parameter to enable high-resolution video
+    "model": "veo3.1",
+    "messages": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "A beautiful woman is dancing in a European and American style. upsample aspect_ratio 16:9"
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg"
+                    }
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
+                    }
+                }
+            ]
+        }
+    ],
+    "stream": true
+}'
 ```
+
 
 ```python Python
 import requests
@@ -37,12 +66,39 @@ headers = {
     "Content-Type": "application/json"
 }
 
-data = {}
+data = {
+    "model": "veo3.1",
+    "messages": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "A beautiful woman is dancing in a European and American style. upsample aspect_ratio 16:9"
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg"
+                    }
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
+                    }
+                }
+            ]
+        }
+    ],
+    "stream": true
+}
 
 response = requests.post(url, headers=headers, json=data)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
+
 
 ```javascript JavaScript
 const url = "https://gptproto.com/v1/chat/completions";
@@ -51,7 +107,33 @@ const headers = {
   "Content-Type": "application/json"
 };
 
-const data = {};
+const data = {
+    "model": "veo3.1",
+    "messages": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "A beautiful woman is dancing in a European and American style. upsample aspect_ratio 16:9"
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg"
+                    }
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
+                    }
+                }
+            ]
+        }
+    ],
+    "stream": true
+};
 
 fetch(url, {
   method: "POST",
@@ -63,38 +145,6 @@ fetch(url, {
   .catch(error => console.error("Error:", error));
 ```
 
-```go Go
-package main
-
-import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
-)
-
-func main() {
-    url := "https://gptproto.com/v1/chat/completions"
-
-    payload := []byte(`{}`)
-
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
-
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
-}
-```
-
 </CodeGroup>
 
 ## Response
@@ -102,11 +152,11 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+    "status": "success"
+  }
+  ```
 </ResponseField>
 
 ## Error Responses
@@ -122,6 +172,7 @@ func main() {
 }
 ```
 
+
 ```json 403 - Invalid Token
 {
   "error": {
@@ -130,6 +181,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 403 - Insufficient balance
 {
@@ -140,6 +192,7 @@ func main() {
 }
 ```
 
+
 ```json 500 - Internal server error
 {
   "error": {
@@ -148,6 +201,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 503 - Content policy violation
 {
@@ -159,4 +213,3 @@ func main() {
 ```
 
 </ResponseExample>
-

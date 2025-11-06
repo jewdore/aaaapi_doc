@@ -6,7 +6,7 @@ description: 'Text to Video'
 
 ## Overview
 
-This endpoint provides text to video functionality.
+Sora is OpenAI’s newest frontier in generative media – a state-of-the-art video model capable of creating richly detailed, dynamic clips with audio from natural language or images. Built on years of research into multimodal diffusion and trained on diverse visual data, Sora brings a deep understanding of 3D space, motion, and scene continuity to text-to-video generation.
 
 ## Authentication
 
@@ -15,6 +15,8 @@ This endpoint requires authentication using a Bearer token.
 <ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
+<ParamField header="Content-Type" default="multipart/form-data" type="string" required>
+</ParamField>
 
 ## Request Body
 
@@ -22,7 +24,7 @@ This endpoint requires authentication using a Bearer token.
   The video generation model to use. Defaults to sora-2.
 </ParamField>
 
-<ParamField body="prompt" type="string" required default="The character walks slowly and then sits on the ground">
+<ParamField body="prompt" type="string" required default="A calico cat playing a piano on stage">
   Text prompt that describes the video to generate.
 </ParamField>
 
@@ -39,7 +41,7 @@ This endpoint requires authentication using a Bearer token.
 curl -X POST "https://gptproto.com/v1/videos" \
 --header 'Authorization: sk-xxx' \
 --form 'model="sora-2"' \
---form 'prompt="The character walks slowly and then sits on the ground"' \
+--form 'prompt="A calico cat playing a piano on stage"' \
 --form 'size="720x1280"' \
 --form 'seconds="4"'
 ```
@@ -54,7 +56,7 @@ body = b'\r\n'.join([
     f'--{boundary}'.encode(),
     b'Content-Disposition: form-data; name="prompt"',
     b'',
-    b'She turns around and smiles, then slowly walks out of the frame.',
+    b'A calico cat playing a piano on stage',
     f'--{boundary}'.encode(),
     b'Content-Disposition: form-data; name="model"',
     b'',
@@ -88,7 +90,7 @@ const headers = {
 };
 
 const data = {
-  "prompt": "A video of a horse dancing.",
+  "prompt": "A calico cat playing a piano on stage",
   "size": "720*1280",
   "duration": 4
 };
@@ -118,7 +120,7 @@ func main() {
     url := "https://gptproto.com/v1/videos"
 
     payload := []byte(`{
-"prompt": "A video of a horse dancing.",
+"prompt": "A calico cat playing a piano on stage",
 "size": "720*1280",
 "duration": 4
 }`)
@@ -144,10 +146,8 @@ func main() {
 
 ## Response
 
-<ResponseField name="task_id" type="string">
-task_id
-string
-The video generation task ID, used for querying status.
+<ResponseField name="id" type="string">
+  The identifier of the video task.
 </ResponseField>
 
 ```json
@@ -165,7 +165,6 @@ The video generation task ID, used for querying status.
 ```
 
 
-## Error Responses
 
 <ResponseExample>
 

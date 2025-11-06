@@ -1,7 +1,7 @@
 ---
-title: 'First&last frame'
-api: 'POST /v1/veo/videos'
-description: 'First&last frame'
+title: "First&last frame"
+api: "POST /v1/veo/videos"
+description: "First&last frame"
 ---
 
 ## Overview
@@ -12,33 +12,33 @@ This endpoint provides first&last frame functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
+<ParamField header="Authorization" default="sk-***********" type="string" required>
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="prompt" type="string" required default="A beautiful woman is dancing in a European and American style">
+<ParamField body="prompt" default="A beautiful woman is dancing in a European and American style" type="string" required>
   Prompt parameter
 </ParamField>
 
-<ParamField body="model" type="string" required default="veo3.1-pro">
+<ParamField body="model" default="veo3.1-pro" type="string" required>
   The model to use for the request
 </ParamField>
 
-<ParamField body="upsample" type="boolean"  default="true">
+<ParamField body="upsample" default="true" type="boolean">
   Upsample parameter
 </ParamField>
 
-<ParamField body="reference" type="boolean"  default="false">
+<ParamField body="reference" default="false" type="boolean">
   Reference parameter
 </ParamField>
 
-<ParamField body="aspect_ratio" type="string"  default="16:9">
+<ParamField body="aspect_ratio" default="16:9" type="string">
   Aspect Ratio parameter
 </ParamField>
 
-<ParamField body="images" type="array"  default="[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg&quot;]">
+<ParamField body="images" default='["https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg", "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"]' type="array">
   Images parameter
 </ParamField>
 
@@ -52,7 +52,7 @@ curl -X POST "https://gptproto.com/v1/veo/videos" \
   -H "Content-Type: application/json" \
   -d '{
   "prompt": "A beautiful woman is dancing in a European and American style",
-  "model": "veo3.1-pro",
+  "model": "veo3.1",
   "upsample": true,
   "reference": false,
   "aspect_ratio": "16:9",
@@ -62,6 +62,7 @@ curl -X POST "https://gptproto.com/v1/veo/videos" \
   ]
 }'
 ```
+
 
 ```python Python
 import requests
@@ -75,7 +76,7 @@ headers = {
 
 data = {
   "prompt": "A beautiful woman is dancing in a European and American style",
-  "model": "veo3.1-pro",
+  "model": "veo3.1",
   "upsample": true,
   "reference": false,
   "aspect_ratio": "16:9",
@@ -90,6 +91,7 @@ result = response.json()
 print(json.dumps(result, indent=2))
 ```
 
+
 ```javascript JavaScript
 const url = "https://gptproto.com/v1/veo/videos";
 const headers = {
@@ -99,7 +101,7 @@ const headers = {
 
 const data = {
   "prompt": "A beautiful woman is dancing in a European and American style",
-  "model": "veo3.1-pro",
+  "model": "veo3.1",
   "upsample": true,
   "reference": false,
   "aspect_ratio": "16:9",
@@ -119,6 +121,7 @@ fetch(url, {
   .catch(error => console.error("Error:", error));
 ```
 
+
 ```go Go
 package main
 
@@ -135,7 +138,7 @@ func main() {
 
     payload := []byte(`{
 "prompt": "A beautiful woman is dancing in a European and American style",
-"model": "veo3.1-pro",
+"model": "veo3.1",
 "upsample": true,
 "reference": false,
 "aspect_ratio": "16:9",
@@ -168,11 +171,11 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+    "status": "success"
+  }
+  ```
 </ResponseField>
 
 ## Error Responses
@@ -188,6 +191,7 @@ func main() {
 }
 ```
 
+
 ```json 403 - Invalid Token
 {
   "error": {
@@ -196,6 +200,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 403 - Insufficient balance
 {
@@ -206,6 +211,7 @@ func main() {
 }
 ```
 
+
 ```json 500 - Internal server error
 {
   "error": {
@@ -214,6 +220,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 503 - Content policy violation
 {
@@ -225,4 +232,3 @@ func main() {
 ```
 
 </ResponseExample>
-

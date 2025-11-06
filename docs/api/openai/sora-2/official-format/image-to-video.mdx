@@ -6,7 +6,7 @@ description: "Image to Video"
 
 ## Overview
 
-This endpoint provides image to video functionality.
+Sora is OpenAI’s newest frontier in generative media – a state-of-the-art video model capable of creating richly detailed, dynamic clips with audio from natural language or images. Built on years of research into multimodal diffusion and trained on diverse visual data, Sora brings a deep understanding of 3D space, motion, and scene continuity to text-to-video generation.
 
 ## Authentication
 
@@ -25,12 +25,13 @@ This endpoint requires authentication using a Bearer token.
   The video generation model to use. Defaults to sora-2.
 </ParamField>
 
-<ParamField body="prompt" default="The character walks slowly and then sits on the ground" type="string" required>
+<ParamField body="prompt" default="She turns around and smiles, then slowly walks out of the frame." type="string" required>
   Text prompt that describes the video to generate.
 </ParamField>
 
-<ParamField body="input_reference" default="/Users/Downloads/20251014-010839.jpeg" type="string" required>
+<ParamField body="input_reference" default="@sample_720p.jpeg" type="string" required>
   Optional image reference that guides generation.
+  image size 720x1280, 1280x720
 </ParamField>
 
 
@@ -38,15 +39,39 @@ This endpoint requires authentication using a Bearer token.
   Output resolution formatted as width x height. Defaults to 720x1280. Only supports 720x1280 , 1280x720
 </ParamField>
 
+<CodeGroup>
+```bash cURL
+curl -X POST "https//gptproto.com/v1/videos" \
+  -H "Authorization: sk-xxx" \
+  -H "Content-Type: multipart/form-data" \
+  -F prompt="She turns around and smiles, then slowly walks out of the frame." \
+  -F model="sora-2-pro" \
+  -F size="1280x720" \
+  -F seconds="8" \
+  -F input_reference="@sample_720p.jpeg;type=image/jpeg"
+```
+</CodeGroup>
+
+
+
+
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
+<ResponseField name="id" type="string">
+  The identifier of the video task.
 
   ```json
-  {
-    "status": "success"
-  }
+ {
+  "id": "video_123",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712697600,
+  "size": "1024x1808",
+  "seconds": "8",
+  "quality": "standard"
+}
   ```
 </ResponseField>
 
