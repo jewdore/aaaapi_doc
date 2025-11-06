@@ -1139,7 +1139,7 @@
           ]
         },
         "docs/api/kling/kling-v25-turbo-pro",
-        "docs/api/kling/任务查询"
+        "docs/api/kling/query-task"
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Kling.png"
     },
@@ -1184,7 +1184,7 @@
               "pages": [
                 "docs/api/minimax/hailuo-02/gptproto-format/firstlast-frame",
                 "docs/api/minimax/hailuo-02/gptproto-format/image-to-video",
-                "docs/api/minimax/hailuo-02/gptproto-format/任务结果查询"
+                "docs/api/minimax/hailuo-02/gptproto-format/query-task"
               ]
             }
           ]
@@ -1678,7 +1678,7 @@
           "group": "All APIs",
           "pages": [
             "docs/api/suno/all-apis/music-generationgenerations",
-            "docs/api/suno/all-apis/查询任务feed",
+            "docs/api/suno/all-apis/query-task",
             "docs/api/suno/all-apis/generate-lyrics",
             "docs/api/suno/all-apis/query-lyrics"
           ]
