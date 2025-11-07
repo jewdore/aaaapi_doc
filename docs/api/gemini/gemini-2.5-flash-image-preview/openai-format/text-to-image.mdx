@@ -1,36 +1,50 @@
 ---
-title: 'Image to Image'
-api: 'POST /v1/chat/completions'
-description: 'Image to Image'
+title: "Text to Image"
+api: "POST /v1/chat/completions"
+description: "Text to Image"
 ---
 
 ## Overview
 
-This endpoint provides image to image functionality.
+Google Gemini 2.5 Flash Image preview, a powerful new image generation and editing model with advanced features and creative control.
+
+
+## Supported inputs & outputs :
+
+Inputs: Text
+
+Outputs: Text and image
+
+# **Text-to-Image**
+
+The default output size for chat mode is 1:1 (1024x1024)
 
 ## Authentication
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
+<ParamField header="Authorization" default="sk-***********" type="string" required>
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;Make this colorful&quot;}, {&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: {&quot;url&quot;: &quot;https://pics.144096.xyz/images/logo1.png&quot;}}]}]">
+<ParamField body="messages" type="array" required>
   Array of message objects for the conversation
+
+  <Expandable title="properties">
+    <ParamField body="role" type="string" required>
+      role of user.
+    </ParamField>
+    <ParamField body="content" type="string" required>
+      The prompt for the generation.
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField body="model" type="string" required default="gemini-2.5-flash-image-preview">
+<ParamField body="model" default="gemini-2.5-flash-image-preview-preview" type="string" required>
   The model to use for the request
 </ParamField>
-
-<ParamField body="stream" type="boolean"  default="false">
-  Whether to stream the response
-</ParamField>
-
-## Request Example
 
 <CodeGroup>
 
@@ -42,24 +56,13 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
   "messages": [
     {
       "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Make this colorful"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://pics.144096.xyz/images/logo1.png"
-          }
-        }
-      ]
+      "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
     }
   ],
-  "model": "gemini-2.5-flash-image-preview",
-  "stream": false
+  "model": "gemini-2.5-flash-image-preview-preview"
 }'
 ```
+
 
 ```python Python
 import requests
@@ -75,28 +78,17 @@ data = {
   "messages": [
     {
       "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Make this colorful"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://pics.144096.xyz/images/logo1.png"
-          }
-        }
-      ]
+      "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
     }
   ],
-  "model": "gemini-2.5-flash-image-preview",
-  "stream": false
+  "model": "gemini-2.5-flash-image-preview-preview"
 }
 
 response = requests.post(url, headers=headers, json=data)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
+
 
 ```javascript JavaScript
 const url = "https://gptproto.com/v1/chat/completions";
@@ -109,22 +101,10 @@ const data = {
   "messages": [
     {
       "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Make this colorful"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://pics.144096.xyz/images/logo1.png"
-          }
-        }
-      ]
+      "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
     }
   ],
-  "model": "gemini-2.5-flash-image-preview",
-  "stream": false
+  "model": "gemini-2.5-flash-image-preview-preview"
 };
 
 fetch(url, {
@@ -136,6 +116,7 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
+
 
 ```go Go
 package main
@@ -155,22 +136,10 @@ func main() {
 "messages": [
 {
 "role": "user",
-"content": [
-{
-"type": "text",
-"text": "Make this colorful"
-},
-{
-"type": "image_url",
-"image_url": {
-"url": "https://pics.144096.xyz/images/logo1.png"
-}
-}
-]
+"content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
 }
 ],
-"model": "gemini-2.5-flash-image-preview",
-"stream": false
+"model": "gemini-2.5-flash-image-preview-preview"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -193,17 +162,39 @@ func main() {
 
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
+  ```json
+  {
+      "choices": [
+          {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                  "content": "Here's your nano banana dish in a fancy restaurant with a Gemini theme! \n![image](data:image/png;base64,iVBORw0....)",
+                  "role": "assistant"
+              }
+          }
+      ],
+      "created": 1762163196,
+      "id": "chatcmpl-20251103174627570914749cO7T1Yq5",
+      "model": "gemini-2.5-flash-image-preview-preview",
+      "object": "chat.completion",
+      "usage": {
+          "completion_tokens": 1307,
+          "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 16,
+          "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+          },
+          "total_tokens": 1323
+      }
+  }
+  ```
 
 <ResponseExample>
 
@@ -216,6 +207,7 @@ func main() {
 }
 ```
 
+
 ```json 403 - Invalid Token
 {
   "error": {
@@ -224,6 +216,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 403 - Insufficient balance
 {
@@ -234,6 +227,7 @@ func main() {
 }
 ```
 
+
 ```json 500 - Internal server error
 {
   "error": {
@@ -242,6 +236,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 503 - Content policy violation
 {
@@ -253,4 +248,3 @@ func main() {
 ```
 
 </ResponseExample>
-

@@ -861,7 +861,7 @@
               "group": "Openai  Format",
               "pages": [
                 "docs/api/gemini/gemini-2.5-flash-image/openai-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image/openai-format/images-to-image"
+                "docs/api/gemini/gemini-2.5-flash-image/openai-format/image-to-image"
               ]
             },
             {
@@ -883,18 +883,20 @@
                 "docs/api/gemini/gemini-2.5-flash-image-preview/official-format/image-to-image"
               ]
             },
+            
             {
-              "group": "chat format",
+              "group": "gptproto-format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image-preview/chat-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image-preview/chat-format/image-to-image"
+                "docs/api/gemini/gemini-2.5-flash-image-preview/gptproto-format/text-to-image",
+                "docs/api/gemini/gemini-2.5-flash-image-preview/gptproto-format/image-to-image"
               ]
             },
+            
             {
               "group": "openai format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image-preview/openai-format/create-image",
-                "docs/api/gemini/gemini-2.5-flash-image-preview/openai-format/image-editing"
+                "docs/api/gemini/gemini-2.5-flash-image-preview/openai-format/text-to-image",
+                "docs/api/gemini/gemini-2.5-flash-image-preview/openai-format/image-to-image"
               ]
             }
           ]
