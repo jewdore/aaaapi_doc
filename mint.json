@@ -911,13 +911,7 @@
                 "docs/api/gemini/gemini-2.5-flash-image-preview-hd/official-format/image-to-image"
               ]
             },
-            {
-              "group": "chat format",
-              "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/chat-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/chat-format/image-to-image"
-              ]
-            },
+            
             {
               "group": "openai format",
               "pages": [
