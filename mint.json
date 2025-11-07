@@ -896,13 +896,6 @@
                 "docs/api/gemini/gemini-2.5-flash-image-preview/openai-format/create-image",
                 "docs/api/gemini/gemini-2.5-flash-image-preview/openai-format/image-editing"
               ]
-            },
-            {
-              "group": "Nano Banana",
-              "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image-preview/nano-banana/multi-image-mode",
-                "docs/api/gemini/gemini-2.5-flash-image-preview/nano-banana/text-to-image"
-              ]
             }
           ]
         },
