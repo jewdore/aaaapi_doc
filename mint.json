@@ -913,7 +913,7 @@
             },
             
             {
-              "group": "openai format",
+              "group": "gptproto format",
               "pages": [
                 "docs/api/gemini/gemini-2.5-flash-image-preview-hd/openai-format/create-image",
                 "docs/api/gemini/gemini-2.5-flash-image-preview-hd/openai-format/image-editing"
