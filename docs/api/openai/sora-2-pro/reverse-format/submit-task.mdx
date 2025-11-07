@@ -13,7 +13,7 @@ This endpoint provides submit task functionality.
 This endpoint requires authentication using a Bearer token.
 
 <ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `Bearer YOUR_API_KEY`
+  Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
@@ -47,8 +47,8 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1/video/create" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+curl -X POST "https://gptproto.com/v1/video/create" \
+  -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "model": "sora-2",
@@ -67,9 +67,9 @@ curl -X POST "gptproto/v1/video/create" \
 import requests
 import json
 
-url = "gptproto/v1/video/create"
+url = "https://gptproto.com/v1/video/create"
 headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
+    "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
@@ -91,9 +91,9 @@ print(json.dumps(result, indent=2))
 
 
 ```javascript JavaScript
-const url = "gptproto/v1/video/create";
+const url = "https://gptproto.com/v1/video/create";
 const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
+  "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
@@ -131,7 +131,7 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1/video/create"
+    url := "https://gptproto.com/v1/video/create"
 
     payload := []byte(`{
 "model": "sora-2",
@@ -145,7 +145,7 @@ func main() {
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Authorization", "YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}

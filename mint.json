@@ -488,257 +488,266 @@
     {
       "group": "Gemini",
       "pages": [
+
+
         {
-          "group": "veo3.1",
+          "group": "veo",
           "pages": [
             {
-              "group": "Gptproto Format",
+              "group": "veo3.1",
               "pages": [
-                "docs/api/gemini/veo31/gptproto-format/text-to-video169",
-                "docs/api/gemini/veo31/gptproto-format/image-to-video916",
-                "docs/api/gemini/veo31/gptproto-format/firstlast-frame",
-                "docs/api/gemini/veo31/gptproto-format/get-task-status"
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1/gptproto-format/text-to-video169",
+                    "docs/api/gemini/veo/veo3.1/gptproto-format/image-to-video916",
+                    "docs/api/gemini/veo/veo3.1/gptproto-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo3.1/gptproto-format/get-task-status"
+                  ]
+                },
+                {
+                  "group": "OpenAI Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1/openai-format/text-to-video-169",
+                    "docs/api/gemini/veo/veo3.1/openai-format/text-to-video-916",
+                    "docs/api/gemini/veo/veo3.1/openai-format/image-to-video169",
+                    "docs/api/gemini/veo/veo3.1/openai-format/image-to-video-916",
+                    "docs/api/gemini/veo/veo3.1/openai-format/firstlast-frame"
+                  ]
+                }
               ]
             },
             {
-              "group": "OpenAI Format",
+              "group": "veo3.1-pro",
               "pages": [
-                "docs/api/gemini/veo31/openai-format/text-to-video-169",
-                "docs/api/gemini/veo31/openai-format/text-to-video-916",
-                "docs/api/gemini/veo31/openai-format/image-to-video169",
-                "docs/api/gemini/veo31/openai-format/image-to-video-916",
-                "docs/api/gemini/veo31/openai-format/firstlast-frame"
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/text-to-video169",
+                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/image-to-video916",
+                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/get-task-status"
+                  ]
+                },
+                {
+                  "group": "OpenAI Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1-pro/openai-format/text-to-video-169",
+                    "docs/api/gemini/veo/veo3.1-pro/openai-format/text-to-video-916",
+                    "docs/api/gemini/veo/veo3.1-pro/openai-format/image-to-video169",
+                    "docs/api/gemini/veo/veo3.1-pro/openai-format/image-to-video-916",
+                    "docs/api/gemini/veo/veo3.1-pro/openai-format/firstlast-frame"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "veo3.1-pro-frames",
+              "pages": [
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/text-to-video",
+                    "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/image-to-video",
+                    "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/get-task-status"
+                  ]
+                },
+                {
+                  "group": "OpenAI Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1-pro-frames/openai-format/text-to-video-169",
+                    "docs/api/gemini/veo/veo3.1-pro-frames/openai-format/text-to-video-916",
+                    "docs/api/gemini/veo/veo3.1-pro-frames/openai-format/image-to-video169",
+                    "docs/api/gemini/veo/veo3.1-pro-frames/openai-format/image-to-video-916",
+                    "docs/api/gemini/veo/veo3.1-pro-frames/openai-format/firstlast-frame"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "veo3.1-fast",
+              "pages": [
+                {
+                  "group": "Official Format ",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1-fast/official-format/text-to-video",
+                    "docs/api/gemini/veo/veo3.1-fast/official-format/image-to-video"
+                  ]
+                },
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1-fast/gptproto-format/text-to-video",
+                    "docs/api/gemini/veo/veo3.1-fast/gptproto-format/image-to-video"
+                  ]
+                },
+                {
+                  "group": "OpenAI Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1-fast/openai-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo3.1-fast/openai-format/text-to-video-169",
+                    "docs/api/gemini/veo/veo3.1-fast/openai-format/text-to-video-916",
+                    "docs/api/gemini/veo/veo3.1-fast/openai-format/image-to-video169",
+                    "docs/api/gemini/veo/veo3.1-fast/openai-format/image-to-video-916"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "veo3.1-fast-frames",
+              "pages": [
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/create-video169",
+                    "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/create-video916",
+                    "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/get-task-status"
+                  ]
+                },
+                {
+                  "group": "chat Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/text-to-video-169",
+                    "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/text-to-video-916",
+                    "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/image-to-video169",
+                    "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/image-to-video-916",
+                    "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/firstlast-frame"
+                  ]
+                },
+                {
+                  "group": "Official Format ",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3.1-fast-frames/official-format/text-to-video",
+                    "docs/api/gemini/veo/veo3.1-fast-frames/official-format/image-to-video"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "veo3",
+              "pages": [
+                {
+                  "group": "Official Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3/official-format/image-to-video169asyn",
+                    "docs/api/gemini/veo/veo3/official-format/image-to-video-916-asyn",
+                    "docs/api/gemini/veo/veo3/official-format/get-task-status"
+                  ]
+                },
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3/gptproto-format/text-to-video-169",
+                    "docs/api/gemini/veo/veo3/gptproto-format/text-to-video-916",
+                    "docs/api/gemini/veo/veo3/gptproto-format/image-to-video169",
+                    "docs/api/gemini/veo/veo3/gptproto-format/image-to-video-916"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "veo3-pro",
+              "pages": [
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3-pro/gptproto-format/create-video169",
+                    "docs/api/gemini/veo/veo3-pro/gptproto-format/create-video916",
+                    "docs/api/gemini/veo/veo3-pro/gptproto-format/get-task-status"
+                  ]
+                },
+                {
+                  "group": "chat Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3-pro/chat-format/text-to-video-169",
+                    "docs/api/gemini/veo/veo3-pro/chat-format/text-to-video-916",
+                    "docs/api/gemini/veo/veo3-pro/chat-format/image-to-video169",
+                    "docs/api/gemini/veo/veo3-pro/chat-format/image-to-video-916"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "veo3-pro-frames",
+              "pages": [
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3-pro-frames/gptproto-format/create-video169",
+                    "docs/api/gemini/veo/veo3-pro-frames/gptproto-format/create-video916",
+                    "docs/api/gemini/veo/veo3-pro-frames/gptproto-format/get-task-status"
+                  ]
+                },
+                {
+                  "group": "chat Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3-pro-frames/chat-format/text-to-video-169",
+                    "docs/api/gemini/veo/veo3-pro-frames/chat-format/text-to-video-916",
+                    "docs/api/gemini/veo/veo3-pro-frames/chat-format/image-to-video169",
+                    "docs/api/gemini/veo/veo3-pro-frames/chat-format/image-to-video-916"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "veo3-fast",
+              "pages": [
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3-fast/gptproto-format/create-video169",
+                    "docs/api/gemini/veo/veo3-fast/gptproto-format/create-video916",
+                    "docs/api/gemini/veo/veo3-fast/gptproto-format/get-task-status"
+                  ]
+                },
+                {
+                  "group": "chat Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3-fast/chat-format/text-to-video-169",
+                    "docs/api/gemini/veo/veo3-fast/chat-format/text-to-video-916",
+                    "docs/api/gemini/veo/veo3-fast/chat-format/image-to-video169",
+                    "docs/api/gemini/veo/veo3-fast/chat-format/image-to-video-916"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "veo3-fast-frames",
+              "pages": [
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3-fast-frames/gptproto-format/create-video169",
+                    "docs/api/gemini/veo/veo3-fast-frames/gptproto-format/create-video916",
+                    "docs/api/gemini/veo/veo3-fast-frames/gptproto-format/get-task-status"
+                  ]
+                },
+                {
+                  "group": "chat Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo3-fast-frames/chat-format/image-to-video169",
+                    "docs/api/gemini/veo/veo3-fast-frames/chat-format/image-to-video-916"
+                  ]
+                }
               ]
             }
+
           ]
         },
-        {
-          "group": "veo3.1-pro",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/veo31-pro/gptproto-format/text-to-video169",
-                "docs/api/gemini/veo31-pro/gptproto-format/image-to-video916",
-                "docs/api/gemini/veo31-pro/gptproto-format/firstlast-frame",
-                "docs/api/gemini/veo31-pro/gptproto-format/get-task-status"
-              ]
-            },
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/gemini/veo31-pro/openai-format/text-to-video-169",
-                "docs/api/gemini/veo31-pro/openai-format/text-to-video-916",
-                "docs/api/gemini/veo31-pro/openai-format/image-to-video169",
-                "docs/api/gemini/veo31-pro/openai-format/image-to-video-916",
-                "docs/api/gemini/veo31-pro/openai-format/firstlast-frame"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "veo3.1-pro-frames",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/veo31-pro-frames/gptproto-format/text-to-video",
-                "docs/api/gemini/veo31-pro-frames/gptproto-format/image-to-video",
-                "docs/api/gemini/veo31-pro-frames/gptproto-format/firstlast-frame",
-                "docs/api/gemini/veo31-pro-frames/gptproto-format/get-task-status"
-              ]
-            },
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/gemini/veo31-pro-frames/openai-format/text-to-video-169",
-                "docs/api/gemini/veo31-pro-frames/openai-format/text-to-video-916",
-                "docs/api/gemini/veo31-pro-frames/openai-format/image-to-video169",
-                "docs/api/gemini/veo31-pro-frames/openai-format/image-to-video-916",
-                "docs/api/gemini/veo31-pro-frames/openai-format/firstlast-frame"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "veo3.1-fast",
-          "pages": [
-            {
-              "group": "Official Format ",
-              "pages": [
-                "docs/api/gemini/veo31-fast/official-format/text-to-video",
-                "docs/api/gemini/veo31-fast/official-format/image-to-video"
-              ]
-            },
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/veo31-fast/gptproto-format/text-to-video",
-                "docs/api/gemini/veo31-fast/gptproto-format/image-to-video"
-              ]
-            },
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/gemini/veo31-fast/openai-format/firstlast-frame",
-                "docs/api/gemini/veo31-fast/openai-format/text-to-video-169",
-                "docs/api/gemini/veo31-fast/openai-format/text-to-video-916",
-                "docs/api/gemini/veo31-fast/openai-format/image-to-video169",
-                "docs/api/gemini/veo31-fast/openai-format/image-to-video-916"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "veo3.1-fast-frames",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/veo31-fast-frames/gptproto-format/create-video169",
-                "docs/api/gemini/veo31-fast-frames/gptproto-format/create-video916",
-                "docs/api/gemini/veo31-fast-frames/gptproto-format/firstlast-frame",
-                "docs/api/gemini/veo31-fast-frames/gptproto-format/get-task-status"
-              ]
-            },
-            {
-              "group": "chat Format",
-              "pages": [
-                "docs/api/gemini/veo31-fast-frames/chat-format/text-to-video-169",
-                "docs/api/gemini/veo31-fast-frames/chat-format/text-to-video-916",
-                "docs/api/gemini/veo31-fast-frames/chat-format/image-to-video169",
-                "docs/api/gemini/veo31-fast-frames/chat-format/image-to-video-916",
-                "docs/api/gemini/veo31-fast-frames/chat-format/firstlast-frame"
-              ]
-            },
-            {
-              "group": "Official Format ",
-              "pages": [
-                "docs/api/gemini/veo31-fast-frames/official-format/text-to-video",
-                "docs/api/gemini/veo31-fast-frames/official-format/image-to-video"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "veo3",
-          "pages": [
-            {
-              "group": "Official Format",
-              "pages": [
-                "docs/api/gemini/veo3/official-format/image-to-video169asyn",
-                "docs/api/gemini/veo3/official-format/image-to-video-916-asyn",
-                "docs/api/gemini/veo3/official-format/get-task-status"
-              ]
-            },
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/veo3/gptproto-format/text-to-video-169",
-                "docs/api/gemini/veo3/gptproto-format/text-to-video-916",
-                "docs/api/gemini/veo3/gptproto-format/image-to-video169",
-                "docs/api/gemini/veo3/gptproto-format/image-to-video-916"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "veo3-pro",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/veo3-pro/gptproto-format/create-video169",
-                "docs/api/gemini/veo3-pro/gptproto-format/create-video916",
-                "docs/api/gemini/veo3-pro/gptproto-format/get-task-status"
-              ]
-            },
-            {
-              "group": "chat Format",
-              "pages": [
-                "docs/api/gemini/veo3-pro/chat-format/text-to-video-169",
-                "docs/api/gemini/veo3-pro/chat-format/text-to-video-916",
-                "docs/api/gemini/veo3-pro/chat-format/image-to-video169",
-                "docs/api/gemini/veo3-pro/chat-format/image-to-video-916"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "veo3-pro-frames",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/veo3-pro-frames/gptproto-format/create-video169",
-                "docs/api/gemini/veo3-pro-frames/gptproto-format/create-video916",
-                "docs/api/gemini/veo3-pro-frames/gptproto-format/get-task-status"
-              ]
-            },
-            {
-              "group": "chat Format",
-              "pages": [
-                "docs/api/gemini/veo3-pro-frames/chat-format/text-to-video-169",
-                "docs/api/gemini/veo3-pro-frames/chat-format/text-to-video-916",
-                "docs/api/gemini/veo3-pro-frames/chat-format/image-to-video169",
-                "docs/api/gemini/veo3-pro-frames/chat-format/image-to-video-916"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "veo3-fast",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/veo3-fast/gptproto-format/create-video169",
-                "docs/api/gemini/veo3-fast/gptproto-format/create-video916",
-                "docs/api/gemini/veo3-fast/gptproto-format/get-task-status"
-              ]
-            },
-            {
-              "group": "chat Format",
-              "pages": [
-                "docs/api/gemini/veo3-fast/chat-format/text-to-video-169",
-                "docs/api/gemini/veo3-fast/chat-format/text-to-video-916",
-                "docs/api/gemini/veo3-fast/chat-format/image-to-video169",
-                "docs/api/gemini/veo3-fast/chat-format/image-to-video-916"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "veo3-fast-frames",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/veo3-fast-frames/gptproto-format/create-video169",
-                "docs/api/gemini/veo3-fast-frames/gptproto-format/create-video916",
-                "docs/api/gemini/veo3-fast-frames/gptproto-format/get-task-status"
-              ]
-            },
-            {
-              "group": "chat Format",
-              "pages": [
-                "docs/api/gemini/veo3-fast-frames/chat-format/image-to-video169",
-                "docs/api/gemini/veo3-fast-frames/chat-format/image-to-video-916"
-              ]
-            }
-          ]
-        },
+
         {
           "group": "gemini-2.0-flash",
           "pages": [
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-20-flash/official-format/generatecontent",
-                "docs/api/gemini/gemini-20-flash/official-format/streamgeneratecontent",
-                "docs/api/gemini/gemini-20-flash/official-format/file-upload",
-                "docs/api/gemini/gemini-20-flash/official-format/file-upload-north-america",
-                "docs/api/gemini/gemini-20-flash/official-format/generatecontent-file-analysis"
+                "docs/api/gemini/gemini-2.0-flash/official-format/generatecontent",
+                "docs/api/gemini/gemini-2.0-flash/official-format/streamgeneratecontent",
+                "docs/api/gemini/gemini-2.0-flash/official-format/file-upload",
+                "docs/api/gemini/gemini-2.0-flash/official-format/file-upload-north-america",
+                "docs/api/gemini/gemini-2.0-flash/official-format/generatecontent-file-analysis"
               ]
             }
           ]
@@ -749,11 +758,11 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-20-flash-exp/official-format/generatecontent",
-                "docs/api/gemini/gemini-20-flash-exp/official-format/streamgeneratecontent",
-                "docs/api/gemini/gemini-20-flash-exp/official-format/file-upload",
-                "docs/api/gemini/gemini-20-flash-exp/official-format/file-upload-north-america",
-                "docs/api/gemini/gemini-20-flash-exp/official-format/generatecontent-file-analysis"
+                "docs/api/gemini/gemini-2.0-flash-exp/official-format/generatecontent",
+                "docs/api/gemini/gemini-2.0-flash-exp/official-format/streamgeneratecontent",
+                "docs/api/gemini/gemini-2.0-flash-exp/official-format/file-upload",
+                "docs/api/gemini/gemini-2.0-flash-exp/official-format/file-upload-north-america",
+                "docs/api/gemini/gemini-2.0-flash-exp/official-format/generatecontent-file-analysis"
               ]
             }
           ]
@@ -764,18 +773,18 @@
             {
               "group": "Openai Format",
               "pages": [
-                "docs/api/gemini/gemini-25-pro/openai-format/text-to-text",
-                "docs/api/gemini/gemini-25-pro/openai-format/image-to-text"
+                "docs/api/gemini/gemini-2.5-pro/openai-format/text-to-text",
+                "docs/api/gemini/gemini-2.5-pro/openai-format/image-to-text"
               ]
             },
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-25-pro/official-format/file-analysis",
-                "docs/api/gemini/gemini-25-pro/official-format/streamgeneratecontent",
-                "docs/api/gemini/gemini-25-pro/official-format/generatecontent",
-                "docs/api/gemini/gemini-25-pro/official-format/file-upload",
-                "docs/api/gemini/gemini-25-pro/official-format/file-upload-north-america"
+                "docs/api/gemini/gemini-2.5-pro/official-format/file-analysis",
+                "docs/api/gemini/gemini-2.5-pro/official-format/streamgeneratecontent",
+                "docs/api/gemini/gemini-2.5-pro/official-format/generatecontent",
+                "docs/api/gemini/gemini-2.5-pro/official-format/file-upload",
+                "docs/api/gemini/gemini-2.5-pro/official-format/file-upload-north-america"
               ]
             }
           ]
@@ -786,13 +795,13 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/text-to-text",
-                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/image-to-text",
-                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/file-analysis",
-                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/streamgeneratecontent",
-                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/generatecontent",
-                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/file-upload",
-                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/file-upload-north-america"
+                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/text-to-text",
+                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/image-to-text",
+                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/file-analysis",
+                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/streamgeneratecontent",
+                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/generatecontent",
+                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/file-upload",
+                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/file-upload-north-america"
               ]
             }
           ]
@@ -803,15 +812,15 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-25-pro-preview-05-06/official-format/text-to-text",
-                "docs/api/gemini/gemini-25-pro-preview-05-06/official-format/image-to-text"
+                "docs/api/gemini/gemini-2.5-pro-preview-05-06/official-format/text-to-text",
+                "docs/api/gemini/gemini-2.5-pro-preview-05-06/official-format/image-to-text"
               ]
             },
-            "docs/api/gemini/gemini-25-pro-preview-05-06/generatecontent",
-            "docs/api/gemini/gemini-25-pro-preview-05-06/streamgeneratecontent",
-            "docs/api/gemini/gemini-25-pro-preview-05-06/file-upload",
-            "docs/api/gemini/gemini-25-pro-preview-05-06/file-upload-north-america",
-            "docs/api/gemini/gemini-25-pro-preview-05-06/generatecontent-file-analysis"
+            "docs/api/gemini/gemini-2.5-pro-preview-05-06/generatecontent",
+            "docs/api/gemini/gemini-2.5-pro-preview-05-06/streamgeneratecontent",
+            "docs/api/gemini/gemini-2.5-pro-preview-05-06/file-upload",
+            "docs/api/gemini/gemini-2.5-pro-preview-05-06/file-upload-north-america",
+            "docs/api/gemini/gemini-2.5-pro-preview-05-06/generatecontent-file-analysis"
           ]
         },
         {
@@ -820,72 +829,13 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-25-flash/official-format/text-to-text",
-                "docs/api/gemini/gemini-25-flash/official-format/image-to-text",
-                "docs/api/gemini/gemini-25-flash/official-format/generatecontent",
-                "docs/api/gemini/gemini-25-flash/official-format/streamgeneratecontent",
-                "docs/api/gemini/gemini-25-flash/official-format/file-upload",
-                "docs/api/gemini/gemini-25-flash/official-format/file-upload-north-america",
-                "docs/api/gemini/gemini-25-flash/official-format/generatecontent-file-analysis"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "gemini-2.5-flash-image-preview",
-          "pages": [
-            {
-              "group": "Official Format",
-              "pages": [
-                "docs/api/gemini/gemini-25-flash-image-preview/official-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image-preview/official-format/image-to-image"
-              ]
-            },
-            {
-              "group": "chat format",
-              "pages": [
-                "docs/api/gemini/gemini-25-flash-image-preview/chat-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image-preview/chat-format/image-to-image"
-              ]
-            },
-            {
-              "group": "openai format",
-              "pages": [
-                "docs/api/gemini/gemini-25-flash-image-preview/openai-format/create-image",
-                "docs/api/gemini/gemini-25-flash-image-preview/openai-format/image-editing"
-              ]
-            },
-            {
-              "group": "Nano Banana",
-              "pages": [
-                "docs/api/gemini/gemini-25-flash-image-preview/nano-banana/multi-image-mode",
-                "docs/api/gemini/gemini-25-flash-image-preview/nano-banana/text-to-image"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "gemini-2.5-flash-image-preview-hd",
-          "pages": [
-            {
-              "group": "Official Format",
-              "pages": [
-                "docs/api/gemini/gemini-25-flash-image-preview-hd/official-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image-preview-hd/official-format/image-to-image"
-              ]
-            },
-            {
-              "group": "chat format",
-              "pages": [
-                "docs/api/gemini/gemini-25-flash-image-preview-hd/chat-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image-preview-hd/chat-format/image-to-image"
-              ]
-            },
-            {
-              "group": "openai format",
-              "pages": [
-                "docs/api/gemini/gemini-25-flash-image-preview-hd/openai-format/create-image",
-                "docs/api/gemini/gemini-25-flash-image-preview-hd/openai-format/image-editing"
+                "docs/api/gemini/gemini-2.5-flash/official-format/text-to-text",
+                "docs/api/gemini/gemini-2.5-flash/official-format/image-to-text",
+                "docs/api/gemini/gemini-2.5-flash/official-format/generatecontent",
+                "docs/api/gemini/gemini-2.5-flash/official-format/streamgeneratecontent",
+                "docs/api/gemini/gemini-2.5-flash/official-format/file-upload",
+                "docs/api/gemini/gemini-2.5-flash/official-format/file-upload-north-america",
+                "docs/api/gemini/gemini-2.5-flash/official-format/generatecontent-file-analysis"
               ]
             }
           ]
@@ -896,29 +846,88 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-25-flash-image/official-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image/official-format/image-to-image"
+                "docs/api/gemini/gemini-2.5-flash-image/official-format/text-to-image",
+                "docs/api/gemini/gemini-2.5-flash-image/official-format/image-to-image"
               ]
             },
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/gemini/gemini-25-flash-image/gptproto-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image/gptproto-format/image-to-image"
+                "docs/api/gemini/gemini-2.5-flash-image/gptproto-format/text-to-image",
+                "docs/api/gemini/gemini-2.5-flash-image/gptproto-format/image-to-image"
               ]
             },
             {
               "group": "Openai  Format",
               "pages": [
-                "docs/api/gemini/gemini-25-flash-image/openai-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image/openai-format/images-to-image"
+                "docs/api/gemini/gemini-2.5-flash-image/openai-format/text-to-image",
+                "docs/api/gemini/gemini-2.5-flash-image/openai-format/images-to-image"
               ]
             },
             {
               "group": "Nano Banana Format",
               "pages": [
-                "docs/api/gemini/gemini-25-flash-image/nano-banana-format/nano-banana-text-to-image",
-                "docs/api/gemini/gemini-25-flash-image/nano-banana-format/query-task"
+                "docs/api/gemini/gemini-2.5-flash-image/nano-banana-format/nano-banana-text-to-image",
+                "docs/api/gemini/gemini-2.5-flash-image/nano-banana-format/query-task"
+              ]
+            }
+          ]
+        },
+        {
+          "group": "gemini-2.5-flash-image-preview",
+          "pages": [
+            {
+              "group": "Official Format",
+              "pages": [
+                "docs/api/gemini/gemini-2.5-flash-image-preview/official-format/text-to-image",
+                "docs/api/gemini/gemini-2.5-flash-image-preview/official-format/image-to-image"
+              ]
+            },
+            {
+              "group": "chat format",
+              "pages": [
+                "docs/api/gemini/gemini-2.5-flash-image-preview/chat-format/text-to-image",
+                "docs/api/gemini/gemini-2.5-flash-image-preview/chat-format/image-to-image"
+              ]
+            },
+            {
+              "group": "openai format",
+              "pages": [
+                "docs/api/gemini/gemini-2.5-flash-image-preview/openai-format/create-image",
+                "docs/api/gemini/gemini-2.5-flash-image-preview/openai-format/image-editing"
+              ]
+            },
+            {
+              "group": "Nano Banana",
+              "pages": [
+                "docs/api/gemini/gemini-2.5-flash-image-preview/nano-banana/multi-image-mode",
+                "docs/api/gemini/gemini-2.5-flash-image-preview/nano-banana/text-to-image"
+              ]
+            }
+          ]
+        },
+        {
+          "group": "gemini-2.5-flash-image-preview-hd",
+          "pages": [
+            {
+              "group": "Official Format",
+              "pages": [
+                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/official-format/text-to-image",
+                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/official-format/image-to-image"
+              ]
+            },
+            {
+              "group": "chat format",
+              "pages": [
+                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/chat-format/text-to-image",
+                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/chat-format/image-to-image"
+              ]
+            },
+            {
+              "group": "openai format",
+              "pages": [
+                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/openai-format/create-image",
+                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/openai-format/image-editing"
               ]
             }
           ]
@@ -929,8 +938,8 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-25-flash-image-hd/official-format/text-to-image",
-                "docs/api/gemini/gemini-25-flash-image-hd/official-format/image-to-image"
+                "docs/api/gemini/gemini-2.5-flash-image-hd/official-format/text-to-image",
+                "docs/api/gemini/gemini-2.5-flash-image-hd/official-format/image-to-image"
               ]
             }
           ]
@@ -941,7 +950,7 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-25-flash-lite/official-format/generatecontent"
+                "docs/api/gemini/gemini-2.5-flash-lite/official-format/generatecontent"
               ]
             }
           ]
@@ -952,18 +961,18 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-25-flash-nothinking/official-format/generatecontent",
-                "docs/api/gemini/gemini-25-flash-nothinking/official-format/streamgeneratecontent",
-                "docs/api/gemini/gemini-25-flash-nothinking/official-format/file-upload",
-                "docs/api/gemini/gemini-25-flash-nothinking/official-format/file-upload-north-america"
+                "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/generatecontent",
+                "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/streamgeneratecontent",
+                "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/file-upload",
+                "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/file-upload-north-america"
               ]
             }
           ]
         },
         {
-          "group": "Gemini Series --- back",
+          "group": "Gemini Series",
           "pages": [
-            "docs/api/gemini/gemini-series-back/chat-image-mode"
+            "docs/api/gemini/gemini-series/chat-image-mode"
           ]
         }
       ],

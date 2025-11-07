@@ -13,7 +13,7 @@ This endpoint provides text to video functionality.
 This endpoint requires authentication using a Bearer token.
 
 <ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
+  Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
@@ -36,7 +36,7 @@ This endpoint requires authentication using a Bearer token.
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "model": "seedance-1-0-lite-i2v-250428",
@@ -56,7 +56,7 @@ import json
 
 url = "https://gptproto.com/v1/chat/completions"
 headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
+    "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
@@ -79,7 +79,7 @@ print(json.dumps(result, indent=2))
 ```javascript JavaScript
 const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
+  "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
@@ -130,7 +130,7 @@ func main() {
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Authorization", "YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}

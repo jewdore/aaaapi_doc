@@ -301,7 +301,7 @@ description: '{description or name}'
 This endpoint requires authentication using a Bearer token.
 
 <ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
+  Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 """
@@ -374,7 +374,7 @@ This endpoint requires authentication using a Bearer token.
 
 ```bash cURL
 curl -X {method} "{full_url}" \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Authorization: YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{format_json(example_obj)}'
 ```
@@ -385,7 +385,7 @@ import json
 
 url = "{full_url}"
 headers = {{
-    "Authorization": "Bearer YOUR_API_KEY",
+    "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }}
 
@@ -399,7 +399,7 @@ print(json.dumps(result, indent=2))
 ```javascript JavaScript
 const url = "{full_url}";
 const headers = {{
-  "Authorization": "Bearer YOUR_API_KEY",
+  "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 }};
 
@@ -432,7 +432,7 @@ func main() {{
     payload := []byte(`{format_json(example_obj, indent=0)}`)
 
     req, _ := http.NewRequest("{method}", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Authorization", "YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{{}}

@@ -13,7 +13,7 @@ This endpoint provides image to video functionality.
 This endpoint requires authentication using a Bearer token.
 
 <ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
+  Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Example
@@ -21,8 +21,8 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-pro" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-pro" \
+  -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{}'
 ```
@@ -31,9 +31,9 @@ curl -X POST "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-pro" \
 import requests
 import json
 
-url = "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-pro"
+url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-pro"
 headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
+    "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
@@ -45,9 +45,9 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-pro";
+const url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-pro";
 const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
+  "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
@@ -75,12 +75,12 @@ import (
 )
 
 func main() {
-    url := "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-pro"
+    url := "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-pro"
 
     payload := []byte(`{}`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Authorization", "YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}

@@ -13,7 +13,7 @@ Music generation interface, can generate new music directly or continue existing
 This endpoint requires authentication using a Bearer token.
 
 <ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
+  Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
@@ -110,7 +110,7 @@ Guide my way guide my way">
 
 ```bash cURL
 curl -X POST "https://gptproto.com/suno/generate" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "prompt": "[Verse]\nStars they shine above me\nMoonlight softly glows\nWhispers in the night sky\nDreams that only grow\n\n[Verse 2]\nMidnight winds are calling\nCarrying a tune\nHeartbeats echo softly\nDancing with the moon\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way\n\n[Verse 3]\nShadows move and twinkle\nNighttime come alive\nMystery in the heavens\nStories that survive\n\n[Bridge]\nMagic fills the darkness\nWonder in the air\nEvery star a secret\nIn the sky I stare\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way",
@@ -135,7 +135,7 @@ import json
 
 url = "https://gptproto.com/suno/generate"
 headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
+    "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
@@ -163,7 +163,7 @@ print(json.dumps(result, indent=2))
 ```javascript JavaScript
 const url = "https://gptproto.com/suno/generate";
 const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
+  "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
@@ -224,7 +224,7 @@ func main() {
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Authorization", "YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}

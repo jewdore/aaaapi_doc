@@ -1,0 +1,292 @@
+---
+title: "Nano-banana-edit"
+api: "POST /api/v3/google/nano-banana/edit"
+description: "Nano-banana-edit"
+---
+
+## Overview
+
+**Nano-Banana Edit** is Google’s advanced **AI-powered image editing and generation model**, designed to make visual transformation as intuitive as describing it in words. Built on Google’s cutting-edge computer vision and generative research, it combines precision, flexibility, and semantic awareness for professional-grade editing.
+
+- **Image + Text-to-Image (Editing):** Provide an image and use text prompts to add, remove, or modify elements, change the style, or adjust the color grading.
+- **Multi-Image to Image (Composition & Style Transfer):** Use multiple input images to compose a new scene or transfer the style from one image to another.
+- **Iterative Refinement:** Engage in a conversation to progressively refine your image over multiple turns, making small adjustments until it's perfect.
+- **High-Fidelity Text Rendering:** Accurately generate images that contain legible and well-placed text, ideal for logos, diagrams, and posters.
+
+## Supported inputs & outputs :
+
+Inputs: Text and Images
+
+Outputs: Text and image
+
+- Supports style transfer, relighting, background replacement, and object modification
+- Works with natural prompts like:
+  - _“Replace the cloudy sky with a clear sunset.”_
+  - _“Add soft studio lighting and a modern background.”_
+  - _“Turn the model’s outfit into a formal business suit.”_
+
+# Image edit
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/google/nano-banana/edit" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "prompt": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme",
+  "aspect_ratio": "3:2",
+  "output_format": "jpeg",
+  "enable_sync_mode": false,
+  "enable_base64_output": false
+}'
+```
+
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/google/nano-banana/edit"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "prompt": "The cat is climbing on the tree",
+  "aspect_ratio": "3:2",
+  "output_format": "jpeg",
+  "enable_sync_mode": false,
+  "enable_base64_output": true
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/google/nano-banana/edit";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "The cat is climbing on the tree",
+  "aspect_ratio": "3:2",
+  "output_format": "jpeg",
+  "enable_sync_mode": false,
+  "enable_base64_output": true
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/google/nano-banana/edit"
+
+    payload := []byte(`{
+"prompt": "The cat is climbing on the tree",
+"aspect_ratio": "3:2",
+"output_format": "jpeg",
+"enable_sync_mode": false,
+"enable_base64_output": true
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+### **Query Result**
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/predictions/${requestId}/result' \
+--header 'Authorization: sk-xxxx' \
+```
+
+</CodeGroup>
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" default="sk-***********" type="string" required>
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" default="The cat is climbing on the tree" type="string" required>
+  The positive prompt for the generation.
+</ParamField>
+
+<ParamField body="images" default="[]" type="array" required>
+  List of URLs of input images for editing. The maximum number of images is 10.
+</ParamField>
+
+<ParamField body="aspect_ratio" default="1:1" type="string">
+  The aspect ratio of the generated media.  1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
+</ParamField>
+
+<ParamField body="output_format" default="png" type="string">
+  The format of the output image.  png, jpeg  Default png
+</ParamField>
+
+<ParamField body="enable_sync_mode" default="false" type="boolean">
+  If set to true, the function will wait for the result to be generated and uploaded before returning the response. It allows you to get the result directly in the response. This property is only available through the API.
+</ParamField>
+
+<ParamField body="enable_base64_output" default="false" type="boolean">
+  If enabled, the output will be encoded into a BASE64 string instead of a URL. This property is only available through the API.
+</ParamField>
+
+### Aspect ratio
+
+The model defaults to generates 1:1 squares. The different ratios available and the size of the image generated are listed in this table:
+
+| Aspect ratio | Resolution |
+| :----------- | :--------- |
+| 1:1          | 1024x1024  |
+| 2:3          | 832x1248   |
+| 3:2          | 1248x832   |
+| 3:4          | 864x1184   |
+| 4:3          | 1184x864   |
+| 4:5          | 896x1152   |
+| 5:4          | 1152x896   |
+| 9:16         | 768x1344   |
+| 16:9         | 1344x768   |
+| 21:9         | 1536x672   |
+
+## Response
+
+  ```json
+  {
+      "data": {
+          "id": "e2e61cbf-xxxxx",
+          "model": "gemini-2.5-flash-image",
+          "outputs": [],
+          "urls": {
+              "get": "https://gptproto.com/api/v3/predictions/e2e61cbf-xxxx/result"
+          },
+          "hasNsfwContents": [],
+          "status": "processing",
+          "createdAt": "2025-10-23 16:26:57",
+          "executionTime": 0,
+          "timings": {
+              "inference": 0
+          }
+      },
+      "message": "success",
+      "code": 200
+  }
+  ```
+
+## Response Parameters
+
+| Parameter              | Type    | Description                                                                      |
+| ---------------------- | ------- | -------------------------------------------------------------------------------- |
+| code                   | integer | HTTP status code (e.g., 200 for success)                                         |
+| message                | string  | Status message (e.g., “success”)                                                 |
+| data.id                | string  | Unique identifier for the prediction, Task Id                                    |
+| data.model             | string  | Model ID used for the prediction                                                 |
+| data.outputs           | array   | Array of URLs to the generated content (empty when status is not `completed`)    |
+| data.urls              | object  | Object containing related API endpoints                                          |
+| data.urls.get          | string  | URL to retrieve the prediction result                                            |
+| data.has_nsfw_contents | array   | Array of boolean values indicating NSFW detection for each output                |
+| data.status            | string  | Status of the task: `created`, `processing`, `completed`, or `failed`            |
+| data.created_at        | string  | ISO timestamp of when the request was created (e.g., “2023-04-01T12:34:56.789Z”) |
+| data.error             | string  | Error message (empty if no error occurred)                                       |
+| data.timings           | object  | Object containing timing details                                                 |
+| data.timings.inference | integer | Inference time in milliseconds                                                   |
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+
