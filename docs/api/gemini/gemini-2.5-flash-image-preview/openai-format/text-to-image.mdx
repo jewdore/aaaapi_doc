@@ -42,7 +42,7 @@ This endpoint requires authentication using a Bearer token.
   </Expandable>
 </ParamField>
 
-<ParamField body="model" default="gemini-2.5-flash-image-preview-preview" type="string" required>
+<ParamField body="model" default="gemini-2.5-flash-image-preview" type="string" required>
   The model to use for the request
 </ParamField>
 
@@ -59,7 +59,7 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
       "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
     }
   ],
-  "model": "gemini-2.5-flash-image-preview-preview"
+  "model": "gemini-2.5-flash-image-preview"
 }'
 ```
 
@@ -81,7 +81,7 @@ data = {
       "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
     }
   ],
-  "model": "gemini-2.5-flash-image-preview-preview"
+  "model": "gemini-2.5-flash-image-preview"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -104,7 +104,7 @@ const data = {
       "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
     }
   ],
-  "model": "gemini-2.5-flash-image-preview-preview"
+  "model": "gemini-2.5-flash-image-preview"
 };
 
 fetch(url, {
@@ -139,7 +139,7 @@ func main() {
 "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
 }
 ],
-"model": "gemini-2.5-flash-image-preview-preview"
+"model": "gemini-2.5-flash-image-preview"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -176,7 +176,7 @@ func main() {
       ],
       "created": 1762163196,
       "id": "chatcmpl-20251103174627570914749cO7T1Yq5",
-      "model": "gemini-2.5-flash-image-preview-preview",
+      "model": "gemini-2.5-flash-image-preview",
       "object": "chat.completion",
       "usage": {
           "completion_tokens": 1307,
