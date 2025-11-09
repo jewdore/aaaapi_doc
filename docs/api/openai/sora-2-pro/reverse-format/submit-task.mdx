@@ -18,7 +18,7 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="model" default="sora-2" type="string" required>
+<ParamField body="model" default="sora-2-pro" type="string" required>
   The model to use for the request
 </ParamField>
 
@@ -51,7 +51,7 @@ curl -X POST "https://gptproto.com/v1/video/create" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "model": "sora-2",
+  "model": "sora-2-pro",
   "orientation": "portrait",
   "prompt": "A video of a horse dancing.",
   "images": [
@@ -74,7 +74,7 @@ headers = {
 }
 
 data = {
-  "model": "sora-2",
+  "model": "sora-2-pro",
   "orientation": "portrait",
   "prompt": "A video of a horse dancing.",
   "images": [
@@ -98,7 +98,7 @@ const headers = {
 };
 
 const data = {
-  "model": "sora-2",
+  "model": "sora-2-pro",
   "orientation": "portrait",
   "prompt": "A video of a horse dancing.",
   "images": [
@@ -134,7 +134,7 @@ func main() {
     url := "https://gptproto.com/v1/video/create"
 
     payload := []byte(`{
-"model": "sora-2",
+"model": "sora-2-pro",
 "orientation": "portrait",
 "prompt": "A video of a horse dancing.",
 "images": [
