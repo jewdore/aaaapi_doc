@@ -915,8 +915,13 @@
             {
               "group": "gptproto format",
               "pages": [
+<<<<<<< HEAD
                 "docs/api/gemini/gemini-2.5-flash-image-preview-hd/gptproto-format/text-to-image",
                 "docs/api/gemini/gemini-2.5-flash-image-preview-hd/gptproto-format/image-to-image"
+=======
+                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/openai-format/create-image",
+                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/openai-format/image-editing"
+>>>>>>> eec73c728af552b4cb6b69ebe3b51dcb0e96744b
               ]
             }
           ]
