@@ -6,7 +6,7 @@ description: 'Image to Image'
 
 ## Overview
 
-This endpoint provides image to image functionality.
+GPT Image 1 is a new state-of-the-art image generation model. It is a natively multimodal language model that accepts both text and image inputs, and produces image outputs.
 
 ## Authentication
 
@@ -18,39 +18,206 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="image" type="file" required>
-  image parameter
+<ParamField body="model" type="string[]" required default="gpt-image-1">
+The image(s) to edit. Must be a supported image file or an array of images.
+
+For `gpt-image-1`, each image should be a `png`, `webp`, or `jpg` file less than 50MB. You can provide up to 16 images.
 </ParamField>
 
-<ParamField body="prompt" type="string" required>
-  prompt parameter
-</ParamField>
-
-<ParamField body="mask" type="file" required>
-  mask parameter
-</ParamField>
 
 <ParamField body="model" type="string" required default="gpt-image-1">
-  model parameter
+  The model to use for image generation. 
 </ParamField>
 
-<ParamField body="n" type="string" required default="1">
-  n parameter
+<ParamField body="prompt" type="string" required default="oxen and horses">
+  A text description of the desired image(s). The maximum length is  32000 characters for `gpt-image-1`.
 </ParamField>
 
-## Response
+<ParamField body="background" type="string"   default="auto" >
+  Allows to set transparency for the background of the generated image(s). This parameter is only supported for `gpt-image-1`. Must be one of `transparent`, `opaque` or `auto` (default value). When `auto` is used, the model will automatically determine the best background for the image.
 
-<ResponseField name="Success" type="200">
-  Successful response
+If `transparent`, the output format needs to support transparency, so it should be set to either `png` (default value) or `webp`.
+</ParamField>
 
-```json
-{
-  "status": "success"
+
+
+<ParamField body="input_fidelity" type="string"  default="low">
+Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1`. Supports `high` and `low`. Defaults to `low`.
+
+</ParamField>
+
+<ParamField body="mask" type="string"  default="auto">
+An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where `image` should be edited. If there are multiple images provided, the mask will be applied on the first image. Must be a valid PNG file, less than 4MB, and have the same dimensions as `image`.
+
+</ParamField>
+
+
+
+<ParamField body="n" type="integer"  default="1">
+  The number of images to generate. Must be between 1 and 10.
+</ParamField>
+
+
+<ParamField body="output_compression" type="string"  default="100">
+  The compression level (0-100%) for the generated images. This parameter is only supported for `gpt-image-1` with the `webp` or `jpeg` output formats, and defaults to 100.
+</ParamField>
+
+
+<ParamField body="output_format" type="string"  default="png">
+ The format in which the generated images are returned. This parameter is only supported for `gpt-image-1`. Must be one of `png`, `jpeg`, or `webp`.
+
+</ParamField>
+
+
+<ParamField body="partial_images" type="integer"  default="0">
+ The number of partial images to generate. This parameter is used for streaming responses that return partial images. Value must be between 0 and 3. When set to 0, the response will be a single image sent in one streaming event.
+ Note that the final image may be sent before the full number of partial images are generated if the full image is generated more quickly.
+</ParamField>
+
+
+<ParamField body="quality" type="string"  default="auto">
+  The quality of the image that will be generated.
+
+* `auto` (default value) will automatically select the best quality for the given model.
+* `high`, `medium` and `low` are supported for `gpt-image-1`.
+</ParamField>
+
+
+<ParamField body="size" type="string"  default="auto">
+  The size of the generated images. Must be one of `1024x1024`, `1536x1024` (landscape), `1024x1536` (portrait), or `auto` (default value) for `gpt-image-1`,
+
+</ParamField>
+
+
+
+<ParamField body="stream" type="string"  default="false">
+  Generate the image in streaming mode. Defaults to `false`.
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/images/edits" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+"model": "gpt-image-1",
+"image":["base64","base64"]
+"prompt": "Generate a photorealistic image of a gift basket on a white background 
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font, 
+containing all the items in the reference pictures.",
+"n": 1,
+"size": "1024x1024"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/images/edits"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+"model": "gpt-image-1",
+"image":[ 
+    open("body-lotion.png", "rb"),
+    open("bath-bomb.png", "rb"),
+    open("incense-kit.png", "rb"),
+    open("soap.png", "rb")
+    ]
+"prompt": "Generate a photorealistic image of a gift basket on a white background 
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font, 
+containing all the items in the reference pictures.",
+"n": 1,
+"size": "1024x1024"
+}
+
+response = requests.post(url, headers=headers, json=data)
+
+image_base64 = response.data[0].b64_json
+image_bytes = base64.b64decode(image_base64)
+
+# Save the image to a file
+with open("gift-basket.png", "wb") as f:
+    f.write(image_bytes)
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/images/edits";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+"model": "gpt-image-1",
+"image":["base64","base64"]
+"prompt": "Generate a photorealistic image of a gift basket on a white background 
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font, 
+containing all the items in the reference pictures.",
+"n": 1,
+"size": "1024x1024"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/images/edits"
+
+    payload := []byte(`{
+"model": "gpt-image-1",
+"image":["base64","base64"]
+"prompt": "Generate a photorealistic image of a gift basket on a white background 
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font, 
+containing all the items in the reference pictures.",
+"n": 1,
+"size": "1024x1024"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
 }
 ```
-</ResponseField>
 
-## Error Responses
+</CodeGroup>
+
+
 
 <ResponseExample>
 
