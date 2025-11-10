@@ -156,6 +156,13 @@ func main() {
 
 <ResponseField name="data.id" type="string">
 
+task id
+</ResponseField>
+<ResponseField name="data.status" type="string">
+
+	Status of the task: created, processing, completed, or failed
+</ResponseField>
+
 ```json
 {
     "data": {
@@ -166,7 +173,7 @@ func main() {
         "urls": {
             "get": "https://gptproto.com/api/v3/predictions/4ec5973904e74f31bc9cd4ce94e3878e/result"
         },
-        "status": "completed",
+        "status": "processing",
         "error": "",
         "executionTime": 380841,
         "timings": {
@@ -179,8 +186,6 @@ func main() {
     "code": 200
 }
 ```
-</ResponseField>
-
 
 <ResponseExample>
 

@@ -1,6 +1,6 @@
 ---
 title: 'Query Task'
-api: 'GET /api/v3/predictions/cb9a85905ba74dbaa0dab65a2fa5313b/result'
+api: 'GET /api/v3/predictions/{task_id}/result'
 description: 'Query Task'
 ---
 
@@ -16,19 +16,14 @@ This endpoint requires authentication using a Bearer token.
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
+## Request Body
+
+<ParamField path="task_id" type="string" required default="Hello world! This is a test of the text-to-speech system.">
+  Text to convert to speech. Every character is 1 token. Maximum 10000 characters. Use <#x#> between words to control pause duration (0.01-99.99s).
+</ParamField>
+
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
