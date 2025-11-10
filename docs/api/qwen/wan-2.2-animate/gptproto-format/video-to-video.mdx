@@ -1,0 +1,233 @@
+---
+title: 'Video to Video'
+api: 'POST /api/v3/wavespeed-ai/wan-2.2/animate'
+description: 'Video to Video'
+---
+
+## Overview
+
+Wan2.2-Animate is a unified model for character animation and replacement with holistic movement and expression replication. 
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="image" type="string" >
+  The image for generating the output.
+</ParamField>
+
+<ParamField body="video" type="string" >
+  The video for generating the output.
+</ParamField>
+
+<ParamField body="prompt" type="string">
+  The positive prompt for the generation.
+</ParamField>
+
+<ParamField body="mode" type="string" default="animate" >
+  animate, replace .The mode of the generation. Animate Mode: animate the character in input image with movements from the input video. Replace Mode: replace the character in input video with the character in input image.
+</ParamField>
+
+<ParamField body="resolution" type="string"  default="-1">
+  480p, 720p . The resolution of the output video.
+</ParamField>
+
+<ParamField body="seed" type="integer"  default="720p">
+  -1 ~ 2147483647 . The random seed to use for the generation. -1 means a random seed will be used.
+</ParamField>
+
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/alibaba/wan-2.2/animate' \
+--header 'Authorization: sk-**' \
+--header 'Content-Type: application/json' \
+--data '{
+  "image": "https://q4.itc.cn/images01/20240320/32e68d20e9f04a9994c7cb3d1ae708cf.jpeg",
+  "mode": "animate",
+  "prompt": "",
+  "resolution": "480p",
+  "seed": -1,
+  "video": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250704/sclfum/2.mp4"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/wavespeed-ai/wan-2.2/animate"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "image": "https://q4.itc.cn/images01/20240320/32e68d20e9f04a9994c7cb3d1ae708cf.jpeg",
+  "mode": "animate",
+  "prompt": "",
+  "resolution": "480p",
+  "seed": -1,
+  "video": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250704/sclfum/2.mp4"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/wavespeed-ai/wan-2.2/animate";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "image": "https://q4.itc.cn/images01/20240320/32e68d20e9f04a9994c7cb3d1ae708cf.jpeg",
+  "mode": "animate",
+  "prompt": "",
+  "resolution": "480p",
+  "seed": -1,
+  "video": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250704/sclfum/2.mp4"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/alibaba/wan-2.5/image-to-video-fast"
+
+    payload := []byte(`{
+  "image": "https://q4.itc.cn/images01/20240320/32e68d20e9f04a9994c7cb3d1ae708cf.jpeg",
+  "mode": "animate",
+  "prompt": "",
+  "resolution": "480p",
+  "seed": -1,
+  "video": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250704/sclfum/2.mp4"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="data.id" type="string">
+
+```json
+{
+    "data": {
+        "id": "4ec5973904e74f31bc9cd4ce94e3878e",
+        "model": "wavespeed-ai/wan-2.2/animate",
+        "outputs": [
+        ],
+        "urls": {
+            "get": "https://gptproto.com/api/v3/predictions/4ec5973904e74f31bc9cd4ce94e3878e/result"
+        },
+        "status": "completed",
+        "error": "",
+        "executionTime": 380841,
+        "timings": {
+            "inference": 380841
+        },
+        "has_nsfw_contents": null,
+        "created_at": "2025-11-07T02:35:15.34950574Z"
+    },
+    "message": "success",
+    "code": 200
+}
+```
+</ResponseField>
+
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

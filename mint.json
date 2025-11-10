@@ -1764,11 +1764,17 @@
     {
       "group": "qwen",
       "pages": [
+        
         {
-          "group": "image/generations",
+          "group": "wan-2.2-animate",
           "pages": [
-            "docs/api/qwen/imagegenerations/image-edit",
-            "docs/api/qwen/imagegenerations/create-image"
+            {
+              "group": "Gptproto Format",
+              "pages": [
+                "docs/api/qwen/wan-2.2-animate/gptproto-format/video-to-video",
+                "docs/api/qwen/wan-2.2-animate/gptproto-format/query-task"
+              ]
+            }
           ]
         },
         {
