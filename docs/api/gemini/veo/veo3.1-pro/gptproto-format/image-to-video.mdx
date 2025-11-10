@@ -1,12 +1,12 @@
 ---
-title: 'Text to Video（16:9）'
+title: 'Image to Video'
 api: 'POST /v1/veo/videos'
-description: 'Text to Video（16:9）'
+description: 'Image to Video'
 ---
 
 ## Overview
 
-This endpoint provides text to video（16:9） functionality.
+This endpoint provides image to video functionality.
 
 ## Authentication
 
@@ -26,8 +26,20 @@ This endpoint requires authentication using a Bearer token.
   The model to use for the request
 </ParamField>
 
+<ParamField body="upsample" type="boolean"  default="true">
+  Upsample parameter
+</ParamField>
+
+<ParamField body="reference" type="boolean"  default="false">
+  Reference parameter
+</ParamField>
+
 <ParamField body="aspect_ratio" type="string"  default="16:9">
   Aspect Ratio parameter
+</ParamField>
+
+<ParamField body="images" type="array"  default="[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg&quot;]">
+  Images parameter
 </ParamField>
 
 ## Request Example
@@ -41,7 +53,12 @@ curl -X POST "https://gptproto.com/v1/veo/videos" \
   -d '{
   "prompt": "A beautiful woman is dancing in a European and American style",
   "model": "veo3.1-pro",
-  "aspect_ratio": "16:9"
+  "upsample": true,
+  "reference": false,
+  "aspect_ratio": "16:9",
+  "images": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg"
+  ]
 }'
 ```
 
@@ -58,7 +75,12 @@ headers = {
 data = {
   "prompt": "A beautiful woman is dancing in a European and American style",
   "model": "veo3.1-pro",
-  "aspect_ratio": "16:9"
+  "upsample": true,
+  "reference": false,
+  "aspect_ratio": "16:9",
+  "images": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg"
+  ]
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -76,7 +98,12 @@ const headers = {
 const data = {
   "prompt": "A beautiful woman is dancing in a European and American style",
   "model": "veo3.1-pro",
-  "aspect_ratio": "16:9"
+  "upsample": true,
+  "reference": false,
+  "aspect_ratio": "16:9",
+  "images": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg"
+  ]
 };
 
 fetch(url, {
@@ -106,7 +133,12 @@ func main() {
     payload := []byte(`{
 "prompt": "A beautiful woman is dancing in a European and American style",
 "model": "veo3.1-pro",
-"aspect_ratio": "16:9"
+"upsample": true,
+"reference": false,
+"aspect_ratio": "16:9",
+"images": [
+"https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg"
+]
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

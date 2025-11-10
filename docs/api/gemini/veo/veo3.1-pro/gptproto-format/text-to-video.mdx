@@ -1,12 +1,12 @@
 ---
-title: 'Text to Video（16:9）'
+title: 'Text to Video'
 api: 'POST /v1/veo/videos'
-description: 'Text to Video（16:9）'
+description: 'Text to Video'
 ---
 
 ## Overview
 
-This endpoint provides text to video（16:9） functionality.
+This endpoint provides text to video functionality.
 
 ## Authentication
 
@@ -22,16 +22,8 @@ This endpoint requires authentication using a Bearer token.
   Prompt parameter
 </ParamField>
 
-<ParamField body="model" type="string" required default="veo3.1">
+<ParamField body="model" type="string" required default="veo3.1-pro">
   The model to use for the request
-</ParamField>
-
-<ParamField body="upsample" type="boolean"  default="true">
-  Upsample parameter
-</ParamField>
-
-<ParamField body="reference" type="boolean"  default="false">
-  Reference parameter
 </ParamField>
 
 <ParamField body="aspect_ratio" type="string"  default="16:9">
@@ -48,9 +40,7 @@ curl -X POST "https://gptproto.com/v1/veo/videos" \
   -H "Content-Type: application/json" \
   -d '{
   "prompt": "A beautiful woman is dancing in a European and American style",
-  "model": "veo3.1",
-  "upsample": true,
-  "reference": false,
+  "model": "veo3.1-pro",
   "aspect_ratio": "16:9"
 }'
 ```
@@ -67,9 +57,7 @@ headers = {
 
 data = {
   "prompt": "A beautiful woman is dancing in a European and American style",
-  "model": "veo3.1",
-  "upsample": true,
-  "reference": false,
+  "model": "veo3.1-pro",
   "aspect_ratio": "16:9"
 }
 
@@ -87,9 +75,7 @@ const headers = {
 
 const data = {
   "prompt": "A beautiful woman is dancing in a European and American style",
-  "model": "veo3.1",
-  "upsample": true,
-  "reference": false,
+  "model": "veo3.1-pro",
   "aspect_ratio": "16:9"
 };
 
@@ -119,9 +105,7 @@ func main() {
 
     payload := []byte(`{
 "prompt": "A beautiful woman is dancing in a European and American style",
-"model": "veo3.1",
-"upsample": true,
-"reference": false,
+"model": "veo3.1-pro",
 "aspect_ratio": "16:9"
 }`)
 

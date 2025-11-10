@@ -1,0 +1,170 @@
+---
+title: "Text to Video"
+api: "POST /v1/chat/completions"
+description: "Text to Video"
+---
+
+## Overview
+
+This endpoint provides text to video  functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" default="sk-***********" type="string" required>
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+<ParamField body="model" type="string" required default="veo3.1-pro">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="messages" type="array" required >
+  Prompt parameter  
+  * content Add "upsample" to the content parameter to enable high-resolution video
+  * content Add "aspect_ratio" to the content aspect ratio. 16:9, 9:16
+
+</ParamField>
+
+
+
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    //Add "upsample" to the content parameter to enable high-resolution video
+    "model": "veo3.1-pro",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Video of cow and horse dancing aspect_ratio 16:9"
+        }
+    ],
+    "stream": true
+}'
+```
+
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/chat/completions"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    //Add "upsample" to the content parameter to enable high-resolution video
+    "model": "veo3.1-pro",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Video of cow and horse dancing aspect_ratio 16:9"
+        }
+    ],
+    "stream": true
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/chat/completions";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+    //Add "upsample" to the content parameter to enable high-resolution video
+    "model": "veo3.1-pro",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Video of cow and horse dancing aspect_ratio 16:9"
+        }
+    ],
+    "stream": true
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+</CodeGroup>
+
+
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,12 +1,12 @@
 ---
-title: 'First&last frame'
+title: 'Image to Video'
 api: 'POST /v1/chat/completions'
-description: 'First&last frame'
+description: 'Image to Video'
 ---
 
 ## Overview
 
-This endpoint provides first&last frame functionality.
+This endpoint provides image to video functionality.
 
 ## Authentication
 
@@ -27,6 +27,7 @@ This endpoint requires authentication using a Bearer token.
   * content Add "aspect_ratio" to the content aspect ratio. 16:9, 9:16
 
 </ParamField>
+
 ## Request Example
 
 <CodeGroup>
@@ -36,7 +37,7 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    //veo3.1-pro
+    //aspect_ratio 16:9 ，9:16 
     //Add "upsample" to the text parameter to enable high-resolution video
     "model": "veo3.1-pro",
     "messages": [
@@ -45,18 +46,12 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
             "content": [
                 {
                     "type": "text",
-                    "text": "A beautiful woman is dancing in a European and American style. upsample aspect_ratio 16:9"
+                    "text": "A video of a horse dancing. aspect_ratio 16:9 upsample."
                 },
                 {
                     "type": "image_url",
                     "image_url": {
-                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg"
-                    }
-                },
-                {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
+                        "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
                     }
                 }
             ]
@@ -86,18 +81,12 @@ data = {
             "content": [
                 {
                     "type": "text",
-                    "text": "A beautiful woman is dancing in a European and American style. upsample aspect_ratio 16:9"
+                    "text": "A video of a horse dancing. aspect_ratio 16:9 upsample."
                 },
                 {
                     "type": "image_url",
                     "image_url": {
-                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg"
-                    }
-                },
-                {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
+                        "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
                     }
                 }
             ]
@@ -128,18 +117,12 @@ const data = {
             "content": [
                 {
                     "type": "text",
-                    "text": "A beautiful woman is dancing in a European and American style. upsample aspect_ratio 16:9"
+                    "text": "A video of a horse dancing. aspect_ratio 16:9 upsample."
                 },
                 {
                     "type": "image_url",
                     "image_url": {
-                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg"
-                    }
-                },
-                {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
+                        "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
                     }
                 }
             ]
@@ -182,18 +165,12 @@ func main() {
             "content": [
                 {
                     "type": "text",
-                    "text": "A beautiful woman is dancing in a European and American style. upsample aspect_ratio 16:9"
+                    "text": "A video of a horse dancing. aspect_ratio 16:9 upsample."
                 },
                 {
                     "type": "image_url",
                     "image_url": {
-                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg"
-                    }
-                },
-                {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
+                        "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
                     }
                 }
             ]
