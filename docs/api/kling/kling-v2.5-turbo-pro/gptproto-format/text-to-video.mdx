@@ -1,0 +1,132 @@
+---
+title: 'Text to Video'
+api: 'POST /api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-video'
+description: 'Text to Video'
+---
+
+## Overview
+
+**Kling 2.5 Turbo Pro** is an advanced text-to-video model that produces ultra-smooth motion, cinematic visuals, and accurate prompt adherence.
+
+Its improved **dynamic processing** and **text-to-motion control** allow for seamless transitions while maintaining style fidelity across various looks.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+
+## Request Body
+
+
+<ParamField body="prompt" type="string" required>
+  The positive prompt for the generation.
+
+</ParamField>
+
+
+<ParamField body="negative_prompt" type="string">
+  The negative prompt for the generation.
+</ParamField>
+
+
+<ParamField body="aspect_ratio" default="16:9" type="string">
+   1:1, 9:16, 16:9.  default 16:9 . The aspect ratio of the generated media.
+</ParamField>
+
+
+
+
+<ParamField body="duration" default="5" type="integer">
+   5, 10.  default 5 . The duration of the generated media in seconds.
+</ParamField>
+
+
+<ParamField body="guidance_scale" type="number"  default="0.5">
+  0.00 ~ 1.00 . The guidance scale to use for the generation.
+</ParamField>
+
+
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-video" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "The astronaut stood up and walked away",
+    "aspect_ratio": "16:9",
+    "duration": 5,
+    "guidance_scale": 0.5
+}'
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="data.id" type="string">
+	Unique identifier for the prediction, Task Id
+</ResponseField>
+
+<ResponseField name="data.status" type="string">
+	Status of the task: created, processing, completed, or failed
+</ResponseField>
+
+
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

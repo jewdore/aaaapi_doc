@@ -1,12 +1,12 @@
 ---
-title: 'Image to Video'
-api: 'POST /api/v3/kwaivgi/kling-v2.5-turbo-pro/image-to-video'
-description: 'Image to Video'
+title: 'Text to Image'
+api: 'POST /kling/v1/images/generations'
+description: 'Text to Image'
 ---
 
 ## Overview
 
-This endpoint provides image to video functionality.
+This endpoint provides image generation functionality.
 
 ## Authentication
 
@@ -16,28 +16,38 @@ This endpoint requires authentication using a Bearer token.
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
+## Request Body
+
+<ParamField body="prompt" type="string" required default="A happy scene on the beach.">
+  Prompt parameter
+</ParamField>
+
 ## Request Example
 
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/image-to-video" \
+curl -X POST "https://gptproto.com/kling/v1/images/generations" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{}'
+  -d '{
+  "prompt": "A happy scene on the beach."
+}'
 ```
 
 ```python Python
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/image-to-video"
+url = "https://gptproto.com/kling/v1/images/generations"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
-data = {}
+data = {
+  "prompt": "A happy scene on the beach."
+}
 
 response = requests.post(url, headers=headers, json=data)
 result = response.json()
@@ -45,13 +55,15 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/image-to-video";
+const url = "https://gptproto.com/kling/v1/images/generations";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
-const data = {};
+const data = {
+  "prompt": "A happy scene on the beach."
+};
 
 fetch(url, {
   method: "POST",
@@ -75,9 +87,11 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/image-to-video"
+    url := "https://gptproto.com/kling/v1/images/generations"
 
-    payload := []byte(`{}`)
+    payload := []byte(`{
+"prompt": "A happy scene on the beach."
+}`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
     req.Header.Set("Authorization", "YOUR_API_KEY")

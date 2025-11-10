@@ -1072,7 +1072,7 @@
         {
           "group": "Official Format",
           "pages": [
-            "docs/api/kling/official-format/image-generation",
+            "docs/api/kling/official-format/text-to-image",
             "docs/api/kling/official-format/text-to-video",
             "docs/api/kling/official-format/image-to-video",
             "docs/api/kling/official-format/query-task"
@@ -1084,8 +1084,8 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/kling/kling-v21-i2v-master/gptproto-format/image-to-video",
-                "docs/api/kling/kling-v21-i2v-master/gptproto-format/query-task"
+                "docs/api/kling/kling-v2.1-i2v-master/gptproto-format/image-to-video",
+                "docs/api/kling/kling-v2.1-i2v-master/gptproto-format/query-task"
               ]
             }
           ]
@@ -1096,8 +1096,8 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/kling/kling-v21-i2v-standard/gptproto-format/image-to-video",
-                "docs/api/kling/kling-v21-i2v-standard/gptproto-format/query-task"
+                "docs/api/kling/kling-v2.1-i2v-standard/gptproto-format/image-to-video",
+                "docs/api/kling/kling-v2.1-i2v-standard/gptproto-format/query-task"
               ]
             }
           ]
@@ -1108,8 +1108,8 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/kling/kling-v21-i2v-pro/gptproto-format/image-to-video",
-                "docs/api/kling/kling-v21-i2v-pro/gptproto-format/query-task"
+                "docs/api/kling/kling-v2.1-i2v-pro/gptproto-format/image-to-video",
+                "docs/api/kling/kling-v2.1-i2v-pro/gptproto-format/query-task"
               ]
             }
           ]
@@ -1118,16 +1118,16 @@
           "group": "kling-v2.5-turbo-pro",
           "pages": [
             {
-              "group": "Official Format",
+              "group": "Gptproto Format",
               "pages": [
-                "docs/api/kling/kling-v25-turbo-pro/official-format/image-to-video",
-                "docs/api/kling/kling-v25-turbo-pro/official-format/query-task",
-                "docs/api/kling/kling-v25-turbo-pro/official-format/text-to-video"
+                "docs/api/kling/kling-v2.5-turbo-pro/gptproto-format/image-to-video",
+                "docs/api/kling/kling-v2.5-turbo-pro/gptproto-format/query-task",
+                "docs/api/kling/kling-v2.5-turbo-pro/gptproto-format/text-to-video"
               ]
             }
           ]
         },
-        "docs/api/kling/kling-v25-turbo-pro",
+        "docs/api/kling/kling-v2.5-turbo-pro",
         "docs/api/kling/query-task"
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Kling.png"
