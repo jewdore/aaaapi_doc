@@ -29,10 +29,10 @@ This endpoint requires authentication using a Bearer token.
 
 </ParamField>
 
-<ParamField body="model" type="string"  required default="speech-02-hd">
+<ParamField body="model" type="string"  required default="speech-2.5-turbo-preview-voice-clone">
   Specify the TTS model to be used for the preview. This is only a preview after cloning. Once the model is generated, any Minimax Turbo or HD voice model can be used for inference.
-  
-  </ParamField>
+
+</ParamField>
 
 
 <ParamField body="need_noise_reduction" type="string">
@@ -67,7 +67,7 @@ curl -X POST "https://gptproto.com/api/v3/minimax/voice-clone" \
   "accuracy": 0.7,
   "audio": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3",
   "custom_voice_id": "Alice-jiuhao-2",
-  "model": "speech-02-hd",
+  "model": "speech-2.5-turbo-preview-voice-clone",
   "need_noise_reduction": false,
   "need_volume_normalization": false,
   "text": "This is a preview of your cloned voice. I hope you enjoy it!"
@@ -88,7 +88,7 @@ data = {
   "accuracy": 0.7,
   "audio": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3",
   "custom_voice_id": "Alice-jiuhao-2",
-  "model": "speech-02-hd",
+  "model": "speech-2.5-turbo-preview-voice-clone",
   "need_noise_reduction": false,
   "need_volume_normalization": false,
   "text": "This is a preview of your cloned voice. I hope you enjoy it!"
@@ -110,7 +110,7 @@ const data = {
   "accuracy": 0.7,
   "audio": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3",
   "custom_voice_id": "Alice-jiuhao-2",
-  "model": "speech-02-hd",
+  "model": "speech-2.5-turbo-preview-voice-clone",
   "need_noise_reduction": false,
   "need_volume_normalization": false,
   "text": "This is a preview of your cloned voice. I hope you enjoy it!"
@@ -144,7 +144,7 @@ func main() {
 "accuracy": 0.7,
 "audio": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3",
 "custom_voice_id": "Alice-jiuhao-2",
-"model": "speech-02-hd",
+"model": "speech-2.5-turbo-preview-voice-clone",
 "need_noise_reduction": false,
 "need_volume_normalization": false,
 "text": "This is a preview of your cloned voice. I hope you enjoy it!"

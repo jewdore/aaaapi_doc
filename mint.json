@@ -1219,11 +1219,24 @@
           "group": "speech-2.5-hd-preview-voice-clone",
           "pages": [
             {
-              "group": "Official Format",
+              "group": "Gptproto Format",
               "pages": [
-                "docs/api/minimax/speech-25-hd-preview-voice-clone/official-format/voice-clone",
-                "docs/api/minimax/speech-25-hd-preview-voice-clone/official-format/get-task",
-                "docs/api/minimax/speech-25-hd-preview-voice-clone/official-format/fileupload"
+                "docs/api/minimax/speech-2.5-hd-preview-voice-clone/gptproto-format/Voice-to-Voice",
+                "docs/api/minimax/speech-2.5-hd-preview-voice-clone/gptproto-format/get-task",
+                "docs/api/minimax/speech-2.5-hd-preview-voice-clone/gptproto-format/fileupload"
+              ]
+            }
+          ]
+        },
+        {
+          "group": "speech-2.5-turbo-preview-voice-clone",
+          "pages": [
+            {
+              "group": "Gptproto Format",
+              "pages": [
+                "docs/api/minimax/speech-2.5-turbo-preview-voice-clone/gptproto-format/Voice-to-Voice",
+                "docs/api/minimax/speech-2.5-turbo-preview-voice-clone/gptproto-format/get-task",
+                "docs/api/minimax/speech-2.5-turbo-preview-voice-clone/gptproto-format/fileupload"
               ]
             }
           ]

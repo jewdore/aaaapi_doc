@@ -19,8 +19,9 @@ This endpoint requires authentication using a Bearer token.
 ## Request Body
 
 <ParamField body="text" type="string" required default="Welcome to our advanced text-to-speech system! Experience high-quality voice synthesis with natural pronunciation and clear articulation.">
-  Text to convert to speech. Every character is 1 token. Maximum 10000 characters. Use <#x#> between words to control pause duration (0.01-99.99s).
+  Text to convert to speech. Every character is 1 token. Maximum 10000 characters. Use between words to control pause duration (0.01-99.99s).
 </ParamField>
+
 
 
 
@@ -34,7 +35,6 @@ This endpoint requires authentication using a Bearer token.
 <ParamField body="speed" type="number"  default="1">
   0.50 ~ 2.00 . Speech speed. Range: 0.5-2.0, where 1.0 is normal speed.
 </ParamField>
-
 
 
 <ParamField body="volume" type="number"  default="1">
@@ -206,6 +206,7 @@ func main() {
 
 </CodeGroup>
 
+
 ## Response
 
 <ResponseField name="data.id" type="string">
@@ -268,4 +269,3 @@ func main() {
 ```
 
 </ResponseExample>
-

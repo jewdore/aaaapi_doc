@@ -15,6 +15,8 @@ This endpoint requires authentication using a Bearer token.
 <ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
+<ParamField header="Content-Type" default="multipart/form-data" type="string" required>
+</ParamField>
 
 ## Request Body
 
@@ -24,17 +26,6 @@ This endpoint requires authentication using a Bearer token.
 
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
