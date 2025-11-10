@@ -1,6 +1,6 @@
 ---
 title: 'Query Task'
-api: 'GET /api/v3/predictions/df39e0baac8c4d9bbbaafb37259fb76d/result'
+api: 'GET /api/v3/predictions/{task_id}/result'
 description: 'Query Task'
 ---
 
@@ -16,19 +16,16 @@ This endpoint requires authentication using a Bearer token.
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
+## Request Body
+<ParamField path="task_id" type="string" required>
+  Unique identifier for the prediction, Task Id
+
+</ParamField>
+
 ## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
+<ResponseField name="data.outputs" type="string">
+	Array of URLs to the generated content (empty when status is not completed)
 </ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 

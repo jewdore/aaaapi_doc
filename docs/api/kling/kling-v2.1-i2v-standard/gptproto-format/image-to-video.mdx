@@ -6,7 +6,7 @@ description: 'Image to Video'
 
 ## Overview
 
-This endpoint provides image to video functionality.
+**Kling v2.1** is an AI video generation model developed by ​**KlingAI (Kuaishou)**​. It is purpose-built for creators, artists, and production teams seeking fast, realistic video generation from image and text prompts. Ideal for rapid prototyping, rough drafts, and creative iteration, it balances performance with affordability—while maintaining high-quality motion dynamics and visual coherence.
 
 ## Authentication
 
@@ -14,6 +14,28 @@ This endpoint requires authentication using a Bearer token.
 
 <ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" type="string" required>
+  The positive prompt for the generation.
+</ParamField>
+
+<ParamField body="negative_prompt" type="string">
+  The negative prompt for the generation.
+</ParamField>
+
+<ParamField body="image" type="string" required>
+  First frame of the video; Supported image formats include.jpg/.jpeg/.png; The image file size cannot exceed 10MB, and the image resolution should not be less than 300*300px.
+</ParamField>
+
+<ParamField body="guidance_scale" type="number"  default="0.5">
+  0.00 ~ 1.00 . The guidance scale to use for the generation.
+</ParamField>
+
+<ParamField body="duration" default="5" type="integer">
+   5, 10.  default 5 . The duration of the generated media in seconds.
 </ParamField>
 
 ## Request Example
@@ -24,92 +46,26 @@ This endpoint requires authentication using a Bearer token.
 curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-standard" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{}'
-```
-
-```python Python
-import requests
-import json
-
-url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-standard"
-headers = {
-    "Authorization": "YOUR_API_KEY",
-    "Content-Type": "application/json"
-}
-
-data = {}
-
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
-```
-
-```javascript JavaScript
-const url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-standard";
-const headers = {
-  "Authorization": "YOUR_API_KEY",
-  "Content-Type": "application/json"
-};
-
-const data = {};
-
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
-```
-
-```go Go
-package main
-
-import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
-)
-
-func main() {
-    url := "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-standard"
-
-    payload := []byte(`{}`)
-
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
-
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
-}
+  -d '{
+    "image": "https://h2.inkwai.com/bs2/upload-ylab-stunt/se/ai_portal_queue_mmu_image_upscale_aiweb/3214b798-e1b4-4b00-b7af-72b5b0417420_raw_image_0.jpg",
+    "prompt": "The astronaut stood up and walked away",
+    "negative_prompt": "",
+    "guidance_scale": 0.5,
+    "duration": "5"
+}'
 ```
 
 </CodeGroup>
 
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
+<ResponseField name="data.id" type="string">
+	Unique identifier for the prediction, Task Id
 </ResponseField>
 
-## Error Responses
+<ResponseField name="data.status" type="string">
+	Status of the task: created, processing, completed, or failed
+</ResponseField>
 
 <ResponseExample>
 

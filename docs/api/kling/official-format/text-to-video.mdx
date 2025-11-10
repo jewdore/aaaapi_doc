@@ -30,10 +30,6 @@ This endpoint requires authentication using a Bearer token.
   Negative Prompt parameter
 </ParamField>
 
-<ParamField body="cfg_scale" type="number"  default="0.930127850077239">
-  Cfg Scale parameter
-</ParamField>
-
 <ParamField body="mode" type="string"  default="std">
   Mode parameter
 </ParamField>
@@ -63,7 +59,6 @@ curl -X POST "https://gptproto.com/kling/v1/videos/text2video" \
   "model": "kling-video-std-10-v1-6",
   "prompt": "The plane flew over the head",
   "negative_prompt": "",
-  "cfg_scale": 0.930127850077239,
   "mode": "std",
   "aspect_ratio": "16:9",
   "duration": "10",
@@ -85,7 +80,6 @@ data = {
   "model": "kling-video-std-10-v1-6",
   "prompt": "The plane flew over the head",
   "negative_prompt": "",
-  "cfg_scale": 0.930127850077239,
   "mode": "std",
   "aspect_ratio": "16:9",
   "duration": "10",
@@ -108,7 +102,6 @@ const data = {
   "model": "kling-video-std-10-v1-6",
   "prompt": "The plane flew over the head",
   "negative_prompt": "",
-  "cfg_scale": 0.930127850077239,
   "mode": "std",
   "aspect_ratio": "16:9",
   "duration": "10",
@@ -143,7 +136,6 @@ func main() {
 "model": "kling-video-std-10-v1-6",
 "prompt": "The plane flew over the head",
 "negative_prompt": "",
-"cfg_scale": 0.930127850077239,
 "mode": "std",
 "aspect_ratio": "16:9",
 "duration": "10",

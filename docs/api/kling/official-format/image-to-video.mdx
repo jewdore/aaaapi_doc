@@ -100,16 +100,6 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 
-
-<ParamField body="cfg_scale" type="float"  default="0.5">
-    Flexibility in video generation; The higher the value, the lower the model’s degree of flexibility, and the stronger the relevance to the user’s prompt.
-
-    * Value range: [0, 1]
-
-    Kling-v2.x model does not support the this parameters
-</ParamField>
-
-
 <ParamField body="mode" type="string"  default="std">
     Video generation mode
 
@@ -286,7 +276,6 @@ curl -X POST "https://gptproto.com/kling/v1/videos/image2video" \
     "duration": "5",
     "image": "https://h2.inkwai.com/bs2/upload-ylab-stunt/se/ai_portal_queue_mmu_image_upscale_aiweb/3214b798-e1b4-4b00-b7af-72b5b0417420_raw_image_0.jpg",
     "prompt": "The astronaut stood up and walked away",
-    "cfg_scale": 0.5,
     "static_mask": "https://h2.inkwai.com/bs2/upload-ylab-stunt/ai_portal/1732888177/cOLNrShrSO/static_mask.png",
     "dynamic_masks": [
       {
