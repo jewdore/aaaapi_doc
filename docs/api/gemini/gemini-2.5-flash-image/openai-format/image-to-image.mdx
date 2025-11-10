@@ -32,7 +32,7 @@ This endpoint requires authentication using a Bearer token.
 <ParamField body="messages" type="array" required>
   Array of message objects for the conversation
 
-  <Expandable title="properties">
+  <Expandable title="properties"  defaultOpen="true">
     <ParamField body="role" type="string" required>
       role of user.
     </ParamField>
@@ -40,7 +40,7 @@ This endpoint requires authentication using a Bearer token.
       The prompt for the generation.
     </ParamField>
     <ParamField body="experimental_attachments" type="array" required>
-      <Expandable title="properties">
+      <Expandable title="properties"  defaultOpen="true">
         <ParamField body="contentType" type="string" required>
           Supported MIME types:image/png, image/jpeg, image/webp
         </ParamField>
