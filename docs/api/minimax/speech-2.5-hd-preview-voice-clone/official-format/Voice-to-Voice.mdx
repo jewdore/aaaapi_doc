@@ -6,7 +6,7 @@ description: 'Voice Clone'
 
 ## Overview
 
-This endpoint provides voice clone functionality.
+MiniMax Voice Clone is a state-of-the-art voice synthesis model developed by MiniMax. It enables high-quality voice cloning from a short reference clip, producing speech that closely mimics the tone, accent, and personality of the original speaker.
 
 ## Authentication
 
@@ -18,32 +18,41 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="accuracy" type="number"  default="0.7">
-  Accuracy parameter
+<ParamField body="audio" type="string" >
+  The uploaded file is cloned and supports formats such as MP3, M4A, and WAV.
 </ParamField>
 
-<ParamField body="audio" type="string"  default="https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3">
-  Audio parameter
+
+
+<ParamField body="custom_voice_id" type="string" required >
+  Custom user-defined ID. Minimum 8 characters; must include letters and numbers and start with a letter (e.g., WaveSpeed001). Duplicate voice-ids will throw an error.
+
 </ParamField>
 
-<ParamField body="custom_voice_id" type="string"  default="Alice-jiuhao-2">
-  Custom Voice Id parameter
+<ParamField body="model" type="string"  required >
+  Specify the TTS model to be used for the preview. This is only a preview after cloning. Once the model is generated, any Minimax Turbo or HD voice model can be used for inference.
+  speech-02-hd, speech-02-turbo, speech-2.5-hd-preview, speech-2.5-turbo-preview
 </ParamField>
 
-<ParamField body="model" type="string" required default="speech-2.5-hd-preview-voice-clone">
-  The model to use for the request
+
+<ParamField body="need_noise_reduction" type="string">
+  Enable noise reduction. Default is false (no noise reduction).
 </ParamField>
 
-<ParamField body="need_noise_reduction" type="boolean"  default="false">
-  Need Noise Reduction parameter
-</ParamField>
+
 
 <ParamField body="need_volume_normalization" type="boolean"  default="false">
-  Need Volume Normalization parameter
+  Specify whether to enable volume normalization. If not provided, the default value is false.
 </ParamField>
 
-<ParamField body="text" type="string"  default="Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!">
-  Text parameter
+<ParamField body="accuracy" type="number"  default="0.7">
+  0.00 ~ 1.00 .Uploading this parameter will set the text validation accuracy threshold, with a value range of [0,1]. If not provided, the default value for this parameter is 0.7.
+</ParamField>
+
+
+
+<ParamField body="text" type="string" default="This is a preview of your cloned voice. I hope you enjoy it!">
+  Text for audio preview. Limited to 2000 characters.
 </ParamField>
 
 ## Request Example
@@ -61,7 +70,7 @@ curl -X POST "https://gptproto.com/api/v3/minimax/voice-clone" \
   "model": "speech-2.5-hd-preview-voice-clone",
   "need_noise_reduction": false,
   "need_volume_normalization": false,
-  "text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+  "text": "This is a preview of your cloned voice. I hope you enjoy it!"
 }'
 ```
 
@@ -82,7 +91,7 @@ data = {
   "model": "speech-2.5-hd-preview-voice-clone",
   "need_noise_reduction": false,
   "need_volume_normalization": false,
-  "text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+  "text": "This is a preview of your cloned voice. I hope you enjoy it!"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -104,7 +113,7 @@ const data = {
   "model": "speech-2.5-hd-preview-voice-clone",
   "need_noise_reduction": false,
   "need_volume_normalization": false,
-  "text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+  "text": "This is a preview of your cloned voice. I hope you enjoy it!"
 };
 
 fetch(url, {
@@ -138,7 +147,7 @@ func main() {
 "model": "speech-2.5-hd-preview-voice-clone",
 "need_noise_reduction": false,
 "need_volume_normalization": false,
-"text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+"text": "This is a preview of your cloned voice. I hope you enjoy it!"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -161,17 +170,7 @@ func main() {
 
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
 
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 

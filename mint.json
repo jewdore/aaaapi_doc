@@ -1185,7 +1185,6 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/minimax/speech-02-hd/gptproto-format/voice-clone",
                 "docs/api/minimax/speech-02-hd/gptproto-format/text-to-audio",
                 "docs/api/minimax/speech-02-hd/gptproto-format/query-task"
               ]
@@ -1210,7 +1209,8 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/minimax/speech-25-hd-preview/gptproto-format/speech-25-hd-preview"
+                "docs/api/minimax/speech-2.5-hd-preview/gptproto-format/speech-2.5-hd-preview",
+                "docs/api/minimax/speech-2.5-hd-preview/gptproto-format/query-task"
               ]
             }
           ]

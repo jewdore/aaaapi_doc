@@ -20524,7 +20524,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"aspect_ratio\": \"16:9\",\n  \"duration\": \"5\",\n  \"guidance_scale\": 0.5,\n  \"prompt\": \"A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \\\"The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\\\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\\n\\n\"\n}",
+                            "raw": "{\n  \"aspect_ratio\": \"16:9\",\n  \"duration\": \"5\",\n  \"guidance_scale\": 0.5,\n  \"prompt\": \"A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \\\"The recording was pure static, a dead end. Then I ran it through Gptproto. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\\\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\\n\\n\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -28201,7 +28201,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\r\n    \"duration\": 5,\r\n    \"enable_prompt_expansion\": false,\r\n    \"seed\": -1,\r\n    \"prompt\": \"A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \\\"The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\\\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\\n\\n\",\r\n    \"resolution\": \"720p\",\r\n    \"image\": \"https://oss.heyoos.com/ai-draw/user/generator/2025/09/24/9f6947f8890f45bda58198cc5395f8ec/.png\"\r\n}",
+                                            "raw": "{\r\n    \"duration\": 5,\r\n    \"enable_prompt_expansion\": false,\r\n    \"seed\": -1,\r\n    \"prompt\": \"A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \\\"The recording was pure static, a dead end. Then I ran it through Gptproto. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\\\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\\n\\n\",\r\n    \"resolution\": \"720p\",\r\n    \"image\": \"https://oss.heyoos.com/ai-draw/user/generator/2025/09/24/9f6947f8890f45bda58198cc5395f8ec/.png\"\r\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -28740,7 +28740,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"accuracy\": 0.7,\n  \"audio\": \"https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3\",\n  \"custom_voice_id\": \"Alice-jiuhao-2\",\n  \"model\": \"speech-02-hd\",\n  \"need_noise_reduction\": false,\n  \"need_volume_normalization\": false,\n  \"text\": \"Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!\"\n}",
+                                            "raw": "{\n  \"accuracy\": 0.7,\n  \"audio\": \"https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3\",\n  \"custom_voice_id\": \"Alice-jiuhao-2\",\n  \"model\": \"speech-02-hd\",\n  \"need_noise_reduction\": false,\n  \"need_volume_normalization\": false,\n  \"text\": \"Hello! Welcome to Gptproto! This is a preview of your cloned voice. I hope you enjoy it!\"\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -28792,7 +28792,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    \"emotion\": \"surprised\",\n    \"enable_base64_output\": false,\n    \"enable_sync_mode\": false,\n    \"english_normalization\": false,\n    \"pitch\": 0,\n    \"speed\": 0.9,\n    \"text\": \"Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let's try it!\",\n    \"voice_id\": \"Deep_Voice_Man\",\n    \"volume\": 1,\n    \"language_boost\": \"Chinese\"\n}",
+                                            "raw": "{\n    \"emotion\": \"surprised\",\n    \"enable_base64_output\": false,\n    \"enable_sync_mode\": false,\n    \"english_normalization\": false,\n    \"pitch\": 0,\n    \"speed\": 0.9,\n    \"text\": \"Hi there! Minimax speech 2.5 now live on Gptproto! Let's try it!\",\n    \"voice_id\": \"Deep_Voice_Man\",\n    \"volume\": 1,\n    \"language_boost\": \"Chinese\"\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -28976,7 +28976,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    \"emotion\": \"surprised\",\n    \"enable_base64_output\": false,\n    \"enable_sync_mode\": false,\n    \"english_normalization\": false,\n    \"pitch\": 0,\n    \"speed\": 0.9,\n    \"text\": \"Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let's try it!\",\n    \"voice_id\": \"Deep_Voice_Man\",\n    \"volume\": 1,\n    \"language_boost\": \"Chinese\"\n}",
+                                            "raw": "{\n    \"emotion\": \"surprised\",\n    \"enable_base64_output\": false,\n    \"enable_sync_mode\": false,\n    \"english_normalization\": false,\n    \"pitch\": 0,\n    \"speed\": 0.9,\n    \"text\": \"Hi there! Minimax speech 2.5 now live on Gptproto! Let's try it!\",\n    \"voice_id\": \"Deep_Voice_Man\",\n    \"volume\": 1,\n    \"language_boost\": \"Chinese\"\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -29160,7 +29160,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    \"emotion\": \"surprised\",\n    \"enable_base64_output\": false,\n    \"enable_sync_mode\": false,\n    \"english_normalization\": false,\n    \"pitch\": 0,\n    \"speed\": 0.9,\n    \"text\": \"Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let's try it!\",\n    \"voice_id\": \"Deep_Voice_Man\",\n    \"volume\": 1,\n    \"language_boost\": \"Chinese\"\n}",
+                                            "raw": "{\n    \"emotion\": \"surprised\",\n    \"enable_base64_output\": false,\n    \"enable_sync_mode\": false,\n    \"english_normalization\": false,\n    \"pitch\": 0,\n    \"speed\": 0.9,\n    \"text\": \"Hi there! Minimax speech 2.5 now live on Gptproto! Let's try it!\",\n    \"voice_id\": \"Deep_Voice_Man\",\n    \"volume\": 1,\n    \"language_boost\": \"Chinese\"\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -29286,7 +29286,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\r\n  \"accuracy\": 0.7,\r\n  \"audio\": \"https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3\",\r\n  \"custom_voice_id\": \"Alice-jiuhao-2\",\r\n  \"model\": \"speech-2.5-hd-preview-voice-clone\",\r\n  \"need_noise_reduction\": false,\r\n  \"need_volume_normalization\": false,\r\n  \"text\": \"Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!\"\r\n}",
+                                            "raw": "{\r\n  \"accuracy\": 0.7,\r\n  \"audio\": \"https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3\",\r\n  \"custom_voice_id\": \"Alice-jiuhao-2\",\r\n  \"model\": \"speech-2.5-hd-preview-voice-clone\",\r\n  \"need_noise_reduction\": false,\r\n  \"need_volume_normalization\": false,\r\n  \"text\": \"Hello! Welcome to Gptproto! This is a preview of your cloned voice. I hope you enjoy it!\"\r\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"

@@ -42,7 +42,7 @@ This endpoint requires authentication using a Bearer token.
   Need Volume Normalization parameter
 </ParamField>
 
-<ParamField body="text" type="string"  default="Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!">
+<ParamField body="text" type="string"  default="Hello! Welcome to Gptproto! This is a preview of your cloned voice. I hope you enjoy it!">
   Text parameter
 </ParamField>
 
@@ -61,7 +61,7 @@ curl -X POST "https://gptproto.com/api/v3/minimax/voice-clone" \
   "model": "speech-02-hd",
   "need_noise_reduction": false,
   "need_volume_normalization": false,
-  "text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+  "text": "Hello! Welcome to Gptproto! This is a preview of your cloned voice. I hope you enjoy it!"
 }'
 ```
 
@@ -82,7 +82,7 @@ data = {
   "model": "speech-02-hd",
   "need_noise_reduction": false,
   "need_volume_normalization": false,
-  "text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+  "text": "Hello! Welcome to Gptproto! This is a preview of your cloned voice. I hope you enjoy it!"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -104,7 +104,7 @@ const data = {
   "model": "speech-02-hd",
   "need_noise_reduction": false,
   "need_volume_normalization": false,
-  "text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+  "text": "Hello! Welcome to Gptproto! This is a preview of your cloned voice. I hope you enjoy it!"
 };
 
 fetch(url, {
@@ -138,7 +138,7 @@ func main() {
 "model": "speech-02-hd",
 "need_noise_reduction": false,
 "need_volume_normalization": false,
-"text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+"text": "Hello! Welcome to Gptproto! This is a preview of your cloned voice. I hope you enjoy it!"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

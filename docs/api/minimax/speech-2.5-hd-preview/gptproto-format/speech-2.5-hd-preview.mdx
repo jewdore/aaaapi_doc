@@ -16,47 +16,90 @@ This endpoint requires authentication using a Bearer token.
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
+
 ## Request Body
 
-<ParamField body="emotion" type="string"  default="surprised">
-  Emotion parameter
+<ParamField body="text" type="string" required default="Hello world! This is a test of the text-to-speech system.">
+  Text to convert to speech. Every character is 1 token. Maximum 10000 characters. Use <#x#> between words to control pause duration (0.01-99.99s).
 </ParamField>
 
-<ParamField body="enable_base64_output" type="boolean"  default="false">
-  Enable Base64 Output parameter
+
+
+<ParamField body="voice_id" type="string" required default="Wise_Woman">
+  * Desired voice ID. One of the following system voice IDs: Wise_Woman, Friendly_Person, Inspirational_girl, Deep_Voice_Man, Calm_Woman, Casual_Guy, Lively_Girl, Patient_Man, Young_Knight, Determined_Man, Lovely_Girl, Decent_Boy, Imposing_Manner, Elegant_Man, Abbess, Sweet_Girl_2, Exuberant_Girl.
+  * Use a voice ID you have trained. 
 </ParamField>
 
-<ParamField body="enable_sync_mode" type="boolean"  default="false">
-  Enable Sync Mode parameter
+
+
+<ParamField body="speed" type="number"  default="1">
+  0.50 ~ 2.00 . Speech speed. Range: 0.5-2.0, where 1.0 is normal speed.
 </ParamField>
 
-<ParamField body="english_normalization" type="boolean"  default="false">
-  English Normalization parameter
+
+
+<ParamField body="volume" type="number"  default="1">
+  0.10 ~ 10.00 . Speech volume. Range: 0.1-10.0, where 1.0 is normal volume.
 </ParamField>
+
+
 
 <ParamField body="pitch" type="integer"  default="0">
-  Pitch parameter
+  -12 ~ 12 .Speech pitch. Range: -12 to 12, where 0 is normal pitch.
 </ParamField>
 
-<ParamField body="speed" type="number"  default="0.9">
-  Speed parameter
+
+<ParamField body="emotion" type="string"  default="happy">
+  happy, sad, angry, fearful, disgusted, surprised, neutral . 
+  The emotion of the generated speech.
 </ParamField>
 
-<ParamField body="text" type="string"  default="Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let&apos;s try it!">
-  Text parameter
+
+<ParamField body="english_normalization" type="boolean"  default="false">
+  This parameter supports English text normalization, which improves performance in number-reading scenarios.
 </ParamField>
 
-<ParamField body="voice_id" type="string"  default="Deep_Voice_Man">
-  Voice Id parameter
+
+
+
+<ParamField body="sample_rate" type="integer"  default="8000">
+  8000, 16000, 22050, 24000, 32000, 44100 .Sample rate of generated sound.
 </ParamField>
 
-<ParamField body="volume" type="integer"  default="1">
-  Volume parameter
+
+
+<ParamField body="bitrate" type="integer"  default="32000">
+  32000, 64000, 128000, 256000. Bitrate of generated sound.
 </ParamField>
 
-<ParamField body="language_boost" type="string"  default="Chinese">
-  Language Boost parameter
+
+
+<ParamField body="channel" type="string"  default="1">
+  1, 2 . The number of channels of the generated audio. 1: mono, 2: stereo.
 </ParamField>
+
+
+<ParamField body="format" type="string"  default="mp3">
+  mp3, wav, pcm, flac .Format of generated sound.
+</ParamField>
+
+<ParamField body="language_boost" type="string"  default="auto">
+  Chinese, Chinese,Yue, English, Arabic, Russian, Spanish, French, Portuguese, German, Turkish, Dutch, Ukrainian, Vietnamese, Indonesian, Japanese, Italian, Korean, Thai, Polish, Romanian, Greek, Czech, Finnish, Hindi, auto
+  Enhance the ability to recognize specified languages and dialects.
+</ParamField>
+
+
+<ParamField body="enable_base64_output" type="boolean"  default="false">
+  If enabled, the output will be encoded into a BASE64 string instead of a URL. This property is only available through the API.
+
+</ParamField>
+
+
+<ParamField body="enable_sync_mode" type="boolean"  default="false">
+  If set to true, the function will wait for the result to be generated and uploaded before returning the response. It allows you to get the result directly in the response. This property is only available through the API.
+</ParamField>
+
+
 
 ## Request Example
 
@@ -73,7 +116,7 @@ curl -X POST "https://gptproto.com/api/v3/minimax/speech-2.5-hd-preview" \
   "english_normalization": false,
   "pitch": 0,
   "speed": 0.9,
-  "text": "Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let's try it!",
+  "text": "Hi there! Minimax speech 2.5 now live on Gptproto! Let's try it!",
   "voice_id": "Deep_Voice_Man",
   "volume": 1,
   "language_boost": "Chinese"
@@ -97,7 +140,7 @@ data = {
   "english_normalization": false,
   "pitch": 0,
   "speed": 0.9,
-  "text": "Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let's try it!",
+  "text": "Hi there! Minimax speech 2.5 now live on Gptproto! Let's try it!",
   "voice_id": "Deep_Voice_Man",
   "volume": 1,
   "language_boost": "Chinese"
@@ -122,7 +165,7 @@ const data = {
   "english_normalization": false,
   "pitch": 0,
   "speed": 0.9,
-  "text": "Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let's try it!",
+  "text": "Hi there! Minimax speech 2.5 now live on Gptproto! Let's try it!",
   "voice_id": "Deep_Voice_Man",
   "volume": 1,
   "language_boost": "Chinese"
@@ -159,7 +202,7 @@ func main() {
 "english_normalization": false,
 "pitch": 0,
 "speed": 0.9,
-"text": "Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let's try it!",
+"text": "Hi there! Minimax speech 2.5 now live on Gptproto! Let's try it!",
 "voice_id": "Deep_Voice_Man",
 "volume": 1,
 "language_boost": "Chinese"
@@ -185,17 +228,15 @@ func main() {
 
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
+<ResponseField name="data.id" type="string">
+ Unique identifier for the prediction, Task Id
 </ResponseField>
 
-## Error Responses
+
+<ResponseField name="data.status" type="string">
+ Status of the task: created, processing, completed, or failed
+</ResponseField>
+
 
 <ResponseExample>
 

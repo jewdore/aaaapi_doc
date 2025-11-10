@@ -93,9 +93,6 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 
-<ParamField body="enable_base64_output" type="boolean"  default="false">
-  Enable Base64 Output parameter
-</ParamField>
 
 ## Request Example
 
@@ -111,10 +108,10 @@ curl -X POST "https://gptproto.com/api/v3/minimax/speech-02-turbo" \
   "english_normalization": false,
   "pitch": 0,
   "speed": 0.9,
-  "text": "Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let's try it!",
+  "text": "Hi there! Minimax speech 2.5 now live on Gptproto! Let's try it!",
   "voice_id": "Deep_Voice_Man",
   "volume": 1,
-  "language_boost": "Chinese"
+  "language_boost": "English"
 }'
 ```
 
@@ -134,10 +131,10 @@ data = {
   "english_normalization": false,
   "pitch": 0,
   "speed": 0.9,
-  "text": "Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let's try it!",
+  "text": "Hi there! Minimax speech 2.5 now live on Gptproto! Let's try it!",
   "voice_id": "Deep_Voice_Man",
   "volume": 1,
-  "language_boost": "Chinese"
+  "language_boost": "English"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -158,10 +155,10 @@ const data = {
   "english_normalization": false,
   "pitch": 0,
   "speed": 0.9,
-  "text": "Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let's try it!",
+  "text": "Hi there! Minimax speech 2.5 now live on Gptproto! Let's try it!",
   "voice_id": "Deep_Voice_Man",
   "volume": 1,
-  "language_boost": "Chinese"
+  "language_boost": "English"
 };
 
 fetch(url, {
@@ -194,10 +191,10 @@ func main() {
 "english_normalization": false,
 "pitch": 0,
 "speed": 0.9,
-"text": "Hi there! Minimax speech 2.5 now live on WaveSpeedAI! Let's try it!",
+"text": "Hi there! Minimax speech 2.5 now live on Gptproto! Let's try it!",
 "voice_id": "Deep_Voice_Man",
 "volume": 1,
-"language_boost": "Chinese"
+"language_boost": "English"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -220,17 +217,14 @@ func main() {
 
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
+<ResponseField name="data.id" type="string">
+ Unique identifier for the prediction, Task Id
 </ResponseField>
 
-## Error Responses
+
+<ResponseField name="data.status" type="string">
+ Status of the task: created, processing, completed, or failed
+</ResponseField>
 
 <ResponseExample>
 
