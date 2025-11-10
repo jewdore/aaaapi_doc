@@ -1,33 +1,45 @@
 ---
-title: 'Text To Video Pro'
-api: 'POST /api/v3/openai/sora-2/text-to-video-pro'
-description: 'Text To Video Pro'
+title: "Image to Video"
+api: "POST /v1/video/create"
+description: "Image to Video"
 ---
 
 ## Overview
 
-This endpoint provides text to video pro functionality.
+This endpoint provides submit task functionality.
 
 ## Authentication
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
+<ParamField header="Authorization" default="sk-***********" type="string" required>
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="prompt" type="string" required default="A video of a horse dancing.">
-  Prompt parameter
+<ParamField body="model" default="sora-2-pro" type="string" required>
+  The model to use for the request
 </ParamField>
 
-<ParamField body="size" type="string"  default="720*1280">
-  Size parameter
+<ParamField body="orientation" default="portrait" type="string">
+  portrait 、landscape
 </ParamField>
 
-<ParamField body="duration" type="integer"  default="4">
-  Duration parameter
+<ParamField body="prompt" default="A video of a horse dancing." type="string" required>
+  Prompt parameter   a cat
+</ParamField>
+
+<ParamField body="images" default='["https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"]' type="array">
+  Images parameter
+</ParamField>
+
+<ParamField body="duration" default="15" type="integer">
+  Duration parameter default  15
+</ParamField>
+
+<ParamField body="size" default="large" type="string">
+  option: large, small  sora-2 model sizes are not effective, sora-2-pro size is effective, and 25 second videos only support small sizes
 </ParamField>
 
 ## Request Example
@@ -35,30 +47,41 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/openai/sora-2/text-to-video-pro" \
+curl -X POST "https://gptproto.com/v1/video/create" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
+  "model": "sora-2-pro",
+  "orientation": "portrait",
   "prompt": "A video of a horse dancing.",
-  "size": "720*1280",
-  "duration": 4
+  "images": [
+    "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+  ],
+  "duration": 15,
+  "size": "large"
 }'
 ```
+
 
 ```python Python
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/openai/sora-2/text-to-video-pro"
+url = "https://gptproto.com/v1/video/create"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
+  "model": "sora-2-pro",
+  "orientation": "portrait",
   "prompt": "A video of a horse dancing.",
-  "size": "720*1280",
-  "duration": 4
+  "images": [
+    "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+  ],
+  "duration": 15,
+  "size": "large"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -66,17 +89,23 @@ result = response.json()
 print(json.dumps(result, indent=2))
 ```
 
+
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/openai/sora-2/text-to-video-pro";
+const url = "https://gptproto.com/v1/video/create";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
+  "model": "sora-2-pro",
+  "orientation": "portrait",
   "prompt": "A video of a horse dancing.",
-  "size": "720*1280",
-  "duration": 4
+  "images": [
+    "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+  ],
+  "duration": 15,
+  "size": "large"
 };
 
 fetch(url, {
@@ -88,6 +117,7 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
+
 
 ```go Go
 package main
@@ -101,12 +131,17 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/openai/sora-2/text-to-video-pro"
+    url := "https://gptproto.com/v1/video/create"
 
     payload := []byte(`{
+"model": "sora-2-pro",
+"orientation": "portrait",
 "prompt": "A video of a horse dancing.",
-"size": "720*1280",
-"duration": 4
+"images": [
+"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+],
+"duration": 15,
+ "size": "large"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -132,11 +167,11 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+    "status": "success"
+  }
+  ```
 </ResponseField>
 
 ## Error Responses
@@ -152,6 +187,7 @@ func main() {
 }
 ```
 
+
 ```json 403 - Invalid Token
 {
   "error": {
@@ -160,6 +196,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 403 - Insufficient balance
 {
@@ -170,6 +207,7 @@ func main() {
 }
 ```
 
+
 ```json 500 - Internal server error
 {
   "error": {
@@ -178,6 +216,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 503 - Content policy violation
 {
@@ -189,4 +228,3 @@ func main() {
 ```
 
 </ResponseExample>
-

@@ -1,6 +1,6 @@
 ---
 title: 'Query Task'
-api: 'GET /api/v3/predictions/:taskId/result'
+api: 'GET /api/v3/predictions/{task_Id}/result'
 description: 'Query Task'
 ---
 
@@ -18,23 +18,18 @@ This endpoint requires authentication using a Bearer token.
 
 ## Path Parameters
 
-<ParamField path="taskId" type="string">
+<ParamField path="task_Id" type="string">
   
 </ParamField>
 
+
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
+<ResponseField name="data.outputs" type="array">
+  Object containing related API endpoints
 </ResponseField>
 
-## Error Responses
+
 
 <ResponseExample>
 

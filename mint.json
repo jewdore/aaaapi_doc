@@ -1271,14 +1271,14 @@
             {
               "group": "Openai Format",
               "pages": [
-                "docs/api/openai/sora-2/openai-format/chat-mode"
+                "docs/api/openai/sora-2/openai-format/image-to-video"
               ]
             },
             {
               "group": "Reverse Format",
               "pages": [
-                "docs/api/openai/sora-2/reverse-format/submit-task",
-                "docs/api/openai/sora-2/reverse-format/query-result"
+                "docs/api/openai/sora-2/reverse-format/image-to-video",
+                "docs/api/openai/sora-2/reverse-format/query-task"
               ]
             }
           ]
@@ -1301,22 +1301,22 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/openai/sora-2-pro/gptproto-format/text-to-video-pro",
-                "docs/api/openai/sora-2-pro/gptproto-format/image-to-video-pro",
+                "docs/api/openai/sora-2-pro/gptproto-format/text-to-video",
+                "docs/api/openai/sora-2-pro/gptproto-format/image-to-video",
                 "docs/api/openai/sora-2-pro/gptproto-format/query-task"
               ]
             },
             {
               "group": "Openai Format",
               "pages": [
-                "docs/api/openai/sora-2-pro/openai-format/chat-mode"
+                "docs/api/openai/sora-2-pro/openai-format/image-to-video"
               ]
             },
             {
               "group": "Reverse Format",
               "pages": [
-                "docs/api/openai/sora-2-pro/reverse-format/submit-task",
-                "docs/api/openai/sora-2-pro/reverse-format/query-result"
+                "docs/api/openai/sora-2-pro/reverse-format/image-to-video",
+                "docs/api/openai/sora-2-pro/reverse-format/query-task"
               ]
             }
           ]
