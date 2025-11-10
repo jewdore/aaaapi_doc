@@ -34,12 +34,32 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 <ParamField body="prompt" default="image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment." type="string" required>
-  Prompt can add image url
+  Prompt can add image url 
+
+                Supported MIME types:
+
+                `image/png`, `image/jpeg`, `image/webp`
 </ParamField>
 
 <ParamField body="size" default="16:9" type="string">
   1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9.  default 1:1
+  
+  * The model defaults to matching the output image size to that of your input image, or otherwise generates 1:1 squares. The size of the image generated are listed in this table:
+
+| size | Resolution |
+| ------------ | ---------- |
+| 1:1          | 1024x1024  |
+| 2:3          | 832x1248   |
+| 3:2          | 1248x832   |
+| 3:4          | 864x1184   |
+| 4:3          | 1184x864   |
+| 4:5          | 896x1152   |
+| 5:4          | 1152x896   |
+| 9:16         | 768x1344   |
+| 16:9         | 1344x768   |
+| 21:9         | 1536x672   |
 </ParamField>
+
 
 ## Image to Image
 
@@ -141,22 +161,8 @@ func main() {
 
 </CodeGroup>
 
-## Size
 
-The model defaults to matching the output image size to that of your input image, or otherwise generates 1:1 squares. The size of the image generated are listed in this table:
 
-| Aspect ratio | Resolution |
-| ------------ | ---------- |
-| 1:1          | 1024x1024  |
-| 2:3          | 832x1248   |
-| 3:2          | 1248x832   |
-| 3:4          | 864x1184   |
-| 4:3          | 1184x864   |
-| 4:5          | 896x1152   |
-| 5:4          | 1152x896   |
-| 9:16         | 768x1344   |
-| 16:9         | 1344x768   |
-| 21:9         | 1536x672   |
 
 
 
