@@ -1419,7 +1419,8 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/openai/gpt-5/official-format/text-to-text"
+                "docs/api/openai/gpt-5/official-format/text-to-text",
+                 "docs/api/openai/gpt-5/official-format/image-to-text"
               ]
             }
           ]
