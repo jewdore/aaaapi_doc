@@ -18819,7 +18819,7 @@
                                 "method": "POST",
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\n    \"model\": \"kling-video-std-10-v1-6\",\n    \"prompt\": \"飞机飞过头顶\",\n    \"negative_prompt\": \"\",\n    \"cfg_scale\": 0.930127850077239,\n    \"mode\": \"std\",\n    \"aspect_ratio\": \"16:9\",\n    \"duration\": \"10\",\n    \"callback_url\": \"\"\n}",
+                                    "raw": "{\n    \"model\": \"kling-video-std-10-v1-6\",\n    \"prompt\": \"The plane flew over the head\",\n    \"negative_prompt\": \"\",\n    \"cfg_scale\": 0.930127850077239,\n    \"mode\": \"std\",\n    \"aspect_ratio\": \"16:9\",\n    \"duration\": \"10\",\n    \"callback_url\": \"\"\n}",
                                     "options": {
                                         "raw": {
                                             "language": "json"
