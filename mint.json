@@ -1073,6 +1073,7 @@
           "group": "Official Format",
           "pages": [
             "docs/api/kling/official-format/text-to-image",
+            "docs/api/kling/official-format/image-to-image",
             "docs/api/kling/official-format/text-to-video",
             "docs/api/kling/official-format/image-to-video",
             "docs/api/kling/official-format/query-task"
