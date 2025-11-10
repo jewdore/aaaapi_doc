@@ -1,7 +1,6 @@
 ---
-title: "Image to Text"
-api: "POST /v1/chat/completions"
-description: "Image to Text"
+title: "Image-to-text"
+description: "Description of your new file."
 ---
 
 ## Overview
@@ -26,7 +25,7 @@ This endpoint requires authentication using a Bearer token.
   Array of message objects for the conversation
 </ParamField>
 
-<ParamField body="max_tokens" default="5000" type="integer">
+<ParamField body="max_tokens" default={5000} type="integer">
   Maximum number of tokens to generate
 </ParamField>
 
@@ -39,7 +38,7 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "model": "gpt-4o-2024-08-06",
+  "model": "gpt-5",
   "messages": [
     {
       "role": "user",
@@ -73,7 +72,7 @@ headers = {
 }
 
 data = {
-  "model": "gpt-4o-2024-08-06",
+  "model": "gpt-5",
   "messages": [
     {
       "role": "user",
@@ -108,7 +107,7 @@ const headers = {
 };
 
 const data = {
-  "model": "gpt-4o-2024-08-06",
+  "model": "gpt-5",
   "messages": [
     {
       "role": "user",
@@ -155,7 +154,7 @@ func main() {
     url := "https://gptproto.com/v1/chat/completions"
 
     payload := []byte(`{
-"model": "gpt-4o-2024-08-06",
+"model": "gpt-5",
 "messages": [
 {
 "role": "user",
@@ -196,7 +195,7 @@ func main() {
 
 ## Response
 
-<ResponseField name="Success" type="200">
+<ResponseField name="Success" type={200}>
   Successful response
 
   ```json
