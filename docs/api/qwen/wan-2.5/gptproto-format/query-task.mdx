@@ -1,0 +1,107 @@
+---
+title: 'Query Task'
+api: 'GET /api/v3/predictions/{task_id}/result'
+description: 'Query Task'
+---
+
+## Overview
+
+This endpoint provides query task functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***">
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+
+## Request Body
+
+<ParamField path="task_id" type="string" >
+  Unique identifier for the prediction, Task Id
+</ParamField>
+
+
+## Response
+
+<ResponseField name="data.outputs" type="string[]">
+Array of URLs to the generated content (empty when status is not completed)
+
+```json
+{
+    "data": {
+        "id": "4ec5973904e74f31bc9cd4ce94e3878e",
+        "model": "wan-2.5",
+        "outputs": [
+            "https://d2p7pge43lyniu.cloudfront.net/output/9e55b0b3-cf8a-4dea-a262-4055a5b02d90-u2_4e9ae5d1-f6da-45bf-9763-9a763d3a1c43.mp4"
+        ],
+        "urls": {
+            "get": "https://gptproto.com/api/v3/predictions/4ec5973904e74f31bc9cd4ce94e3878e/result"
+        },
+        "status": "completed",
+        "error": "",
+        "executionTime": 380841,
+        "timings": {
+            "inference": 380841
+        },
+        "has_nsfw_contents": null,
+        "created_at": "2025-11-07T02:35:15.34950574Z"
+    },
+    "message": "success",
+    "code": 200
+}
+```
+</ResponseField>
+
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

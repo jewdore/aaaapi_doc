@@ -1796,8 +1796,9 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/qwen/wan-25/gptproto-format/image-to-video",
-                "docs/api/qwen/wan-25/gptproto-format/query-task"
+                "docs/api/qwen/wan-2.5/gptproto-format/text-to-image",
+                "docs/api/qwen/wan-2.5/gptproto-format/image-to-video",
+                "docs/api/qwen/wan-2.5/gptproto-format/query-task"
               ]
             }
           ]
