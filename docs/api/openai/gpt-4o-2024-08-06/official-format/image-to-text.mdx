@@ -1,7 +1,7 @@
 ---
-title: "Image to Text"
-api: "POST /v1/chat/completions"
-description: "Image to Text"
+title: 'Image to Text'
+api: 'POST /v1/chat/completions'
+description: 'Image to Text'
 ---
 
 ## Overview
@@ -12,21 +12,21 @@ This endpoint provides image to text functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
+<ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="model" default="gpt-4o-2024-08-06" type="string" required>
+<ParamField body="model" type="string" required default="gpt-4o-2024-08-06">
   The model to use for the request
 </ParamField>
 
-<ParamField body="messages" default='[{"role": "user", "content": [{"type": "text", "text": "What is in this image?"}, {"type": "image_url", "image_url": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"}}]}]' type="array" required>
+<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;What is in this image?&quot;}, {&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: {&quot;url&quot;: &quot;https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg&quot;}}]}]">
   Array of message objects for the conversation
 </ParamField>
 
-<ParamField body="max_tokens" default="5000" type="integer">
+<ParamField body="max_tokens" type="integer"  default="5000">
   Maximum number of tokens to generate
 </ParamField>
 
@@ -60,7 +60,6 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
   "max_tokens": 5000
 }'
 ```
-
 
 ```python Python
 import requests
@@ -98,7 +97,6 @@ response = requests.post(url, headers=headers, json=data)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
-
 
 ```javascript JavaScript
 const url = "https://gptproto.com/v1/chat/completions";
@@ -138,7 +136,6 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
-
 
 ```go Go
 package main
@@ -199,11 +196,11 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-  ```json
-  {
-    "status": "success"
-  }
-  ```
+```json
+{
+  "status": "success"
+}
+```
 </ResponseField>
 
 ## Error Responses
@@ -219,7 +216,6 @@ func main() {
 }
 ```
 
-
 ```json 403 - Invalid Token
 {
   "error": {
@@ -228,7 +224,6 @@ func main() {
   }
 }
 ```
-
 
 ```json 403 - Insufficient balance
 {
@@ -239,7 +234,6 @@ func main() {
 }
 ```
 
-
 ```json 500 - Internal server error
 {
   "error": {
@@ -248,7 +242,6 @@ func main() {
   }
 }
 ```
-
 
 ```json 503 - Content policy violation
 {
@@ -260,3 +253,4 @@ func main() {
 ```
 
 </ResponseExample>
+

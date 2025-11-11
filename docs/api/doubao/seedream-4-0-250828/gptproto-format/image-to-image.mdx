@@ -19,11 +19,11 @@ This endpoint requires authentication using a Bearer token.
 ## Request Body
 
 <ParamField body="prompt" type="string" required default="Generate a twin photo from two images and take a photo in the snow">
-  Prompt parameter
+  Image generation prompt describing the desired image content
 </ParamField>
 
 <ParamField body="image" type="array"  default="[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;]">
-  Image parameter
+  Input image URL(s) for image-to-image generation
 </ParamField>
 
 <ParamField body="model" type="string" required default="seedream-4-0-250828">
@@ -35,11 +35,11 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 <ParamField body="response_format" type="string"  default="url">
-  Response Format parameter
+  Response format: "url" (image URL) or "b64_json" (base64 encoded)
 </ParamField>
 
 <ParamField body="size" type="string"  default="2K">
-  Size parameter
+  Output image resolution (e.g., 1024x1024, 2K, 4K)
 </ParamField>
 
 <ParamField body="stream" type="boolean"  default="false">
@@ -47,7 +47,7 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 <ParamField body="watermark" type="boolean"  default="false">
-  Watermark parameter
+  Whether to add watermark to generated image
 </ParamField>
 
 ## Request Example

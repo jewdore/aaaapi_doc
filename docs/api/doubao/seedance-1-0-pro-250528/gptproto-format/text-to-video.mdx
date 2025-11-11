@@ -23,11 +23,11 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 <ParamField body="content" type="array"  default="[{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;Photorealistic style: Under a clear blue sky, a vast expanse of white daisy fields stretches out. The camera gradually zooms in and finally fixates on a close - up of a single daisy, with several glistening dewdrops resting on its petals.  --ratio 16:9  --resolution 720p  --duration 5 --camerafixed false&quot;}]">
-  Content parameter
+  Video generation prompt. Can include parameters like --ratio (16:9, 9:16, 1:1), --resolution (480p, 720p, 1080p), --duration (5-10s), --camerafixed (true/false)
 </ParamField>
 
 <ParamField body="duration" type="integer"  default="10">
-  Duration parameter
+  Video duration in seconds (5-10 seconds supported)
 </ParamField>
 
 ## Request Example

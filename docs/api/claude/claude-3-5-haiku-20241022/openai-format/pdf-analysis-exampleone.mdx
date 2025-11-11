@@ -1,7 +1,7 @@
 ---
-title: "PDF Analysis example:one"
-api: "POST /v1/chat/completions"
-description: "PDF Analysis example:one"
+title: 'PDF Analysis example:one'
+api: 'POST /v1/chat/completions'
+description: 'PDF Analysis example:one'
 ---
 
 ## Overview
@@ -12,25 +12,25 @@ This endpoint provides pdf analysis example:one functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
+<ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="model" default="claude-3-5-haiku-20241022" type="string" required>
+<ParamField body="model" type="string" required default="claude-3-5-haiku-20241022">
   The model to use for the request
 </ParamField>
 
-<ParamField body="messages" default='[{"role": "user", "content": [{"type": "text", "text": "Summarize the contents of this document"}, {"type": "file", "file": {"filename": "api-doc.pdf", "file_data": "https://www.bt.cn/data/api-doc.pdf"}}]}]' type="array" required>
+<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;Summarize the contents of this document&quot;}, {&quot;type&quot;: &quot;file&quot;, &quot;file&quot;: {&quot;filename&quot;: &quot;api-doc.pdf&quot;, &quot;file_data&quot;: &quot;https://www.bt.cn/data/api-doc.pdf&quot;}}]}]">
   Array of message objects for the conversation
 </ParamField>
 
-<ParamField body="max_tokens" default="1000" type="integer">
+<ParamField body="max_tokens" type="integer"  default="1000">
   Maximum number of tokens to generate
 </ParamField>
 
-<ParamField body="stream" default="false" type="boolean">
+<ParamField body="stream" type="boolean"  default="false">
   Whether to stream the response
 </ParamField>
 
@@ -66,7 +66,6 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
   "stream": false
 }'
 ```
-
 
 ```python Python
 import requests
@@ -106,7 +105,6 @@ response = requests.post(url, headers=headers, json=data)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
-
 
 ```javascript JavaScript
 const url = "https://gptproto.com/v1/chat/completions";
@@ -148,7 +146,6 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
-
 
 ```go Go
 package main
@@ -211,11 +208,11 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-  ```json
-  {
-    "status": "success"
-  }
-  ```
+```json
+{
+  "status": "success"
+}
+```
 </ResponseField>
 
 ## Error Responses
@@ -231,7 +228,6 @@ func main() {
 }
 ```
 
-
 ```json 403 - Invalid Token
 {
   "error": {
@@ -240,7 +236,6 @@ func main() {
   }
 }
 ```
-
 
 ```json 403 - Insufficient balance
 {
@@ -251,7 +246,6 @@ func main() {
 }
 ```
 
-
 ```json 500 - Internal server error
 {
   "error": {
@@ -260,7 +254,6 @@ func main() {
   }
 }
 ```
-
 
 ```json 503 - Content policy violation
 {
@@ -272,3 +265,4 @@ func main() {
 ```
 
 </ResponseExample>
+

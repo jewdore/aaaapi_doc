@@ -34,7 +34,6 @@ This endpoint requires authentication using a Bearer token.
   Mode parameter
 </ParamField>
 
-
 <ParamField body="aspect_ratio" type="string"  default="16:9">
   Aspect Ratio parameter
 </ParamField>
@@ -57,11 +56,15 @@ curl -X POST "https://gptproto.com/kling/v1/videos/text2video" \
   -H "Content-Type: application/json" \
   -d '{
   "model": "kling-video-std-10-v1-6",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   "prompt": "The plane flew over the head",
 =======
   "prompt": "A plane flies overhead",
 >>>>>>> Stashed changes
+=======
+  "prompt": "A plane flies overhead",
+>>>>>>> feature/zengjing
   "negative_prompt": "",
   "mode": "std",
   "aspect_ratio": "16:9",
@@ -82,11 +85,15 @@ headers = {
 
 data = {
   "model": "kling-video-std-10-v1-6",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   "prompt": "The plane flew over the head",
 =======
   "prompt": "A plane flies overhead",
 >>>>>>> Stashed changes
+=======
+  "prompt": "A plane flies overhead",
+>>>>>>> feature/zengjing
   "negative_prompt": "",
   "mode": "std",
   "aspect_ratio": "16:9",
@@ -108,11 +115,15 @@ const headers = {
 
 const data = {
   "model": "kling-video-std-10-v1-6",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   "prompt": "The plane flew over the head",
 =======
   "prompt": "A plane flies overhead",
 >>>>>>> Stashed changes
+=======
+  "prompt": "A plane flies overhead",
+>>>>>>> feature/zengjing
   "negative_prompt": "",
   "mode": "std",
   "aspect_ratio": "16:9",
@@ -146,11 +157,15 @@ func main() {
 
     payload := []byte(`{
 "model": "kling-video-std-10-v1-6",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 "prompt": "The plane flew over the head",
 =======
 "prompt": "A plane flies overhead",
 >>>>>>> Stashed changes
+=======
+"prompt": "A plane flies overhead",
+>>>>>>> feature/zengjing
 "negative_prompt": "",
 "mode": "std",
 "aspect_ratio": "16:9",

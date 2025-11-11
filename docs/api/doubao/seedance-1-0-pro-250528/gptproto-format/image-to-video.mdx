@@ -23,7 +23,7 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 <ParamField body="content" type="array"  default="[{&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: &quot;https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg&quot;}, {&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;The camera pans from left to right, revealing the full scene of the image&quot;}]">
-  Content parameter
+  Video generation prompt. Can include parameters like --ratio (16:9, 9:16, 1:1), --resolution (480p, 720p, 1080p), --duration (5-10s), --camerafixed (true/false)
 </ParamField>
 
 <ParamField body="framepersecond" type="integer"  default="24">

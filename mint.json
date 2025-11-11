@@ -61,7 +61,7 @@
               ]
             },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-3-5-haiku-20241022/official-format/text-to-text",
                     "docs/api/claude/claude-3-5-haiku-20241022/official-format/pdf-analysis-exampleone",
@@ -75,7 +75,7 @@
           "pages": [
 
                 {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-3-5-sonnet-20241022/openai-format/text-to-text",
                     "docs/api/claude/claude-3-5-sonnet-20241022/openai-format/pdf-analysis-exampleone",
@@ -83,7 +83,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-3-5-sonnet-20241022/official-format/text-to-text",
                     "docs/api/claude/claude-3-5-sonnet-20241022/official-format/pdf-analysis-exampleone",
@@ -97,7 +97,7 @@
           "group": "claude-3-7-sonnet-20250219",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-3-7-sonnet-20250219/openai-format/text-to-text",
                     "docs/api/claude/claude-3-7-sonnet-20250219/openai-format/pdf-analysis-exampleone",
@@ -105,7 +105,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-3-7-sonnet-20250219/official-format/text-to-text",
                     "docs/api/claude/claude-3-7-sonnet-20250219/official-format/pdf-analysis-exampleone",
@@ -121,7 +121,7 @@
               "group": "OpenAI Format",
               "pages": [
                 {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-3-7-sonnet-20250219-thinking/openai-format/text-to-text",
                     "docs/api/claude/claude-3-7-sonnet-20250219-thinking/openai-format/pdf-analysis-exampleone",
@@ -129,7 +129,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-3-7-sonnet-20250219-thinking/official-format/text-to-text",
                     "docs/api/claude/claude-3-7-sonnet-20250219-thinking/official-format/pdf-analysis-exampleone",
@@ -145,7 +145,7 @@
           "group": "claude-haiku-4-5-20251001",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-haiku-4-5-20251001/openai-format/text-to-text",
                     "docs/api/claude/claude-haiku-4-5-20251001/openai-format/pdf-analysis-exampleone",
@@ -153,7 +153,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-haiku-4-5-20251001/official-format/text-to-text",
                     "docs/api/claude/claude-haiku-4-5-20251001/official-format/pdf-analysis-exampleone",
@@ -166,7 +166,7 @@
           "group": "claude-opus-4-1-20250805",
           "pages": [
 		  {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-1-20250805/openai-format/text-to-text",
                     "docs/api/claude/claude-opus-4-1-20250805/openai-format/pdf-analysis-exampleone",
@@ -174,7 +174,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-1-20250805/official-format/text-to-text",
                     "docs/api/claude/claude-opus-4-1-20250805/official-format/pdf-analysis-exampleone",
@@ -187,7 +187,7 @@
           "group": "claude-opus-4-1-20250805-thinking",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-1-20250805-thinking/openai-format/text-to-text",
                     "docs/api/claude/claude-opus-4-1-20250805-thinking/openai-format/pdf-analysis-exampleone",
@@ -195,7 +195,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-1-20250805-thinking/official-format/text-to-text",
                     "docs/api/claude/claude-opus-4-1-20250805-thinking/official-format/pdf-analysis-exampleone",
@@ -208,7 +208,7 @@
           "group": "claude-opus-4-20250514",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-20250514/openai-format/text-to-text",
                     "docs/api/claude/claude-opus-4-20250514/openai-format/pdf-analysis-exampleone",
@@ -216,7 +216,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-20250514/official-format/text-to-text",
                     "docs/api/claude/claude-opus-4-20250514/official-format/pdf-analysis-exampleone",
@@ -229,7 +229,7 @@
           "group": "claude-opus-4-20250514-thinking",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-20250514-thinking/openai-format/text-to-text",
                     "docs/api/claude/claude-opus-4-20250514-thinking/openai-format/pdf-analysis-exampleone",
@@ -237,7 +237,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-20250514-thinking/official-format/text-to-text",
                     "docs/api/claude/claude-opus-4-20250514-thinking/official-format/pdf-analysis-exampleone",
@@ -250,7 +250,7 @@
           "group": "claude-sonnet-4-20250514",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-20250514/openai-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-20250514/openai-format/pdf-analysis-exampleone",
@@ -258,7 +258,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-20250514/official-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-20250514/official-format/pdf-analysis-exampleone",
@@ -271,7 +271,7 @@
           "group": "claude-sonnet-4-20250514-thinking",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-20250514-thinking/openai-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-20250514-thinking/openai-format/pdf-analysis-exampleone",
@@ -279,7 +279,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-20250514-thinking/official-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-20250514-thinking/official-format/pdf-analysis-exampleone",
@@ -292,7 +292,7 @@
           "group": "claude-sonnet-4-5-20250929",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-5-20250929/openai-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-5-20250929/openai-format/pdf-analysis-exampleone",
@@ -300,7 +300,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-5-20250929/official-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-5-20250929/official-format/pdf-analysis-exampleone",
@@ -313,7 +313,7 @@
           "group": "claude-sonnet-4-5-20250929-thinking",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-5-20250929-thinking/openai-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-5-20250929-thinking/openai-format/pdf-analysis-exampleone",
@@ -321,7 +321,7 @@
                   ]
                 },
                 {
-                  "group": "official-format",
+                  "group": "Official format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-5-20250929-thinking/official-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-5-20250929-thinking/official-format/pdf-analysis-exampleone",
@@ -332,7 +332,6 @@
         }
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Claude.png"
-      
     },
     {
       "group": "DeepSeek",
@@ -370,7 +369,7 @@
           "group": "doubao-1-5-pro-256k-250115",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-1-5-pro-256k-250115/openai-format/text-to-text"
                   ]
@@ -387,7 +386,7 @@
           "group": "doubao-1-5-pro-32k-250115",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-1-5-pro-32k-250115/openai-format/text-to-text"
                   ]
@@ -404,7 +403,7 @@
           "group": "doubao-1-5-vision-pro-32k-250115",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/openai-format/text-to-text",
                     "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/openai-format/image-to-text"
@@ -423,7 +422,7 @@
           "group": "doubao-seed-1-6-250615",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-250615/openai-format/text-to-text",
                     "docs/api/doubao/doubao-seed-1-6-250615/openai-format/image-to-text"
@@ -442,7 +441,7 @@
           "group": "doubao-seed-1-6-flash-250615",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-flash-250615/openai-format/text-to-text",
                     "docs/api/doubao/doubao-seed-1-6-flash-250615/openai-format/image-to-text"
@@ -461,7 +460,7 @@
           "group": "doubao-seed-1-6-thinking-250615",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-thinking-250615/openai-format/text-to-text",
                     "docs/api/doubao/doubao-seed-1-6-thinking-250615/openai-format/image-to-text"
@@ -480,7 +479,7 @@
           "group": "doubao-seed-1-6-thinking-250715",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-thinking-250715/openai-format/text-to-text",
                     "docs/api/doubao/doubao-seed-1-6-thinking-250715/openai-format/image-to-text"
@@ -499,7 +498,7 @@
           "group": "doubao-seededit-3-0-i2i-250628",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-seededit-3-0-i2i-250628/gptproto-format/image-to-image"
                   ]
@@ -516,7 +515,7 @@
           "group": "doubao-seedream-3-0-t2i-250415",
           "pages": [
         {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-seedream-3-0-t2i-250415/gptproto-format/text-to-image"
                   ]
@@ -533,7 +532,7 @@
           "group": "doubao-seedream-4-0-250828",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-seedream-4-0-250828/gptproto-format/text-to-image"
                   ]
@@ -609,7 +608,7 @@
           "group": "seededit-3-0-i2i-250628",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/seededit-3-0-i2i-250628/gptproto-format/image-to-image"
                   ]
@@ -626,7 +625,7 @@
           "group": "seedream-4-0-250828",
           "pages": [
             {
-                  "group": "openai-format",
+                  "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/seedream-4-0-250828/gptproto-format/text-to-image"
                   ]
@@ -701,10 +700,10 @@
       "pages": [
 																				 
         {
-          "group": "veo",
+          "group": "veo3.1",
           "pages": [
             {
-              "group": "veo3.1",
+              "group": "Gptproto Format",
               "pages": [
                 "docs/api/gemini/veo/veo31/gptproto-format/text-to-video169",
                 "docs/api/gemini/veo/veo31/gptproto-format/image-to-video916",
@@ -713,7 +712,7 @@
               ]
             },
             {
-              "group": "veo3.1-pro",
+              "group": "OpenAI Format",
               "pages": [
                 "docs/api/gemini/veo/veo31/openai-format/text-to-video-169",
                 "docs/api/gemini/veo/veo31/openai-format/text-to-video-916",
@@ -938,7 +937,6 @@
                 "docs/api/gemini/veo/veo3-fast-frames/chat-format/image-to-video-916"
               ]
             }
-
           ]
         },
 
@@ -980,18 +978,18 @@
             {
               "group": "Openai Format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-pro/openai-format/text-to-text",
-                "docs/api/gemini/gemini-2.5-pro/openai-format/image-to-text"
+                "docs/api/gemini/gemini-25-pro/openai-format/text-to-text",
+                "docs/api/gemini/gemini-25-pro/openai-format/image-to-text"
               ]
             },
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-pro/official-format/file-analysis",
-                "docs/api/gemini/gemini-2.5-pro/official-format/streamgeneratecontent",
-                "docs/api/gemini/gemini-2.5-pro/official-format/generatecontent",
-                "docs/api/gemini/gemini-2.5-pro/official-format/file-upload",
-                "docs/api/gemini/gemini-2.5-pro/official-format/file-upload-north-america"
+                "docs/api/gemini/gemini-25-pro/official-format/file-analysis",
+                "docs/api/gemini/gemini-25-pro/official-format/streamgeneratecontent",
+                "docs/api/gemini/gemini-25-pro/official-format/generatecontent",
+                "docs/api/gemini/gemini-25-pro/official-format/file-upload",
+                "docs/api/gemini/gemini-25-pro/official-format/file-upload-north-america"
               ]
             }
           ]
@@ -1002,13 +1000,13 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/text-to-text",
-                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/image-to-text",
-                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/file-analysis",
-                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/streamgeneratecontent",
-                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/generatecontent",
-                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/file-upload",
-                "docs/api/gemini/gemini-2.5-pro-deepsearch/official-format/file-upload-north-america"
+                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/text-to-text",
+                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/image-to-text",
+                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/file-analysis",
+                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/streamgeneratecontent",
+                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/generatecontent",
+                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/file-upload",
+                "docs/api/gemini/gemini-25-pro-deepsearch/official-format/file-upload-north-america"
               ]
             }
           ]
@@ -1019,15 +1017,15 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-pro-preview-05-06/official-format/text-to-text",
-                "docs/api/gemini/gemini-2.5-pro-preview-05-06/official-format/image-to-text"
+                "docs/api/gemini/gemini-25-pro-preview-05-06/official-format/text-to-text",
+                "docs/api/gemini/gemini-25-pro-preview-05-06/official-format/image-to-text"
               ]
             },
-            "docs/api/gemini/gemini-2.5-pro-preview-05-06/generatecontent",
-            "docs/api/gemini/gemini-2.5-pro-preview-05-06/streamgeneratecontent",
-            "docs/api/gemini/gemini-2.5-pro-preview-05-06/file-upload",
-            "docs/api/gemini/gemini-2.5-pro-preview-05-06/file-upload-north-america",
-            "docs/api/gemini/gemini-2.5-pro-preview-05-06/generatecontent-file-analysis"
+            "docs/api/gemini/gemini-25-pro-preview-05-06/generatecontent",
+            "docs/api/gemini/gemini-25-pro-preview-05-06/streamgeneratecontent",
+            "docs/api/gemini/gemini-25-pro-preview-05-06/file-upload",
+            "docs/api/gemini/gemini-25-pro-preview-05-06/file-upload-north-america",
+            "docs/api/gemini/gemini-25-pro-preview-05-06/generatecontent-file-analysis"
           ]
         },
         {
@@ -1036,46 +1034,13 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-flash/official-format/text-to-text",
-                "docs/api/gemini/gemini-2.5-flash/official-format/image-to-text",
-                "docs/api/gemini/gemini-2.5-flash/official-format/generatecontent",
-                "docs/api/gemini/gemini-2.5-flash/official-format/streamgeneratecontent",
-                "docs/api/gemini/gemini-2.5-flash/official-format/file-upload",
-                "docs/api/gemini/gemini-2.5-flash/official-format/file-upload-north-america",
-                "docs/api/gemini/gemini-2.5-flash/official-format/generatecontent-file-analysis"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "gemini-2.5-flash-image",
-          "pages": [
-            {
-              "group": "Official Format",
-              "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image/official-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image/official-format/image-to-image"
-              ]
-            },
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image/gptproto-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image/gptproto-format/image-to-image"
-              ]
-            },
-            {
-              "group": "Openai  Format",
-              "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image/openai-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image/openai-format/image-to-image"
-              ]
-            },
-            {
-              "group": "Nano Banana Format",
-              "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image/nano-banana-format/nano-banana-text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image/nano-banana-format/query-task"
+                "docs/api/gemini/gemini-25-flash/official-format/text-to-text",
+                "docs/api/gemini/gemini-25-flash/official-format/image-to-text",
+                "docs/api/gemini/gemini-25-flash/official-format/generatecontent",
+                "docs/api/gemini/gemini-25-flash/official-format/streamgeneratecontent",
+                "docs/api/gemini/gemini-25-flash/official-format/file-upload",
+                "docs/api/gemini/gemini-25-flash/official-format/file-upload-north-america",
+                "docs/api/gemini/gemini-25-flash/official-format/generatecontent-file-analysis"
               ]
             }
           ]
@@ -1086,24 +1051,29 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image-preview/official-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image-preview/official-format/image-to-image"
+                "docs/api/gemini/gemini-25-flash-image-preview/official-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image-preview/official-format/image-to-image"
               ]
             },
-            
             {
-              "group": "gptproto-format",
+              "group": "chat format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image-preview/gptproto-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image-preview/gptproto-format/image-to-image"
+                "docs/api/gemini/gemini-25-flash-image-preview/chat-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image-preview/chat-format/image-to-image"
               ]
             },
-            
             {
               "group": "openai format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image-preview/openai-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image-preview/openai-format/image-to-image"
+                "docs/api/gemini/gemini-25-flash-image-preview/openai-format/create-image",
+                "docs/api/gemini/gemini-25-flash-image-preview/openai-format/image-editing"
+              ]
+            },
+            {
+              "group": "Nano Banana",
+              "pages": [
+                "docs/api/gemini/gemini-25-flash-image-preview/nano-banana/multi-image-mode",
+                "docs/api/gemini/gemini-25-flash-image-preview/nano-banana/text-to-image"
               ]
             }
           ]
@@ -1114,16 +1084,56 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/official-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/official-format/image-to-image"
+                "docs/api/gemini/gemini-25-flash-image-preview-hd/official-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image-preview-hd/official-format/image-to-image"
               ]
             },
-            
             {
-              "group": "gptproto format",
+              "group": "chat format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/gptproto-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image-preview-hd/gptproto-format/image-to-image"
+                "docs/api/gemini/gemini-25-flash-image-preview-hd/chat-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image-preview-hd/chat-format/image-to-image"
+              ]
+            },
+            {
+              "group": "openai format",
+              "pages": [
+                "docs/api/gemini/gemini-25-flash-image-preview-hd/openai-format/create-image",
+                "docs/api/gemini/gemini-25-flash-image-preview-hd/openai-format/image-editing"
+              ]
+            }
+          ]
+        },
+        {
+          "group": "gemini-2.5-flash-image",
+          "pages": [
+            {
+              "group": "Official Format",
+              "pages": [
+                "docs/api/gemini/gemini-25-flash-image/official-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image/official-format/image-to-image",
+                "docs/api/gemini/gemini-25-flash-image/official-format/images-to-image"
+              ]
+            },
+            {
+              "group": "Gptproto Format",
+              "pages": [
+                "docs/api/gemini/gemini-25-flash-image/gptproto-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image/gptproto-format/images-to-image"
+              ]
+            },
+            {
+              "group": "Openai  Format",
+              "pages": [
+                "docs/api/gemini/gemini-25-flash-image/openai-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image/openai-format/images-to-image"
+              ]
+            },
+            {
+              "group": "Nano Banana Format",
+              "pages": [
+                "docs/api/gemini/gemini-25-flash-image/nano-banana-format/nano-banana-text-to-image",
+                "docs/api/gemini/gemini-25-flash-image/nano-banana-format/query-task"
               ]
             }
           ]
@@ -1134,8 +1144,8 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-flash-image-hd/official-format/text-to-image",
-                "docs/api/gemini/gemini-2.5-flash-image-hd/official-format/image-to-image"
+                "docs/api/gemini/gemini-25-flash-image-hd/official-format/text-to-image",
+                "docs/api/gemini/gemini-25-flash-image-hd/official-format/image-to-image"
               ]
             }
           ]
@@ -1146,7 +1156,7 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-flash-lite/official-format/generatecontent"
+                "docs/api/gemini/gemini-25-flash-lite/official-format/generatecontent"
               ]
             }
           ]
@@ -1157,18 +1167,18 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/generatecontent",
-                "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/streamgeneratecontent",
-                "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/file-upload",
-                "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/file-upload-north-america"
+                "docs/api/gemini/gemini-25-flash-nothinking/official-format/generatecontent",
+                "docs/api/gemini/gemini-25-flash-nothinking/official-format/streamgeneratecontent",
+                "docs/api/gemini/gemini-25-flash-nothinking/official-format/file-upload",
+                "docs/api/gemini/gemini-25-flash-nothinking/official-format/file-upload-north-america"
               ]
             }
           ]
         },
         {
-          "group": "Gemini Series",
+          "group": "Gemini Series --- back",
           "pages": [
-            "docs/api/gemini/gemini-series/chat-image-mode"
+            "docs/api/gemini/gemini-series-back/chat-image-mode"
           ]
         }
       ],
@@ -1357,20 +1367,20 @@
             {
               "group": "Task Submission",
               "pages": [
-                "docs/api/midjourney/task-submission/blend",
-                "docs/api/midjourney/task-submission/swapface",
-                "docs/api/midjourney/task-submission/describe",
-                "docs/api/midjourney/task-submission/imagine",
-                "docs/api/midjourney/task-submission/modal",
-                "docs/api/midjourney/task-submission/action",
-                "docs/api/midjourney/task-submission/change"
+                "docs/api/midjourney/midjourney/task-submission/blend",
+                "docs/api/midjourney/midjourney/task-submission/swapface",
+                "docs/api/midjourney/midjourney/task-submission/describe",
+                "docs/api/midjourney/midjourney/task-submission/imagine",
+                "docs/api/midjourney/midjourney/task-submission/modal",
+                "docs/api/midjourney/midjourney/task-submission/action",
+                "docs/api/midjourney/midjourney/task-submission/change"
               ]
             },
             {
               "group": "Task Query",
               "pages": [
-                "docs/api/midjourney/task-query/listbycondition",
-                "docs/api/midjourney/task-query/fetchfromtask"
+                "docs/api/midjourney/midjourney/task-query/listbycondition",
+                "docs/api/midjourney/midjourney/task-query/fetchfromtask"
               ]
             }
           ]
@@ -1400,6 +1410,7 @@
             {
               "group": "Gptproto Format",
               "pages": [
+                "docs/api/minimax/speech-02-hd/gptproto-format/voice-clone",
                 "docs/api/minimax/speech-02-hd/gptproto-format/text-to-audio",
                 "docs/api/minimax/speech-02-hd/gptproto-format/query-task"
               ]
@@ -1424,8 +1435,7 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/minimax/speech-2.5-hd-preview/gptproto-format/speech-2.5-hd-preview",
-                "docs/api/minimax/speech-2.5-hd-preview/gptproto-format/query-task"
+                "docs/api/minimax/speech-25-hd-preview/gptproto-format/speech-25-hd-preview"
               ]
             }
           ]
@@ -1434,24 +1444,11 @@
           "group": "speech-2.5-hd-preview-voice-clone",
           "pages": [
             {
-              "group": "Gptproto Format",
+              "group": "Official Format",
               "pages": [
-                "docs/api/minimax/speech-2.5-hd-preview-voice-clone/gptproto-format/Voice-to-Voice",
-                "docs/api/minimax/speech-2.5-hd-preview-voice-clone/gptproto-format/get-task",
-                "docs/api/minimax/speech-2.5-hd-preview-voice-clone/gptproto-format/fileupload"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "speech-2.5-turbo-preview-voice-clone",
-          "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/minimax/speech-2.5-turbo-preview-voice-clone/gptproto-format/Voice-to-Voice",
-                "docs/api/minimax/speech-2.5-turbo-preview-voice-clone/gptproto-format/get-task",
-                "docs/api/minimax/speech-2.5-turbo-preview-voice-clone/gptproto-format/fileupload"
+                "docs/api/minimax/speech-25-hd-preview-voice-clone/official-format/voice-clone",
+                "docs/api/minimax/speech-25-hd-preview-voice-clone/official-format/get-task",
+                "docs/api/minimax/speech-25-hd-preview-voice-clone/official-format/fileupload"
               ]
             }
           ]
@@ -1463,44 +1460,6 @@
       "group": "OpenAI",
       "pages": [
 	   
-        {
-          "group": "sora-2",
-          "pages": [
-            {
-              "group": "Official Format",
-              "pages": [
-                "docs/api/openai/sora-2/official-format/text-to-video",
-                "docs/api/openai/sora-2/official-format/image-to-video",
-                "docs/api/openai/sora-2/official-format/query-task",
-                "docs/api/openai/sora-2/official-format/get-video",
-                "docs/api/openai/sora-2/official-format/get-thumbnail",
-                "docs/api/openai/sora-2/official-format/get-spritesheet"
-              ]
-            },
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/openai/sora-2/gptproto-format/image-to-video",
-                "docs/api/openai/sora-2/gptproto-format/text-to-video",
-                "docs/api/openai/sora-2/gptproto-format/query-task"
-              ]
-            },
-            {
-              "group": "Openai Format",
-              "pages": [
-                "docs/api/openai/sora-2/openai-format/image-to-video"
-              ]
-            },
-            {
-              "group": "Reverse Format",
-              "pages": [
-                "docs/api/openai/sora-2/reverse-format/image-to-video",
-                "docs/api/openai/sora-2/reverse-format/query-task"
-              ]
-            }
-          ]
-        },
-
         {
           "group": "sora-2-pro",
           "pages": [
@@ -1631,14 +1590,20 @@
             }
           ]
         },
-        {
-          "group": "gpt-image-1",
+        
+	  {
+          "group": "gpt-4o-mini-tts",
           "pages": [
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/openai/gpt-image-1/official-format/text-to-image",
-                "docs/api/openai/gpt-image-1/official-format/image-to-image"
+                "docs/api/openai/gpt-4o-mini-tts/official-format/text-to-audio"
+              ]
+            },
+            {
+              "group": "Gptproto Format",
+              "pages": [
+                "docs/api/openai/gpt-4o-mini-tts/gptproto-format/text-to-audio"
               ]
             }
           ]
@@ -1649,7 +1614,22 @@
             {
               "group": "Official Format",
               "pages": [
+                "docs/api/openai/gpt-4o-image/official-format/text-to-image",
+                "docs/api/openai/gpt-4o-image/official-format/image-to-image",
                 "docs/api/openai/gpt-4o-image/official-format/chat-mode"
+              ]
+            }
+          ]
+        },
+        {
+          "group": "gpt-image-1",
+          "pages": [
+            {
+              "group": "Official Format",
+              "pages": [
+                "docs/api/openai/gpt-image-1/official-format/text-to-image",
+                "docs/api/openai/gpt-image-1/official-format/image-to-image",
+                "docs/api/openai/gpt-image-1/official-format/chat-mode"
               ]
             }
           ]
@@ -1661,7 +1641,8 @@
               "group": "Official Format",
               "pages": [
                 "docs/api/openai/gpt-image-1-vip/official-format/text-to-image",
-                "docs/api/openai/gpt-image-1-vip/official-format/image-to-image"
+                "docs/api/openai/gpt-image-1-vip/official-format/image-to-image",
+                "docs/api/openai/gpt-image-1-vip/official-format/chat-mode"
               ]
             }
           ]
@@ -1672,6 +1653,8 @@
             {
               "group": "Official Format",
               "pages": [
+                "docs/api/openai/gpt-4o-image-vip/official-format/text-to-image",
+                "docs/api/openai/gpt-4o-image-vip/official-format/image-to-image",
                 "docs/api/openai/gpt-4o-image-vip/official-format/chat-mode"
               ]
             }
@@ -1728,8 +1711,7 @@
             {
               "group": "Official Format",
               "pages": [
-                "docs/api/openai/gpt-5/official-format/text-to-text",
-                 "docs/api/openai/gpt-5/official-format/image-to-text"
+                "docs/api/openai/gpt-5/official-format/text-to-text"
               ]
             }
           ]
@@ -2070,17 +2052,11 @@
     {
       "group": "qwen",
       "pages": [
-        
         {
-          "group": "wan-2.2-animate",
+          "group": "image/generations",
           "pages": [
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/qwen/wan-2.2-animate/gptproto-format/video-to-video",
-                "docs/api/qwen/wan-2.2-animate/gptproto-format/query-task"
-              ]
-            }
+            "docs/api/qwen/imagegenerations/image-edit",
+            "docs/api/qwen/imagegenerations/create-image"
           ]
         },
         {
