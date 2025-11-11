@@ -1,0 +1,257 @@
+---
+title: 'Text to Text '
+api: 'POST /api/v3/chat/completions'
+description: 'Text to Text '
+---
+
+## Overview
+
+This endpoint provides text to text  functionality using Volcengine official format.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token with your API key.
+
+<ParamField header="Authorization" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="model" type="string" required default="doubao-1-5-vision-pro-32k-250115">
+  The endpoint ID for the model. Format: ep-xxxxxxxxxx-xxxxx
+</ParamField>
+
+<ParamField body="messages" type="array" required default="[{'role': 'user', 'content': 'Who are you?'}]">
+  Array of message objects for the conversation. Each message must have a role (system, user, or assistant) and content.
+</ParamField>
+
+<ParamField body="temperature" type="number" default="0.7">
+  Controls randomness in the output. Range: 0.0 to 1.0
+</ParamField>
+
+<ParamField body="top_p" type="number" default="0.9">
+  Nucleus sampling parameter. Range: 0.0 to 1.0
+</ParamField>
+
+<ParamField body="max_tokens" type="integer" default="2048">
+  The maximum number of tokens to generate
+</ParamField>
+
+<ParamField body="stream" type="boolean" default="false">
+  Whether to stream the response using SSE (Server-Sent Events)
+</ParamField>
+
+<ParamField body="frequency_penalty" type="number" default="0.0">
+  Penalize frequent tokens. Range: -2.0 to 2.0
+</ParamField>
+
+<ParamField body="presence_penalty" type="number" default="0.0">
+  Penalize new tokens based on presence. Range: -2.0 to 2.0
+</ParamField>
+
+<ParamField body="stop" type="array">
+  Up to 4 sequences where the API will stop generating further tokens
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/chat/completions" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "doubao-1-5-vision-pro-32k-250115",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello, please introduce yourself"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 2048
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/chat/completions"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "model": "doubao-1-5-vision-pro-32k-250115",
+    "messages": [
+        {"role": "user", "content": "Hello, please introduce yourself"}
+    ],
+    "temperature": 0.7,
+    "max_tokens": 2048
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2, ensure_ascii=False))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/chat/completions";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  model: "doubao-1-5-vision-pro-32k-250115",
+  messages: [
+    { role: "user", content: "Hello, please introduce yourself" }
+  ],
+  temperature: 0.7,
+  max_tokens: 2048
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/chat/completions"
+
+    payload := []byte(`{
+  "model": "doubao-1-5-vision-pro-32k-250115",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello, please introduce yourself"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 2048
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response with Volcengine Doubao format
+
+```json
+{
+  "id": "chatcmpl-xxxxxxxxxx",
+  "object": "chat.completion",
+  "created": 1234567890,
+  "model": "doubao-1-5-vision-pro-32k-250115",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Hello! I'm Doubao, an AI assistant developed by ByteDance."
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 12,
+    "completion_tokens": 20,
+    "total_tokens": 32
+  }
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Bad Request
+{
+  "error": {
+    "message": "Invalid request parameters",
+    "type": "invalid_request_error",
+    "code": "invalid_parameters"
+  }
+}
+```
+
+```json 401 - Unauthorized
+{
+  "error": {
+    "message": "Invalid authentication credentials",
+    "type": "authentication_error",
+    "code": "invalid_api_key"
+  }
+}
+```
+
+```json 403 - Forbidden
+{
+  "error": {
+    "message": "Insufficient permissions or quota exceeded",
+    "type": "permission_error",
+    "code": "insufficient_quota"
+  }
+}
+```
+
+```json 429 - Rate Limit Exceeded
+{
+  "error": {
+    "message": "Rate limit exceeded",
+    "type": "rate_limit_error",
+    "code": "rate_limit_exceeded"
+  }
+}
+```
+
+```json 500 - Internal Server Error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "server_error",
+    "code": "internal_error"
+  }
+}
+```
+
+</ResponseExample>
+
