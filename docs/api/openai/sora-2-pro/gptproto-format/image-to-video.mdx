@@ -34,16 +34,12 @@ This endpoint requires authentication using a Bearer token.
   Resolution parameter
 </ParamField>
 
-<ParamField body="resolution" default="720p" type="string">
-  Resolution parameter
-</ParamField>
 
 ## Request Example
 
 <CodeGroup>
 
 ```bash cURL
-<<<<<<< HEAD:docs/api/openai/sora-2-pro/gptproto-format/image-to-video.mdx
 curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video-pro" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -52,16 +48,6 @@ curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video-pro" \
   "image": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png",
   "duration": 4,
   "resolution": "720p"
-=======
-curl -X POST "gptproto/api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-video" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
-  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
-  "guidance_scale": 0.5,
-  "duration": 5
->>>>>>> b57db1d (更新doubao文档和claude):docs/api/kling/kling-v25-turbo-pro/official-format/text-to-video.mdx
 }'
 ```
 
