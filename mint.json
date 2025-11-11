@@ -117,9 +117,6 @@
         {
           "group": "claude-3-7-sonnet-20250219-thinking",
           "pages": [
-            {
-              "group": "OpenAI Format",
-              "pages": [
                 {
                   "group": "OpenAI Format",
                   "pages": [
@@ -136,8 +133,8 @@
                     "docs/api/claude/claude-3-7-sonnet-20250219-thinking/official-format/pdf-analysis-exampletwo"
                   ]
                 }
-              ]
-            }
+           
+           
           ]
         },
 
@@ -375,9 +372,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-1-5-pro-256k-250115/volcengine-format/text-to-text"
+                    "docs/api/doubao/doubao-1-5-pro-256k-250115/official-format/text-to-text"
                   ]
                 }
           ]
@@ -392,9 +389,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-1-5-pro-32k-250115/volcengine-format/text-to-text"
+                    "docs/api/doubao/doubao-1-5-pro-32k-250115/official-format/text-to-text"
                   ]
                 }
           ]
@@ -410,10 +407,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/volcengine-format/text-to-text",
-                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/volcengine-format/image-to-text"
+                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/official-format/text-to-text",
+                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/official-format/image-to-text"
                   ]
                 }
           ]
@@ -429,10 +426,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seed-1-6-250615/volcengine-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-250615/volcengine-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-250615/official-format/text-to-text",
+                    "docs/api/doubao/doubao-seed-1-6-250615/official-format/image-to-text"
                   ]
                 }
           ]
@@ -448,10 +445,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seed-1-6-flash-250615/volcengine-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-flash-250615/volcengine-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-flash-250615/official-format/text-to-text",
+                    "docs/api/doubao/doubao-seed-1-6-flash-250615/official-format/image-to-text"
                   ]
                 }
           ]
@@ -467,10 +464,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/volcengine-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/volcengine-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/official-format/text-to-text",
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/official-format/image-to-text"
                   ]
                 }
           ]
@@ -486,10 +483,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/volcengine-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/volcengine-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/official-format/text-to-text",
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/official-format/image-to-text"
                   ]
                 }
           ]
@@ -504,9 +501,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seededit-3-0-i2i-250628/volcengine-format/image-to-image"
+                    "docs/api/doubao/doubao-seededit-3-0-i2i-250628/official-format/image-to-image"
                   ]
                 }
           ]
@@ -521,9 +518,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seedream-3-0-t2i-250415/volcengine-format/text-to-image"
+                    "docs/api/doubao/doubao-seedream-3-0-t2i-250415/official-format/text-to-image"
                   ]
                 }
           ]
@@ -538,9 +535,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seedream-4-0-250828/volcengine-format/text-to-image"
+                    "docs/api/doubao/doubao-seedream-4-0-250828/official-format/text-to-image"
                   ]
                 }
           ]
@@ -556,10 +553,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/seedance-1-0-lite-i2v-250428/volcengine-format/image-to-video",
-                    "docs/api/doubao/seedance-1-0-lite-i2v-250428/volcengine-format/query-task"
+                    "docs/api/doubao/seedance-1-0-lite-i2v-250428/official-format/image-to-video",
+                    "docs/api/doubao/seedance-1-0-lite-i2v-250428/official-format/query-task"
                   ]
                 }
           ]
@@ -575,10 +572,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/seedance-1-0-lite-t2v-250428/volcengine-format/text-to-video",
-                    "docs/api/doubao/seedance-1-0-lite-t2v-250428/volcengine-format/query-task"
+                    "docs/api/doubao/seedance-1-0-lite-t2v-250428/official-format/text-to-video",
+                    "docs/api/doubao/seedance-1-0-lite-t2v-250428/official-format/query-task"
                   ]
                 }
           ]
@@ -591,15 +588,15 @@
                   "pages": [
                     "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/image-to-video",
                     "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/text-to-video",
-                    "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/query-task-copy"
+                    "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/query-task"
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/seedance-1-0-pro-250528/volcengine-format/image-to-video",
-                    "docs/api/doubao/seedance-1-0-pro-250528/volcengine-format/text-to-video",
-                    "docs/api/doubao/seedance-1-0-pro-250528/volcengine-format/query-task-copy"
+                    "docs/api/doubao/seedance-1-0-pro-250528/official-format/image-to-video",
+                    "docs/api/doubao/seedance-1-0-pro-250528/official-format/text-to-video",
+                    "docs/api/doubao/seedance-1-0-pro-250528/official-format/query-task"
                   ]
                 }
           ]
@@ -614,9 +611,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/seededit-3-0-i2i-250628/volcengine-format/image-to-image"
+                    "docs/api/doubao/seededit-3-0-i2i-250628/official-format/image-to-image"
                   ]
                 }
           ]
@@ -631,9 +628,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/seedream-4-0-250828/volcengine-format/text-to-image"
+                    "docs/api/doubao/seedream-4-0-250828/official-format/text-to-image"
                   ]
                 }
           ]
@@ -710,16 +707,6 @@
                 "docs/api/gemini/veo/veo31/gptproto-format/firstlast-frame",
                 "docs/api/gemini/veo/veo31/gptproto-format/get-task-status"
               ]
-            },
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/gemini/veo/veo31/openai-format/text-to-video-169",
-                "docs/api/gemini/veo/veo31/openai-format/text-to-video-916",
-                "docs/api/gemini/veo/veo31/openai-format/image-to-video169",
-                "docs/api/gemini/veo/veo31/openai-format/image-to-video-916",
-                "docs/api/gemini/veo/veo31/openai-format/firstlast-frame"
-              ]
             }
           ]
         },
@@ -729,20 +716,16 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/gemini/veo/veo31-pro/gptproto-format/text-to-video",
-                "docs/api/gemini/veo/veo31-pro/gptproto-format/image-to-video",
-                "docs/api/gemini/veo/veo31-pro/gptproto-format/firstlast-frame",
-                "docs/api/gemini/veo/veo31-pro/gptproto-format/get-task-status"
+                "docs/api/gemini/veo/veo3.1-pro/gptproto-format/text-to-video",
+                "docs/api/gemini/veo/veo3.1-pro/gptproto-format/image-to-video",
+                "docs/api/gemini/veo/veo3.1-pro/gptproto-format/firstlast-frame",
+                "docs/api/gemini/veo/veo3.1-pro/gptproto-format/get-task-status"
               ]
             },
             {
               "group": "OpenAI Format",
               "pages": [
-                "docs/api/gemini/veo/veo31-pro/openai-format/text-to-video-169",
-                "docs/api/gemini/veo/veo31-pro/openai-format/text-to-video-916",
-                "docs/api/gemini/veo/veo31-pro/openai-format/image-to-video169",
-                "docs/api/gemini/veo/veo31-pro/openai-format/image-to-video-916",
-                "docs/api/gemini/veo/veo31-pro/openai-format/firstlast-frame"
+                "docs/api/gemini/veo/veo3.1-pro/openai-format/firstlast-frame"
               ]
             }
           ]
@@ -753,20 +736,10 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/gemini/veo/veo31-pro-frames/gptproto-format/text-to-video",
-                "docs/api/gemini/veo/veo31-pro-frames/gptproto-format/image-to-video",
-                "docs/api/gemini/veo/veo31-pro-frames/gptproto-format/firstlast-frame",
-                "docs/api/gemini/veo/veo31-pro-frames/gptproto-format/get-task-status"
-              ]
-            },
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/gemini/veo/veo31-pro-frames/openai-format/text-to-video-169",
-                "docs/api/gemini/veo/veo31-pro-frames/openai-format/text-to-video-916",
-                "docs/api/gemini/veo/veo31-pro-frames/openai-format/image-to-video169",
-                "docs/api/gemini/veo/veo31-pro-frames/openai-format/image-to-video-916",
-                "docs/api/gemini/veo/veo31-pro-frames/openai-format/firstlast-frame"
+                "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/text-to-video",
+                "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/image-to-video",
+                "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/firstlast-frame",
+                "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/get-task-status"
               ]
             }
           ]
@@ -777,25 +750,15 @@
             {
               "group": "Official Format ",
               "pages": [
-                "docs/api/gemini/veo/veo31-fast/official-format/text-to-video",
-                "docs/api/gemini/veo/veo31-fast/official-format/image-to-video"
+                "docs/api/gemini/veo/veo3.1-fast/official-format/text-to-video",
+                "docs/api/gemini/veo/veo3.1-fast/official-format/image-to-video"
               ]
             },
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/gemini/veo/veo31-fast/gptproto-format/text-to-video",
-                "docs/api/gemini/veo/veo31-fast/gptproto-format/image-to-video"
-              ]
-            },
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/gemini/veo/veo31-fast/openai-format/firstlast-frame",
-                "docs/api/gemini/veo/veo31-fast/openai-format/text-to-video-169",
-                "docs/api/gemini/veo/veo31-fast/openai-format/text-to-video-916",
-                "docs/api/gemini/veo/veo31-fast/openai-format/image-to-video169",
-                "docs/api/gemini/veo/veo31-fast/openai-format/image-to-video-916"
+                "docs/api/gemini/veo/veo3.1-fast/gptproto-format/text-to-video",
+                "docs/api/gemini/veo/veo3.1-fast/gptproto-format/image-to-video"
               ]
             }
           ]
@@ -806,27 +769,27 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/gemini/veo/veo31-fast-frames/gptproto-format/create-video169",
-                "docs/api/gemini/veo/veo31-fast-frames/gptproto-format/create-video916",
-                "docs/api/gemini/veo/veo31-fast-frames/gptproto-format/firstlast-frame",
-                "docs/api/gemini/veo/veo31-fast-frames/gptproto-format/get-task-status"
+                "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/create-video169",
+                "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/create-video916",
+                "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/firstlast-frame",
+                "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/get-task-status"
               ]
             },
             {
               "group": "chat Format",
               "pages": [
-                "docs/api/gemini/veo/veo31-fast-frames/chat-format/text-to-video-169",
-                "docs/api/gemini/veo/veo31-fast-frames/chat-format/text-to-video-916",
-                "docs/api/gemini/veo/veo31-fast-frames/chat-format/image-to-video169",
-                "docs/api/gemini/veo/veo31-fast-frames/chat-format/image-to-video-916",
-                "docs/api/gemini/veo/veo31-fast-frames/chat-format/firstlast-frame"
+                "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/text-to-video-169",
+                "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/text-to-video-916",
+                "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/image-to-video169",
+                "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/image-to-video-916",
+                "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/firstlast-frame"
               ]
             },
             {
               "group": "Official Format ",
               "pages": [
-                "docs/api/gemini/veo/veo31-fast-frames/official-format/text-to-video",
-                "docs/api/gemini/veo/veo31-fast-frames/official-format/image-to-video"
+                "docs/api/gemini/veo/veo3.1-fast-frames/official-format/text-to-video",
+                "docs/api/gemini/veo/veo3.1-fast-frames/official-format/image-to-video"
               ]
             }
           ]
