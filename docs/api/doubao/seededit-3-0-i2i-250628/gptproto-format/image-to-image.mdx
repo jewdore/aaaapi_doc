@@ -23,31 +23,31 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 <ParamField body="prompt" type="string" required default="Change bubbles into heart shape">
-  Prompt parameter
+  Image generation prompt describing the desired image content
 </ParamField>
 
 <ParamField body="image" type="string"  default="https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg">
-  Image parameter
+  Input image URL(s) for image-to-image generation
 </ParamField>
 
 <ParamField body="response_format" type="string"  default="url">
-  Response Format parameter
+  Response format: "url" (image URL) or "b64_json" (base64 encoded)
 </ParamField>
 
 <ParamField body="size" type="string"  default="adaptive">
-  Size parameter
+  Output image resolution (e.g., 1024x1024, 2K, 4K)
 </ParamField>
 
 <ParamField body="seed" type="integer"  default="21">
-  Seed parameter
+  Random seed for reproducible results
 </ParamField>
 
 <ParamField body="guidance_scale" type="number"  default="5.5">
-  Guidance Scale parameter
+  Controls how closely the image follows the prompt (higher = more strict, typical range: 1.0-7.0)
 </ParamField>
 
 <ParamField body="watermark" type="boolean"  default="true">
-  Watermark parameter
+  Whether to add watermark to generated image
 </ParamField>
 
 ## Request Example

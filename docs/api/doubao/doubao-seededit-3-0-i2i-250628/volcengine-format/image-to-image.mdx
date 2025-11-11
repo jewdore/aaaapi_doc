@@ -1,0 +1,250 @@
+---
+title: 'Image to Image'
+api: 'POST /api/v3/images/generations'
+description: 'Image to Image'
+---
+
+## Overview
+
+This endpoint provides image to image functionality using Volcengine official format.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token with your API key.
+
+<ParamField header="Authorization" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="model" type="string" required default="doubao-seededit-3-0-i2i-250628">
+  The model identifier for image generation/editing
+</ParamField>
+
+<ParamField body="prompt" type="string" required>
+  Description of the desired image transformation or generation
+</ParamField>
+
+<ParamField body="image" type="string" required>
+  Input image URL for image-to-image editing
+</ParamField>
+
+<ParamField body="response_format" type="string" default="url">
+  Response format: "url" (image URL) or "b64_json" (base64 encoded)
+</ParamField>
+
+<ParamField body="size" type="string" default="adaptive">
+  Output image resolution. Options: adaptive, 1024x1024, 2K, 4K
+</ParamField>
+
+<ParamField body="seed" type="integer">
+  Random seed for reproducible results
+</ParamField>
+
+<ParamField body="guidance_scale" type="number" default="5.5">
+  Controls adherence to the prompt. Range: 1.0-10.0, recommended: 3.0-7.0
+</ParamField>
+
+<ParamField body="watermark" type="boolean" default="true">
+  Whether to add watermark to the generated image
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/images/generations" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "doubao-seededit-3-0-i2i-250628",
+  "prompt": "Change bubbles into heart shape",
+  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "response_format": "url",
+  "size": "adaptive",
+  "seed": 21,
+  "guidance_scale": 5.5,
+  "watermark": true
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/images/generations"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "model": "doubao-seededit-3-0-i2i-250628",
+    "prompt": "Change bubbles into heart shape",
+    "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+    "response_format": "url",
+    "size": "adaptive",
+    "seed": 21,
+    "guidance_scale": 5.5,
+    "watermark": True
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/images/generations";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  model: "doubao-seededit-3-0-i2i-250628",
+  prompt: "Change bubbles into heart shape",
+  image: "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  response_format: "url",
+  size: "adaptive",
+  seed: 21,
+  guidance_scale: 5.5,
+  watermark: true
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/images/generations"
+
+    payload := []byte(`{
+  "model": "doubao-seededit-3-0-i2i-250628",
+  "prompt": "Change bubbles into heart shape",
+  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "response_format": "url",
+  "size": "adaptive",
+  "seed": 21,
+  "guidance_scale": 5.5,
+  "watermark": true
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response with image generation result
+
+```json
+{
+  "id": "img_xxxxxxxxxx",
+  "object": "image",
+  "created": 1234567890,
+  "model": "doubao-seededit-3-0-i2i-250628",
+  "data": [
+    {
+      "url": "https://example.com/generated_image.jpg",
+      "index": 0
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 10,
+    "total_tokens": 10
+  }
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Bad Request
+{
+  "error": {
+    "message": "Invalid request parameters",
+    "type": "invalid_request_error",
+    "code": "invalid_parameters"
+  }
+}
+```
+
+```json 401 - Unauthorized
+{
+  "error": {
+    "message": "Invalid authentication credentials",
+    "type": "authentication_error",
+    "code": "invalid_api_key"
+  }
+}
+```
+
+```json 403 - Forbidden
+{
+  "error": {
+    "message": "Insufficient permissions or quota exceeded",
+    "type": "permission_error",
+    "code": "insufficient_quota"
+  }
+}
+```
+
+```json 429 - Rate Limit Exceeded
+{
+  "error": {
+    "message": "Rate limit exceeded",
+    "type": "rate_limit_error",
+    "code": "rate_limit_exceeded"
+  }
+}
+```
+
+```json 500 - Internal Server Error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "server_error",
+    "code": "internal_error"
+  }
+}
+```
+
+</ResponseExample>
+

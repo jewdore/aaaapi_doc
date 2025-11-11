@@ -6,37 +6,32 @@ description: 'Image to Video'
 
 ## Overview
 
-Kling 2.1 is Kuaishou’s advanced image-to-video generation model released in 2025. Designed for high-fidelity cinematic output, Kling 2.1 transforms reference images — with optional text prompts — into visually rich, lifelike video clips.
+This endpoint provides image to video functionality.
 
 ## Authentication
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
+<ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="prompt" default="The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'\''s face" type="string" required>
-  The positive prompt for the generation.
+<ParamField body="prompt" type="string" required default="The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character&apos;&apos;&apos;s face">
+  Prompt parameter
 </ParamField>
 
-<ParamField body="negative_prompt" default="" type="string" >
-  The negative prompt for the generation.
+<ParamField body="image" type="string"  default="https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png">
+  Image parameter
 </ParamField>
 
-<ParamField body="image" default="https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png" type="string" required>
-    First frame of the video; Supported image formats include.jpg/.jpeg/.png; 
-  The image file size cannot exceed 10MB, and the image resolution should not be less than 300*300px.
+<ParamField body="guidance_scale" type="number"  default="0.5">
+  Guidance Scale parameter
 </ParamField>
 
-<ParamField body="duration" default="5" type="integer">
-  The duration of the generated media in seconds. 5, 10.  default 5
-</ParamField>
-
-<ParamField body="guidance_scale" default="0.5" type="number">
-  The guidance scale to use for the generation. 0.00 ~ 1.00
+<ParamField body="duration" type="integer"  default="5">
+  Duration parameter
 </ParamField>
 
 ## Request Example
@@ -44,14 +39,14 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-master' \
---header 'Content-Type: application/json' \
---header 'Authorization: sk-xxxx' \
---data '{   
-    "prompt" : "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'\''s face",
-    "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png", 
-    "guidance_scale": 0.5,
-    "duration": 5
+curl -X POST "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-master" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
+  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "guidance_scale": 0.5,
+  "duration": 5
 }'
 ```
 
@@ -59,17 +54,17 @@ curl --location 'https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-master' \
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-master"
+url = "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-master"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
-data = {   
-    "prompt" : "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'\''s face",
-    "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png", 
-    "guidance_scale": 0.5,
-    "duration": 5
+data = {
+  "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
+  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "guidance_scale": 0.5,
+  "duration": 5
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -78,17 +73,17 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-master";
+const url = "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-master";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
-const data = {   
-    "prompt" : "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'\''s face",
-    "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png", 
-    "guidance_scale": 0.5,
-    "duration": 5
+const data = {
+  "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
+  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "guidance_scale": 0.5,
+  "duration": 5
 };
 
 fetch(url, {
@@ -101,16 +96,58 @@ fetch(url, {
   .catch(error => console.error("Error:", error));
 ```
 
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-master"
+
+    payload := []byte(`{
+"prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
+"image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+"guidance_scale": 0.5,
+"duration": 5
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
 
 </CodeGroup>
 
 ## Response
 
-<ResponseField name="data.id" type="string">
-  Unique identifier for the prediction, Task Id
+<ResponseField name="Success" type="200">
+  Successful response
 
+```json
+{
+  "status": "success"
+}
+```
 </ResponseField>
 
+## Error Responses
 
 <ResponseExample>
 

@@ -18,6 +18,7 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
+<<<<<<< HEAD:docs/api/openai/sora-2-pro/gptproto-format/text-to-video.mdx
 <ParamField body="prompt" type="string" required default="A video of a horse dancing.">
   Prompt parameter
 </ParamField>
@@ -27,6 +28,21 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 <ParamField body="duration" type="integer"  default="4">
+=======
+<ParamField body="prompt" type="string" required default="The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character&apos;&apos;&apos;s face">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="image" type="string"  default="https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png">
+  Image parameter
+</ParamField>
+
+<ParamField body="guidance_scale" type="number"  default="0.5">
+  Guidance Scale parameter
+</ParamField>
+
+<ParamField body="duration" type="integer"  default="5">
+>>>>>>> b57db1d (更新doubao文档和claude):docs/api/kling/kling-v21-i2v-pro/gptproto-format/image-to-video.mdx
   Duration parameter
 </ParamField>
 
@@ -35,6 +51,7 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
+<<<<<<< HEAD:docs/api/openai/sora-2-pro/gptproto-format/text-to-video.mdx
 curl -X POST "https://gptproto.com/api/v3/openai/sora-2/text-to-video-pro" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -42,6 +59,16 @@ curl -X POST "https://gptproto.com/api/v3/openai/sora-2/text-to-video-pro" \
   "prompt": "A video of a horse dancing.",
   "size": "720*1280",
   "duration": 4
+=======
+curl -X POST "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-pro" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
+  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "guidance_scale": 0.5,
+  "duration": 5
+>>>>>>> b57db1d (更新doubao文档和claude):docs/api/kling/kling-v21-i2v-pro/gptproto-format/image-to-video.mdx
 }'
 ```
 
@@ -49,16 +76,27 @@ curl -X POST "https://gptproto.com/api/v3/openai/sora-2/text-to-video-pro" \
 import requests
 import json
 
+<<<<<<< HEAD:docs/api/openai/sora-2-pro/gptproto-format/text-to-video.mdx
 url = "https://gptproto.com/api/v3/openai/sora-2/text-to-video-pro"
+=======
+url = "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-pro"
+>>>>>>> b57db1d (更新doubao文档和claude):docs/api/kling/kling-v21-i2v-pro/gptproto-format/image-to-video.mdx
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
+<<<<<<< HEAD:docs/api/openai/sora-2-pro/gptproto-format/text-to-video.mdx
   "prompt": "A video of a horse dancing.",
   "size": "720*1280",
   "duration": 4
+=======
+  "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
+  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "guidance_scale": 0.5,
+  "duration": 5
+>>>>>>> b57db1d (更新doubao文档和claude):docs/api/kling/kling-v21-i2v-pro/gptproto-format/image-to-video.mdx
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -67,16 +105,27 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
+<<<<<<< HEAD:docs/api/openai/sora-2-pro/gptproto-format/text-to-video.mdx
 const url = "https://gptproto.com/api/v3/openai/sora-2/text-to-video-pro";
+=======
+const url = "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-pro";
+>>>>>>> b57db1d (更新doubao文档和claude):docs/api/kling/kling-v21-i2v-pro/gptproto-format/image-to-video.mdx
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
+<<<<<<< HEAD:docs/api/openai/sora-2-pro/gptproto-format/text-to-video.mdx
   "prompt": "A video of a horse dancing.",
   "size": "720*1280",
   "duration": 4
+=======
+  "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
+  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "guidance_scale": 0.5,
+  "duration": 5
+>>>>>>> b57db1d (更新doubao文档和claude):docs/api/kling/kling-v21-i2v-pro/gptproto-format/image-to-video.mdx
 };
 
 fetch(url, {
@@ -101,12 +150,22 @@ import (
 )
 
 func main() {
+<<<<<<< HEAD:docs/api/openai/sora-2-pro/gptproto-format/text-to-video.mdx
     url := "https://gptproto.com/api/v3/openai/sora-2/text-to-video-pro"
 
     payload := []byte(`{
 "prompt": "A video of a horse dancing.",
 "size": "720*1280",
 "duration": 4
+=======
+    url := "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-pro"
+
+    payload := []byte(`{
+"prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
+"image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+"guidance_scale": 0.5,
+"duration": 5
+>>>>>>> b57db1d (更新doubao文档和claude):docs/api/kling/kling-v21-i2v-pro/gptproto-format/image-to-video.mdx
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

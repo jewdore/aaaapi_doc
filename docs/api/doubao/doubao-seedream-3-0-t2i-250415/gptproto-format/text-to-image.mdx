@@ -16,6 +16,36 @@ This endpoint requires authentication using a Bearer token.
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
+## Request Body
+
+<ParamField body="model" type="string" required default="doubao-seedream-3-0-t2i-250415">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="prompt" type="string" required default="Fisheye lens, a cat&apos;&apos;&apos;s head, the picture shows the cat&apos;&apos;&apos;s facial features are distorted due to the shooting method.">
+  Image generation prompt describing the desired image content
+</ParamField>
+
+<ParamField body="response_format" type="string"  default="url">
+  Response format: "url" (image URL) or "b64_json" (base64 encoded)
+</ParamField>
+
+<ParamField body="size" type="string"  default="1024x1024">
+  Output image resolution (e.g., 1024x1024, 2K, 4K)
+</ParamField>
+
+<ParamField body="seed" type="integer"  default="12">
+  Random seed for reproducible results
+</ParamField>
+
+<ParamField body="guidance_scale" type="number"  default="2.5">
+  Controls how closely the image follows the prompt (higher = more strict, typical range: 1.0-7.0)
+</ParamField>
+
+<ParamField body="watermark" type="boolean"  default="true">
+  Whether to add watermark to generated image
+</ParamField>
+
 ## Request Example
 
 <CodeGroup>
@@ -24,7 +54,15 @@ This endpoint requires authentication using a Bearer token.
 curl -X POST "https://gptproto.com/v1/images/generations" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{}'
+  -d '{
+  "model": "doubao-seedream-3-0-t2i-250415",
+  "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
+  "response_format": "url",
+  "size": "1024x1024",
+  "seed": 12,
+  "guidance_scale": 2.5,
+  "watermark": true
+}'
 ```
 
 ```python Python
@@ -37,7 +75,15 @@ headers = {
     "Content-Type": "application/json"
 }
 
-data = {}
+data = {
+  "model": "doubao-seedream-3-0-t2i-250415",
+  "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
+  "response_format": "url",
+  "size": "1024x1024",
+  "seed": 12,
+  "guidance_scale": 2.5,
+  "watermark": true
+}
 
 response = requests.post(url, headers=headers, json=data)
 result = response.json()
@@ -51,7 +97,15 @@ const headers = {
   "Content-Type": "application/json"
 };
 
-const data = {};
+const data = {
+  "model": "doubao-seedream-3-0-t2i-250415",
+  "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
+  "response_format": "url",
+  "size": "1024x1024",
+  "seed": 12,
+  "guidance_scale": 2.5,
+  "watermark": true
+};
 
 fetch(url, {
   method: "POST",
@@ -77,7 +131,15 @@ import (
 func main() {
     url := "https://gptproto.com/v1/images/generations"
 
-    payload := []byte(`{}`)
+    payload := []byte(`{
+"model": "doubao-seedream-3-0-t2i-250415",
+"prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
+"response_format": "url",
+"size": "1024x1024",
+"seed": 12,
+"guidance_scale": 2.5,
+"watermark": true
+}`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
     req.Header.Set("Authorization", "YOUR_API_KEY")

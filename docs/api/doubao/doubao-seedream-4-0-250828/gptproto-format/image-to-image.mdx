@@ -19,7 +19,7 @@ This endpoint requires authentication using a Bearer token.
 ## Request Body
 
 <ParamField body="image" type="array"  default="[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;]">
-  Image parameter
+  Input image URL(s) for image-to-image generation
 </ParamField>
 
 <ParamField body="hd" type="boolean"  default="true">
@@ -35,7 +35,7 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 <ParamField body="prompt" type="string" required default="Generate close-up photos of characters in the snow">
-  Prompt parameter
+  Image generation prompt describing the desired image content
 </ParamField>
 
 <ParamField body="prompt_enhancement" type="boolean"  default="false">
@@ -51,15 +51,15 @@ This endpoint requires authentication using a Bearer token.
 </ParamField>
 
 <ParamField body="response_format" type="string"  default="url">
-  Response Format parameter
+  Response format: "url" (image URL) or "b64_json" (base64 encoded)
 </ParamField>
 
 <ParamField body="seed" type="integer"  default="12">
-  Seed parameter
+  Random seed for reproducible results
 </ParamField>
 
 <ParamField body="size" type="string"  default="1024x1280">
-  Size parameter
+  Output image resolution (e.g., 1024x1024, 2K, 4K)
 </ParamField>
 
 ## Request Example

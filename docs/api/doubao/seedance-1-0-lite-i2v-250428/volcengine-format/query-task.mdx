@@ -1,0 +1,194 @@
+---
+title: 'Query Task'
+api: 'GET /api/v3/contents/generations/tasks/{task_id}'
+description: 'Query the status and result of a video generation task'
+---
+
+## Overview
+
+Query the status and result of a video generation task created by the seedance-1-0-lite-i2v-250428 model. This endpoint allows you to check if the video generation is complete and retrieve the video URL.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token with your API key.
+
+<ParamField header="Authorization" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Path Parameters
+
+<ParamField path="task_id" type="string" required>
+  The task ID returned when creating the video generation task
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X GET "https://gptproto.com/api/v3/contents/generations/tasks/{task_id}" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+```python Python
+import requests
+
+task_id = "task_xxxxxxxxxx"
+url = f"https://gptproto.com/api/v3/contents/generations/tasks/{task_id}"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY"
+}
+
+response = requests.get(url, headers=headers)
+result = response.json()
+print(result)
+```
+
+```javascript JavaScript
+const taskId = "task_xxxxxxxxxx";
+const url = `https://gptproto.com/api/v3/contents/generations/tasks/${taskId}`;
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY"
+};
+
+fetch(url, {
+  method: "GET",
+  headers: headers
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    taskId := "task_xxxxxxxxxx"
+    url := fmt.Sprintf("https://gptproto.com/api/v3/contents/generations/tasks/%s", taskId)
+
+    req, _ := http.NewRequest("GET", url, nil)
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success - Pending" type="200">
+  Task is still processing
+
+```json
+{
+  "code": 0,
+  "message": "Success",
+  "data": {
+    "task_id": "task_xxxxxxxxxx",
+    "status": "pending",
+    "model": "seedance-1-0-lite-i2v-250428"
+  }
+}
+```
+</ResponseField>
+
+<ResponseField name="Success - Completed" type="200">
+  Task completed successfully with video URL
+
+```json
+{
+  "code": 0,
+  "message": "Success",
+  "data": {
+    "task_id": "task_xxxxxxxxxx",
+    "status": "completed",
+    "model": "seedance-1-0-lite-i2v-250428",
+    "video_url": "https://example.com/generated_video.mp4",
+    "created_at": "2025-01-10T12:00:00Z",
+    "completed_at": "2025-01-10T12:01:30Z"
+  }
+}
+```
+</ResponseField>
+
+<ResponseField name="Success - Failed" type="200">
+  Task failed with error message
+
+```json
+{
+  "code": 0,
+  "message": "Success",
+  "data": {
+    "task_id": "task_xxxxxxxxxx",
+    "status": "failed",
+    "model": "seedance-1-0-lite-i2v-250428",
+    "error": "Content policy violation or generation error"
+  }
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Bad Request
+{
+  "error": {
+    "message": "Invalid task_id format",
+    "type": "invalid_request_error",
+    "code": "invalid_parameters"
+  }
+}
+```
+
+```json 401 - Unauthorized
+{
+  "error": {
+    "message": "Invalid authentication credentials",
+    "type": "authentication_error",
+    "code": "invalid_api_key"
+  }
+}
+```
+
+```json 404 - Not Found
+{
+  "error": {
+    "message": "Task not found",
+    "type": "not_found_error",
+    "code": "task_not_found"
+  }
+}
+```
+
+```json 500 - Internal Server Error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "server_error",
+    "code": "internal_error"
+  }
+}
+```
+
+</ResponseExample>
+
