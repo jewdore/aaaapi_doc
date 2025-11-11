@@ -375,9 +375,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-1-5-pro-256k-250115/volcengine-format/text-to-text"
+                    "docs/api/doubao/doubao-1-5-pro-256k-250115/official-format/text-to-text"
                   ]
                 }
           ]
@@ -392,9 +392,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-1-5-pro-32k-250115/volcengine-format/text-to-text"
+                    "docs/api/doubao/doubao-1-5-pro-32k-250115/official-format/text-to-text"
                   ]
                 }
           ]
@@ -410,10 +410,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/volcengine-format/text-to-text",
-                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/volcengine-format/image-to-text"
+                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/official-format/text-to-text",
+                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/official-format/image-to-text"
                   ]
                 }
           ]
@@ -429,10 +429,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seed-1-6-250615/volcengine-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-250615/volcengine-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-250615/official-format/text-to-text",
+                    "docs/api/doubao/doubao-seed-1-6-250615/official-format/image-to-text"
                   ]
                 }
           ]
@@ -448,10 +448,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seed-1-6-flash-250615/volcengine-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-flash-250615/volcengine-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-flash-250615/official-format/text-to-text",
+                    "docs/api/doubao/doubao-seed-1-6-flash-250615/official-format/image-to-text"
                   ]
                 }
           ]
@@ -467,10 +467,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/volcengine-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/volcengine-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/official-format/text-to-text",
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/official-format/image-to-text"
                   ]
                 }
           ]
@@ -486,10 +486,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/volcengine-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/volcengine-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/official-format/text-to-text",
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/official-format/image-to-text"
                   ]
                 }
           ]
@@ -504,9 +504,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seededit-3-0-i2i-250628/volcengine-format/image-to-image"
+                    "docs/api/doubao/doubao-seededit-3-0-i2i-250628/official-format/image-to-image"
                   ]
                 }
           ]
@@ -521,9 +521,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seedream-3-0-t2i-250415/volcengine-format/text-to-image"
+                    "docs/api/doubao/doubao-seedream-3-0-t2i-250415/official-format/text-to-image"
                   ]
                 }
           ]
@@ -538,9 +538,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/doubao-seedream-4-0-250828/volcengine-format/text-to-image"
+                    "docs/api/doubao/doubao-seedream-4-0-250828/official-format/text-to-image"
                   ]
                 }
           ]
@@ -556,10 +556,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/seedance-1-0-lite-i2v-250428/volcengine-format/image-to-video",
-                    "docs/api/doubao/seedance-1-0-lite-i2v-250428/volcengine-format/query-task"
+                    "docs/api/doubao/seedance-1-0-lite-i2v-250428/official-format/image-to-video",
+                    "docs/api/doubao/seedance-1-0-lite-i2v-250428/official-format/query-task"
                   ]
                 }
           ]
@@ -575,10 +575,10 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/seedance-1-0-lite-t2v-250428/volcengine-format/text-to-video",
-                    "docs/api/doubao/seedance-1-0-lite-t2v-250428/volcengine-format/query-task"
+                    "docs/api/doubao/seedance-1-0-lite-t2v-250428/official-format/text-to-video",
+                    "docs/api/doubao/seedance-1-0-lite-t2v-250428/official-format/query-task"
                   ]
                 }
           ]
@@ -591,15 +591,15 @@
                   "pages": [
                     "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/image-to-video",
                     "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/text-to-video",
-                    "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/query-task-copy"
+                    "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/query-task"
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/seedance-1-0-pro-250528/volcengine-format/image-to-video",
-                    "docs/api/doubao/seedance-1-0-pro-250528/volcengine-format/text-to-video",
-                    "docs/api/doubao/seedance-1-0-pro-250528/volcengine-format/query-task-copy"
+                    "docs/api/doubao/seedance-1-0-pro-250528/official-format/image-to-video",
+                    "docs/api/doubao/seedance-1-0-pro-250528/official-format/text-to-video",
+                    "docs/api/doubao/seedance-1-0-pro-250528/official-format/query-task"
                   ]
                 }
           ]
@@ -614,9 +614,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/seededit-3-0-i2i-250628/volcengine-format/image-to-image"
+                    "docs/api/doubao/seededit-3-0-i2i-250628/official-format/image-to-image"
                   ]
                 }
           ]
@@ -631,9 +631,9 @@
                   ]
                 },
                 {
-                  "group": "volcengine-format",
+                  "group": "Official format",
                   "pages": [
-                    "docs/api/doubao/seedream-4-0-250828/volcengine-format/text-to-image"
+                    "docs/api/doubao/seedream-4-0-250828/official-format/text-to-image"
                   ]
                 }
           ]
@@ -1460,6 +1460,61 @@
       "group": "OpenAI",
       "pages": [
 	   
+        {
+          "group": "sora-2-pro",
+          "pages": [
+            {
+              "group": "Official Format",
+              "pages": [
+                "docs/api/openai/sora-2-pro/official-format/text-to-video",
+                "docs/api/openai/sora-2-pro/official-format/image-to-video",
+                "docs/api/openai/sora-2-pro/official-format/query-task",
+                "docs/api/openai/sora-2-pro/official-format/get-video",
+                "docs/api/openai/sora-2-pro/official-format/get-thumbnail",
+                "docs/api/openai/sora-2-pro/official-format/get-spritesheet"
+              ]
+            },
+            {
+              "group": "Gptproto Format",
+              "pages": [
+                "docs/api/openai/sora-2-pro/gptproto-format/text-to-video",
+                "docs/api/openai/sora-2-pro/gptproto-format/image-to-video",
+                "docs/api/openai/sora-2-pro/gptproto-format/query-task"
+              ]
+            },
+            {
+              "group": "Openai Format",
+              "pages": [
+                "docs/api/openai/sora-2-pro/openai-format/image-to-video"
+              ]
+            },
+            {
+              "group": "Reverse Format",
+              "pages": [
+                "docs/api/openai/sora-2-pro/reverse-format/image-to-video",
+                "docs/api/openai/sora-2-pro/reverse-format/query-task"
+              ]
+            }
+          ]
+        },
+        
+	  {
+          "group": "gpt-4o-mini-tts",
+          "pages": [
+            {
+              "group": "Official Format",
+              "pages": [
+                "docs/api/openai/gpt-4o-mini-tts/official-format/text-to-audio"
+              ]
+            },
+            {
+              "group": "Gptproto Format",
+              "pages": [
+                "docs/api/openai/gpt-4o-mini-tts/gptproto-format/text-to-audio"
+              ]
+            }
+          ]
+        },
         {
           "group": "sora-2",
           "pages": [

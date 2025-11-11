@@ -7,7 +7,8 @@
       "Bash(for file in \"D:\\gptproto_doc\\gptproto_doc\\docs\\api\\flux\\flux-kontext-max\\official-format\\query-task.mdx\" \"D:\\gptproto_doc\\gptproto_doc\\docs\\api\\flux\\flux-kontext-pro\\official-format\\query-task.mdx\")",
       "Bash(do sed -i 's/任务ID/Task ID/g' \"$file\")",
       "Bash(done)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(mv:*)"
     ],
     "deny": [],
     "ask": []

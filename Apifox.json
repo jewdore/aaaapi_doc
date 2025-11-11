@@ -3600,7 +3600,7 @@
                     "description": "",
                     "item": [
                         {
-                            "name": "Official Format Copy",
+                            "name": "Official Format",
                             "description": "",
                             "item": [
                                 {
@@ -15047,7 +15047,7 @@
                             "auth": {}
                         },
                         {
-                            "name": "OpenAI Format Copy",
+                            "name": "OpenAI Format",
                             "description": "",
                             "item": [
                                 {
@@ -15683,7 +15683,7 @@
                             "auth": {}
                         },
                         {
-                            "name": "OpenAI Format Copy",
+                            "name": "OpenAI Format",
                             "description": "",
                             "item": [
                                 {
@@ -26681,7 +26681,7 @@
                                     }
                                 },
                                 {
-                                    "name": "Query Task Copy",
+                                    "name": "Query Task",
                                     "description": "",
                                     "event": [],
                                     "auth": {},
