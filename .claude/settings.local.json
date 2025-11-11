@@ -8,7 +8,8 @@
       "Bash(do sed -i 's/任务ID/Task ID/g' \"$file\")",
       "Bash(done)",
       "Bash(find:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []

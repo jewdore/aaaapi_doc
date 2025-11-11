@@ -117,9 +117,6 @@
         {
           "group": "claude-3-7-sonnet-20250219-thinking",
           "pages": [
-            {
-              "group": "OpenAI Format",
-              "pages": [
                 {
                   "group": "OpenAI Format",
                   "pages": [
@@ -136,8 +133,8 @@
                     "docs/api/claude/claude-3-7-sonnet-20250219-thinking/official-format/pdf-analysis-exampletwo"
                   ]
                 }
-              ]
-            }
+           
+           
           ]
         },
 
