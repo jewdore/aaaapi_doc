@@ -702,10 +702,10 @@
             {
               "group": "Gptproto Format",
               "pages": [
-                "docs/api/gemini/veo/veo31/gptproto-format/text-to-video169",
-                "docs/api/gemini/veo/veo31/gptproto-format/image-to-video916",
-                "docs/api/gemini/veo/veo31/gptproto-format/firstlast-frame",
-                "docs/api/gemini/veo/veo31/gptproto-format/get-task-status"
+                "docs/api/gemini/veo/veo3.1/gptproto-format/text-to-video169",
+                "docs/api/gemini/veo/veo3.1/gptproto-format/image-to-video916",
+                "docs/api/gemini/veo/veo3.1/gptproto-format/firstlast-frame",
+                "docs/api/gemini/veo/veo3.1/gptproto-format/get-task-status"
               ]
             }
           ]
@@ -745,25 +745,6 @@
           ]
         },
         {
-          "group": "veo3.1-fast",
-          "pages": [
-            {
-              "group": "Official Format ",
-              "pages": [
-                "docs/api/gemini/veo/veo3.1-fast/official-format/text-to-video",
-                "docs/api/gemini/veo/veo3.1-fast/official-format/image-to-video"
-              ]
-            },
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/veo/veo3.1-fast/gptproto-format/text-to-video",
-                "docs/api/gemini/veo/veo3.1-fast/gptproto-format/image-to-video"
-              ]
-            }
-          ]
-        },
-        {
           "group": "veo3.1-fast-frames",
           "pages": [
             {
@@ -773,23 +754,6 @@
                 "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/create-video916",
                 "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/firstlast-frame",
                 "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/get-task-status"
-              ]
-            },
-            {
-              "group": "chat Format",
-              "pages": [
-                "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/text-to-video-169",
-                "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/text-to-video-916",
-                "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/image-to-video169",
-                "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/image-to-video-916",
-                "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/firstlast-frame"
-              ]
-            },
-            {
-              "group": "Official Format ",
-              "pages": [
-                "docs/api/gemini/veo/veo3.1-fast-frames/official-format/text-to-video",
-                "docs/api/gemini/veo/veo3.1-fast-frames/official-format/image-to-video"
               ]
             }
           ]
@@ -804,15 +768,6 @@
                 "docs/api/gemini/veo/veo3/official-format/image-to-video-916-asyn",
                 "docs/api/gemini/veo/veo3/official-format/get-task-status"
               ]
-            },
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/gemini/veo/veo3/gptproto-format/text-to-video-169",
-                "docs/api/gemini/veo/veo3/gptproto-format/text-to-video-916",
-                "docs/api/gemini/veo/veo3/gptproto-format/image-to-video169",
-                "docs/api/gemini/veo/veo3/gptproto-format/image-to-video-916"
-              ]
             }
           ]
         },
@@ -825,15 +780,6 @@
                 "docs/api/gemini/veo/veo3-pro/gptproto-format/create-video169",
                 "docs/api/gemini/veo/veo3-pro/gptproto-format/create-video916",
                 "docs/api/gemini/veo/veo3-pro/gptproto-format/get-task-status"
-              ]
-            },
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/gemini/veo/veo3-pro/chat-format/text-to-video-169",
-                "docs/api/gemini/veo/veo3-pro/chat-format/text-to-video-916",
-                "docs/api/gemini/veo/veo3-pro/chat-format/image-to-video169",
-                "docs/api/gemini/veo/veo3-pro/chat-format/image-to-video-916"
               ]
             }
           ]
@@ -848,15 +794,6 @@
                 "docs/api/gemini/veo/veo3-pro-frames/gptproto-format/create-video916",
                 "docs/api/gemini/veo/veo3-pro-frames/gptproto-format/get-task-status"
               ]
-            },
-            {
-              "group": "chat Format",
-              "pages": [
-                "docs/api/gemini/veo/veo3-pro-frames/chat-format/text-to-video-169",
-                "docs/api/gemini/veo/veo3-pro-frames/chat-format/text-to-video-916",
-                "docs/api/gemini/veo/veo3-pro-frames/chat-format/image-to-video169",
-                "docs/api/gemini/veo/veo3-pro-frames/chat-format/image-to-video-916"
-              ]
             }
           ]
         },
@@ -870,15 +807,6 @@
                 "docs/api/gemini/veo/veo3-fast/gptproto-format/create-video916",
                 "docs/api/gemini/veo/veo3-fast/gptproto-format/get-task-status"
               ]
-            },
-            {
-              "group": "chat Format",
-              "pages": [
-                "docs/api/gemini/veo/veo3-fast/chat-format/text-to-video-169",
-                "docs/api/gemini/veo/veo3-fast/chat-format/text-to-video-916",
-                "docs/api/gemini/veo/veo3-fast/chat-format/image-to-video169",
-                "docs/api/gemini/veo/veo3-fast/chat-format/image-to-video-916"
-              ]
             }
           ]
         },
@@ -891,13 +819,6 @@
                 "docs/api/gemini/veo/veo3-fast-frames/gptproto-format/create-video169",
                 "docs/api/gemini/veo/veo3-fast-frames/gptproto-format/create-video916",
                 "docs/api/gemini/veo/veo3-fast-frames/gptproto-format/get-task-status"
-              ]
-            },
-            {
-              "group": "chat Format",
-              "pages": [
-                "docs/api/gemini/veo/veo3-fast-frames/chat-format/image-to-video169",
-                "docs/api/gemini/veo/veo3-fast-frames/chat-format/image-to-video-916"
               ]
             }
           ]
