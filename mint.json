@@ -43,15 +43,9 @@
       ]
     },
     {
-<<<<<<< Updated upstream
-      "group": "API Reference",
-      "pages": [
-            {
-=======
 	 "group": "API Reference",
       "pages": [
             {						   
->>>>>>> Stashed changes
       "group": "Claude",
       "pages": [
         {
@@ -60,13 +54,6 @@
             {
               "group": "OpenAI Format",
               "pages": [
-<<<<<<< Updated upstream
-                "docs/api/claude/claude-3-5-haiku-20241022/openai-format/text-to-text",
-                "docs/api/claude/claude-3-5-haiku-20241022/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-3-5-haiku-20241022/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-=======
 			               "docs/api/claude/claude-3-5-haiku-20241022/openai-format/text-to-text",
                     "docs/api/claude/claude-3-5-haiku-20241022/openai-format/pdf-analysis-exampleone",
                     "docs/api/claude/claude-3-5-haiku-20241022/openai-format/pdf-analysis-exampletwo"
@@ -81,22 +68,11 @@
                     "docs/api/claude/claude-3-5-haiku-20241022/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "claude-3-5-sonnet-20241022",
           "pages": [
-<<<<<<< Updated upstream
-            {
-              "group": "OpenAI Format Copy",
-              "pages": [
-                "docs/api/claude/claude-3-5-sonnet-20241022/openai-format-copy/text-to-text",
-                "docs/api/claude/claude-3-5-sonnet-20241022/openai-format-copy/pdf-analysis-exampleone",
-                "docs/api/claude/claude-3-5-sonnet-20241022/openai-format-copy/pdf-analysis-exampletwo"
-              ]
-            }
-=======
 
                 {
                   "group": "openai-format",
@@ -115,22 +91,12 @@
                   ]
                 }
 
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "claude-3-7-sonnet-20250219",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-3-7-sonnet-20250219/openai-format/text-to-text",
-                "docs/api/claude/claude-3-7-sonnet-20250219/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-3-7-sonnet-20250219/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/claude/claude-3-7-sonnet-20250219/openai-format/text-to-text",
@@ -146,7 +112,6 @@
                     "docs/api/claude/claude-3-7-sonnet-20250219/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
@@ -155,11 +120,6 @@
             {
               "group": "OpenAI Format",
               "pages": [
-<<<<<<< Updated upstream
-                "docs/api/claude/claude-3-7-sonnet-20250219-thinking/openai-format/text-to-text",
-                "docs/api/claude/claude-3-7-sonnet-20250219-thinking/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-3-7-sonnet-20250219-thinking/openai-format/pdf-analysis-exampletwo"
-=======
                 {
                   "group": "openai-format",
                   "pages": [
@@ -176,7 +136,6 @@
                     "docs/api/claude/claude-3-7-sonnet-20250219-thinking/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
               ]
             }
           ]
@@ -186,15 +145,6 @@
           "group": "claude-haiku-4-5-20251001",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-haiku-4-5-20251001/openai-format/text-to-text",
-                "docs/api/claude/claude-haiku-4-5-20251001/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-haiku-4-5-20251001/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/claude/claude-haiku-4-5-20251001/openai-format/text-to-text",
@@ -210,22 +160,11 @@
                     "docs/api/claude/claude-haiku-4-5-20251001/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "claude-opus-4-1-20250805",
           "pages": [
-<<<<<<< Updated upstream
-            {
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-opus-4-1-20250805/openai-format/text-to-text",
-                "docs/api/claude/claude-opus-4-1-20250805/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-opus-4-1-20250805/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-=======
 		  {
                   "group": "openai-format",
                   "pages": [
@@ -242,22 +181,12 @@
                     "docs/api/claude/claude-opus-4-1-20250805/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "claude-opus-4-1-20250805-thinking",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-opus-4-1-20250805-thinking/openai-format/text-to-text",
-                "docs/api/claude/claude-opus-4-1-20250805-thinking/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-opus-4-1-20250805-thinking/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-1-20250805-thinking/openai-format/text-to-text",
@@ -273,22 +202,12 @@
                     "docs/api/claude/claude-opus-4-1-20250805-thinking/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "claude-opus-4-20250514",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-opus-4-20250514/openai-format/text-to-text",
-                "docs/api/claude/claude-opus-4-20250514/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-opus-4-20250514/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-20250514/openai-format/text-to-text",
@@ -304,22 +223,12 @@
                     "docs/api/claude/claude-opus-4-20250514/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "claude-opus-4-20250514-thinking",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-opus-4-20250514-thinking/openai-format/text-to-text",
-                "docs/api/claude/claude-opus-4-20250514-thinking/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-opus-4-20250514-thinking/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-20250514-thinking/openai-format/text-to-text",
@@ -335,22 +244,12 @@
                     "docs/api/claude/claude-opus-4-20250514-thinking/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "claude-sonnet-4-20250514",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-sonnet-4-20250514/openai-format/text-to-text",
-                "docs/api/claude/claude-sonnet-4-20250514/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-sonnet-4-20250514/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-20250514/openai-format/text-to-text",
@@ -366,22 +265,12 @@
                     "docs/api/claude/claude-sonnet-4-20250514/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "claude-sonnet-4-20250514-thinking",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-sonnet-4-20250514-thinking/openai-format/text-to-text",
-                "docs/api/claude/claude-sonnet-4-20250514-thinking/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-sonnet-4-20250514-thinking/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-20250514-thinking/openai-format/text-to-text",
@@ -397,22 +286,12 @@
                     "docs/api/claude/claude-sonnet-4-20250514-thinking/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "claude-sonnet-4-5-20250929",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-sonnet-4-5-20250929/openai-format/text-to-text",
-                "docs/api/claude/claude-sonnet-4-5-20250929/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-sonnet-4-5-20250929/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-5-20250929/openai-format/text-to-text",
@@ -428,22 +307,12 @@
                     "docs/api/claude/claude-sonnet-4-5-20250929/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "claude-sonnet-4-5-20250929-thinking",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/claude/claude-sonnet-4-5-20250929-thinking/openai-format/text-to-text",
-                "docs/api/claude/claude-sonnet-4-5-20250929-thinking/openai-format/pdf-analysis-exampleone",
-                "docs/api/claude/claude-sonnet-4-5-20250929-thinking/openai-format/pdf-analysis-exampletwo"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-5-20250929-thinking/openai-format/text-to-text",
@@ -459,7 +328,6 @@
                     "docs/api/claude/claude-sonnet-4-5-20250929-thinking/official-format/pdf-analysis-exampletwo"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         }
       ],
@@ -493,10 +361,7 @@
         }
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755520099039-20250818-202809.png"
-<<<<<<< Updated upstream
-=======
  
->>>>>>> Stashed changes
     },
     {
       "group": "Doubao",
@@ -505,13 +370,6 @@
           "group": "doubao-1-5-pro-256k-250115",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/doubao/doubao-1-5-pro-256k-250115/openai-format/text-to-text"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/doubao/doubao-1-5-pro-256k-250115/openai-format/text-to-text"
@@ -523,20 +381,12 @@
                     "docs/api/doubao/doubao-1-5-pro-256k-250115/volcengine-format/text-to-text"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "doubao-1-5-pro-32k-250115",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/doubao/doubao-1-5-pro-32k-250115/openai-format/text-to-text"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/doubao/doubao-1-5-pro-32k-250115/openai-format/text-to-text"
@@ -548,21 +398,12 @@
                     "docs/api/doubao/doubao-1-5-pro-32k-250115/volcengine-format/text-to-text"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "doubao-1-5-vision-pro-32k-250115",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/openai-format/text-to-text",
-                "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/openai-format/image-to-text"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/openai-format/text-to-text",
@@ -576,21 +417,12 @@
                     "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/volcengine-format/image-to-text"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "doubao-seed-1-6-250615",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/doubao/doubao-seed-1-6-250615/openai-format/text-to-text",
-                "docs/api/doubao/doubao-seed-1-6-250615/openai-format/image-to-text"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-250615/openai-format/text-to-text",
@@ -604,21 +436,12 @@
                     "docs/api/doubao/doubao-seed-1-6-250615/volcengine-format/image-to-text"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "doubao-seed-1-6-flash-250615",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/doubao/doubao-seed-1-6-flash-250615/openai-format/text-to-text",
-                "docs/api/doubao/doubao-seed-1-6-flash-250615/openai-format/image-to-text"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-flash-250615/openai-format/text-to-text",
@@ -632,21 +455,12 @@
                     "docs/api/doubao/doubao-seed-1-6-flash-250615/volcengine-format/image-to-text"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "doubao-seed-1-6-thinking-250615",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/doubao/doubao-seed-1-6-thinking-250615/openai-format/text-to-text",
-                "docs/api/doubao/doubao-seed-1-6-thinking-250615/openai-format/image-to-text"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-thinking-250615/openai-format/text-to-text",
@@ -660,21 +474,12 @@
                     "docs/api/doubao/doubao-seed-1-6-thinking-250615/volcengine-format/image-to-text"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "doubao-seed-1-6-thinking-250715",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "OpenAI Format",
-              "pages": [
-                "docs/api/doubao/doubao-seed-1-6-thinking-250715/openai-format/text-to-text",
-                "docs/api/doubao/doubao-seed-1-6-thinking-250715/openai-format/image-to-text"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-thinking-250715/openai-format/text-to-text",
@@ -688,20 +493,12 @@
                     "docs/api/doubao/doubao-seed-1-6-thinking-250715/volcengine-format/image-to-text"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "doubao-seededit-3-0-i2i-250628",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/doubao/doubao-seededit-3-0-i2i-250628/gptproto-format/image-to-image"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/doubao/doubao-seededit-3-0-i2i-250628/gptproto-format/image-to-image"
@@ -713,20 +510,11 @@
                     "docs/api/doubao/doubao-seededit-3-0-i2i-250628/volcengine-format/image-to-image"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "doubao-seedream-3-0-t2i-250415",
           "pages": [
-<<<<<<< Updated upstream
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/doubao/doubao-seedream-3-0-t2i-250415/gptproto-format/text-to-image"
-              ]
-            }
-=======
         {
                   "group": "openai-format",
                   "pages": [
@@ -739,21 +527,12 @@
                     "docs/api/doubao/doubao-seedream-3-0-t2i-250415/volcengine-format/text-to-image"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "doubao-seedream-4-0-250828",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/doubao/doubao-seedream-4-0-250828/gptproto-format/text-to-image",
-                "docs/api/doubao/doubao-seedream-4-0-250828/gptproto-format/image-to-image"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/doubao/doubao-seedream-4-0-250828/gptproto-format/text-to-image"
@@ -765,21 +544,12 @@
                     "docs/api/doubao/doubao-seedream-4-0-250828/volcengine-format/text-to-image"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "seedance-1-0-lite-i2v-250428",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/doubao/seedance-1-0-lite-i2v-250428/gptproto-format/image-to-video",
-                "docs/api/doubao/seedance-1-0-lite-i2v-250428/gptproto-format/query-task"
-              ]
-            }
-=======
                   "group": "gptproto-format",
                   "pages": [
                     "docs/api/doubao/seedance-1-0-lite-i2v-250428/gptproto-format/image-to-video",
@@ -793,21 +563,12 @@
                     "docs/api/doubao/seedance-1-0-lite-i2v-250428/volcengine-format/query-task"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "seedance-1-0-lite-t2v-250428",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/doubao/seedance-1-0-lite-t2v-250428/gptproto-format/text-to-video",
-                "docs/api/doubao/seedance-1-0-lite-t2v-250428/gptproto-format/query-task"
-              ]
-            }
-=======
                   "group": "gptproto-format",
                   "pages": [
                     "docs/api/doubao/seedance-1-0-lite-t2v-250428/gptproto-format/text-to-video",
@@ -821,22 +582,12 @@
                     "docs/api/doubao/seedance-1-0-lite-t2v-250428/volcengine-format/query-task"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "seedance-1-0-pro-250528",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/image-to-video",
-                "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/text-to-video",
-                "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/query-task-copy"
-              ]
-            }
-=======
                   "group": "gptproto-format",
                   "pages": [
                     "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/image-to-video",
@@ -852,20 +603,12 @@
                     "docs/api/doubao/seedance-1-0-pro-250528/volcengine-format/query-task-copy"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "seededit-3-0-i2i-250628",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/doubao/seededit-3-0-i2i-250628/gptproto-format/image-to-image"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/doubao/seededit-3-0-i2i-250628/gptproto-format/image-to-image"
@@ -877,21 +620,12 @@
                     "docs/api/doubao/seededit-3-0-i2i-250628/volcengine-format/image-to-image"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         },
         {
           "group": "seedream-4-0-250828",
           "pages": [
             {
-<<<<<<< Updated upstream
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/doubao/seedream-4-0-250828/gptproto-format/text-to-image",
-                "docs/api/doubao/seedream-4-0-250828/gptproto-format/image-to-image"
-              ]
-            }
-=======
                   "group": "openai-format",
                   "pages": [
                     "docs/api/doubao/seedream-4-0-250828/gptproto-format/text-to-image"
@@ -903,7 +637,6 @@
                     "docs/api/doubao/seedream-4-0-250828/volcengine-format/text-to-image"
                   ]
                 }
->>>>>>> Stashed changes
           ]
         }
       ],
@@ -961,263 +694,27 @@
           ]
         }
       ],
-<<<<<<< Updated upstream
-      "icon":  "https://heyoo.oss-ap-southeast-1.aliyuncs.com/2025/05/30/a0ffa3b5d65f4f23a40698c445048c67.png"
-=======
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/2025/05/30/a0ffa3b5d65f4f23a40698c445048c67.png"
->>>>>>> Stashed changes
     },
     {
       "group": "Gemini",
       "pages": [
-<<<<<<< Updated upstream
-
-
-=======
 																				 
->>>>>>> Stashed changes
         {
           "group": "veo",
           "pages": [
             {
               "group": "veo3.1",
               "pages": [
-<<<<<<< Updated upstream
-                {
-                  "group": "Gptproto Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1/gptproto-format/text-to-video",
-                    "docs/api/gemini/veo/veo3.1/gptproto-format/get-task-status"
-                  ]
-                },
-                {
-                  "group": "OpenAI Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1/openai-format/text-to-video"
-                  ]
-                }
-=======
                 "docs/api/gemini/veo/veo31/gptproto-format/text-to-video169",
                 "docs/api/gemini/veo/veo31/gptproto-format/image-to-video916",
                 "docs/api/gemini/veo/veo31/gptproto-format/firstlast-frame",
                 "docs/api/gemini/veo/veo31/gptproto-format/get-task-status"
->>>>>>> Stashed changes
               ]
             },
             {
               "group": "veo3.1-pro",
               "pages": [
-<<<<<<< Updated upstream
-                {
-                  "group": "Gptproto Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/text-to-video",
-                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/image-to-video",
-                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/firstlast-frame",
-                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/get-task-status"
-                  ]
-                },
-                {
-                  "group": "OpenAI Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1-pro/openai-format/text-to-video",
-                    "docs/api/gemini/veo/veo3.1-pro/openai-format/image-to-video",
-                    "docs/api/gemini/veo/veo3.1-pro/openai-format/firstlast-frame"
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "veo3.1-pro-frames",
-              "pages": [
-                {
-                  "group": "Gptproto Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/text-to-video",
-                    "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/image-to-video",
-                    "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/firstlast-frame",
-                    "docs/api/gemini/veo/veo3.1-pro-frames/gptproto-format/get-task-status"
-                  ]
-                },
-                {
-                  "group": "OpenAI Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1-pro-frames/openai-format/text-to-video-169",
-                    "docs/api/gemini/veo/veo3.1-pro-frames/openai-format/text-to-video-916",
-                    "docs/api/gemini/veo/veo3.1-pro-frames/openai-format/image-to-video169",
-                    "docs/api/gemini/veo/veo3.1-pro-frames/openai-format/image-to-video-916",
-                    "docs/api/gemini/veo/veo3.1-pro-frames/openai-format/firstlast-frame"
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "veo3.1-fast",
-              "pages": [
-                {
-                  "group": "Official Format ",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1-fast/official-format/text-to-video",
-                    "docs/api/gemini/veo/veo3.1-fast/official-format/image-to-video"
-                  ]
-                },
-                {
-                  "group": "Gptproto Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1-fast/gptproto-format/text-to-video",
-                    "docs/api/gemini/veo/veo3.1-fast/gptproto-format/image-to-video"
-                  ]
-                },
-                {
-                  "group": "OpenAI Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1-fast/openai-format/firstlast-frame",
-                    "docs/api/gemini/veo/veo3.1-fast/openai-format/text-to-video-169",
-                    "docs/api/gemini/veo/veo3.1-fast/openai-format/text-to-video-916",
-                    "docs/api/gemini/veo/veo3.1-fast/openai-format/image-to-video169",
-                    "docs/api/gemini/veo/veo3.1-fast/openai-format/image-to-video-916"
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "veo3.1-fast-frames",
-              "pages": [
-                {
-                  "group": "Gptproto Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/create-video169",
-                    "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/create-video916",
-                    "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/firstlast-frame",
-                    "docs/api/gemini/veo/veo3.1-fast-frames/gptproto-format/get-task-status"
-                  ]
-                },
-                {
-                  "group": "chat Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/text-to-video-169",
-                    "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/text-to-video-916",
-                    "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/image-to-video169",
-                    "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/image-to-video-916",
-                    "docs/api/gemini/veo/veo3.1-fast-frames/chat-format/firstlast-frame"
-                  ]
-                },
-                {
-                  "group": "Official Format ",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3.1-fast-frames/official-format/text-to-video",
-                    "docs/api/gemini/veo/veo3.1-fast-frames/official-format/image-to-video"
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "veo3",
-              "pages": [
-                {
-                  "group": "Official Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3/official-format/image-to-video169asyn",
-                    "docs/api/gemini/veo/veo3/official-format/image-to-video-916-asyn",
-                    "docs/api/gemini/veo/veo3/official-format/get-task-status"
-                  ]
-                },
-                {
-                  "group": "Gptproto Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3/gptproto-format/text-to-video-169",
-                    "docs/api/gemini/veo/veo3/gptproto-format/text-to-video-916",
-                    "docs/api/gemini/veo/veo3/gptproto-format/image-to-video169",
-                    "docs/api/gemini/veo/veo3/gptproto-format/image-to-video-916"
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "veo3-pro",
-              "pages": [
-                {
-                  "group": "Gptproto Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3-pro/gptproto-format/create-video169",
-                    "docs/api/gemini/veo/veo3-pro/gptproto-format/create-video916",
-                    "docs/api/gemini/veo/veo3-pro/gptproto-format/get-task-status"
-                  ]
-                },
-                {
-                  "group": "chat Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3-pro/chat-format/text-to-video-169",
-                    "docs/api/gemini/veo/veo3-pro/chat-format/text-to-video-916",
-                    "docs/api/gemini/veo/veo3-pro/chat-format/image-to-video169",
-                    "docs/api/gemini/veo/veo3-pro/chat-format/image-to-video-916"
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "veo3-pro-frames",
-              "pages": [
-                {
-                  "group": "Gptproto Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3-pro-frames/gptproto-format/create-video169",
-                    "docs/api/gemini/veo/veo3-pro-frames/gptproto-format/create-video916",
-                    "docs/api/gemini/veo/veo3-pro-frames/gptproto-format/get-task-status"
-                  ]
-                },
-                {
-                  "group": "chat Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3-pro-frames/chat-format/text-to-video-169",
-                    "docs/api/gemini/veo/veo3-pro-frames/chat-format/text-to-video-916",
-                    "docs/api/gemini/veo/veo3-pro-frames/chat-format/image-to-video169",
-                    "docs/api/gemini/veo/veo3-pro-frames/chat-format/image-to-video-916"
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "veo3-fast",
-              "pages": [
-                {
-                  "group": "Gptproto Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3-fast/gptproto-format/create-video169",
-                    "docs/api/gemini/veo/veo3-fast/gptproto-format/create-video916",
-                    "docs/api/gemini/veo/veo3-fast/gptproto-format/get-task-status"
-                  ]
-                },
-                {
-                  "group": "chat Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3-fast/chat-format/text-to-video-169",
-                    "docs/api/gemini/veo/veo3-fast/chat-format/text-to-video-916",
-                    "docs/api/gemini/veo/veo3-fast/chat-format/image-to-video169",
-                    "docs/api/gemini/veo/veo3-fast/chat-format/image-to-video-916"
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "veo3-fast-frames",
-              "pages": [
-                {
-                  "group": "Gptproto Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3-fast-frames/gptproto-format/create-video169",
-                    "docs/api/gemini/veo/veo3-fast-frames/gptproto-format/create-video916",
-                    "docs/api/gemini/veo/veo3-fast-frames/gptproto-format/get-task-status"
-                  ]
-                },
-                {
-                  "group": "chat Format",
-                  "pages": [
-                    "docs/api/gemini/veo/veo3-fast-frames/chat-format/image-to-video169",
-                    "docs/api/gemini/veo/veo3-fast-frames/chat-format/image-to-video-916"
-                  ]
-                }
-=======
                 "docs/api/gemini/veo/veo31/openai-format/text-to-video-169",
                 "docs/api/gemini/veo/veo31/openai-format/text-to-video-916",
                 "docs/api/gemini/veo/veo31/openai-format/image-to-video169",
@@ -1439,18 +936,14 @@
               "pages": [
                 "docs/api/gemini/veo/veo3-fast-frames/chat-format/image-to-video169",
                 "docs/api/gemini/veo/veo3-fast-frames/chat-format/image-to-video-916"
->>>>>>> Stashed changes
               ]
             }
 
           ]
         },
 
-<<<<<<< Updated upstream
-=======
 				
 				
->>>>>>> Stashed changes
         {
           "group": "gemini-2.0-flash",
           "pages": [
@@ -1702,25 +1195,15 @@
             {
               "group": "Gptproto Format",
               "pages": [
-<<<<<<< Updated upstream
-                "docs/api/gprproto/image-upscaler/gptproto-format/submit-task",
-                "docs/api/gprproto/image-upscaler/gptproto-format/query-task"
-=======
                 "docs/api/gptproto/image-upscaler/gptproto-format/submit-task",
                 "docs/api/gptproto/image-upscaler/gptproto-format/query-task"
->>>>>>> Stashed changes
               ]
             }
           ]
         }
-<<<<<<< Updated upstream
-      ],
-      "icon": "https://oss.heyoos.com/2025/10/23/2df4295950b8433998e058f6539d9e1c.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill"
-=======
       ] ,
 
            "icon": "https://oss.heyoos.com/2025/10/23/2df4295950b8433998e058f6539d9e1c.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill"
->>>>>>> Stashed changes
     },
     {
       "group": "Grok",
@@ -1860,12 +1343,8 @@
               ]
             }
           ]
-<<<<<<< Updated upstream
-        }
-=======
         },
         "docs/api/kling/kling-v25-turbo-pro"
->>>>>>> Stashed changes
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Kling.png"
     },
@@ -1983,9 +1462,6 @@
     {
       "group": "OpenAI",
       "pages": [
-<<<<<<< Updated upstream
-
-=======
 	   
         {
           "group": "sora-2",
@@ -2080,7 +1556,6 @@
             }
           ]
         },
->>>>>>> Stashed changes
         {
           "group": "sora-2",
           "pages": [
@@ -2443,26 +1918,6 @@
           ]
         },
         {
-<<<<<<< Updated upstream
-          "group": "gpt-4o-mini-tts",
-          "pages": [
-            {
-              "group": "Official Format Copy",
-              "pages": [
-                "docs/api/openai/gpt-4o-mini-tts/official-format-copy/text-to-audio"
-              ]
-            },
-            {
-              "group": "Gptproto Format",
-              "pages": [
-                "docs/api/openai/gpt-4o-mini-tts/gptproto-format/text-to-audio"
-              ]
-            }
-          ]
-        },
-        {
-=======
->>>>>>> Stashed changes
           "group": "Our GPT models（GPT Series）",
           "pages": [
             {
@@ -2644,17 +2099,9 @@
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755663073115-111.png"
     }
-<<<<<<< Updated upstream
-        
       ]
       
     }
-
-=======
-      ]
-      
-    }
->>>>>>> Stashed changes
   ],
   "footerSocials": {
     "twitter": "https://x.com/GPT_Proto",
