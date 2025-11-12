@@ -1180,16 +1180,6 @@
       "group": "Kling",
       "pages": [
         {
-          "group": "Official Format",
-          "pages": [
-            "docs/api/kling/official-format/text-to-image",
-            "docs/api/kling/official-format/image-to-image",
-            "docs/api/kling/official-format/text-to-video",
-            "docs/api/kling/official-format/image-to-video",
-            "docs/api/kling/official-format/query-task"
-          ]
-        },
-        {
           "group": "kling-v2.1-i2v-master",
           "pages": [
             {
@@ -1237,8 +1227,7 @@
               ]
             }
           ]
-        },
-        "docs/api/kling/kling-v25-turbo-pro"
+        }
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Kling.png"
     },
@@ -1781,30 +1770,6 @@
                 "docs/api/openai/gpt-4o-2024-08-06/official-format/image-to-text"
               ]
             }
-          ]
-        },
-        {
-          "group": "Our GPT models（GPT Series）",
-          "pages": [
-            {
-              "group": "GPT-4o",
-              "pages": [
-                "docs/api/openai/our-gpt-modelsgpt-series/gpt-4o/chat-text-mode",
-                "docs/api/openai/our-gpt-modelsgpt-series/gpt-4o/chat-image-mode"
-              ]
-            },
-            {
-              "group": "GPT-4.1",
-              "pages": [
-                "docs/api/openai/our-gpt-modelsgpt-series/gpt-41/responses-mode"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "Our reasoning models (O Series)",
-          "pages": [
-            "docs/api/openai/our-reasoning-models-o-series/responses-mode"
           ]
         }
       ],

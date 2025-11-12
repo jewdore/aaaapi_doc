@@ -1,6 +1,6 @@
 ---
 title: 'Text to Text'
-api: 'POST /'
+api: 'POST /v1/chat/completions'
 description: 'Text to Text'
 ---
 
@@ -22,12 +22,12 @@ This endpoint requires authentication using a Bearer token.
   The model to use for the request
 </ParamField>
 
-<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;who are you?&quot;}]}]">
+<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Who are you?&quot;}]">
   Array of message objects for the conversation
 </ParamField>
 
-<ParamField body="max_tokens" type="integer"  default="5000">
-  Maximum number of tokens to generate
+<ParamField body="stream" type="boolean"  default="false">
+  Whether to stream the response
 </ParamField>
 
 ## Request Example
@@ -35,7 +35,7 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/" \
+curl -X POST "https://gptproto.com/v1/chat/completions" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -43,15 +43,10 @@ curl -X POST "https://gptproto.com/" \
   "messages": [
     {
       "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "who are you?"
-        }
-      ]
+      "content": "Who are you?"
     }
   ],
-  "max_tokens": 5000
+  "stream": false
 }'
 ```
 
@@ -59,7 +54,7 @@ curl -X POST "https://gptproto.com/" \
 import requests
 import json
 
-url = "https://gptproto.com/"
+url = "https://gptproto.com/v1/chat/completions"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -70,15 +65,10 @@ data = {
   "messages": [
     {
       "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "who are you?"
-        }
-      ]
+      "content": "Who are you?"
     }
   ],
-  "max_tokens": 5000
+  "stream": false
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -87,7 +77,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/";
+const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -98,15 +88,10 @@ const data = {
   "messages": [
     {
       "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "who are you?"
-        }
-      ]
+      "content": "Who are you?"
     }
   ],
-  "max_tokens": 5000
+  "stream": false
 };
 
 fetch(url, {
@@ -131,22 +116,17 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/"
+    url := "https://gptproto.com/v1/chat/completions"
 
     payload := []byte(`{
 "model": "o3-deep-research",
 "messages": [
 {
 "role": "user",
-"content": [
-{
-"type": "text",
-"text": "who are you?"
-}
-]
+"content": "Who are you?"
 }
 ],
-"max_tokens": 5000
+"stream": false
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
