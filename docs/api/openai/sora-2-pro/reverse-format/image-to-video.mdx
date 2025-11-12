@@ -1,7 +1,7 @@
 ---
-title: "Image to Video"
-api: "POST /v1/video/create"
-description: "Image to Video"
+title: 'Image To Video'
+api: 'POST /v1/video/create'
+description: 'Image To Video'
 ---
 
 ## Overview
@@ -12,34 +12,34 @@ This endpoint provides submit task functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
+<ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="model" default="sora-2-pro" type="string" required>
-  The model to use for the request
+<ParamField body="model" type="string" required default="sora-2-pro">
+  The video generation model to use. 
 </ParamField>
 
-<ParamField body="orientation" default="portrait" type="string">
+<ParamField body="orientation" type="string"  default="portrait">
   portrait 、landscape
 </ParamField>
 
-<ParamField body="prompt" default="A video of a horse dancing." type="string" required>
-  Prompt parameter   a cat
+<ParamField body="prompt" type="string" required default="She turns around and smiles, then slowly walks out of the frame.">
+  The positive prompt for the generation.
 </ParamField>
 
-<ParamField body="images" default='["https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"]' type="array">
+<ParamField body="images" type="string[]" required default="[&quot;https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png&quot;]">
   Images parameter
 </ParamField>
 
-<ParamField body="duration" default="15" type="integer">
-  Duration parameter default  15
+<ParamField body="duration" type="integer"  default="4">
+  The duration of the generated video in seconds.4, 8, 12
 </ParamField>
 
-<ParamField body="size" default="large" type="string">
-  option: large, small  sora-2 model sizes are not effective, sora-2-pro size is effective, and 25 second videos only support small sizes
+<ParamField body="character_url" type="string" default="https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4">
+  Non-human IP video URL.
 </ParamField>
 
 ## Request Example
@@ -53,15 +53,14 @@ curl -X POST "https://gptproto.com/v1/video/create" \
   -d '{
   "model": "sora-2-pro",
   "orientation": "portrait",
-  "prompt": "A video of a horse dancing.",
+  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
     "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
   ],
-  "duration": 15,
-  "size": "large"
+  "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4",
+  "duration": 15
 }'
 ```
-
 
 ```python Python
 import requests
@@ -76,19 +75,18 @@ headers = {
 data = {
   "model": "sora-2-pro",
   "orientation": "portrait",
-  "prompt": "A video of a horse dancing.",
+  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
     "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
   ],
   "duration": 15,
-  "size": "large"
+  "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
 }
 
 response = requests.post(url, headers=headers, json=data)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
-
 
 ```javascript JavaScript
 const url = "https://gptproto.com/v1/video/create";
@@ -100,12 +98,12 @@ const headers = {
 const data = {
   "model": "sora-2-pro",
   "orientation": "portrait",
-  "prompt": "A video of a horse dancing.",
+  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
     "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
-  ],
+  ],  
   "duration": 15,
-  "size": "large"
+  "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
 };
 
 fetch(url, {
@@ -117,7 +115,6 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
-
 
 ```go Go
 package main
@@ -136,12 +133,12 @@ func main() {
     payload := []byte(`{
 "model": "sora-2-pro",
 "orientation": "portrait",
-"prompt": "A video of a horse dancing.",
+"prompt": "She turns around and smiles, then slowly walks out of the frame.",
 "images": [
 "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
 ],
 "duration": 15,
- "size": "large"
+"character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -164,18 +161,29 @@ func main() {
 
 ## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
-
-  ```json
-  {
-    "status": "success"
-  }
-  ```
+<ResponseField name="data.id" type="string">
+```json
+{
+    "data": {
+        "id": "sora-2:task_xxxx",
+        "model": "sora-2-pro",
+        "outputs": [],
+        "urls": {
+            "get": "https://gptproto.com/api/v3/predictions/sora-2:task_xxxx/result"
+        },
+        "hasNsfwContents": [],
+        "status": "processing",
+        "createdAt": "2025-10-16 21:03:10",
+        "executionTime": 0,
+        "timings": {
+            "inference": 0
+        }
+    },
+    "message": "success",
+    "code": 200
+}
+```
 </ResponseField>
-
-## Error Responses
-
 <ResponseExample>
 
 ```json 401 - Invalid signature
@@ -187,7 +195,6 @@ func main() {
 }
 ```
 
-
 ```json 403 - Invalid Token
 {
   "error": {
@@ -196,7 +203,6 @@ func main() {
   }
 }
 ```
-
 
 ```json 403 - Insufficient balance
 {
@@ -207,7 +213,6 @@ func main() {
 }
 ```
 
-
 ```json 500 - Internal server error
 {
   "error": {
@@ -216,7 +221,6 @@ func main() {
   }
 }
 ```
-
 
 ```json 503 - Content policy violation
 {
@@ -228,3 +232,4 @@ func main() {
 ```
 
 </ResponseExample>
+

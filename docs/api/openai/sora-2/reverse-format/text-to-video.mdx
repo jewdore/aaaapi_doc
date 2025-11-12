@@ -1,7 +1,7 @@
 ---
-title: 'Image To Video'
+title: 'Text To Video'
 api: 'POST /v1/video/create'
-description: 'Image To Video'
+description: 'Text To Video'
 ---
 
 ## Overview
@@ -30,9 +30,6 @@ This endpoint requires authentication using a Bearer token.
   The positive prompt for the generation.
 </ParamField>
 
-<ParamField body="images" type="string[]" required default="[&quot;https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png&quot;]">
-  Images parameter
-</ParamField>
 
 <ParamField body="duration" type="integer"  default="4">
   The duration of the generated video in seconds.4, 8, 12
@@ -54,9 +51,6 @@ curl -X POST "https://gptproto.com/v1/video/create" \
   "model": "sora-2",
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-  "images": [
-    "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
-  ],
   "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4",
   "duration": 15
 }'
@@ -76,9 +70,6 @@ data = {
   "model": "sora-2",
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-  "images": [
-    "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
-  ],
   "duration": 15,
   "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
 }
@@ -99,9 +90,6 @@ const data = {
   "model": "sora-2",
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-  "images": [
-    "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
-  ],  
   "duration": 15,
   "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
 };
@@ -134,9 +122,6 @@ func main() {
 "model": "sora-2",
 "orientation": "portrait",
 "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-"images": [
-"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
-],
 "duration": 15,
 "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
 }`)
