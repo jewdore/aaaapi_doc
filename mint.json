@@ -52,9 +52,10 @@
               "group": "gpt-4.1",
               "pages": [
                 {
-                  "group": "Official Format",
+                  "group": "Official Format(Chat Mode)",
                   "pages": [
-                    "docs/api/openai/gpt-41/official-format/text-to-text"
+                    "docs/api/openai/gpt-41/official-format(chat)/text-to-text",
+                    "docs/api/openai/gpt-41/official-format(chat)/image-to-text"
                   ]
                 }
               ]
@@ -63,7 +64,7 @@
               "group": "gpt-4.1-2025-04-14",
               "pages": [
                 {
-                  "group": "Official Format",
+                  "group": "Official Format(Chat Mode)",
                   "pages": [
                     "docs/api/openai/gpt-41-2025-04-14/official-format/text-to-text",
                     "docs/api/openai/gpt-41-2025-04-14/official-format/image-to-text"
@@ -580,21 +581,6 @@
               ]
             },
             {
-              "group": "gemini-2.0-flash-exp",
-              "pages": [
-                {
-                  "group": "Official Format",
-                  "pages": [
-                    "docs/api/gemini/gemini-2.0-flash-exp/official-format/generatecontent",
-                    "docs/api/gemini/gemini-2.0-flash-exp/official-format/streamgeneratecontent",
-                    "docs/api/gemini/gemini-2.0-flash-exp/official-format/file-upload",
-                    "docs/api/gemini/gemini-2.0-flash-exp/official-format/file-upload-north-america",
-                    "docs/api/gemini/gemini-2.0-flash-exp/official-format/generatecontent-file-analysis"
-                  ]
-                }
-              ]
-            },
-            {
               "group": "gemini-2.5-pro",
               "pages": [
                 {
@@ -631,23 +617,6 @@
                     "docs/api/gemini/gemini-25-pro-deepsearch/official-format/file-upload-north-america"
                   ]
                 }
-              ]
-            },
-            {
-              "group": "gemini-2.5-pro-preview-05-06",
-              "pages": [
-                {
-                  "group": "Official Format",
-                  "pages": [
-                    "docs/api/gemini/gemini-25-pro-preview-05-06/official-format/text-to-text",
-                    "docs/api/gemini/gemini-25-pro-preview-05-06/official-format/image-to-text"
-                  ]
-                },
-                "docs/api/gemini/gemini-25-pro-preview-05-06/generatecontent",
-                "docs/api/gemini/gemini-25-pro-preview-05-06/streamgeneratecontent",
-                "docs/api/gemini/gemini-25-pro-preview-05-06/file-upload",
-                "docs/api/gemini/gemini-25-pro-preview-05-06/file-upload-north-america",
-                "docs/api/gemini/gemini-25-pro-preview-05-06/generatecontent-file-analysis"
               ]
             },
             {
@@ -696,32 +665,6 @@
                   "pages": [
                     "docs/api/gemini/gemini-25-flash-image-preview/nano-banana/multi-image-mode",
                     "docs/api/gemini/gemini-25-flash-image-preview/nano-banana/text-to-image"
-                  ]
-                }
-              ]
-            },
-            {
-              "group": "gemini-2.5-flash-image-preview-hd",
-              "pages": [
-                {
-                  "group": "Official Format",
-                  "pages": [
-                    "docs/api/gemini/gemini-25-flash-image-preview-hd/official-format/text-to-image",
-                    "docs/api/gemini/gemini-25-flash-image-preview-hd/official-format/image-to-image"
-                  ]
-                },
-                {
-                  "group": "chat format",
-                  "pages": [
-                    "docs/api/gemini/gemini-25-flash-image-preview-hd/chat-format/text-to-image",
-                    "docs/api/gemini/gemini-25-flash-image-preview-hd/chat-format/image-to-image"
-                  ]
-                },
-                {
-                  "group": "openai format",
-                  "pages": [
-                    "docs/api/gemini/gemini-25-flash-image-preview-hd/openai-format/create-image",
-                    "docs/api/gemini/gemini-25-flash-image-preview-hd/openai-format/image-editing"
                   ]
                 }
               ]
@@ -795,12 +738,6 @@
                     "docs/api/gemini/gemini-25-flash-nothinking/official-format/file-upload-north-america"
                   ]
                 }
-              ]
-            },
-            {
-              "group": "Gemini Series --- back",
-              "pages": [
-                "docs/api/gemini/gemini-series-back/chat-image-mode"
               ]
             }
           ],
@@ -1786,7 +1723,7 @@
           "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Suno.png"
         },
         {
-          "group": "higgsfield",
+          "group": "Higgsfield",
           "pages": [
             {
               "group": "higgsfield-lite",
@@ -1831,7 +1768,7 @@
           "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1754623057482-20250808-111710.png"
         },
         {
-          "group": "qwen",
+          "group": "Qwen",
           "pages": [
             {
               "group": "image/generations",
