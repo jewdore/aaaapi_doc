@@ -1,0 +1,338 @@
+---
+title: "Image Analysis"
+api: 'POST /v1/chat/completions'
+description: "Analyze and understand image content using vision-enabled models"
+---
+
+## Overview
+
+This endpoint provides image analysis functionality using the OpenAI-compatible chat completions API. Upload images or provide image URLs to analyze and understand image content with vision-enabled models.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" default="sk-***********" type="string" required>
+  Your API key in the format: `sk-*****`
+</ParamField>
+
+## Request Body
+
+<ParamField body="model" default="gpt-4o" type="string" required>
+  The model to use for the request. Must be a vision-enabled model.
+</ParamField>
+
+<ParamField body="messages" default='[{"role": "user", "content": [{"type": "text", "text": "What is in this image?"}, {"type": "image_url", "image_url": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"}}]}]' type="array" required>
+  Array of message objects for the conversation. Each message contains:
+  - `role`: "user" or "assistant"
+  - `content`: Can be a string or an array of content objects supporting:
+    - **text**: Text content with `type: "text"` and `text` field
+    - **image_url**: Image content with `type: "image_url"` and nested `image_url` object containing:
+      - `url`: HTTP/HTTPS URL to the image
+      - Supported formats: JPG, PNG, WebP, GIF
+</ParamField>
+
+<ParamField body="stream" default={false} type="boolean">
+  Whether to stream the response
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: sk-*****" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "gpt-4o",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is in this image?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+          }
+        }
+      ]
+    }
+  ],
+}'
+```
+
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/chat/completions"
+headers = {
+    "Authorization": "sk-*****",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "model": "gpt-4o",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is in this image?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+          }
+        }
+      ]
+    }
+  ],
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/chat/completions";
+const headers = {
+  "Authorization": "sk-*****",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "gpt-4o",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is in this image?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+          }
+        }
+      ]
+    }
+  ],
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/chat/completions"
+
+    payload := []byte(`{
+"model": "gpt-4o",
+"messages": [
+{
+"role": "user",
+"content": [
+{
+"type": "text",
+"text": "What is in this image?"
+},
+{
+"type": "image_url",
+"image_url": {
+"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+}
+}
+]
+}
+],
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "sk-*****")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="id" type="string">
+  Unique identifier for the chat completion
+</ResponseField>
+
+<ResponseField name="object" type="string">
+  Object type, always "chat.completion"
+</ResponseField>
+
+<ResponseField name="created" type="integer">
+  Unix timestamp of when the chat completion was created
+</ResponseField>
+
+<ResponseField name="model" type="string">
+  The model used for generating the completion
+</ResponseField>
+
+<ResponseField name="choices" type="array">
+  Array of completion choices
+
+  <Expandable title="Choice Object">
+    <ResponseField name="index" type="integer">
+      The index of this choice in the array
+    </ResponseField>
+
+    <ResponseField name="message" type="object">
+      The generated message
+
+      <Expandable title="Message Object">
+        <ResponseField name="role" type="string">
+          The role of the message author, always "assistant"
+        </ResponseField>
+
+        <ResponseField name="content" type="string">
+          The content of the message (the image analysis result)
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="finish_reason" type="string">
+      The reason the completion finished. Possible values: "stop", "length", "content_filter"
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="usage" type="object">
+  Token usage statistics
+
+  <Expandable title="Usage Object">
+    <ResponseField name="prompt_tokens" type="integer">
+      Number of tokens in the prompt
+    </ResponseField>
+
+    <ResponseField name="completion_tokens" type="integer">
+      Number of tokens in the completion
+    </ResponseField>
+
+    <ResponseField name="total_tokens" type="integer">
+      Total number of tokens used
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 - Success
+{
+  "id": "chatcmpl-abc123",
+  "object": "chat.completion",
+  "created": 1699896916,
+  "model": "gpt-4o",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "The image shows a wooden boardwalk path extending through a lush green grassland. The boardwalk appears to lead toward a distant tree line under a bright blue sky with some clouds. The grass on either side of the boardwalk is vibrant green, suggesting it might be spring or summer. The scene has a peaceful, natural atmosphere with good visibility and sunny weather conditions."
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1250,
+    "completion_tokens": 89,
+    "total_tokens": 1339
+  }
+}
+```
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>

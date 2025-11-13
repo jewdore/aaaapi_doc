@@ -1,0 +1,384 @@
+---
+title: 'Web Search'
+api: 'POST /v1/responses'
+description: 'Search the web and get AI-powered answers with real-time information'
+---
+
+## Overview
+
+This endpoint provides web search functionality using advanced language models in response mode. Send search queries and receive AI-generated responses enhanced with real-time web search results. Perfect for getting up-to-date information, news, research, and factual data from across the internet.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `sk-*****`
+</ParamField>
+
+## Request Body
+
+<ParamField body="model" type="string" required default="gpt-5-nano">
+  The model to use for the request. Web search functionality is available for all models.
+</ParamField>
+
+<ParamField body="input" type="array" required default='[{"role": "user", "content": [{"type": "input_text", "text": "What are the latest developments in artificial intelligence in 2025?"}]}]'>
+  Array of message objects with role and content. Each message contains:
+  - `role`: "user" or "assistant"
+  - `content`: Array of content objects with the following type:
+    - **input_text**: Text input with `text` field containing your search query or question
+
+  Example:
+  ```json
+  [
+    {
+      "role": "user",
+      "tools": [
+        {
+          "type": "web_search_preview"
+        }
+      ],
+      "content": [
+        {
+          "type": "input_text",
+          "text": "What are the latest developments in artificial intelligence in 2025?"
+        }
+      ]
+    }
+  ]
+  ```
+</ParamField>
+
+<ParamField body="tools" type="array" required default='[{"type": "web_search_preview"}]'>
+  Array of tool objects to enable special capabilities. For web search functionality, include:
+  ```json
+  [
+    {
+      "type": "web_search_preview"
+    }
+  ]
+  ```
+
+  Available tool types:
+  - **web_search_preview**: Enables real-time web search to enhance responses with current information
+</ParamField>
+
+<ParamField body="stream" type="boolean" default={false}>
+  Whether to stream the response
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1/responses' \
+  -H "Authorization: sk-*****" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "gpt-5-nano",
+  "tools": [
+    {
+      "type": "web_search_preview"
+    }
+  ],
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "What are the latest breakthroughs in quantum computing and their potential applications?"
+        }
+      ]
+    }
+  ],
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/responses"
+headers = {
+    "Authorization": "sk-*****",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "model": "gpt-5-nano",
+  "tools": [
+    {
+      "type": "web_search_preview"
+    }
+  ],
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "What are the latest breakthroughs in quantum computing and their potential applications?"
+        }
+      ]
+    }
+  ],
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/responses";
+const headers = {
+  "Authorization": "sk-*****",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "gpt-5-nano",
+    "tools": [
+    {
+      "type": "web_search_preview"
+    }
+  ],
+  "input": [
+    {
+      "role": "user",
+      "tools": [
+        {
+          "type": "web_search_preview"
+        }
+      ],
+        "content": [
+        {
+          "type": "input_text",
+          "text": "What are the latest breakthroughs in quantum computing and their potential applications?"
+        }
+      ]
+    }
+  ],
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/responses"
+
+    payload := map[string]interface{}{
+        "model": "gpt-5-nano",
+        "tools": []map[string]interface{}{
+            {
+                "type": "web_search_preview",
+            },
+        },
+        "input": []map[string]interface{}{
+            {
+                "role": "user",
+                "tools": []map[string]interface{}{
+                    {
+                        "type": "web_search_preview",
+                    },
+                },
+                "content": []map[string]interface{}{
+                    {
+                        "type": "input_text",
+                        "text": "What are the latest breakthroughs in quantum computing and their potential applications?",
+                    },
+                },
+            },
+        },
+        "tools": []map[string]interface{}{
+            {
+                "type": "web_search_preview",
+            },
+        },
+    }
+
+    jsonData, _ := json.Marshal(payload)
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "sk-*****")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="id" type="string">
+  Unique identifier for the response
+</ResponseField>
+
+<ResponseField name="object" type="string">
+  Object type, always "response"
+</ResponseField>
+
+<ResponseField name="created" type="integer">
+  Unix timestamp of when the response was created
+</ResponseField>
+
+<ResponseField name="model" type="string">
+  The model used for generating the response
+</ResponseField>
+
+<ResponseField name="output" type="string">
+  The generated text output enhanced with web search results
+</ResponseField>
+
+<ResponseField name="web_search_results" type="array">
+  Array of web search results used to generate the response (optional, only included when web_search is enabled)
+
+  <Expandable title="Search Result Object">
+    <ResponseField name="title" type="string">
+      Title of the web page
+    </ResponseField>
+
+    <ResponseField name="url" type="string">
+      URL of the web page
+    </ResponseField>
+
+    <ResponseField name="snippet" type="string">
+      Brief excerpt from the web page
+    </ResponseField>
+
+    <ResponseField name="published_date" type="string">
+      Publication date of the content (if available)
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="usage" type="object">
+  Token usage statistics
+
+  <Expandable title="Usage Object">
+    <ResponseField name="prompt_tokens" type="integer">
+      Number of tokens in the input
+    </ResponseField>
+
+    <ResponseField name="completion_tokens" type="integer">
+      Number of tokens in the output
+    </ResponseField>
+
+    <ResponseField name="total_tokens" type="integer">
+      Total number of tokens used
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 - Success
+{
+  "id": "resp-abc123",
+  "object": "response",
+  "created": 1699896916,
+  "model": "gpt-5-nano",
+  "output": "# Latest Breakthroughs in Quantum Computing (2025)\n\nBased on recent developments, here are the most significant quantum computing breakthroughs:\n\n## Major Advances\n\n1. **Error Correction Milestone**: Researchers have achieved a major breakthrough in quantum error correction, demonstrating stable qubits that can maintain coherence for extended periods. This advancement brings us closer to practical, large-scale quantum computers.\n\n2. **Quantum Supremacy Expansion**: Multiple companies have demonstrated quantum advantage in solving real-world problems beyond random circuit sampling, including:\n   - Molecular simulation for drug discovery\n   - Optimization problems in logistics\n   - Financial modeling and risk analysis\n\n3. **Scalability Progress**: New architectures supporting 1000+ qubits have been unveiled, with improved connectivity and reduced noise levels.\n\n## Potential Applications\n\n### Healthcare & Pharmaceuticals\n- Accelerated drug discovery through molecular simulation\n- Personalized medicine optimization\n- Disease modeling and treatment planning\n\n### Finance & Cryptography\n- Advanced risk modeling\n- Portfolio optimization\n- Development of quantum-resistant encryption\n\n### Materials Science\n- Discovery of new materials with specific properties\n- Battery technology improvements\n- Superconductor research\n\n### Artificial Intelligence\n- Enhanced machine learning algorithms\n- Quantum neural networks\n- Faster optimization for AI training\n\n### Climate & Energy\n- Climate modeling improvements\n- Energy grid optimization\n- Carbon capture technology development\n\nThese developments suggest we're entering a new era where quantum computing is transitioning from theoretical research to practical applications across multiple industries.",
+  "web_search_results": [
+    {
+      "title": "Quantum Computing Breakthrough: Error Correction Milestone Reached",
+      "url": "https://example.com/quantum-breakthrough-2025",
+      "snippet": "Scientists have achieved a major breakthrough in quantum error correction, paving the way for practical quantum computers...",
+      "published_date": "2025-01-15"
+    },
+    {
+      "title": "IBM Unveils 1000-Qubit Quantum Processor",
+      "url": "https://example.com/ibm-quantum-processor",
+      "snippet": "IBM has announced a new quantum processor with over 1000 qubits, representing a significant leap in quantum computing capability...",
+      "published_date": "2025-01-10"
+    },
+    {
+      "title": "Quantum Computing Applications in Drug Discovery",
+      "url": "https://example.com/quantum-drug-discovery",
+      "snippet": "Pharmaceutical companies are leveraging quantum computing to accelerate drug discovery processes...",
+      "published_date": "2025-01-08"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 25,
+    "completion_tokens": 385,
+    "total_tokens": 410
+  }
+}
+```
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

@@ -9,7 +9,8 @@
       "Bash(done)",
       "Bash(find:*)",
       "Bash(mv:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(head:*)"
     ],
     "deny": [],
     "ask": []
