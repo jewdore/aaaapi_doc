@@ -1,0 +1,258 @@
+---
+title: 'Text to Speech Lip Sync'
+api: 'POST /api/v3/kwaivgi/kling-lipsync/text-to-video'
+description: 'Text to Speech with Lip Sync'
+---
+
+## Overview
+
+Kling TextToVideo by Kwaivgi creates videos with lifelike lip movements that precisely sync to input text for natural speaking visuals. Ready-to-use REST inference API, best performance, no coldstarts, affordable pricing.
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="video" type="string" required default="https://example.com/video.mp4">
+  The URL of the video file for generating synchronized lip movements.
+
+  **Requirements:**
+  - Supported formats: `.mp4`, `.mov`
+  - File size: Max 100MB
+  - Duration: 2s - 10s
+  - Resolution: 720p or 1080p only
+  - Dimensions: Both width and height must be between 720px and 1920px
+</ParamField>
+
+<ParamField body="text" type="string" required default="Kling lipsync on GptprotoAI is an AI-powered model. Try it now!">
+  Text content for lip-sync video generation. This text will be converted to speech and synchronized with lip movements in the video.
+
+  **Limit:** Maximum 120 characters
+</ParamField>
+
+<ParamField body="voice_id" type="string" required default="genshin_klee2">
+  Voice ID to use for speech synthesis. Different voice IDs provide different character voices and speaking styles.
+
+  **Available Voice IDs:**
+  - `genshin_klee2` - Genshin Klee character voice
+  - `genshin_vindi2` - Genshin Vindi character voice
+  - `genshin_kirara` - Genshin Kirara character voice
+  - `zhinen_xuesheng` - Student voice
+  - `AOT` - Attack on Titan style
+  - `ai_shatang` - Sweet voice
+  - `ai_kaiya` - Kaiya voice
+  - `oversea_male1` - Overseas male voice
+  - `ai_chenjiahao_712` - Chen Jiahao voice
+  - `girlfriend_4_speech02` - Girlfriend voice 4
+  - `chat1_female_new-3` - Female chat voice
+  - `chat_0407_5-1` - Chat voice variant
+  - `cartoon-boy-07` - Cartoon boy voice
+  - `uk_boy1` - UK boy voice
+  - `cartoon-girl-01` - Cartoon girl voice
+  - `PeppaPig_platform` - Peppa Pig style voice
+  - `ai_huangzhong_712` - Huang Zhong voice
+  - `ai_huangyaoshi_712` - Huang Yaoshi voice
+  - `ai_laoguowang_712` - Lao Guo Wang voice
+  - `chengshu_jiejie` - Mature sister voice
+  - `you_pingjing` - Calm voice
+  - `calm_story1` - Calm storytelling voice
+  - `uk_man2` - UK man voice
+  - `laopopo_speech02` - Grandmother voice
+  - `heainainai_speech02` - Grandma voice
+</ParamField>
+
+<ParamField body="voice_language" type="string" default="en">
+  The voice language corresponding to the Voice ID.
+
+  **Supported Languages:**
+  - `zh` - Chinese
+  - `en` - English
+</ParamField>
+
+<ParamField body="voice_speed" type="number" default="1">
+  Speech rate for text to video generation. Controls how fast the generated speech should be.
+
+  **Range:** 0.8 - 2.0
+  - Default: `1.0` (normal speed)
+  - Values > 1.0 increase speed
+  - Values < 1.0 decrease speed
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/kwaivgi/kling-lipsync/text-to-video' \
+--header 'Authorization: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "text": "Kling lipsync on GptprotoAI is an AI-powered model. Try it now!",
+  "video": "https://d1q70pf5vjeyhc.cloudfront.net/predictions/b82002c0695a48ccb6e08d23602402ed/1.mp4",
+  "voice_id": "genshin_klee2",
+  "voice_language": "en",
+  "voice_speed": 1.3
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/kwaivgi/kling-lipsync/text-to-video"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "text": "Kling lipsync on GptprotoAI is an AI-powered model. Try it now!",
+  "video": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/videos/1754274247195370710_ptCTQNJE.mp4",
+  "voice_id": "genshin_klee2",
+  "voice_language": "en",
+  "voice_speed": 1.3
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/kwaivgi/kling-lipsync/text-to-video";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "text": "Kling lipsync on GptprotoAI is an AI-powered model. Try it now!",
+  "video": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/videos/1754274247195370710_ptCTQNJE.mp4",
+  "voice_id": "genshin_klee2",
+  "voice_language": "en",
+  "voice_speed": 1.3
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/kwaivgi/kling-lipsync/text-to-video"
+
+    payload := []byte(`{
+"text": "Kling lipsync on GptprotoAI is an AI-powered model. Try it now!",
+"video": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/videos/1754274247195370710_ptCTQNJE.mp4",
+"voice_id": "genshin_klee2",
+"voice_language": "en",
+"voice_speed": 1.3
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+## Response
+
+<ResponseField name="data.id" type="string">
+    Unique identifier for the prediction, Task Id
+</ResponseField>
+
+<ResponseField name="data.status" type="string">
+    Status of the task: created, processing, completed, or failed
+</ResponseField>
+
+<ResponseExample>
+
+    ```json 401 - Invalid signature
+    {
+        "error": {
+        "message": "Invalid signature",
+        "type": "401"
+    }
+    }
+    ```
+
+    ```json 403 - Invalid Token
+    {
+        "error": {
+        "message": "Invalid Token",
+        "type": "403"
+    }
+    }
+    ```
+
+    ```json 403 - Insufficient balance
+    {
+        "error": {
+        "message": "Insufficient balance",
+        "type": "403"
+    }
+    }
+    ```
+
+    ```json 500 - Internal server error
+    {
+        "error": {
+        "message": "Internal server error",
+        "type": "500"
+    }
+    }
+    ```
+
+    ```json 503 - Content policy violation
+    {
+        "error": {
+        "message": "Input may not meet the guidelines. Please adjust and try again.",
+        "type": "503"
+    }
+    }
+    ```
+
+</ResponseExample>
+
+
+## Usage Notes
+
+- **Face Requirements**: The video should contain a clear, visible face for optimal lip synchronization. The model creates unique movement trajectories based on facial features
+- **Natural Lip Movements**: The AI generates naturally matched lip movements that synchronize precisely with the generated audio
+- **Video Integrity**: Areas outside the face remain consistent with the original video, ensuring visual integrity and continuity
+- **Voice Models**: Different `voice_id` values provide different character voices and speaking styles (e.g., "genshin_klee2" for anime-style voices)
+- **Language Support**: Use the `voice_language` parameter to specify the language for speech generation (e.g., "en" for English, "zh" for Chinese, "ja" for Japanese)
+- **Speed Control**: The `voice_speed` parameter allows you to control speech rate. Default is 1.0 (normal speed), values > 1.0 increase speed, values < 1.0 decrease speed
+- **Processing Time**: Processing duration varies based on text length, video length, and complexity
+- **Query Results**: Use the task ID returned in the response to query the generation status via the [Query Task](/api/kling/kling-lipsync/gptproto-format/query-task) endpoint

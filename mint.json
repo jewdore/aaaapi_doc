@@ -1667,6 +1667,19 @@
                   ]
                 }
               ]
+            },
+            {
+              "group": "kling-lipsync",
+              "pages": [
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/kling/kling-lipsync/gptproto-format/audio-to-video",
+                    "docs/api/kling/kling-lipsync/gptproto-format/text-to-video",
+                    "docs/api/kling/kling-lipsync/gptproto-format/query-task"
+                  ]
+                }
+              ]
             }
           ],
           "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Kling.png"
