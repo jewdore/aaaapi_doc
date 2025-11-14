@@ -1,6 +1,6 @@
 ---
 title: 'Image To Video'
-api: 'POST /v1/video/create'
+api: 'POST /api/v3/openai/reverse/{model}/{scene}'
 description: 'Image To Video'
 ---
 
@@ -8,12 +8,24 @@ description: 'Image To Video'
 
 This endpoint provides submit task functionality.
 
+
+
+
+
 ## Authentication
 
 This endpoint requires authentication using a Bearer token.
-
 <ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## 
+<ParamField path="model" type="string" required default="sora-2">
+  The video generation model to use. 
+</ParamField>
+
+<ParamField path="scene" type="string" required default="image-to-video">
+  The scene to use.
 </ParamField>
 
 ## Request Body

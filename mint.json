@@ -513,6 +513,8 @@
                   "pages": [
                     "docs/api/openai/sora-2/reverse-format/text-to-video",
                     "docs/api/openai/sora-2/reverse-format/image-to-video",
+                    "docs/api/openai/sora-2/reverse-format/text-to-video(obsolete)",
+                    "docs/api/openai/sora-2/reverse-format/image-to-video(obsolete)",
                     "docs/api/openai/sora-2/reverse-format/query-task"
                   ]
                 }

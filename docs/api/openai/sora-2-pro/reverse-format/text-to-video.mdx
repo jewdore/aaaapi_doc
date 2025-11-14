@@ -1,6 +1,6 @@
 ---
 title: 'Text To Video'
-api: 'POST /v1/video/create'
+api: 'POST /api/v3/openai/reverse/{model}/{scene}'
 description: 'Text To Video'
 ---
 
@@ -12,15 +12,23 @@ This endpoint provides submit task functionality.
 
 This endpoint requires authentication using a Bearer token.
 
+
 <ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="sora-2-pro">
+## Request Parameter
+<ParamField path="model" type="string" required default="sora-2-pro">
   The video generation model to use. 
 </ParamField>
+
+<ParamField path="scene" type="string" required default="text-to-video">
+  The scene to use.
+</ParamField>
+
+## Request Body
+
 
 <ParamField body="orientation" type="string"  default="portrait">
   portrait 、landscape
@@ -150,11 +158,11 @@ func main() {
 ```json
 {
     "data": {
-        "id": "sora-2:task_xxxx",
+        "id": "sora-2-pro:task_xxxx",
         "model": "sora-2-pro",
         "outputs": [],
         "urls": {
-            "get": "https://gptproto.com/api/v3/predictions/sora-2:task_xxxx/result"
+            "get": "https://gptproto.com/api/v3/predictions/sora-2-pro:task_xxxx/result"
         },
         "hasNsfwContents": [],
         "status": "processing",

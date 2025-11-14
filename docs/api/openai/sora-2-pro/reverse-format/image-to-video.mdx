@@ -1,6 +1,6 @@
 ---
 title: 'Image To Video'
-api: 'POST /v1/video/create'
+api: 'POST /api/v3/openai/reverse/{model}/{scene}'
 description: 'Image To Video'
 ---
 
@@ -8,12 +8,24 @@ description: 'Image To Video'
 
 This endpoint provides submit task functionality.
 
+
+
+
+
 ## Authentication
 
 This endpoint requires authentication using a Bearer token.
-
 <ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## 
+<ParamField path="model" type="string" required default="sora-2-pro">
+  The video generation model to use. 
+</ParamField>
+
+<ParamField path="scene" type="string" required default="image-to-video">
+  The scene to use.
 </ParamField>
 
 ## Request Body
@@ -51,7 +63,7 @@ curl -X POST "https://gptproto.com/v1/video/create" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "model": "sora-2-pro",
+  "model": "sora-2",
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
@@ -165,11 +177,11 @@ func main() {
 ```json
 {
     "data": {
-        "id": "sora-2:task_xxxx",
+        "id": "sora-2-pro:task_xxxx",
         "model": "sora-2-pro",
         "outputs": [],
         "urls": {
-            "get": "https://gptproto.com/api/v3/predictions/sora-2:task_xxxx/result"
+            "get": "https://gptproto.com/api/v3/predictions/sora-2-pro:task_xxxx/result"
         },
         "hasNsfwContents": [],
         "status": "processing",

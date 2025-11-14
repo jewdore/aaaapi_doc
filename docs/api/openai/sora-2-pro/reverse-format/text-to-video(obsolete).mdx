@@ -1,6 +1,6 @@
 ---
-title: 'Text To Video'
-api: 'POST /api/v3/openai/reverse/{model}/{scene}'
+title: 'Text To Video (Obsolete)'
+api: 'POST /v1/video/create'
 description: 'Text To Video'
 ---
 
@@ -12,23 +12,15 @@ This endpoint provides submit task functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-
 <ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
-
-## Request Parameter
-<ParamField path="model" type="string" required default="sora-2">
-  The video generation model to use. 
-</ParamField>
-
-<ParamField path="scene" type="string" required default="text-to-video">
-  The scene to use.
-</ParamField>
-
 ## Request Body
 
+<ParamField body="model" type="string" required default="sora-2-pro">
+  The video generation model to use. 
+</ParamField>
 
 <ParamField body="orientation" type="string"  default="portrait">
   portrait 、landscape
@@ -56,7 +48,7 @@ curl -X POST "https://gptproto.com/v1/video/create" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "model": "sora-2",
+  "model": "sora-2-pro",
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4",
@@ -75,7 +67,7 @@ headers = {
 }
 
 data = {
-  "model": "sora-2",
+  "model": "sora-2-pro",
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "duration": 15,
@@ -95,7 +87,7 @@ const headers = {
 };
 
 const data = {
-  "model": "sora-2",
+  "model": "sora-2-pro",
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "duration": 15,
@@ -127,7 +119,7 @@ func main() {
     url := "https://gptproto.com/v1/video/create"
 
     payload := []byte(`{
-"model": "sora-2",
+"model": "sora-2-pro",
 "orientation": "portrait",
 "prompt": "She turns around and smiles, then slowly walks out of the frame.",
 "duration": 15,
@@ -158,11 +150,11 @@ func main() {
 ```json
 {
     "data": {
-        "id": "sora-2:task_xxxx",
+        "id": "sora-2-pro:task_xxxx",
         "model": "sora-2-pro",
         "outputs": [],
         "urls": {
-            "get": "https://gptproto.com/api/v3/predictions/sora-2:task_xxxx/result"
+            "get": "https://gptproto.com/api/v3/predictions/sora-2-pro:task_xxxx/result"
         },
         "hasNsfwContents": [],
         "status": "processing",
