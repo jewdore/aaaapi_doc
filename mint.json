@@ -505,6 +505,7 @@
                 {
                   "group": "Openai Format",
                   "pages": [
+                    "docs/api/openai/sora-2/openai-format/text-to-video",
                     "docs/api/openai/sora-2/openai-format/image-to-video"
                   ]
                 },
@@ -545,6 +546,7 @@
                 {
                   "group": "Openai Format",
                   "pages": [
+                    "docs/api/openai/sora-2-pro/openai-format/text-to-video",
                     "docs/api/openai/sora-2-pro/openai-format/image-to-video"
                   ]
                 },

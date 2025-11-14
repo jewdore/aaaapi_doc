@@ -4095,7 +4095,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 16:9 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 16:9 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -4133,7 +4133,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 9:16 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 9:16 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -4539,7 +4539,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 16:9 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 16:9 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -4577,7 +4577,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 9:16 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 9:16 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -4983,7 +4983,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 16:9 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 16:9 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -5021,7 +5021,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 9:16 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 9:16 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -5415,7 +5415,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 16:9 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 16:9 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -5453,7 +5453,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 9:16 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 9:16 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -5821,7 +5821,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 16:9 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 16:9 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -5859,7 +5859,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 9:16 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3.1-pro\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3.1-pro\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. aspect_ratio 9:16 upsample.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -6062,7 +6062,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"16:9\",\n  \"images\": [\n    \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n  ]\n}",
+                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"16:9\",\n  \"images\": [\n    \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n  ]\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -6113,7 +6113,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"9:16\",\n  \"images\": [\n    \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n  ]\n}",
+                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"9:16\",\n  \"images\": [\n    \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n  ]\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -6309,7 +6309,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -6347,7 +6347,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. 竖屏9:16\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. 竖屏9:16\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -6459,7 +6459,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"16:9\",\n  \"images\": [\n    \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n  ]\n}",
+                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"16:9\",\n  \"images\": [\n    \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n  ]\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -6510,7 +6510,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"9:16\",\n  \"images\": [\n    \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n  ]\n}",
+                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"9:16\",\n  \"images\": [\n    \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n  ]\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -6706,7 +6706,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -6744,7 +6744,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. 竖屏9:16\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. 竖屏9:16\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -6856,7 +6856,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"16:9\",\n  \"images\": [\n    \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n  ]\n}",
+                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"16:9\",\n  \"images\": [\n    \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n  ]\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -6907,7 +6907,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"9:16\",\n  \"images\": [\n    \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n  ]\n}",
+                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"9:16\",\n  \"images\": [\n    \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n  ]\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -7103,7 +7103,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -7141,7 +7141,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. 竖屏9:16\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. 竖屏9:16\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -7253,7 +7253,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"16:9\",\n  \"images\": [\n    \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n  ]\n}",
+                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"16:9\",\n  \"images\": [\n    \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n  ]\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -7304,7 +7304,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"9:16\",\n  \"images\": [\n    \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n  ]\n}",
+                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"9:16\",\n  \"images\": [\n    \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n  ]\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -7500,7 +7500,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -7538,7 +7538,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. 竖屏9:16\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. 竖屏9:16\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -7650,7 +7650,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"16:9\",\n  \"images\": [\n    \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n  ]\n}",
+                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"16:9\",\n  \"images\": [\n    \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n  ]\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -7701,7 +7701,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"9:16\",\n  \"images\": [\n    \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n  ]\n}",
+                                            "raw": "{\n  \"prompt\": \"Generate a video of a monk playing basketball with a tomahawk dunk\",\n  \"model\": \"veo3-pro-frames\",\n  \"enhance_prompt\": true,\n  \"aspect_ratio\": \"9:16\",\n  \"images\": [\n    \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n  ]\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -7821,7 +7821,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing.\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -7859,7 +7859,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. 竖屏9:16\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
+                                            "raw": "{\n    //veo3-pro-frames\n    //Add \"upsample\" to the text parameter to enable high-resolution video\n    \"model\": \"veo3-fast-frames\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"A video of a horse dancing. 竖屏9:16\"\n                },\n                {\n                    \"type\": \"image_url\",\n                    \"image_url\": {\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"stream\": true\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -12200,7 +12200,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\r\n  \r\n    \"prompt\": \"A video of a horse dancing.\",\r\n    \"image\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\",\r\n    \"duration\": 4,\r\n    \"resolution\": \"720p\"\r\n}",
+                                            "raw": "{\r\n  \r\n    \"prompt\": \"A video of a horse dancing.\",\r\n    \"image\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\",\r\n    \"duration\": 4,\r\n    \"resolution\": \"720p\"\r\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -12362,7 +12362,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\r\n  \r\n    \"prompt\": \"A video of a horse dancing.\",\r\n    \"image\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\",\r\n    \"duration\": 4,\r\n    \"resolution\": \"720p\"\r\n}",
+                                            "raw": "{\r\n  \r\n    \"prompt\": \"A video of a horse dancing.\",\r\n    \"image\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\",\r\n    \"duration\": 4,\r\n    \"resolution\": \"720p\"\r\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -12524,7 +12524,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\r\n  \r\n    \"prompt\": \"A video of a horse dancing.\",\r\n    \"image\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\",\r\n    \"duration\": 4,\r\n    \"resolution\": \"720p\"\r\n}",
+                                            "raw": "{\r\n  \r\n    \"prompt\": \"A video of a horse dancing.\",\r\n    \"image\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\",\r\n    \"duration\": 4,\r\n    \"resolution\": \"720p\"\r\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -12686,7 +12686,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\r\n  \r\n    \"prompt\": \"A video of a horse dancing.\",\r\n    \"image\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\",\r\n    \"duration\": 4,\r\n    \"resolution\": \"720p\"\r\n}",
+                                            "raw": "{\r\n  \r\n    \"prompt\": \"A video of a horse dancing.\",\r\n    \"image\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\",\r\n    \"duration\": 4,\r\n    \"resolution\": \"720p\"\r\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -13298,7 +13298,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\r\n    \"model\": \"sora-2\",\r\n    \"messages\": [\r\n        {\r\n            \"role\": \"user\",\r\n            \"content\": [\r\n                {\r\n                    \"type\": \"text\",\r\n                    \"text\": \"video of cow and horse dancing\"\r\n                },\r\n                {\r\n                    \"type\": \"image_url\",\r\n                    \"image_url\": {\r\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"stream\": true\r\n}",
+                                            "raw": "{\r\n    \"model\": \"sora-2\",\r\n    \"messages\": [\r\n        {\r\n            \"role\": \"user\",\r\n            \"content\": [\r\n                {\r\n                    \"type\": \"text\",\r\n                    \"text\": \"video of cow and horse dancing\"\r\n                },\r\n                {\r\n                    \"type\": \"image_url\",\r\n                    \"image_url\": {\r\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"stream\": true\r\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -13363,7 +13363,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\r\n    \"model\": \"sora-2\",\r\n    \"orientation\": \"portrait\",\r\n    \"prompt\": \"A video of a horse dancing.\",    \r\n    \"images\": [\r\n        \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\r\n    ],\r\n    \"duration\": 15\r\n}",
+                                            "raw": "{\r\n    \"model\": \"sora-2\",\r\n    \"orientation\": \"portrait\",\r\n    \"prompt\": \"A video of a horse dancing.\",    \r\n    \"images\": [\r\n        \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\r\n    ],\r\n    \"duration\": 15\r\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -13873,7 +13873,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\r\n  \r\n    \"prompt\": \"A video of a horse dancing.\",\r\n    \"image\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\",\r\n    \"duration\": 4,\r\n    \"resolution\": \"720p\"\r\n}",
+                                            "raw": "{\r\n  \r\n    \"prompt\": \"A video of a horse dancing.\",\r\n    \"image\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\",\r\n    \"duration\": 4,\r\n    \"resolution\": \"720p\"\r\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -14001,7 +14001,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\r\n    \"model\": \"sora-2-pro\",\r\n    \"messages\": [\r\n        {\r\n            \"role\": \"user\",\r\n            \"content\": [\r\n                {\r\n                    \"type\": \"text\",\r\n                    \"text\": \"video of cow and horse dancing\"\r\n                },\r\n                {\r\n                    \"type\": \"image_url\",\r\n                    \"image_url\": {\r\n                        \"url\": \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"stream\": true\r\n}",
+                                            "raw": "{\r\n    \"model\": \"sora-2-pro\",\r\n    \"messages\": [\r\n        {\r\n            \"role\": \"user\",\r\n            \"content\": [\r\n                {\r\n                    \"type\": \"text\",\r\n                    \"text\": \"video of cow and horse dancing\"\r\n                },\r\n                {\r\n                    \"type\": \"image_url\",\r\n                    \"image_url\": {\r\n                        \"url\": \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"stream\": true\r\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"
@@ -14066,7 +14066,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\r\n    \"model\": \"sora-2\",\r\n    \"orientation\": \"portrait\",\r\n    \"prompt\": \"A video of a horse dancing.\",    \r\n    \"images\": [\r\n        \"https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png\"\r\n    ],\r\n    \"duration\": 15\r\n}",
+                                            "raw": "{\r\n    \"model\": \"sora-2\",\r\n    \"orientation\": \"portrait\",\r\n    \"prompt\": \"A video of a horse dancing.\",    \r\n    \"images\": [\r\n        \"https://oss.heyoos.com/ai-draw/material/land-part1-default.png\"\r\n    ],\r\n    \"duration\": 15\r\n}",
                                             "options": {
                                                 "raw": {
                                                     "language": "json"

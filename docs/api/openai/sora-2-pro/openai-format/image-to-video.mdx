@@ -22,7 +22,7 @@ This endpoint requires authentication using a Bearer token.
   The model to use for the request
 </ParamField>
 
-<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;video of cow and horse dancing&quot;}, {&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: {&quot;url&quot;: &quot;https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png&quot;}}]}]">
+<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;video of a girl dancing&quot;}, {&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: {&quot;url&quot;: &quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;}}]}]">
   Array of message objects for the conversation
 </ParamField>
 
@@ -46,12 +46,12 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
       "content": [
         {
           "type": "text",
-          "text": "video of cow and horse dancing"
+          "text": "video of a girl dancing"
         },
         {
           "type": "image_url",
           "image_url": {
-            "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
           }
         }
       ]
@@ -79,12 +79,12 @@ data = {
       "content": [
         {
           "type": "text",
-          "text": "video of cow and horse dancing"
+          "text": "video of a girl dancing"
         },
         {
           "type": "image_url",
           "image_url": {
-            "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
           }
         }
       ]
@@ -113,12 +113,12 @@ const data = {
       "content": [
         {
           "type": "text",
-          "text": "video of cow and horse dancing"
+          "text": "video of a girl dancing"
         },
         {
           "type": "image_url",
           "image_url": {
-            "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
           }
         }
       ]
@@ -159,12 +159,12 @@ func main() {
 "content": [
 {
 "type": "text",
-"text": "video of cow and horse dancing"
+"text": "video of a girl dancing"
 },
 {
 "type": "image_url",
 "image_url": {
-"url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+"url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
 }
 }
 ]

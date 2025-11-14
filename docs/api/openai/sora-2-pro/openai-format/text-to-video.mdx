@@ -1,12 +1,12 @@
 ---
-title: 'Submit Task'
-api: 'POST /v1/video/create'
-description: 'Submit Task'
+title: 'Text to Video'
+api: 'POST /v1/chat/completions'
+description: 'Text to Video'
 ---
 
 ## Overview
 
-This endpoint provides submit task functionality.
+This endpoint provides chat mode functionality.
 
 ## Authentication
 
@@ -18,24 +18,16 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="model" type="string" required default="sora-2">
+<ParamField body="model" type="string" required default="sora-2-pro">
   The model to use for the request
 </ParamField>
 
-<ParamField body="orientation" type="string"  default="portrait">
-  Orientation parameter
+<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;video of cow and horse dancing&quot;}]}]">
+  Array of message objects for the conversation
 </ParamField>
 
-<ParamField body="prompt" type="string" required default="A video of a horse dancing.">
-  Prompt parameter
-</ParamField>
-
-<ParamField body="images" type="array"  default="[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]">
-  Images parameter
-</ParamField>
-
-<ParamField body="duration" type="integer"  default="15">
-  Duration parameter
+<ParamField body="stream" type="boolean"  default="true">
+  Whether to stream the response
 </ParamField>
 
 ## Request Example
@@ -43,17 +35,23 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1/video/create" \
+curl -X POST "https://gptproto.com/v1/chat/completions" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "model": "sora-2",
-  "orientation": "portrait",
-  "prompt": "A video of a horse dancing.",
-  "images": [
-    "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+  "model": "sora-2-pro",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "video of cow and horse dancing"
+        }
+      ]
+    }
   ],
-  "duration": 15
+  "stream": true
 }'
 ```
 
@@ -61,20 +59,32 @@ curl -X POST "gptproto/v1/video/create" \
 import requests
 import json
 
-url = "gptproto/v1/video/create"
+url = "https://gptproto.com/v1/chat/completions"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-  "model": "sora-2",
-  "orientation": "portrait",
-  "prompt": "A video of a horse dancing.",
-  "images": [
-    "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+  "model": "sora-2-pro",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "video of a girl dancing"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+          }
+        }
+      ]
+    }
   ],
-  "duration": 15
+  "stream": true
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -83,20 +93,26 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1/video/create";
+const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "model": "sora-2",
-  "orientation": "portrait",
-  "prompt": "A video of a horse dancing.",
-  "images": [
-    "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+  "model": "sora-2-pro",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "video of cow and horse dancing"
+        }
+      ]
+    }
   ],
-  "duration": 15
+  "stream": true
 };
 
 fetch(url, {
@@ -121,16 +137,22 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1/video/create"
+    url := "https://gptproto.com/v1/chat/completions"
 
     payload := []byte(`{
-"model": "sora-2",
-"orientation": "portrait",
-"prompt": "A video of a horse dancing.",
-"images": [
-"https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+"model": "sora-2-pro",
+"messages": [
+{
+"role": "user",
+"content": [
+{
+"type": "text",
+"text": "video of cow and horse dancing"
+}
+]
+}
 ],
-"duration": 15
+"stream": true
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

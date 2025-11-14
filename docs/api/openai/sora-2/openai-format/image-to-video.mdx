@@ -26,29 +26,35 @@ This endpoint requires authentication using a Bearer token.
   Array of message objects for the conversation
             <Expandable title="properties">
                 <ParamField body="role" type="string" required>
+                    * role:user,The role of the message.
+                    * role:assistant,The role of the message.
+                    * role:system,The role of the message.
                 </ParamField>
 
                 <ParamField body="content" type="array" required>
 
                             <Expandable title="properties">
-
                                   <ParamField body="type" type="string" required>
                                      text , image_url 
                                   </ParamField>
                                   
-                                  <ParamField body="text" type="string" required>
-                                     * type:text,The positive prompt for the generation.
-                                     * type:image_url,Optional image reference that guides generation.
-                                  </ParamField>
-                            
+                                    <ParamField body="text" type="string" required>
+                                      * type:text,The positive prompt for the generation.
+                                      * type:image_url,Optional image reference that guides generation.
+                                    </ParamField>
+                                    <ParamField body="image_url" type="object" required>
+                                      <ParamField body="url" type="string" required>
+                                        * type:image_url,The URL of the image to use for the generation.
+                                      </ParamField>
+                                    </ParamField>
                             </Expandable>
+                           
                 </ParamField>
-
             </Expandable>
 </ParamField>
 
 <ParamField body="stream" type="boolean"  default="true">
-
+  Whether to stream the response
 </ParamField>
 
 ## Request Example
@@ -67,12 +73,12 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
       "content": [
         {
           "type": "text",
-          "text": "video of cow and horse dancing"
+          "text": "video of a girl dancing"
         },
         {
           "type": "image_url",
           "image_url": {
-            "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
           }
         }
       ]
@@ -100,12 +106,12 @@ data = {
       "content": [
         {
           "type": "text",
-          "text": "video of cow and horse dancing"
+          "text": "video of a girl dancing"
         },
         {
           "type": "image_url",
           "image_url": {
-            "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
           }
         }
       ]
@@ -134,12 +140,12 @@ const data = {
       "content": [
         {
           "type": "text",
-          "text": "video of cow and horse dancing"
+          "text": "video of a girl dancing"
         },
         {
           "type": "image_url",
           "image_url": {
-            "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
           }
         }
       ]
@@ -180,12 +186,12 @@ func main() {
 "content": [
 {
 "type": "text",
-"text": "video of cow and horse dancing"
+"text": "video of a girl dancing"
 },
 {
 "type": "image_url",
 "image_url": {
-"url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+"url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
 }
 }
 ]

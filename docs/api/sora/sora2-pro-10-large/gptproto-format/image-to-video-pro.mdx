@@ -22,7 +22,7 @@ This endpoint requires authentication using a Bearer token.
   Prompt parameter
 </ParamField>
 
-<ParamField body="image" type="string"  default="https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png">
+<ParamField body="image" type="string"  default="https://oss.heyoos.com/ai-draw/material/land-part1-default.png">
   Image parameter
 </ParamField>
 
@@ -44,7 +44,7 @@ curl -X POST "api/api/v3/openai/sora-2/image-to-video-pro" \
   -H "Content-Type: application/json" \
   -d '{
   "prompt": "A video of a horse dancing.",
-  "image": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png",
+  "image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
   "duration": 4,
   "resolution": "720p"
 }'
@@ -62,7 +62,7 @@ headers = {
 
 data = {
   "prompt": "A video of a horse dancing.",
-  "image": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png",
+  "image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
   "duration": 4,
   "resolution": "720p"
 }
@@ -81,7 +81,7 @@ const headers = {
 
 const data = {
   "prompt": "A video of a horse dancing.",
-  "image": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png",
+  "image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
   "duration": 4,
   "resolution": "720p"
 };
@@ -112,7 +112,7 @@ func main() {
 
     payload := []byte(`{
 "prompt": "A video of a horse dancing.",
-"image": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png",
+"image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
 "duration": 4,
 "resolution": "720p"
 }`)

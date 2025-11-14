@@ -1,7 +1,7 @@
 ---
-title: 'Chat Mode'
+title: 'Text to Video'
 api: 'POST /v1/chat/completions'
-description: 'Chat Mode'
+description: 'Text to Video'
 ---
 
 ## Overview
@@ -18,12 +18,36 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="model" type="string" required default="sora-2-pro">
+<ParamField body="model" type="string" required default="sora-2">
   The model to use for the request
 </ParamField>
 
-<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;video of cow and horse dancing&quot;}, {&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: {&quot;url&quot;: &quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;}}]}]">
+<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;video of cow and horse dancing&quot;}]}]">
   Array of message objects for the conversation
+    <Expandable title="properties">
+                <ParamField body="role" type="string" required>
+                    * role:user,The role of the message.
+                    * role:assistant,The role of the message.
+                    * role:system,The role of the message.
+                </ParamField>
+
+                <ParamField body="content" type="array" required>
+
+                            <Expandable title="properties">
+
+                                  <ParamField body="type" type="string" required>
+                                     text , image_url 
+                                  </ParamField>
+                                  
+                                  <ParamField body="text" type="string" required>
+                                     * type:text,The positive prompt for the generation.
+                                     * type:image_url,Optional image reference that guides generation.
+                                  </ParamField>
+                            
+                            </Expandable>
+                </ParamField>
+
+            </Expandable>
 </ParamField>
 
 <ParamField body="stream" type="boolean"  default="true">
@@ -35,11 +59,11 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1/chat/completions" \
+curl -X POST "https://gptproto.com/v1/chat/completions" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "model": "sora-2-pro",
+  "model": "sora-2",
   "messages": [
     {
       "role": "user",
@@ -47,12 +71,6 @@ curl -X POST "gptproto/v1/chat/completions" \
         {
           "type": "text",
           "text": "video of cow and horse dancing"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
-          }
         }
       ]
     }
@@ -65,21 +83,21 @@ curl -X POST "gptproto/v1/chat/completions" \
 import requests
 import json
 
-url = "gptproto/v1/chat/completions"
+url = "https://gptproto.com/v1/chat/completions"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-  "model": "sora-2-pro",
+  "model": "sora-2",
   "messages": [
     {
       "role": "user",
       "content": [
         {
           "type": "text",
-          "text": "video of cow and horse dancing"
+          "text": "video of a girl dancing"
         },
         {
           "type": "image_url",
@@ -99,27 +117,21 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1/chat/completions";
+const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "model": "sora-2-pro",
+  "model": "sora-2",
   "messages": [
     {
       "role": "user",
       "content": [
         {
           "type": "text",
-          "text": "video of cow and horse dancing"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
-          }
+          "text": "video of a girl dancing"
         }
       ]
     }
@@ -149,23 +161,17 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1/chat/completions"
+    url := "https://gptproto.com/v1/chat/completions"
 
     payload := []byte(`{
-"model": "sora-2-pro",
+"model": "sora-2",
 "messages": [
 {
 "role": "user",
 "content": [
 {
 "type": "text",
-"text": "video of cow and horse dancing"
-},
-{
-"type": "image_url",
-"image_url": {
-"url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
-}
+"text": "video of a girl dancing"
 }
 ]
 }
