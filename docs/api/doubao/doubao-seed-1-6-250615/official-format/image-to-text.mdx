@@ -1,57 +1,54 @@
 ---
-title: 'image to Text'
-api: 'POST /api/v3/chat/completions'
-description: 'image to Text'
+title: 'Image to Text'
+api: 'POST /v1/chat/completions'
+description: 'Image to Text'
 ---
 
 ## Overview
 
-This endpoint provides image to text functionality using Volcengine official format.
+This endpoint provides text to text functionality.
 
 ## Authentication
 
-This endpoint requires authentication using a Bearer token with your API key.
+This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required>
-  Your API key in the format: `Bearer YOUR_API_KEY`
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
 <ParamField body="model" type="string" required default="doubao-seed-1-6-250615">
-  The endpoint ID for the model. Format: ep-xxxxxxxxxx-xxxxx
+  The model to use for the request. `doubao-seed-1-6-250615`
 </ParamField>
 
-<ParamField body="messages" type="array" required default="[{'role': 'user', 'content': 'Who are you?'}]">
-  Array of message objects for the conversation. Each message must have a role (system, user, or assistant) and content.
+<ParamField body="messages" type="array" required>
+  Array of message objects for the conversation
+            <Expandable title="properties">
+                <ParamField body="role" type="string" required>
+                    * role:user,The role of the message.
+                    * role:assistant,The role of the message.
+                    * role:system,The role of the message.
+                </ParamField>
+
+                <ParamField body="content" type="array" required>
+
+                            <Expandable title="properties">
+                                  <ParamField body="type" type="string" required>
+                                     text
+                                  </ParamField>
+
+                                    <ParamField body="text" type="string" required>
+                                      * type:text,The positive prompt for the generation.
+                                    </ParamField>
+                            </Expandable>
+
+                </ParamField>
+            </Expandable>
 </ParamField>
 
-<ParamField body="temperature" type="number" default="0.7">
-  Controls randomness in the output. Range: 0.0 to 1.0
-</ParamField>
-
-<ParamField body="top_p" type="number" default="0.9">
-  Nucleus sampling parameter. Range: 0.0 to 1.0
-</ParamField>
-
-<ParamField body="max_tokens" type="integer" default="2048">
-  The maximum number of tokens to generate
-</ParamField>
-
-<ParamField body="stream" type="boolean" default="false">
-  Whether to stream the response using SSE (Server-Sent Events)
-</ParamField>
-
-<ParamField body="frequency_penalty" type="number" default="0.0">
-  Penalize frequent tokens. Range: -2.0 to 2.0
-</ParamField>
-
-<ParamField body="presence_penalty" type="number" default="0.0">
-  Penalize new tokens based on presence. Range: -2.0 to 2.0
-</ParamField>
-
-<ParamField body="stop" type="array">
-  Up to 4 sequences where the API will stop generating further tokens
+<ParamField body="stream" type="boolean"  default="true">
+  Whether to stream the response
 </ParamField>
 
 ## Request Example
@@ -59,19 +56,18 @@ This endpoint requires authentication using a Bearer token with your API key.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/chat/completions" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "model": "doubao-seed-1-6-250615",
   "messages": [
     {
       "role": "user",
-      "content": "Hello, please introduce yourself"
+      "content": "Who are you?"
     }
   ],
-  "temperature": 0.7,
-  "max_tokens": 2048
+  "stream": false
 }'
 ```
 
@@ -79,40 +75,44 @@ curl -X POST "https://gptproto.com/api/v3/chat/completions" \
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/chat/completions"
+url = "https://gptproto.com/v1/chat/completions"
 headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
+    "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-    "model": "doubao-seed-1-6-250615",
-    "messages": [
-        {"role": "user", "content": "Hello, please introduce yourself"}
-    ],
-    "temperature": 0.7,
-    "max_tokens": 2048
+  "model": "doubao-seed-1-6-250615",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": false
 }
 
 response = requests.post(url, headers=headers, json=data)
 result = response.json()
-print(json.dumps(result, indent=2, ensure_ascii=False))
+print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/chat/completions";
+const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
+  "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
-  model: "doubao-seed-1-6-250615",
-  messages: [
-    { role: "user", content: "Hello, please introduce yourself" }
+  "model": "doubao-seed-1-6-250615",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
   ],
-  temperature: 0.7,
-  max_tokens: 2048
+  "stream": false
 };
 
 fetch(url, {
@@ -137,22 +137,21 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/chat/completions"
+    url := "https://gptproto.com/v1/chat/completions"
 
     payload := []byte(`{
-  "model": "doubao-seed-1-6-250615",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Hello, please introduce yourself"
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 2048
+"model": "doubao-seed-1-6-250615",
+"messages": [
+{
+"role": "user",
+"content": "Who are you?"
+}
+],
+"stream": false
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Authorization", "YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -172,29 +171,11 @@ func main() {
 ## Response
 
 <ResponseField name="Success" type="200">
-  Successful response with Volcengine Doubao format
+  Successful response
 
 ```json
 {
-  "id": "chatcmpl-xxxxxxxxxx",
-  "object": "chat.completion",
-  "created": 1234567890,
-  "model": "doubao-seed-1-6-250615",
-  "choices": [
-    {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": "Hello! I'm Doubao, an AI assistant developed by ByteDance."
-      },
-      "finish_reason": "stop"
-    }
-  ],
-  "usage": {
-    "prompt_tokens": 12,
-    "completion_tokens": 20,
-    "total_tokens": 32
-  }
+  "status": "success"
 }
 ```
 </ResponseField>
@@ -203,55 +184,49 @@ func main() {
 
 <ResponseExample>
 
-```json 400 - Bad Request
+```json 401 - Invalid signature
 {
   "error": {
-    "message": "Invalid request parameters",
-    "type": "invalid_request_error",
-    "code": "invalid_parameters"
+    "message": "Invalid signature",
+    "type": "401"
   }
 }
 ```
 
-```json 401 - Unauthorized
+```json 403 - Invalid Token
 {
   "error": {
-    "message": "Invalid authentication credentials",
-    "type": "authentication_error",
-    "code": "invalid_api_key"
+    "message": "Invalid Token",
+    "type": "403"
   }
 }
 ```
 
-```json 403 - Forbidden
+```json 403 - Insufficient balance
 {
   "error": {
-    "message": "Insufficient permissions or quota exceeded",
-    "type": "permission_error",
-    "code": "insufficient_quota"
+    "message": "Insufficient balance",
+    "type": "403"
   }
 }
 ```
 
-```json 429 - Rate Limit Exceeded
-{
-  "error": {
-    "message": "Rate limit exceeded",
-    "type": "rate_limit_error",
-    "code": "rate_limit_exceeded"
-  }
-}
-```
-
-```json 500 - Internal Server Error
+```json 500 - Internal server error
 {
   "error": {
     "message": "Internal server error",
-    "type": "server_error",
-    "code": "internal_error"
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
   }
 }
 ```
 
 </ResponseExample>
-

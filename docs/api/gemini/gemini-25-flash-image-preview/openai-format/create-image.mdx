@@ -1,12 +1,19 @@
 ---
-title: 'Create Image'
+title: 'Text to Image'
 api: 'POST /v1/images/generations'
-description: '[Image](https://platform.openai.com/docs/api-reference/images)Given a prompt and/or input image, the model will generate a new image.Related Guides: [Image Generation](https://platform.openai.com/docs/guides/images)Create an image based on the prompt.'
+description: 'Generate images from text prompts. This OpenAI-compatible endpoint is powered by Gemini 2.5 Flash Image, providing state-of-the-art image generation capabilities. [OpenAI API Reference](https://platform.openai.com/docs/api-reference/images/create) | [Gemini Documentation](https://ai.google.dev/gemini-api/docs/image-generation)'
 ---
+
+## Caution
+
+The `gemini-2.0-flash-preview-image-generation` and `gemini-2.5-flash-image-preview` models will be retired on October 31, 2025. Migrate any workflows to `gemini-2.5-flash-image` before that date to avoid service disruption.
 
 ## Overview
 
-[Image](https://platform.openai.com/docs/api-reference/images)Given a prompt and/or input image, the model will generate a new image.Related Guides: [Image Generation](https://platform.openai.com/docs/guides/images)Create an image based on the prompt.
+This endpoint provides powerful image generation functionality following the OpenAI images/generations API format, powered by Gemini 2.5 Flash Image. Given a text prompt, the model will generate high-quality images matching your description.
+
+**API Compatibility**: This endpoint follows the [OpenAI `/v1/images/generations`](https://platform.openai.com/docs/api-reference/images/create) format, making it easy to integrate as a drop-in replacement for OpenAI's image generation API.
+
 
 ## Authentication
 
@@ -19,22 +26,51 @@ This endpoint requires authentication using a Bearer token.
 ## Request Body
 
 <ParamField body="model" type="string" required default="gemini-2.5-flash-image-preview">
-  The model to use for the request
+  The model to use for image generation. Use `gemini-2.5-flash-image-preview` or `gemini-2.5-flash-image` for production workflows.
 </ParamField>
 
-<ParamField body="prompt" type="string" required default="oxen and horses">
-  Prompt parameter
+<ParamField body="prompt" type="string" required default="A serene landscape with mountains and a lake at sunset">
+  A text description of the desired image(s). Maximum length: 1000 characters (OpenAI standard) / 32,000 characters (extended support). The more detailed and specific your prompt, the better the results.
 </ParamField>
 
-<ParamField body="n" type="integer"  default="1">
-  Number of completions to generate
+<ParamField body="n" type="integer" default="1">
+  Number of images to generate. Accepts values between 1-10. Each image counts as 1,290 output tokens.
 </ParamField>
 
-<ParamField body="size" type="string"  default="1024x1024">
-  Size parameter
+<ParamField body="size" type="string" default="1024x1024">
+  The size of the generated images. Supported values:
+  - `256x256` - Small square (legacy support)
+  - `512x512` - Medium square
+  - `1024x1024` - Large square (recommended)
+  - `1024x1536` - Portrait orientation
+  - `1536x1024` - Landscape orientation
+</ParamField>
+
+<ParamField body="quality" type="string" default="standard">
+  The quality of the image generation. Options:
+  - `standard` - Standard quality, faster generation
+  - `hd` - High definition, more detailed results (if supported)
+</ParamField>
+
+<ParamField body="response_format" type="string" default="url">
+  The format in which the generated images are returned. Must be one of:
+  - `url` - Returns HTTPS URLs to the images (valid for 60 minutes)
+  - `b64_json` - Returns base64-encoded JSON data
+</ParamField>
+
+<ParamField body="style" type="string" default="vivid">
+  The style of the generated images. Options:
+  - `vivid` - Hyper-real and dramatic images
+  - `natural` - More natural, less hyper-real looking images
+</ParamField>
+
+<ParamField body="user" type="string">
+  A unique identifier representing your end-user, which can help monitor and detect abuse.
 </ParamField>
 
 ## Request Example
+
+### Basic Image Generation
 
 <CodeGroup>
 
@@ -43,11 +79,12 @@ curl -X POST "https://gptproto.com/v1/images/generations" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "model": "gemini-2.5-flash-image-preview",
-  "prompt": "oxen and horses",
-  "n": 1,
-  "size": "1024x1024"
-}'
+    "model": "gemini-2.5-flash-image-preview",
+    "prompt": "A serene landscape with mountains and a lake at sunset",
+    "n": 1,
+    "size": "1024x1024",
+    "response_format": "url"
+  }'
 ```
 
 ```python Python
@@ -61,10 +98,11 @@ headers = {
 }
 
 data = {
-  "model": "gemini-2.5-flash-image-preview",
-  "prompt": "oxen and horses",
-  "n": 1,
-  "size": "1024x1024"
+    "model": "gemini-2.5-flash-image-preview",
+    "prompt": "A serene landscape with mountains and a lake at sunset",
+    "n": 1,
+    "size": "1024x1024",
+    "response_format": "url"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -81,9 +119,10 @@ const headers = {
 
 const data = {
   "model": "gemini-2.5-flash-image-preview",
-  "prompt": "oxen and horses",
+  "prompt": "A serene landscape with mountains and a lake at sunset",
   "n": 1,
-  "size": "1024x1024"
+  "size": "1024x1024",
+  "response_format": "url"
 };
 
 fetch(url, {
@@ -111,11 +150,12 @@ func main() {
     url := "https://gptproto.com/v1/images/generations"
 
     payload := []byte(`{
-"model": "gemini-2.5-flash-image-preview",
-"prompt": "oxen and horses",
-"n": 1,
-"size": "1024x1024"
-}`)
+        "model": "gemini-2.5-flash-image-preview",
+        "prompt": "A serene landscape with mountains and a lake at sunset",
+        "n": 1,
+        "size": "1024x1024",
+        "response_format": "url"
+    }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
     req.Header.Set("Authorization", "YOUR_API_KEY")
@@ -135,17 +175,184 @@ func main() {
 
 </CodeGroup>
 
+### Generate Multiple Images
+
+Generate multiple variations of the same prompt:
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/images/generations" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gemini-2.5-flash-image-preview",
+    "prompt": "A futuristic city with flying cars and neon lights",
+    "n": 4,
+    "size": "1024x1024",
+    "quality": "hd",
+    "style": "vivid"
+  }'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/images/generations"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "model": "gemini-2.5-flash-image-preview",
+    "prompt": "A futuristic city with flying cars and neon lights",
+    "n": 4,
+    "size": "1024x1024",
+    "quality": "hd",
+    "style": "vivid"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+
+# Save all generated images
+for i, image in enumerate(result['data']):
+    print(f"Image {i+1}: {image['url']}")
+```
+
+</CodeGroup>
+
 ## Response
 
 <ResponseField name="Success" type="200">
-  Successful response
+  Successful response following OpenAI's standard format
 
+**URL Response Format** (`response_format: "url"`):
 ```json
 {
-  "status": "success"
+  "created": 1732550000,
+  "data": [
+    {
+      "url": "https://gptproto.com/generated/image-abc123.png"
+    }
+  ]
 }
 ```
+
+**Base64 JSON Response Format** (`response_format: "b64_json"`):
+```json
+{
+  "created": 1732550000,
+  "data": [
+    {
+      "b64_json": "iVBORw0KGgoAAAANSUhEUgAAAQAAAAEA..."
+    }
+  ]
+}
+```
+
+**Multiple Images Response** (when `n` > 1):
+```json
+{
+  "created": 1732550000,
+  "data": [
+    {
+      "url": "https://gptproto.com/generated/image-abc123.png"
+    },
+    {
+      "url": "https://gptproto.com/generated/image-def456.png"
+    },
+    {
+      "url": "https://gptproto.com/generated/image-ghi789.png"
+    }
+  ]
+}
+```
+
+**Response Fields:**
+- **created**: Unix timestamp (integer) when the images were generated
+- **data**: Array of generated image objects
+  - **url**: HTTPS URL to the generated image (valid for 60 minutes)
+  - **b64_json**: Base64-encoded PNG image data (alternative to URL)
+
+**Important Notes:**
+- Generated image URLs expire after 60 minutes. Download or save images you need for long-term use.
+- All generated images include a SynthID watermark for content authenticity.
+- When `n` > 1, the `data` array will contain multiple image objects, one for each generated image.
+- Each generated image consumes 1,290 output tokens regardless of size.
+
 </ResponseField>
+
+## OpenAI SDK Compatibility
+
+This endpoint is fully compatible with the OpenAI Python SDK:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="YOUR_API_KEY",
+    base_url="https://gptproto.com/v1"
+)
+
+response = client.images.generate(
+    model="gemini-2.5-flash-image-preview",
+    prompt="A serene landscape with mountains and a lake at sunset",
+    n=1,
+    size="1024x1024",
+    quality="hd"
+)
+
+image_url = response.data[0].url
+print(image_url)
+```
+
+## Prompt Engineering Tips
+
+To get the best results from image generation:
+
+### Be Specific and Descriptive
+- ✅ Good: "A photorealistic portrait of a tabby cat sitting on a red velvet cushion, soft studio lighting, shallow depth of field"
+- ❌ Avoid: "A cat"
+
+### Specify Style and Mood
+- Include artistic style: "oil painting", "watercolor", "digital art", "photorealistic", "minimalist"
+- Describe atmosphere: "warm sunset lighting", "moody and dramatic", "bright and cheerful"
+
+### Include Technical Details
+- Lighting: "golden hour lighting", "studio lighting", "natural sunlight"
+- Perspective: "wide-angle shot", "close-up", "bird's eye view"
+- Quality: "high detail", "4K quality", "sharp focus"
+
+### Use Composition Keywords
+- "centered composition", "rule of thirds", "symmetrical", "dynamic angle"
+
+## Use Cases
+
+**Creative Content**
+- Generate concept art and illustrations
+- Create marketing visuals and social media content
+- Design book covers and promotional materials
+- Produce storyboard images
+
+**Product Visualization**
+- Visualize product concepts before manufacturing
+- Create product mockups and lifestyle images
+- Generate packaging design concepts
+
+**Artistic Exploration**
+- Experiment with different artistic styles
+- Create variations of a concept
+- Generate inspiration boards
+- Produce unique artwork
+
+**Business Applications**
+- Generate placeholder images for presentations
+- Create custom graphics for reports
+- Design event promotional materials
+- Produce training material illustrations
 
 ## Error Responses
 

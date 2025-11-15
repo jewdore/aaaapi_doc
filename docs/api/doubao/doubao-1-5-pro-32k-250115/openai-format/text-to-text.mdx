@@ -16,28 +16,81 @@ This endpoint requires authentication using a Bearer token.
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
+## Request Body
+
+<ParamField body="model" type="string" required default="doubao-1-5-pro-32k-250115">
+  The model to use for the request. `doubao-1-5-pro-32k-250115`
+</ParamField>
+
+<ParamField body="messages" type="array" required>
+  Array of message objects for the conversation
+            <Expandable title="properties">
+                <ParamField body="role" type="string" required>
+                    * role:user,The role of the message.
+                    * role:assistant,The role of the message.
+                    * role:system,The role of the message.
+                </ParamField>
+
+                <ParamField body="content" type="array" required>
+
+                            <Expandable title="properties">
+                                  <ParamField body="type" type="string" required>
+                                     text
+                                  </ParamField>
+
+                                    <ParamField body="text" type="string" required>
+                                      * type:text,The positive prompt for the generation.
+                                    </ParamField>
+                            </Expandable>
+
+                </ParamField>
+            </Expandable>
+</ParamField>
+
+<ParamField body="stream" type="boolean"  default="true">
+  Whether to stream the response
+</ParamField>
+
 ## Request Example
 
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/chat/completions'" \
+curl -X POST "https://gptproto.com/v1/chat/completions" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{}'
+  -d '{
+  "model": "doubao-1-5-pro-32k-250115",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": false
+}'
 ```
 
 ```python Python
 import requests
 import json
 
-url = "https://gptproto.com/v1/chat/completions'"
+url = "https://gptproto.com/v1/chat/completions"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
-data = {}
+data = {
+  "model": "doubao-1-5-pro-32k-250115",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": false
+}
 
 response = requests.post(url, headers=headers, json=data)
 result = response.json()
@@ -45,13 +98,22 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1/chat/completions'";
+const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
-const data = {};
+const data = {
+  "model": "doubao-1-5-pro-32k-250115",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": false
+};
 
 fetch(url, {
   method: "POST",
@@ -75,9 +137,18 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/v1/chat/completions'"
+    url := "https://gptproto.com/v1/chat/completions"
 
-    payload := []byte(`{}`)
+    payload := []byte(`{
+"model": "doubao-1-5-pro-32k-250115",
+"messages": [
+{
+"role": "user",
+"content": "Who are you?"
+}
+],
+"stream": false
+}`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
     req.Header.Set("Authorization", "YOUR_API_KEY")
@@ -159,4 +230,3 @@ func main() {
 ```
 
 </ResponseExample>
-

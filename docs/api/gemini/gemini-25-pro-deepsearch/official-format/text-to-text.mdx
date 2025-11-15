@@ -19,14 +19,35 @@ This endpoint requires authentication using a Bearer token.
 ## Request Body
 
 <ParamField body="model" type="string" required default="gemini-2.5-pro-deepsearch">
-  The model to use for the request
+  The model to use for the request. `gemini-2.5-pro-deepsearch`
 </ParamField>
 
-<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Who are you?&quot;}]">
+<ParamField body="messages" type="array" required>
   Array of message objects for the conversation
+            <Expandable title="properties">
+                <ParamField body="role" type="string" required>
+                    * role:user,The role of the message.
+                    * role:assistant,The role of the message.
+                    * role:system,The role of the message.
+                </ParamField>
+
+                <ParamField body="content" type="array" required>
+
+                            <Expandable title="properties">
+                                  <ParamField body="type" type="string" required>
+                                     text
+                                  </ParamField>
+
+                                    <ParamField body="text" type="string" required>
+                                      * type:text,The positive prompt for the generation.
+                                    </ParamField>
+                            </Expandable>
+
+                </ParamField>
+            </Expandable>
 </ParamField>
 
-<ParamField body="stream" type="boolean"  default="false">
+<ParamField body="stream" type="boolean"  default="true">
   Whether to stream the response
 </ParamField>
 

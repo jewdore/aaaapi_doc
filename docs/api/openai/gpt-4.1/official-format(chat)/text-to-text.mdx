@@ -19,14 +19,47 @@ This endpoint requires authentication using a Bearer token.
 ## Request Body
 
 <ParamField body="model" type="string" required default="gpt-4.1">
-  The model to use for the request
+  The model to use for the request. `gpt-4.1`
 </ParamField>
 
-<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Who are you?&quot;}]">
+<ParamField body="messages" type="array" required example={[
+    {
+      role: "user",
+      content: [
+        {
+          type: "text",
+          text: "The positive prompt for the generation."
+        }
+      ]
+    }
+  ]}>
   Array of message objects for the conversation
+  <Expandable title="properties">
+    
+    <ParamField body="role" type="string" required example="user">
+      * role:user,The role of the message.
+      * role:assistant,The role of the message.
+      * role:system,The role of the message.
+    </ParamField>
+
+    <ParamField body="content" type="array" required>
+      <Expandable title="items">
+
+        <ParamField body="type" type="string" required example="text">
+          text
+        </ParamField>
+
+        <ParamField body="text" type="string" required example="The positive prompt for the generation.">
+          * type:text,The positive prompt for the generation.
+        </ParamField>
+
+      </Expandable>
+    </ParamField>
+
+  </Expandable>
 </ParamField>
 
-<ParamField body="stream" type="boolean"  default="false">
+<ParamField body="stream" type="boolean"  default="true">
   Whether to stream the response
 </ParamField>
 

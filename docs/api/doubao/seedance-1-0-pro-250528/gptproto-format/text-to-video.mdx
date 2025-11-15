@@ -19,15 +19,42 @@ This endpoint requires authentication using a Bearer token.
 ## Request Body
 
 <ParamField body="model" type="string" required default="seedance-1-0-pro-250528">
-  The model to use for the request
+  The model to use for the request. `seedance-1-0-pro-250528`
 </ParamField>
 
-<ParamField body="content" type="array"  default="[{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;Photorealistic style: Under a clear blue sky, a vast expanse of white daisy fields stretches out. The camera gradually zooms in and finally fixates on a close - up of a single daisy, with several glistening dewdrops resting on its petals.  --ratio 16:9  --resolution 720p  --duration 5 --camerafixed false&quot;}]">
-  Video generation prompt. Can include parameters like --ratio (16:9, 9:16, 1:1), --resolution (480p, 720p, 1080p), --duration (5-10s), --camerafixed (true/false)
+<ParamField body="messages" type="array" required>
+  Array of message objects for the conversation
+            <Expandable title="properties">
+                <ParamField body="role" type="string" required>
+                    * role:user,The role of the message.
+                    * role:assistant,The role of the message.
+                    * role:system,The role of the message.
+                </ParamField>
+
+                <ParamField body="content" type="array" required>
+
+                            <Expandable title="properties">
+                                  <ParamField body="type" type="string" required>
+                                     text , image_url
+                                  </ParamField>
+
+                                    <ParamField body="text" type="string" required>
+                                      * type:text,The positive prompt for the generation.
+                                      * type:image_url,Optional image reference that guides generation.
+                                    </ParamField>
+                                    <ParamField body="image_url" type="object" required>
+                                      <ParamField body="url" type="string" required>
+                                        * type:image_url,The URL of the image to use for the generation.
+                                      </ParamField>
+                                    </ParamField>
+                            </Expandable>
+
+                </ParamField>
+            </Expandable>
 </ParamField>
 
-<ParamField body="duration" type="integer"  default="10">
-  Video duration in seconds (5-10 seconds supported)
+<ParamField body="stream" type="boolean"  default="true">
+  Whether to stream the response
 </ParamField>
 
 ## Request Example

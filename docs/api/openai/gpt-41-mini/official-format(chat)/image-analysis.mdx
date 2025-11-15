@@ -18,21 +18,42 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="model" default="gpt-41-mini" type="string" required>
-  The model to use for the request. Must be a vision-enabled model.
+<ParamField body="model" type="string" required default="gpt-41-mini">
+  The model to use for the request. `gpt-41-mini`
 </ParamField>
 
-<ParamField body="messages" default='[{"role": "user", "content": [{"type": "text", "text": "What is in this image?"}, {"type": "image_url", "image_url": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"}}]}]' type="array" required>
-  Array of message objects for the conversation. Each message contains:
-  - `role`: "user" or "assistant"
-  - `content`: Can be a string or an array of content objects supporting:
-    - **text**: Text content with `type: "text"` and `text` field
-    - **image_url**: Image content with `type: "image_url"` and nested `image_url` object containing:
-      - `url`: HTTP/HTTPS URL to the image
-      - Supported formats: JPG, PNG, WebP, GIF
+<ParamField body="messages" type="array" required>
+  Array of message objects for the conversation
+            <Expandable title="properties">
+                <ParamField body="role" type="string" required>
+                    * role:user,The role of the message.
+                    * role:assistant,The role of the message.
+                    * role:system,The role of the message.
+                </ParamField>
+
+                <ParamField body="content" type="array" required>
+
+                            <Expandable title="properties">
+                                  <ParamField body="type" type="string" required>
+                                     text , image_url
+                                  </ParamField>
+
+                                    <ParamField body="text" type="string" required>
+                                      * type:text,The positive prompt for the generation.
+                                      * type:image_url,Optional image reference that guides generation.
+                                    </ParamField>
+                                    <ParamField body="image_url" type="object" required>
+                                      <ParamField body="url" type="string" required>
+                                        * type:image_url,The URL of the image to use for the generation.
+                                      </ParamField>
+                                    </ParamField>
+                            </Expandable>
+
+                </ParamField>
+            </Expandable>
 </ParamField>
 
-<ParamField body="stream" default={false} type="boolean">
+<ParamField body="stream" type="boolean"  default="true">
   Whether to stream the response
 </ParamField>
 

@@ -1,0 +1,515 @@
+---
+title: 'File Analysis'
+api: 'POST /v1/messages'
+description: 'Analyze and extract information from various file types using Anthropic native format'
+---
+
+## Overview
+
+This endpoint provides file analysis functionality using Anthropic native format. Upload files or provide file URLs to extract content, analyze data, summarize documents, or process structured information from various file formats including PDF, DOCX, TXT, and more.
+
+## Authentication
+
+This endpoint requires authentication using an API key header.
+
+<ParamField header="Authorization" type="string" required>
+  Your API key for authentication
+</ParamField>
+
+<ParamField header="anthropic-version" type="string" required default="2023-06-01">
+  The version of the Anthropic API to use
+</ParamField>
+
+## Request Body
+
+<ParamField body="model" type="string" required default="claude-opus-4-1-20250805">
+  The model to use for file analysis
+</ParamField>
+
+<ParamField body="messages" type="array" required>
+  Array of message objects for the conversation. Each message must have a role (user or assistant) and content. Content can include:
+  - Text blocks with type "text"
+  - Document blocks with type "document" containing:
+    - source: Object with type "base64" or "url"
+    - For base64: media_type (e.g., "application/pdf") and data (base64 string)
+    - For url: url field with the file URL
+
+  Supported file formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML
+
+  Maximum file size: 20MB
+
+  Example with URL:
+  ```json
+  [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Please analyze this document"
+        },
+        {
+          "type": "document",
+          "source": {
+            "type": "url",
+            "url": "https://example.com/document.pdf"
+          }
+        }
+      ]
+    }
+  ]
+  ```
+
+  Example with base64:
+  ```json
+  [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Please analyze this document"
+        },
+        {
+          "type": "document",
+          "source": {
+            "type": "base64",
+            "media_type": "application/pdf",
+            "data": "JVBERi0xLjQKJeLjz9MK..."
+          }
+        }
+      ]
+    }
+  ]
+  ```
+</ParamField>
+
+<ParamField body="max_tokens" type="integer" required default="1024">
+  The maximum number of tokens to generate before stopping
+</ParamField>
+
+<ParamField body="temperature" type="number" default="1.0">
+  Amount of randomness injected into the response. Ranges from 0.0 to 1.0
+</ParamField>
+
+<ParamField body="top_p" type="number" default="1.0">
+  Use nucleus sampling. Ranges from 0.0 to 1.0
+</ParamField>
+
+<ParamField body="top_k" type="integer" default="null">
+  Only sample from the top K options for each subsequent token
+</ParamField>
+
+<ParamField body="stream" type="boolean" default="false">
+  Whether to incrementally stream the response using server-sent events
+</ParamField>
+
+<ParamField body="stop_sequences" type="array">
+  Custom text sequences that will cause the model to stop generating
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL (with URL)
+curl -X POST "https://gptproto.com/v1/messages" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "anthropic-version: 2023-06-01" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "claude-opus-4-1-20250805",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Please analyze this PDF document and provide a summary of its content"
+        },
+        {
+          "type": "document",
+          "source": {
+            "type": "url",
+            "url": "https://www.bt.cn/data/api-doc.pdf"
+          }
+        }
+      ]
+    }
+  ]
+}'
+```
+
+```bash cURL (with Base64)
+curl -X POST "https://gptproto.com/v1/messages" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "anthropic-version: 2023-06-01" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "claude-opus-4-1-20250805",
+  "max_tokens": 2000,
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Please analyze this PDF document and extract the key information, main topics, and summary"
+        },
+        {
+          "type": "document",
+          "source": {
+            "type": "base64",
+            "media_type": "application/pdf",
+            "data": "JVBERi0xLjQKJeLjz9MK..."
+          }
+        }
+      ]
+    }
+  ]
+}'
+```
+
+```python Python (with URL)
+import anthropic
+
+client = anthropic.Anthropic(
+    api_key="YOUR_API_KEY",
+    base_url="https://gptproto.com"
+)
+
+message = client.messages.create(
+    model="claude-opus-4-1-20250805",
+    max_tokens=1024,
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Please analyze this PDF document and provide a summary of its content"
+                },
+                {
+                    "type": "document",
+                    "source": {
+                        "type": "url",
+                        "url": "https://www.bt.cn/data/api-doc.pdf"
+                    }
+                }
+            ]
+        }
+    ]
+)
+
+print(message.content)
+```
+
+```python Python (with Base64)
+import anthropic
+import base64
+
+client = anthropic.Anthropic(
+    api_key="YOUR_API_KEY",
+    base_url="https://gptproto.com"
+)
+
+# Read and encode file
+with open("document.pdf", "rb") as file:
+    base64_file = base64.b64encode(file.read()).decode('utf-8')
+
+message = client.messages.create(
+    model="claude-opus-4-1-20250805",
+    max_tokens=2000,
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Please analyze this PDF document and extract the key information, main topics, and summary"
+                },
+                {
+                    "type": "document",
+                    "source": {
+                        "type": "base64",
+                        "media_type": "application/pdf",
+                        "data": base64_file
+                    }
+                }
+            ]
+        }
+    ]
+)
+
+print(message.content)
+```
+
+```javascript JavaScript (with URL)
+import Anthropic from '@anthropic-ai/sdk';
+
+const client = new Anthropic({
+  apiKey: 'YOUR_API_KEY',
+  baseURL: 'https://gptproto.com'
+});
+
+const message = await client.messages.create({
+  model: 'claude-opus-4-1-20250805',
+  max_tokens: 1024,
+  messages: [
+    {
+      role: 'user',
+      content: [
+        {
+          type: 'text',
+          text: 'Please analyze this PDF document and provide a summary of its content'
+        },
+        {
+          type: 'document',
+          source: {
+            type: 'url',
+            url: 'https://www.bt.cn/data/api-doc.pdf'
+          }
+        }
+      ]
+    }
+  ]
+});
+
+console.log(message.content);
+```
+
+```javascript JavaScript (with Base64)
+import Anthropic from '@anthropic-ai/sdk';
+import fs from 'fs';
+
+const client = new Anthropic({
+  apiKey: 'YOUR_API_KEY',
+  baseURL: 'https://gptproto.com'
+});
+
+// Read and encode file
+const base64File = fs.readFileSync('document.pdf').toString('base64');
+
+const message = await client.messages.create({
+  model: 'claude-opus-4-1-20250805',
+  max_tokens: 2000,
+  messages: [
+    {
+      role: 'user',
+      content: [
+        {
+          type: 'text',
+          text: 'Please analyze this PDF document and extract the key information, main topics, and summary'
+        },
+        {
+          type: 'document',
+          source: {
+            type: 'base64',
+            media_type: 'application/pdf',
+            data: base64File
+          }
+        }
+      ]
+    }
+  ]
+});
+
+console.log(message.content);
+```
+
+```go Go (with URL)
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/messages"
+
+    payload := []byte(`{
+  "model": "claude-opus-4-1-20250805",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Please analyze this PDF document and provide a summary of its content"
+        },
+        {
+          "type": "document",
+          "source": {
+            "type": "url",
+            "url": "https://www.bt.cn/data/api-doc.pdf"
+          }
+        }
+      ]
+    }
+  ]
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("anthropic-version", "2023-06-01")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+```go Go (with Base64)
+package main
+
+import (
+    "bytes"
+    "encoding/base64"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "os"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/messages"
+
+    // Read and encode file
+    fileData, _ := os.ReadFile("document.pdf")
+    base64File := base64.StdEncoding.EncodeToString(fileData)
+
+    payload := map[string]interface{}{
+        "model": "claude-opus-4-1-20250805",
+        "max_tokens": 2000,
+        "messages": []map[string]interface{}{
+            {
+                "role": "user",
+                "content": []map[string]interface{}{
+                    {
+                        "type": "text",
+                        "text": "Please analyze this PDF document and extract the key information, main topics, and summary",
+                    },
+                    {
+                        "type": "document",
+                        "source": map[string]interface{}{
+                            "type": "base64",
+                            "media_type": "application/pdf",
+                            "data": base64File,
+                        },
+                    },
+                },
+            },
+        },
+    }
+
+    jsonData, _ := json.Marshal(payload)
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("anthropic-version", "2023-06-01")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response with Anthropic format
+
+```json
+{
+  "id": "msg_01XFDUDYJgAACzvnptvVoYEL",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "# Document Analysis Summary\n\n## Key Information:\n- Document Type: Technical API Documentation\n- Total Pages: 35\n- Version: 2.0\n\n## Main Topics:\n1. **Authentication**: The API uses Bearer token authentication with API keys\n2. **Endpoints**: Contains 12 main API endpoints for different operations\n3. **Rate Limiting**: Implements tiered rate limiting based on subscription level\n4. **Error Handling**: Comprehensive error codes and handling strategies\n\n## Key Sections:\n\n### Getting Started\n- Quick start guide for new developers\n- Authentication setup instructions\n- First API call examples in multiple languages\n\n### API Reference\n- Detailed endpoint documentation\n- Request/response formats\n- Parameter descriptions and constraints\n\n### Best Practices\n- Recommended usage patterns\n- Performance optimization tips\n- Security considerations\n\n### Code Examples\n- Python, JavaScript, Go, and cURL examples\n- Common use case implementations\n- Error handling patterns\n\n## Important Notes:\n- All requests must include valid API key\n- Rate limits: 100 requests/minute for free tier, 1000/minute for premium\n- Support for both JSON and XML response formats\n- Webhook notifications available for asynchronous operations"
+    }
+  ],
+  "model": "claude-opus-4-1-20250805",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 3520,
+    "output_tokens": 285
+  }
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid API Key
+{
+  "error": {
+    "type": "authentication_error",
+    "message": "Invalid API key"
+  }
+}
+```
+
+```json 400 - Invalid Request
+{
+  "error": {
+    "type": "invalid_request_error",
+    "message": "messages: field required"
+  }
+}
+```
+
+```json 429 - Rate Limit Exceeded
+{
+  "error": {
+    "type": "rate_limit_error",
+    "message": "Rate limit exceeded"
+  }
+}
+```
+
+```json 500 - Internal Server Error
+{
+  "error": {
+    "type": "api_error",
+    "message": "Internal server error"
+  }
+}
+```
+
+```json 529 - Overloaded
+{
+  "error": {
+    "type": "overloaded_error",
+    "message": "Service is temporarily overloaded"
+  }
+}
+```
+
+</ResponseExample>

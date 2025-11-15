@@ -18,20 +18,43 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="messages" type="array" required default="[{&quot;id&quot;: &quot;LDjJB5IKMK40f1vr&quot;, &quot;createdAt&quot;: &quot;2025-10-15T08:57:45.308Z&quot;, &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Two people standing together 9:16&quot;, &quot;experimental_attachments&quot;: [{&quot;name&quot;: &quot;image-1760156153251.png&quot;, &quot;contentType&quot;: &quot;image/png&quot;, &quot;url&quot;: &quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png&quot;}, {&quot;name&quot;: &quot;-a18dda5f-df30-4d9c-ad5e-ddc5b6e07029.jpeg&quot;, &quot;contentType&quot;: &quot;image/jpeg&quot;, &quot;url&quot;: &quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg&quot;}]}]">
-  Array of message objects for the conversation
-</ParamField>
-
-<ParamField body="chatId" type="string"  default="eacf4fbe-068b-4964-b880-87bca57b3064">
-  Chatid parameter
-</ParamField>
-
-<ParamField body="userId" type="string"  default="27349c00-ef7a-44a1-8416-1407fcee8569">
-  Userid parameter
-</ParamField>
-
 <ParamField body="model" type="string" required default="gemini-2.5-flash-image-preview">
-  The model to use for the request
+  The model to use for the request. `gemini-2.5-flash-image-preview`
+</ParamField>
+
+<ParamField body="messages" type="array" required>
+  Array of message objects for the conversation
+            <Expandable title="properties">
+                <ParamField body="role" type="string" required>
+                    * role:user,The role of the message.
+                    * role:assistant,The role of the message.
+                    * role:system,The role of the message.
+                </ParamField>
+
+                <ParamField body="content" type="array" required>
+
+                            <Expandable title="properties">
+                                  <ParamField body="type" type="string" required>
+                                     text , image_url
+                                  </ParamField>
+
+                                    <ParamField body="text" type="string" required>
+                                      * type:text,The positive prompt for the generation.
+                                      * type:image_url,Optional image reference that guides generation.
+                                    </ParamField>
+                                    <ParamField body="image_url" type="object" required>
+                                      <ParamField body="url" type="string" required>
+                                        * type:image_url,The URL of the image to use for the generation.
+                                      </ParamField>
+                                    </ParamField>
+                            </Expandable>
+
+                </ParamField>
+            </Expandable>
+</ParamField>
+
+<ParamField body="stream" type="boolean"  default="true">
+  Whether to stream the response
 </ParamField>
 
 ## Request Example

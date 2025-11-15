@@ -1,0 +1,304 @@
+---
+title: 'Text to Text (No Stream)'
+api: 'POST /v1beta/models/{model}:generateContent'
+description: 'Generate content using Gemini models with the official Gemini API format'
+---
+
+## Overview
+
+This endpoint generates content using Gemini models via the official Gemini API format. It supports text generation, image analysis, and multi-turn conversations.
+
+## Authentication
+
+This endpoint requires authentication using an API key.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key
+</ParamField>
+
+## Path Parameters
+
+<ParamField path="model" type="string" required default="gemini-2.5-flash-lite">
+  The model to use for content generation. Available models: `gemini-2.5-flash-lite`, etc.
+</ParamField>
+
+## Request Body Parameters
+
+<ParamField body="contents" type="array" required>
+  An array of content objects representing the conversation history.
+
+  <Expandable title="Content Object Structure">
+    <ParamField body="role" type="string" required>
+      The role of the message sender. Typically `"user"` or `"model"`.
+    </ParamField>
+
+    <ParamField body="parts" type="array" required>
+      An array of parts that make up the message content.
+
+      <Expandable title="Parts Object Structure">
+        <ParamField body="text" type="string">
+          Text content of the message.
+        </ParamField>
+
+        <ParamField body="inlineData" type="object">
+          Inline data for images or other media (base64 encoded).
+        </ParamField>
+
+        <ParamField body="functionResponse" type="object">
+          Response from a function call.
+        </ParamField>
+
+        <ParamField body="fileData" type="object">
+          Reference to uploaded file data.
+        </ParamField>
+
+        <ParamField body="videoMetadata" type="object">
+          Metadata for video content.
+        </ParamField>
+
+        <ParamField body="functionCall" type="object">
+          Function call request.
+        </ParamField>
+
+        <ParamField body="functionCalls" type="array">
+          Multiple function calls.
+        </ParamField>
+
+        <ParamField body="thoughtSignature" type="string">
+          Signature for thought content.
+        </ParamField>
+
+        <ParamField body="thought" type="string">
+          Thought content for reasoning models.
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-lite:generateContent' \
+--header 'Authorization: sk-***********' \
+--header 'Content-Type: application/json' \
+--data '{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "hello"
+                }
+            ]
+        }
+    ]
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-lite:generateContent"
+headers = {
+    "Authorization": "sk-***********",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "hello"
+                }
+            ]
+        }
+    ]
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-lite:generateContent";
+const headers = {
+  "Authorization": "sk-***********",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "hello"
+        }
+      ]
+    }
+  ]
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1beta/models/gemini-2.5-flash-lite:generateContent"
+
+    payload := map[string]interface{}{
+        "contents": []map[string]interface{}{
+            {
+                "role": "user",
+                "parts": []map[string]interface{}{
+                    {
+                        "text": "hello",
+                    },
+                },
+            },
+        },
+    }
+
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "sk-***********")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response containing generated content
+
+```json
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Hello! How can I help you today?"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0,
+      "safetyRatings": [
+        {
+          "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_HATE_SPEECH",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_HARASSMENT",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+          "probability": "NEGLIGIBLE"
+        }
+      ]
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 2,
+    "candidatesTokenCount": 8,
+    "totalTokenCount": 10
+  }
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>

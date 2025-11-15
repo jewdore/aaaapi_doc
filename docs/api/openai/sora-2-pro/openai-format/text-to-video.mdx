@@ -18,12 +18,44 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="model" type="string" required default="sora-2-pro">
-  The model to use for the request
+<ParamField body="model" type="string" required default="sora-2">
+  The model to use for the request. `sora-2`
 </ParamField>
 
-<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;video of cow and horse dancing&quot;}]}]">
+<ParamField body="messages" type="array" required>
   Array of message objects for the conversation
+            <Expandable title="properties">
+                <ParamField body="role" type="string" required>
+                    * role:user,The role of the message.
+                    * role:assistant,The role of the message.
+                    * role:system,The role of the message.
+                </ParamField>
+
+                <ParamField body="content" type="array" required>
+
+                            <Expandable title="properties">
+                                  <ParamField body="type" type="string" required>
+                                     text , image_url
+                                  </ParamField>
+
+                                    <ParamField body="text" type="string" required>
+                                      * type:text,The positive prompt for the generation.
+                                      * type:image_url,Optional image reference that guides generation.
+                                    </ParamField>
+                                    <ParamField body="image_url" type="object" required>
+                                      <ParamField body="url" type="string" required>
+                                        * type:image_url,The URL of the image to use for the generation.
+                                      </ParamField>
+                                    </ParamField>
+                                     <ParamField body="file_url" type="object" required>
+                                      <ParamField body="url" type="string" required>
+                                        * type:file_url,The URL of the file to use for the generation. Supports: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML. Maximum file size: 20MB.
+                                      </ParamField>
+                                    </ParamField>
+                            </Expandable>
+
+                </ParamField>
+            </Expandable>
 </ParamField>
 
 <ParamField body="stream" type="boolean"  default="true">

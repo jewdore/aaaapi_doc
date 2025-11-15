@@ -1,12 +1,12 @@
 ---
-title: 'image to Text'
+title: 'Image to Text'
 api: 'POST /v1/chat/completions'
-description: 'image to Text'
+description: 'Image to Text'
 ---
 
 ## Overview
 
-This endpoint provides image to text functionality.
+This endpoint provides text to text functionality.
 
 ## Authentication
 
@@ -19,15 +19,36 @@ This endpoint requires authentication using a Bearer token.
 ## Request Body
 
 <ParamField body="model" type="string" required default="doubao-1-5-vision-pro-32k-250115">
-  The model to use for the request
+  The model to use for the request. `doubao-1-5-vision-pro-32k-250115`
 </ParamField>
 
-<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;Doubao,What is in this image?&quot;}, {&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: {&quot;url&quot;: &quot;https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg&quot;}}]}]">
+<ParamField body="messages" type="array" required>
   Array of message objects for the conversation
+            <Expandable title="properties">
+                <ParamField body="role" type="string" required>
+                    * role:user,The role of the message.
+                    * role:assistant,The role of the message.
+                    * role:system,The role of the message.
+                </ParamField>
+
+                <ParamField body="content" type="array" required>
+
+                            <Expandable title="properties">
+                                  <ParamField body="type" type="string" required>
+                                     text
+                                  </ParamField>
+
+                                    <ParamField body="text" type="string" required>
+                                      * type:text,The positive prompt for the generation.
+                                    </ParamField>
+                            </Expandable>
+
+                </ParamField>
+            </Expandable>
 </ParamField>
 
-<ParamField body="max_tokens" type="integer"  default="5000">
-  Maximum number of tokens to generate
+<ParamField body="stream" type="boolean"  default="true">
+  Whether to stream the response
 </ParamField>
 
 ## Request Example
@@ -43,21 +64,10 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
   "messages": [
     {
       "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Doubao,What is in this image?"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
-          }
-        }
-      ]
+      "content": "Who are you?"
     }
   ],
-  "max_tokens": 5000
+  "stream": false
 }'
 ```
 
@@ -76,21 +86,10 @@ data = {
   "messages": [
     {
       "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Doubao,What is in this image?"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
-          }
-        }
-      ]
+      "content": "Who are you?"
     }
   ],
-  "max_tokens": 5000
+  "stream": false
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -110,21 +109,10 @@ const data = {
   "messages": [
     {
       "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Doubao,What is in this image?"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
-          }
-        }
-      ]
+      "content": "Who are you?"
     }
   ],
-  "max_tokens": 5000
+  "stream": false
 };
 
 fetch(url, {
@@ -156,21 +144,10 @@ func main() {
 "messages": [
 {
 "role": "user",
-"content": [
-{
-"type": "text",
-"text": "Doubao,What is in this image?"
-},
-{
-"type": "image_url",
-"image_url": {
-"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
-}
-}
-]
+"content": "Who are you?"
 }
 ],
-"max_tokens": 5000
+"stream": false
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -253,4 +230,3 @@ func main() {
 ```
 
 </ResponseExample>
-
