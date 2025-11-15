@@ -573,7 +573,7 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/gemini/gemini-2.0-flash/openai-format/text-to-text",
-                    "docs/api/gemini/gemini-2.0-flash/openai-format/image-to-text"
+                    "docs/api/gemini/gemini-2.0-flash/openai-format/image-analysis"
                   ]
                 },
                 {
@@ -596,7 +596,7 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/gemini/gemini-25-pro/openai-format/text-to-text",
-                    "docs/api/gemini/gemini-25-pro/openai-format/image-to-text"
+                    "docs/api/gemini/gemini-25-pro/openai-format/image-analysis"
                   ]
                 },
                 {
@@ -619,7 +619,7 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/gemini/gemini-2.5-flash/openai-format/text-to-text",
-                    "docs/api/gemini/gemini-2.5-flash/openai-format/image-to-text"
+                    "docs/api/gemini/gemini-2.5-flash/openai-format/image-analysis"
                   ]
                 },
                 {
@@ -721,7 +721,7 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/gemini/gemini-2.5-flash-lite/openai-format/text-to-text",
-                    "docs/api/gemini/gemini-2.5-flash-lite/openai-format/image-to-text"
+                    "docs/api/gemini/gemini-2.5-flash-lite/openai-format/image-analysis"
                   ]
                 },
                 {
@@ -744,7 +744,7 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/gemini/gemini-2.5-flash-nothinking/openai-format/text-to-text",
-                    "docs/api/gemini/gemini-2.5-flash-nothinking/openai-format/image-to-text"
+                    "docs/api/gemini/gemini-2.5-flash-nothinking/openai-format/image-analysis"
                   ]
                 },
                 {
@@ -777,7 +777,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-3-5-haiku-20241022/official-format/text-to-text",
                     "docs/api/claude/claude-3-5-haiku-20241022/official-format/file-analysis"
@@ -796,7 +796,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-3-5-sonnet-20241022/official-format/text-to-text",
                     "docs/api/claude/claude-3-5-sonnet-20241022/official-format/file-analysis"
@@ -815,7 +815,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-3-7-sonnet-20250219/official-format/text-to-text",
                     "docs/api/claude/claude-3-7-sonnet-20250219/official-format/file-analysis"
@@ -834,7 +834,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-3-7-sonnet-20250219-thinking/official-format/text-to-text",
                     "docs/api/claude/claude-3-7-sonnet-20250219-thinking/official-format/file-analysis"
@@ -853,7 +853,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-haiku-4-5-20251001/official-format/text-to-text",
                     "docs/api/claude/claude-haiku-4-5-20251001/official-format/file-analysis"
@@ -872,7 +872,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-1-20250805/official-format/text-to-text",
                     "docs/api/claude/claude-opus-4-1-20250805/official-format/file-analysis"
@@ -891,7 +891,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-1-20250805-thinking/official-format/text-to-text",
                     "docs/api/claude/claude-opus-4-1-20250805-thinking/official-format/file-analysis"
@@ -910,7 +910,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-20250514/official-format/text-to-text",
                     "docs/api/claude/claude-opus-4-20250514/official-format/file-analysis"
@@ -929,7 +929,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-opus-4-20250514-thinking/official-format/text-to-text",
                     "docs/api/claude/claude-opus-4-20250514-thinking/official-format/file-analysis"
@@ -948,7 +948,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-20250514/official-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-20250514/official-format/file-analysis"
@@ -967,7 +967,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-20250514-thinking/official-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-20250514-thinking/official-format/file-analysis"
@@ -986,7 +986,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-5-20250929/official-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-5-20250929/official-format/file-analysis"
@@ -1005,7 +1005,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/claude/claude-sonnet-4-5-20250929-thinking/official-format/text-to-text",
                     "docs/api/claude/claude-sonnet-4-5-20250929-thinking/official-format/file-analysis"
@@ -1057,7 +1057,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/doubao-1-5-pro-256k-250115/official-format/text-to-text"
                   ]
@@ -1074,7 +1074,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/doubao-1-5-pro-32k-250115/official-format/text-to-text"
                   ]
@@ -1088,14 +1088,14 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/openai-format/text-to-text",
-                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/openai-format/image-to-text"
+                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/openai-format/image-analysis"
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/official-format/text-to-text",
-                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/official-format/image-to-text"
+                    "docs/api/doubao/doubao-1-5-vision-pro-32k-250115/official-format/image-analysis"
                   ]
                 }
               ]
@@ -1107,14 +1107,14 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-250615/openai-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-250615/openai-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-250615/openai-format/image-analysis"
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-250615/official-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-250615/official-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-250615/official-format/image-analysis"
                   ]
                 }
               ]
@@ -1126,14 +1126,14 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-flash-250615/openai-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-flash-250615/openai-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-flash-250615/openai-format/image-analysis"
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-flash-250615/official-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-flash-250615/official-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-flash-250615/official-format/image-analysis"
                   ]
                 }
               ]
@@ -1145,14 +1145,14 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-thinking-250615/openai-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/openai-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/openai-format/image-analysis"
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-thinking-250615/official-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/official-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250615/official-format/image-analysis"
                   ]
                 }
               ]
@@ -1164,14 +1164,14 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-thinking-250715/openai-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/openai-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/openai-format/image-analysis"
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/doubao-seed-1-6-thinking-250715/official-format/text-to-text",
-                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/official-format/image-to-text"
+                    "docs/api/doubao/doubao-seed-1-6-thinking-250715/official-format/image-analysis"
                   ]
                 }
               ]
@@ -1186,7 +1186,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/doubao-seededit-3-0-i2i-250628/official-format/image-to-image"
                   ]
@@ -1203,7 +1203,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/doubao-seedream-3-0-t2i-250415/official-format/text-to-image"
                   ]
@@ -1220,7 +1220,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/doubao-seedream-4-0-250828/official-format/text-to-image"
                   ]
@@ -1231,14 +1231,14 @@
               "group": "seedance-1-0-lite-i2v-250428",
               "pages": [
                 {
-                  "group": "gptproto-format",
+                  "group": "Gptproto Format", 
                   "pages": [
                     "docs/api/doubao/seedance-1-0-lite-i2v-250428/gptproto-format/image-to-video",
                     "docs/api/doubao/seedance-1-0-lite-i2v-250428/gptproto-format/query-task"
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/seedance-1-0-lite-i2v-250428/official-format/image-to-video",
                     "docs/api/doubao/seedance-1-0-lite-i2v-250428/official-format/query-task"
@@ -1250,14 +1250,14 @@
               "group": "seedance-1-0-lite-t2v-250428",
               "pages": [
                 {
-                  "group": "gptproto-format",
+                  "group": "Gptproto Format",
                   "pages": [
                     "docs/api/doubao/seedance-1-0-lite-t2v-250428/gptproto-format/text-to-video",
                     "docs/api/doubao/seedance-1-0-lite-t2v-250428/gptproto-format/query-task"
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/seedance-1-0-lite-t2v-250428/official-format/text-to-video",
                     "docs/api/doubao/seedance-1-0-lite-t2v-250428/official-format/query-task"
@@ -1269,7 +1269,7 @@
               "group": "seedance-1-0-pro-250528",
               "pages": [
                 {
-                  "group": "gptproto-format",
+                  "group": "Gptproto Format",
                   "pages": [
                     "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/image-to-video",
                     "docs/api/doubao/seedance-1-0-pro-250528/gptproto-format/text-to-video",
@@ -1277,7 +1277,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/seedance-1-0-pro-250528/official-format/image-to-video",
                     "docs/api/doubao/seedance-1-0-pro-250528/official-format/text-to-video",
@@ -1296,7 +1296,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/seededit-3-0-i2i-250628/official-format/image-to-image"
                   ]
@@ -1313,7 +1313,7 @@
                   ]
                 },
                 {
-                  "group": "Official format",
+                  "group": "Official Format",
                   "pages": [
                     "docs/api/doubao/seedream-4-0-250828/official-format/text-to-image"
                   ]
@@ -1417,7 +1417,7 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/grok/grok-4/openai-format/text-to-text",
-                    "docs/api/grok/grok-4/openai-format/image-to-text"
+                    "docs/api/grok/grok-4/openai-format/image-analysis"
                   ]
                 }
               ]
