@@ -573,7 +573,7 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/gemini/gemini-2.0-flash/openai-format/text-to-text",
-                    "docs/api/gemini/gemini-2.0-flash/openai-format/image-analysis"
+                    "docs/api/gemini/gemini-2.0-flash/openai-format/image-to-text"
                   ]
                 },
                 {
@@ -596,7 +596,7 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/gemini/gemini-25-pro/openai-format/text-to-text",
-                    "docs/api/gemini/gemini-25-pro/openai-format/image-analysis"
+                    "docs/api/gemini/gemini-25-pro/openai-format/image-to-text"
                   ]
                 },
                 {
@@ -619,7 +619,7 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/gemini/gemini-2.5-flash/openai-format/text-to-text",
-                    "docs/api/gemini/gemini-2.5-flash/openai-format/image-analysis"
+                    "docs/api/gemini/gemini-2.5-flash/openai-format/image-to-text"
                   ]
                 },
                 {
@@ -721,7 +721,7 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/gemini/gemini-2.5-flash-lite/openai-format/text-to-text",
-                    "docs/api/gemini/gemini-2.5-flash-lite/openai-format/image-analysis"
+                    "docs/api/gemini/gemini-2.5-flash-lite/openai-format/image-to-text"
                   ]
                 },
                 {
@@ -744,7 +744,7 @@
                   "group": "OpenAI Format",
                   "pages": [
                     "docs/api/gemini/gemini-2.5-flash-nothinking/openai-format/text-to-text",
-                    "docs/api/gemini/gemini-2.5-flash-nothinking/openai-format/image-analysis"
+                    "docs/api/gemini/gemini-2.5-flash-nothinking/openai-format/image-to-text"
                   ]
                 },
                 {
