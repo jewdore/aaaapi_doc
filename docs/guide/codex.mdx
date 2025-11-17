@@ -1,0 +1,556 @@
+---
+title: 'How to Use Codex'
+description: 'Installation, configuration and usage guide - Support for direct API connection in China'
+---
+
+# OpenAI Codex CLI Complete Tutorial
+
+Installation, Configuration and Usage Guide - Support for Direct API Connection in China
+
+<Note>
+**📖 Contents Covered:**
+
+This article provides detailed instructions on how to install and configure [OpenAI Codex CLI](https://github.com/openai/openai-codex), combined with [GPT Proto Aggregation API](https://gptproto.com), which can be used directly in China without configuring a proxy. Supports Windows/Linux/Mac multi-platform, and can be configured with third-party IDEs such as VS Code.
+</Note>
+
+## 1. Codex CLI Introduction and System Requirements
+
+### What is OpenAI Codex?
+
+[OpenAI Codex](https://openai.com/index/openai-codex/) is an open-source command-line tool (CLI) that serves as a lightweight coding agent, capable of reading, modifying, and running code in the terminal. Codex is based on GPT models and is specifically optimized for code generation and understanding.
+
+### System Requirements
+
+| Item | Requirement |
+|------|------------|
+| Officially Supported Systems | macOS and Linux (Recommended) |
+| Windows Users | Strongly recommend using [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) |
+| Node.js Version | Node.js 18+ (Required) |
+| npm Version | npm 10.x.x or higher |
+
+---
+
+## 2. Codex CLI Installation Tutorial
+
+### Installation Steps (Using Ubuntu as Example)
+
+**Step 1: Update System Packages**
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+**Step 2: Add NodeSource Repository (Node.js 22)**
+
+Visit [Node.js official website](https://nodejs.org/) for the latest version information.
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+```
+
+**Step 3: Install Node.js and npm**
+
+```bash
+sudo apt install nodejs -y
+```
+
+**Step 4: Verify Installation**
+
+```bash
+node --version  # Should display v22.x.x
+npm --version   # Should display 10.x.x or higher
+```
+
+**Step 5: Install Codex CLI**
+
+Install Codex CLI globally via npm:
+
+```bash
+sudo npm install -g @openai/codex@latest
+```
+
+**Step 6: Verify Installation**
+
+```bash
+codex --version  # Should display version number, e.g., 0.40.0
+```
+
+<Note>
+**🎉 Congratulations! Codex CLI installation is complete!**
+</Note>
+
+### macOS Installation Method
+
+macOS users are recommended to use [Homebrew](https://brew.sh/) for installation:
+
+**1. Install Homebrew (if not installed)**
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+**2. Install Node.js**
+
+```bash
+brew install node
+```
+
+**3. Install Codex CLI**
+
+```bash
+npm install -g @openai/codex@latest
+```
+
+### Windows (WSL) Installation Method
+
+Windows users need to install WSL first, then follow the Ubuntu installation steps.
+
+**1. Install WSL**
+
+Open PowerShell as administrator and run:
+
+```bash
+wsl --install
+```
+
+For detailed instructions, refer to [Microsoft WSL Installation Documentation](https://learn.microsoft.com/en-us/windows/wsl/install)
+
+**2. Continue After Restarting**
+
+After restarting, follow the Ubuntu installation steps above to complete Codex CLI installation.
+
+---
+
+## 3. Codex CLI Configuration Tutorial
+
+### Configure API Key
+
+**1. Get API Key**
+
+<Note>
+**Recommended: Use GPT Proto Aggregation API (Direct Connection in China)**
+
+Visit [https://gptproto.com](https://gptproto.com) to get API Key
+
+- ✅ Direct connection in China, no proxy needed
+- ✅ Supports multiple OpenAI models
+- ✅ Affordable pricing, pay-as-you-go
+</Note>
+
+**2. Temporary Configuration (Valid for Current Session)**
+
+```bash
+export OPENAI_API_KEY="sk-your-GPT_Proto-key"
+```
+
+**3. Permanent Configuration (Recommended)**
+
+Edit shell configuration file:
+
+```bash
+# For bash users
+nano ~/.bashrc
+
+# For zsh users
+nano ~/.zshrc
+```
+
+Add the following content:
+
+```bash
+export OPENAI_API_KEY="sk-your-GPT_Proto-key"
+```
+
+Make configuration effective:
+
+```bash
+# bash users
+source ~/.bashrc
+
+# zsh users
+source ~/.zshrc
+```
+
+### Configure config.toml
+
+Default configuration file path: `~/.codex/config.toml`
+
+Official configuration documentation: [Codex Configuration Documentation](https://github.com/openai/openai-codex/blob/main/docs/configuration.md)
+
+**Basic Configuration Example**
+
+```toml
+# ~/.codex/config.toml
+
+model = "gpt-5-codex"
+model_provider = "openai-chat-completions"
+
+[model_providers.openai-chat-completions]
+name = "OpenAI using Chat Completions"
+base_url = "https://gptproto.com/v1"
+env_key = "OPENAI_API_KEY"
+wire_api = "chat"
+```
+
+<Note>
+**Configuration Explanation:**
+
+- `model`: Model name to use (e.g., gpt-4, gpt-3.5-turbo, etc.)
+- `model_provider`: Model provider configuration
+- `base_url`: API base address (using GPT Proto Aggregation API)
+- `env_key`: Environment variable name
+- `wire_api`: API type (chat or completions)
+</Note>
+
+**Advanced Configuration Options**
+
+```toml
+# Advanced configuration example
+
+model = "gpt-5-codex"
+model_provider = "openai-response"
+temperature = 0.7
+max_tokens = 2000
+
+[model_providers.openai-chat-completions]
+name = "OpenAI using Chat Completions"
+base_url = "https://gptproto.com/v1"
+env_key = "OPENAI_API_KEY"
+wire_api = "response"
+
+[ui]
+theme = "dark"  # or "light"
+show_token_count = true
+```
+
+---
+
+## 4. IDE Integration Configuration
+
+### VS Code Integration
+
+For third-party IDEs (such as [VS Code](https://code.visualstudio.com/)), you need to install the corresponding Codex plugin.
+
+**Installation Steps**
+
+1. Search for "OpenAI Codex" in VS Code extension store
+2. Install the official extension
+3. Configure Codex CLI path in settings
+4. Configure API Key (using the environment variable above)
+
+### Other IDE Support
+
+| IDE | Support Status | Description |
+|-----|---------------|-------------|
+| VS Code | Official Support | Full plugin support |
+| JetBrains Series | Community Support | Integrated through terminal |
+| Vim/Neovim | Community Support | Supported through plugins |
+
+---
+
+## 5. Getting Started with Codex CLI
+
+### Initialize Project
+
+```bash
+# Navigate to project directory
+cd /path/to/your/project
+
+# Start Codex
+codex
+```
+
+### Common Command Examples
+
+**1. Basic Prompt**
+
+```bash
+codex "Fix this bug: add error handling at line 42 in main.py"
+```
+
+**2. Specify Model**
+
+```bash
+codex -m gpt-4 "Build a simple web server"
+```
+
+**3. Specify Operation Mode**
+
+```bash
+codex --mode full-auto "Deploy ML model to Vercel"
+```
+
+**4. Interactive Mode**
+
+```bash
+# Start interactive session
+codex
+
+# Use commands in interactive mode
+> Help me refactor this function
+> Add unit tests
+> Optimize performance
+```
+
+### Common Interactive Commands
+
+| Command | Function Description |
+|---------|---------------------|
+| `/help` | Display help information |
+| `/exit` or `Ctrl+C` | Exit Codex |
+| `/clear` | Clear conversation history |
+| `/config` | View current configuration |
+| `/model <name>` | Switch model |
+| `/tokens` | View token usage |
+
+### Usage Scenario Examples
+
+**Scenario 1: Code Generation**
+
+```bash
+codex "Create a Python function to calculate the nth Fibonacci number"
+```
+
+**Scenario 2: Code Review**
+
+```bash
+codex "Review auth.js file and find potential security issues"
+```
+
+**Scenario 3: Bug Fixing**
+
+```bash
+codex "Fix memory leak issue in app.py"
+```
+
+**Scenario 4: Test Generation**
+
+```bash
+codex "Generate complete unit tests for user_service.py"
+```
+
+**Scenario 5: Documentation Generation**
+
+```bash
+codex "Generate API documentation for the entire project"
+```
+
+---
+
+## 6. Troubleshooting and Common Issues
+
+### Common Issue Solutions
+
+**1. Permission Issues**
+
+<Warning>
+**Problem:** Encountering permission error "EACCES: permission denied"
+
+**Solution:**
+
+```bash
+# Method 1: Use sudo
+sudo npm install -g @openai/codex
+
+# Method 2: Modify npm global directory permissions (recommended)
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+```
+</Warning>
+
+**2. Node Version Issues**
+
+<Warning>
+**Problem:** Node.js version too low
+
+**Solution:**
+
+```bash
+# Use nvm to manage Node.js versions
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+nvm install 22
+nvm use 22
+```
+</Warning>
+
+**3. Network Connection Issues**
+
+<Warning>
+**Problem:** Cannot connect to API
+
+**Solution:**
+
+- Confirm API Key is configured correctly
+- Check if `base_url` configuration is correct
+- Use [GPT Proto](https://gptproto.com) to ensure direct connection in China
+- Verify network connection: `curl https://gptproto.com/v1/models`
+</Warning>
+
+**4. Invalid API Key**
+
+<Warning>
+**Problem:** "Invalid API Key" error
+
+**Solution:**
+
+```bash
+# Check environment variable
+echo $OPENAI_API_KEY
+
+# Reset API Key
+export OPENAI_API_KEY="sk-your-key"
+
+# Verify configuration
+codex --help
+```
+</Warning>
+
+### Verify Configuration
+
+```bash
+# Check environment variable
+echo $OPENAI_API_KEY
+
+# Check Codex configuration
+codex --help
+
+# Test API connection
+codex "Hello, Codex!"
+
+# View version information
+codex --version
+
+# View configuration file
+cat ~/.codex/config.toml
+```
+
+### Debug Mode
+
+Enable verbose log output to help diagnose issues:
+
+```bash
+# Enable debug mode
+export DEBUG=codex:*
+codex "test command"
+
+# View log file
+tail -f ~/.codex/logs/codex.log
+```
+
+---
+
+## 7. Advanced Usage Tips
+
+### 1. Custom Prompt Templates
+
+Create commonly used prompt templates to improve efficiency:
+
+```bash
+# ~/.codex/templates/review.txt
+Please review the following code, focusing on:
+1. Code readability and maintainability
+2. Performance optimization opportunities
+3. Potential security vulnerabilities
+4. Whether it follows best practices
+
+# Use template
+codex --template review.txt file.py
+```
+
+### 2. Batch Processing
+
+```bash
+# Batch process multiple files
+for file in src/*.py; do
+    codex "Add type annotations to $file"
+done
+```
+
+### 3. Git Integration
+
+```bash
+# Review uncommitted changes
+git diff | codex "Review these code changes"
+
+# Generate commit message
+git diff --cached | codex "Generate a clear commit message"
+```
+
+### 4. Configure Aliases
+
+Add aliases in `~/.bashrc` or `~/.zshrc`:
+
+```bash
+alias cdx="codex"
+alias cdx-review="codex --mode review"
+alias cdx-test="codex --mode test"
+alias cdx-doc="codex --mode documentation"
+```
+
+---
+
+## 8. Best Practice Recommendations
+
+| Recommendation | Description |
+|---------------|-------------|
+| Clear Prompts | Provide clear, specific instructions, explaining expected output format and requirements |
+| Context Information | Provide sufficient context, such as project tech stack, coding standards, etc. |
+| Iterative Optimization | Gradually improve code through multiple rounds of dialogue, rather than expecting perfection in one go |
+| Code Review | Always review AI-generated code to ensure it meets project standards |
+| Version Control | Use Git to track changes for easy rollback and comparison |
+| Security Awareness | Don't send sensitive information (keys, passwords, etc.) to AI |
+| Cost Control | Monitor token usage to avoid unnecessary API calls |
+
+---
+
+## 9. Resource Links
+
+### Official Resources
+
+- [OpenAI Official Website](https://openai.com/)
+- [Codex CLI GitHub Repository](https://github.com/openai/openai-codex)
+- [OpenAI API Documentation](https://platform.openai.com/docs)
+- [OpenAI Community Forum](https://community.openai.com/)
+
+### Third-Party Resources
+
+- [GPT Proto - Direct Connection API Service in China](https://gptproto.com)
+- [Node.js Official Website](https://nodejs.org/)
+- [Windows WSL Documentation](https://learn.microsoft.com/en-us/windows/wsl/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+
+---
+
+## Summary
+
+<Note>
+**Through this guide, you have successfully:**
+
+- ✅ Understood basic concepts and features of OpenAI Codex CLI
+- ✅ Installed Codex CLI on Linux/macOS/Windows systems
+- ✅ Configured GPT Proto Aggregation API (direct connection in China)
+- ✅ Mastered basic usage methods and common commands
+- ✅ Understood IDE integration methods
+- ✅ Learned troubleshooting and problem solving
+- ✅ Mastered advanced usage tips and best practices
+
+**🚀 You can now start enjoying the efficient coding experience brought by Codex CLI!**
+</Note>
+
+### Need Help?
+
+If you encounter problems during use:
+
+- Check [GitHub Issues](https://github.com/openai/openai-codex/issues)
+- Visit [OpenAI Community](https://community.openai.com/)
+- Refer to [Official Documentation](https://platform.openai.com/docs)
+
+---
+
+© 2025 OpenAI Codex CLI Tutorial | Complete Installation Configuration Guide
+
+Thank you for using Codex CLI - Let AI be your programming assistant
+
+Recommended to use [GPT Proto](https://gptproto.com) for stable direct connection API service in China

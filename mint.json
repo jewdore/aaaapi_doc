@@ -29,7 +29,13 @@
   "tabs": [
     {
       "name": "API Reference",
-      "url": "docs/api"
+      "url": "docs/api",
+      "icon": "code"  
+    },
+    {
+      "name": "Tutorial Guide",
+      "url": "docs/guide",
+      "icon": "book"
     }
   ],
   "navigation": [
@@ -40,6 +46,14 @@
         "introduction",
         "quickstart",
         "authentication"
+      ]
+    },
+    {
+      "group": "Tutorial Guide",
+      "icon": "book",
+      "pages": [
+        "docs/guide/codex",
+        "docs/guide/claude-code"
       ]
     },
     {
