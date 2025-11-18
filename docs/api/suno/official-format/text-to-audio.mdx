@@ -1,0 +1,660 @@
+---
+title: 'Text to Audio'
+api: 'POST /v1/suno/submit/music'
+description: 'Generate high-quality music from text descriptions using Suno AI powerful music generation model. Create original songs, background music, and audio compositions with simple text prompts.'
+---
+
+## Overview
+
+[Suno AI](https://suno.com) is a powerful music generation platform that creates high-quality music from text descriptions. Using Suno's API, you can create original songs, background music, instrumentals, and custom audio compositions by simply describing what you want in natural language.
+
+Related Guides: [Suno Official Documentation](https://suno.com/docs) | [Music Generation Guide](https://suno.com/guides/music-generation)
+
+This endpoint allows you to submit music generation tasks using simple text prompts. The generation is processed asynchronously - you'll receive a task ID immediately, which you can use to check the status and retrieve the generated audio once complete.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" type="string" default="Compose a tense pre-battle anthem">
+  Custom-mode lyrics or description. Provide detailed text description of the music you want to generate for custom mode with specific lyrics or theme.
+</ParamField>
+
+<ParamField body="gpt_description_prompt" type="string" default="Ethereal female vocals blending with cinematic drums">
+  Inspiration-mode prompt. Use AI to generate music from a high-level description. This mode lets the AI interpret and create music based on your creative description. Great for exploring new musical ideas.
+</ParamField>
+
+<ParamField body="make_instrumental" type="boolean" default="false">
+  Set to `true` to generate instrumental music without vocals. Set to `false` to include vocals in the generated music.
+</ParamField>
+
+<ParamField body="mv" type="string" default="chirp-v3-0">
+  Model version to use for generation. Available options:
+  - `"chirp-v3-5"` - Latest model with improved quality
+  - `"chirp-v3-0"` - Default stable model
+</ParamField>
+
+<ParamField body="tags" type="string" default="cinematic,epic,ambient">
+  Music style tags separated by commas for custom mode (e.g., "cinematic,epic,ambient", "orchestral,dramatic,intense"). These tags help guide the style and mood of the generated music.
+</ParamField>
+
+<ParamField body="title" type="string" default="Before the Charge">
+  Custom-mode title for the generated song. If not provided, a title will be auto-generated based on the prompt or description.
+</ParamField>
+
+<ParamField body="continue_at" type="number" default="8">
+  Extension length in seconds. Specify how many seconds to extend from the original clip (e.g., 8 for 8 seconds extension). Used when extending existing music.
+</ParamField>
+
+<ParamField body="continue_clip_id" type="string" default="clip-123456">
+  Clip ID to extend from (e.g., "clip-123456"). Use this parameter to continue or extend previously generated music clips. Get the clip ID from previous generation responses.
+</ParamField>
+
+<ParamField body="task_id" type="string" default="task-001">
+  Follow-up task ID for tracking related generation tasks. Use this to link multiple generation requests together for better organization and tracking.
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL - Basic
+curl --location 'https://gptproto.com/v1/suno/submit/music' \
+--header 'Authorization: Bearer YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "prompt": "Compose a tense pre-battle anthem"
+}'
+```
+
+```bash cURL - Full Example
+curl --location 'https://gptproto.com/v1/suno/submit/music' \
+--header 'Authorization: Bearer YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "continue_at": 8,
+  "continue_clip_id": "clip-123456",
+  "gpt_description_prompt": "Ethereal female vocals blending with cinematic drums",
+  "make_instrumental": true,
+  "prompt": "Compose a tense pre-battle anthem",
+  "mv": "chirp-v3-5",
+  "tags": "cinematic,epic,ambient",
+  "task_id": "task-001",
+  "title": "Before the Charge"
+}'
+```
+
+```bash cURL - Inspiration Mode
+curl --location 'https://gptproto.com/v1/suno/submit/music' \
+--header 'Authorization: Bearer YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "gpt_description_prompt": "Ethereal female vocals blending with cinematic drums",
+  "mv": "chirp-v3-5",
+  "make_instrumental": false
+}'
+```
+
+```bash cURL - Custom Mode
+curl --location 'https://gptproto.com/v1/suno/submit/music' \
+--header 'Authorization: Bearer YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "prompt": "Compose a tense pre-battle anthem",
+  "tags": "cinematic,epic,ambient",
+  "title": "Before the Charge",
+  "make_instrumental": true,
+  "mv": "chirp-v3-5"
+}'
+```
+
+```bash cURL - Extension/Continuation
+curl --location 'https://gptproto.com/v1/suno/submit/music' \
+--header 'Authorization: Bearer YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "continue_at": 8,
+  "continue_clip_id": "clip-123456",
+  "mv": "chirp-v3-5"
+}'
+```
+
+```python Python - Basic
+import requests
+import json
+
+url = "https://gptproto.com/v1/suno/submit/music"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "prompt": "Compose a tense pre-battle anthem"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+
+if result["code"] == "success":
+    task_id = result["data"]
+    print(f"Task created successfully! Task ID: {task_id}")
+else:
+    print(f"Error: {result['message']}")
+```
+
+```python Python - Full Example
+import requests
+import json
+
+url = "https://gptproto.com/v1/suno/submit/music"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "continue_at": 8,
+    "continue_clip_id": "clip-123456",
+    "gpt_description_prompt": "Ethereal female vocals blending with cinematic drums",
+    "make_instrumental": True,
+    "prompt": "Compose a tense pre-battle anthem",
+    "mv": "chirp-v3-5",
+    "tags": "cinematic,epic,ambient",
+    "task_id": "task-001",
+    "title": "Before the Charge"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+
+if result["code"] == "success":
+    task_id = result["data"]
+    print(f"Task created successfully! Task ID: {task_id}")
+else:
+    print(f"Error: {result['message']}")
+```
+
+```javascript JavaScript - Basic
+const url = "https://gptproto.com/v1/suno/submit/music";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "Compose a tense pre-battle anthem"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(result => {
+    if (result.code === "success") {
+      console.log(`Task created successfully! Task ID: ${result.data}`);
+    } else {
+      console.log(`Error: ${result.message}`);
+    }
+  })
+  .catch(error => console.error("Error:", error));
+```
+
+```javascript JavaScript - Full Example
+const url = "https://gptproto.com/v1/suno/submit/music";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "continue_at": 8,
+  "continue_clip_id": "clip-123456",
+  "gpt_description_prompt": "Ethereal female vocals blending with cinematic drums",
+  "make_instrumental": true,
+  "prompt": "Compose a tense pre-battle anthem",
+  "mv": "chirp-v3-5",
+  "tags": "cinematic,epic,ambient",
+  "task_id": "task-001",
+  "title": "Before the Charge"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(result => {
+    if (result.code === "success") {
+      console.log(`Task created successfully! Task ID: ${result.data}`);
+    } else {
+      console.log(`Error: ${result.message}`);
+    }
+  })
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go - Basic
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+type Request struct {
+    Prompt string `json:"prompt"`
+}
+
+type Response struct {
+    Code    string `json:"code"`
+    Data    string `json:"data"`
+    Message string `json:"message"`
+}
+
+func main() {
+    url := "https://gptproto.com/v1/suno/submit/music"
+
+    payload := Request{
+        Prompt: "Compose a tense pre-battle anthem",
+    }
+
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+
+    var result Response
+    json.Unmarshal(body, &result)
+
+    if result.Code == "success" {
+        fmt.Printf("Task created successfully! Task ID: %s\n", result.Data)
+    } else {
+        fmt.Printf("Error: %s\n", result.Message)
+    }
+}
+```
+
+```go Go - Full Example
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+type Request struct {
+    ContinueAt            int    `json:"continue_at,omitempty"`
+    ContinueClipID        string `json:"continue_clip_id,omitempty"`
+    GptDescriptionPrompt  string `json:"gpt_description_prompt,omitempty"`
+    MakeInstrumental      bool   `json:"make_instrumental"`
+    Prompt                string `json:"prompt,omitempty"`
+    Mv                    string `json:"mv,omitempty"`
+    Tags                  string `json:"tags,omitempty"`
+    TaskID                string `json:"task_id,omitempty"`
+    Title                 string `json:"title,omitempty"`
+}
+
+type Response struct {
+    Code    string `json:"code"`
+    Data    string `json:"data"`
+    Message string `json:"message"`
+}
+
+func main() {
+    url := "https://gptproto.com/v1/suno/submit/music"
+
+    payload := Request{
+        ContinueAt:           8,
+        ContinueClipID:       "clip-123456",
+        GptDescriptionPrompt: "Ethereal female vocals blending with cinematic drums",
+        MakeInstrumental:     true,
+        Prompt:               "Compose a tense pre-battle anthem",
+        Mv:                   "chirp-v3-5",
+        Tags:                 "cinematic,epic,ambient",
+        TaskID:               "task-001",
+        Title:                "Before the Charge",
+    }
+
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+
+    var result Response
+    json.Unmarshal(body, &result)
+
+    if result.Code == "success" {
+        fmt.Printf("Task created successfully! Task ID: %s\n", result.Data)
+    } else {
+        fmt.Printf("Error: %s\n", result.Message)
+    }
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "code": "success",
+  "data": "15410652-357c-47fa-8ad9-a4a145fbfa14",
+  "message": ""
+}
+```
+
+<Expandable title="Response Fields">
+  <ResponseField name="code" type="string">
+    Status code indicating success or error (`"success"` or `"error"`)
+  </ResponseField>
+
+  <ResponseField name="data" type="string">
+    Task ID for tracking the music generation progress. Use this ID with the [Query Task Status](/api/suno/official-format/query-task) endpoint to check completion and retrieve the audio URL.
+  </ResponseField>
+
+  <ResponseField name="message" type="string">
+    Error message if code is `"error"`, empty string if successful
+  </ResponseField>
+</Expandable>
+
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Invalid prompt
+{
+  "code": "error",
+  "data": null,
+  "message": "Invalid prompt: prompt cannot be empty"
+}
+```
+
+```json 401 - Invalid API key
+{
+  "code": "error",
+  "data": null,
+  "message": "Invalid API key"
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "code": "error",
+  "data": null,
+  "message": "Insufficient balance"
+}
+```
+
+```json 429 - Rate limit exceeded
+{
+  "code": "error",
+  "data": null,
+  "message": "Rate limit exceeded. Please try again later."
+}
+```
+
+```json 500 - Internal server error
+{
+  "code": "error",
+  "data": null,
+  "message": "Internal server error"
+}
+```
+
+```json 503 - Content policy violation
+{
+  "code": "error",
+  "data": null,
+  "message": "Content may not meet the guidelines. Please adjust and try again."
+}
+```
+
+</ResponseExample>
+
+## Generation Modes
+
+Suno supports two main generation modes:
+
+### Inspiration Mode (AI-Driven)
+
+Use `gpt_description_prompt` to let the AI interpret your creative description and generate music.
+
+**Best for:** Creative exploration, when you want AI to interpret your idea
+
+```json
+{
+  "gpt_description_prompt": "Ethereal female vocals blending with cinematic drums",
+  "mv": "chirp-v3-5",
+  "make_instrumental": false
+}
+```
+
+### Custom Mode (Direct Control)
+
+Use `prompt`, `tags`, and `title` for more direct control over the output.
+
+**Best for:** Specific requirements, when you know exactly what you want
+
+```json
+{
+  "prompt": "Compose a tense pre-battle anthem",
+  "tags": "cinematic,epic,ambient",
+  "title": "Before the Charge",
+  "make_instrumental": true,
+  "mv": "chirp-v3-5"
+}
+```
+
+### Extension/Continuation Mode
+
+Extend existing music clips using `continue_clip_id` and `continue_at`.
+
+**Best for:** Making longer tracks, creating variations
+
+```json
+{
+  "continue_clip_id": "clip-123456",
+  "continue_at": 8,
+  "mv": "chirp-v3-5"
+}
+```
+
+## Next Steps
+
+After successfully submitting a music generation task, you'll receive a task ID. Use this ID to:
+
+1. **Check Task Status** - Query the [Task Status endpoint](/api/suno/official-format/query-task) to monitor progress
+2. **Retrieve Generated Audio** - Once completed, get the audio URL from the task status response
+3. **Download Audio** - Use the audio URL to download your generated music file
+
+### Example Workflow
+
+```python Python
+import requests
+import time
+
+# Step 1: Submit music generation task
+submit_url = "https://gptproto.com/v1/suno/submit/music"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+submit_data = {
+    "prompt": "Epic orchestral battle music",
+    "tags": "orchestral,epic,cinematic",
+    "mv": "chirp-v3-5",
+    "make_instrumental": True
+}
+
+response = requests.post(submit_url, headers=headers, json=submit_data)
+result = response.json()
+
+if result["code"] == "success":
+    task_id = result["data"]
+    print(f"Task submitted: {task_id}")
+
+    # Step 2: Poll for completion
+    query_url = f"https://gptproto.com/v1/suno/fetch/{task_id}"
+
+    while True:
+        time.sleep(5)  # Wait 5 seconds between checks
+
+        query_response = requests.get(query_url, headers=headers)
+        query_result = query_response.json()
+
+        if query_result["code"] == "success" and query_result["data"]:
+            task = query_result["data"][0]
+
+            if task["status"] == "completed":
+                print(f"Music ready! URL: {task['audio_url']}")
+                break
+            elif task["status"] == "failed":
+                print(f"Generation failed: {task.get('error_message', 'Unknown error')}")
+                break
+            else:
+                print(f"Status: {task['status']}...")
+```
+
+## Best Practices
+
+### Writing Effective Prompts
+
+<Tip>
+**For best results:**
+
+- **Be Specific**: Include details about mood, tempo, instruments, and style
+- **Use Descriptive Words**: Add adjectives like "epic", "calm", "upbeat", "dramatic"
+- **Mention Genre**: Specify the musical style (orchestral, electronic, jazz, rock, etc.)
+- **Set Context**: Describe the intended use case or scene
+- **Keep It Clear**: Focus on one musical idea per generation
+</Tip>
+
+### Example Prompts
+
+<CodeGroup>
+
+```text Good Examples - Inspiration Mode
+"Ethereal female vocals blending with cinematic drums and atmospheric synths"
+
+"Gentle piano melody with soft string accompaniment for peaceful meditation"
+
+"Intense electric guitar riffs with heavy bass and driving drums for action scenes"
+
+"Smooth jazz saxophone with light piano backing and subtle percussion"
+```
+
+```text Good Examples - Custom Mode
+Prompt: "Epic orchestral battle music with dramatic crescendo"
+Tags: "orchestral,epic,cinematic,dramatic,intense"
+Title: "Warriors March"
+
+Prompt: "Calm acoustic music for meditation"
+Tags: "acoustic,calm,peaceful,meditation,ambient"
+Title: "Inner Peace"
+
+Prompt: "Upbeat dance music for party"
+Tags: "electronic,dance,upbeat,energetic,party"
+Title: "Night Fever"
+```
+
+```text Avoid
+"Make some music" (too vague)
+
+"Sad but energetic music" (contradictory)
+
+"Music" (no context)
+
+"Something cool" (not descriptive)
+```
+
+</CodeGroup>
+
+### Model Selection
+
+| Model | Best For | Characteristics |
+|-------|----------|-----------------|
+| `chirp-v3-5` | Latest features, highest quality | Improved audio quality, better style adherence |
+| `chirp-v3-0` | Stable, reliable generation | Default choice, well-tested |
+
+### Parameter Recommendations
+
+| Use Case | Recommended Settings |
+|----------|---------------------|
+| **Background Music** | `make_instrumental: true`, tags: "ambient,background,subtle" |
+| **Game Sound Effects** | `make_instrumental: true`, mv: "chirp-v3-5" |
+| **Podcast Intro** | `make_instrumental: true`, tags: "intro,professional,upbeat" |
+| **Video Content** | Use `gpt_description_prompt` for creative freedom |
+| **Custom Song** | Set custom `title`, specify detailed `prompt` and `tags` |
+| **Music Extension** | Use `continue_clip_id` and `continue_at` |
+
+## Related Endpoints
+
+- [Query Task Status](/api/suno/official-format/query-task) - Check generation progress and retrieve audio
+- Custom Music - Generate with lyrics and advanced options
+- Music Continuation - Extend existing tracks
+
+## Official Resources
+
+### Suno AI Documentation
+
+- [Suno Official Website](https://suno.com) - Main Suno AI platform
+- [Suno API Documentation](https://suno.com/docs/api) - Official API reference
+- [Music Generation Guide](https://suno.com/guides/music-generation) - Best practices for music generation
+- [Suno Model Information](https://suno.com/models) - Details about Chirp models and capabilities
+- [Suno Community](https://discord.gg/suno) - Join the Suno Discord community
+
+### GPT Proto Resources
+
+- [GPT Proto Dashboard](https://gptproto.com) - Manage your API keys and usage
+- [GPT Proto Documentation](https://gptproto.com/docs) - Complete API documentation
+- [API Pricing](https://gptproto.com/pricing) - Current pricing information
+- [Support](https://gptproto.com/support) - Get help with integration
+
+### Additional Resources
+
+- [Suno Terms of Service](https://suno.com/terms) - Usage terms and conditions
+- [Content Policy](https://suno.com/policy) - Content generation guidelines
+- [API Rate Limits](https://suno.com/docs/rate-limits) - Rate limiting information
+- [Troubleshooting Guide](https://suno.com/docs/troubleshooting) - Common issues and solutions

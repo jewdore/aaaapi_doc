@@ -1,0 +1,705 @@
+---
+title: 'Query Status'
+api: 'GET /v1/suno/fetch/{task_id}'
+description: 'Check the status and retrieve generated music from Suno AI tasks. Monitor asynchronous music generation progress and download completed audio files.'
+---
+
+## Overview
+
+Retrieve the status and results of music generation tasks submitted to [Suno AI](https://suno.com). This endpoint allows you to monitor the progress of asynchronous music generation tasks and retrieve the generated audio URL once complete.
+
+Related Guides: [Suno API Documentation](https://suno.com/docs/api) | [Task Management Guide](https://suno.com/guides/task-management)
+
+After submitting a music generation request via the [Text to Audio](/api/suno/official-format/text-to-audio) endpoint, use this endpoint to check the task status and retrieve the generated audio file.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Path Parameters
+
+<ParamField path="task_id" type="string" required>
+  The task ID returned from the music generation request. Format: UUID string (e.g., "15410652-357c-47fa-8ad9-a4a145fbfa14")
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1/suno/fetch/15410652-357c-47fa-8ad9-a4a145fbfa14' \
+--header 'Authorization: YOUR_API_KEY' \
+--header 'Content-Type: application/json'
+```
+
+```python Python
+import requests
+
+task_id = "15410652-357c-47fa-8ad9-a4a145fbfa14"
+url = f"https://gptproto.com/v1/suno/fetch/{task_id}"
+
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+response = requests.get(url, headers=headers)
+result = response.json()
+
+if result["code"] == "success" and result["data"]:
+    task = result["data"][0]
+    print(f"Status: {task['status']}")
+
+    if task['status'] == 'completed':
+        print(f"Audio URL: {task['audio_url']}")
+```
+
+```javascript JavaScript
+const taskId = "15410652-357c-47fa-8ad9-a4a145fbfa14";
+const url = `https://gptproto.com/v1/suno/fetch/${taskId}`;
+
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+fetch(url, {
+  method: "GET",
+  headers: headers
+})
+  .then(response => response.json())
+  .then(result => {
+    if (result.code === "success" && result.data) {
+      const task = result.data[0];
+      console.log(`Status: ${task.status}`);
+
+      if (task.status === "completed") {
+        console.log(`Audio URL: ${task.audio_url}`);
+      }
+    }
+  })
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+type TaskData struct {
+    ID       string `json:"id"`
+    Status   string `json:"status"`
+    AudioURL string `json:"audio_url,omitempty"`
+    VideoURL string `json:"video_url,omitempty"`
+    Title    string `json:"title,omitempty"`
+}
+
+type Response struct {
+    Code    string      `json:"code"`
+    Data    []TaskData  `json:"data"`
+    Message string      `json:"message"`
+}
+
+func main() {
+    taskID := "15410652-357c-47fa-8ad9-a4a145fbfa14"
+    url := fmt.Sprintf("https://gptproto.com/v1/suno/fetch/%s", taskID)
+
+    req, _ := http.NewRequest("GET", url, nil)
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+
+    var result Response
+    json.Unmarshal(body, &result)
+
+    if result.Code == "success" && len(result.Data) > 0 {
+        task := result.Data[0]
+        fmt.Printf("Status: %s\n", task.Status)
+
+        if task.Status == "completed" {
+            fmt.Printf("Audio URL: %s\n", task.AudioURL)
+        }
+    }
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success - Completed" type="200">
+  Task completed successfully with generated audio
+
+```json
+{
+  "code": "success",
+  "data": [
+    {
+      "id": "15410652-357c-47fa-8ad9-a4a145fbfa14",
+      "status": "completed",
+      "audio_url": "https://cdn1.suno.ai/6bcfbc4c-81c3-4043-aa6d-a078e64f59f6.mp3",
+      "video_url": "https://cdn1.suno.ai/6bcfbc4c-81c3-4043-aa6d-a078e64f59f6.mp4",
+      "image_url": "https://cdn1.suno.ai/6bcfbc4c-81c3-4043-aa6d-a078e64f59f6.jpeg",
+      "title": "Battle Prelude",
+      "tags": "orchestral, epic, dramatic",
+      "prompt": "Generate tense prelude music for an ancient battlefield before battle",
+      "duration": 30,
+      "created_at": "2024-01-15T10:30:00Z",
+      "model_name": "chirp-v3-5"
+    }
+  ],
+  "message": ""
+}
+```
+
+<Expandable title="Response Fields">
+  <ResponseField name="code" type="string">
+    Status code: `"success"` or `"error"`
+  </ResponseField>
+
+  <ResponseField name="data" type="array">
+    Array containing task information
+
+    <Expandable title="Task Object Fields">
+      <ResponseField name="id" type="string">
+        Task identifier (UUID)
+      </ResponseField>
+
+      <ResponseField name="status" type="string">
+        Task status: `queued`, `processing`, `completed`, or `failed`
+      </ResponseField>
+
+      <ResponseField name="audio_url" type="string">
+        URL to download the generated MP3 audio file (only when completed)
+      </ResponseField>
+
+      <ResponseField name="video_url" type="string">
+        URL to download the generated video with visualization (only when completed)
+      </ResponseField>
+
+      <ResponseField name="image_url" type="string">
+        URL to the cover image/thumbnail (only when completed)
+      </ResponseField>
+
+      <ResponseField name="title" type="string">
+        Song title (auto-generated or custom)
+      </ResponseField>
+
+      <ResponseField name="tags" type="string">
+        Music style tags
+      </ResponseField>
+
+      <ResponseField name="prompt" type="string">
+        Original prompt used for generation
+      </ResponseField>
+
+      <ResponseField name="duration" type="number">
+        Audio duration in seconds (only when completed)
+      </ResponseField>
+
+      <ResponseField name="created_at" type="string">
+        ISO 8601 timestamp of task creation
+      </ResponseField>
+
+      <ResponseField name="model_name" type="string">
+        Model version used (e.g., "chirp-v3-5")
+      </ResponseField>
+
+      <ResponseField name="progress" type="number">
+        Progress percentage 0-100 (only when processing)
+      </ResponseField>
+
+      <ResponseField name="error_message" type="string">
+        Error description if failed
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField name="message" type="string">
+    Error message if code is `"error"`, empty string if successful
+  </ResponseField>
+</Expandable>
+
+</ResponseField>
+
+<ResponseField name="Processing" type="200">
+  Task is currently being processed
+
+```json
+{
+  "code": "success",
+  "data": [
+    {
+      "id": "15410652-357c-47fa-8ad9-a4a145fbfa14",
+      "status": "processing",
+      "progress": 45,
+      "created_at": "2024-01-15T10:30:00Z"
+    }
+  ],
+  "message": "Task is still processing"
+}
+```
+</ResponseField>
+
+<ResponseField name="Queued" type="200">
+  Task is waiting in queue
+
+```json
+{
+  "code": "success",
+  "data": [
+    {
+      "id": "15410652-357c-47fa-8ad9-a4a145fbfa14",
+      "status": "queued",
+      "created_at": "2024-01-15T10:30:00Z"
+    }
+  ],
+  "message": "Task is queued"
+}
+```
+</ResponseField>
+
+## Task Status Values
+
+| Status | Description | Next Action |
+|--------|-------------|-------------|
+| `queued` | Task is waiting in queue to be processed | Continue polling |
+| `processing` | Task is currently being processed | Continue polling, check progress |
+| `completed` | Task completed successfully, audio is ready | Download audio from `audio_url` |
+| `failed` | Task failed | Check `error_message`, retry if needed |
+
+## Error Responses
+
+<ResponseExample>
+
+```json 404 - Task not found
+{
+  "code": "error",
+  "data": null,
+  "message": "Task not found"
+}
+```
+
+```json 401 - Invalid API key
+{
+  "code": "error",
+  "data": null,
+  "message": "Invalid API key"
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "code": "error",
+  "data": null,
+  "message": "Insufficient balance"
+}
+```
+
+```json 429 - Rate limit exceeded
+{
+  "code": "error",
+  "data": null,
+  "message": "Rate limit exceeded. Please try again later."
+}
+```
+
+```json 500 - Internal server error
+{
+  "code": "error",
+  "data": null,
+  "message": "Internal server error"
+}
+```
+
+</ResponseExample>
+
+## Polling for Completion
+
+### Python Example - Wait for Completion
+
+```python Python
+import requests
+import time
+
+def wait_for_completion(task_id, max_wait=300, poll_interval=5):
+    """
+    Poll task status until completion or timeout
+
+    Args:
+        task_id: The task ID to monitor
+        max_wait: Maximum time to wait in seconds (default 300s)
+        poll_interval: Time between polls in seconds (default 5s)
+
+    Returns:
+        Task data if successful, None if timeout or error
+    """
+    url = f"https://gptproto.com/v1/suno/fetch/{task_id}"
+    headers = {
+        "Authorization": "YOUR_API_KEY",
+        "Content-Type": "application/json"
+    }
+
+    start_time = time.time()
+
+    while time.time() - start_time < max_wait:
+        try:
+            response = requests.get(url, headers=headers)
+            result = response.json()
+
+            if result["code"] != "success" or not result["data"]:
+                print(f"Error: {result.get('message', 'Unknown error')}")
+                return None
+
+            task = result["data"][0]
+            status = task["status"]
+
+            elapsed = int(time.time() - start_time)
+            print(f"[{elapsed}s] Status: {status}", end="")
+
+            if status == "completed":
+                print(f"\n✓ Music generated successfully!")
+                print(f"Audio URL: {task['audio_url']}")
+                return task
+
+            elif status == "failed":
+                error_msg = task.get('error_message', 'Unknown error')
+                print(f"\n✗ Generation failed: {error_msg}")
+                return None
+
+            elif status == "processing":
+                progress = task.get('progress', 0)
+                print(f" - Progress: {progress}%")
+
+            else:  # queued
+                print(" - Waiting in queue...")
+
+            time.sleep(poll_interval)
+
+        except Exception as e:
+            print(f"\nError querying task: {e}")
+            time.sleep(poll_interval)
+
+    print(f"\n✗ Timeout: Task did not complete within {max_wait} seconds")
+    return None
+
+# Usage
+task_id = "15410652-357c-47fa-8ad9-a4a145fbfa14"
+result = wait_for_completion(task_id)
+
+if result:
+    print(f"Title: {result.get('title', 'Untitled')}")
+    print(f"Duration: {result.get('duration', 0)} seconds")
+```
+
+### JavaScript Example - Wait for Completion
+
+```javascript JavaScript
+async function waitForCompletion(taskId, maxWait = 300, pollInterval = 5) {
+  const url = `https://gptproto.com/v1/suno/fetch/${taskId}`;
+  const headers = {
+    'Authorization': 'YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  };
+
+  const startTime = Date.now();
+
+  while ((Date.now() - startTime) / 1000 < maxWait) {
+    try {
+      const response = await fetch(url, { method: 'GET', headers });
+      const result = await response.json();
+
+      if (result.code !== 'success' || !result.data) {
+        console.log(`Error: ${result.message || 'Unknown error'}`);
+        return null;
+      }
+
+      const task = result.data[0];
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+
+      process.stdout.write(`[${elapsed}s] Status: ${task.status}`);
+
+      if (task.status === 'completed') {
+        console.log('\n✓ Music generated successfully!');
+        console.log(`Audio URL: ${task.audio_url}`);
+        return task;
+      } else if (task.status === 'failed') {
+        console.log(`\n✗ Generation failed: ${task.error_message || 'Unknown error'}`);
+        return null;
+      } else if (task.status === 'processing') {
+        console.log(` - Progress: ${task.progress || 0}%`);
+      } else {
+        console.log(' - Waiting in queue...');
+      }
+
+      await new Promise(resolve => setTimeout(resolve, pollInterval * 1000));
+    } catch (error) {
+      console.log(`\nError querying task: ${error}`);
+      await new Promise(resolve => setTimeout(resolve, pollInterval * 1000));
+    }
+  }
+
+  console.log(`\n✗ Timeout: Task did not complete within ${maxWait} seconds`);
+  return null;
+}
+
+// Usage
+const taskId = '15410652-357c-47fa-8ad9-a4a145fbfa14';
+waitForCompletion(taskId).then(result => {
+  if (result) {
+    console.log(`Title: ${result.title || 'Untitled'}`);
+    console.log(`Duration: ${result.duration || 0} seconds`);
+  }
+});
+```
+
+## Complete Workflow Example
+
+Here's a complete example from submission to download:
+
+```python Python
+import requests
+import time
+import os
+
+class SunoMusicGenerator:
+    def __init__(self, api_key):
+        self.api_key = api_key
+        self.base_url = "https://gptproto.com/v1/suno"
+        self.headers = {
+            "Authorization": api_key,
+            "Content-Type": "application/json"
+        }
+
+    def submit_task(self, prompt, **kwargs):
+        """Submit a music generation task"""
+        url = f"{self.base_url}/submit/music"
+        payload = {"prompt": prompt, **kwargs}
+
+        response = requests.post(url, headers=self.headers, json=payload)
+        result = response.json()
+
+        if result["code"] == "success":
+            print(f"✓ Task submitted: {result['data']}")
+            return result["data"]
+        else:
+            raise Exception(f"Error: {result['message']}")
+
+    def query_task(self, task_id):
+        """Query task status"""
+        url = f"{self.base_url}/fetch/{task_id}"
+        response = requests.get(url, headers=self.headers)
+        result = response.json()
+
+        if result["code"] == "success" and result["data"]:
+            return result["data"][0]
+        return None
+
+    def wait_for_completion(self, task_id, max_wait=300, poll_interval=5):
+        """Wait for task to complete"""
+        start_time = time.time()
+
+        while time.time() - start_time < max_wait:
+            task = self.query_task(task_id)
+
+            if not task:
+                return None
+
+            elapsed = int(time.time() - start_time)
+            print(f"[{elapsed}s] {task['status']}", end="")
+
+            if task["status"] == "completed":
+                print(" ✓")
+                return task
+            elif task["status"] == "failed":
+                print(f" ✗ {task.get('error_message', 'Unknown error')}")
+                return None
+            elif task["status"] == "processing":
+                print(f" - {task.get('progress', 0)}%")
+            else:
+                print(" - queued")
+
+            time.sleep(poll_interval)
+
+        print(f"\n✗ Timeout after {max_wait}s")
+        return None
+
+    def download_audio(self, audio_url, output_path):
+        """Download the generated audio"""
+        response = requests.get(audio_url)
+
+        if response.status_code == 200:
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+            with open(output_path, 'wb') as f:
+                f.write(response.content)
+
+            print(f"✓ Downloaded to: {output_path}")
+            return True
+
+        return False
+
+    def generate_and_download(self, prompt, output_dir="./music", **kwargs):
+        """Complete workflow: submit, wait, and download"""
+        # Submit task
+        task_id = self.submit_task(prompt, **kwargs)
+
+        # Wait for completion
+        task = self.wait_for_completion(task_id)
+
+        if not task:
+            print("✗ Generation failed or timed out")
+            return None
+
+        # Download audio
+        title = task.get("title", "untitled").replace(" ", "_")
+        output_path = os.path.join(output_dir, f"{title}.mp3")
+
+        if self.download_audio(task["audio_url"], output_path):
+            return {
+                "task_id": task_id,
+                "audio_path": output_path,
+                "task_data": task
+            }
+
+        return None
+
+# Usage
+generator = SunoMusicGenerator("YOUR_API_KEY")
+
+result = generator.generate_and_download(
+    prompt="Epic orchestral battle music with dramatic crescendo",
+    tags="orchestral, epic, cinematic",
+    make_instrumental=True
+)
+
+if result:
+    print(f"\n{'='*50}")
+    print(f"Task ID: {result['task_id']}")
+    print(f"Audio File: {result['audio_path']}")
+    print(f"Title: {result['task_data']['title']}")
+    print(f"Duration: {result['task_data']['duration']}s")
+    print(f"{'='*50}")
+```
+
+## Best Practices
+
+<Tip>
+**Polling Recommendations:**
+
+- **Initial Poll**: Check immediately after submission
+- **Queued Status**: Poll every 5-10 seconds
+- **Processing Status**: Poll every 3-5 seconds
+- **Rate Limiting**: Don't poll more than once per second
+- **Timeout**: Set reasonable timeouts (60-300 seconds depending on complexity)
+</Tip>
+
+### Timeout Configuration
+
+```python
+# Recommended timeouts based on complexity
+TIMEOUT_MAP = {
+    "simple": 60,      # 1 minute
+    "standard": 120,   # 2 minutes
+    "complex": 300     # 5 minutes
+}
+
+def smart_wait(task_id, complexity="standard"):
+    timeout = TIMEOUT_MAP.get(complexity, 120)
+    return wait_for_completion(task_id, max_wait=timeout)
+```
+
+### Error Handling
+
+```python
+def robust_query(task_id, retries=3):
+    """Query with retry logic"""
+    for attempt in range(retries):
+        try:
+            response = requests.get(
+                f"https://gptproto.com/v1/suno/fetch/{task_id}",
+                headers=headers,
+                timeout=10
+            )
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            if attempt == retries - 1:
+                raise
+            print(f"Retry {attempt + 1}/{retries} after error: {e}")
+            time.sleep(2 ** attempt)  # Exponential backoff
+    return None
+```
+
+## FAQs
+
+### How long does generation typically take?
+
+Most tasks complete within 30-90 seconds. Complex or custom music may take up to 3-5 minutes.
+
+### How long are task results stored?
+
+Completed tasks and their audio URLs are available for 24 hours after completion.
+
+### Can I download the same audio multiple times?
+
+Yes, the audio URL remains valid for 24 hours after generation.
+
+### What format is the audio?
+
+Generated audio is provided in MP3 format at 128-320 kbps quality.
+
+### Can I get a video with visualization?
+
+Yes, use the `video_url` field for videos with audio visualization.
+
+### What if my task fails?
+
+Check the `error_message` field for details. Common causes include invalid prompts or system errors. You can retry the request.
+
+## Related Endpoints
+
+- [Text to Audio](/api/suno/official-format/text-to-audio) - Submit music generation tasks
+- Custom Music - Generate with lyrics and advanced options
+- Music Continuation - Extend existing tracks
+
+## Official Resources
+
+### Suno AI Documentation
+
+- [Suno Official Website](https://suno.com) - Main Suno AI platform
+- [Suno API Documentation](https://suno.com/docs/api) - Official API reference
+- [Task Management Guide](https://suno.com/guides/task-management) - Best practices for managing tasks
+- [Suno Model Information](https://suno.com/models) - Details about Chirp models and capabilities
+- [Suno Community](https://discord.gg/suno) - Join the Suno Discord community
+
+### GPT Proto Resources
+
+- [GPT Proto Dashboard](https://gptproto.com) - Manage your API keys and usage
+- [GPT Proto Documentation](https://gptproto.com/docs) - Complete API documentation
+- [API Pricing](https://gptproto.com/pricing) - Current pricing information
+- [Support](https://gptproto.com/support) - Get help with integration
+
+### Additional Resources
+
+- [Suno Terms of Service](https://suno.com/terms) - Usage terms and conditions
+- [Content Policy](https://suno.com/policy) - Content generation guidelines
+- [API Rate Limits](https://suno.com/docs/rate-limits) - Rate limiting information
+- [Troubleshooting Guide](https://suno.com/docs/troubleshooting) - Common issues and solutions

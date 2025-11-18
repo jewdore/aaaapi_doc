@@ -53,7 +53,8 @@
       "icon": "book",
       "pages": [
         "docs/guide/codex",
-        "docs/guide/claude-code"
+        "docs/guide/claude-code",
+        "docs/guide/ai-chat"
       ]
     },
     {
@@ -1686,58 +1687,11 @@
           "group": "Suno",
           "pages": [
             {
-              "group": "All APIs",
+              "group": "Official Format",
               "pages": [
-                "docs/api/suno/all-apis/music-generationgenerations",
-                "docs/api/suno/all-apis/query-task",
-                "docs/api/suno/all-apis/generate-lyrics",
-                "docs/api/suno/all-apis/query-lyrics"
-              ]
-            },
-            {
-              "group": "Scene 1 Generate Custom Music(with Lyrics)",
-              "pages": [
-                "docs/api/suno/scene-1-generate-custom-musicwith-lyrics/music-generationgenerations"
-              ]
-            },
-            {
-              "group": "Scene 2 Generate Music Directly Through Prompt(with Lyrics)",
-              "pages": [
-                "docs/api/suno/scene-2-generate-music-directly-through-promptwith-lyrics/music-generationgenerations"
-              ]
-            },
-            {
-              "group": "Scenario 5: Upload Custom Audio and Continue",
-              "pages": [
-                "docs/api/suno/scenario-5-upload-custom-audio-and-continue/convert-music-link-to-suno-upload",
-                "docs/api/suno/scenario-5-upload-custom-audio-and-continue/music-generation-generations"
-              ]
-            },
-            {
-              "group": "Scenario 6: Continue Writing Music and Get Complete Music",
-              "pages": [
-                "docs/api/suno/scenario-6-continue-writing-music-and-get-complete-music/step-1-music-generation",
-                "docs/api/suno/scenario-6-continue-writing-music-and-get-complete-music/step-3-extend-music",
-                "docs/api/suno/scenario-6-continue-writing-music-and-get-complete-music/step-5-get-complete-music"
-              ]
-            },
-            {
-              "group": "Scenario 7: Cover Music (Music Version, Modify Style)",
-              "pages": [
-                "docs/api/suno/scenario-7-cover-music-music-version-modify-style/step-1-music-generation",
-                "docs/api/suno/scenario-7-cover-music-music-version-modify-style/step-3-cover-music"
-              ]
-            },
-            {
-              "group": "Scenario 3: Generate Custom Music (Pure Music)",
-              "pages": [
-                "docs/api/suno/scenario-3-generate-custom-music-pure-music/music-generation-generations"
-              ]
-            },
-            {
-              "group": "Scenario 4: Generate music directly through prompt (pure music)",
-              "pages": [
-                "docs/api/suno/scenario-4-generate-music-directly-through-prompt-pure-music/music-generation-generations"
+                "docs/api/suno/official-format/text-to-audio",
+                "docs/api/suno/official-format/text-to-text",
+                "docs/api/suno/official-format/query-task"
               ]
             }
           ],

@@ -1,0 +1,493 @@
+---
+title: 'Text to Text'
+api: 'POST /v1/suno/submit/lyrics'
+description: 'Generate creative song lyrics using Suno AI. Create original lyrics for any genre, mood, or theme with simple text prompts.'
+---
+
+## Overview
+
+[Suno AI](https://suno.com) provides a powerful lyrics generation capability that creates high-quality song lyrics from text descriptions. Using Suno's API, you can generate original lyrics for any musical style, theme, or mood by simply describing what you want in natural language.
+
+Related Guides: [Suno Official Documentation](https://suno.com/docs) | [Lyrics Generation Guide](https://suno.com/guides/lyrics-generation)
+
+This endpoint allows you to submit lyrics generation tasks using simple text prompts. The generation is processed asynchronously - you'll receive a task ID immediately, which you can use to check the status and retrieve the generated lyrics once complete.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" type="string" required default="Write lyrics about a sunrise over the ocean with a hopeful tone">
+  Description of the lyrics you want to generate. Provide detailed information about the theme, mood, style, and any specific elements you want included in the lyrics.
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1/suno/submit/lyrics' \
+--header 'Authorization: Bearer YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "prompt": "Write lyrics about a sunrise over the ocean with a hopeful tone"
+}'
+```
+
+```bash cURL - Love Song
+curl --location 'https://gptproto.com/v1/suno/submit/lyrics' \
+--header 'Authorization: Bearer YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "prompt": "Write romantic lyrics about falling in love under the stars, with poetic and emotional language"
+}'
+```
+
+```bash cURL - Epic Battle Theme
+curl --location 'https://gptproto.com/v1/suno/submit/lyrics' \
+--header 'Authorization: Bearer YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "prompt": "Create epic battle lyrics with themes of courage, unity, and victory. Include strong imagery and motivational language"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/suno/submit/lyrics"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "prompt": "Write lyrics about a sunrise over the ocean with a hopeful tone"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+
+if result["code"] == "success":
+    task_id = result["data"]
+    print(f"Task created successfully! Task ID: {task_id}")
+else:
+    print(f"Error: {result['message']}")
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/suno/submit/lyrics";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "Write lyrics about a sunrise over the ocean with a hopeful tone"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(result => {
+    if (result.code === "success") {
+      console.log(`Task created successfully! Task ID: ${result.data}`);
+    } else {
+      console.log(`Error: ${result.message}`);
+    }
+  })
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+type LyricsRequest struct {
+    Prompt string `json:"prompt"`
+}
+
+type Response struct {
+    Code    string `json:"code"`
+    Data    string `json:"data"`
+    Message string `json:"message"`
+}
+
+func main() {
+    url := "https://gptproto.com/v1/suno/submit/lyrics"
+
+    payload := LyricsRequest{
+        Prompt: "Write lyrics about a sunrise over the ocean with a hopeful tone",
+    }
+
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+
+    var result Response
+    json.Unmarshal(body, &result)
+
+    if result.Code == "success" {
+        fmt.Printf("Task created successfully! Task ID: %s\n", result.Data)
+    } else {
+        fmt.Printf("Error: %s\n", result.Message)
+    }
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "code": "success",
+  "data": "a8f3d9e2-4b7c-41a8-9f2e-6d5c8e1a7b9f",
+  "message": ""
+}
+```
+
+<Expandable title="Response Fields">
+  <ResponseField name="code" type="string">
+    Status code indicating success or error (`"success"` or `"error"`)
+  </ResponseField>
+
+  <ResponseField name="data" type="string">
+    Task ID for tracking the lyrics generation progress. Use this ID with the [Query Task Status](/api/suno/official-format/query-task) endpoint to check completion and retrieve the generated lyrics.
+  </ResponseField>
+
+  <ResponseField name="message" type="string">
+    Error message if code is `"error"`, empty string if successful
+  </ResponseField>
+</Expandable>
+
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Invalid prompt
+{
+  "code": "error",
+  "data": null,
+  "message": "Invalid prompt: prompt cannot be empty"
+}
+```
+
+```json 401 - Invalid API key
+{
+  "code": "error",
+  "data": null,
+  "message": "Invalid API key"
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "code": "error",
+  "data": null,
+  "message": "Insufficient balance"
+}
+```
+
+```json 429 - Rate limit exceeded
+{
+  "code": "error",
+  "data": null,
+  "message": "Rate limit exceeded. Please try again later."
+}
+```
+
+```json 500 - Internal server error
+{
+  "code": "error",
+  "data": null,
+  "message": "Internal server error"
+}
+```
+
+```json 503 - Content policy violation
+{
+  "code": "error",
+  "data": null,
+  "message": "Content may not meet the guidelines. Please adjust and try again."
+}
+```
+
+</ResponseExample>
+
+## Next Steps
+
+After successfully submitting a lyrics generation task, you'll receive a task ID. Use this ID to:
+
+1. **Check Task Status** - Query the [Task Status endpoint](/api/suno/official-format/query-task) to monitor progress
+2. **Retrieve Generated Lyrics** - Once completed, get the lyrics content from the task status response
+3. **Use with Music Generation** - Combine the generated lyrics with the [Text to Audio](/api/suno/official-format/text-to-audio) endpoint to create complete songs
+
+### Example Workflow
+
+```python Python
+import requests
+import time
+
+# Step 1: Submit lyrics generation task
+submit_url = "https://gptproto.com/v1/suno/submit/lyrics"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+submit_data = {
+    "prompt": "Write lyrics about overcoming challenges with themes of resilience and hope"
+}
+
+response = requests.post(submit_url, headers=headers, json=submit_data)
+result = response.json()
+
+if result["code"] == "success":
+    task_id = result["data"]
+    print(f"Task submitted: {task_id}")
+
+    # Step 2: Poll for completion
+    query_url = f"https://gptproto.com/v1/suno/fetch/{task_id}"
+
+    while True:
+        time.sleep(5)  # Wait 5 seconds between checks
+
+        query_response = requests.get(query_url, headers=headers)
+        query_result = query_response.json()
+
+        if query_result["code"] == "success" and query_result["data"]:
+            task = query_result["data"][0]
+
+            if task["status"] == "completed":
+                print(f"Lyrics generated successfully!")
+                print(f"\nLyrics:\n{task['lyrics']}")
+
+                # Step 3: Optionally use lyrics for music generation
+                music_url = "https://gptproto.com/v1/suno/submit/music"
+                music_data = {
+                    "prompt": task['lyrics'],
+                    "tags": "inspirational,uplifting,emotional",
+                    "mv": "chirp-v3-5"
+                }
+
+                music_response = requests.post(music_url, headers=headers, json=music_data)
+                print(f"\nMusic generation started: {music_response.json()}")
+                break
+
+            elif task["status"] == "failed":
+                print(f"Generation failed: {task.get('error_message', 'Unknown error')}")
+                break
+            else:
+                print(f"Status: {task['status']}...")
+```
+
+## Best Practices
+
+### Writing Effective Prompts
+
+<Tip>
+**For best results:**
+
+- **Be Specific**: Clearly describe the theme, mood, and style you want
+- **Include Context**: Mention the genre, intended use, or target audience
+- **Specify Tone**: Describe the emotional tone (e.g., hopeful, melancholic, energetic)
+- **Add Details**: Include specific imagery, metaphors, or concepts you want
+- **Define Structure**: Mention if you want verses, chorus, bridge, etc.
+- **Set Language Style**: Specify if you want poetic, conversational, or narrative style
+</Tip>
+
+### Example Prompts
+
+<CodeGroup>
+
+```text Good Examples
+"Write romantic lyrics about falling in love under the stars, with poetic and emotional language suitable for a slow ballad"
+
+"Create uplifting lyrics about chasing dreams and never giving up, with motivational themes for a pop-rock anthem"
+
+"Generate melancholic lyrics about lost love and memories, using metaphors of rain and autumn for an indie folk song"
+
+"Write energetic rap lyrics about success and overcoming obstacles, with strong rhythm and confident wordplay"
+
+"Create nostalgic lyrics about childhood summers and friendship, with vivid imagery for an acoustic folk song"
+```
+
+```text Avoid
+"Write some lyrics" (too vague)
+
+"Make it good" (no specific direction)
+
+"Song words" (no context)
+
+"Love song" (too generic, lacks detail)
+```
+
+</CodeGroup>
+
+### Prompt Templates by Genre
+
+| Genre | Prompt Template | Example |
+|-------|----------------|---------|
+| **Pop** | "Write {mood} lyrics about {theme} with {style} language for a pop song" | "Write upbeat lyrics about summer romance with catchy, relatable language for a pop song" |
+| **Rock** | "Create {intensity} lyrics about {topic} with {imagery} for a {subgenre} rock song" | "Create powerful lyrics about rebellion with urban imagery for an alternative rock song" |
+| **R&B/Soul** | "Generate {emotion} lyrics about {subject} with {tone} phrasing for an R&B track" | "Generate passionate lyrics about desire with smooth, sensual phrasing for an R&B track" |
+| **Hip-Hop** | "Write {style} rap lyrics about {theme} with {technique} and {flow}" | "Write confident rap lyrics about ambition with clever wordplay and strong flow" |
+| **Country** | "Create {mood} lyrics about {story} with {elements} for a country song" | "Create heartfelt lyrics about small-town life with storytelling elements for a country song" |
+| **Folk** | "Write {tone} lyrics about {subject} with {imagery} and narrative style" | "Write introspective lyrics about nature with vivid imagery and narrative style" |
+
+## Use Cases
+
+### 1. Songwriting Assistance
+
+Generate lyrics as a starting point or inspiration for original songs:
+
+```python
+data = {
+    "prompt": "Write introspective lyrics about finding yourself after a major life change, with themes of growth and self-discovery"
+}
+```
+
+### 2. Music Production
+
+Create lyrics for instrumental tracks or production projects:
+
+```python
+data = {
+    "prompt": "Generate energetic club lyrics about dancing and celebration with repetitive hooks perfect for electronic music"
+}
+```
+
+### 3. Content Creation
+
+Generate lyrics for videos, podcasts, or multimedia projects:
+
+```python
+data = {
+    "prompt": "Write inspiring lyrics about innovation and technology for a corporate video soundtrack"
+}
+```
+
+### 4. Educational Purposes
+
+Create example lyrics for teaching songwriting or music theory:
+
+```python
+data = {
+    "prompt": "Write simple, clear lyrics about friendship using AABB rhyme scheme suitable for beginner songwriters"
+}
+```
+
+### 5. Creative Exploration
+
+Experiment with different styles and themes:
+
+```python
+data = {
+    "prompt": "Create surreal, abstract lyrics mixing dreams and reality with unconventional imagery for an experimental art piece"
+}
+```
+
+## Lyrics Structure Tips
+
+<Tip>
+**Common Song Structures:**
+
+- **Verse-Chorus-Verse-Chorus-Bridge-Chorus** (Most common pop structure)
+- **AABA** (Traditional song form)
+- **Verse-Chorus** (Simple, repetitive structure)
+- **Free Form** (No fixed structure, common in rap/spoken word)
+
+You can specify your desired structure in the prompt:
+"Write lyrics with 2 verses, a catchy chorus, and a bridge about {theme}"
+</Tip>
+
+## Integration with Music Generation
+
+Once you have generated lyrics, you can use them to create full songs:
+
+```python
+# Step 1: Generate lyrics
+lyrics_response = requests.post(
+    "https://gptproto.com/v1/suno/submit/lyrics",
+    headers=headers,
+    json={"prompt": "Write uplifting lyrics about new beginnings"}
+)
+lyrics_task_id = lyrics_response.json()["data"]
+
+# Wait for lyrics completion...
+# (polling code here)
+
+# Step 2: Use lyrics for music generation
+music_response = requests.post(
+    "https://gptproto.com/v1/suno/submit/music",
+    headers=headers,
+    json={
+        "prompt": generated_lyrics,  # Use the generated lyrics
+        "tags": "pop,uplifting,inspirational",
+        "title": "New Dawn",
+        "mv": "chirp-v3-5"
+    }
+)
+```
+
+## Related Endpoints
+
+- [Text to Audio](/api/suno/official-format/text-to-audio) - Generate music from text or lyrics
+- [Query Task Status](/api/suno/official-format/query-task) - Check generation progress and retrieve results
+
+## Official Resources
+
+### Suno AI Documentation
+
+- [Suno Official Website](https://suno.com) - Main Suno AI platform
+- [Suno API Documentation](https://suno.com/docs/api) - Official API reference
+- [Lyrics Generation Guide](https://suno.com/guides/lyrics-generation) - Best practices for lyrics generation
+- [Songwriting Tips](https://suno.com/guides/songwriting) - Tips for effective songwriting
+- [Suno Community](https://discord.gg/suno) - Join the Suno Discord community
+
+### GPT Proto Resources
+
+- [GPT Proto Dashboard](https://gptproto.com/dashboard) - Manage your API keys and usage
+- [GPT Proto Documentation](https://docs.gptproto.com) - Complete API documentation
+- [API Pricing](https://gptproto.com/dashboard/billing-center) - Current pricing information
+- [Support](mailto:jacoblam3219@gmail.com) - Get help with integration
+
+### Additional Resources
+
+- [Suno Terms of Service](https://suno.com/terms) - Usage terms and conditions
+- [Content Policy](https://suno.com/policy) - Content generation guidelines
+- [API Rate Limits](https://suno.com/docs/rate-limits) - Rate limiting information
+- [Troubleshooting Guide](https://suno.com/docs/troubleshooting) - Common issues and solutions
