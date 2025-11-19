@@ -1,0 +1,180 @@
+---
+title: 'Query Task'
+api: 'GET /v1beta/models/{model_name}/operations/{operation_id}'
+description: 'Query the status of a video generation task'
+---
+
+## Overview
+
+This endpoint retrieves the status and result of a video generation operation. After submitting a video generation request, use this endpoint to check if the operation is complete and retrieve the generated video.
+
+## Authentication
+
+This endpoint requires authentication using an API key.
+
+<ParamField header="x-goog-api-key" type="string" required default="sk-***********">
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Parameters
+
+<ParamField path="model_name" type="string" required default="veo-3.1-generate-preview">
+  The name of the model used for the video generation request
+</ParamField>
+
+<ParamField path="operation_id" type="string" required default="mg3pt9cbmvr1">
+  The operation ID returned from the video generation request
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/mg3pt9cbmvr1' \
+  --header 'x-goog-api-key: YOUR_API_KEY'
+```
+
+```python Python
+import requests
+
+url = "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/mg3pt9cbmvr1"
+headers = {
+    "x-goog-api-key": "YOUR_API_KEY"
+}
+
+response = requests.get(url, headers=headers)
+result = response.json()
+print(result)
+```
+
+```javascript JavaScript
+const url = "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/mg3pt9cbmvr1";
+const headers = {
+  "x-goog-api-key": "YOUR_API_KEY"
+};
+
+fetch(url, {
+  method: "GET",
+  headers: headers
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/mg3pt9cbmvr1"
+
+    req, _ := http.NewRequest("GET", url, nil)
+    req.Header.Set("x-goog-api-key", "YOUR_API_KEY")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response when operation is complete
+
+```json
+{
+  "name": "operations/mg3pt9cbmvr1",
+  "metadata": {
+    "@type": "type.googleapis.com/google.cloud.aiplatform.v1beta1.GenerateVideoMetadata",
+    "createTime": "2025-01-19T00:00:00Z",
+    "updateTime": "2025-01-19T00:05:00Z"
+  },
+  "done": true,
+  "response": {
+    "@type": "type.googleapis.com/google.cloud.aiplatform.v1beta1.GenerateVideoResponse",
+    "generatedSamples": [
+      {
+        "video": {
+          "uri": "https://generativelanguage.googleapis.com/v1beta/files/generated-video-id:download?alt=media"
+        }
+      }
+    ]
+  }
+}
+```
+</ResponseField>
+
+<ResponseField name="In Progress" type="200">
+  Response when operation is still in progress
+
+```json
+{
+  "name": "operations/mg3pt9cbmvr1",
+  "metadata": {
+    "@type": "type.googleapis.com/google.cloud.aiplatform.v1beta1.GenerateVideoMetadata",
+    "createTime": "2025-01-19T00:00:00Z",
+    "updateTime": "2025-01-19T00:02:00Z"
+  },
+  "done": false
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 404 - Operation not found
+{
+  "error": {
+    "message": "Operation not found",
+    "type": "404"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+</ResponseExample>
+

@@ -30,7 +30,7 @@
     {
       "name": "API Reference",
       "url": "docs/api",
-      "icon": "code"  
+      "icon": "code"
     },
     {
       "name": "Tutorial Guide",
@@ -297,7 +297,7 @@
                 }
               ]
             },
-             {
+            {
               "group": "gpt-5.1",
               "pages": [
                 {
@@ -797,6 +797,82 @@
                   ]
                 }
               ]
+            },
+            {
+              "group": "veo-3.1-generate-preview",
+              "pages": [
+                {
+                  "group": "Official Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo-3.1-generate-preview/official-format/text-to-video",
+                    "docs/api/gemini/veo/veo-3.1-generate-preview/official-format/image-to-video",
+                    "docs/api/gemini/veo/veo-3.1-generate-preview/official-format/video-to-video",
+                    "docs/api/gemini/veo/veo-3.1-generate-preview/official-format/query-task"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "veo-3.1-fast-generate-preview",
+              "pages": [
+                {
+                  "group": "Official Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo-3.1-fast-generate-preview/official-format/text-to-video",
+                    "docs/api/gemini/veo/veo-3.1-fast-generate-preview/official-format/image-to-video",
+                    "docs/api/gemini/veo/veo-3.1-fast-generate-preview/official-format/video-to-video",
+                    "docs/api/gemini/veo/veo-3.1-fast-generate-preview/official-format/query-task"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "veo-3.1",
+              "pages": [
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo-3.1/gptproto-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo-3.1/gptproto-format/image-to-video(9:16)",
+                    "docs/api/gemini/veo/veo-3.1/gptproto-format/text-to-video(16:9)",
+                    "docs/api/gemini/veo/veo-3.1/gptproto-format/get-task-status"
+                  ]
+                },
+                {
+                  "group": "OpenAI Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo-3.1/openai-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo-3.1/openai-format/image-to-video(9:16)",
+                    "docs/api/gemini/veo/veo-3.1/openai-format/image-to-video(16:9)",
+                    "docs/api/gemini/veo/veo-3.1/openai-format/text-to-video(9:16)",
+                    "docs/api/gemini/veo/veo-3.1/openai-format/text-to-video(16:9)"
+                  ]
+                }
+              ]
+            },
+           {
+              "group": "veo-3.1-fast",
+              "pages": [
+                {
+                  "group": "Gptproto Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo-3.1-fast/gptproto-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo-3.1-fast/gptproto-format/image-to-video(9:16)",
+                    "docs/api/gemini/veo/veo-3.1-fast/gptproto-format/text-to-video(16:9)",
+                    "docs/api/gemini/veo/veo-3.1-fast/gptproto-format/get-task-status"
+                  ]
+                },
+                {
+                  "group": "OpenAI Format",
+                  "pages": [
+                    "docs/api/gemini/veo/veo-3.1-fast/openai-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo-3.1-fast/openai-format/image-to-video(9:16)",
+                    "docs/api/gemini/veo/veo-3.1-fast/openai-format/text-to-video(16:9)",
+                    "docs/api/gemini/veo/veo-3.1-fast/openai-format/video-to-video(16:9)",
+                    "docs/api/gemini/veo/veo-3.1-fast/openai-format/get-task-status"
+                  ]
+                }
+              ]
             }
           ],
           "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Gemini.png"
@@ -1269,7 +1345,7 @@
               "group": "seedance-1-0-lite-i2v-250428",
               "pages": [
                 {
-                  "group": "Gptproto Format", 
+                  "group": "Gptproto Format",
                   "pages": [
                     "docs/api/doubao/seedance-1-0-lite-i2v-250428/gptproto-format/image-to-video",
                     "docs/api/doubao/seedance-1-0-lite-i2v-250428/gptproto-format/query-task"
@@ -1688,7 +1764,6 @@
           ],
           "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1757932596487-20250915-183623.png"
         },
-      
         {
           "group": "Runway",
           "pages": [
@@ -1792,7 +1867,7 @@
           "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755663073115-111.png"
         },
         {
-          "group": "Quickstart",
+          "group": "Quick Start",
           "icon": "rocket",
           "pages": [
             "docs/api/quickstart/openai",
@@ -1814,7 +1889,7 @@
   "api": {
     "baseUrl": "https://gptproto.com",
     "playground": {
-      "mode": "hide"
+      "display": "none"
     }
   }
 }

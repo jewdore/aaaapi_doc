@@ -1,0 +1,252 @@
+---
+title: 'Image to Video'
+api: 'POST /v1beta/models/{model_name}:predictLongRunning'
+description: 'Generate videos from images with text prompts using Gemini Veo 3.1'
+---
+
+## Overview
+
+This endpoint generates videos from images based on text descriptions using Google's Gemini Veo 3.1 model. The API accepts an image URI along with a text prompt and returns a long-running operation for video generation.
+
+## Authentication
+
+This endpoint requires authentication using an API key.
+
+<ParamField header="x-goog-api-key" type="string" required default="sk-***********">
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+<ParamField header="Content-Type" type="string" required default="application/json">
+  Must be set to `application/json`
+</ParamField>
+
+## Parameters
+
+<ParamField path="model_name" type="string" required default="veo-3.1-generate-preview">
+  The name of the model to use for the request.
+</ParamField>
+
+## Request Body
+
+<ParamField body="instances" type="array" required>
+  An array of instances containing the video generation parameters
+  <Expandable title="properties">
+    <ParamField body="prompt" type="string" required>
+      The text prompt describing the video animation you want to generate from the image
+    </ParamField>
+    <ParamField body="image" type="object" required>
+      The source image information
+      <Expandable title="properties">
+        <ParamField body="uri" type="string" required>
+          The URI of the source image file (must be a valid Google Cloud Storage or Generative Language API file URI)
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="parameters" type="object">
+  Additional parameters for video generation
+  <Expandable title="properties">
+    <ParamField body="resolution" type="string">
+      The resolution of the output video. Options: `720p`, `1080p`
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning' \
+  --header 'x-goog-api-key: YOUR_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "instances": [
+        {
+            "prompt": "The cat starts walking forward",
+            "image": {
+                "uri": "https://generativelanguage.googleapis.com/v1beta/files/abc123:download?alt=media"
+            }
+        }
+    ],
+    "parameters": {
+        "resolution": "720p"
+    }
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning"
+headers = {
+    "x-goog-api-key": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "instances": [
+        {
+            "prompt": "The cat starts walking forward",
+            "image": {
+                "uri": "https://generativelanguage.googleapis.com/v1beta/files/abc123:download?alt=media"
+            }
+        }
+    ],
+    "parameters": {
+        "resolution": "720p"
+    }
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning";
+const headers = {
+  "x-goog-api-key": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "instances": [
+    {
+      "prompt": "The cat starts walking forward",
+      "image": {
+        "uri": "https://generativelanguage.googleapis.com/v1beta/files/abc123:download?alt=media"
+      }
+    }
+  ],
+  "parameters": {
+    "resolution": "720p"
+  }
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning"
+
+    payload := []byte(`{
+  "instances": [
+    {
+      "prompt": "The cat starts walking forward",
+      "image": {
+        "uri": "https://generativelanguage.googleapis.com/v1beta/files/abc123:download?alt=media"
+      }
+    }
+  ],
+  "parameters": {
+    "resolution": "720p"
+  }
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("x-goog-api-key", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response returns a long-running operation
+
+```json
+{
+  "name": "operations/veo-3.1-generate-preview-xxxxx",
+  "metadata": {
+    "@type": "type.googleapis.com/google.cloud.aiplatform.v1beta1.GenerateVideoMetadata",
+    "createTime": "2025-01-19T00:00:00Z"
+  }
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+
