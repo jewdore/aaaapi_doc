@@ -34,7 +34,7 @@ This endpoint requires authentication using a Bearer token.
   Reference parameter
 </ParamField>
 
-<ParamField body="aspect_ratio" type="string"  default="16:9">
+<ParamField body="aspect_ratio" type="string"  default="9:16">
   Aspect Ratio parameter
 </ParamField>
 
@@ -55,7 +55,7 @@ curl -X POST "https://gptproto.com/v1/veo/videos" \
   "model": "veo3.1-pro",
   "upsample": true,
   "reference": false,
-  "aspect_ratio": "16:9",
+  "aspect_ratio": "9:16",
   "images": [
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
@@ -78,7 +78,7 @@ data = {
   "model": "veo3.1-pro",
   "upsample": true,
   "reference": false,
-  "aspect_ratio": "16:9",
+  "aspect_ratio": "9:16",
   "images": [
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
@@ -102,7 +102,7 @@ const data = {
   "model": "veo3.1-pro",
   "upsample": true,
   "reference": false,
-  "aspect_ratio": "16:9",
+  "aspect_ratio": "9:16",
   "images": [
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
@@ -138,7 +138,7 @@ func main() {
 "model": "veo3.1-pro",
 "upsample": true,
 "reference": false,
-"aspect_ratio": "16:9",
+"aspect_ratio": "9:16",
 "images": [
 "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
 "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"

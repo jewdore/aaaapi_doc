@@ -1,12 +1,12 @@
 ---
-title: 'Image to Video（9:16）'
+title: 'Image to Video(9:16)'
 api: 'POST /v1/veo/videos'
-description: 'Image to Video（9:16）'
+description: 'Image to Video(9:16)'
 ---
 
 ## Overview
 
-This endpoint provides image to video（9:16） functionality.
+This endpoint provides image to video(9:16) functionality.
 
 ## Authentication
 
@@ -34,7 +34,7 @@ This endpoint requires authentication using a Bearer token.
   Reference parameter
 </ParamField>
 
-<ParamField body="aspect_ratio" type="string"  default="16:9">
+<ParamField body="aspect_ratio" type="string"  default="9:16">
   Aspect Ratio parameter
 </ParamField>
 
@@ -55,7 +55,7 @@ curl -X POST "https://gptproto.com/v1/veo/videos" \
   "model": "veo3.1",
   "upsample": true,
   "reference": false,
-  "aspect_ratio": "16:9",
+  "aspect_ratio": "9:16",
   "images": [
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
@@ -75,10 +75,10 @@ headers = {
 
 data = {
   "prompt": "A beautiful woman is dancing in a European and American style",
-  "model": "veo3.1",
+  "model": "veo3.1-pro",
   "upsample": true,
   "reference": false,
-  "aspect_ratio": "16:9",
+  "aspect_ratio": "9:16",
   "images": [
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
@@ -99,10 +99,10 @@ const headers = {
 
 const data = {
   "prompt": "A beautiful woman is dancing in a European and American style",
-  "model": "veo3.1",
+  "model": "veo3.1-pro",
   "upsample": true,
   "reference": false,
-  "aspect_ratio": "16:9",
+  "aspect_ratio": "9:16",
   "images": [
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
@@ -135,10 +135,10 @@ func main() {
 
     payload := []byte(`{
 "prompt": "A beautiful woman is dancing in a European and American style",
-"model": "veo3.1",
+"model": "veo3.1-pro",
 "upsample": true,
 "reference": false,
-"aspect_ratio": "16:9",
+"aspect_ratio": "9:16",
 "images": [
 "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
 "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"

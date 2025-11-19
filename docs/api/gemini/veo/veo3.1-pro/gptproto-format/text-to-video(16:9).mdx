@@ -1,12 +1,12 @@
 ---
-title: 'Text to Video （16:9）'
-api: 'POST /v1/chat/completions'
-description: 'Text to Video （16:9）'
+title: 'Text to Video(16:9)'
+api: 'POST /v1/veo/videos'
+description: 'Text to Video(16:9)'
 ---
 
 ## Overview
 
-This endpoint provides text to video （16:9） functionality.
+This endpoint provides text to video(9:16) functionality.
 
 ## Authentication
 
@@ -16,28 +16,62 @@ This endpoint requires authentication using a Bearer token.
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
+## Request Body
+
+<ParamField body="prompt" type="string" required default="A beautiful woman is dancing in a European and American style">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="model" type="string" required default="veo3.1">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="upsample" type="boolean"  default="true">
+  Upsample parameter
+</ParamField>
+
+<ParamField body="reference" type="boolean"  default="false">
+  Reference parameter
+</ParamField>
+
+<ParamField body="aspect_ratio" type="string"  default="9:16">
+  Aspect Ratio parameter
+</ParamField>
+
 ## Request Example
 
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/chat/completions" \
+curl -X POST "https://gptproto.com/v1/veo/videos" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{}'
+  -d '{
+  "prompt": "A beautiful woman is dancing in a European and American style",
+  "model": "veo3.1-pro",
+  "upsample": true,
+  "reference": false,
+  "aspect_ratio": "16:9"
+}'
 ```
 
 ```python Python
 import requests
 import json
 
-url = "https://gptproto.com/v1/chat/completions"
+url = "https://gptproto.com/v1/veo/videos"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
-data = {}
+data = {
+  "prompt": "A beautiful woman is dancing in a European and American style",
+  "model": "veo3.1-pro",
+  "upsample": true,
+  "reference": false,
+  "aspect_ratio": "16:9"
+}
 
 response = requests.post(url, headers=headers, json=data)
 result = response.json()
@@ -45,13 +79,19 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1/chat/completions";
+const url = "https://gptproto.com/v1/veo/videos";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
-const data = {};
+const data = {
+  "prompt": "A beautiful woman is dancing in a European and American style",
+  "model": "veo3.1-pro",
+  "upsample": true,
+  "reference": false,
+  "aspect_ratio": "16:9"
+};
 
 fetch(url, {
   method: "POST",
@@ -75,9 +115,15 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/v1/chat/completions"
+    url := "https://gptproto.com/v1/veo/videos"
 
-    payload := []byte(`{}`)
+    payload := []byte(`{
+"prompt": "A beautiful woman is dancing in a European and American style",
+"model": "veo3.1-pro",
+"upsample": true,
+"reference": false,
+"aspect_ratio": "16:9"
+}`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
     req.Header.Set("Authorization", "YOUR_API_KEY")

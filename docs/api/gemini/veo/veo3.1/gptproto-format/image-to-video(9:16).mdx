@@ -1,12 +1,12 @@
 ---
-title: 'Text to Video（16:9）'
+title: 'Image to Video(9:16)'
 api: 'POST /v1/veo/videos'
-description: 'Text to Video（16:9）'
+description: 'Image to Video(9:16)'
 ---
 
 ## Overview
 
-This endpoint provides text to video（16:9） functionality.
+This endpoint provides image to video(9:16) functionality.
 
 ## Authentication
 
@@ -34,8 +34,12 @@ This endpoint requires authentication using a Bearer token.
   Reference parameter
 </ParamField>
 
-<ParamField body="aspect_ratio" type="string"  default="16:9">
+<ParamField body="aspect_ratio" type="string"  default="9:16">
   Aspect Ratio parameter
+</ParamField>
+
+<ParamField body="images" type="array"  default="[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg&quot;]">
+  Images parameter
 </ParamField>
 
 ## Request Example
@@ -51,7 +55,11 @@ curl -X POST "https://gptproto.com/v1/veo/videos" \
   "model": "veo3.1",
   "upsample": true,
   "reference": false,
-  "aspect_ratio": "16:9"
+  "aspect_ratio": "9:16",
+  "images": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
+  ]
 }'
 ```
 
@@ -70,7 +78,11 @@ data = {
   "model": "veo3.1",
   "upsample": true,
   "reference": false,
-  "aspect_ratio": "16:9"
+  "aspect_ratio": "9:16",
+  "images": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
+  ]
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -90,7 +102,11 @@ const data = {
   "model": "veo3.1",
   "upsample": true,
   "reference": false,
-  "aspect_ratio": "16:9"
+  "aspect_ratio": "9:16",
+  "images": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
+  ]
 };
 
 fetch(url, {
@@ -122,7 +138,11 @@ func main() {
 "model": "veo3.1",
 "upsample": true,
 "reference": false,
-"aspect_ratio": "16:9"
+"aspect_ratio": "9:16",
+"images": [
+"https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg",
+"https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg"
+]
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

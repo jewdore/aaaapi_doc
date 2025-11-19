@@ -827,49 +827,49 @@
               ]
             },
             {
-              "group": "veo-3.1",
+              "group": "veo3.1",
               "pages": [
                 {
                   "group": "Gptproto Format",
                   "pages": [
-                    "docs/api/gemini/veo/veo-3.1/gptproto-format/firstlast-frame",
-                    "docs/api/gemini/veo/veo-3.1/gptproto-format/image-to-video(9:16)",
-                    "docs/api/gemini/veo/veo-3.1/gptproto-format/text-to-video(16:9)",
-                    "docs/api/gemini/veo/veo-3.1/gptproto-format/get-task-status"
+                    "docs/api/gemini/veo/veo3.1/gptproto-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo3.1/gptproto-format/image-to-video(9:16)",
+                    "docs/api/gemini/veo/veo3.1/gptproto-format/text-to-video(16:9)",
+                    "docs/api/gemini/veo/veo3.1/gptproto-format/get-task-status"
                   ]
                 },
                 {
                   "group": "OpenAI Format",
                   "pages": [
-                    "docs/api/gemini/veo/veo-3.1/openai-format/firstlast-frame",
-                    "docs/api/gemini/veo/veo-3.1/openai-format/image-to-video(9:16)",
-                    "docs/api/gemini/veo/veo-3.1/openai-format/image-to-video(16:9)",
-                    "docs/api/gemini/veo/veo-3.1/openai-format/text-to-video(9:16)",
-                    "docs/api/gemini/veo/veo-3.1/openai-format/text-to-video(16:9)"
+                    "docs/api/gemini/veo/veo3.1/openai-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo3.1/openai-format/image-to-video(9:16)",
+                    "docs/api/gemini/veo/veo3.1/openai-format/image-to-video(16:9)",
+                    "docs/api/gemini/veo/veo3.1/openai-format/text-to-video(9:16)",
+                    "docs/api/gemini/veo/veo3.1/openai-format/text-to-video(16:9)"
                   ]
                 }
               ]
             },
            {
-              "group": "veo-3.1-fast",
+              "group": "veo3.1-pro",
               "pages": [
                 {
                   "group": "Gptproto Format",
                   "pages": [
-                    "docs/api/gemini/veo/veo-3.1-fast/gptproto-format/firstlast-frame",
-                    "docs/api/gemini/veo/veo-3.1-fast/gptproto-format/image-to-video(9:16)",
-                    "docs/api/gemini/veo/veo-3.1-fast/gptproto-format/text-to-video(16:9)",
-                    "docs/api/gemini/veo/veo-3.1-fast/gptproto-format/get-task-status"
+                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/image-to-video(9:16)",
+                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/text-to-video(16:9)",
+                    "docs/api/gemini/veo/veo3.1-pro/gptproto-format/get-task-status"
                   ]
                 },
                 {
                   "group": "OpenAI Format",
                   "pages": [
-                    "docs/api/gemini/veo/veo-3.1-fast/openai-format/firstlast-frame",
-                    "docs/api/gemini/veo/veo-3.1-fast/openai-format/image-to-video(9:16)",
-                    "docs/api/gemini/veo/veo-3.1-fast/openai-format/text-to-video(16:9)",
-                    "docs/api/gemini/veo/veo-3.1-fast/openai-format/video-to-video(16:9)",
-                    "docs/api/gemini/veo/veo-3.1-fast/openai-format/get-task-status"
+                    "docs/api/gemini/veo/veo3.1-pro/openai-format/firstlast-frame",
+                    "docs/api/gemini/veo/veo-3.1-pro/openai-format/image-to-video(9:16)",
+                    "docs/api/gemini/veo/veo3.1-pro/openai-format/image-to-video(16:9)",
+                    "docs/api/gemini/veo/veo3.1-pro/openai-format/text-to-video(16:9)",
+                    "docs/api/gemini/veo/veo3.1-pro/openai-format/text-to-video(9:16)"
                   ]
                 }
               ]
