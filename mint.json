@@ -774,6 +774,29 @@
                   ]
                 }
               ]
+            },
+            {
+              "group": "gemini-3-pro-preview",
+              "pages": [
+                {
+                  "group": "OpenAI Format",
+                  "pages": [
+                    "docs/api/gemini/gemini-3-pro-preview/openai-format/text-to-text",
+                    "docs/api/gemini/gemini-3-pro-preview/openai-format/image-to-text"
+                  ]
+                },
+                {
+                  "group": "Official Format",
+                  "pages": [
+                    "docs/api/gemini/gemini-3-pro-preview/official-format/text-to-text-no-stream",
+                    "docs/api/gemini/gemini-3-pro-preview/official-format/text-to-text-stream",
+                    "docs/api/gemini/gemini-3-pro-preview/official-format/file-upload",
+                    "docs/api/gemini/gemini-3-pro-preview/official-format/file-upload-north-america",
+                    "docs/api/gemini/gemini-3-pro-preview/official-format/file-analysis-no-stream",
+                    "docs/api/gemini/gemini-3-pro-preview/official-format/file-analysis-stream"
+                  ]
+                }
+              ]
             }
           ],
           "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Gemini.png"

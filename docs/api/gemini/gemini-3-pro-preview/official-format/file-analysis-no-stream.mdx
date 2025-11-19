@@ -18,8 +18,8 @@ This endpoint requires authentication using an API key.
 
 ## Path Parameters
 
-<ParamField path="model" type="string" required default="gemini-3-pro-preview">
-  The model to use for the file analysis. Available models: `gemini-3-pro-preview`, etc.
+<ParamField path="model" type="string" required default="gemini-2.5-pro">
+  The model to use for the file analysis. Available models: `gemini-2.5-pro`, etc.
 </ParamField>
 
 
@@ -64,7 +64,7 @@ This endpoint requires authentication using an API key.
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent' \
+curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent' \
 --header 'Authorization: sk-***********' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -91,7 +91,7 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-3-pro-preview:generat
 import requests
 import json
 
-url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent"
+url = "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent"
 headers = {
     "Authorization": "sk-***********",
     "Content-Type": "application/json"
@@ -122,7 +122,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent";
+const url = "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent";
 const headers = {
   "Authorization": "sk-***********",
   "Content-Type": "application/json"
@@ -169,7 +169,7 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent"
+    url := "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent"
 
     payload := map[string]interface{}{
         "contents": []map[string]interface{}{
