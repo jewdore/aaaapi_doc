@@ -1781,6 +1781,9 @@
     "reddit": "https://www.reddit.com/user/GPT_Proto/"
   },
   "api": {
-    "baseUrl": "https://gptproto.com"
+    "baseUrl": "https://gptproto.com",
+    "playground": {
+      "mode": "hide"
+    }
   }
 }

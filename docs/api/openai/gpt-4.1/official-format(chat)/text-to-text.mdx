@@ -18,50 +18,27 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="model" type="string" required default="gpt-4.1">
-  The model to use for the request. `gpt-4.1`
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-4.1` | The model to use for the request |
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation |
+| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
 
-<ParamField body="messages" type="array" required example={[
-    {
-      role: "user",
-      content: [
-        {
-          type: "text",
-          text: "The positive prompt for the generation."
-        }
-      ]
-    }
-  ]}>
-  Array of message objects for the conversation
-  <Expandable title="properties">
-    
-    <ParamField body="role" type="string" required example="user">
-      * role:user,The role of the message.
-      * role:assistant,The role of the message.
-      * role:system,The role of the message.
-    </ParamField>
+### Messages Array Structure
 
-    <ParamField body="content" type="array" required>
-      <Expandable title="items">
+Each message object in the `messages` array should have the following structure:
 
-        <ParamField body="type" type="string" required example="text">
-          text
-        </ParamField>
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `role` | string | ✅ Yes | The role of the message. Can be: `user`, `assistant`, or `system` |
+| `content` | array/string | ✅ Yes | The content of the message |
 
-        <ParamField body="text" type="string" required example="The positive prompt for the generation.">
-          * type:text,The positive prompt for the generation.
-        </ParamField>
+### Content Array Structure (when content is an array)
 
-      </Expandable>
-    </ParamField>
-
-  </Expandable>
-</ParamField>
-
-<ParamField body="stream" type="boolean"  default="true">
-  Whether to stream the response
-</ParamField>
+| Field | Type | Required | Example | Description |
+|-------|------|----------|---------|-------------|
+| `type` | string | ✅ Yes | `text` | The type of content |
+| `text` | string | ✅ Yes | `"The positive prompt for the generation."` | The text content when type is `text` |
 
 ## Request Example
 

@@ -18,44 +18,39 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="model" type="string" required default="gpt-4.1">
-  The model to use for the request. `gpt-4.1`
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-4.1` | The model to use for the request |
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation |
+| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
 
-<ParamField body="messages" type="array" required>
-  Array of message objects for the conversation
-            <Expandable title="properties">
-                <ParamField body="role" type="string" required>
-                    * role:user,The role of the message.
-                    * role:assistant,The role of the message.
-                    * role:system,The role of the message.
-                </ParamField>
+### Messages Array Structure
 
-                <ParamField body="content" type="array" required>
+Each message object in the `messages` array should have the following structure:
 
-                            <Expandable title="properties">
-                                  <ParamField body="type" type="string" required>
-                                     text , image_url
-                                  </ParamField>
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `role` | string | ✅ Yes | The role of the message. Can be: `user`, `assistant`, or `system` |
+| `content` | array | ✅ Yes | Array of content objects (can include text and images) |
 
-                                    <ParamField body="text" type="string" required>
-                                      * type:text,The positive prompt for the generation.
-                                      * type:image_url,Optional image reference that guides generation.
-                                    </ParamField>
-                                    <ParamField body="image_url" type="object" required>
-                                      <ParamField body="url" type="string" required>
-                                        * type:image_url,The URL of the image to use for the generation.
-                                      </ParamField>
-                                    </ParamField>
-                            </Expandable>
+### Content Array Items
 
-                </ParamField>
-            </Expandable>
-</ParamField>
+The `content` array can contain multiple items of different types:
 
-<ParamField body="stream" type="boolean"  default="true">
-  Whether to stream the response
-</ParamField>
+#### Text Content
+
+| Field | Type | Required | Example | Description |
+|-------|------|----------|---------|-------------|
+| `type` | string | ✅ Yes | `"text"` | Must be `text` for text content |
+| `text` | string | ✅ Yes | `"What is in this image?"` | The text prompt or question |
+
+#### Image URL Content
+
+| Field | Type | Required | Example | Description |
+|-------|------|----------|---------|-------------|
+| `type` | string | ✅ Yes | `"image_url"` | Must be `image_url` for image content |
+| `image_url` | object | ✅ Yes | See below | Object containing the image URL |
+| `image_url.url` | string | ✅ Yes | `"https://example.com/image.jpg"` | The URL of the image to analyze |
 
 ## Request Example
 
