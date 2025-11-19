@@ -1,0 +1,274 @@
+---
+title: 'Image to Image'
+api: 'POST /api/v3/openai/gpt-image-1/image-edit'
+description: 'Edit and transform images based on text prompts'
+---
+
+## Overview
+
+This endpoint allows you to transform existing images based on text descriptions. You can apply transformations, add elements, or modify the image content according to your prompt.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+<ParamField header="Content-Type" type="string" required default="application/json">
+  Must be set to `application/json`
+</ParamField>
+
+## Request Body
+
+<ParamField body="image" type="array" required>
+  An array of image URLs to be edited. Currently supports one image at a time.
+</ParamField>
+
+<ParamField body="prompt" type="string" required default="The cat is running on the grassland">
+  The text prompt describing the desired changes or transformations to the image
+</ParamField>
+
+<ParamField body="mask" type="string" default="">
+  Optional mask image URL to specify which parts of the image should be edited
+</ParamField>
+
+<ParamField body="n" type="integer" default="2">
+  The number of edited images to generate. Must be between 1 and 10.
+</ParamField>
+
+<ParamField body="quality" type="string" default="medium">
+  The quality of the generated images. Options: `low`, `medium`, `high`
+</ParamField>
+
+<ParamField body="size" type="string" default="1024x1024">
+  The size of the generated images. Common sizes: `256x256`, `512x512`, `1024x1024`, `1792x1024`, `1024x1792`
+</ParamField>
+
+<ParamField body="background" type="string" default="">
+  Optional background setting for the image
+</ParamField>
+
+<ParamField body="enable_sync_mode" type="boolean" default="false">
+  Whether to enable synchronous mode. If `true`, the response will wait until the image is generated. If `false`, returns immediately with a task ID.
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1/image-edit' \
+  --header 'Authorization: YOUR_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "image": [
+        "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
+    ],
+    "prompt": "The cat is running on the grassland",
+    "mask": "",
+    "n": 2,
+    "quality": "medium",
+    "size": "1024x1024",
+    "background": "",
+    "enable_sync_mode": false
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "image": [
+        "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
+    ],
+    "prompt": "The cat is running on the grassland",
+    "mask": "",
+    "n": 2,
+    "quality": "medium",
+    "size": "1024x1024",
+    "background": "",
+    "enable_sync_mode": False
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
+  ],
+  "prompt": "The cat is running on the grassland",
+  "mask": "",
+  "n": 2,
+  "quality": "medium",
+  "size": "1024x1024",
+  "background": "",
+  "enable_sync_mode": false
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit"
+
+    payload := []byte(`{
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
+  ],
+  "prompt": "The cat is running on the grassland",
+  "mask": "",
+  "n": 2,
+  "quality": "medium",
+  "size": "1024x1024",
+  "background": "",
+  "enable_sync_mode": false
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success (Async Mode)" type="200">
+  Successful response when `enable_sync_mode` is `false`
+
+```json
+{
+  "task_id": "abc123def456",
+  "status": "processing",
+  "message": "Image editing task has been submitted"
+}
+```
+</ResponseField>
+
+<ResponseField name="Success (Sync Mode)" type="200">
+  Successful response when `enable_sync_mode` is `true`
+
+```json
+{
+  "created": 1700000000,
+  "data": [
+    {
+      "url": "https://example.com/edited-image-1.png",
+      "b64_json": null
+    },
+    {
+      "url": "https://example.com/edited-image-2.png",
+      "b64_json": null
+    }
+  ]
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 400 - Invalid parameters
+{
+  "error": {
+    "message": "Invalid image URL or parameters",
+    "type": "400"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
