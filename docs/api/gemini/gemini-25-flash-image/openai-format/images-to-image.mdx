@@ -18,8 +18,8 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="model" type="string" required default="gemini-2.5-flash-image-preview">
-  The model to use for the request. `gemini-2.5-flash-image-preview`
+<ParamField body="model" type="string" required default="gemini-2.5-flash-image">
+  The model to use for the request. `gemini-2.5-flash-image`
 </ParamField>
 
 <ParamField body="messages" type="array" required>
@@ -62,7 +62,7 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1/chat/completions" \
+curl -X POST "https://gptproto.com/v1/chat/completions" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -88,7 +88,7 @@ curl -X POST "gptproto/v1/chat/completions" \
   ],
   "chatId": "eacf4fbe-068b-4964-b880-87bca57b3064",
   "userId": "27349c00-ef7a-44a1-8416-1407fcee8569",
-  "model": "gemini-2.5-flash-image-preview"
+  "model": "gemini-2.5-flash-image"
 }'
 ```
 
@@ -125,7 +125,7 @@ data = {
   ],
   "chatId": "eacf4fbe-068b-4964-b880-87bca57b3064",
   "userId": "27349c00-ef7a-44a1-8416-1407fcee8569",
-  "model": "gemini-2.5-flash-image-preview"
+  "model": "gemini-2.5-flash-image"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -163,7 +163,7 @@ const data = {
   ],
   "chatId": "eacf4fbe-068b-4964-b880-87bca57b3064",
   "userId": "27349c00-ef7a-44a1-8416-1407fcee8569",
-  "model": "gemini-2.5-flash-image-preview"
+  "model": "gemini-2.5-flash-image"
 };
 
 fetch(url, {
@@ -213,7 +213,7 @@ func main() {
 ],
 "chatId": "eacf4fbe-068b-4964-b880-87bca57b3064",
 "userId": "27349c00-ef7a-44a1-8416-1407fcee8569",
-"model": "gemini-2.5-flash-image-preview"
+"model": "gemini-2.5-flash-image"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

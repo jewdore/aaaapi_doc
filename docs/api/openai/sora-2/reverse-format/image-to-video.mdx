@@ -50,7 +50,7 @@ This endpoint requires authentication using a Bearer token.
   The duration of the generated video in seconds.4, 8, 12
 </ParamField>
 
-<ParamField body="character_url" type="string" default="https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4">
+<ParamField body="character_url" type="string" default="https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4">
   Non-human IP video URL.
 </ParamField>
 
@@ -71,7 +71,7 @@ curl --request POST \
     "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
   ],
   "duration": 4,
-  "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
+  "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }'
 ```
 
@@ -93,7 +93,7 @@ data = {
     "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
   ],
   "duration": 4,
-  "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
+  "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -116,7 +116,7 @@ const data = {
     "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
   ],
   "duration": 4,
-  "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
+  "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 };
 
 fetch(url, {
@@ -151,7 +151,7 @@ func main() {
 "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
 ],
 "duration": 4,
-"character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
+"character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

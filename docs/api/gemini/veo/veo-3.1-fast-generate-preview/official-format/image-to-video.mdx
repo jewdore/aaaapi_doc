@@ -22,7 +22,7 @@ This endpoint requires authentication using an API key.
 
 ## Parameters
 
-<ParamField path="model_name" type="string" required default="veo-3.1-generate-preview">
+<ParamField path="model_name" type="string" required default="veo-3.1-fast-generate-preview">
   The name of the model to use for the request.
 </ParamField>
 
@@ -37,8 +37,14 @@ This endpoint requires authentication using an API key.
     <ParamField body="image" type="object" required>
       The source image information
       <Expandable title="properties">
-        <ParamField body="uri" type="string" required>
-          The URI of the source image file (must be a valid Google Cloud Storage or Generative Language API file URI)
+        <ParamField body="uri" type="string">
+          The URI of the source image file (must be a valid Google Cloud Storage or Generative Language API file URI). Either `uri` or `bytesBase64Encoded` must be provided.
+        </ParamField>
+        <ParamField body="mimeType" type="string">
+          The MIME type of the image (e.g., `image/png`, `image/jpeg`). Required when using `bytesBase64Encoded`.
+        </ParamField>
+        <ParamField body="bytesBase64Encoded" type="string">
+          Base64-encoded image data. Either `uri` or `bytesBase64Encoded` must be provided.
         </ParamField>
       </Expandable>
     </ParamField>
@@ -48,6 +54,12 @@ This endpoint requires authentication using an API key.
 <ParamField body="parameters" type="object">
   Additional parameters for video generation
   <Expandable title="properties">
+    <ParamField body="durationSeconds" type="integer">
+      The duration of the output video in seconds. Default: `8`
+    </ParamField>
+    <ParamField body="aspectRatio" type="string">
+      The aspect ratio of the output video. Options: `9:16`, `16:9`, `1:1`. Default: `9:16`
+    </ParamField>
     <ParamField body="resolution" type="string">
       The resolution of the output video. Options: `720p`, `1080p`
     </ParamField>
@@ -59,20 +71,22 @@ This endpoint requires authentication using an API key.
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning' \
+curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-fast-generate-preview:predictLongRunning' \
   --header 'x-goog-api-key: YOUR_API_KEY' \
   --header 'Content-Type: application/json' \
   --data '{
     "instances": [
         {
-            "prompt": "The cat starts walking forward",
+            "prompt": "Generate a video of a real-life model posing for a photoshoot.\n\nRequirements:\n1. Maintain the models appearance, posture, clothing, equipment, lighting, color, background, and composition exactly as in the image.\n2. The product must be fully visible from the front throughout, without being obscured, blurred, or distorted, ensuring clear product details, complete structure, and visible brand logos.\n3. The models movements should match the outfit scene, with very subtle natural movements such as breathing, weight shifts, shoulder and neck relaxation, and posture adjustments.\n4. The camera remains completely still, with no panning, zooming, shaking, or focal length changes, and the model is always shown in full-body proportions.\n5. The visual style is natural and realistic, with soft and even lighting, a clean and consistent background, without AI stylization, fictional elements, color shifts, or exposure fluctuations.",
             "image": {
-                "uri": "https://generativelanguage.googleapis.com/v1beta/files/abc123:download?alt=media"
+                "mimeType": "image/png",
+                "bytesBase64Encoded": "iVBORw0KGgoAAAANSUhEUgAAA2AAAASgCAIAAAARv7zJAAAgAElEQVR42kz99XdbWb/"
             }
         }
     ],
     "parameters": {
-        "resolution": "720p"
+        "durationSeconds": 8,
+        "aspectRatio": "9:16"
     }
 }'
 ```
@@ -81,7 +95,7 @@ curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview
 import requests
 import json
 
-url = "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning"
+url = "https://api.gptproto.com/v1beta/models/veo-3.1-fast-generate-preview:predictLongRunning"
 headers = {
     "x-goog-api-key": "YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -90,14 +104,16 @@ headers = {
 data = {
     "instances": [
         {
-            "prompt": "The cat starts walking forward",
+            "prompt": "Generate a video of a real-life model posing for a photoshoot.\n\nRequirements:\n1. Maintain the models appearance, posture, clothing, equipment, lighting, color, background, and composition exactly as in the image.\n2. The product must be fully visible from the front throughout, without being obscured, blurred, or distorted, ensuring clear product details, complete structure, and visible brand logos.\n3. The models movements should match the outfit scene, with very subtle natural movements such as breathing, weight shifts, shoulder and neck relaxation, and posture adjustments.\n4. The camera remains completely still, with no panning, zooming, shaking, or focal length changes, and the model is always shown in full-body proportions.\n5. The visual style is natural and realistic, with soft and even lighting, a clean and consistent background, without AI stylization, fictional elements, color shifts, or exposure fluctuations.",
             "image": {
-                "uri": "https://generativelanguage.googleapis.com/v1beta/files/abc123:download?alt=media"
+                "mimeType": "image/png",
+                "bytesBase64Encoded": "iVBORw0KGgoAAAANSUhEUgAAA2AAAASgCAIAAAARv7zJAAAgAElEQVR42kz99XdbWb/"
             }
         }
     ],
     "parameters": {
-        "resolution": "720p"
+        "durationSeconds": 8,
+        "aspectRatio": "9:16"
     }
 }
 
@@ -107,7 +123,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning";
+const url = "https://api.gptproto.com/v1beta/models/veo-3.1-fast-generate-preview:predictLongRunning";
 const headers = {
   "x-goog-api-key": "YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -116,14 +132,16 @@ const headers = {
 const data = {
   "instances": [
     {
-      "prompt": "The cat starts walking forward",
+      "prompt": "Generate a video of a real-life model posing for a photoshoot.\n\nRequirements:\n1. Maintain the models appearance, posture, clothing, equipment, lighting, color, background, and composition exactly as in the image.\n2. The product must be fully visible from the front throughout, without being obscured, blurred, or distorted, ensuring clear product details, complete structure, and visible brand logos.\n3. The models movements should match the outfit scene, with very subtle natural movements such as breathing, weight shifts, shoulder and neck relaxation, and posture adjustments.\n4. The camera remains completely still, with no panning, zooming, shaking, or focal length changes, and the model is always shown in full-body proportions.\n5. The visual style is natural and realistic, with soft and even lighting, a clean and consistent background, without AI stylization, fictional elements, color shifts, or exposure fluctuations.",
       "image": {
-        "uri": "https://generativelanguage.googleapis.com/v1beta/files/abc123:download?alt=media"
+        "mimeType": "image/png",
+        "bytesBase64Encoded": "iVBORw0KGgoAAAANSUhEUgAAA2AAAASgCAIAAAARv7zJAAAgAElEQVR42kz99XdbWb/"
       }
     }
   ],
   "parameters": {
-    "resolution": "720p"
+    "durationSeconds": 8,
+    "aspectRatio": "9:16"
   }
 };
 
@@ -149,19 +167,21 @@ import (
 )
 
 func main() {
-    url := "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning"
+    url := "https://api.gptproto.com/v1beta/models/veo-3.1-fast-generate-preview:predictLongRunning"
 
     payload := []byte(`{
   "instances": [
     {
-      "prompt": "The cat starts walking forward",
+      "prompt": "Generate a video of a real-life model posing for a photoshoot.\n\nRequirements:\n1. Maintain the models appearance, posture, clothing, equipment, lighting, color, background, and composition exactly as in the image.\n2. The product must be fully visible from the front throughout, without being obscured, blurred, or distorted, ensuring clear product details, complete structure, and visible brand logos.\n3. The models movements should match the outfit scene, with very subtle natural movements such as breathing, weight shifts, shoulder and neck relaxation, and posture adjustments.\n4. The camera remains completely still, with no panning, zooming, shaking, or focal length changes, and the model is always shown in full-body proportions.\n5. The visual style is natural and realistic, with soft and even lighting, a clean and consistent background, without AI stylization, fictional elements, color shifts, or exposure fluctuations.",
       "image": {
-        "uri": "https://generativelanguage.googleapis.com/v1beta/files/abc123:download?alt=media"
+        "mimeType": "image/png",
+        "bytesBase64Encoded": "iVBORw0KGgoAAAANSUhEUgAAA2AAAASgCAIAAAARv7zJAAAgAElEQVR42kz99XdbWb/"
       }
     }
   ],
   "parameters": {
-    "resolution": "720p"
+    "durationSeconds": 8,
+    "aspectRatio": "9:16"
   }
 }`)
 
@@ -190,7 +210,7 @@ func main() {
 
 ```json
 {
-  "name": "operations/veo-3.1-generate-preview-xxxxx",
+  "name": "operations/veo-3.1-fast-generate-preview-xxxxx",
   "metadata": {
     "@type": "type.googleapis.com/google.cloud.aiplatform.v1beta1.GenerateVideoMetadata",
     "createTime": "2025-01-19T00:00:00Z"
