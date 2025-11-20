@@ -1,0 +1,163 @@
+---
+title: 'File Upload'
+api: 'POST /v1beta/files'
+description: 'Upload files to Google Generative AI API'
+---
+
+## Overview
+
+This endpoint allows you to upload files for use with Google's Generative AI models.
+
+## Authentication
+
+This endpoint requires authentication using an API key.
+
+<ParamField header="x-goog-api-key" type="string" required default="sk-***********">
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="file" type="file" required>
+  The file to upload
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://api.gptproto.com/v1beta/files' \
+  --header 'x-goog-api-key: YOUR_API_KEY' \
+  --form 'file=@"/path/to/your/file.pdf"'
+```
+
+```python Python
+import requests
+
+url = "https://api.gptproto.com/v1beta/files"
+headers = {
+    "x-goog-api-key": "YOUR_API_KEY"
+}
+
+files = {
+    "file": open("/path/to/your/file.pdf", "rb")
+}
+
+response = requests.post(url, headers=headers, files=files)
+result = response.json()
+print(result)
+```
+
+```javascript JavaScript
+const url = "https://api.gptproto.com/v1beta/files";
+const formData = new FormData();
+formData.append("file", fileInput.files[0]);
+
+fetch(url, {
+  method: "POST",
+  headers: {
+    "x-goog-api-key": "YOUR_API_KEY"
+  },
+  body: formData
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "fmt"
+    "io"
+    "mime/multipart"
+    "net/http"
+    "os"
+)
+
+func main() {
+    url := "https://api.gptproto.com/v1beta/files"
+
+    file, _ := os.Open("/path/to/your/file.pdf")
+    defer file.Close()
+
+    body := &bytes.Buffer{}
+    writer := multipart.NewWriter(body)
+    part, _ := writer.CreateFormFile("file", "file.pdf")
+    io.Copy(part, file)
+    writer.Close()
+
+    req, _ := http.NewRequest("POST", url, body)
+    req.Header.Set("x-goog-api-key", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", writer.FormDataContentType())
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    responseBody, _ := io.ReadAll(resp.Body)
+    fmt.Println(string(responseBody))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful file upload
+
+```json
+{
+  "file": {
+    "name": "files/abc123",
+    "displayName": "file.pdf",
+    "mimeType": "application/pdf",
+    "sizeBytes": "12345",
+    "createTime": "2025-01-19T00:00:00Z",
+    "updateTime": "2025-01-19T00:00:00Z",
+    "uri": "https://generativelanguage.googleapis.com/v1beta/files/abc123"
+  }
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+</ResponseExample>
+

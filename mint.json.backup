@@ -16,9 +16,6 @@
       "to": "#07C983"
     }
   },
-  "search": {
-    "prompt": "Search API, model, or feature..."
-  },
   "topbarLinks": [
     {
       "name": "Support",
@@ -1883,7 +1880,7 @@
   "api": {
     "baseUrl": "https://gptproto.com",
     "playground": {
-      "mode": "simple"
+      "display": "none"
     }
   }
 }

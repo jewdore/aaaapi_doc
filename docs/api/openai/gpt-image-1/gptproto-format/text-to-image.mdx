@@ -1,0 +1,259 @@
+---
+title: 'Text to Image'
+api: 'POST /api/v3/openai/gpt-image-1/text-to-image'
+description: 'Generate images from text descriptions'
+---
+
+## Overview
+
+This endpoint allows you to generate images from text descriptions using GPT Image 1 model.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `YOUR_API_KEY`
+</ParamField>
+
+<ParamField header="Content-Type" type="string" required default="application/json">
+  Must be set to `application/json`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" type="string" required default="a cat">
+  A text description of the desired image(s). The maximum length is 32000 characters for gpt-image-1.
+</ParamField>
+
+<ParamField body="n" type="integer" default="1">
+  The number of images to generate. Must be between 1 and 10.
+</ParamField>
+
+<ParamField body="background" type="string" default="auto">
+  Allows to set transparency for the background of the generated image(s). This parameter is only supported for gpt-image-1. Must be one of `transparent`, `opaque` or `auto` (default value). When `auto` is used, the model will automatically determine the best background for the image.
+</ParamField>
+
+<ParamField body="quality" type="string" default="auto">
+  The quality of the image that will be generated. Must be one of `high`, `medium`, `low`, or `auto` (default value) for gpt-image-1.
+</ParamField>
+
+<ParamField body="size" type="string" default="auto">
+  The size of the generated images. Must be one of `1024x1024`, `1536x1024` (landscape), `1024x1536` (portrait), or `auto` (default value) for gpt-image-1.
+</ParamField>
+
+<ParamField body="enable_sync_mode" type="boolean" default="false">
+  Whether to enable synchronous mode. Options: `false`, `true`
+</ParamField>
+
+<ParamField body="response_format" type="string" default="b64_json">
+  The format in which the generated images are returned. Must be one of `url` or `b64_json`.
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1/text-to-image' \
+  --header 'Authorization: YOUR_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "prompt": "a cat",
+    "n": 2,
+    "background": "auto",
+    "quality": "medium",
+    "size": "1024x1024",
+    "enable_sync_mode": true,
+    "response_format": "b64_json"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/openai/gpt-image-1/text-to-image"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "prompt": "a cat",
+    "n": 2,
+    "background": "auto",
+    "quality": "medium",
+    "size": "1024x1024",
+    "enable_sync_mode": True,
+    "response_format": "b64_json"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/openai/gpt-image-1/text-to-image";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "a cat",
+  "n": 2,
+  "background": "auto",
+  "quality": "medium",
+  "size": "1024x1024",
+  "enable_sync_mode": true,
+  "response_format": "b64_json"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/openai/gpt-image-1/text-to-image"
+
+    payload := []byte(`{
+  "prompt": "a cat",
+  "n": 2,
+  "background": "auto",
+  "quality": "medium",
+  "size": "1024x1024",
+  "enable_sync_mode": true,
+  "response_format": "b64_json"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success (Sync Mode)" type="200">
+  Successful response when `enable_sync_mode` is `true`
+
+```json
+{
+  "created": 1700000000,
+  "data": [
+    {
+      "url": "https://example.com/generated-image-1.png",
+      "b64_json": null
+    },
+    {
+      "url": "https://example.com/generated-image-2.png",
+      "b64_json": null
+    }
+  ]
+}
+```
+</ResponseField>
+
+<ResponseField name="Success (Async Mode)" type="200">
+  Successful response when `enable_sync_mode` is `false`
+
+```json
+{
+  "task_id": "abc123def456",
+  "status": "processing",
+  "message": "Image generation task has been submitted"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 400 - Invalid parameters
+{
+  "error": {
+    "message": "Invalid parameters",
+    "type": "400"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+
