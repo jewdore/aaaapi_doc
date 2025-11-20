@@ -19,9 +19,9 @@ This endpoint requires authentication using a Bearer token.
   Your API key in the format: `YOUR_API_KEY`
 </ParamField>
 
-## 
+## Request Parameter
 <ParamField path="model" type="string" required default="sora-2">
-  The video generation model to use. 
+  The video generation model to use.
 </ParamField>
 
 <ParamField path="scene" type="string" required default="image-to-video">
@@ -59,18 +59,19 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/video/create" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl --request POST \
+  --url https://gptproto.com/api/v3/openai/reverse/sora-2/image-to-video \
+  --header 'Authorization: YOUR_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
   "model": "sora-2",
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
     "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
   ],
-  "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4",
-  "duration": 15
+  "duration": 4,
+  "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
 }'
 ```
 
@@ -78,7 +79,7 @@ curl -X POST "https://gptproto.com/v1/video/create" \
 import requests
 import json
 
-url = "https://gptproto.com/v1/video/create"
+url = "https://gptproto.com/api/v3/openai/reverse/sora-2/image-to-video"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -91,7 +92,7 @@ data = {
   "images": [
     "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
   ],
-  "duration": 15,
+  "duration": 4,
   "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
 }
 
@@ -101,7 +102,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1/video/create";
+const url = "https://gptproto.com/api/v3/openai/reverse/sora-2/image-to-video";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -113,8 +114,8 @@ const data = {
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
     "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
-  ],  
-  "duration": 15,
+  ],
+  "duration": 4,
   "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
 };
 
@@ -140,7 +141,7 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/v1/video/create"
+    url := "https://gptproto.com/api/v3/openai/reverse/sora-2/image-to-video"
 
     payload := []byte(`{
 "model": "sora-2",
@@ -149,7 +150,7 @@ func main() {
 "images": [
 "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
 ],
-"duration": 15,
+"duration": 4,
 "character_url": "https://static.aiclound.vip/sora/aec52377-e95b-49f9-9d2d-8f9b8ba46dca.mp4"
 }`)
 
