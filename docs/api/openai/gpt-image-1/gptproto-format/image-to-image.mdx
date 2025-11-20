@@ -23,35 +23,35 @@ This endpoint requires authentication using a Bearer token.
 ## Request Body
 
 <ParamField body="image" type="array" required>
-  An array of image URLs to be edited. Currently supports one image at a time.
+  The images to edit. A maximum of 16 reference images can be uploaded.
 </ParamField>
 
 <ParamField body="prompt" type="string" required default="The cat is running on the grassland">
-  The text prompt describing the desired changes or transformations to the image
+  A text description of the desired image(s). The maximum length is 32000 characters for gpt-image-1.
 </ParamField>
 
-<ParamField body="mask" type="string" default="">
-  Optional mask image URL to specify which parts of the image should be edited
+<ParamField body="mask" type="string">
+  An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited. If there are multiple images provided, the mask will be applied on the first image. Must be a valid PNG file, less than 4MB, and have the same dimensions as image.
 </ParamField>
 
-<ParamField body="n" type="integer" default="2">
-  The number of edited images to generate. Must be between 1 and 10.
+<ParamField body="n" type="integer" default="1">
+  The number of images to generate. Must be between 1 and 10.
 </ParamField>
 
-<ParamField body="quality" type="string" default="medium">
-  The quality of the generated images. Options: `low`, `medium`, `high`
+<ParamField body="quality" type="string" default="auto">
+  The quality of the image that will be generated. Options: `high`, `medium`, `low`. Only supported for gpt-image-1.
 </ParamField>
 
-<ParamField body="size" type="string" default="1024x1024">
-  The size of the generated images. Common sizes: `256x256`, `512x512`, `1024x1024`, `1792x1024`, `1024x1792`
+<ParamField body="background" type="string" default="auto">
+  Allows to set transparency for the background of the generated image(s). This parameter is only supported for gpt-image-1. Must be one of `transparent`, `opaque` or `auto` (default value). When `auto` is used, the model will automatically determine the best background for the image.
 </ParamField>
 
-<ParamField body="background" type="string" default="">
-  Optional background setting for the image
+<ParamField body="enable_sync_mode" type="string" default="false">
+  Whether to enable synchronous mode. Options: `false`, `true`
 </ParamField>
 
-<ParamField body="enable_sync_mode" type="boolean" default="false">
-  Whether to enable synchronous mode. If `true`, the response will wait until the image is generated. If `false`, returns immediately with a task ID.
+<ParamField body="response_format" type="string" default="b64_json">
+  The format in which the generated images are returned. Must be one of `url` or `b64_json`.
 </ParamField>
 
 ## Request Example
@@ -67,12 +67,11 @@ curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1/image-edit' \
         "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
     ],
     "prompt": "The cat is running on the grassland",
-    "mask": "",
-    "n": 2,
-    "quality": "medium",
-    "size": "1024x1024",
-    "background": "",
-    "enable_sync_mode": false
+    "n": 1,
+    "quality": "auto",
+    "background": "auto",
+    "enable_sync_mode": "false",
+    "response_format": "b64_json"
 }'
 ```
 
@@ -91,12 +90,11 @@ data = {
         "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
     ],
     "prompt": "The cat is running on the grassland",
-    "mask": "",
-    "n": 2,
-    "quality": "medium",
-    "size": "1024x1024",
-    "background": "",
-    "enable_sync_mode": False
+    "n": 1,
+    "quality": "auto",
+    "background": "auto",
+    "enable_sync_mode": "false",
+    "response_format": "b64_json"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -116,12 +114,11 @@ const data = {
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
   ],
   "prompt": "The cat is running on the grassland",
-  "mask": "",
-  "n": 2,
-  "quality": "medium",
-  "size": "1024x1024",
-  "background": "",
-  "enable_sync_mode": false
+  "n": 1,
+  "quality": "auto",
+  "background": "auto",
+  "enable_sync_mode": "false",
+  "response_format": "b64_json"
 };
 
 fetch(url, {
@@ -153,12 +150,11 @@ func main() {
     "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
   ],
   "prompt": "The cat is running on the grassland",
-  "mask": "",
-  "n": 2,
-  "quality": "medium",
-  "size": "1024x1024",
-  "background": "",
-  "enable_sync_mode": false
+  "n": 1,
+  "quality": "auto",
+  "background": "auto",
+  "enable_sync_mode": "false",
+  "response_format": "b64_json"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

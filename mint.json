@@ -60,7 +60,7 @@
     {
       "group": "API Reference",
       "pages": [
-        {
+        { 
           "group": "OpenAI",
           "pages": [
             {
@@ -587,6 +587,13 @@
         {
           "group": "Gemini",
           "pages": [
+            {
+              "group": "google-file-upload",
+              "pages": [
+                "docs/api/gemini/google-file-upload/file-upload",
+                "docs/api/gemini/google-file-upload/file-upload-north-america"
+              ]
+            },
             {
               "group": "gemini-2.0-flash",
               "pages": [
@@ -1873,7 +1880,7 @@
   "api": {
     "baseUrl": "https://gptproto.com",
     "playground": {
-      "display": "none"
+      "mode": "simple"
     }
   }
 }

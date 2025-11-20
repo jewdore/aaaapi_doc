@@ -8,57 +8,22 @@ description: "Analyze and understand image content using vision-enabled models"
 
 This endpoint provides image-to-text functionality using vision-enabled models in response mode.  provide image URLs to extract text content, describe scenes, or analyze visual information.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| **Authorization** (Header) | string | Yes | Your API key in the format: `sk-*****` |
+| **Content-Type** (Header) | string | Yes | Must be set to `application/json` |
+| **model** | string | Yes | The model to use for the request. Must be a vision-enabled model. |
+| **input** | array | Yes | Array of message objects with role and content |
+| **input[].role** | string | Yes | Role of the message sender (`user` or `assistant`) |
+| **input[].content** | array | Yes | Array of content objects |
+| **input[].content[].type** | string | Yes | Type of content (`input_text` or `input_image`) |
+| **input[].content[].text** | string | Conditional | Text prompt (required when type is `input_text`) |
+| **input[].content[].image_url** | string | Conditional | Image URL or base64 encoded image (required when type is `input_image`) |
+| **stream** | boolean | No | Whether to stream the response |
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `sk-*****`
-</ParamField>
-
-## Request Body
-
-<ParamField body="model" default="gpt-4.1" type="string" required>
-  The model to use for the request. Must be a vision-enabled model.
-</ParamField>
-
-<ParamField body="input" type="array" required default='[{"role": "user", "content": [{"type": "input_text", "text": "What is in this image?"}, {"type": "input_image", "image_url": "data:image/jpeg;base64,${base64Image}"}]}]'>
-  Array of message objects with role and content. Each message contains:
-  - `role`: "user" or "assistant"
-  - `content`: Array of content objects supporting the following types:
-    - **input_text**: Text prompt with `text` field
-    - **input_image**: Image input with `image_url` field, supports:
-      - Base64 encoded images: `data:image/jpeg;base64,{base64_string}`
-      - Supported formats: JPG, PNG
-
-  Example with base64 encoded image:
-  ```json
-  [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "What is in this image?"
-        },
-        {
-          "type": "input_image",
-          "image_url": "data:image/jpeg;base64,${base64Image}"
-        }
-      ]
-    }
-  ]
-  ```
-</ParamField>
-
-
-<ParamField body="stream" default={false} type="boolean">
-  Whether to stream the response
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/responses' \
@@ -80,10 +45,10 @@ curl --location 'https://gptproto.com/v1/responses' \
                 }
             ]
         }
-    ]
+    ],
+    "stream": false
 }'
 ```
-
 
 ```python Python
 import requests
@@ -111,14 +76,14 @@ data = {
                 }
             ]
         }
-    ]
+    ],
+    "stream": False
 }
 
 response = requests.post(url, headers=headers, json=data)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
-
 
 ```javascript JavaScript
 const url = "https://gptproto.com/v1/responses";
@@ -143,7 +108,8 @@ const data = {
         }
       ]
     }
-  ]
+  ],
+  "stream": false
 };
 
 fetch(url, {
@@ -155,7 +121,6 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
-
 
 ```go Go
 package main
@@ -188,6 +153,7 @@ func main() {
                 },
             },
         },
+        "stream": false,
     }
 
     jsonData, _ := json.Marshal(payload)
@@ -207,48 +173,7 @@ func main() {
 }
 ```
 
-</CodeGroup>
-
-## Response
-
-<ResponseField name="id" type="string">
-  Unique identifier for the response
-</ResponseField>
-
-<ResponseField name="object" type="string">
-  Object type, always "response"
-</ResponseField>
-
-<ResponseField name="created" type="integer">
-  Unix timestamp of when the response was created
-</ResponseField>
-
-<ResponseField name="model" type="string">
-  The model used for generating the response
-</ResponseField>
-
-<ResponseField name="output" type="string">
-  The generated text output (the extracted text or image analysis)
-</ResponseField>
-
-<ResponseField name="usage" type="object">
-  Token usage statistics
-
-  <Expandable title="Usage Object">
-    <ResponseField name="prompt_tokens" type="integer">
-      Number of tokens in the input
-    </ResponseField>
-
-    <ResponseField name="completion_tokens" type="integer">
-      Number of tokens in the output
-    </ResponseField>
-
-    <ResponseField name="total_tokens" type="integer">
-      Total number of tokens used
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
+</RequestExample>
 
 <ResponseExample>
 
