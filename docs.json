@@ -42,6 +42,7 @@
                     {
                         "group": "API Reference",
                         "icon": "code",
+                        "expanded": false,
                         "pages": [
                             {
                                 "group": "OpenAI",
