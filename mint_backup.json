@@ -17,7 +17,7 @@
     }
   },
   "search": {
-    "prompt": "Search API, model, or feature..."
+    "prompt": "Search API"
   },
     "topbarLinks": [
       {
