@@ -1876,16 +1876,10 @@
       "mode": "simple"
     }
   },
-  "contextual": {
-   "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
- }
+  "codeBlock": {
+    "copy": true,
+    "view": true,
+    "ai": ["chatgpt", "claude", "perplexity"],
+    "ide": ["cursor", "vscode"]
+  }
 }
