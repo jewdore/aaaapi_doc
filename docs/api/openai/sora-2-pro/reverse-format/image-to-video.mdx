@@ -17,13 +17,12 @@ This endpoint provides submit task functionality.
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `model` | string | ✅ Yes | `sora-2-pro` | The video generation model to use. |
-| `orientation` | string | ❌ No | `portrait` | portrait 、landscape |
 | `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | The positive prompt for the generation. |
 | `images` | string[] | ✅ Yes | `[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
-| `duration` | integer | ❌ No | `4` | The duration of the generated video in seconds.4, 8, 12 |
+| `size` | string | ✅ Yes | `small` | Video size quality. Options: small, large. Only sora-2-pro supports high-definition (large) |
+| `orientation` | string | ❌ No | `portrait` | Video orientation, does not support specific size control. Options: portrait, landscape |
+| `duration` | integer | ❌ No | `10` | The duration of the generated video in seconds. For sora-2: 10, 15. For sora-2-pro: 15, 25 |
 | `character_url` | string | ❌ No | `https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4` | Non-human IP video URL. |
-
-
 
 
 <RequestExample>
@@ -36,11 +35,12 @@ curl --request POST \
   --data '{
   "model": "sora-2-pro",
   "orientation": "portrait",
+  "size": "large",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
     "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
   ],
-  "duration": 4,
+  "duration": 15,
   "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }'
 ```
@@ -58,11 +58,12 @@ headers = {
 data = {
   "model": "sora-2-pro",
   "orientation": "portrait",
+  "size": "large",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
     "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
   ],
-  "duration": 4,
+  "duration": 15,
   "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }
 
@@ -81,11 +82,12 @@ const headers = {
 const data = {
   "model": "sora-2-pro",
   "orientation": "portrait",
+  "size": "large",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
     "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
   ],
-  "duration": 4,
+  "duration": 15,
   "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 };
 
@@ -116,11 +118,12 @@ func main() {
     payload := []byte(`{
 "model": "sora-2-pro",
 "orientation": "portrait",
+"size": "large",
 "prompt": "She turns around and smiles, then slowly walks out of the frame.",
 "images": [
 "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
 ],
-"duration": 4,
+"duration": 15,
 "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }`)
 

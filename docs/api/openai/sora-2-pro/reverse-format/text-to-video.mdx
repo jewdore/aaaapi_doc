@@ -15,9 +15,10 @@ This endpoint provides submit task functionality.
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `orientation` | string | ❌ No | `portrait` | portrait 、landscape |
 | `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | The positive prompt for the generation. |
-| `duration` | integer | ❌ No | `4` | The duration of the generated video in seconds.4, 8, 12 |
+| `size` | string | ✅ Yes | `small` | Video size quality. Options: small, large. Only sora-2-pro supports high-definition (large) |
+| `orientation` | string | ❌ No | `portrait` | Video orientation, does not support specific size control. Options: portrait, landscape |
+| `duration` | integer | ❌ No | `10` | The duration of the generated video in seconds. For sora-2: 10, 15. For sora-2-pro: 15, 25 |
 | `character_url` | string | ❌ No | `https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4` | Non-human IP video URL. |
 
 
@@ -33,7 +34,8 @@ curl --request POST \
   --data '{
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-  "duration": 4,
+  "size": "large",
+  "duration": 15,
   "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }'
 ```
@@ -51,7 +53,8 @@ headers = {
 data = {
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-  "duration": 4,
+  "size": "large",
+  "duration": 15,
   "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }
 
@@ -70,7 +73,8 @@ const headers = {
 const data = {
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-  "duration": 4,
+  "size": "large",
+  "duration": 15,
   "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 };
 
@@ -101,7 +105,8 @@ func main() {
     payload := []byte(`{
 "orientation": "portrait",
 "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-"duration": 4,
+"size": "large",
+"duration": 15,
 "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }`)
 
