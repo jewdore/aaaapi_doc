@@ -743,7 +743,6 @@
                                                 "pages": [
                                                     "docs/api/gemini/gemini-3-pro-preview/official-format/text-to-text-no-stream",
                                                     "docs/api/gemini/gemini-3-pro-preview/official-format/text-to-text-stream",
-                                                    "docs/api/gemini/gemini-3-pro-preview/official-format/file-upload",
                                                     "docs/api/gemini/gemini-3-pro-preview/official-format/file-analysis-no-stream",
                                                     "docs/api/gemini/gemini-3-pro-preview/official-format/file-analysis-stream"
                                                 ]
@@ -818,7 +817,7 @@
                                                 "group": "OpenAI Format",
                                                 "pages": [
                                                     "docs/api/gemini/veo/veo3.1-pro/openai-format/firstlast-frame",
-                                                    "docs/api/gemini/veo/veo-3.1-pro/openai-format/image-to-video(9:16)",
+                                                    "docs/api/gemini/veo/veo3.1-pro/openai-format/image-to-video(9:16)",
                                                     "docs/api/gemini/veo/veo3.1-pro/openai-format/image-to-video(16:9)",
                                                     "docs/api/gemini/veo/veo3.1-pro/openai-format/text-to-video(16:9)",
                                                     "docs/api/gemini/veo/veo3.1-pro/openai-format/text-to-video(9:16)"
