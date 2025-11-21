@@ -26,7 +26,7 @@ This endpoint provides file analysis functionality (no stream).
 <RequestExample>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent' \
+curl --location 'https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent' \
 --header 'Authorization: sk-***********' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -53,7 +53,7 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-pro:generateConte
 import requests
 import json
 
-url = "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent"
+url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent"
 headers = {
     "Authorization": "sk-***********",
     "Content-Type": "application/json"
@@ -84,7 +84,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent";
+const url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent";
 const headers = {
   "Authorization": "sk-***********",
   "Content-Type": "application/json"
@@ -131,7 +131,7 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent"
+    url := "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent"
 
     payload := map[string]interface{}{
         "contents": []map[string]interface{}{
