@@ -750,6 +750,25 @@
                                         ]
                                     },
                                     {
+                                        "group": "gemini-3-pro-image-preview",
+                                        "pages": [
+                                            {
+                                                "group": "Official Format",
+                                                "pages": [
+                                                    "docs/api/gemini/gemini-3-pro-image-preview/official-format/text-to-image",
+                                                    "docs/api/gemini/gemini-3-pro-image-preview/official-format/image-to-image"
+                                                ]
+                                            },
+                                            {
+                                                "group": "GPTProto Format",
+                                                "pages": [
+                                                    "docs/api/gemini/gemini-3-pro-image-preview/gptproto-format/text-to-image",
+                                                    "docs/api/gemini/gemini-3-pro-image-preview/gptproto-format/images-to-image"
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
                                         "group": "veo-3.1-generate-preview",
                                         "pages": [
                                             {
