@@ -9,13 +9,14 @@
         "dark": "#0D9373"
     },
     "title": "GPTProto API Documentation",
+
     "logo": {
         "light": "/logo/light.png",
         "dark": "/logo/dark.png",
         "href": "https://gptproto.com"
     },
     "search": {
-        "prompt": "Search API, model, or feature..."
+        "prompt": "Search API"
     },
     "navigation": {
         "tabs": [
