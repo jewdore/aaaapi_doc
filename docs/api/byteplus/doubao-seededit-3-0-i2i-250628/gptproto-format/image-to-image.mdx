@@ -8,51 +8,23 @@ description: 'Image to Image'
 
 This endpoint provides image to image functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `doubao-seededit-3-0-i2i-250628` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `Change bubbles into heart shape` | Image generation prompt describing the desired image content |
+| `image` | string | ❌ No | `https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg` | Input image URL(s) for image-to-image generation |
+| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
+| `size` | string | ❌ No | `adaptive` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
+| `seed` | integer | ❌ No | `21` | Random seed for reproducible results |
+| `guidance_scale` | number | ❌ No | `5.5` | Controls how closely the image follows the prompt (higher = more strict, typical range: 1.0-7.0) |
+| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to generated image |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="doubao-seededit-3-0-i2i-250628">
-  The model to use for the request
-</ParamField>
 
-<ParamField body="prompt" type="string" required default="Change bubbles into heart shape">
-  Image generation prompt describing the desired image content
-</ParamField>
-
-<ParamField body="image" type="string"  default="https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg">
-  Input image URL(s) for image-to-image generation
-</ParamField>
-
-<ParamField body="response_format" type="string"  default="url">
-  Response format: "url" (image URL) or "b64_json" (base64 encoded)
-</ParamField>
-
-<ParamField body="size" type="string"  default="adaptive">
-  Output image resolution (e.g., 1024x1024, 2K, 4K)
-</ParamField>
-
-<ParamField body="seed" type="integer"  default="21">
-  Random seed for reproducible results
-</ParamField>
-
-<ParamField body="guidance_scale" type="number"  default="5.5">
-  Controls how closely the image follows the prompt (higher = more strict, typical range: 1.0-7.0)
-</ParamField>
-
-<ParamField body="watermark" type="boolean"  default="true">
-  Whether to add watermark to generated image
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -164,22 +136,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -227,6 +186,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

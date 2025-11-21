@@ -8,109 +8,23 @@ description: 'Analyze and extract information from various file types using Anth
 
 This endpoint provides file analysis functionality using Anthropic native format. Upload files or provide file URLs to extract content, analyze data, summarize documents, or process structured information from various file formats including PDF, DOCX, TXT, and more.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using an API key header.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `claude-3-5-sonnet-20241022` | The model to use for file analysis |
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation. Each message must have a role (user or assistant) and content. Content can include: - Text blocks with type "text" - Document blocks with type "document" containing: - source: Object with type "base64" or "url" - For base64: media_type (e.g., "application/pdf") and data (base64 string) - For url: url field with the file URL Supported file formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML Maximum file size: 20MB Example with URL: ```json [ { "role": "user", "content": [ { "type": "text", "text": "Please analyze this document" }, { "type": "document", "source": { "type": "url", "url": "https://example.com/document.pdf" } } ] } ] ``` Example with base64: ```json [ { "role": "user", "content": [ { "type": "text", "text": "Please analyze this document" }, { "type": "document", "source": { "type": "base64", "media_type": "application/pdf", "data": "JVBERi0xLjQKJeLjz9MK..." } } ] } ] ``` |
+| `max_tokens` | integer | ✅ Yes | `1024` | The maximum number of tokens to generate before stopping |
+| `temperature` | number | ❌ No | `1.0` | Amount of randomness injected into the response. Ranges from 0.0 to 1.0 |
+| `top_p` | number | ❌ No | `1.0` | Use nucleus sampling. Ranges from 0.0 to 1.0 |
+| `top_k` | integer | ❌ No | `null` | Only sample from the top K options for each subsequent token |
+| `stream` | boolean | ❌ No | `false` | Whether to incrementally stream the response using server-sent events |
+| `stop_sequences` | array | ❌ No | - | Custom text sequences that will cause the model to stop generating |
 
-<ParamField header="Authorization" type="string" required>
-  Your API key for authentication
-</ParamField>
 
-<ParamField header="anthropic-version" type="string" required default="2023-06-01">
-  The version of the Anthropic API to use
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="claude-3-5-sonnet-20241022">
-  The model to use for file analysis
-</ParamField>
-
-<ParamField body="messages" type="array" required>
-  Array of message objects for the conversation. Each message must have a role (user or assistant) and content. Content can include:
-  - Text blocks with type "text"
-  - Document blocks with type "document" containing:
-    - source: Object with type "base64" or "url"
-    - For base64: media_type (e.g., "application/pdf") and data (base64 string)
-    - For url: url field with the file URL
-
-  Supported file formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML
-
-  Maximum file size: 20MB
-
-  Example with URL:
-  ```json
-  [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Please analyze this document"
-        },
-        {
-          "type": "document",
-          "source": {
-            "type": "url",
-            "url": "https://example.com/document.pdf"
-          }
-        }
-      ]
-    }
-  ]
-  ```
-
-  Example with base64:
-  ```json
-  [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Please analyze this document"
-        },
-        {
-          "type": "document",
-          "source": {
-            "type": "base64",
-            "media_type": "application/pdf",
-            "data": "JVBERi0xLjQKJeLjz9MK..."
-          }
-        }
-      ]
-    }
-  ]
-  ```
-</ParamField>
-
-<ParamField body="max_tokens" type="integer" required default="1024">
-  The maximum number of tokens to generate before stopping
-</ParamField>
-
-<ParamField body="temperature" type="number" default="1.0">
-  Amount of randomness injected into the response. Ranges from 0.0 to 1.0
-</ParamField>
-
-<ParamField body="top_p" type="number" default="1.0">
-  Use nucleus sampling. Ranges from 0.0 to 1.0
-</ParamField>
-
-<ParamField body="top_k" type="integer" default="null">
-  Only sample from the top K options for each subsequent token
-</ParamField>
-
-<ParamField body="stream" type="boolean" default="false">
-  Whether to incrementally stream the response using server-sent events
-</ParamField>
-
-<ParamField body="stop_sequences" type="array">
-  Custom text sequences that will cause the model to stop generating
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL (with URL)
 curl -X POST "https://gptproto.com/v1/messages" \
@@ -433,37 +347,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response with Anthropic format
-
-```json
-{
-  "id": "msg_01XFDUDYJgAACzvnptvVoYEL",
-  "type": "message",
-  "role": "assistant",
-  "content": [
-    {
-      "type": "text",
-      "text": "# Document Analysis Summary\n\n## Key Information:\n- Document Type: Technical API Documentation\n- Total Pages: 35\n- Version: 2.0\n\n## Main Topics:\n1. **Authentication**: The API uses Bearer token authentication with API keys\n2. **Endpoints**: Contains 12 main API endpoints for different operations\n3. **Rate Limiting**: Implements tiered rate limiting based on subscription level\n4. **Error Handling**: Comprehensive error codes and handling strategies\n\n## Key Sections:\n\n### Getting Started\n- Quick start guide for new developers\n- Authentication setup instructions\n- First API call examples in multiple languages\n\n### API Reference\n- Detailed endpoint documentation\n- Request/response formats\n- Parameter descriptions and constraints\n\n### Best Practices\n- Recommended usage patterns\n- Performance optimization tips\n- Security considerations\n\n### Code Examples\n- Python, JavaScript, Go, and cURL examples\n- Common use case implementations\n- Error handling patterns\n\n## Important Notes:\n- All requests must include valid API key\n- Rate limits: 100 requests/minute for free tier, 1000/minute for premium\n- Support for both JSON and XML response formats\n- Webhook notifications available for asynchronous operations"
-    }
-  ],
-  "model": "claude-3-5-sonnet-20241022",
-  "stop_reason": "end_turn",
-  "stop_sequence": null,
-  "usage": {
-    "input_tokens": 3520,
-    "output_tokens": 285
-  }
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -511,5 +397,4 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>

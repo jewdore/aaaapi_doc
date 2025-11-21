@@ -8,39 +8,20 @@ description: 'Image to Video（16:9）Asyn '
 
 This endpoint provides image to video（16:9）asyn  functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `Generate a video of a monk playing basketball with a tomahawk dunk` | Prompt parameter |
+| `model` | string | ✅ Yes | `veo3-pro-frames` | The model to use for the request |
+| `enhance_prompt` | boolean | ❌ No | `true` | Enhance Prompt parameter |
+| `aspect_ratio` | string | ❌ No | `16:9` | Aspect Ratio parameter |
+| `images` | array | ❌ No | `[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="Generate a video of a monk playing basketball with a tomahawk dunk">
-  Prompt parameter
-</ParamField>
 
-<ParamField body="model" type="string" required default="veo3-pro-frames">
-  The model to use for the request
-</ParamField>
-
-<ParamField body="enhance_prompt" type="boolean"  default="true">
-  Enhance Prompt parameter
-</ParamField>
-
-<ParamField body="aspect_ratio" type="string"  default="16:9">
-  Aspect Ratio parameter
-</ParamField>
-
-<ParamField body="images" type="array"  default="[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]">
-  Images parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/veo/videos" \
@@ -148,22 +129,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -211,6 +179,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

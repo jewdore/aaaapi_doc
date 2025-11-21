@@ -8,39 +8,20 @@ description: 'Image to Image'
 
 This endpoint provides image to image functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | file | ✅ Yes | - | image parameter |
+| `prompt` | string | ✅ Yes | - | prompt parameter |
+| `mask` | file | ✅ Yes | - | mask parameter |
+| `model` | string | ✅ Yes | `gpt-4o-image-vip` | model parameter |
+| `n` | string | ✅ Yes | `1` | n parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="image" type="file" required>
-  image parameter
-</ParamField>
 
-<ParamField body="prompt" type="string" required>
-  prompt parameter
-</ParamField>
-
-<ParamField body="mask" type="file" required>
-  mask parameter
-</ParamField>
-
-<ParamField body="model" type="string" required default="gpt-4o-image-vip">
-  model parameter
-</ParamField>
-
-<ParamField body="n" type="string" required default="1">
-  n parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/edits" \
@@ -152,22 +133,9 @@ func main() {
     fmt.Println(string(responseBody))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -215,6 +183,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

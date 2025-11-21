@@ -8,31 +8,18 @@ description: 'Image To Video'
 
 Turn a single reference image into a coherent video clip with synchronized audio. Built on Sora 2’s core advances, the image-to-video pipeline preserves identity, lighting, and composition while synthesizing believable motion and camera dynamics.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | The positive prompt for the generation. |
+| `image` | string | ❌ No | `https://filesystem.site/cdn/202xxx/xxxx.png` | The image for generating the output. |
+| `duration` | integer | ❌ No | `4` | The duration of the generated video in seconds.4, 8, 12 |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="She turns around and smiles, then slowly walks out of the frame.">
-  The positive prompt for the generation.
-</ParamField>
 
-<ParamField body="image" type="string"  default="https://filesystem.site/cdn/202xxx/xxxx.png">
-  The image for generating the output.
-</ParamField>
-
-<ParamField body="duration" type="integer"  default="4">
-  The duration of the generated video in seconds.4, 8, 12
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video" \
@@ -124,15 +111,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="data.id" type="string">
-  Unique identifier for the prediction, Task Id
-
-</ResponseField>
+</RequestExample>
 
 <ResponseExample>
 
@@ -180,6 +159,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

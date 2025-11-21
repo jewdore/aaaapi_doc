@@ -8,87 +8,29 @@ description: 'File Analysis (Stream)'
 
 This endpoint provides file analysis functionality (stream).
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `sk-***********`
-</ParamField>
-
 ## Path Parameters
 
-<ParamField path="model" type="string" required default="gemini-2.0-flash">
-  The model to use for the file analysis. Available models: `gemini-2.0-flash`, etc.
-</ParamField>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - | An array of content objects representing the conversation history and file data.   The role of the message sender. Typically `"user"` or `"model"`. Optional for single-turn requests. |
+| `parts` | array | ✅ Yes | - | An array of parts that make up the message content. Can include both text and file data.   Text content of the message or prompt for analyzing the file. |
+| `file_data` | object | ❌ No | - | Reference to file data for analysis (PDF, images, etc.).   The MIME type of the file (e.g., `"application/pdf"`, `"image/jpeg"`, `"image/png"`). |
+| `file_uri` | string | ✅ Yes | - | The URI of the file to analyze. Can be a public URL. |
+| `inlineData` | object | ❌ No | - | Inline data for images or other media (base64 encoded). |
+| `functionResponse` | object | ❌ No | - | Response from a function call. |
+| `videoMetadata` | object | ❌ No | - | Metadata for video content. |
+| `functionCall` | object | ❌ No | - | Function call request. |
+| `functionCalls` | array | ❌ No | - | Multiple function calls. |
+| `thoughtSignature` | string | ❌ No | - | Signature for thought content. |
+| `thought` | string | ❌ No | - | Thought content for reasoning models. |
 
 
-## Request Body Parameters
 
-<ParamField body="contents" type="array" required>
-  An array of content objects representing the conversation history and file data.
 
-  <Expandable title="Content Object Structure">
-    <ParamField body="role" type="string">
-      The role of the message sender. Typically `"user"` or `"model"`. Optional for single-turn requests.
-    </ParamField>
-
-    <ParamField body="parts" type="array" required>
-      An array of parts that make up the message content. Can include both text and file data.
-
-      <Expandable title="Parts Object Structure">
-        <ParamField body="text" type="string">
-          Text content of the message or prompt for analyzing the file.
-        </ParamField>
-
-        <ParamField body="file_data" type="object">
-          Reference to file data for analysis (PDF, images, etc.).
-
-          <Expandable title="File Data Structure">
-            <ParamField body="mime_type" type="string" required>
-              The MIME type of the file (e.g., `"application/pdf"`, `"image/jpeg"`, `"image/png"`).
-            </ParamField>
-
-            <ParamField body="file_uri" type="string" required>
-              The URI of the file to analyze. Can be a public URL.
-            </ParamField>
-          </Expandable>
-        </ParamField>
-
-        <ParamField body="inlineData" type="object">
-          Inline data for images or other media (base64 encoded).
-        </ParamField>
-
-        <ParamField body="functionResponse" type="object">
-          Response from a function call.
-        </ParamField>
-
-        <ParamField body="videoMetadata" type="object">
-          Metadata for video content.
-        </ParamField>
-
-        <ParamField body="functionCall" type="object">
-          Function call request.
-        </ParamField>
-
-        <ParamField body="functionCalls" type="array">
-          Multiple function calls.
-        </ParamField>
-
-        <ParamField body="thoughtSignature" type="string">
-          Signature for thought content.
-        </ParamField>
-
-        <ParamField body="thought" type="string">
-          Thought content for reasoning models.
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1beta/models/gemini-2.0-flash:streamGenerateContent" \
@@ -228,22 +170,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -291,6 +220,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

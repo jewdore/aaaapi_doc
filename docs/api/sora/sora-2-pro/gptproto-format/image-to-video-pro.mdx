@@ -8,35 +8,19 @@ description: 'Image To Video Pro'
 
 This endpoint provides image to video pro functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `A video of a horse dancing.` | Prompt parameter |
+| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/material/land-part1-default.png` | Image parameter |
+| `duration` | integer | ❌ No | `4` | Duration parameter |
+| `resolution` | string | ❌ No | `720p` | Resolution parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="A video of a horse dancing.">
-  Prompt parameter
-</ParamField>
 
-<ParamField body="image" type="string"  default="https://oss.heyoos.com/ai-draw/material/land-part1-default.png">
-  Image parameter
-</ParamField>
-
-<ParamField body="duration" type="integer"  default="4">
-  Duration parameter
-</ParamField>
-
-<ParamField body="resolution" type="string"  default="720p">
-  Resolution parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video-pro" \
@@ -132,22 +116,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -195,6 +166,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,53 +8,23 @@ description: 'Image to Video'
 
 Alibaba WAN 2.5 is an advanced image-to-video model on Alibaba Cloud’s DashScope. It generates high-quality videos from images and supports output resolutions of 480p, 720p, and 1080p.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="image" type="string" required>
-  The image for generating the output.
-</ParamField>
-
-
-<ParamField body="audio" type="string">
-  Audio URL to guide generation (optional).
-</ParamField>
-
-<ParamField body="prompt" type="string" required>
-  The positive prompt for the generation.
-</ParamField>
-
-<ParamField body="negative_prompt" type="string" required>
-  The negative prompt for the generation.
-</ParamField>
-
-<ParamField body="resolution" type="string"  default="720p">
-  480p, 720p, 1080p . The resolution of the generated media.
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | string | ✅ Yes | - | The image for generating the output. |
+| `audio` | string | ❌ No | - | Audio URL to guide generation (optional). |
+| `prompt` | string | ✅ Yes | - | The positive prompt for the generation. |
+| `negative_prompt` | string | ✅ Yes | - | The negative prompt for the generation. |
+| `resolution` | string | ❌ No | `720p` | 480p, 720p, 1080p . The resolution of the generated media. |
+| `duration` | integer | ❌ No | `5` | 3, 4, 5, 6, 7, 8, 9, 10 . The duration of the generated media in seconds. |
+| `enable_prompt_expansion` | boolean | ❌ No | `false` | If set to true, the prompt optimizer will be enabled. |
+| `seed` | integer | ❌ No | `-1` | -1 ~ 2147483647 . The random seed to use for the generation. -1 means a random seed will be used. |
 
 
-<ParamField body="duration" type="integer"  default="5">
-  3, 4, 5, 6, 7, 8, 9, 10 . The duration of the generated media in seconds.
-</ParamField>
 
-<ParamField body="enable_prompt_expansion" type="boolean"  default="false">
-  If set to true, the prompt optimizer will be enabled.
-</ParamField>
 
-<ParamField body="seed" type="integer"  default="-1">
-  -1 ~ 2147483647 . The random seed to use for the generation. -1 means a random seed will be used.
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 
@@ -72,17 +42,7 @@ curl --location 'https://gptproto.com/api/v3/alibaba/wan-2.5/image-to-video' \
     "seed": -1
 }'
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="data.id" type="string">
-Unique identifier for the prediction, Task Id
-</ResponseField>
-<ResponseField name="data.status" type="string">
-Status of the task: created, processing, completed, or failed
-</ResponseField>
+</RequestExample>
 
 ```json
 {
@@ -153,6 +113,5 @@ Status of the task: created, processing, completed, or failed
   }
 }
 ```
-
 </ResponseExample>
 

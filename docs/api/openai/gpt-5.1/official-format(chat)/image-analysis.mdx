@@ -6,87 +6,65 @@ description: "Analyze and understand image content using vision-enabled models"
 
 ## Overview
 
-This endpoint provides image analysis functionality using the OpenAI-compatible chat completions API. Upload images or provide image URLs to analyze and understand image content with vision-enabled models.
-
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `sk-*****`
-</ParamField>
+This endpoint provides image-to-text functionality using vision-enabled models.
 
 ## Request Body
 
-<ParamField body="model" type="string" required default="gpt-5.1">
-  The model to use for the request. `gpt-5.1`
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-5.1` | The model to use for the request. Must be a vision-enabled model. |
+| `messages` | array | ✅ Yes | - | Array of message objects with role and content |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
 
-<ParamField body="messages" type="array" required>
-  Array of message objects for the conversation
-            <Expandable title="properties">
-                <ParamField body="role" type="string" required>
-                    * role:user,The role of the message.
-                    * role:assistant,The role of the message.
-                    * role:system,The role of the message.
-                </ParamField>
+### Messages Array Structure
 
-                <ParamField body="content" type="array" required>
+Each message object in the `messages` array should have the following structure:
 
-                            <Expandable title="properties">
-                                  <ParamField body="type" type="string" required>
-                                     text , image_url
-                                  </ParamField>
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `role` | string | ✅ Yes | Role of the message sender. Can be: `user` or `assistant` |
+| `content` | array | ✅ Yes | Array of content objects (can include text and images) |
 
-                                    <ParamField body="text" type="string" required>
-                                      * type:text,The positive prompt for the generation.
-                                      * type:image_url,Optional image reference that guides generation.
-                                    </ParamField>
-                                    <ParamField body="image_url" type="object" required>
-                                      <ParamField body="url" type="string" required>
-                                        * type:image_url,The URL of the image to use for the generation.
-                                      </ParamField>
-                                    </ParamField>
-                            </Expandable>
+### Content Array Structure
 
-                </ParamField>
-            </Expandable>
-</ParamField>
+Each content object in the `content` array should have the following structure:
 
-<ParamField body="stream" type="boolean"  default="true">
-  Whether to stream the response
-</ParamField>
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `type` | string | ✅ Yes | Type of content. Can be: `text` or `image_url` |
+| `text` | string | ✅ Yes (if type is `text`) | Text prompt content |
+| `image_url` | object | ✅ Yes (if type is `image_url`) | Image URL object with `url` field containing image URL or base64 encoded image |
 
-## Request Example
 
-<CodeGroup>
+
+<RequestExample>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: sk-*****" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "model": "gpt-5.1",
-  "messages": [
-    {
-      "role": "user",
-      "content": [
+curl --location 'https://gptproto.com/v1/chat/completions' \
+--header 'Authorization: sk-*****' \
+--header 'Content-Type: application/json' \
+--data '{
+    "model": "gpt-5.1",
+    "messages": [
         {
-          "type": "text",
-          "text": "What is in this image?"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
-          }
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "What is in this image?"
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "data:image/jpeg;base64,${base64Image}"
+                    }
+                }
+            ]
         }
-      ]
-    }
-  ],
+    ],
+    "stream": false
 }'
 ```
-
 
 ```python Python
 import requests
@@ -99,31 +77,31 @@ headers = {
 }
 
 data = {
-  "model": "gpt-5.1",
-  "messages": [
-    {
-      "role": "user",
-      "content": [
+    "model": "gpt-5.1",
+    "messages": [
         {
-          "type": "text",
-          "text": "What is in this image?"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
-          }
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "What is in this image?"
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "data:image/jpeg;base64,${base64Image}"
+                    }
+                }
+            ]
         }
-      ]
-    }
-  ],
+    ],
+    "stream": False
 }
 
 response = requests.post(url, headers=headers, json=data)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
-
 
 ```javascript JavaScript
 const url = "https://gptproto.com/v1/chat/completions";
@@ -145,12 +123,13 @@ const data = {
         {
           "type": "image_url",
           "image_url": {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+            "url": "data:image/jpeg;base64,${base64Image}"
           }
         }
       ]
     }
   ],
+  "stream": false
 };
 
 fetch(url, {
@@ -162,7 +141,6 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
-
 
 ```go Go
 package main
@@ -178,28 +156,30 @@ import (
 func main() {
     url := "https://gptproto.com/v1/chat/completions"
 
-    payload := []byte(`{
-"model": "gpt-5.1",
-"messages": [
-{
-"role": "user",
-"content": [
-{
-"type": "text",
-"text": "What is in this image?"
-},
-{
-"type": "image_url",
-"image_url": {
-"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
-}
-}
-]
-}
-],
-}`)
+    payload := map[string]interface{}{
+        "model": "gpt-5.1",
+        "messages": []map[string]interface{}{
+            {
+                "role": "user",
+                "content": []map[string]interface{}{
+                    {
+                        "type": "text",
+                        "text": "What is in this image?",
+                    },
+                    {
+                        "type": "image_url",
+                        "image_url": map[string]interface{}{
+                            "url": "data:image/jpeg;base64,${base64Image}",
+                        },
+                    },
+                },
+            },
+        },
+        "stream": false,
+    }
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    jsonData, _ := json.Marshal(payload)
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
     req.Header.Set("Authorization", "sk-*****")
     req.Header.Set("Content-Type", "application/json")
 
@@ -214,72 +194,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="id" type="string">
-  Unique identifier for the chat completion
-</ResponseField>
-
-<ResponseField name="object" type="string">
-  Object type, always "chat.completion"
-</ResponseField>
-
-<ResponseField name="created" type="integer">
-  Unix timestamp of when the chat completion was created
-</ResponseField>
-
-<ResponseField name="model" type="string">
-  The model used for generating the completion
-</ResponseField>
-
-<ResponseField name="choices" type="array">
-  Array of completion choices
-
-  <Expandable title="Choice Object">
-    <ResponseField name="index" type="integer">
-      The index of this choice in the array
-    </ResponseField>
-
-    <ResponseField name="message" type="object">
-      The generated message
-
-      <Expandable title="Message Object">
-        <ResponseField name="role" type="string">
-          The role of the message author, always "assistant"
-        </ResponseField>
-
-        <ResponseField name="content" type="string">
-          The content of the message (the image analysis result)
-        </ResponseField>
-      </Expandable>
-    </ResponseField>
-
-    <ResponseField name="finish_reason" type="string">
-      The reason the completion finished. Possible values: "stop", "length", "content_filter"
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="usage" type="object">
-  Token usage statistics
-
-  <Expandable title="Usage Object">
-    <ResponseField name="prompt_tokens" type="integer">
-      Number of tokens in the prompt
-    </ResponseField>
-
-    <ResponseField name="completion_tokens" type="integer">
-      Number of tokens in the completion
-    </ResponseField>
-
-    <ResponseField name="total_tokens" type="integer">
-      Total number of tokens used
-    </ResponseField>
-  </Expandable>
-</ResponseField>
+</RequestExample>
 
 <ResponseExample>
 
@@ -294,7 +209,7 @@ func main() {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "The image shows a wooden boardwalk path extending through a lush green grassland. The boardwalk appears to lead toward a distant tree line under a bright blue sky with some clouds. The grass on either side of the boardwalk is vibrant green, suggesting it might be spring or summer. The scene has a peaceful, natural atmosphere with good visibility and sunny weather conditions."
+        "content": "The image shows a wooden boardwalk path extending through a lush green grassland."
       },
       "finish_reason": "stop"
     }
@@ -316,7 +231,6 @@ func main() {
 }
 ```
 
-
 ```json 403 - Invalid Token
 {
   "error": {
@@ -325,7 +239,6 @@ func main() {
   }
 }
 ```
-
 
 ```json 403 - Insufficient balance
 {
@@ -336,7 +249,6 @@ func main() {
 }
 ```
 
-
 ```json 500 - Internal server error
 {
   "error": {
@@ -346,7 +258,6 @@ func main() {
 }
 ```
 
-
 ```json 503 - Content policy violation
 {
   "error": {
@@ -355,5 +266,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
+

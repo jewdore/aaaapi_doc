@@ -8,60 +8,22 @@ description: 'File Analysis (No Stream)'
 
 This endpoint provides file analysis functionality (no stream).
 
-## Authentication
-
-This endpoint requires authentication using an API key.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key
-</ParamField>
-
 ## Path Parameters
 
-<ParamField path="model" type="string" required default="gemini-2.5-flash">
-  The model to use for the file analysis. Available models: `gemini-2.5-flash`, etc.
-</ParamField>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - | An array of content objects representing the conversation history and file data.   The role of the message sender. Typically `"user"` or `"model"`. Optional for single-turn requests. |
+| `parts` | array | ✅ Yes | - | An array of parts that make up the message content. Can include both text and file data.   Text content of the message or prompt for analyzing the file. |
+| `file_data` | object | ❌ No | - | Reference to file data for analysis (PDF, images, etc.).   The MIME type of the file (e.g., `"application/pdf"`, `"image/jpeg"`, `"image/png"`). |
+| `file_uri` | string | ✅ Yes | - | The URI of the file to analyze. Can be a public URL. |
 
 
-## Request Body Parameters
 
-<ParamField body="contents" type="array" required>
-  An array of content objects representing the conversation history and file data.
 
-  <Expandable title="Content Object Structure">
-    <ParamField body="role" type="string">
-      The role of the message sender. Typically `"user"` or `"model"`. Optional for single-turn requests.
-    </ParamField>
-
-    <ParamField body="parts" type="array" required>
-      An array of parts that make up the message content. Can include both text and file data.
-
-      <Expandable title="Parts Object Structure">
-        <ParamField body="text" type="string">
-          Text content of the message or prompt for analyzing the file.
-        </ParamField>
-
-        <ParamField body="file_data" type="object">
-          Reference to file data for analysis (PDF, images, etc.).
-
-          <Expandable title="File Data Structure">
-            <ParamField body="mime_type" type="string" required>
-              The MIME type of the file (e.g., `"application/pdf"`, `"image/jpeg"`, `"image/png"`).
-            </ParamField>
-
-            <ParamField body="file_uri" type="string" required>
-              The URI of the file to analyze. Can be a public URL.
-            </ParamField>
-          </Expandable>
-        </ParamField>
-
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash:generateContent' \
@@ -207,58 +169,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response containing file analysis results
-
-```json
-{
-  "candidates": [
-    {
-      "content": {
-        "parts": [
-          {
-            "text": "这是一份名为《Essential English》的PDF文档。根据文档内容分析，这是一本英语学习教材..."
-          }
-        ],
-        "role": "model"
-      },
-      "finishReason": "STOP",
-      "index": 0,
-      "safetyRatings": [
-        {
-          "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_HATE_SPEECH",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_HARASSMENT",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-          "probability": "NEGLIGIBLE"
-        }
-      ]
-    }
-  ],
-  "usageMetadata": {
-    "promptTokenCount": 1520,
-    "candidatesTokenCount": 256,
-    "totalTokenCount": 1776
-  }
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -270,5 +183,4 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>

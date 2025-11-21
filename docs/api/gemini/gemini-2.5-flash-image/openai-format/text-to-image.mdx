@@ -20,146 +20,14 @@ Outputs: Text and image
 
 The default output size for chat mode is 1:1 (1024x1024)
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   role of user. |
+| `content` | string | ✅ Yes | - | The prompt for the generation. |
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image` | The model to use for the request |
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="messages" type="array" required>
-  Array of message objects for the conversation
-
-  <Expandable title="properties"  defaultOpen="true">
-    <ParamField body="role" type="string" required>
-      role of user.
-    </ParamField>
-    <ParamField body="content" type="string" required>
-      The prompt for the generation.
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-<ParamField body="model" default="gemini-2.5-flash-image" type="string" required>
-  The model to use for the request
-</ParamField>
-
-<CodeGroup>
-
-```bash cURL
-curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "messages": [
-    {
-      "role": "user",
-      "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
-    }
-  ],
-  "model": "gemini-2.5-flash-image"
-}'
-```
-
-
-```python Python
-import requests
-import json
-
-url = "https://gptproto.com/v1/chat/completions"
-headers = {
-    "Authorization": "YOUR_API_KEY",
-    "Content-Type": "application/json"
-}
-
-data = {
-  "messages": [
-    {
-      "role": "user",
-      "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
-    }
-  ],
-  "model": "gemini-2.5-flash-image"
-}
-
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
-```
-
-
-```javascript JavaScript
-const url = "https://gptproto.com/v1/chat/completions";
-const headers = {
-  "Authorization": "YOUR_API_KEY",
-  "Content-Type": "application/json"
-};
-
-const data = {
-  "messages": [
-    {
-      "role": "user",
-      "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
-    }
-  ],
-  "model": "gemini-2.5-flash-image"
-};
-
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
-```
-
-
-```go Go
-package main
-
-import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
-)
-
-func main() {
-    url := "https://gptproto.com/v1/chat/completions"
-
-    payload := []byte(`{
-"messages": [
-{
-"role": "user",
-"content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
-}
-],
-"model": "gemini-2.5-flash-image"
-}`)
-
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
-
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
-}
-```
-
-</CodeGroup>
 
 ## Response
 
@@ -247,5 +115,4 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>

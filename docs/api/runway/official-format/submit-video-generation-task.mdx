@@ -8,47 +8,22 @@ description: 'Submit Video Generation Task'
 
 This endpoint provides submit video generation task functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `promptImage` | string | ❌ No | `https://xxx.com/logo.png` | Promptimage parameter |
+| `seed` | integer | ❌ No | `4294967295` | Seed parameter |
+| `model` | string | ✅ Yes | `runwayml-gen3a_turbo-5` | The model to use for the request |
+| `promptText` | string | ❌ No | `cat dance` | Prompttext parameter |
+| `watermark` | boolean | ❌ No | `false` | Watermark parameter |
+| `duration` | integer | ❌ No | `5` | Duration parameter |
+| `ratio` | string | ❌ No | `1280:768` | Ratio parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="promptImage" type="string"  default="https://xxx.com/logo.png">
-  Promptimage parameter
-</ParamField>
 
-<ParamField body="seed" type="integer"  default="4294967295">
-  Seed parameter
-</ParamField>
-
-<ParamField body="model" type="string" required default="runwayml-gen3a_turbo-5">
-  The model to use for the request
-</ParamField>
-
-<ParamField body="promptText" type="string"  default="cat dance">
-  Prompttext parameter
-</ParamField>
-
-<ParamField body="watermark" type="boolean"  default="false">
-  Watermark parameter
-</ParamField>
-
-<ParamField body="duration" type="integer"  default="5">
-  Duration parameter
-</ParamField>
-
-<ParamField body="ratio" type="string"  default="1280:768">
-  Ratio parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/runwayml/v1/image_to_video" \
@@ -156,22 +131,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -219,6 +181,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

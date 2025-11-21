@@ -8,41 +8,16 @@ description: 'Remix 3.0(remix)'
 
 This endpoint provides remix 3.0(remix) functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | - | prompt parameter |
+| `rendering_speed` | string | ✅ Yes | - | rendering_speed parameter |
+| `image` | file | ✅ Yes | - | image parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required>
-  prompt parameter
-</ParamField>
-
-<ParamField body="rendering_speed" type="string" required>
-  rendering_speed parameter
-</ParamField>
-
-<ParamField body="image" type="file" required>
-  image parameter
-</ParamField>
-
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -90,6 +65,5 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>
 

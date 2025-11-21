@@ -14,31 +14,18 @@ Inputs: Text and Images
 
 Outputs: Text and image
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.` | Prompt can add image url |
+| `size` | string | ❌ No | `16:9` | 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9. default 1:1 |
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="model" default="gemini-2.5-flash-image-preview" type="string" required>
-  The model to use for the request
-</ParamField>
-
-<ParamField body="prompt" default="image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment." type="string" required>
-  Prompt can add image url
-</ParamField>
-
-<ParamField body="size" default="16:9" type="string">
-  1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9.  default 1:1
-</ParamField>
 
 ## Image to Image
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -133,8 +120,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
+</RequestExample>
 
 ## Size
 
@@ -152,7 +138,6 @@ The model defaults to matching the output image size to that of your input image
 | 9:16         | 768x1344   |
 | 16:9         | 1344x768   |
 | 21:9         | 1536x672   |
-
 
 
 ## Response
@@ -230,5 +215,4 @@ The model defaults to matching the output image size to that of your input image
   }
 }
 ```
-
 </ResponseExample>

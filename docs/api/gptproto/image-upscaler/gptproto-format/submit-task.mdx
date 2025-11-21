@@ -8,43 +8,21 @@ description: 'Submit task'
 
 This endpoint provides submit task functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png` | Image parameter |
+| `creativity` | integer | ❌ No | `0` | Creativity parameter |
+| `target_resolution` | string | ❌ No | `2k` | Target Resolution parameter |
+| `output_format` | string | ❌ No | `jpeg` | Output Format parameter |
+| `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="image" type="string"  default="https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png">
-  Image parameter
-</ParamField>
 
-<ParamField body="creativity" type="integer"  default="0">
-  Creativity parameter
-</ParamField>
-
-<ParamField body="target_resolution" type="string"  default="2k">
-  Target Resolution parameter
-</ParamField>
-
-<ParamField body="output_format" type="string"  default="jpeg">
-  Output Format parameter
-</ParamField>
-
-<ParamField body="enable_base64_output" type="boolean"  default="false">
-  Enable Base64 Output parameter
-</ParamField>
-
-<ParamField body="enable_sync_mode" type="boolean"  default="false">
-  Enable Sync Mode parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/image-upscaler" \
@@ -148,22 +126,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -211,6 +176,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

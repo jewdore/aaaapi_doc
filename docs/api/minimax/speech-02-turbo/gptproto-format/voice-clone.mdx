@@ -8,55 +8,22 @@ description: 'Voice Clone'
 
 MiniMax Voice Clone is a state-of-the-art voice synthesis model developed by MiniMax. It enables high-quality voice cloning from a short reference clip, producing speech that closely mimics the tone, accent, and personality of the original speaker.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="audio" type="string" >
-  The uploaded file is cloned and supports formats such as MP3, M4A, and WAV.
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `audio` | string | ❌ No | - | The uploaded file is cloned and supports formats such as MP3, M4A, and WAV. |
+| `custom_voice_id` | string | ✅ Yes | - | Custom user-defined ID. Minimum 8 characters; must include letters and numbers and start with a letter (e.g., gptproto0001). Duplicate voice-ids will throw an error. |
+| `model` | string | ✅ Yes | `speech-02-turbo` | Specify the TTS model to be used for the preview. This is only a preview after cloning. Once the model is generated, any Minimax Turbo or HD voice model can be used for inference. |
+| `need_noise_reduction` | string | ❌ No | - | Enable noise reduction. Default is false (no noise reduction). |
+| `need_volume_normalization` | boolean | ❌ No | `false` | Specify whether to enable volume normalization. If not provided, the default value is false. |
+| `accuracy` | number | ❌ No | `0.7` | 0.00 ~ 1.00 .Uploading this parameter will set the text validation accuracy threshold, with a value range of [0,1]. If not provided, the default value for this parameter is 0.7. |
+| `text` | string | ❌ No | `This is a preview of your cloned voice. I hope you enjoy it!` | Text for audio preview. Limited to 2000 characters. |
 
 
 
-<ParamField body="custom_voice_id" type="string" required >
-  Custom user-defined ID. Minimum 8 characters; must include letters and numbers and start with a letter (e.g., gptproto0001). Duplicate voice-ids will throw an error.
 
-</ParamField>
-
-<ParamField body="model" type="string"  required default="speech-02-turbo">
-  Specify the TTS model to be used for the preview. This is only a preview after cloning. Once the model is generated, any Minimax Turbo or HD voice model can be used for inference.
-</ParamField>
-
-
-<ParamField body="need_noise_reduction" type="string">
-  Enable noise reduction. Default is false (no noise reduction).
-</ParamField>
-
-
-
-<ParamField body="need_volume_normalization" type="boolean"  default="false">
-  Specify whether to enable volume normalization. If not provided, the default value is false.
-</ParamField>
-
-<ParamField body="accuracy" type="number"  default="0.7">
-  0.00 ~ 1.00 .Uploading this parameter will set the text validation accuracy threshold, with a value range of [0,1]. If not provided, the default value for this parameter is 0.7.
-</ParamField>
-
-
-
-<ParamField body="text" type="string" default="This is a preview of your cloned voice. I hope you enjoy it!">
-  Text for audio preview. Limited to 2000 characters.
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/minimax/voice-clone" \
@@ -164,11 +131,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
+</RequestExample>
 
 ## Response
-
 
 
 <ResponseExample>
@@ -217,6 +182,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,42 +8,10 @@ description: 'Query Task'
 
 This endpoint provides query task functionality.
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
 ## Path Parameters
 
-<ParamField path="action" type="string">
-  images or videos
-</ParamField>
 
-<ParamField path="action2" type="string">
-  generations (Text to Image), text2video, image2video
-</ParamField>
 
-<ParamField path="task_id" type="string">
-  Task ID
-
-</ParamField>
-
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -91,6 +59,5 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>
 

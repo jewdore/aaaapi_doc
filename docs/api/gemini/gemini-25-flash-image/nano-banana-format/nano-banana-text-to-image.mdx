@@ -8,39 +8,20 @@ description: 'Nano-banana-text-to-image'
 
 This endpoint provides nano-banana-text-to-image functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `The cat is climbing on the tree` | Prompt parameter |
+| `aspect_ratio` | string | ❌ No | `3:2` | Aspect Ratio parameter |
+| `output_format` | string | ❌ No | `jpeg` | Output Format parameter |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
+| `enable_base64_output` | boolean | ❌ No | `true` | Enable Base64 Output parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="The cat is climbing on the tree">
-  Prompt parameter
-</ParamField>
 
-<ParamField body="aspect_ratio" type="string"  default="3:2">
-  Aspect Ratio parameter
-</ParamField>
-
-<ParamField body="output_format" type="string"  default="jpeg">
-  Output Format parameter
-</ParamField>
-
-<ParamField body="enable_sync_mode" type="boolean"  default="false">
-  Enable Sync Mode parameter
-</ParamField>
-
-<ParamField body="enable_base64_output" type="boolean"  default="true">
-  Enable Base64 Output parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/google/nano-banana/text-to-image" \
@@ -140,22 +121,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -203,6 +171,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

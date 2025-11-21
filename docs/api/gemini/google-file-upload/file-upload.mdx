@@ -8,23 +8,16 @@ description: 'Upload files to Google Generative AI API'
 
 This endpoint allows you to upload files for use with Google's Generative AI models.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using an API key.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `file` | file | ✅ Yes | - | The file to upload |
 
-<ParamField header="x-goog-api-key" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="file" type="file" required>
-  The file to upload
-</ParamField>
 
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://api.gptproto.com/v1beta/files' \
@@ -105,30 +98,9 @@ func main() {
     fmt.Println(string(responseBody))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful file upload
-
-```json
-{
-  "file": {
-    "name": "files/abc123",
-    "displayName": "file.pdf",
-    "mimeType": "application/pdf",
-    "sizeBytes": "12345",
-    "createTime": "2025-01-19T00:00:00Z",
-    "updateTime": "2025-01-19T00:00:00Z",
-    "uri": "https://generativelanguage.googleapis.com/v1beta/files/abc123"
-  }
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -158,6 +130,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,39 +8,20 @@ description: 'UPSCALE、VARIATION、REROLL, etc.'
 
 UPSCALE、VARIATION、REROLL, etc.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `action` | string | ❌ No | `UPSCALE` | Action parameter |
+| `index` | integer | ❌ No | `1` | Index parameter |
+| `notifyHook` | string | ❌ No | `string` | Notifyhook parameter |
+| `state` | string | ❌ No | `string` | State parameter |
+| `taskId` | string | ❌ No | `1320098173412546` | Taskid parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="action" type="string"  default="UPSCALE">
-  Action parameter
-</ParamField>
 
-<ParamField body="index" type="integer"  default="1">
-  Index parameter
-</ParamField>
-
-<ParamField body="notifyHook" type="string"  default="string">
-  Notifyhook parameter
-</ParamField>
-
-<ParamField body="state" type="string"  default="string">
-  State parameter
-</ParamField>
-
-<ParamField body="taskId" type="string"  default="1320098173412546">
-  Taskid parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/mj/submit/change" \
@@ -140,22 +121,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -203,6 +171,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

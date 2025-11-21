@@ -8,31 +8,18 @@ description: 'Images to Image'
 
 This endpoint provides images to image functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.` | Prompt parameter |
+| `size` | string | ❌ No | `16:9` | Size parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="gemini-2.5-flash-image">
-  The model to use for the request
-</ParamField>
 
-<ParamField body="prompt" type="string" required default="image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.">
-  Prompt parameter
-</ParamField>
-
-<ParamField body="size" type="string"  default="16:9">
-  Size parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -124,22 +111,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -187,6 +161,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

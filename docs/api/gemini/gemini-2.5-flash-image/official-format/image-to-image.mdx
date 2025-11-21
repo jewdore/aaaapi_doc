@@ -19,73 +19,20 @@ Inputs: Text and Images
 
 Outputs: Text and image
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - |     The prompt for the generation. |
+| `inline_data` | object | ✅ Yes | - |   Supported MIME `image/png`, `image/jpeg`, `image/webp` |
+| `data` | string | ✅ Yes | - | Maximum image size: 7 MB |
+| `generationConfig` | object | ❌ No | - |   The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`). |
+| `imageConfig` | object | ❌ No | - |   Supported aspect ratios: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9 | Aspect ratio | Resolution | | ------------ | ---------- | | 1:1 | 1024x1024 | | 2:3 | 832x1248 | | 3:2 | 1248x832 | | 3:4 | 864x1184 | | 4:3 | 1184x864 | | 4:5 | 896x1152 | | 5:4 | 1152x896 | | 9:16 | 768x1344 | | 16:9 | 1344x768 | | 21:9 | 1536x672 | |
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="contents" type="array" required>
-  <Expandable title="properties"  defaultOpen="true">
-    <ParamField body="parts" type="array" required>
-      <Expandable title="properties" defaultOpen="true">
-        <ParamField body="text" type="string" required>
-          The prompt for the generation.
-        </ParamField>
-      </Expandable>
-      <Expandable title="properties" defaultOpen="true">
-        <ParamField body="inline_data" type="object" required>
-          <Expandable title="properties" defaultOpen="true">
-            <ParamField body="mime_type" type="string" required>
-              Supported MIME `image/png`, `image/jpeg`, `image/webp`
-            </ParamField>
-          </Expandable>
-          <Expandable title="properties" defaultOpen="true">
-            <ParamField body="data" type="string" required>
-
-                Maximum image size: 7 MB
-            </ParamField>
-          </Expandable>
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-<ParamField body="generationConfig" type="object">
-  <Expandable title="properties"  defaultOpen="true">
-    <ParamField body="responseModalities" type="string[]" >
-      The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`).
-    </ParamField>
-    <ParamField body="imageConfig" type="object">
-      <Expandable title="properties" defaultOpen="true">
-        <ParamField body="aspectRatio" type="string">
-          Supported aspect ratios: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
-          | Aspect ratio | Resolution |
-| ------------ | ---------- |
-| 1:1          | 1024x1024  |
-| 2:3          | 832x1248   |
-| 3:2          | 1248x832   |
-| 3:4          | 864x1184   |
-| 4:3          | 1184x864   |
-| 4:5          | 896x1152   |
-| 5:4          | 1152x896   |
-| 9:16         | 768x1344   |
-| 16:9         | 1344x768   |
-| 21:9         | 1536x672   |
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
 
 ## Image to Image
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
@@ -252,8 +199,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
+</RequestExample>
 
 **Technical specifications**
 
@@ -275,7 +221,6 @@ The model defaults to returning text and image responses (i.e. `response_modalit
 ### Aspect ratios
 
 The model defaults to matching the output image size to that of your input image, or otherwise generates 1:1 squares. You can control the aspect ratio of the output image using the `aspect_ratio` field under `image_config` in the response request: The different ratios available and the size of the image generated are listed in this table:
-
 
 
 ## Response
@@ -368,16 +313,15 @@ The model defaults to matching the output image size to that of your input image
   }
 }
 ```
-
 </ResponseExample>
 
-## Request Example
+
 
 ## Adding and removing elements
 
 Provide an image and describe your change. The model will match the original image's style, lighting, and perspective.
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
@@ -397,8 +341,7 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
       }]
     }'
 ```
-
-</CodeGroup>
+</RequestExample>
 
 | Input                                              | Output                                                                        |
 | -------------------------------------------------- | ----------------------------------------------------------------------------- |
@@ -409,7 +352,7 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
 
 Provide multiple images as context to create a new, composite scene. This is perfect for product mockups or creative collages.
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
@@ -435,8 +378,7 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
       }]
     }'
 ```
-
-</CodeGroup>
+</RequestExample>
 
 | Input1                                                       | Input2                                              | Output                                            |
 | ------------------------------------------------------------ | --------------------------------------------------- | ------------------------------------------------- |

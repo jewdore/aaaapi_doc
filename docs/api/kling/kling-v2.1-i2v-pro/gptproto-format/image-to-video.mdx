@@ -8,40 +8,20 @@ description: 'Image to Video'
 
 Kling 2.1 is Kuaishou’s advanced image-to-video generation model released in 2025. Designed for high-fidelity cinematic output, Kling 2.1 transforms reference images — with optional text prompts — into visually rich, lifelike video clips.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'\''s face` | The positive prompt for the generation. |
+| `negative_prompt` | string | ❌ No | - | The negative prompt for the generation. |
+| `image` | string | ✅ Yes | `https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png` | First frame of the video; Supported image formats include.jpg/.jpeg/.png; The image file size cannot exceed 10MB, and the image resolution should not be less than 300*300px. |
+| `duration` | integer | ❌ No | `5` | The duration of the generated media in seconds. 5, 10. default 5 |
+| `guidance_scale` | number | ❌ No | `0.5` | The guidance scale to use for the generation. 0.00 ~ 1.00 |
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" default="The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'\''s face" type="string" required>
-  The positive prompt for the generation.
-</ParamField>
 
-<ParamField body="negative_prompt" default="" type="string" >
-  The negative prompt for the generation.
-</ParamField>
-
-<ParamField body="image" default="https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png" type="string" required>
-    First frame of the video; Supported image formats include.jpg/.jpeg/.png; 
-  The image file size cannot exceed 10MB, and the image resolution should not be less than 300*300px.
-</ParamField>
-
-<ParamField body="duration" default="5" type="integer">
-  The duration of the generated media in seconds. 5, 10.  default 5
-</ParamField>
-
-<ParamField body="guidance_scale" default="0.5" type="number">
-  The guidance scale to use for the generation. 0.00 ~ 1.00
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-pro' \
@@ -100,17 +80,7 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
-
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="data.id" type="string">
-  Unique identifier for the prediction, Task Id
-
-</ResponseField>
-
+</RequestExample>
 
 <ResponseExample>
 
@@ -158,6 +128,5 @@ fetch(url, {
   }
 }
 ```
-
 </ResponseExample>
 

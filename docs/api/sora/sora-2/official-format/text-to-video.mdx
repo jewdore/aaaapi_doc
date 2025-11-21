@@ -8,45 +8,17 @@ description: 'Text to Video'
 
 This endpoint provides text to video functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `sora-2` | model parameter |
+| `prompt` | string | ✅ Yes | `The character walks slowly and then sits on the ground` | prompt parameter |
+| `size` | string | ✅ Yes | `720x1280` | size parameter |
+| `seconds` | string | ✅ Yes | `4` | seconds parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="sora-2">
-  model parameter
-</ParamField>
-
-<ParamField body="prompt" type="string" required default="The character walks slowly and then sits on the ground">
-  prompt parameter
-</ParamField>
-
-<ParamField body="size" type="string" required default="720x1280">
-  size parameter
-</ParamField>
-
-<ParamField body="seconds" type="string" required default="4">
-  seconds parameter
-</ParamField>
-
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -94,6 +66,5 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>
 

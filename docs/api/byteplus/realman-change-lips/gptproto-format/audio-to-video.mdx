@@ -8,27 +8,17 @@ description: 'Audio to Video'
 
 This endpoint provides audio to video functionality for lip-sync generation.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `url` | string | ✅ Yes | `https://d1q70pf5vjeyhc.cloudfront.net/predictions/80ab53675b544f058826918526090b78/1.mp4` | The video URL to apply lip-sync to. |
+| `pure_audio_url` | string | ✅ Yes | `https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai/api45003a21-b355-4214-877d-a83d2fd92858.mp3` | The audio URL to sync with the video. |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="url" type="string" required default="https://d1q70pf5vjeyhc.cloudfront.net/predictions/80ab53675b544f058826918526090b78/1.mp4">
-  The video URL to apply lip-sync to.
-</ParamField>
 
-<ParamField body="pure_audio_url" type="string" required default="https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai/api45003a21-b355-4214-877d-a83d2fd92858.mp3">
-  The audio URL to sync with the video.
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/api/v3/bytedance/realman_change_lips/audio-to-video' \
@@ -116,22 +106,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -179,6 +156,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

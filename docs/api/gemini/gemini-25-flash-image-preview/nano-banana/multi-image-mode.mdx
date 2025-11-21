@@ -8,35 +8,19 @@ description: 'Multi-image mode'
 
 This endpoint provides multi-image mode functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `output_format` | string | ❌ No | `png` | Output Format parameter |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
+| `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
+| `images` | array | ❌ No | `[&quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png&quot;, &quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg&quot;]` | Images parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="output_format" type="string"  default="png">
-  Output Format parameter
-</ParamField>
 
-<ParamField body="enable_sync_mode" type="boolean"  default="false">
-  Enable Sync Mode parameter
-</ParamField>
-
-<ParamField body="enable_base64_output" type="boolean"  default="false">
-  Enable Base64 Output parameter
-</ParamField>
-
-<ParamField body="images" type="array"  default="[&quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png&quot;, &quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg&quot;]">
-  Images parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/google/nano-banana/edit" \
@@ -144,22 +128,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -207,6 +178,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

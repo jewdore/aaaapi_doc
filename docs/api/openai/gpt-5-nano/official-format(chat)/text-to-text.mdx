@@ -8,52 +8,33 @@ description: 'Text to Text'
 
 This endpoint provides text to text functionality.
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
 ## Request Body
 
-<ParamField body="model" type="string" required default="gpt-5-nano">
-  The model to use for the request. `gpt-5-nano`
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-5-nano` | The model to use for the request |
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation |
+| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
 
-<ParamField body="messages" type="array" required>
-  Array of message objects for the conversation
-            <Expandable title="properties">
-                <ParamField body="role" type="string" required>
-                    * role:user,The role of the message.
-                    * role:assistant,The role of the message.
-                    * role:system,The role of the message.
-                </ParamField>
+### Messages Array Structure
 
-                <ParamField body="content" type="array" required>
+Each message object in the `messages` array should have the following structure:
 
-                            <Expandable title="properties">
-                                  <ParamField body="type" type="string" required>
-                                     text
-                                  </ParamField>
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `role` | string | ✅ Yes | The role of the message. Can be: `user`, `assistant`, or `system` |
+| `content` | array/string | ✅ Yes | The content of the message |
 
-                                    <ParamField body="text" type="string" required>
-                                      * type:text,The positive prompt for the generation.
-                                    </ParamField>
-                            </Expandable>
+### Content Array Structure (when content is an array)
 
-                </ParamField>
-            </Expandable>
-</ParamField>
+| Field | Type | Required | Example | Description |
+|-------|------|----------|---------|-------------|
+| `type` | string | ✅ Yes | `text` | The type of content |
+| `text` | string | ✅ Yes | `"The positive prompt for the generation."` | The text content when type is `text` |
 
-<ParamField body="stream" type="boolean"  default="true">
-  Whether to stream the response
-</ParamField>
 
-## Request Example
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/chat/completions" \
@@ -165,74 +146,10 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
 
-<ResponseField name="id" type="string">
-  Unique identifier for the chat completion
-</ResponseField>
-
-<ResponseField name="object" type="string">
-  Object type, always "chat.completion"
-</ResponseField>
-
-<ResponseField name="created" type="integer">
-  Unix timestamp of when the chat completion was created
-</ResponseField>
-
-<ResponseField name="model" type="string">
-  The model used for generating the completion
-</ResponseField>
-
-<ResponseField name="choices" type="array">
-  Array of completion choices
-
-  <Expandable title="Choice Object">
-    <ResponseField name="index" type="integer">
-      The index of this choice in the array
-    </ResponseField>
-
-    <ResponseField name="message" type="object">
-      The generated message
-
-      <Expandable title="Message Object">
-        <ResponseField name="role" type="string">
-          The role of the message author, always "assistant"
-        </ResponseField>
-
-        <ResponseField name="content" type="string">
-          The content of the message (the image analysis result)
-        </ResponseField>
-      </Expandable>
-    </ResponseField>
-
-    <ResponseField name="finish_reason" type="string">
-      The reason the completion finished. Possible values: "stop", "length", "content_filter"
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="usage" type="object">
-  Token usage statistics
-
-  <Expandable title="Usage Object">
-    <ResponseField name="prompt_tokens" type="integer">
-      Number of tokens in the prompt
-    </ResponseField>
-
-    <ResponseField name="completion_tokens" type="integer">
-      Number of tokens in the completion
-    </ResponseField>
-
-    <ResponseField name="total_tokens" type="integer">
-      Total number of tokens used
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -280,6 +197,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,32 +8,17 @@ description: "Text to Video"
 
 This endpoint provides text to video  functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-<ParamField body="model" type="string" required default="veo3.1">
-  The model to use for the request
-</ParamField>
-
-<ParamField body="messages" type="array" required >
-  Prompt parameter  
-  * content Add "upsample" to the content parameter to enable high-resolution video
-  * content Add "aspect_ratio" to the content aspect ratio. 16:9, 9:16
-
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `veo3.1` | The model to use for the request |
+| `messages` | array | ✅ Yes | - | Prompt parameter * content Add "upsample" to the content parameter to enable high-resolution video * content Add "aspect_ratio" to the content aspect ratio. 16:9, 9:16 |
 
 
 
 
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
@@ -109,12 +94,10 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
-
-</CodeGroup>
-
+</RequestExample>
 
 
-## Error Responses
+
 
 <ResponseExample>
 
@@ -166,5 +149,4 @@ fetch(url, {
   }
 }
 ```
-
 </ResponseExample>

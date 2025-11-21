@@ -12,57 +12,24 @@ Related Guides: [Suno Official Documentation](https://suno.com/docs) | [Music Ge
 
 This endpoint allows you to submit music generation tasks using simple text prompts. The generation is processed asynchronously - you'll receive a task ID immediately, which you can use to check the status and retrieve the generated audio once complete.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ❌ No | `Compose a tense pre-battle anthem` | Custom-mode lyrics or description. Provide detailed text description of the music you want to generate for custom mode with specific lyrics or theme. |
+| `gpt_description_prompt` | string | ❌ No | `Ethereal female vocals blending with cinematic drums` | Inspiration-mode prompt. Use AI to generate music from a high-level description. This mode lets the AI interpret and create music based on your creative description. Great for exploring new musical ideas. |
+| `make_instrumental` | boolean | ❌ No | `false` | Set to `true` to generate instrumental music without vocals. Set to `false` to include vocals in the generated music. |
+| `mv` | string | ❌ No | `chirp-v3-0` | Model version to use for generation. Available options: - `"chirp-v3-5"` - Latest model with improved quality - `"chirp-v3-0"` - Default stable model |
+| `tags` | string | ❌ No | `cinematic,epic,ambient` | Music style tags separated by commas for custom mode (e.g., "cinematic,epic,ambient", "orchestral,dramatic,intense"). These tags help guide the style and mood of the generated music. |
+| `title` | string | ❌ No | `Before the Charge` | Custom-mode title for the generated song. If not provided, a title will be auto-generated based on the prompt or description. |
+| `continue_at` | number | ❌ No | `8` | Extension length in seconds. Specify how many seconds to extend from the original clip (e.g., 8 for 8 seconds extension). Used when extending existing music. |
+| `continue_clip_id` | string | ❌ No | `clip-123456` | Clip ID to extend from (e.g., "clip-123456"). Use this parameter to continue or extend previously generated music clips. Get the clip ID from previous generation responses. |
+| `task_id` | string | ❌ No | `task-001` | Follow-up task ID for tracking related generation tasks. Use this to link multiple generation requests together for better organization and tracking. |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" default="Compose a tense pre-battle anthem">
-  Custom-mode lyrics or description. Provide detailed text description of the music you want to generate for custom mode with specific lyrics or theme.
-</ParamField>
 
-<ParamField body="gpt_description_prompt" type="string" default="Ethereal female vocals blending with cinematic drums">
-  Inspiration-mode prompt. Use AI to generate music from a high-level description. This mode lets the AI interpret and create music based on your creative description. Great for exploring new musical ideas.
-</ParamField>
-
-<ParamField body="make_instrumental" type="boolean" default="false">
-  Set to `true` to generate instrumental music without vocals. Set to `false` to include vocals in the generated music.
-</ParamField>
-
-<ParamField body="mv" type="string" default="chirp-v3-0">
-  Model version to use for generation. Available options:
-  - `"chirp-v3-5"` - Latest model with improved quality
-  - `"chirp-v3-0"` - Default stable model
-</ParamField>
-
-<ParamField body="tags" type="string" default="cinematic,epic,ambient">
-  Music style tags separated by commas for custom mode (e.g., "cinematic,epic,ambient", "orchestral,dramatic,intense"). These tags help guide the style and mood of the generated music.
-</ParamField>
-
-<ParamField body="title" type="string" default="Before the Charge">
-  Custom-mode title for the generated song. If not provided, a title will be auto-generated based on the prompt or description.
-</ParamField>
-
-<ParamField body="continue_at" type="number" default="8">
-  Extension length in seconds. Specify how many seconds to extend from the original clip (e.g., 8 for 8 seconds extension). Used when extending existing music.
-</ParamField>
-
-<ParamField body="continue_clip_id" type="string" default="clip-123456">
-  Clip ID to extend from (e.g., "clip-123456"). Use this parameter to continue or extend previously generated music clips. Get the clip ID from previous generation responses.
-</ParamField>
-
-<ParamField body="task_id" type="string" default="task-001">
-  Follow-up task ID for tracking related generation tasks. Use this to link multiple generation requests together for better organization and tracking.
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL - Basic
 curl --location 'https://gptproto.com/v1/suno/submit/music' \
@@ -366,39 +333,9 @@ func main() {
     }
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "code": "success",
-  "data": "15410652-357c-47fa-8ad9-a4a145fbfa14",
-  "message": ""
-}
-```
-
-<Expandable title="Response Fields">
-  <ResponseField name="code" type="string">
-    Status code indicating success or error (`"success"` or `"error"`)
-  </ResponseField>
-
-  <ResponseField name="data" type="string">
-    Task ID for tracking the music generation progress. Use this ID with the [Query Task Status](/api/suno/official-format/query-task) endpoint to check completion and retrieve the audio URL.
-  </ResponseField>
-
-  <ResponseField name="message" type="string">
-    Error message if code is `"error"`, empty string if successful
-  </ResponseField>
-</Expandable>
-
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -449,7 +386,6 @@ func main() {
   "message": "Content may not meet the guidelines. Please adjust and try again."
 }
 ```
-
 </ResponseExample>
 
 ## Generation Modes
@@ -573,7 +509,7 @@ if result["code"] == "success":
 
 ### Example Prompts
 
-<CodeGroup>
+<RequestExample>
 
 ```text Good Examples - Inspiration Mode
 "Ethereal female vocals blending with cinematic drums and atmospheric synths"
@@ -608,8 +544,7 @@ Title: "Night Fever"
 
 "Something cool" (not descriptive)
 ```
-
-</CodeGroup>
+</RequestExample>
 
 ### Model Selection
 

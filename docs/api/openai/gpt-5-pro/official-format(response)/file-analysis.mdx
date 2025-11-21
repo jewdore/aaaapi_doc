@@ -8,58 +8,18 @@ description: "Analyze and extract information from various file types including 
 
 This endpoint provides file analysis functionality using advanced models in response mode. Upload files or provide file URLs to extract content, analyze data, summarize documents, or process structured information from various file formats.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-5-pro` | The model to use for the request. Must support file analysis capabilities. |
+| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects supporting the following types: - **input_text**: Text prompt with `text` field - **input_file**: File input with `file_url` field, supports: - Direct URL to publicly accessible files: `https://oss.heyoos.com/ai-draw/material/Essential-English.pdf` - Base64 encoded files: `data:{mime-type};base64,{base64_string}` - Supported formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML - Maximum file size: 20MB Example with direct file URL: ```json [ { "role": "user", "content": [ { "type": "input_text", "text": "Please analyze this file and extract the key information" }, { "type": "input_file", "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf" } ] } ] ``` |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `sk-*****`
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" default="gpt-5-pro" type="string" required>
-  The model to use for the request. Must support file analysis capabilities.
-</ParamField>
 
-<ParamField body="input" type="array" required default='[{"role": "user", "content": [{"type": "input_text", "text": "Please analyze this file and extract the key information"}, {"type": "input_file", "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"}]}]'>
-  Array of message objects with role and content. Each message contains:
-  - `role`: "user" or "assistant"
-  - `content`: Array of content objects supporting the following types:
-    - **input_text**: Text prompt with `text` field
-    - **input_file**: File input with `file_url` field, supports:
-      - Direct URL to publicly accessible files: `https://oss.heyoos.com/ai-draw/material/Essential-English.pdf`
-      - Base64 encoded files: `data:{mime-type};base64,{base64_string}`
-      - Supported formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML
-      - Maximum file size: 20MB
-
-  Example with direct file URL:
-  ```json
-  [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Please analyze this file and extract the key information"
-        },
-        {
-          "type": "input_file",
-          "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
-        }
-      ]
-    }
-  ]
-  ```
-</ParamField>
-
-<ParamField body="stream" default={false} type="boolean">
-  Whether to stream the response
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL (with URL)
 curl --location 'https://gptproto.com/v1/responses' \
@@ -369,49 +329,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="id" type="string">
-  Unique identifier for the response
-</ResponseField>
-
-<ResponseField name="object" type="string">
-  Object type, always "response"
-</ResponseField>
-
-<ResponseField name="created" type="integer">
-  Unix timestamp of when the response was created
-</ResponseField>
-
-<ResponseField name="model" type="string">
-  The model used for generating the response
-</ResponseField>
-
-<ResponseField name="output" type="string">
-  The generated text output (the file analysis results, extracted information, or summary)
-</ResponseField>
-
-<ResponseField name="usage" type="object">
-  Token usage statistics
-
-  <Expandable title="Usage Object">
-    <ResponseField name="prompt_tokens" type="integer">
-      Number of tokens in the input
-    </ResponseField>
-
-    <ResponseField name="completion_tokens" type="integer">
-      Number of tokens in the output
-    </ResponseField>
-
-    <ResponseField name="total_tokens" type="integer">
-      Total number of tokens used
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
+</RequestExample>
 
 <ResponseExample>
 
@@ -478,5 +396,4 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>

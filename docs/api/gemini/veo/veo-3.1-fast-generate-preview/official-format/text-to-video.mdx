@@ -8,37 +8,20 @@ description: 'Generate videos from text prompts using Gemini Veo 3.1'
 
 This endpoint generates videos from text descriptions using Google's Gemini Veo 3.1 model. The API accepts a text prompt and returns a long-running operation for video generation.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using an API key.
-
-<ParamField header="x-goog-api-key" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-<ParamField header="Content-Type" type="string" required default="application/json">
-  Must be set to `application/json`
-</ParamField>
 
 ## Parameters
 
-<ParamField path="model_name" type="string" required default="veo-3.1-generate-preview">
-  The name of the model to use for the request.
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `instances` | array | ✅ Yes | - | An array of instances containing the video generation parameters |
+| `instances[].prompt` | string | ✅ Yes | `a cat` | The text prompt describing the video content you want to generate |
 
-## Request Body
 
-<ParamField body="instances" type="array" required>
-  An array of instances containing the video generation parameters
-</ParamField>
 
-<ParamField body="instances[].prompt" type="string" required default="a cat">
-  The text prompt describing the video content you want to generate
-</ParamField>
 
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning' \
@@ -138,26 +121,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response returns a long-running operation
-
-```json
-{
-  "name": "operations/veo-3.1-generate-preview-xxxxx",
-  "metadata": {
-    "@type": "type.googleapis.com/google.cloud.aiplatform.v1beta1.GenerateVideoMetadata",
-    "createTime": "2025-01-19T00:00:00Z"
-  }
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -205,6 +171,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

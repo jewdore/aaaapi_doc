@@ -8,78 +8,28 @@ description: 'Generate content using Gemini models with the official Gemini API 
 
 This endpoint generates content using Gemini models via the official Gemini API format. It supports text generation, image analysis, and multi-turn conversations.
 
-## Authentication
-
-This endpoint requires authentication using an API key.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key
-</ParamField>
-
 ## Path Parameters
 
-<ParamField path="model" type="string" required default="gemini-2.5-flash-nothinking">
-  The model to use for content generation. Available models: `gemini-2.5-flash-nothinking`, etc.
-</ParamField>
 
-## Request Body Parameters
+## Parameters
 
-<ParamField body="contents" type="array" required>
-  An array of content objects representing the conversation history.
-
-  <Expandable title="Content Object Structure">
-    <ParamField body="role" type="string" required>
-      The role of the message sender. Typically `"user"` or `"model"`.
-    </ParamField>
-
-    <ParamField body="parts" type="array" required>
-      An array of parts that make up the message content.
-
-      <Expandable title="Parts Object Structure">
-        <ParamField body="text" type="string">
-          Text content of the message.
-        </ParamField>
-
-        <ParamField body="inlineData" type="object">
-          Inline data for images or other media (base64 encoded).
-        </ParamField>
-
-        <ParamField body="functionResponse" type="object">
-          Response from a function call.
-        </ParamField>
-
-        <ParamField body="fileData" type="object">
-          Reference to uploaded file data.
-        </ParamField>
-
-        <ParamField body="videoMetadata" type="object">
-          Metadata for video content.
-        </ParamField>
-
-        <ParamField body="functionCall" type="object">
-          Function call request.
-        </ParamField>
-
-        <ParamField body="functionCalls" type="array">
-          Multiple function calls.
-        </ParamField>
-
-        <ParamField body="thoughtSignature" type="string">
-          Signature for thought content.
-        </ParamField>
-
-        <ParamField body="thought" type="string">
-          Thought content for reasoning models.
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - | An array of content objects representing the conversation history.   The role of the message sender. Typically `"user"` or `"model"`. |
+| `parts` | array | ✅ Yes | - | An array of parts that make up the message content.   Text content of the message. |
+| `inlineData` | object | ❌ No | - | Inline data for images or other media (base64 encoded). |
+| `functionResponse` | object | ❌ No | - | Response from a function call. |
+| `fileData` | object | ❌ No | - | Reference to uploaded file data. |
+| `videoMetadata` | object | ❌ No | - | Metadata for video content. |
+| `functionCall` | object | ❌ No | - | Function call request. |
+| `functionCalls` | array | ❌ No | - | Multiple function calls. |
+| `thoughtSignature` | string | ❌ No | - | Signature for thought content. |
+| `thought` | string | ❌ No | - | Thought content for reasoning models. |
 
 
-## Request Example
 
-<CodeGroup>
+
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-nothinking:streamGenerateContent' \
@@ -201,58 +151,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response containing generated content
-
-```json
-{
-  "candidates": [
-    {
-      "content": {
-        "parts": [
-          {
-            "text": "Hello! How can I help you today?"
-          }
-        ],
-        "role": "model"
-      },
-      "finishReason": "STOP",
-      "index": 0,
-      "safetyRatings": [
-        {
-          "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_HATE_SPEECH",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_HARASSMENT",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-          "probability": "NEGLIGIBLE"
-        }
-      ]
-    }
-  ],
-  "usageMetadata": {
-    "promptTokenCount": 2,
-    "candidatesTokenCount": 8,
-    "totalTokenCount": 10
-  }
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -300,5 +201,4 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>

@@ -8,31 +8,18 @@ description: 'Submit Local Re-drawing, ZOOM'
 
 Submit Local Re-drawing, ZOOM
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `maskBase64` | string | ❌ No | - | Maskbase64 parameter |
+| `prompt` | string | ✅ Yes | - | Prompt parameter |
+| `taskId` | string | ❌ No | `14001934816969359` | Taskid parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="maskBase64" type="string"  default="">
-  Maskbase64 parameter
-</ParamField>
 
-<ParamField body="prompt" type="string" required default="">
-  Prompt parameter
-</ParamField>
-
-<ParamField body="taskId" type="string"  default="14001934816969359">
-  Taskid parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/mj/submit/modal" \
@@ -124,22 +111,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -187,6 +161,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

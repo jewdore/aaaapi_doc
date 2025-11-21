@@ -9,54 +9,24 @@ description: 'Image To Video'
 This endpoint provides submit task functionality.
 
 
-
-
-
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
 ## Request Parameter
-<ParamField path="model" type="string" required default="sora-2">
-  The video generation model to use.
-</ParamField>
 
-<ParamField path="scene" type="string" required default="image-to-video">
-  The scene to use.
-</ParamField>
 
-## Request Body
+## Parameters
 
-<ParamField body="model" type="string" required default="sora-2">
-  The video generation model to use. 
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `sora-2` | The video generation model to use. |
+| `orientation` | string | ❌ No | `portrait` | portrait 、landscape |
+| `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | The positive prompt for the generation. |
+| `images` | string[] | ✅ Yes | `[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
+| `duration` | integer | ❌ No | `4` | The duration of the generated video in seconds.4, 8, 12 |
+| `character_url` | string | ❌ No | `https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4` | Non-human IP video URL. |
 
-<ParamField body="orientation" type="string"  default="portrait">
-  portrait 、landscape
-</ParamField>
 
-<ParamField body="prompt" type="string" required default="She turns around and smiles, then slowly walks out of the frame.">
-  The positive prompt for the generation.
-</ParamField>
 
-<ParamField body="images" type="string[]" required default="[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]">
-  Images parameter
-</ParamField>
 
-<ParamField body="duration" type="integer"  default="4">
-  The duration of the generated video in seconds.4, 8, 12
-</ParamField>
-
-<ParamField body="character_url" type="string" default="https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4">
-  Non-human IP video URL.
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --request POST \
@@ -169,34 +139,8 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
-
-## Response
-
-<ResponseField name="data.id" type="string">
-```json
-{
-    "data": {
-        "id": "sora-2:task_xxxx",
-        "model": "sora-2-pro",
-        "outputs": [],
-        "urls": {
-            "get": "https://gptproto.com/api/v3/predictions/sora-2:task_xxxx/result"
-        },
-        "hasNsfwContents": [],
-        "status": "processing",
-        "createdAt": "2025-10-16 21:03:10",
-        "executionTime": 0,
-        "timings": {
-            "inference": 0
-        }
-    },
-    "message": "success",
-    "code": 200
-}
-```
-</ResponseField>
 <ResponseExample>
 
 ```json 401 - Invalid signature
@@ -243,6 +187,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,52 +8,20 @@ description: 'text to text'
 
 This endpoint provides text to text functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `grok-3-reasoner-r` | The model to use for the request. `grok-3-reasoner-r` |
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   * role:user,The role of the message. * role:assistant,The role of the message. * role:system,The role of the message. |
+| `content` | array | ✅ Yes | - |   text |
+| `text` | string | ✅ Yes | - | * type:text,The positive prompt for the generation. |
+| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="grok-3-reasoner-r">
-  The model to use for the request. `grok-3-reasoner-r`
-</ParamField>
 
-<ParamField body="messages" type="array" required>
-  Array of message objects for the conversation
-            <Expandable title="properties">
-                <ParamField body="role" type="string" required>
-                    * role:user,The role of the message.
-                    * role:assistant,The role of the message.
-                    * role:system,The role of the message.
-                </ParamField>
-
-                <ParamField body="content" type="array" required>
-
-                            <Expandable title="properties">
-                                  <ParamField body="type" type="string" required>
-                                     text
-                                  </ParamField>
-
-                                    <ParamField body="text" type="string" required>
-                                      * type:text,The positive prompt for the generation.
-                                    </ParamField>
-                            </Expandable>
-
-                </ParamField>
-            </Expandable>
-</ParamField>
-
-<ParamField body="stream" type="boolean"  default="true">
-  Whether to stream the response
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/chat/completions" \
@@ -165,22 +133,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -228,6 +183,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

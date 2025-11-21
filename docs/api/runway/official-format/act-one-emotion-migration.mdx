@@ -8,31 +8,18 @@ description: 'Act-one Emotion Migration'
 
 This endpoint provides act-one emotion migration functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `video` | string | ❌ No | `http://source.wike.cc/attachments/video/runway/20241015/82bc23c83b5c32e75059c8328df5cffb.mp4` | Video parameter |
+| `image` | string | ❌ No | `http://source.wike.cc/1.jpeg` | Image parameter |
+| `options` | object | ❌ No | `{&quot;motion_multiplier&quot;: 3, &quot;flip&quot;: true}` | Options parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="video" type="string"  default="http://source.wike.cc/attachments/video/runway/20241015/82bc23c83b5c32e75059c8328df5cffb.mp4">
-  Video parameter
-</ParamField>
 
-<ParamField body="image" type="string"  default="http://source.wike.cc/1.jpeg">
-  Image parameter
-</ParamField>
-
-<ParamField body="options" type="object"  default="{&quot;motion_multiplier&quot;: 3, &quot;flip&quot;: true}">
-  Options parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/runway/v1/pro/act_one" \
@@ -136,22 +123,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -199,6 +173,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

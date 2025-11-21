@@ -8,51 +8,23 @@ description: 'generate video'
 
 This endpoint provides generate video functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `Generate a dance scene` | Prompt parameter |
+| `model` | string | ✅ Yes | `higgsfield-standard` | The model to use for the request |
+| `motion_id` | string | ❌ No | `5d0eee15-569c-4006-a1c7-46d1c42d9315` | Motion Id parameter |
+| `enhance_prompt` | boolean | ❌ No | `true` | Enhance Prompt parameter |
+| `image` | array | ❌ No | `[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/022cc0f0-8b08-4e8b-9822-2b41ba6c64ad.png&quot;]` | Image parameter |
+| `seed` | integer | ❌ No | `1000` | Seed parameter |
+| `height` | integer | ❌ No | `1080` | Height parameter |
+| `width` | integer | ❌ No | `720` | Width parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="Generate a dance scene">
-  Prompt parameter
-</ParamField>
 
-<ParamField body="model" type="string" required default="higgsfield-standard">
-  The model to use for the request
-</ParamField>
-
-<ParamField body="motion_id" type="string"  default="5d0eee15-569c-4006-a1c7-46d1c42d9315">
-  Motion Id parameter
-</ParamField>
-
-<ParamField body="enhance_prompt" type="boolean"  default="true">
-  Enhance Prompt parameter
-</ParamField>
-
-<ParamField body="image" type="array"  default="[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/022cc0f0-8b08-4e8b-9822-2b41ba6c64ad.png&quot;]">
-  Image parameter
-</ParamField>
-
-<ParamField body="seed" type="integer"  default="1000">
-  Seed parameter
-</ParamField>
-
-<ParamField body="height" type="integer"  default="1080">
-  Height parameter
-</ParamField>
-
-<ParamField body="width" type="integer"  default="720">
-  Width parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/higgsfield/generate" \
@@ -172,22 +144,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -235,6 +194,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

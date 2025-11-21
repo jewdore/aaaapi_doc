@@ -8,71 +8,20 @@ description: "Analyze and extract information from various file types including 
 
 This endpoint provides file analysis functionality using Claude 3.5 Haiku. Upload files or provide file URLs to extract content, analyze data, summarize documents, or process structured information from various file formats including PDF, DOCX, TXT, and more.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `claude-3-5-haiku-20241022` | The model to use for file analysis. Must be `claude-3-5-haiku-20241022` or another Claude model with file analysis capabilities. |
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation. Each message contains: - **role**: `user`, `assistant`, or `system` - **content**: Array of content objects supporting: - **type: "text"**: Text prompt with `text` field - **type: "file"**: File input with `file` object containing: - `filename`: Name of the file - `file_data`: URL to file or base64 encoded data Supported file formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML Maximum file size: 20MB Example structure: ```json [ { "role": "user", "content": [ { "type": "text", "text": "Summarize the contents of this document" }, { "type": "file", "file": { "filename": "document.pdf", "file_data": "https://example.com/document.pdf" } } ] } ] ``` |
+| `max_tokens` | integer | ❌ No | `1000` | Maximum number of tokens to generate in the response |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+| `temperature` | number | ❌ No | `1.0` | Sampling temperature between 0 and 2. Higher values make output more random. |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="claude-3-5-haiku-20241022">
-  The model to use for file analysis. Must be `claude-3-5-haiku-20241022` or another Claude model with file analysis capabilities.
-</ParamField>
 
-<ParamField body="messages" type="array" required>
-  Array of message objects for the conversation. Each message contains:
-  - **role**: `user`, `assistant`, or `system`
-  - **content**: Array of content objects supporting:
-    - **type: "text"**: Text prompt with `text` field
-    - **type: "file"**: File input with `file` object containing:
-      - `filename`: Name of the file
-      - `file_data`: URL to file or base64 encoded data
-
-  Supported file formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML
-
-  Maximum file size: 20MB
-
-  Example structure:
-  ```json
-  [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Summarize the contents of this document"
-        },
-        {
-          "type": "file",
-          "file": {
-            "filename": "document.pdf",
-            "file_data": "https://example.com/document.pdf"
-          }
-        }
-      ]
-    }
-  ]
-  ```
-</ParamField>
-
-<ParamField body="max_tokens" type="integer" default="1000">
-  Maximum number of tokens to generate in the response
-</ParamField>
-
-<ParamField body="stream" type="boolean" default={false}>
-  Whether to stream the response
-</ParamField>
-
-<ParamField body="temperature" type="number" default="1.0">
-  Sampling temperature between 0 and 2. Higher values make output more random.
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL (with URL)
 curl -X POST "https://gptproto.com/v1/chat/completions" \
@@ -416,72 +365,8 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
-
-## Response
-
-<ResponseField name="id" type="string">
-  Unique identifier for the chat completion
-</ResponseField>
-
-<ResponseField name="object" type="string">
-  Object type, always "chat.completion"
-</ResponseField>
-
-<ResponseField name="created" type="integer">
-  Unix timestamp of when the completion was created
-</ResponseField>
-
-<ResponseField name="model" type="string">
-  The model used for generating the completion
-</ResponseField>
-
-<ResponseField name="choices" type="array">
-  Array of completion choices
-
-  <Expandable title="Choice Object">
-    <ResponseField name="index" type="integer">
-      Index of the choice
-    </ResponseField>
-
-    <ResponseField name="message" type="object">
-      The generated message
-
-      <Expandable title="Message Object">
-        <ResponseField name="role" type="string">
-          The role of the message author (always "assistant")
-        </ResponseField>
-
-        <ResponseField name="content" type="string">
-          The content of the message (the file analysis results)
-        </ResponseField>
-      </Expandable>
-    </ResponseField>
-
-    <ResponseField name="finish_reason" type="string">
-      Reason for completion finishing ("stop", "length", "content_filter")
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="usage" type="object">
-  Token usage statistics
-
-  <Expandable title="Usage Object">
-    <ResponseField name="prompt_tokens" type="integer">
-      Number of tokens in the input
-    </ResponseField>
-
-    <ResponseField name="completion_tokens" type="integer">
-      Number of tokens in the output
-    </ResponseField>
-
-    <ResponseField name="total_tokens" type="integer">
-      Total number of tokens used
-    </ResponseField>
-  </Expandable>
-</ResponseField>
 
 <ResponseExample>
 
@@ -553,5 +438,4 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>

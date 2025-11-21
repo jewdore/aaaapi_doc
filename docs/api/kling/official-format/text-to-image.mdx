@@ -8,81 +8,22 @@ description: 'Text to Image'
 
 This endpoint provides image generation functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-
-## Request Body
-
-<ParamField body="model_name" type="string" default="kling-v1">
-  Model Name
-
-* Enum values：​**kling-v1**​, ​**kling-v1-5**​, ​**kling-v2**​, ​**kling-v2-new**​, **kling-v2-1**
-
-</ParamField>
-
-<ParamField body="prompt" type="string" required default="The plane flew over the head">
-  Positive text prompt
-* Cannot exceed 2500 characters
-
-</ParamField>
-
-
-<ParamField body="negative_prompt" type="string"  default="">
-  Negative text prompt
-
-* Cannot exceed 2500 characters
-
-</ParamField>
-
-
-<ParamField body="resolution" type="string"  default="1k">
-  Image generation resolution
-
-* Enum values：1k, 2k
-  * 1k：1K standard
-  * 2k：2K high-res
-
-The support range for different model versions. For more details, please refer to the current document's "2-0 Capability Map"
-
-</ParamField>
-
-<ParamField body="n" type="int"  default="1">
-
-  Number of generated images
-
-* Value range：[1,9]
-
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model_name` | string | ❌ No | `kling-v1` | Model Name * Enum values：​**kling-v1**​, ​**kling-v1-5**​, ​**kling-v2**​, ​**kling-v2-new**​, **kling-v2-1** |
+| `prompt` | string | ✅ Yes | `The plane flew over the head` | Positive text prompt * Cannot exceed 2500 characters |
+| `negative_prompt` | string | ❌ No | - | Negative text prompt * Cannot exceed 2500 characters |
+| `resolution` | string | ❌ No | `1k` | Image generation resolution * Enum values：1k, 2k * 1k：1K standard * 2k：2K high-res The support range for different model versions. For more details, please refer to the current document's "2-0 Capability Map" |
+| `n` | int | ❌ No | `1` | Number of generated images * Value range：[1,9] |
+| `aspect_ratio` | string | ❌ No | `16:9` | Aspect ratio of the generated images (width:height) * Enum values：**16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9** Different model versions support varying ranges. For details, refer to the Capability Map |
+| `callback_url` | string | ❌ No | - | The callback notification address for the result of this task. If configured, the server will actively notify when the task status changes * The specific message schema of the notification can be found in “Callback Protocol” |
 
 
 
-<ParamField body="aspect_ratio" type="string"  default="16:9">
-  Aspect ratio of the generated images (width:height)
 
-* Enum values：**16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9**
-
-Different model versions support varying ranges. For details, refer to the Capability Map
-
-</ParamField>
-
-
-
-<ParamField body="callback_url" type="string"  default="">
-The callback notification address for the result of this task. If configured, the server will actively notify when the task status changes
-
-* The specific message schema of the notification can be found in “Callback Protocol”
-
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/kling/v1/images/generations" \
@@ -170,13 +111,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="data.task_id" type="string">
-</ResponseField>
+</RequestExample>
 
 ```json
 {
@@ -239,6 +174,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

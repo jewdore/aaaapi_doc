@@ -8,57 +8,26 @@ description: 'generateContent'
 
 This endpoint provides generatecontent functionality.
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
 ## Query Parameters
 
-<ParamField query="key" type="string">
-  
-</ParamField>
 
-## Request Body
+## Parameters
 
-<ParamField body="model" type="string" required default="gemini-2.5-pro-deepsearch">
-  The model to use for the request
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gemini-2.5-pro-deepsearch` | The model to use for the request |
+| `contents` | array | ❌ No | `[{&quot;role&quot;: &quot;user&quot;, &quot;parts&quot;: [{&quot;text&quot;: &quot;Hello, please introduce yourself&quot;}]}]` | Contents parameter |
+| `system_instruction` | object | ❌ No | `{&quot;role&quot;: &quot;system&quot;, &quot;parts&quot;: [{&quot;text&quot;: &quot;You are a helpful AI assistant&quot;}]}` | System Instruction parameter |
+| `tools` | array | ❌ No | `[]` | Tools parameter |
+| `safety_settings` | array | ❌ No | `[{&quot;category&quot;: &quot;HARM_CATEGORY_HARASSMENT&quot;, &quot;threshold&quot;: &quot;BLOCK_MEDIUM_AND_ABOVE&quot;}]` | Safety Settings parameter |
+| `generation_config` | object | ❌ No | `{&quot;thinking_config&quot;: {&quot;include_thoughts&quot;: false, &quot;thinking_budget&quot;: 1000}, &quot;max_output_tokens&quot;: 4096, &quot;response_modalities&quot;: null, &quot;temperature&quot;: 1.8, &quot;top_p&quot;: 0.8, &quot;top_k&quot;: 40, &quot;candidate_count&quot;: 1, &quot;presence_penalty&quot;: 0.0, &quot;frequency_penalty&quot;: 0.0, &quot;stop_sequences&quot;: [&quot;END&quot;, &quot;STOP&quot;], &quot;response_mime_type&quot;: &quot;text/plain&quot;, &quot;response_schema&quot;: null, &quot;seed&quot;: 12345, &quot;response_logprobs&quot;: false, &quot;logprobs&quot;: null, &quot;audio_timestamp&quot;: false}` | Generation Config parameter |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+| `labels` | object | ❌ No | `{&quot;user_id&quot;: &quot;12345&quot;, &quot;session_id&quot;: &quot;session_001&quot;}` | Labels parameter |
 
-<ParamField body="contents" type="array"  default="[{&quot;role&quot;: &quot;user&quot;, &quot;parts&quot;: [{&quot;text&quot;: &quot;Hello, please introduce yourself&quot;}]}]">
-  Contents parameter
-</ParamField>
 
-<ParamField body="system_instruction" type="object"  default="{&quot;role&quot;: &quot;system&quot;, &quot;parts&quot;: [{&quot;text&quot;: &quot;You are a helpful AI assistant&quot;}]}">
-  System Instruction parameter
-</ParamField>
 
-<ParamField body="tools" type="array"  default="[]">
-  Tools parameter
-</ParamField>
 
-<ParamField body="safety_settings" type="array"  default="[{&quot;category&quot;: &quot;HARM_CATEGORY_HARASSMENT&quot;, &quot;threshold&quot;: &quot;BLOCK_MEDIUM_AND_ABOVE&quot;}]">
-  Safety Settings parameter
-</ParamField>
-
-<ParamField body="generation_config" type="object"  default="{&quot;thinking_config&quot;: {&quot;include_thoughts&quot;: false, &quot;thinking_budget&quot;: 1000}, &quot;max_output_tokens&quot;: 4096, &quot;response_modalities&quot;: null, &quot;temperature&quot;: 1.8, &quot;top_p&quot;: 0.8, &quot;top_k&quot;: 40, &quot;candidate_count&quot;: 1, &quot;presence_penalty&quot;: 0.0, &quot;frequency_penalty&quot;: 0.0, &quot;stop_sequences&quot;: [&quot;END&quot;, &quot;STOP&quot;], &quot;response_mime_type&quot;: &quot;text/plain&quot;, &quot;response_schema&quot;: null, &quot;seed&quot;: 12345, &quot;response_logprobs&quot;: false, &quot;logprobs&quot;: null, &quot;audio_timestamp&quot;: false}">
-  Generation Config parameter
-</ParamField>
-
-<ParamField body="stream" type="boolean"  default="false">
-  Whether to stream the response
-</ParamField>
-
-<ParamField body="labels" type="object"  default="{&quot;user_id&quot;: &quot;12345&quot;, &quot;session_id&quot;: &quot;session_001&quot;}">
-  Labels parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent" \
@@ -358,22 +327,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -421,6 +377,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

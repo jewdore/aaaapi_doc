@@ -8,63 +8,26 @@ description: 'Image to Image'
 
 This endpoint provides image to image functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | array | ❌ No | `[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;]` | Input image URL(s) for image-to-image generation |
+| `hd` | boolean | ❌ No | `true` | Hd parameter |
+| `model` | string | ✅ Yes | `doubao-seedream-4-0-250828` | The model to use for the request |
+| `n` | integer | ❌ No | `1` | Number of completions to generate |
+| `prompt` | string | ✅ Yes | `Generate close-up photos of characters in the snow` | Image generation prompt describing the desired image content |
+| `prompt_enhancement` | boolean | ❌ No | `false` | Prompt Enhancement parameter |
+| `quality` | string | ❌ No | `auto` | Quality parameter |
+| `reflection_enabled` | boolean | ❌ No | `false` | Reflection Enabled parameter |
+| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
+| `seed` | integer | ❌ No | `12` | Random seed for reproducible results |
+| `size` | string | ❌ No | `1024x1280` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="image" type="array"  default="[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;]">
-  Input image URL(s) for image-to-image generation
-</ParamField>
 
-<ParamField body="hd" type="boolean"  default="true">
-  Hd parameter
-</ParamField>
-
-<ParamField body="model" type="string" required default="doubao-seedream-4-0-250828">
-  The model to use for the request
-</ParamField>
-
-<ParamField body="n" type="integer"  default="1">
-  Number of completions to generate
-</ParamField>
-
-<ParamField body="prompt" type="string" required default="Generate close-up photos of characters in the snow">
-  Image generation prompt describing the desired image content
-</ParamField>
-
-<ParamField body="prompt_enhancement" type="boolean"  default="false">
-  Prompt Enhancement parameter
-</ParamField>
-
-<ParamField body="quality" type="string"  default="auto">
-  Quality parameter
-</ParamField>
-
-<ParamField body="reflection_enabled" type="boolean"  default="false">
-  Reflection Enabled parameter
-</ParamField>
-
-<ParamField body="response_format" type="string"  default="url">
-  Response format: "url" (image URL) or "b64_json" (base64 encoded)
-</ParamField>
-
-<ParamField body="seed" type="integer"  default="12">
-  Random seed for reproducible results
-</ParamField>
-
-<ParamField body="size" type="string"  default="1024x1280">
-  Output image resolution (e.g., 1024x1024, 2K, 4K)
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -200,22 +163,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -263,6 +213,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

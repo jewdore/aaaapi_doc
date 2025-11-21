@@ -8,39 +8,20 @@ description: 'generate Generate Task'
 
 This endpoint provides generate generate task functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `ratio` | string | ❌ No | `16:9` | Ratio parameter |
+| `prompt` | string | ✅ Yes | `a kitten` | Prompt parameter |
+| `style` | string | ❌ No | `cinematic` | Style parameter |
+| `model` | string | ✅ Yes | `runwayml-gen3a_turbo-5` | The model to use for the request |
+| `options` | object | ❌ No | `{&quot;seconds&quot;: 10, &quot;motion_vector&quot;: {&quot;x&quot;: 0, &quot;y&quot;: 0.3999999999999999, &quot;z&quot;: 0, &quot;r&quot;: -6, &quot;bg_x_pan&quot;: 0, &quot;bg_y_pan&quot;: 0}}` | Options parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="ratio" type="string"  default="16:9">
-  Ratio parameter
-</ParamField>
 
-<ParamField body="prompt" type="string" required default="a kitten">
-  Prompt parameter
-</ParamField>
-
-<ParamField body="style" type="string"  default="cinematic">
-  Style parameter
-</ParamField>
-
-<ParamField body="model" type="string" required default="runwayml-gen3a_turbo-5">
-  The model to use for the request
-</ParamField>
-
-<ParamField body="options" type="object"  default="{&quot;seconds&quot;: 10, &quot;motion_vector&quot;: {&quot;x&quot;: 0, &quot;y&quot;: 0.3999999999999999, &quot;z&quot;: 0, &quot;r&quot;: -6, &quot;bg_x_pan&quot;: 0, &quot;bg_y_pan&quot;: 0}}">
-  Options parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/runway/v1/pro/generate" \
@@ -180,22 +161,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -243,6 +211,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

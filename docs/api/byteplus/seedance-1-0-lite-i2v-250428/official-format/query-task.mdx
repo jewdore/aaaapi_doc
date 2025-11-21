@@ -8,23 +8,12 @@ description: 'Query the status and result of a video generation task'
 
 Query the status and result of a video generation task created by the seedance-1-0-lite-i2v-250428 model. This endpoint allows you to check if the video generation is complete and retrieve the video URL.
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token with your API key.
-
-<ParamField header="Authorization" type="string" required>
-  Your API key in the format: `Bearer YOUR_API_KEY`
-</ParamField>
-
 ## Path Parameters
 
-<ParamField path="task_id" type="string" required>
-  The task ID returned when creating the video generation task
-</ParamField>
 
-## Request Example
 
-<CodeGroup>
+
+<RequestExample>
 
 ```bash cURL
 curl -X GET "https://gptproto.com/api/v3/contents/generations/tasks/{task_id}" \
@@ -89,64 +78,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success - Pending" type="200">
-  Task is still processing
-
-```json
-{
-  "code": 0,
-  "message": "Success",
-  "data": {
-    "task_id": "task_xxxxxxxxxx",
-    "status": "pending",
-    "model": "seedance-1-0-lite-i2v-250428"
-  }
-}
-```
-</ResponseField>
-
-<ResponseField name="Success - Completed" type="200">
-  Task completed successfully with video URL
-
-```json
-{
-  "code": 0,
-  "message": "Success",
-  "data": {
-    "task_id": "task_xxxxxxxxxx",
-    "status": "completed",
-    "model": "seedance-1-0-lite-i2v-250428",
-    "video_url": "https://example.com/generated_video.mp4",
-    "created_at": "2025-01-10T12:00:00Z",
-    "completed_at": "2025-01-10T12:01:30Z"
-  }
-}
-```
-</ResponseField>
-
-<ResponseField name="Success - Failed" type="200">
-  Task failed with error message
-
-```json
-{
-  "code": 0,
-  "message": "Success",
-  "data": {
-    "task_id": "task_xxxxxxxxxx",
-    "status": "failed",
-    "model": "seedance-1-0-lite-i2v-250428",
-    "error": "Content policy violation or generation error"
-  }
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -189,6 +123,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

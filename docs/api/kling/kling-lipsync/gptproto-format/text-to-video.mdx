@@ -7,84 +7,20 @@ description: 'Text to Speech with Lip Sync'
 ## Overview
 
 Kling TextToVideo by Kwaivgi creates videos with lifelike lip movements that precisely sync to input text for natural speaking visuals. Ready-to-use REST inference API, best performance, no coldstarts, affordable pricing.
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `video` | string | ✅ Yes | `https://example.com/video.mp4` | The URL of the video file for generating synchronized lip movements. **Requirements:** - Supported formats: `.mp4`, `.mov` - File size: Max 100MB - Duration: 2s - 10s - Resolution: 720p or 1080p only - Dimensions: Both width and height must be between 720px and 1920px |
+| `text` | string | ✅ Yes | `Kling lipsync on GptprotoAI is an AI-powered model. Try it now!` | Text content for lip-sync video generation. This text will be converted to speech and synchronized with lip movements in the video. **Limit:** Maximum 120 characters |
+| `voice_id` | string | ✅ Yes | `genshin_klee2` | Voice ID to use for speech synthesis. Different voice IDs provide different character voices and speaking styles. **Available Voice IDs:** - `genshin_klee2` - Genshin Klee character voice - `genshin_vindi2` - Genshin Vindi character voice - `genshin_kirara` - Genshin Kirara character voice - `zhinen_xuesheng` - Student voice - `AOT` - Attack on Titan style - `ai_shatang` - Sweet voice - `ai_kaiya` - Kaiya voice - `oversea_male1` - Overseas male voice - `ai_chenjiahao_712` - Chen Jiahao voice - `girlfriend_4_speech02` - Girlfriend voice 4 - `chat1_female_new-3` - Female chat voice - `chat_0407_5-1` - Chat voice variant - `cartoon-boy-07` - Cartoon boy voice - `uk_boy1` - UK boy voice - `cartoon-girl-01` - Cartoon girl voice - `PeppaPig_platform` - Peppa Pig style voice - `ai_huangzhong_712` - Huang Zhong voice - `ai_huangyaoshi_712` - Huang Yaoshi voice - `ai_laoguowang_712` - Lao Guo Wang voice - `chengshu_jiejie` - Mature sister voice - `you_pingjing` - Calm voice - `calm_story1` - Calm storytelling voice - `uk_man2` - UK man voice - `laopopo_speech02` - Grandmother voice - `heainainai_speech02` - Grandma voice |
+| `voice_language` | string | ❌ No | `en` | The voice language corresponding to the Voice ID. **Supported Languages:** - `zh` - Chinese - `en` - English |
+| `voice_speed` | number | ❌ No | `1` | Speech rate for text to video generation. Controls how fast the generated speech should be. **Range:** 0.8 - 2.0 - Default: `1.0` (normal speed) - Values > 1.0 increase speed - Values < 1.0 decrease speed |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="video" type="string" required default="https://example.com/video.mp4">
-  The URL of the video file for generating synchronized lip movements.
 
-  **Requirements:**
-  - Supported formats: `.mp4`, `.mov`
-  - File size: Max 100MB
-  - Duration: 2s - 10s
-  - Resolution: 720p or 1080p only
-  - Dimensions: Both width and height must be between 720px and 1920px
-</ParamField>
-
-<ParamField body="text" type="string" required default="Kling lipsync on GptprotoAI is an AI-powered model. Try it now!">
-  Text content for lip-sync video generation. This text will be converted to speech and synchronized with lip movements in the video.
-
-  **Limit:** Maximum 120 characters
-</ParamField>
-
-<ParamField body="voice_id" type="string" required default="genshin_klee2">
-  Voice ID to use for speech synthesis. Different voice IDs provide different character voices and speaking styles.
-
-  **Available Voice IDs:**
-  - `genshin_klee2` - Genshin Klee character voice
-  - `genshin_vindi2` - Genshin Vindi character voice
-  - `genshin_kirara` - Genshin Kirara character voice
-  - `zhinen_xuesheng` - Student voice
-  - `AOT` - Attack on Titan style
-  - `ai_shatang` - Sweet voice
-  - `ai_kaiya` - Kaiya voice
-  - `oversea_male1` - Overseas male voice
-  - `ai_chenjiahao_712` - Chen Jiahao voice
-  - `girlfriend_4_speech02` - Girlfriend voice 4
-  - `chat1_female_new-3` - Female chat voice
-  - `chat_0407_5-1` - Chat voice variant
-  - `cartoon-boy-07` - Cartoon boy voice
-  - `uk_boy1` - UK boy voice
-  - `cartoon-girl-01` - Cartoon girl voice
-  - `PeppaPig_platform` - Peppa Pig style voice
-  - `ai_huangzhong_712` - Huang Zhong voice
-  - `ai_huangyaoshi_712` - Huang Yaoshi voice
-  - `ai_laoguowang_712` - Lao Guo Wang voice
-  - `chengshu_jiejie` - Mature sister voice
-  - `you_pingjing` - Calm voice
-  - `calm_story1` - Calm storytelling voice
-  - `uk_man2` - UK man voice
-  - `laopopo_speech02` - Grandmother voice
-  - `heainainai_speech02` - Grandma voice
-</ParamField>
-
-<ParamField body="voice_language" type="string" default="en">
-  The voice language corresponding to the Voice ID.
-
-  **Supported Languages:**
-  - `zh` - Chinese
-  - `en` - English
-</ParamField>
-
-<ParamField body="voice_speed" type="number" default="1">
-  Speech rate for text to video generation. Controls how fast the generated speech should be.
-
-  **Range:** 0.8 - 2.0
-  - Default: `1.0` (normal speed)
-  - Values > 1.0 increase speed
-  - Values < 1.0 decrease speed
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/api/v3/kwaivgi/kling-lipsync/text-to-video' \
@@ -184,18 +120,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
-## Response
-
-<ResponseField name="data.id" type="string">
-    Unique identifier for the prediction, Task Id
-</ResponseField>
-
-<ResponseField name="data.status" type="string">
-    Status of the task: created, processing, completed, or failed
-</ResponseField>
-
+</RequestExample>
 <ResponseExample>
 
     ```json 401 - Invalid signature
@@ -242,7 +167,6 @@ func main() {
     }
     }
     ```
-
 </ResponseExample>
 
 

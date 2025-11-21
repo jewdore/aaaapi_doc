@@ -8,45 +8,17 @@ description: 'image-edit'
 
 This endpoint provides image-edit functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | string | ✅ Yes | `/Users/tabe/Desktop/videoframe_4120.png` | image parameter |
+| `prompt` | string | ✅ Yes | `remove background` | prompt parameter |
+| `model` | string | ✅ Yes | `qwen-image-edit` | model parameter |
+| `n` | string | ✅ Yes | `1` | n parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="image" type="string" required default="/Users/tabe/Desktop/videoframe_4120.png">
-  image parameter
-</ParamField>
-
-<ParamField body="prompt" type="string" required default="remove background">
-  prompt parameter
-</ParamField>
-
-<ParamField body="model" type="string" required default="qwen-image-edit">
-  model parameter
-</ParamField>
-
-<ParamField body="n" type="string" required default="1">
-  n parameter
-</ParamField>
-
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -94,6 +66,5 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>
 

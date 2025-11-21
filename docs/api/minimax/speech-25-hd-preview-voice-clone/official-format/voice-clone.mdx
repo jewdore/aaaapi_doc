@@ -8,47 +8,22 @@ description: 'Voice Clone'
 
 This endpoint provides voice clone functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `accuracy` | number | ❌ No | `0.7` | Accuracy parameter |
+| `audio` | string | ❌ No | `https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3` | Audio parameter |
+| `custom_voice_id` | string | ❌ No | `Alice-jiuhao-2` | Custom Voice Id parameter |
+| `model` | string | ✅ Yes | `speech-2.5-hd-preview-voice-clone` | The model to use for the request |
+| `need_noise_reduction` | boolean | ❌ No | `false` | Need Noise Reduction parameter |
+| `need_volume_normalization` | boolean | ❌ No | `false` | Need Volume Normalization parameter |
+| `text` | string | ❌ No | `Hello! Welcome to Gptproto! This is a preview of your cloned voice. I hope you enjoy it!` | Text parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="accuracy" type="number"  default="0.7">
-  Accuracy parameter
-</ParamField>
 
-<ParamField body="audio" type="string"  default="https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3">
-  Audio parameter
-</ParamField>
-
-<ParamField body="custom_voice_id" type="string"  default="Alice-jiuhao-2">
-  Custom Voice Id parameter
-</ParamField>
-
-<ParamField body="model" type="string" required default="speech-2.5-hd-preview-voice-clone">
-  The model to use for the request
-</ParamField>
-
-<ParamField body="need_noise_reduction" type="boolean"  default="false">
-  Need Noise Reduction parameter
-</ParamField>
-
-<ParamField body="need_volume_normalization" type="boolean"  default="false">
-  Need Volume Normalization parameter
-</ParamField>
-
-<ParamField body="text" type="string"  default="Hello! Welcome to Gptproto! This is a preview of your cloned voice. I hope you enjoy it!">
-  Text parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/minimax/voice-clone" \
@@ -156,22 +131,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -219,6 +181,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

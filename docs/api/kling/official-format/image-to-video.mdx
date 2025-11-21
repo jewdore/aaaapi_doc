@@ -8,47 +8,22 @@ description: 'Image to Video'
 
 This endpoint provides image to video functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `flow` | Prompt parameter |
+| `negative_prompt` | string | ❌ No | - | Negative Prompt parameter |
+| `image` | string | ❌ No | `https://img.jpg` | Image parameter |
+| `image_tail` | string | ❌ No | - | Image Tail parameter |
+| `aspect_ratio` | string | ❌ No | `1:1` | Aspect Ratio parameter |
+| `mode` | string | ❌ No | `std` | Mode parameter |
+| `duration` | string | ❌ No | `5` | Duration parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="flow">
-  Prompt parameter
-</ParamField>
 
-<ParamField body="negative_prompt" type="string"  default="">
-  Negative Prompt parameter
-</ParamField>
-
-<ParamField body="image" type="string"  default="https://img.jpg">
-  Image parameter
-</ParamField>
-
-<ParamField body="image_tail" type="string"  default="">
-  Image Tail parameter
-</ParamField>
-
-<ParamField body="aspect_ratio" type="string"  default="1:1">
-  Aspect Ratio parameter
-</ParamField>
-
-<ParamField body="mode" type="string"  default="std">
-  Mode parameter
-</ParamField>
-
-<ParamField body="duration" type="string"  default="5">
-  Duration parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/kling/v1/videos/image2video" \
@@ -163,20 +138,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
+</RequestExample>
 
 <ResponseExample>
 
@@ -224,6 +186,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

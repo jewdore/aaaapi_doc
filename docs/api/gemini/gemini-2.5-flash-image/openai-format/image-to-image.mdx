@@ -19,48 +19,22 @@ Inputs: Text and Images
 
 Outputs: Text and image
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   role of user. |
+| `content` | string | ✅ Yes | - | The prompt for the generation. |
+| `experimental_attachments` | array | ✅ Yes | - |   Supported MIME types:image/png, image/jpeg, image/webp |
+| `url` | string | ✅ Yes | - | image url. |
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image` |  |
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="messages" type="array" required>
-  Array of message objects for the conversation
-
-  <Expandable title="properties"  defaultOpen="true">
-    <ParamField body="role" type="string" required>
-      role of user.
-    </ParamField>
-    <ParamField body="content" type="string" required>
-      The prompt for the generation.
-    </ParamField>
-    <ParamField body="experimental_attachments" type="array" required>
-      <Expandable title="properties"  defaultOpen="true">
-        <ParamField body="contentType" type="string" required>
-          Supported MIME types:image/png, image/jpeg, image/webp
-        </ParamField>
-        <ParamField body="url" type="string" required>
-          image url.
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-<ParamField body="model" default="gemini-2.5-flash-image" type="string" required>
-  
-</ParamField>
 
 ## Image to Image
 
 The default output size for chat mode is 1:1 (1024x1024)
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/chat/completions" \
@@ -211,8 +185,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
+</RequestExample>
 
 ## Response
 
@@ -304,16 +277,15 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 
-## Request Example
+
 
 ## Adding and removing elements
 
 Provide an image and describe your change. The model will match the original image's style, lighting, and perspective.
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/chat/completions' \
@@ -335,8 +307,7 @@ curl --location 'https://gptproto.com/v1/chat/completions' \
   ]
 }'
 ```
-
-</CodeGroup>
+</RequestExample>
 
 | Input                                              | Output                                                                        |
 | -------------------------------------------------- | ----------------------------------------------------------------------------- |
@@ -347,7 +318,7 @@ curl --location 'https://gptproto.com/v1/chat/completions' \
 
 Provide multiple images as context to create a new, composite scene. This is perfect for product mockups or creative collages.
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/chat/completions' \
@@ -372,8 +343,7 @@ curl --location 'https://gptproto.com/v1/chat/completions' \
   ]
 }'
 ```
-
-</CodeGroup>
+</RequestExample>
 
 | Input1                                                       | Input2                                              | Output                                            |
 | ------------------------------------------------------------ | --------------------------------------------------- | ------------------------------------------------- |

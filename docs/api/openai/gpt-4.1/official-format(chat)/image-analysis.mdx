@@ -8,14 +8,6 @@ description: "Analyze and understand image content using vision-enabled models"
 
 This endpoint provides image analysis functionality using the OpenAI-compatible chat completions API. Upload images or provide image URLs to analyze and understand image content with vision-enabled models.
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `sk-*****`
-</ParamField>
-
 ## Request Body
 
 | Parameter | Type | Required | Default | Description |
@@ -52,9 +44,9 @@ The `content` array can contain multiple items of different types:
 | `image_url` | object | ✅ Yes | See below | Object containing the image URL |
 | `image_url.url` | string | ✅ Yes | `"https://example.com/image.jpg"` | The URL of the image to analyze |
 
-## Request Example
 
-<CodeGroup>
+
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/chat/completions" \
@@ -209,72 +201,8 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
-
-## Response
-
-<ResponseField name="id" type="string">
-  Unique identifier for the chat completion
-</ResponseField>
-
-<ResponseField name="object" type="string">
-  Object type, always "chat.completion"
-</ResponseField>
-
-<ResponseField name="created" type="integer">
-  Unix timestamp of when the chat completion was created
-</ResponseField>
-
-<ResponseField name="model" type="string">
-  The model used for generating the completion
-</ResponseField>
-
-<ResponseField name="choices" type="array">
-  Array of completion choices
-
-  <Expandable title="Choice Object">
-    <ResponseField name="index" type="integer">
-      The index of this choice in the array
-    </ResponseField>
-
-    <ResponseField name="message" type="object">
-      The generated message
-
-      <Expandable title="Message Object">
-        <ResponseField name="role" type="string">
-          The role of the message author, always "assistant"
-        </ResponseField>
-
-        <ResponseField name="content" type="string">
-          The content of the message (the image analysis result)
-        </ResponseField>
-      </Expandable>
-    </ResponseField>
-
-    <ResponseField name="finish_reason" type="string">
-      The reason the completion finished. Possible values: "stop", "length", "content_filter"
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="usage" type="object">
-  Token usage statistics
-
-  <Expandable title="Usage Object">
-    <ResponseField name="prompt_tokens" type="integer">
-      Number of tokens in the prompt
-    </ResponseField>
-
-    <ResponseField name="completion_tokens" type="integer">
-      Number of tokens in the completion
-    </ResponseField>
-
-    <ResponseField name="total_tokens" type="integer">
-      Total number of tokens used
-    </ResponseField>
-  </Expandable>
-</ResponseField>
 
 <ResponseExample>
 
@@ -350,5 +278,4 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>

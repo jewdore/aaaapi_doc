@@ -12,23 +12,16 @@ Related Guides: [Suno Official Documentation](https://suno.com/docs) | [Lyrics G
 
 This endpoint allows you to submit lyrics generation tasks using simple text prompts. The generation is processed asynchronously - you'll receive a task ID immediately, which you can use to check the status and retrieve the generated lyrics once complete.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `Write lyrics about a sunrise over the ocean with a hopeful tone` | Description of the lyrics you want to generate. Provide detailed information about the theme, mood, style, and any specific elements you want included in the lyrics. |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `Bearer YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="Write lyrics about a sunrise over the ocean with a hopeful tone">
-  Description of the lyrics you want to generate. Provide detailed information about the theme, mood, style, and any specific elements you want included in the lyrics.
-</ParamField>
 
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/suno/submit/lyrics' \
@@ -161,39 +154,9 @@ func main() {
     }
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "code": "success",
-  "data": "a8f3d9e2-4b7c-41a8-9f2e-6d5c8e1a7b9f",
-  "message": ""
-}
-```
-
-<Expandable title="Response Fields">
-  <ResponseField name="code" type="string">
-    Status code indicating success or error (`"success"` or `"error"`)
-  </ResponseField>
-
-  <ResponseField name="data" type="string">
-    Task ID for tracking the lyrics generation progress. Use this ID with the [Query Task Status](/api/suno/official-format/query-task) endpoint to check completion and retrieve the generated lyrics.
-  </ResponseField>
-
-  <ResponseField name="message" type="string">
-    Error message if code is `"error"`, empty string if successful
-  </ResponseField>
-</Expandable>
-
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -244,7 +207,6 @@ func main() {
   "message": "Content may not meet the guidelines. Please adjust and try again."
 }
 ```
-
 </ResponseExample>
 
 ## Next Steps
@@ -331,7 +293,7 @@ if result["code"] == "success":
 
 ### Example Prompts
 
-<CodeGroup>
+<RequestExample>
 
 ```text Good Examples
 "Write romantic lyrics about falling in love under the stars, with poetic and emotional language suitable for a slow ballad"
@@ -354,8 +316,7 @@ if result["code"] == "success":
 
 "Love song" (too generic, lacks detail)
 ```
-
-</CodeGroup>
+</RequestExample>
 
 ### Prompt Templates by Genre
 

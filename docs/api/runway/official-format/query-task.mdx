@@ -8,33 +8,10 @@ description: 'Query Task'
 
 This endpoint provides query task functionality.
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
 ## Path Parameters
 
-<ParamField path="id" type="string">
-  The task ID returned from the task creation request
-</ParamField>
 
-## Response
 
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -82,6 +59,5 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>
 

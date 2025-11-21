@@ -8,35 +8,19 @@ description: 'video2video(Video to Video, Style Re-drawing)'
 
 This endpoint provides video2video(video to video, style re-drawing) functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `video` | string | ❌ No | `http://source.baidu.com/attachments/video/runway/20241117/28ed9d05e1dc84bede45541855500aa9.mp4` | Video parameter |
+| `model` | string | ✅ Yes | `runwayml-gen3a_turbo-5` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `pixel style` | Prompt parameter |
+| `options` | object | ❌ No | `{&quot;structure_transformation&quot;: 0.5, &quot;flip&quot;: true}` | Options parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="video" type="string"  default="http://source.baidu.com/attachments/video/runway/20241117/28ed9d05e1dc84bede45541855500aa9.mp4">
-  Video parameter
-</ParamField>
 
-<ParamField body="model" type="string" required default="runwayml-gen3a_turbo-5">
-  The model to use for the request
-</ParamField>
-
-<ParamField body="prompt" type="string" required default="pixel style">
-  Prompt parameter
-</ParamField>
-
-<ParamField body="options" type="object"  default="{&quot;structure_transformation&quot;: 0.5, &quot;flip&quot;: true}">
-  Options parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/runway/v1/pro/video2video" \
@@ -144,22 +128,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -207,6 +178,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,24 +8,15 @@ description: 'Query Task'
 
 This endpoint provides query task functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `task_id` | string | ✅ Yes | - | Unique identifier for the prediction, Task Id |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-<ParamField path="task_id" type="string" required>
-  Unique identifier for the prediction, Task Id
-
-</ParamField>
 
 ## Response
-<ResponseField name="data.outputs" type="string">
-	Array of URLs to the generated content (empty when status is not completed)
-</ResponseField>
+
 
 <ResponseExample>
 
@@ -73,6 +64,5 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,35 +8,19 @@ description: 'All associated button actions UPSCALE、VARIATION、REROLL、ZOOM,
 
 All associated button actions UPSCALE、VARIATION、REROLL、ZOOM, etc.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `customId` | string | ❌ No | `MJ::JOB::upsample::2::3dbbd469-36af-4a0f-8f02-df6c579e7011` | Customid parameter |
+| `taskId` | string | ❌ No | `14001934816969359` | Taskid parameter |
+| `notifyHook` | string | ❌ No | `string` | Notifyhook parameter |
+| `state` | string | ❌ No | `string` | State parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="customId" type="string"  default="MJ::JOB::upsample::2::3dbbd469-36af-4a0f-8f02-df6c579e7011">
-  Customid parameter
-</ParamField>
 
-<ParamField body="taskId" type="string"  default="14001934816969359">
-  Taskid parameter
-</ParamField>
-
-<ParamField body="notifyHook" type="string"  default="string">
-  Notifyhook parameter
-</ParamField>
-
-<ParamField body="state" type="string"  default="string">
-  State parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/mj/submit/action" \
@@ -132,22 +116,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -195,6 +166,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

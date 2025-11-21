@@ -8,51 +8,23 @@ description: 'Image to Image'
 
 This endpoint provides image to image functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `Generate a twin photo from two images and take a photo in the snow` | Image generation prompt describing the desired image content |
+| `image` | array | ❌ No | `[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;]` | Input image URL(s) for image-to-image generation |
+| `model` | string | ✅ Yes | `seedream-4-0-250828` | The model to use for the request |
+| `sequential_image_generation` | string | ❌ No | `disabled` | Sequential Image Generation parameter |
+| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
+| `size` | string | ❌ No | `2K` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+| `watermark` | boolean | ❌ No | `false` | Whether to add watermark to generated image |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="Generate a twin photo from two images and take a photo in the snow">
-  Image generation prompt describing the desired image content
-</ParamField>
 
-<ParamField body="image" type="array"  default="[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;]">
-  Input image URL(s) for image-to-image generation
-</ParamField>
-
-<ParamField body="model" type="string" required default="seedream-4-0-250828">
-  The model to use for the request
-</ParamField>
-
-<ParamField body="sequential_image_generation" type="string"  default="disabled">
-  Sequential Image Generation parameter
-</ParamField>
-
-<ParamField body="response_format" type="string"  default="url">
-  Response format: "url" (image URL) or "b64_json" (base64 encoded)
-</ParamField>
-
-<ParamField body="size" type="string"  default="2K">
-  Output image resolution (e.g., 1024x1024, 2K, 4K)
-</ParamField>
-
-<ParamField body="stream" type="boolean"  default="false">
-  Whether to stream the response
-</ParamField>
-
-<ParamField body="watermark" type="boolean"  default="false">
-  Whether to add watermark to generated image
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/images/generations" \
@@ -176,22 +148,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -239,6 +198,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,53 +8,19 @@ description: 'Text to Text'
 
 This endpoint provides text to text functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `file` | string | ✅ Yes | - | file parameter |
+| `model` | string | ✅ Yes | `gpt-4o-transcribe` | model parameter |
+| `language` | string | ✅ Yes | `zh` | language parameter |
+| `prompt` | string | ✅ Yes | - | prompt parameter |
+| `response_format` | string | ✅ Yes | `json` | response_format parameter |
+| `temperature` | string | ✅ Yes | `0` | temperature parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="file" type="string" required>
-  file parameter
-</ParamField>
-
-<ParamField body="model" type="string" required default="gpt-4o-transcribe">
-  model parameter
-</ParamField>
-
-<ParamField body="language" type="string" required default="zh">
-  language parameter
-</ParamField>
-
-<ParamField body="prompt" type="string" required>
-  prompt parameter
-</ParamField>
-
-<ParamField body="response_format" type="string" required default="json">
-  response_format parameter
-</ParamField>
-
-<ParamField body="temperature" type="string" required default="0">
-  temperature parameter
-</ParamField>
-
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -102,6 +68,5 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>
 

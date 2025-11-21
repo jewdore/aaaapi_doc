@@ -8,78 +8,17 @@ description: "Image to Video"
 
 Sora is OpenAI’s newest frontier in generative media – a state-of-the-art video model capable of creating richly detailed, dynamic clips with audio from natural language or images. Built on years of research into multimodal diffusion and trained on diverse visual data, Sora brings a deep understanding of 3D space, motion, and scene continuity to text-to-video generation.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-<ParamField header="Content-Type" default="multipart/form-data" type="string" required>
-  Content-Type: multipart/form-data
-</ParamField>
-
-## Request Body
-
-<ParamField form="model" default="sora-2" type="string" required>
-  The video generation model to use. Defaults to sora-2.
-</ParamField>
-
-<ParamField body="prompt" default="She turns around and smiles, then slowly walks out of the frame." type="string" required>
-  Text prompt that describes the video to generate.
-</ParamField>
-
-<ParamField body="input_reference" default="@sample_720p.jpeg" type="string" required>
-  Optional image reference that guides generation.
-  image size 720x1280, 1280x720
-</ParamField>
-
-<ParamField body="seconds" type="string" default="4">
-  Clip duration in seconds. 4, 8, 12 . Defaults to 4 seconds.
-</ParamField>
-
-<ParamField body="size" default="720x1280" type="string" required>
-  Output resolution formatted as width x height. Defaults to 720x1280. Only supports 720x1280 , 1280x720
-</ParamField>
-
-<CodeGroup>
-```bash cURL
-curl -X POST "https//gptproto.com/v1/videos" \
-  -H "Authorization: sk-xxx" \
-  -H "Content-Type: multipart/form-data" \
-  -F prompt="She turns around and smiles, then slowly walks out of the frame." \
-  -F model="sora-2" \
-  -F size="1280x720" \
-  -F seconds="8" \
-  -F input_reference="@sample_720p.jpeg;type=image/jpeg"
-```
-</CodeGroup>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | Text prompt that describes the video to generate. |
+| `input_reference` | string | ✅ Yes | `@sample_720p.jpeg` | Optional image reference that guides generation. image size 720x1280, 1280x720 |
+| `seconds` | string | ❌ No | `4` | Clip duration in seconds. 4, 8, 12 . Defaults to 4 seconds. |
+| `size` | string | ✅ Yes | `720x1280` | Output resolution formatted as width x height. Defaults to 720x1280. Only supports 720x1280 , 1280x720 |
 
 
 
-
-## Response
-
-<ResponseField name="id" type="string">
-  The identifier of the video task.
-
-  ```json
- {
-  "id": "video_123",
-  "object": "video",
-  "model": "sora-2",
-  "status": "queued",
-  "progress": 0,
-  "created_at": 1712697600,
-  "size": "1024x1808",
-  "seconds": "8",
-  "quality": "standard"
-}
-  ```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -131,5 +70,4 @@ curl -X POST "https//gptproto.com/v1/videos" \
   }
 }
 ```
-
 </ResponseExample>

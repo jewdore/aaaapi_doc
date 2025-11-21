@@ -8,27 +8,17 @@ description: 'After writing music, get the complete music of the original music 
 
 After writing music, get the complete music of the original music and the merged music
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `clip_id` | string | ❌ No | `186653a1-ef95-4db5-8808-af10247267ce` | Clip Id parameter |
+| `is_infill` | boolean | ❌ No | `false` | Is Infill parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="clip_id" type="string"  default="186653a1-ef95-4db5-8808-af10247267ce">
-  Clip Id parameter
-</ParamField>
 
-<ParamField body="is_infill" type="boolean"  default="false">
-  Is Infill parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/suno/generate/concat/v2" \
@@ -116,22 +106,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -179,6 +156,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

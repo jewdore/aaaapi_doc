@@ -8,49 +8,18 @@ description: 'Edit 3.0(edit)'
 
 This endpoint provides edit 3.0(edit) functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | - | prompt parameter |
+| `rendering_speed` | string | ✅ Yes | - | rendering_speed parameter |
+| `image` | file | ✅ Yes | - | image parameter |
+| `mask` | file | ✅ Yes | - | mask parameter |
+| `character_reference_images` | file | ✅ Yes | - | character_reference_images parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required>
-  prompt parameter
-</ParamField>
-
-<ParamField body="rendering_speed" type="string" required>
-  rendering_speed parameter
-</ParamField>
-
-<ParamField body="image" type="file" required>
-  image parameter
-</ParamField>
-
-<ParamField body="mask" type="file" required>
-  mask parameter
-</ParamField>
-
-<ParamField body="character_reference_images" type="file" required>
-  character_reference_images parameter
-</ParamField>
-
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -98,6 +67,5 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>
 

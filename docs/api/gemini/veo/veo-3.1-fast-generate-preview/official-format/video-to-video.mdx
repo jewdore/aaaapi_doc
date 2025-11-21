@@ -8,58 +8,21 @@ description: 'Transform existing videos with text prompts using Gemini Veo 3.1'
 
 This endpoint transforms existing videos based on text descriptions using Google's Gemini Veo 3.1 model. The API accepts a video URI along with a text prompt and returns a long-running operation for video generation.
 
-## Authentication
-
-This endpoint requires authentication using an API key.
-
-
-<ParamField header="x-goog-api-key" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-<ParamField header="Content-Type" type="string" required default="application/json">
-  Must be set to `application/json`
-</ParamField>
+## Parameters
 
 
 ## Parameters
 
-<ParamField path="model_name" type="string" required default="veo-3.1-generate-preview">
-  The name of the model to use for the request.
-</ParamField>
-
-## Request Body
-
-<ParamField body="instances" type="array" required>
-  An array of instances containing the video generation parameters
-  <Expandable title="properties">
-    <ParamField body="prompt" type="string" required>
-      The text prompt describing how to transform the video
-    </ParamField>
-    <ParamField body="video" type="object" required>
-      The source video information
-      <Expandable title="properties">
-        <ParamField body="uri" type="string" required>
-          The URI of the source video file (must be a valid Google Cloud Storage or Generative Language API file URI)
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-<ParamField body="parameters" type="object">
-  Additional parameters for video generation
-  <Expandable title="properties">
-    <ParamField body="resolution" type="string">
-      The resolution of the output video. Options: `720p`, `1080p`
-    </ParamField>
-  </Expandable>
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `instances` | array | ✅ Yes | - | An array of instances containing the video generation parameters   The text prompt describing how to transform the video |
+| `video` | object | ✅ Yes | - | The source video information   The URI of the source video file (must be a valid Google Cloud Storage or Generative Language API file URI) |
+| `parameters` | object | ❌ No | - | Additional parameters for video generation   The resolution of the output video. Options: `720p`, `1080p` |
 
 
-## Request Example
 
-<CodeGroup>
+
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning' \
@@ -183,26 +146,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response returns a long-running operation
-
-```json
-{
-  "name": "operations/veo-3.1-generate-preview-xxxxx",
-  "metadata": {
-    "@type": "type.googleapis.com/google.cloud.aiplatform.v1beta1.GenerateVideoMetadata",
-    "createTime": "2025-01-19T00:00:00Z"
-  }
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -250,6 +196,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

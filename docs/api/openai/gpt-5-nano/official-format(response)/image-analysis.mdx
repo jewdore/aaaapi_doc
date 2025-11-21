@@ -8,57 +8,18 @@ description: "Analyze and understand image content using vision-enabled models"
 
 This endpoint provides image-to-text functionality using vision-enabled models in response mode.  provide image URLs to extract text content, describe scenes, or analyze visual information.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `sk-*****`
-</ParamField>
-
-## Request Body
-
-<ParamField body="model" default="gpt-5-nano" type="string" required>
-  The model to use for the request. Must be a vision-enabled model.
-</ParamField>
-
-<ParamField body="input" type="array" required default='[{"role": "user", "content": [{"type": "input_text", "text": "What is in this image?"}, {"type": "input_image", "image_url": "data:image/jpeg;base64,${base64Image}"}]}]'>
-  Array of message objects with role and content. Each message contains:
-  - `role`: "user" or "assistant"
-  - `content`: Array of content objects supporting the following types:
-    - **input_text**: Text prompt with `text` field
-    - **input_image**: Image input with `image_url` field, supports:
-      - Base64 encoded images: `data:image/jpeg;base64,{base64_string}`
-      - Supported formats: JPG, PNG
-
-  Example with base64 encoded image:
-  ```json
-  [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "What is in this image?"
-        },
-        {
-          "type": "input_image",
-          "image_url": "data:image/jpeg;base64,${base64Image}"
-        }
-      ]
-    }
-  ]
-  ```
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-5-nano` | The model to use for the request. Must be a vision-enabled model. |
+| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects supporting the following types: - **input_text**: Text prompt with `text` field - **input_image**: Image input with `image_url` field, supports: - Base64 encoded images: `data:image/jpeg;base64,{base64_string}` - Supported formats: JPG, PNG Example with base64 encoded image: ```json [ { "role": "user", "content": [ { "type": "input_text", "text": "What is in this image?" }, { "type": "input_image", "image_url": "data:image/jpeg;base64,${base64Image}" } ] } ] ``` |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
 
 
-<ParamField body="stream" default={false} type="boolean">
-  Whether to stream the response
-</ParamField>
 
-## Request Example
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/responses' \
@@ -206,49 +167,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="id" type="string">
-  Unique identifier for the response
-</ResponseField>
-
-<ResponseField name="object" type="string">
-  Object type, always "response"
-</ResponseField>
-
-<ResponseField name="created" type="integer">
-  Unix timestamp of when the response was created
-</ResponseField>
-
-<ResponseField name="model" type="string">
-  The model used for generating the response
-</ResponseField>
-
-<ResponseField name="output" type="string">
-  The generated text output (the extracted text or image analysis)
-</ResponseField>
-
-<ResponseField name="usage" type="object">
-  Token usage statistics
-
-  <Expandable title="Usage Object">
-    <ResponseField name="prompt_tokens" type="integer">
-      Number of tokens in the input
-    </ResponseField>
-
-    <ResponseField name="completion_tokens" type="integer">
-      Number of tokens in the output
-    </ResponseField>
-
-    <ResponseField name="total_tokens" type="integer">
-      Total number of tokens used
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
+</RequestExample>
 
 <ResponseExample>
 
@@ -315,5 +234,4 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>

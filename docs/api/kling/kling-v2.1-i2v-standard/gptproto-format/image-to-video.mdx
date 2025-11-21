@@ -8,39 +8,20 @@ description: 'Image to Video'
 
 **Kling v2.1** is an AI video generation model developed by ​**KlingAI (Kuaishou)**​. It is purpose-built for creators, artists, and production teams seeking fast, realistic video generation from image and text prompts. Ideal for rapid prototyping, rough drafts, and creative iteration, it balances performance with affordability—while maintaining high-quality motion dynamics and visual coherence.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | - | The positive prompt for the generation. |
+| `negative_prompt` | string | ❌ No | - | The negative prompt for the generation. |
+| `image` | string | ✅ Yes | - | First frame of the video; Supported image formats include.jpg/.jpeg/.png; The image file size cannot exceed 10MB, and the image resolution should not be less than 300*300px. |
+| `guidance_scale` | number | ❌ No | `0.5` | 0.00 ~ 1.00 . The guidance scale to use for the generation. |
+| `duration` | integer | ❌ No | `5` | 5, 10. default 5 . The duration of the generated media in seconds. |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required>
-  The positive prompt for the generation.
-</ParamField>
 
-<ParamField body="negative_prompt" type="string">
-  The negative prompt for the generation.
-</ParamField>
-
-<ParamField body="image" type="string" required>
-  First frame of the video; Supported image formats include.jpg/.jpeg/.png; The image file size cannot exceed 10MB, and the image resolution should not be less than 300*300px.
-</ParamField>
-
-<ParamField body="guidance_scale" type="number"  default="0.5">
-  0.00 ~ 1.00 . The guidance scale to use for the generation.
-</ParamField>
-
-<ParamField body="duration" default="5" type="integer">
-   5, 10.  default 5 . The duration of the generated media in seconds.
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-standard" \
@@ -54,18 +35,7 @@ curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-standard" \
     "duration": "5"
 }'
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="data.id" type="string">
-	Unique identifier for the prediction, Task Id
-</ResponseField>
-
-<ResponseField name="data.status" type="string">
-	Status of the task: created, processing, completed, or failed
-</ResponseField>
+</RequestExample>
 
 <ResponseExample>
 
@@ -113,6 +83,5 @@ curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-standard" \
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,35 +8,19 @@ description: '[Image](https://platform.openai.com/docs/api-reference/images)Give
 
 [Image](https://platform.openai.com/docs/api-reference/images)Given a prompt and/or input image, the model will generate a new image.Related Guides: [Image Generation](https://platform.openai.com/docs/guides/images)Create an image based on the prompt.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `oxen and horses` | Prompt parameter |
+| `n` | integer | ❌ No | `1` | Number of completions to generate |
+| `size` | string | ❌ No | `1024x1024` | Size parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="gemini-2.5-flash-image-preview">
-  The model to use for the request
-</ParamField>
 
-<ParamField body="prompt" type="string" required default="oxen and horses">
-  Prompt parameter
-</ParamField>
-
-<ParamField body="n" type="integer"  default="1">
-  Number of completions to generate
-</ParamField>
-
-<ParamField body="size" type="string"  default="1024x1024">
-  Size parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -132,22 +116,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -195,6 +166,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,65 +8,22 @@ description: 'Generate images using Gemini Flash Image model with the official G
 
 This endpoint generates images using Gemini Flash Image model via the official Gemini API format. It supports text-to-image generation with configurable image parameters.
 
-## Authentication
-
-This endpoint requires authentication using an API key.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key
-</ParamField>
-
 ## Path Parameters
 
-<ParamField path="model" type="string" required default="gemini-25-flash-image-hd">
-  The model to use for image generation. Available models: `gemini-25-flash-image-hd`, etc.
-</ParamField>
 
-## Request Body Parameters
+## Parameters
 
-<ParamField body="contents" type="array" required>
-  An array of content objects representing the generation prompt.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - | An array of content objects representing the generation prompt.   The role of the message sender. Typically `"user"`. Optional for single-turn requests. |
+| `parts` | array | ✅ Yes | - | An array of parts that make up the message content.   Text prompt for image generation. |
+| `generationConfig` | object | ❌ No | - | Configuration for the image generation behavior.   Response modalities. For image generation, use `["TEXT", "IMAGE"]`. |
+| `imageConfig` | object | ❌ No | - | Image-specific configuration.   Aspect ratio for the generated image. Examples: `"16:9"`, `"1:1"`, `"9:16"`. |
 
-  <Expandable title="Content Object Structure">
-    <ParamField body="role" type="string">
-      The role of the message sender. Typically `"user"`. Optional for single-turn requests.
-    </ParamField>
 
-    <ParamField body="parts" type="array" required>
-      An array of parts that make up the message content.
 
-      <Expandable title="Parts Object Structure">
-        <ParamField body="text" type="string">
-          Text prompt for image generation.
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
 
-<ParamField body="generationConfig" type="object">
-  Configuration for the image generation behavior.
-
-  <Expandable title="Generation Config Options">
-    <ParamField body="responseModalities" type="array">
-      Response modalities. For image generation, use `["TEXT", "IMAGE"]`.
-    </ParamField>
-
-    <ParamField body="imageConfig" type="object">
-      Image-specific configuration.
-
-      <Expandable title="Image Config Options">
-        <ParamField body="aspectRatio" type="string">
-          Aspect ratio for the generated image. Examples: `"16:9"`, `"1:1"`, `"9:16"`.
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1beta/models/gemini-25-flash-image-hd:generateContent' \
@@ -221,64 +178,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response containing generated image and text
-
-```json
-{
-  "candidates": [
-    {
-      "content": {
-        "parts": [
-          {
-            "text": "Here's your generated image:"
-          },
-          {
-            "inlineData": {
-              "mimeType": "image/png",
-              "data": "base64_encoded_image_data"
-            }
-          }
-        ],
-        "role": "model"
-      },
-      "finishReason": "STOP",
-      "index": 0,
-      "safetyRatings": [
-        {
-          "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_HATE_SPEECH",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_HARASSMENT",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-          "probability": "NEGLIGIBLE"
-        }
-      ]
-    }
-  ],
-  "usageMetadata": {
-    "promptTokenCount": 35,
-    "candidatesTokenCount": 12,
-    "totalTokenCount": 47
-  }
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -326,5 +228,4 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>

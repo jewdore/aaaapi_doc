@@ -15,64 +15,25 @@ This endpoint provides powerful image generation functionality following the Ope
 **API Compatibility**: This endpoint follows the [OpenAI `/v1/images/generations`](https://platform.openai.com/docs/api-reference/images/create) format, making it easy to integrate as a drop-in replacement for OpenAI's image generation API.
 
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` | The model to use for image generation. Use `gemini-2.5-flash-image-preview` or `gemini-2.5-flash-image` for production workflows. |
+| `prompt` | string | ✅ Yes | `A serene landscape with mountains and a lake at sunset` | A text description of the desired image(s). Maximum length: 1000 characters (OpenAI standard) / 32,000 characters (extended support). The more detailed and specific your prompt, the better the results. |
+| `n` | integer | ❌ No | `1` | Number of images to generate. Accepts values between 1-10. Each image counts as 1,290 output tokens. |
+| `size` | string | ❌ No | `1024x1024` | The size of the generated images. Supported values: - `256x256` - Small square (legacy support) - `512x512` - Medium square - `1024x1024` - Large square (recommended) - `1024x1536` - Portrait orientation - `1536x1024` - Landscape orientation |
+| `quality` | string | ❌ No | `standard` | The quality of the image generation. Options: - `standard` - Standard quality, faster generation - `hd` - High definition, more detailed results (if supported) |
+| `response_format` | string | ❌ No | `url` | The format in which the generated images are returned. Must be one of: - `url` - Returns HTTPS URLs to the images (valid for 60 minutes) - `b64_json` - Returns base64-encoded JSON data |
+| `style` | string | ❌ No | `vivid` | The style of the generated images. Options: - `vivid` - Hyper-real and dramatic images - `natural` - More natural, less hyper-real looking images |
+| `user` | string | ❌ No | - | A unique identifier representing your end-user, which can help monitor and detect abuse. |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="gemini-2.5-flash-image-preview">
-  The model to use for image generation. Use `gemini-2.5-flash-image-preview` or `gemini-2.5-flash-image` for production workflows.
-</ParamField>
-
-<ParamField body="prompt" type="string" required default="A serene landscape with mountains and a lake at sunset">
-  A text description of the desired image(s). Maximum length: 1000 characters (OpenAI standard) / 32,000 characters (extended support). The more detailed and specific your prompt, the better the results.
-</ParamField>
-
-<ParamField body="n" type="integer" default="1">
-  Number of images to generate. Accepts values between 1-10. Each image counts as 1,290 output tokens.
-</ParamField>
-
-<ParamField body="size" type="string" default="1024x1024">
-  The size of the generated images. Supported values:
-  - `256x256` - Small square (legacy support)
-  - `512x512` - Medium square
-  - `1024x1024` - Large square (recommended)
-  - `1024x1536` - Portrait orientation
-  - `1536x1024` - Landscape orientation
-</ParamField>
-
-<ParamField body="quality" type="string" default="standard">
-  The quality of the image generation. Options:
-  - `standard` - Standard quality, faster generation
-  - `hd` - High definition, more detailed results (if supported)
-</ParamField>
-
-<ParamField body="response_format" type="string" default="url">
-  The format in which the generated images are returned. Must be one of:
-  - `url` - Returns HTTPS URLs to the images (valid for 60 minutes)
-  - `b64_json` - Returns base64-encoded JSON data
-</ParamField>
-
-<ParamField body="style" type="string" default="vivid">
-  The style of the generated images. Options:
-  - `vivid` - Hyper-real and dramatic images
-  - `natural` - More natural, less hyper-real looking images
-</ParamField>
-
-<ParamField body="user" type="string">
-  A unique identifier representing your end-user, which can help monitor and detect abuse.
-</ParamField>
-
-## Request Example
 
 ### Basic Image Generation
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -172,14 +133,13 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
+</RequestExample>
 
 ### Generate Multiple Images
 
 Generate multiple variations of the same prompt:
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -221,69 +181,7 @@ result = response.json()
 for i, image in enumerate(result['data']):
     print(f"Image {i+1}: {image['url']}")
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response following OpenAI's standard format
-
-**URL Response Format** (`response_format: "url"`):
-```json
-{
-  "created": 1732550000,
-  "data": [
-    {
-      "url": "https://gptproto.com/generated/image-abc123.png"
-    }
-  ]
-}
-```
-
-**Base64 JSON Response Format** (`response_format: "b64_json"`):
-```json
-{
-  "created": 1732550000,
-  "data": [
-    {
-      "b64_json": "iVBORw0KGgoAAAANSUhEUgAAAQAAAAEA..."
-    }
-  ]
-}
-```
-
-**Multiple Images Response** (when `n` > 1):
-```json
-{
-  "created": 1732550000,
-  "data": [
-    {
-      "url": "https://gptproto.com/generated/image-abc123.png"
-    },
-    {
-      "url": "https://gptproto.com/generated/image-def456.png"
-    },
-    {
-      "url": "https://gptproto.com/generated/image-ghi789.png"
-    }
-  ]
-}
-```
-
-**Response Fields:**
-- **created**: Unix timestamp (integer) when the images were generated
-- **data**: Array of generated image objects
-  - **url**: HTTPS URL to the generated image (valid for 60 minutes)
-  - **b64_json**: Base64-encoded PNG image data (alternative to URL)
-
-**Important Notes:**
-- Generated image URLs expire after 60 minutes. Download or save images you need for long-term use.
-- All generated images include a SynthID watermark for content authenticity.
-- When `n` > 1, the `data` array will contain multiple image objects, one for each generated image.
-- Each generated image consumes 1,290 output tokens regardless of size.
-
-</ResponseField>
+</RequestExample>
 
 ## OpenAI SDK Compatibility
 
@@ -354,7 +252,7 @@ To get the best results from image generation:
 - Design event promotional materials
 - Produce training material illustrations
 
-## Error Responses
+
 
 <ResponseExample>
 
@@ -402,6 +300,5 @@ To get the best results from image generation:
   }
 }
 ```
-
 </ResponseExample>
 

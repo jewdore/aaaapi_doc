@@ -17,60 +17,20 @@ Inputs: Text and Images
 
 Outputs: Text and image
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - |     The prompt for the generation. |
+| `inline_data` | object | ✅ Yes | - |   Supported MIME types:image/png, image/jpeg, image/webp |
+| `data` | string | ✅ Yes | - | image base64. |
+| `generationConfig` | object | ❌ No | - |   The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`). |
+| `imageConfig` | object | ❌ No | - |   1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9 |
 
-<ParamField header="Authorization" default="sk-***********" type="string" required>
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="contents" type="array" required>
-  <Expandable title="properties">
-    <ParamField body="parts" type="array" required>
-      <Expandable title="properties" defaultOpen="true">
-        <ParamField body="text" type="string" required>
-          The prompt for the generation.
-        </ParamField>
-      </Expandable>
-      <Expandable title="properties" defaultOpen="true">
-        <ParamField body="inline_data" type="object" required>
-          <Expandable title="properties" defaultOpen="true">
-            <ParamField body="mime_type" type="string" required>
-              Supported MIME types:image/png, image/jpeg, image/webp
-            </ParamField>
-          </Expandable>
-          <Expandable title="properties" defaultOpen="true">
-            <ParamField body="data" type="string" required>
-              image base64.
-            </ParamField>
-          </Expandable>
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-<ParamField body="generationConfig" type="object">
-  <Expandable title="properties">
-    <ParamField body="responseModalities" type="string[]">
-      The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`).
-    </ParamField>
-    <ParamField body="imageConfig" type="object">
-      <Expandable title="properties" defaultOpen="true">
-        <ParamField body="aspectRatio" type="string">
-          1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
 
 ## Image to Image
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent" \
@@ -237,8 +197,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
+</RequestExample>
 
 **Technical specifications**
 
@@ -364,5 +323,4 @@ The model defaults to matching the output image size to that of your input image
   }
 }
 ```
-
 </ResponseExample>

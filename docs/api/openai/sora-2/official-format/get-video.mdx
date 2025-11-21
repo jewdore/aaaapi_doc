@@ -9,18 +9,8 @@ description: 'Get video'
 ### Download the MP4
 Once the job reaches status completed, fetch the MP4 with GET `/videos/video_id/content`. This endpoint streams the binary video data and returns standard content headers, so you can either save the file directly to disk or pipe it to cloud storage.
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
 ## Request Parameter
-<ParamField path="video_id" type="string" required>
-  The identifier of the video task.
-</ParamField>
+
 
 ## Response
 
@@ -73,6 +63,5 @@ Mp4 file
   }
 }
 ```
-
 </ResponseExample>
 

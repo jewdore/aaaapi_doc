@@ -15,53 +15,25 @@ This endpoint provides powerful image editing functionality following the OpenAI
 **API Compatibility**: This endpoint follows the [OpenAI `/v1/images/edits`](https://platform.openai.com/docs/api-reference/images/createEdit) format, making it easy to integrate as a drop-in replacement for OpenAI's image editing API.
 
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` | The model to use for image editing. Use `gemini-2.5-flash-image-preview` or `gemini-2.5-flash-image` for production workflows. |
+| `image` | file | ✅ Yes | - | The image file to edit. Must be a valid PNG file, less than 4MB, and square for full OpenAI compatibility. Supported formats: PNG, JPEG, WebP. |
+| `prompt` | string | ✅ Yes | `Add a wizard hat to the subject` | A text description of the desired image modifications. Maximum length: 1000 characters (OpenAI standard) / 32,000 characters (extended support). |
+| `mask` | file | ❌ No | - | An optional mask image (PNG format) with the same dimensions as the input image. Transparent areas (alpha = 0) indicate regions to be edited. Must be less than 4MB. |
+| `n` | integer | ❌ No | `1` | Number of edited images to generate. Accepts values between 1-10. |
+| `size` | string | ❌ No | `1024x1024` | The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024` for OpenAI compatibility. |
+| `response_format` | string | ❌ No | `url` | The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are valid for 60 minutes. |
+| `user` | string | ❌ No | - | A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="gemini-2.5-flash-image-preview">
-  The model to use for image editing. Use `gemini-2.5-flash-image-preview` or `gemini-2.5-flash-image` for production workflows.
-</ParamField>
-
-<ParamField body="image" type="file" required>
-  The image file to edit. Must be a valid PNG file, less than 4MB, and square for full OpenAI compatibility. Supported formats: PNG, JPEG, WebP.
-</ParamField>
-
-<ParamField body="prompt" type="string" required default="Add a wizard hat to the subject">
-  A text description of the desired image modifications. Maximum length: 1000 characters (OpenAI standard) / 32,000 characters (extended support).
-</ParamField>
-
-<ParamField body="mask" type="file">
-  An optional mask image (PNG format) with the same dimensions as the input image. Transparent areas (alpha = 0) indicate regions to be edited. Must be less than 4MB.
-</ParamField>
-
-<ParamField body="n" type="integer" default="1">
-  Number of edited images to generate. Accepts values between 1-10.
-</ParamField>
-
-<ParamField body="size" type="string" default="1024x1024">
-  The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024` for OpenAI compatibility.
-</ParamField>
-
-<ParamField body="response_format" type="string" default="url">
-  The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are valid for 60 minutes.
-</ParamField>
-
-<ParamField body="user" type="string">
-  A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
-</ParamField>
-
-## Request Example
 
 ### Basic Image Edit
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/edits" \
@@ -179,14 +151,13 @@ func main() {
     fmt.Println(string(responseBody))
 }
 ```
-
-</CodeGroup>
+</RequestExample>
 
 ### Image Edit with Mask
 
 When you want to edit only specific regions of an image, use a mask:
 
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/edits" \
@@ -223,50 +194,7 @@ response = requests.post(url, headers=headers, files=files, data=data)
 result = response.json()
 print(result)
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response following OpenAI's standard format
-
-**URL Response Format** (`response_format: "url"`):
-```json
-{
-  "created": 1732550000,
-  "data": [
-    {
-      "url": "https://gptproto.com/generated/image-abc123.png"
-    }
-  ]
-}
-```
-
-**Base64 JSON Response Format** (`response_format: "b64_json"`):
-```json
-{
-  "created": 1732550000,
-  "data": [
-    {
-      "b64_json": "iVBORw0KGgoAAAANSUhEUgAAAQAAAAEA..."
-    }
-  ]
-}
-```
-
-**Response Fields:**
-- **created**: Unix timestamp (integer) when the images were generated
-- **data**: Array of generated image objects
-  - **url**: HTTPS URL to the generated image (valid for 60 minutes)
-  - **b64_json**: Base64-encoded PNG image data (alternative to URL)
-
-**Important Notes:**
-- Generated image URLs expire after 60 minutes. Download or save images you need for long-term use.
-- All generated images include a SynthID watermark for content authenticity.
-- When `n` > 1, the `data` array will contain multiple image objects.
-
-</ResponseField>
+</RequestExample>
 
 ## OpenAI SDK Compatibility
 
@@ -316,7 +244,7 @@ print(image_url)
 - Create variations of product photos
 - Generate consistent character representations across scenes
 
-## Error Responses
+
 
 <ResponseExample>
 
@@ -364,6 +292,5 @@ print(image_url)
   }
 }
 ```
-
 </ResponseExample>
 

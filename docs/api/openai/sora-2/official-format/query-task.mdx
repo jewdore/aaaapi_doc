@@ -9,39 +9,10 @@ description: 'Query Status'
 Call GET /videos/{video_id} with the id returned from the create call. The response shows the job’s current status, progress percentage (if available), and any errors.
 Typical states are queued, in_progress, completed, and failed. Poll at a reasonable interval (for example, every 10–20 seconds), use exponential backoff if necessary, and provide feedback to users that the job is still in progress.
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
 ## Request Parameter
-<ParamField path="video_id" type="string" required>
-  The identifier of the video task.
-</ParamField>
 
-## Response
 
-<ResponseField name="status" type="string">
-  Successful response
 
-```json
-{
-  "id": "video_123",
-  "object": "video",
-  "created_at": 1758941485,
-  "status": "in_progress",
-  "model": "sora-2",
-  "progress": 33,
-  "seconds": "8",
-  "size": "1280x720"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -89,6 +60,5 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>
 

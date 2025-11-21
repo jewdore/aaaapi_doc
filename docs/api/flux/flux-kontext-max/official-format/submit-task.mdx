@@ -7,68 +7,27 @@ description: 'Submit Task'
 ## Overview
 
 
+## Parameters
 
-## Authentication
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `ein fantastisches bild` | Prompt parameter |
+| `input_image` | string | ❌ No | `base64` | Input Image parameter |
+| `input_image_2` | string | ❌ No | `base64` | Input Image 2 parameter |
+| `input_image_3` | string | ❌ No | `base64` | Input Image 3 parameter |
+| `input_image_4` | string | ❌ No | `base64` | Input Image 4 parameter |
+| `seed` | integer | ❌ No | `42` | Seed parameter |
+| `aspect_ratio` | string | ❌ No | `21:9` | Aspect Ratio parameter |
+| `output_format` | string | ❌ No | `jpeg` | Output Format parameter |
+| `webhook_url` | string | ❌ No | - | "> Webhook Url parameter |
+| `webhook_secret` | string | ❌ No | - | "> Webhook Secret parameter |
+| `prompt_upsampling` | boolean | ❌ No | `false` | Prompt Upsampling parameter |
+| `safety_tolerance` | integer | ❌ No | `2` | Safety Tolerance parameter |
 
-This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="ein fantastisches bild">
-  Prompt parameter
-</ParamField>
-
-<ParamField body="input_image" type="string"  default="base64">
-  Input Image parameter
-</ParamField>
-
-<ParamField body="input_image_2" type="string"  default="base64">
-  Input Image 2 parameter
-</ParamField>
-
-<ParamField body="input_image_3" type="string"  default="base64">
-  Input Image 3 parameter
-</ParamField>
-
-<ParamField body="input_image_4" type="string"  default="base64">
-  Input Image 4 parameter
-</ParamField>
-
-<ParamField body="seed" type="integer"  default="42">
-  Seed parameter
-</ParamField>
-
-<ParamField body="aspect_ratio" type="string"  default="21:9">
-  Aspect Ratio parameter
-</ParamField>
-
-<ParamField body="output_format" type="string"  default="jpeg">
-  Output Format parameter
-</ParamField>
-
-<ParamField body="webhook_url" type="string"  default="<string>">
-  Webhook Url parameter
-</ParamField>
-
-<ParamField body="webhook_secret" type="string"  default="<string>">
-  Webhook Secret parameter
-</ParamField>
-
-<ParamField body="prompt_upsampling" type="boolean"  default="false">
-  Prompt Upsampling parameter
-</ParamField>
-
-<ParamField body="safety_tolerance" type="integer"  default="2">
-  Safety Tolerance parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/flux/v1/flux-kontext-max" \
@@ -196,22 +155,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -259,6 +205,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

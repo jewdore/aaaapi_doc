@@ -8,37 +8,10 @@ description: 'Query Task (feed)'
 
 This endpoint provides query task (feed) functionality.
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
 ## Query Parameters
 
-<ParamField query="ids" type="string">
-  Task ID, multiple separated by comma `,`
-</ParamField>
 
-<ParamField query="remove_watermark" type="string">
-  Whether to remove watermark
-</ParamField>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -86,5 +59,4 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>

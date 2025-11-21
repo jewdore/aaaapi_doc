@@ -8,68 +8,19 @@ description: 'Search the web and get AI-powered answers with real-time informati
 
 This endpoint provides web search functionality using advanced language models in response mode. Send search queries and receive AI-generated responses enhanced with real-time web search results. Perfect for getting up-to-date information, news, research, and factual data from across the internet.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-5-nano` | The model to use for the request. Web search functionality is available for all models. |
+| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects with the following type: - **input_text**: Text input with `text` field containing your search query or question Example: ```json [ { "role": "user", "tools": [ { "type": "web_search_preview" } ], "content": [ { "type": "input_text", "text": "What are the latest developments in artificial intelligence in 2025?" } ] } ] ``` |
+| `tools` | array | ✅ Yes | - | Array of tool objects to enable special capabilities. For web search functionality, include: ```json [ { "type": "web_search_preview" } ] ``` Available tool types: - **web_search_preview**: Enables real-time web search to enhance responses with current information |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `sk-*****`
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="gpt-5-nano">
-  The model to use for the request. Web search functionality is available for all models.
-</ParamField>
 
-<ParamField body="input" type="array" required default='[{"role": "user", "content": [{"type": "input_text", "text": "What are the latest developments in artificial intelligence in 2025?"}]}]'>
-  Array of message objects with role and content. Each message contains:
-  - `role`: "user" or "assistant"
-  - `content`: Array of content objects with the following type:
-    - **input_text**: Text input with `text` field containing your search query or question
-
-  Example:
-  ```json
-  [
-    {
-      "role": "user",
-      "tools": [
-        {
-          "type": "web_search_preview"
-        }
-      ],
-      "content": [
-        {
-          "type": "input_text",
-          "text": "What are the latest developments in artificial intelligence in 2025?"
-        }
-      ]
-    }
-  ]
-  ```
-</ParamField>
-
-<ParamField body="tools" type="array" required default='[{"type": "web_search_preview"}]'>
-  Array of tool objects to enable special capabilities. For web search functionality, include:
-  ```json
-  [
-    {
-      "type": "web_search_preview"
-    }
-  ]
-  ```
-
-  Available tool types:
-  - **web_search_preview**: Enables real-time web search to enhance responses with current information
-</ParamField>
-
-<ParamField body="stream" type="boolean" default={false}>
-  Whether to stream the response
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/responses' \
@@ -233,70 +184,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="id" type="string">
-  Unique identifier for the response
-</ResponseField>
-
-<ResponseField name="object" type="string">
-  Object type, always "response"
-</ResponseField>
-
-<ResponseField name="created" type="integer">
-  Unix timestamp of when the response was created
-</ResponseField>
-
-<ResponseField name="model" type="string">
-  The model used for generating the response
-</ResponseField>
-
-<ResponseField name="output" type="string">
-  The generated text output enhanced with web search results
-</ResponseField>
-
-<ResponseField name="web_search_results" type="array">
-  Array of web search results used to generate the response (optional, only included when web_search is enabled)
-
-  <Expandable title="Search Result Object">
-    <ResponseField name="title" type="string">
-      Title of the web page
-    </ResponseField>
-
-    <ResponseField name="url" type="string">
-      URL of the web page
-    </ResponseField>
-
-    <ResponseField name="snippet" type="string">
-      Brief excerpt from the web page
-    </ResponseField>
-
-    <ResponseField name="published_date" type="string">
-      Publication date of the content (if available)
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="usage" type="object">
-  Token usage statistics
-
-  <Expandable title="Usage Object">
-    <ResponseField name="prompt_tokens" type="integer">
-      Number of tokens in the input
-    </ResponseField>
-
-    <ResponseField name="completion_tokens" type="integer">
-      Number of tokens in the output
-    </ResponseField>
-
-    <ResponseField name="total_tokens" type="integer">
-      Total number of tokens used
-    </ResponseField>
-  </Expandable>
-</ResponseField>
+</RequestExample>
 
 <ResponseExample>
 
@@ -379,6 +267,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

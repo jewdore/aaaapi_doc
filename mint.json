@@ -612,8 +612,6 @@
                   "pages": [
                     "docs/api/gemini/gemini-2.0-flash/official-format/text-to-text-no-stream",
                     "docs/api/gemini/gemini-2.0-flash/official-format/text-to-text-stream",
-                    "docs/api/gemini/gemini-2.0-flash/official-format/file-upload",
-                    "docs/api/gemini/gemini-2.0-flash/official-format/file-upload-north-america",
                     "docs/api/gemini/gemini-2.0-flash/official-format/file-analysis-no-stream",
                     "docs/api/gemini/gemini-2.0-flash/official-format/file-analysis-stream"
                   ]
@@ -635,8 +633,6 @@
                   "pages": [
                     "docs/api/gemini/gemini-2.5-pro/official-format/text-to-text-no-stream",
                     "docs/api/gemini/gemini-2.5-pro/official-format/text-to-text-stream",
-                    "docs/api/gemini/gemini-2.5-pro/official-format/file-upload",
-                    "docs/api/gemini/gemini-2.5-pro/official-format/file-upload-north-america",
                     "docs/api/gemini/gemini-2.5-pro/official-format/file-analysis-no-stream",
                     "docs/api/gemini/gemini-2.5-pro/official-format/file-analysis-stream"
                   ]
@@ -658,8 +654,6 @@
                   "pages": [
                     "docs/api/gemini/gemini-2.5-flash/official-format/text-to-text-no-stream",
                     "docs/api/gemini/gemini-2.5-flash/official-format/text-to-text-stream",
-                    "docs/api/gemini/gemini-2.5-flash/official-format/file-upload",
-                    "docs/api/gemini/gemini-2.5-flash/official-format/file-upload-north-america",
                     "docs/api/gemini/gemini-2.5-flash/official-format/file-analysis-no-stream",
                     "docs/api/gemini/gemini-2.5-flash/official-format/file-analysis-stream"
                   ]
@@ -727,8 +721,6 @@
                   "pages": [
                     "docs/api/gemini/gemini-2.5-flash-lite/official-format/text-to-text-no-stream",
                     "docs/api/gemini/gemini-2.5-flash-lite/official-format/text-to-text-stream",
-                    "docs/api/gemini/gemini-2.5-flash-lite/official-format/file-upload",
-                    "docs/api/gemini/gemini-2.5-flash-lite/official-format/file-upload-north-america",
                     "docs/api/gemini/gemini-2.5-flash-lite/official-format/file-analysis-no-stream",
                     "docs/api/gemini/gemini-2.5-flash-lite/official-format/file-analysis-stream"
                   ]
@@ -750,8 +742,6 @@
                   "pages": [
                     "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/text-to-text-no-stream",
                     "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/text-to-text-stream",
-                    "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/file-upload",
-                    "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/file-upload-north-america",
                     "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/file-analysis-no-stream",
                     "docs/api/gemini/gemini-2.5-flash-nothinking/official-format/file-analysis-stream"
                   ]
@@ -774,7 +764,6 @@
                     "docs/api/gemini/gemini-3-pro-preview/official-format/text-to-text-no-stream",
                     "docs/api/gemini/gemini-3-pro-preview/official-format/text-to-text-stream",
                     "docs/api/gemini/gemini-3-pro-preview/official-format/file-upload",
-                    "docs/api/gemini/gemini-3-pro-preview/official-format/file-upload-north-america",
                     "docs/api/gemini/gemini-3-pro-preview/official-format/file-analysis-no-stream",
                     "docs/api/gemini/gemini-3-pro-preview/official-format/file-analysis-stream"
                   ]
@@ -1880,6 +1869,7 @@
     "youtube": "https://www.youtube.com/@GPTProto",
     "reddit": "https://www.reddit.com/user/GPT_Proto/"
   },
+  "layout": "sidenav",
   "api": {
     "baseUrl": "https://gptproto.com",
     "playground": {

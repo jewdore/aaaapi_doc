@@ -8,79 +8,24 @@ description: 'Generate images based on multiple input images using Gemini Flash 
 
 This endpoint generates images based on multiple input images using Gemini Flash Image model via the official Gemini API format. It supports multi-image-to-image transformation with text prompts.
 
-## Authentication
-
-This endpoint requires authentication using an API key.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key
-</ParamField>
-
 ## Path Parameters
 
-<ParamField path="model" type="string" required default="gemini-2.5-flash-image">
-  The model to use for image generation. Available models: `gemini-2.5-flash-image`, etc.
-</ParamField>
 
-## Request Body Parameters
+## Parameters
 
-<ParamField body="contents" type="array" required>
-  An array of content objects representing the generation prompt and input images.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - | An array of content objects representing the generation prompt and input images.   The role of the message sender. Typically `"user"`. Optional for single-turn requests. |
+| `parts` | array | ✅ Yes | - | An array of parts that make up the message content, including text prompt and multiple input images.   Text prompt for image transformation. |
+| `inline_data` | object | ❌ No | - | Input image data in base64 format. Can be specified multiple times for multiple images.   The MIME type of the image (e.g., `"image/jpeg"`, `"image/png"`). |
+| `data` | string | ✅ Yes | - | Base64-encoded image data. |
+| `generationConfig` | object | ❌ No | - | Configuration for the image generation behavior.   Response modalities. For image generation, use `["TEXT", "IMAGE"]`. |
+| `imageConfig` | object | ❌ No | - | Image-specific configuration.   Aspect ratio for the generated image. Examples: `"16:9"`, `"1:1"`, `"9:16"`. |
 
-  <Expandable title="Content Object Structure">
-    <ParamField body="role" type="string">
-      The role of the message sender. Typically `"user"`. Optional for single-turn requests.
-    </ParamField>
 
-    <ParamField body="parts" type="array" required>
-      An array of parts that make up the message content, including text prompt and multiple input images.
 
-      <Expandable title="Parts Object Structure">
-        <ParamField body="text" type="string">
-          Text prompt for image transformation.
-        </ParamField>
 
-        <ParamField body="inline_data" type="object">
-          Input image data in base64 format. Can be specified multiple times for multiple images.
-
-          <Expandable title="Inline Data Structure">
-            <ParamField body="mime_type" type="string" required>
-              The MIME type of the image (e.g., `"image/jpeg"`, `"image/png"`).
-            </ParamField>
-
-            <ParamField body="data" type="string" required>
-              Base64-encoded image data.
-            </ParamField>
-          </Expandable>
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-<ParamField body="generationConfig" type="object">
-  Configuration for the image generation behavior.
-
-  <Expandable title="Generation Config Options">
-    <ParamField body="responseModalities" type="array">
-      Response modalities. For image generation, use `["TEXT", "IMAGE"]`.
-    </ParamField>
-
-    <ParamField body="imageConfig" type="object">
-      Image-specific configuration.
-
-      <Expandable title="Image Config Options">
-        <ParamField body="aspectRatio" type="string">
-          Aspect ratio for the generated image. Examples: `"16:9"`, `"1:1"`, `"9:16"`.
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
@@ -295,64 +240,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response containing generated image and text
-
-```json
-{
-  "candidates": [
-    {
-      "content": {
-        "parts": [
-          {
-            "text": "Here's your creative collage combining all the images:"
-          },
-          {
-            "inlineData": {
-              "mimeType": "image/png",
-              "data": "base64_encoded_output_image_data"
-            }
-          }
-        ],
-        "role": "model"
-      },
-      "finishReason": "STOP",
-      "index": 0,
-      "safetyRatings": [
-        {
-          "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_HATE_SPEECH",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_HARASSMENT",
-          "probability": "NEGLIGIBLE"
-        },
-        {
-          "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-          "probability": "NEGLIGIBLE"
-        }
-      ]
-    }
-  ],
-  "usageMetadata": {
-    "promptTokenCount": 120,
-    "candidatesTokenCount": 18,
-    "totalTokenCount": 138
-  }
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -400,5 +290,4 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>

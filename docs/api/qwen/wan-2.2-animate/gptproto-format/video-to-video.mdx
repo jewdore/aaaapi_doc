@@ -8,44 +8,21 @@ description: 'Video to Video'
 
 Wan2.2-Animate is a unified model for character animation and replacement with holistic movement and expression replication. 
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
-## Request Body
-
-<ParamField body="image" type="string" >
-  The image for generating the output.
-</ParamField>
-
-<ParamField body="video" type="string" >
-  The video for generating the output.
-</ParamField>
-
-<ParamField body="prompt" type="string">
-  The positive prompt for the generation.
-</ParamField>
-
-<ParamField body="mode" type="string" default="animate" >
-  animate, replace .The mode of the generation. Animate Mode: animate the character in input image with movements from the input video. Replace Mode: replace the character in input video with the character in input image.
-</ParamField>
-
-<ParamField body="resolution" type="string"  default="-1">
-  480p, 720p . The resolution of the output video.
-</ParamField>
-
-<ParamField body="seed" type="integer"  default="720p">
-  -1 ~ 2147483647 . The random seed to use for the generation. -1 means a random seed will be used.
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | string | ❌ No | - | The image for generating the output. |
+| `video` | string | ❌ No | - | The video for generating the output. |
+| `prompt` | string | ❌ No | - | The positive prompt for the generation. |
+| `mode` | string | ❌ No | `animate` | animate, replace .The mode of the generation. Animate Mode: animate the character in input image with movements from the input video. Replace Mode: replace the character in input video with the character in input image. |
+| `resolution` | string | ❌ No | `-1` | 480p, 720p . The resolution of the output video. |
+| `seed` | integer | ❌ No | `720p` | -1 ~ 2147483647 . The random seed to use for the generation. -1 means a random seed will be used. |
 
 
-## Request Example
 
-<CodeGroup>
+
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/api/v3/alibaba/wan-2.2/animate' \
@@ -149,19 +126,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="data.id" type="string">
-
-task id
-</ResponseField>
-<ResponseField name="data.status" type="string">
-
-	Status of the task: created, processing, completed, or failed
-</ResponseField>
+</RequestExample>
 
 ```json
 {
@@ -233,6 +198,5 @@ task id
   }
 }
 ```
-
 </ResponseExample>
 

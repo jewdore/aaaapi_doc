@@ -8,59 +8,25 @@ description: 'Text to Audio'
 
 This endpoint provides text to audio functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `emotion` | string | ❌ No | `surprised` | Emotion parameter |
+| `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
+| `english_normalization` | boolean | ❌ No | `false` | English Normalization parameter |
+| `pitch` | integer | ❌ No | `0` | Pitch parameter |
+| `speed` | number | ❌ No | `0.9` | Speed parameter |
+| `text` | string | ❌ No | `Hi there! Minimax speech 2.5 now live on Gptproto! Let&apos;s try it!` | Text parameter |
+| `voice_id` | string | ❌ No | `Deep_Voice_Man` | Voice Id parameter |
+| `volume` | integer | ❌ No | `1` | Volume parameter |
+| `language_boost` | string | ❌ No | `Chinese` | Language Boost parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="emotion" type="string"  default="surprised">
-  Emotion parameter
-</ParamField>
 
-<ParamField body="enable_base64_output" type="boolean"  default="false">
-  Enable Base64 Output parameter
-</ParamField>
-
-<ParamField body="enable_sync_mode" type="boolean"  default="false">
-  Enable Sync Mode parameter
-</ParamField>
-
-<ParamField body="english_normalization" type="boolean"  default="false">
-  English Normalization parameter
-</ParamField>
-
-<ParamField body="pitch" type="integer"  default="0">
-  Pitch parameter
-</ParamField>
-
-<ParamField body="speed" type="number"  default="0.9">
-  Speed parameter
-</ParamField>
-
-<ParamField body="text" type="string"  default="Hi there! Minimax speech 2.5 now live on Gptproto! Let&apos;s try it!">
-  Text parameter
-</ParamField>
-
-<ParamField body="voice_id" type="string"  default="Deep_Voice_Man">
-  Voice Id parameter
-</ParamField>
-
-<ParamField body="volume" type="integer"  default="1">
-  Volume parameter
-</ParamField>
-
-<ParamField body="language_boost" type="string"  default="Chinese">
-  Language Boost parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/minimax/speech-02-hd" \
@@ -180,22 +146,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -243,6 +196,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

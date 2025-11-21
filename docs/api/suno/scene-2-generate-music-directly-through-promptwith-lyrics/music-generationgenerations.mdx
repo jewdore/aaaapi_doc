@@ -8,35 +8,19 @@ description: 'Generate music interface, can generate directly or continue to wri
 
 Generate music interface, can generate directly or continue to write musicIf you are continuing to write a user-uploaded music, you need to add `-upload` after the mv field, such as `chirp-v3-5-upload`
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `gpt_description_prompt` | string | ❌ No | `an anthemic dancepop song about dancing all night long` | Gpt Description Prompt parameter |
+| `mv` | string | ❌ No | `chirp-v3-5` | Mv parameter |
+| `prompt` | string | ✅ Yes | - | Prompt parameter |
+| `make_instrumental` | boolean | ❌ No | `false` | Make Instrumental parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="gpt_description_prompt" type="string"  default="an anthemic dancepop song about dancing all night long">
-  Gpt Description Prompt parameter
-</ParamField>
 
-<ParamField body="mv" type="string"  default="chirp-v3-5">
-  Mv parameter
-</ParamField>
-
-<ParamField body="prompt" type="string" required default="">
-  Prompt parameter
-</ParamField>
-
-<ParamField body="make_instrumental" type="boolean"  default="false">
-  Make Instrumental parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/suno/generate" \
@@ -132,22 +116,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -195,6 +166,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

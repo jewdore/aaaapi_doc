@@ -8,55 +8,23 @@ description: 'Edit and transform images based on text prompts'
 
 This endpoint allows you to transform existing images based on text descriptions. You can apply transformations, add elements, or modify the image content according to your prompt.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | array | ✅ Yes | - | The images to edit. A maximum of 16 reference images can be uploaded. |
+| `prompt` | string | ✅ Yes | `The cat is running on the grassland` | A text description of the desired image(s). The maximum length is 32000 characters for gpt-image-1. |
+| `mask` | string | ❌ No | - | An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited. If there are multiple images provided, the mask will be applied on the first image. Must be a valid PNG file, less than 4MB, and have the same dimensions as image. |
+| `n` | integer | ❌ No | `1` | The number of images to generate. Must be between 1 and 10. |
+| `quality` | string | ❌ No | `auto` | The quality of the image that will be generated. Options: `high`, `medium`, `low`. Only supported for gpt-image-1. |
+| `background` | string | ❌ No | `auto` | Allows to set transparency for the background of the generated image(s). This parameter is only supported for gpt-image-1. Must be one of `transparent`, `opaque` or `auto` (default value). When `auto` is used, the model will automatically determine the best background for the image. |
+| `enable_sync_mode` | string | ❌ No | `false` | Whether to enable synchronous mode. Options: `false`, `true` |
+| `response_format` | string | ❌ No | `b64_json` | The format in which the generated images are returned. Must be one of `url` or `b64_json`. |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-<ParamField header="Content-Type" type="string" required default="application/json">
-  Must be set to `application/json`
-</ParamField>
 
-## Request Body
 
-<ParamField body="image" type="array" required>
-  The images to edit. A maximum of 16 reference images can be uploaded.
-</ParamField>
-
-<ParamField body="prompt" type="string" required default="The cat is running on the grassland">
-  A text description of the desired image(s). The maximum length is 32000 characters for gpt-image-1.
-</ParamField>
-
-<ParamField body="mask" type="string">
-  An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited. If there are multiple images provided, the mask will be applied on the first image. Must be a valid PNG file, less than 4MB, and have the same dimensions as image.
-</ParamField>
-
-<ParamField body="n" type="integer" default="1">
-  The number of images to generate. Must be between 1 and 10.
-</ParamField>
-
-<ParamField body="quality" type="string" default="auto">
-  The quality of the image that will be generated. Options: `high`, `medium`, `low`. Only supported for gpt-image-1.
-</ParamField>
-
-<ParamField body="background" type="string" default="auto">
-  Allows to set transparency for the background of the generated image(s). This parameter is only supported for gpt-image-1. Must be one of `transparent`, `opaque` or `auto` (default value). When `auto` is used, the model will automatically determine the best background for the image.
-</ParamField>
-
-<ParamField body="enable_sync_mode" type="string" default="false">
-  Whether to enable synchronous mode. Options: `false`, `true`
-</ParamField>
-
-<ParamField body="response_format" type="string" default="b64_json">
-  The format in which the generated images are returned. Must be one of `url` or `b64_json`.
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1/image-edit' \
@@ -172,44 +140,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success (Async Mode)" type="200">
-  Successful response when `enable_sync_mode` is `false`
-
-```json
-{
-  "task_id": "abc123def456",
-  "status": "processing",
-  "message": "Image editing task has been submitted"
-}
-```
-</ResponseField>
-
-<ResponseField name="Success (Sync Mode)" type="200">
-  Successful response when `enable_sync_mode` is `true`
-
-```json
-{
-  "created": 1700000000,
-  "data": [
-    {
-      "url": "https://example.com/edited-image-1.png",
-      "b64_json": null
-    },
-    {
-      "url": "https://example.com/edited-image-2.png",
-      "b64_json": null
-    }
-  ]
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -266,5 +199,4 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>

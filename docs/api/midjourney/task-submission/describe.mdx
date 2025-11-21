@@ -8,39 +8,20 @@ description: 'Image to Text'
 
 Image to Text
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `botType` | string | ❌ No | `MID_JOURNEY` | Bottype parameter |
+| `base64` | string | ❌ No | `data:image/png;base64,xxx` | Base64 parameter |
+| `accountFilter` | object | ❌ No | `{&quot;channelId&quot;: &quot;&quot;, &quot;instanceId&quot;: &quot;&quot;, &quot;modes&quot;: [], &quot;remark&quot;: &quot;&quot;, &quot;remix&quot;: true, &quot;remixAutoConsidered&quot;: true}` | Accountfilter parameter |
+| `notifyHook` | string | ❌ No | - | Notifyhook parameter |
+| `state` | string | ❌ No | - | State parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="botType" type="string"  default="MID_JOURNEY">
-  Bottype parameter
-</ParamField>
 
-<ParamField body="base64" type="string"  default="data:image/png;base64,xxx">
-  Base64 parameter
-</ParamField>
-
-<ParamField body="accountFilter" type="object"  default="{&quot;channelId&quot;: &quot;&quot;, &quot;instanceId&quot;: &quot;&quot;, &quot;modes&quot;: [], &quot;remark&quot;: &quot;&quot;, &quot;remix&quot;: true, &quot;remixAutoConsidered&quot;: true}">
-  Accountfilter parameter
-</ParamField>
-
-<ParamField body="notifyHook" type="string"  default="">
-  Notifyhook parameter
-</ParamField>
-
-<ParamField body="state" type="string"  default="">
-  State parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/mj/submit/describe" \
@@ -168,22 +149,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -231,6 +199,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

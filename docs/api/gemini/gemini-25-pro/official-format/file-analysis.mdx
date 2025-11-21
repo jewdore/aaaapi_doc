@@ -8,29 +8,19 @@ description: 'File analysis'
 
 This endpoint provides file analysis functionality.
 
-## Authentication
-
-This endpoint requires authentication using a Bearer token.
-
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-
 ## Query Parameters
 
-<ParamField query="key" type="string">
-  
-</ParamField>
 
-## Request Body
+## Parameters
 
-<ParamField body="contents" type="array"  default="[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Please summarize the main content of this PDF&quot;}, {&quot;file_data&quot;: {&quot;mime_type&quot;: &quot;application/pdf&quot;, &quot;file_uri&quot;: &quot;https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf&quot;}}]}]">
-  Contents parameter
-</ParamField>
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ❌ No | `[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Please summarize the main content of this PDF&quot;}, {&quot;file_data&quot;: {&quot;mime_type&quot;: &quot;application/pdf&quot;, &quot;file_uri&quot;: &quot;https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf&quot;}}]}]` | Contents parameter |
 
-## Request Example
 
-<CodeGroup>
+
+
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent" \
@@ -170,22 +160,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -233,6 +210,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,23 +8,16 @@ description: 'Query Task'
 
 This endpoint provides query result functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `task_id` | string | ❌ No | `sora-2-pro:task_xxxx` | task id : sora-2-pro:task_xxx |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField path="task_id" type="string"  default="sora-2-pro:task_xxxx">
-  task id :  sora-2-pro:task_xxx
-</ParamField>
 
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X GET "https://gptproto.com/api/v3/predictions/sora-2-pro:task_xxx/result" \
@@ -89,14 +82,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="data.outputs" type="string">
-  video url
-</ResponseField>
+</RequestExample>
 
 ```json
 {
@@ -170,6 +156,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,21 +8,12 @@ description: 'FileUpload'
 
 This endpoint provides fileupload functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `file` | string | ✅ Yes | `/Users/Downloads/1948381787193495554.jpg` | file parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
-<ParamField header="Content-Type" default="multipart/form-data" type="string" required>
-</ParamField>
-
-## Request Body
-
-<ParamField body="file" type="string" required default="/Users/Downloads/1948381787193495554.jpg">
-  file parameter
-</ParamField>
 
 ## Response
 
@@ -73,6 +64,5 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>
 

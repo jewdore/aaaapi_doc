@@ -8,35 +8,19 @@ description: 'Image to Video'
 
 This endpoint provides image to video functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character&apos;&apos;&apos;s face` | Prompt parameter |
+| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png` | Image parameter |
+| `guidance_scale` | number | ❌ No | `0.5` | Guidance Scale parameter |
+| `duration` | integer | ❌ No | `5` | Duration parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character&apos;&apos;&apos;s face">
-  Prompt parameter
-</ParamField>
 
-<ParamField body="image" type="string"  default="https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png">
-  Image parameter
-</ParamField>
-
-<ParamField body="guidance_scale" type="number"  default="0.5">
-  Guidance Scale parameter
-</ParamField>
-
-<ParamField body="duration" type="integer"  default="5">
-  Duration parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-master" \
@@ -132,22 +116,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -195,6 +166,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

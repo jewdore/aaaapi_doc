@@ -8,31 +8,18 @@ description: 'Text to Image'
 
 This endpoint provides text to image functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme` | Prompt parameter |
+| `size` | string | ❌ No | `16:9` | Size parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="model" type="string" required default="gemini-2.5-flash-image">
-  The model to use for the request
-</ParamField>
 
-<ParamField body="prompt" type="string" required default="Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme">
-  Prompt parameter
-</ParamField>
-
-<ParamField body="size" type="string"  default="16:9">
-  Size parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -124,22 +111,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -187,6 +161,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,51 +8,23 @@ description: 'Image to Video'
 
 This endpoint provides image to video functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `camerafixed` | boolean | ❌ No | `false` | Camerafixed parameter |
+| `content` | array | ❌ No | `[{&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: &quot;https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg&quot;}, {&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;The camera pans from left to right, revealing the full scene of the image&quot;}]` | Video generation prompt. Can include parameters like --ratio (16:9, 9:16, 1:1), --resolution (480p, 720p, 1080p), --duration (5-10s), --camerafixed (true/false) |
+| `framepersecond` | integer | ❌ No | `24` | Framepersecond parameter |
+| `model` | string | ✅ Yes | `seedance-1-0-lite-i2v-250428` | The model to use for the request |
+| `ratio` | string | ❌ No | `16:9` | Ratio parameter |
+| `resolution` | string | ❌ No | `1080p` | Resolution parameter |
+| `seed` | integer | ❌ No | `-1` | Seed parameter |
+| `watermark` | boolean | ❌ No | `false` | Watermark parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="camerafixed" type="boolean"  default="false">
-  Camerafixed parameter
-</ParamField>
 
-<ParamField body="content" type="array"  default="[{&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: &quot;https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg&quot;}, {&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;The camera pans from left to right, revealing the full scene of the image&quot;}]">
-  Video generation prompt. Can include parameters like --ratio (16:9, 9:16, 1:1), --resolution (480p, 720p, 1080p), --duration (5-10s), --camerafixed (true/false)
-</ParamField>
-
-<ParamField body="framepersecond" type="integer"  default="24">
-  Framepersecond parameter
-</ParamField>
-
-<ParamField body="model" type="string" required default="seedance-1-0-lite-i2v-250428">
-  The model to use for the request
-</ParamField>
-
-<ParamField body="ratio" type="string"  default="16:9">
-  Ratio parameter
-</ParamField>
-
-<ParamField body="resolution" type="string"  default="1080p">
-  Resolution parameter
-</ParamField>
-
-<ParamField body="seed" type="integer"  default="-1">
-  Seed parameter
-</ParamField>
-
-<ParamField body="watermark" type="boolean"  default="false">
-  Watermark parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/contents/generations/tasks" \
@@ -200,22 +172,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -263,6 +222,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,35 +8,19 @@ description: 'Image to Image'
 
 This endpoint provides image to image functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `cat with a red hat https://xxx.png` | Prompt parameter |
+| `model` | string | ✅ Yes | `flux-kontext-pro` | The model to use for the request |
+| `size` | string | ❌ No | `16:9` | Size parameter |
+| `n` | integer | ❌ No | `1` | Number of completions to generate |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="cat with a red hat https://xxx.png">
-  Prompt parameter
-</ParamField>
 
-<ParamField body="model" type="string" required default="flux-kontext-pro">
-  The model to use for the request
-</ParamField>
-
-<ParamField body="size" type="string"  default="16:9">
-  Size parameter
-</ParamField>
-
-<ParamField body="n" type="integer"  default="1">
-  Number of completions to generate
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -132,22 +116,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -195,6 +166,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

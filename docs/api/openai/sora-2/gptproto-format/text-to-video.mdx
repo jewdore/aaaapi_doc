@@ -8,31 +8,18 @@ description: 'Text To Video'
 
 Sora 2 is a state-of-the-art video+audio generator. It advances prior video models with more accurate physics, sharper realism, synchronized audio, stronger steerability, and a wider stylistic range—built on the original Sora foundation.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `A video of a horse dancing.` | The positive prompt for the generation. |
+| `size` | string | ❌ No | `720*1280` | The size of the generated media in pixels (width*height).720*1280, 1280*720 |
+| `duration` | integer | ❌ No | `4` | The duration of the generated video in seconds.4, 8, 12 |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="prompt" type="string" required default="A video of a horse dancing.">
-  The positive prompt for the generation.
-</ParamField>
 
-<ParamField body="size" type="string"  default="720*1280">
-  The size of the generated media in pixels (width*height).720*1280, 1280*720
-</ParamField>
-
-<ParamField body="duration" type="integer"  default="4">
-  The duration of the generated video in seconds.4, 8, 12
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/openai/sora-2/text-to-video" \
@@ -124,18 +111,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
-</CodeGroup>
-
-## Response
-
-<ResponseField name="data.id" type="string">
-  Unique identifier for the prediction, Task Id
+</RequestExample>
 
 
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -183,6 +161,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

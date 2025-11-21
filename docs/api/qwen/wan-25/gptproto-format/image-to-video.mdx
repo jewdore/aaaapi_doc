@@ -8,45 +8,23 @@ description: 'Image to Video'
 
 This endpoint provides image to video functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `duration` | integer | ❌ No | `5` | Duration parameter |
+| `enable_prompt_expansion` | boolean | ❌ No | `false` | Enable Prompt Expansion parameter |
+| `seed` | integer | ❌ No | `-1` | Seed parameter |
+| `prompt` | string | ✅ Yes | `A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: &quot;The recording was pure static, a dead end. Then I ran it through Gptproto. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.&quot; High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
+` | Prompt parameter |
+| `resolution` | string | ❌ No | `720p` | Resolution parameter |
+| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/user/generator/2025/09/24/9f6947f8890f45bda58198cc5395f8ec/.png` | Image parameter |
 
-## Request Body
 
-<ParamField body="duration" type="integer"  default="5">
-  Duration parameter
-</ParamField>
 
-<ParamField body="enable_prompt_expansion" type="boolean"  default="false">
-  Enable Prompt Expansion parameter
-</ParamField>
 
-<ParamField body="seed" type="integer"  default="-1">
-  Seed parameter
-</ParamField>
-
-<ParamField body="prompt" type="string" required default="A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: &quot;The recording was pure static, a dead end. Then I ran it through Gptproto. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.&quot; High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.
-
-">
-  Prompt parameter
-</ParamField>
-
-<ParamField body="resolution" type="string"  default="720p">
-  Resolution parameter
-</ParamField>
-
-<ParamField body="image" type="string"  default="https://oss.heyoos.com/ai-draw/user/generator/2025/09/24/9f6947f8890f45bda58198cc5395f8ec/.png">
-  Image parameter
-</ParamField>
-
-## Request Example
-
-<CodeGroup>
+<RequestExample>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/alibaba/wan-2.5/image-to-video-fast" \
@@ -150,22 +128,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+</RequestExample>
 
-</CodeGroup>
 
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -213,6 +178,5 @@ func main() {
   }
 }
 ```
-
 </ResponseExample>
 

@@ -8,49 +8,18 @@ description: 'Image Editing '
 
 This endpoint provides image editing  functionality.
 
-## Authentication
+## Parameters
 
-This endpoint requires authentication using a Bearer token.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | file | ✅ Yes | - | image parameter |
+| `prompt` | string | ✅ Yes | `Flying Pig` | prompt parameter |
+| `file` | string | ✅ Yes | - | file parameter |
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` | model parameter |
+| `n` | string | ✅ Yes | `1` | n parameter |
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
-  Your API key in the format: `YOUR_API_KEY`
-</ParamField>
 
-## Request Body
 
-<ParamField body="image" type="file" required>
-  image parameter
-</ParamField>
-
-<ParamField body="prompt" type="string" required default="Flying Pig">
-  prompt parameter
-</ParamField>
-
-<ParamField body="file" type="string" required>
-  file parameter
-</ParamField>
-
-<ParamField body="model" type="string" required default="gemini-2.5-flash-image-preview">
-  model parameter
-</ParamField>
-
-<ParamField body="n" type="string" required default="1">
-  n parameter
-</ParamField>
-
-## Response
-
-<ResponseField name="Success" type="200">
-  Successful response
-
-```json
-{
-  "status": "success"
-}
-```
-</ResponseField>
-
-## Error Responses
 
 <ResponseExample>
 
@@ -98,6 +67,5 @@ This endpoint requires authentication using a Bearer token.
   }
 }
 ```
-
 </ResponseExample>
 
