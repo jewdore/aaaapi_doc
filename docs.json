@@ -1909,7 +1909,7 @@
     "api": {
         "baseUrl": "https://gptproto.com",
         "playground": {
-            "display": "none"
+            "display": "simple"
         }
     },
     "contextual": {
