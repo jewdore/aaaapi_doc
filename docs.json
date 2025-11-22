@@ -38,11 +38,11 @@
             {
                 "tab": "API Reference",
                 "icon": "code",
+                "expanded": false,
                 "groups": [
                     {
                         "group": "API Reference",
                         "icon": "code",
-                        "expanded": false,
                         "pages": [
                             {
                                 "group": "OpenAI",

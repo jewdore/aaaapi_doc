@@ -10,16 +10,45 @@ This endpoint allows you to generate images from text descriptions using Gemini 
 
 ## Parameters
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `a cat` | A text description of the desired image(s). |
-| `size` | string | ❌ No | - | The size of the generated images. Options: `1K`, `2K`, `4K` |
-| `aspect_ratio` | string | ❌ No | `1:1` | The aspect ratio of the generated image. Supported values: `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `9:16`, `16:9`, `21:9` |
-| `n` | integer | ❌ No | `1` | The number of images to generate. Must be between 1 and 10. |
-| `background` | string | ❌ No | `auto` | Allows to set transparency for the background of the generated image(s). This parameter is only supported for gpt-image-1. Must be one of `transparent`, `opaque` or `auto` (default value). When `auto` is used, the model will automatically determine the best background for the image. |
-| `enable_base64_output` | boolean | ❌ No | `false` | Whether to enable base64 output format. Options: `false`, `true` |
-| `enable_sync_mode` | boolean | ❌ No | `false` | Whether to enable synchronous mode. Options: `false`, `true` |
-| `output_format` | string | ❌ No | `png` | The output format of the generated image. Example: `png` |
+**`prompt`** (string, required)
+- Default: `a cat`
+- A text description of the desired image(s)
+
+**`size`** (string, optional)
+- The size of the generated images
+- Options: `1K`, `2K`, `4K`
+
+**`aspect_ratio`** (string, optional)
+- Default: `1:1`
+- The aspect ratio of the generated image
+- Supported values: `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `9:16`, `16:9`, `21:9`
+
+**`n`** (integer, optional)
+- Default: `1`
+- The number of images to generate
+- Must be between 1 and 10
+
+**`background`** (string, optional)
+- Default: `auto`
+- Allows to set transparency for the background of the generated image(s)
+- This parameter is only supported for gpt-image-1
+- Must be one of `transparent`, `opaque` or `auto`
+- When `auto` is used, the model will automatically determine the best background for the image
+
+**`enable_base64_output`** (boolean, optional)
+- Default: `false`
+- Whether to enable base64 output format
+- Options: `false`, `true`
+
+**`enable_sync_mode`** (boolean, optional)
+- Default: `false`
+- Whether to enable synchronous mode
+- Options: `false`, `true`
+
+**`output_format`** (string, optional)
+- Default: `png`
+- The output format of the generated image
+- Example: `png`
 
 
 
