@@ -38,6 +38,7 @@
             {
                 "tab": "API Reference",
                 "icon": "code",
+                "expanded": false,
                 "groups": [
                     {
                         "group": "API Reference",
