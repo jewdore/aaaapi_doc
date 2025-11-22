@@ -1,6 +1,6 @@
 ---
 title: 'Query Task'
-api: 'GET /api/v3/predictions/$:requestId/result'
+api: 'GET /api/v3/predictions/${requestId}/result'
 description: 'Query Task'
 ---
 
@@ -10,8 +10,18 @@ This endpoint provides query task functionality.
 
 ## Path Parameters
 
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| requestId | string | Yes | The unique identifier of the task to query. This ID is returned when you create a task. |
 
+## Response Parameters
 
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| id | string | The unique identifier of the task |
+| status | string | Task status: `pending`, `processing`, `completed`, or `failed` |
+| result | object | The result object containing the processed image (only present when status is `completed`) |
+| error | object | Error information (only present when status is `failed`) |
 
 <ResponseExample>
 
