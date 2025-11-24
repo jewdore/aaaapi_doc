@@ -24,7 +24,8 @@
       "Bash(while read file)",
       "Bash(do if ! grep -q mode: $file)",
       "Bash(then echo $file)",
-      "Bash(fi)"
+      "Bash(fi)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []
