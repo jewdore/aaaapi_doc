@@ -807,16 +807,6 @@
                                                     "docs/api/gemini/veo/veo3.1/gptproto-format/text-to-video(16:9)",
                                                     "docs/api/gemini/veo/veo3.1/gptproto-format/get-task-status"
                                                 ]
-                                            },
-                                            {
-                                                "group": "OpenAI Format",
-                                                "pages": [
-                                                    "docs/api/gemini/veo/veo3.1/openai-format/firstlast-frame",
-                                                    "docs/api/gemini/veo/veo3.1/openai-format/image-to-video(9:16)",
-                                                    "docs/api/gemini/veo/veo3.1/openai-format/image-to-video(16:9)",
-                                                    "docs/api/gemini/veo/veo3.1/openai-format/text-to-video(9:16)",
-                                                    "docs/api/gemini/veo/veo3.1/openai-format/text-to-video(16:9)"
-                                                ]
                                             }
                                         ]
                                     },
@@ -830,16 +820,6 @@
                                                     "docs/api/gemini/veo/veo3.1-pro/gptproto-format/image-to-video(9:16)",
                                                     "docs/api/gemini/veo/veo3.1-pro/gptproto-format/text-to-video(16:9)",
                                                     "docs/api/gemini/veo/veo3.1-pro/gptproto-format/get-task-status"
-                                                ]
-                                            },
-                                            {
-                                                "group": "OpenAI Format",
-                                                "pages": [
-                                                    "docs/api/gemini/veo/veo3.1-pro/openai-format/firstlast-frame",
-                                                    "docs/api/gemini/veo/veo3.1-pro/openai-format/image-to-video(9:16)",
-                                                    "docs/api/gemini/veo/veo3.1-pro/openai-format/image-to-video(16:9)",
-                                                    "docs/api/gemini/veo/veo3.1-pro/openai-format/text-to-video(16:9)",
-                                                    "docs/api/gemini/veo/veo3.1-pro/openai-format/text-to-video(9:16)"
                                                 ]
                                             }
                                         ]
