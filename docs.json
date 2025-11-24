@@ -376,7 +376,8 @@
                                             {
                                                 "group": "Gptproto Format",
                                                 "pages": [
-                                                    "docs/api/openai/gpt-image-1/gptproto-format/image-to-image"
+                                                    "docs/api/openai/gpt-image-1/gptproto-format/image-to-image",
+                                                    "docs/api/openai/gpt-image-1/gptproto-format/text-to-image"
                                                 ]
                                             },
                                             {
