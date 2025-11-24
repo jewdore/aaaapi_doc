@@ -438,9 +438,21 @@ func main() {
 | `stream` | boolean | ❌ No | `false` | Whether to stream the response |
 | `temperature` | number | ❌ No | `1.0` | Sampling temperature between 0 and 2. Higher values make output more random. |
 
+### Messages Array Structure
 
+Each message object in the `messages` array should have the following structure:
 
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `role` | string | ✅ Yes | The role of the message. Can be: `user`, `assistant`, or `system` |
+| `content` | array/string | ✅ Yes | The content of the message |
 
+### Content Array Structure (when content is an array)
+
+| Field | Type | Required | Example | Description |
+|-------|------|----------|---------|-------------|
+| `type` | string | ✅ Yes | `text` | The type of content |
+| `text` | string | ✅ Yes | `"The positive prompt for the generation."` | The text content when type is `text` |
 
 
 
