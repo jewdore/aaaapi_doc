@@ -20,7 +20,11 @@
       "Bash(chmod:*)",
       "Bash(./check_codegroup.sh:*)",
       "Bash(xargs cat:*)",
-      "Bash(node filter_configured_missing_codegroup.js:*)"
+      "Bash(node filter_configured_missing_codegroup.js:*)",
+      "Bash(while read file)",
+      "Bash(do if ! grep -q mode: $file)",
+      "Bash(then echo $file)",
+      "Bash(fi)"
     ],
     "deny": [],
     "ask": []
