@@ -13,7 +13,14 @@
       "Bash(head:*)",
       "Bash(git checkout:*)",
       "Bash(echo:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(while IFS= read -r file)",
+      "Bash(do if [ -n \"$file\" ])",
+      "Bash(then echo \"$file\" fi done)",
+      "Bash(chmod:*)",
+      "Bash(./check_codegroup.sh:*)",
+      "Bash(xargs cat:*)",
+      "Bash(node filter_configured_missing_codegroup.js:*)"
     ],
     "deny": [],
     "ask": []
