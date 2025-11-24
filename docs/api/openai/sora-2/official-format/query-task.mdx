@@ -4,7 +4,7 @@ api: 'GET /v1/videos/{video_id}'
 description: 'Query Status'
 ---
 
-## Overview
+## sora-2 (query task)
 
 Call GET /videos/{video_id} with the id returned from the create call. The response shows the job’s current status, progress percentage (if available), and any errors.
 Typical states are queued, in_progress, completed, and failed. Poll at a reasonable interval (for example, every 10–20 seconds), use exponential backoff if necessary, and provide feedback to users that the job is still in progress.
