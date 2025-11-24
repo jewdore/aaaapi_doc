@@ -488,17 +488,6 @@
                                         "group": "sora-2",
                                         "pages": [
                                             {
-                                                "group": "Official Format",
-                                                "pages": [
-                                                    "docs/api/openai/sora-2/official-format/text-to-video",
-                                                    "docs/api/openai/sora-2/official-format/image-to-video",
-                                                    "docs/api/openai/sora-2/official-format/query-task",
-                                                    "docs/api/openai/sora-2/official-format/get-video",
-                                                    "docs/api/openai/sora-2/official-format/get-thumbnail",
-                                                    "docs/api/openai/sora-2/official-format/get-spritesheet"
-                                                ]
-                                            },
-                                            {
                                                 "group": "Gptproto Format",
                                                 "pages": [
                                                     "docs/api/openai/sora-2/gptproto-format/image-to-video",
@@ -528,17 +517,6 @@
                                     {
                                         "group": "sora-2-pro",
                                         "pages": [
-                                            {
-                                                "group": "Official Format",
-                                                "pages": [
-                                                    "docs/api/openai/sora-2-pro/official-format/text-to-video",
-                                                    "docs/api/openai/sora-2-pro/official-format/image-to-video",
-                                                    "docs/api/openai/sora-2-pro/official-format/query-task",
-                                                    "docs/api/openai/sora-2-pro/official-format/get-video",
-                                                    "docs/api/openai/sora-2-pro/official-format/get-thumbnail",
-                                                    "docs/api/openai/sora-2-pro/official-format/get-spritesheet"
-                                                ]
-                                            },
                                             {
                                                 "group": "Gptproto Format",
                                                 "pages": [
