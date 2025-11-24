@@ -1,6 +1,6 @@
 {
     "$schema": "https://mintlify.com/docs.json",
-    "theme": "mint",
+    "theme": "maple",
     "name": "GPTProto API Documentation",
     "description": "GPTProto API Documentation",
     "colors": {
@@ -9,7 +9,6 @@
         "dark": "#0D9373"
     },
     "title": "GPTProto API Documentation",
-
     "logo": {
         "light": "/logo/light.png",
         "dark": "/logo/dark.png",
