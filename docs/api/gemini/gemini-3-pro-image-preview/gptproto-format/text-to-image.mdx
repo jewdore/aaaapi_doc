@@ -2,58 +2,22 @@
 title: 'Text to Image'
 api: 'POST /api/v3/google/{model}/text-to-image'
 description: 'Generate images from text descriptions using gemini-3-pro-image-preview'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint allows you to generate images from text descriptions using gemini-3-pro-image-preview.
-
-## Parameters
-
-**`prompt`** (string, required)
-- Default: `a cat`
-- A text description of the desired image(s)
-
-**`size`** (string, optional)
-- The size of the generated images
-- Options: `1K`, `2K`, `4K`
-
-**`aspect_ratio`** (string, optional)
-- Default: `1:1`
-- The aspect ratio of the generated image
-- Supported values: `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `9:16`, `16:9`, `21:9`
-
-**`n`** (integer, optional)
-- Default: `1`
-- The number of images to generate
-- Must be between 1 and 10
-
-**`background`** (string, optional)
-- Default: `auto`
-- Allows to set transparency for the background of the generated image(s)
-- This parameter is only supported for gpt-image-1
-- Must be one of `transparent`, `opaque` or `auto`
-- When `auto` is used, the model will automatically determine the best background for the image
-
-**`enable_base64_output`** (boolean, optional)
-- Default: `false`
-- Whether to enable base64 output format
-- Options: `false`, `true`
-
-**`enable_sync_mode`** (boolean, optional)
-- Default: `false`
-- Whether to enable synchronous mode
-- Options: `false`, `true`
-
-**`output_format`** (string, optional)
-- Default: `png`
-- The output format of the generated image
-- Example: `png`
+Gemini's GPTProto format for the text to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image' \
@@ -157,11 +121,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -209,5 +171,56 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+**`prompt`** (string, required)
+- Default: `a cat`
+- A text description of the desired image(s)
+
+**`size`** (string, optional)
+- The size of the generated images
+- Options: `1K`, `2K`, `4K`
+
+**`aspect_ratio`** (string, optional)
+- Default: `1:1`
+- The aspect ratio of the generated image
+- Supported values: `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `9:16`, `16:9`, `21:9`
+
+**`n`** (integer, optional)
+- Default: `1`
+- The number of images to generate
+- Must be between 1 and 10
+
+**`background`** (string, optional)
+- Default: `auto`
+- Allows to set transparency for the background of the generated image(s)
+- This parameter is only supported for gpt-image-1
+- Must be one of `transparent`, `opaque` or `auto`
+- When `auto` is used, the model will automatically determine the best background for the image
+
+**`enable_base64_output`** (boolean, optional)
+- Default: `false`
+- Whether to enable base64 output format
+- Options: `false`, `true`
+
+**`enable_sync_mode`** (boolean, optional)
+- Default: `false`
+- Whether to enable synchronous mode
+- Options: `false`, `true`
+
+**`output_format`** (string, optional)
+- Default: `png`
+- The output format of the generated image
+- Example: `png`
+
+
+
+
+
+
+
+
+
 

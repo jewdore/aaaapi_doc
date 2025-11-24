@@ -2,22 +2,22 @@
 title: 'Query Status'
 api: 'GET /v1/suno/fetch/{task_id}'
 description: 'Check the status and retrieve generated music from Suno AI tasks. Monitor asynchronous music generation progress and download completed audio files.'
+mode: 'wide'
 ---
 
 ## Overview
 
-Retrieve the status and results of music generation tasks submitted to [Suno AI](https://suno.com). This endpoint allows you to monitor the progress of asynchronous music generation tasks and retrieve the generated audio URL once complete.
-
-Related Guides: [Suno API Documentation](https://suno.com/docs/api) | [Task Management Guide](https://suno.com/guides/task-management)
-
-After submitting a music generation request via the [Text to Audio](/api/suno/official-format/text-to-audio) endpoint, use this endpoint to check the task status and retrieve the generated audio file.
-
-## Path Parameters
+Suno's query task.mdx for the query task API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/suno/fetch/15410652-357c-47fa-8ad9-a4a145fbfa14' \
@@ -128,21 +128,9 @@ func main() {
     }
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-## Task Status Values
-
-| Status | Description | Next Action |
-|--------|-------------|-------------|
-| `queued` | Task is waiting in queue to be processed | Continue polling |
-| `processing` | Task is currently being processed | Continue polling, check progress |
-| `completed` | Task completed successfully, audio is ready | Download audio from `audio_url` |
-| `failed` | Task failed | Check `error_message`, retry if needed |
-
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 404 - Task not found
 {
@@ -183,4 +171,24 @@ func main() {
   "message": "Internal server error"
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Path Parameters
+
+
+
+
+
+
+
+## Task Status Values
+
+| Status | Description | Next Action |
+|--------|-------------|-------------|
+| `queued` | Task is waiting in queue to be processed | Continue polling |
+| `processing` | Task is currently being processed | Continue polling, check progress |
+| `completed` | Task completed successfully, audio is ready | Download audio from `audio_url` |
+| `failed` | Task failed | Check `error_message`, retry if needed |
+
+
+

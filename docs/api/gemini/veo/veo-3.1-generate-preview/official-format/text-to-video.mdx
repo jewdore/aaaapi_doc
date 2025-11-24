@@ -2,26 +2,22 @@
 title: 'Text to Video'
 api: 'POST /v1beta/models/{model_name}:predictLongRunning'
 description: 'Generate videos from text prompts using Gemini Veo 3.1'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint generates videos from text descriptions using Google's Gemini Veo 3.1 model. The API accepts a text prompt and returns a long-running operation for video generation.
-
-## Parameters
-
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `instances` | array | ✅ Yes | - | An array of instances containing the video generation parameters |
-| `instances[].prompt` | string | ✅ Yes | `a cat` | The text prompt describing the video content you want to generate |
+Gemini's veo 3.1 generate preview for the text to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning' \
@@ -121,11 +117,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -164,5 +158,24 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `instances` | array | ✅ Yes | - | An array of instances containing the video generation parameters |
+| `instances[].prompt` | string | ✅ Yes | `a cat` | The text prompt describing the video content you want to generate |
+
+
+
+
+
+
+
+
+
 

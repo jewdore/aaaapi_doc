@@ -2,28 +2,22 @@
 title: 'Text to Image'
 api: 'POST /v1beta/models/{model}:generateContent'
 description: 'Generate images using Gemini Flash Image model with the official Gemini API format'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint generates images using Gemini Flash Image model via the official Gemini API format. It supports text-to-image generation with configurable image parameters.
-
-## Path Parameters
-
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ✅ Yes | - | An array of content objects representing the generation prompt.   The role of the message sender. Typically `"user"`. Optional for single-turn requests. |
-| `parts` | array | ✅ Yes | - | An array of parts that make up the message content.   Text prompt for image generation. |
-| `generationConfig` | object | ❌ No | - | Configuration for the image generation behavior.   Response modalities. For image generation, use `["TEXT", "IMAGE"]`. |
-| `imageConfig` | object | ❌ No | - | Image-specific configuration.   Aspect ratio for the generated image. Examples: `"16:9"`, `"1:1"`, `"9:16"`. |
+Gemini's official format for the text to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1beta/models/gemini-25-flash-image-preview:generateContent' \
@@ -178,11 +172,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -221,4 +213,25 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Path Parameters
+
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - | An array of content objects representing the generation prompt.   The role of the message sender. Typically `"user"`. Optional for single-turn requests. |
+| `parts` | array | ✅ Yes | - | An array of parts that make up the message content.   Text prompt for image generation. |
+| `generationConfig` | object | ❌ No | - | Configuration for the image generation behavior.   Response modalities. For image generation, use `["TEXT", "IMAGE"]`. |
+| `imageConfig` | object | ❌ No | - | Image-specific configuration.   Aspect ratio for the generated image. Examples: `"16:9"`, `"1:1"`, `"9:16"`. |
+
+
+
+
+
+
+
+
+

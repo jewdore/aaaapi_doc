@@ -2,21 +2,71 @@
 title: "Text to Image"
 api: "POST /v1beta/models/gemini-2.5-flash-image-preview:generateContent"
 description: "Text to Image"
+mode: 'wide'
 ---
 ## Caution
 
 The `gemini-2.0-flash-preview-image-generation` and `gemini-2.5-flash-image-preview` models will be retired on October 31, 2025. Migrate any workflows to `gemini-2.5-flash-image` before that date to avoid service disruption.
 ## Overview
 
-Google Gemini 2.5 Flash Image preview, a powerful new image generation and editing model with advanced features and creative control.
+Gemini's official format for the text to image API.
 
-- **Text-to-Image:** Generate high-quality images from simple or complex text descriptions.
+
+
+
 
 ## Supported inputs & outputs :
 
 Inputs: Text
 
 Outputs: Text and image
+
+
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
 
 ## Parameters
 
@@ -78,47 +128,3 @@ The model defaults to  generates 1:1 squares. You can control the aspect ratio o
       },
   }
   ```
-<ResponseExample>
-
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
-
-
-
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</ResponseExample>

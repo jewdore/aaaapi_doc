@@ -2,25 +2,22 @@
 title: 'video2video(Video to Video, Style Re-drawing)'
 api: 'POST /runway/v1/pro/video2video'
 description: 'video2video(Video to Video, Style Re-drawing)'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides video2video(video to video, style re-drawing) functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `video` | string | ❌ No | `http://source.baidu.com/attachments/video/runway/20241117/28ed9d05e1dc84bede45541855500aa9.mp4` | Video parameter |
-| `model` | string | ✅ Yes | `runwayml-gen3a_turbo-5` | The model to use for the request |
-| `prompt` | string | ✅ Yes | `pixel style` | Prompt parameter |
-| `options` | object | ❌ No | `{&quot;structure_transformation&quot;: 0.5, &quot;flip&quot;: true}` | Options parameter |
+Runway's video to video.mdx for the video to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/runway/v1/pro/video2video" \
@@ -128,11 +125,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -171,5 +166,23 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `video` | string | ❌ No | `http://source.baidu.com/attachments/video/runway/20241117/28ed9d05e1dc84bede45541855500aa9.mp4` | Video parameter |
+| `model` | string | ✅ Yes | `runwayml-gen3a_turbo-5` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `pixel style` | Prompt parameter |
+| `options` | object | ❌ No | `{&quot;structure_transformation&quot;: 0.5, &quot;flip&quot;: true}` | Options parameter |
+
+
+
+
+
+
+
+
+
 

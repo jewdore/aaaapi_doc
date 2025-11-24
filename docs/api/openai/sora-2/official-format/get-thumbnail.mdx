@@ -14,56 +14,10 @@ For each completed video, you can also download a **thumbnail** and a ​**sprit
 ## Request Parameter
 
 
-<RequestExample>
-```bash cURL
-
-curl -L "https://gptproto.com/v1/videos/video_abc123/content?variant=thumbnail" \
-  -H "Authorization: sk-xxx" \
-  --output thumbnail.webp
-```
-</RequestExample>
 
 
 
 
-<ResponseExample>
-
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
 
 
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</ResponseExample>
 

@@ -2,16 +2,16 @@
 title: "Image to Image"
 api: "POST /v1beta/models/gemini-2.5-flash-image:generateContent"
 description: "Image to Image"
+mode: 'wide'
 ---
 
 ## Overview
 
-Google Gemini 2.5 Flash Image, a powerful new image generation and editing model with advanced features and creative control.
+Gemini's official format for the image to image API.
 
-- **Image + Text-to-Image (Editing):** Provide an image and use text prompts to add, remove, or modify elements, change the style, or adjust the color grading.
-- **Multi-Image to Image (Composition & Style Transfer):** Use multiple input images to compose a new scene or transfer the style from one image to another.
-- **Iterative Refinement:** Engage in a conversation to progressively refine your image over multiple turns, making small adjustments until it's perfect.
-- **High-Fidelity Text Rendering:** Accurately generate images that contain legible and well-placed text, ideal for logos, diagrams, and posters.
+
+
+
 
 ## Supported inputs & outputs :
 
@@ -19,20 +19,15 @@ Inputs: Text and Images
 
 Outputs: Text and image
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ✅ Yes | - |     The prompt for the generation. |
-| `inline_data` | object | ✅ Yes | - |   Supported MIME `image/png`, `image/jpeg`, `image/webp` |
-| `data` | string | ✅ Yes | - | Maximum image size: 7 MB |
-| `generationConfig` | object | ❌ No | - |   The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`). |
-| `imageConfig` | object | ❌ No | - |   Supported aspect ratios: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9 | Aspect ratio | Resolution | | ------------ | ---------- | | 1:1 | 1024x1024 | | 2:3 | 832x1248 | | 3:2 | 1248x832 | | 3:4 | 864x1184 | | 4:3 | 1184x864 | | 4:5 | 896x1152 | | 5:4 | 1152x896 | | 9:16 | 768x1344 | | 16:9 | 1344x768 | | 21:9 | 1536x672 | |
 
 
-## Image to Image
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
@@ -199,7 +194,117 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+      "contents": [{
+        "parts":[
+            {"text": "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off."},
+            {
+              "inline_data": {
+                "mime_type":"image/png",
+                "data": "iVBORw0KGgoAAAANSUhEUgAAANQAAAFPCA...."
+              }
+            }
+        ]
+      }]
+    }'
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
+--header 'Authorization: sk-xxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+      "contents": [{
+        "parts":[
+            {
+              "inline_data": {
+                "mime_type":"image/png",
+                "data": "iVBORw0KGgoAAAANSUhEUgAAANQAAAFPCA...."
+              }
+            },
+            {
+              "inline_data": {
+                "mime_type":"image/png",
+                "data": "{{gemini_png_base64_2}}"
+              }
+            },
+            {"text": "Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment."}
+        ]
+      }]
+    }'
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - |     The prompt for the generation. |
+| `inline_data` | object | ✅ Yes | - |   Supported MIME `image/png`, `image/jpeg`, `image/webp` |
+| `data` | string | ✅ Yes | - | Maximum image size: 7 MB |
+| `generationConfig` | object | ❌ No | - |   The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`). |
+| `imageConfig` | object | ❌ No | - |   Supported aspect ratios: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9 | Aspect ratio | Resolution | | ------------ | ---------- | | 1:1 | 1024x1024 | | 2:3 | 832x1248 | | 3:2 | 1248x832 | | 3:4 | 864x1184 | | 4:3 | 1184x864 | | 4:5 | 896x1152 | | 5:4 | 1152x896 | | 9:16 | 768x1344 | | 16:9 | 1344x768 | | 21:9 | 1536x672 | |
+
+
+## Image to Image
+
+
 
 **Technical specifications**
 
@@ -263,50 +368,7 @@ The model defaults to matching the output image size to that of your input image
   }
   ```
 
-<ResponseExample>
 
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
-
-
-
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</ResponseExample>
 
 
 
@@ -314,27 +376,7 @@ The model defaults to matching the output image size to that of your input image
 
 Provide an image and describe your change. The model will match the original image's style, lighting, and perspective.
 
-<RequestExample>
 
-```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-      "contents": [{
-        "parts":[
-            {"text": "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off."},
-            {
-              "inline_data": {
-                "mime_type":"image/png",
-                "data": "iVBORw0KGgoAAAANSUhEUgAAANQAAAFPCA...."
-              }
-            }
-        ]
-      }]
-    }'
-```
-</RequestExample>
 
 | Input                                              | Output                                                                        |
 | -------------------------------------------------- | ----------------------------------------------------------------------------- |
@@ -345,33 +387,7 @@ curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:gener
 
 Provide multiple images as context to create a new, composite scene. This is perfect for product mockups or creative collages.
 
-<RequestExample>
 
-```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
---header 'Authorization: sk-xxxx' \
---header 'Content-Type: application/json' \
---data '{
-      "contents": [{
-        "parts":[
-            {
-              "inline_data": {
-                "mime_type":"image/png",
-                "data": "iVBORw0KGgoAAAANSUhEUgAAANQAAAFPCA...."
-              }
-            },
-            {
-              "inline_data": {
-                "mime_type":"image/png",
-                "data": "{{gemini_png_base64_2}}"
-              }
-            },
-            {"text": "Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment."}
-        ]
-      }]
-    }'
-```
-</RequestExample>
 
 | Input1                                                       | Input2                                              | Output                                            |
 | ------------------------------------------------------------ | --------------------------------------------------- | ------------------------------------------------- |

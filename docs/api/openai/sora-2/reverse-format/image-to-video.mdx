@@ -12,19 +12,11 @@ This endpoint provides submit task functionality.
 ## Request Parameter
 
 
-## Parameters
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `sora-2` | The video generation model to use. |
-| `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | The positive prompt for the generation. |
-| `images` | string[] | ✅ Yes | `[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
-| `size` | string | ✅ Yes | `small` | Video size quality. Options: small, large. Only sora-2-pro supports high-definition (large) |
-| `orientation` | string | ❌ No | `portrait` | Video orientation, does not support specific size control. Options: portrait, landscape |
-| `duration` | integer | ❌ No | `10` | The duration of the generated video in seconds. For sora-2: 10, 15. For sora-2-pro: 15, 25 |
-| `character_url` | string | ❌ No | `https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4` | Non-human IP video URL. |
 
-<RequestExample>
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --request POST \
@@ -141,9 +133,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -182,5 +174,21 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `sora-2` | The video generation model to use. |
+| `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | The positive prompt for the generation. |
+| `images` | string[] | ✅ Yes | `[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
+| `size` | string | ✅ Yes | `small` | Video size quality. Options: small, large. Only sora-2-pro supports high-definition (large) |
+| `orientation` | string | ❌ No | `portrait` | Video orientation, does not support specific size control. Options: portrait, landscape |
+| `duration` | integer | ❌ No | `10` | The duration of the generated video in seconds. For sora-2: 10, 15. For sora-2-pro: 15, 25 |
+| `character_url` | string | ❌ No | `https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4` | Non-human IP video URL. |
+
+
+
+
 

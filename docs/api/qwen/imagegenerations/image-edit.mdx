@@ -2,25 +2,20 @@
 title: 'image-edit'
 api: 'POST /v1/images/edits'
 description: 'image-edit'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image-edit functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `image` | string | ✅ Yes | `/Users/tabe/Desktop/videoframe_4120.png` | image parameter |
-| `prompt` | string | ✅ Yes | `remove background` | prompt parameter |
-| `model` | string | ✅ Yes | `qwen-image-edit` | model parameter |
-| `n` | string | ✅ Yes | `1` | n parameter |
+Qwen's image edit.mdx for the image edit API.
 
 
 
 
-<ResponseExample>
+
+
+
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -59,5 +54,19 @@ This endpoint provides image-edit functionality.
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | string | ✅ Yes | `/Users/tabe/Desktop/videoframe_4120.png` | image parameter |
+| `prompt` | string | ✅ Yes | `remove background` | prompt parameter |
+| `model` | string | ✅ Yes | `qwen-image-edit` | model parameter |
+| `n` | string | ✅ Yes | `1` | n parameter |
+
+
+
+
+
 

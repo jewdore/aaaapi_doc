@@ -2,34 +2,22 @@
 title: 'Text to Text (No Stream)'
 api: 'POST /v1beta/models/{model}:generateContent'
 description: 'Generate content using Gemini models with the official Gemini API format'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint generates content using Gemini models via the official Gemini API format. It supports text generation, image analysis, and multi-turn conversations.
-
-## Path Parameters
-
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ✅ Yes | - | An array of content objects representing the conversation history.   The role of the message sender. Typically `"user"` or `"model"`. |
-| `parts` | array | ✅ Yes | - | An array of parts that make up the message content.   Text content of the message. |
-| `inlineData` | object | ❌ No | - | Inline data for images or other media (base64 encoded). |
-| `functionResponse` | object | ❌ No | - | Response from a function call. |
-| `fileData` | object | ❌ No | - | Reference to uploaded file data. |
-| `videoMetadata` | object | ❌ No | - | Metadata for video content. |
-| `functionCall` | object | ❌ No | - | Function call request. |
-| `functionCalls` | array | ❌ No | - | Multiple function calls. |
-| `thoughtSignature` | string | ❌ No | - | Signature for thought content. |
-| `thought` | string | ❌ No | - | Thought content for reasoning models. |
+Gemini's official format for the text to text no stream API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-nothinking:generateContent' \
@@ -151,11 +139,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -194,4 +180,31 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Path Parameters
+
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - | An array of content objects representing the conversation history.   The role of the message sender. Typically `"user"` or `"model"`. |
+| `parts` | array | ✅ Yes | - | An array of parts that make up the message content.   Text content of the message. |
+| `inlineData` | object | ❌ No | - | Inline data for images or other media (base64 encoded). |
+| `functionResponse` | object | ❌ No | - | Response from a function call. |
+| `fileData` | object | ❌ No | - | Reference to uploaded file data. |
+| `videoMetadata` | object | ❌ No | - | Metadata for video content. |
+| `functionCall` | object | ❌ No | - | Function call request. |
+| `functionCalls` | array | ❌ No | - | Multiple function calls. |
+| `thoughtSignature` | string | ❌ No | - | Signature for thought content. |
+| `thought` | string | ❌ No | - | Thought content for reasoning models. |
+
+
+
+
+
+
+
+
+

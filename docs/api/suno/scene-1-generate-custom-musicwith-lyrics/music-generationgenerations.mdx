@@ -8,57 +8,11 @@ description: 'Music generation interface, can generate directly or continue to w
 
 Music generation interface, can generate directly or continue to write musicIf you are continuing to write a user-uploaded music, you need to add `-upload` after the mv field, such as `chirp-v3-5-upload`
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `[Verse]
-Stars they shine above me
-Moonlight softly glows
-Whispers in the night sky
-Dreams that only grow
-
-[Verse 2]
-Midnight winds are calling
-Carrying a tune
-Heartbeats echo softly
-Dancing with the moon
-
-[Chorus]
-Starry night starry night
-Let your light ignite ignite
-Bright as day bright as day
-Guide my way guide my way
-
-[Verse 3]
-Shadows move and twinkle
-Nighttime come alive
-Mystery in the heavens
-Stories that survive
-
-[Bridge]
-Magic fills the darkness
-Wonder in the air
-Every star a secret
-In the sky I stare
-
-[Chorus]
-Starry night starry night
-Let your light ignite ignite
-Bright as day bright as day
-Guide my way guide my way` | Prompt parameter |
-| `tags` | string | ❌ No | `heavy metal` | Tags parameter |
-| `mv` | string | ❌ No | `chirp-v3-5` | Mv parameter |
-| `title` | string | ❌ No | `Starry` | Title parameter |
-| `continue_clip_id` | string | ❌ No | `None` | Continue Clip Id parameter |
-| `continue_at` | string | ❌ No | `None` | Continue At parameter |
-| `infill_start_s` | string | ❌ No | `None` | Infill Start S parameter |
-| `infill_end_s` | string | ❌ No | `None` | Infill End S parameter |
 
 
 
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/suno/generate" \
@@ -170,11 +124,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -213,5 +165,61 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `[Verse]
+Stars they shine above me
+Moonlight softly glows
+Whispers in the night sky
+Dreams that only grow
+
+[Verse 2]
+Midnight winds are calling
+Carrying a tune
+Heartbeats echo softly
+Dancing with the moon
+
+[Chorus]
+Starry night starry night
+Let your light ignite ignite
+Bright as day bright as day
+Guide my way guide my way
+
+[Verse 3]
+Shadows move and twinkle
+Nighttime come alive
+Mystery in the heavens
+Stories that survive
+
+[Bridge]
+Magic fills the darkness
+Wonder in the air
+Every star a secret
+In the sky I stare
+
+[Chorus]
+Starry night starry night
+Let your light ignite ignite
+Bright as day bright as day
+Guide my way guide my way` | Prompt parameter |
+| `tags` | string | ❌ No | `heavy metal` | Tags parameter |
+| `mv` | string | ❌ No | `chirp-v3-5` | Mv parameter |
+| `title` | string | ❌ No | `Starry` | Title parameter |
+| `continue_clip_id` | string | ❌ No | `None` | Continue Clip Id parameter |
+| `continue_at` | string | ❌ No | `None` | Continue At parameter |
+| `infill_start_s` | string | ❌ No | `None` | Infill Start S parameter |
+| `infill_end_s` | string | ❌ No | `None` | Infill End S parameter |
+
+
+
+
+
+
+
+
+
 

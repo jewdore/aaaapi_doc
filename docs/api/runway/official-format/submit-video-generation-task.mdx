@@ -2,28 +2,22 @@
 title: 'Submit Video Generation Task'
 api: 'POST /runwayml/v1/image_to_video'
 description: 'Submit Video Generation Task'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides submit video generation task functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `promptImage` | string | ❌ No | `https://xxx.com/logo.png` | Promptimage parameter |
-| `seed` | integer | ❌ No | `4294967295` | Seed parameter |
-| `model` | string | ✅ Yes | `runwayml-gen3a_turbo-5` | The model to use for the request |
-| `promptText` | string | ❌ No | `cat dance` | Prompttext parameter |
-| `watermark` | boolean | ❌ No | `false` | Watermark parameter |
-| `duration` | integer | ❌ No | `5` | Duration parameter |
-| `ratio` | string | ❌ No | `1280:768` | Ratio parameter |
+Runway's submit video generation task.mdx for the submit video generation task API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/runwayml/v1/image_to_video" \
@@ -131,11 +125,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -174,5 +166,26 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `promptImage` | string | ❌ No | `https://xxx.com/logo.png` | Promptimage parameter |
+| `seed` | integer | ❌ No | `4294967295` | Seed parameter |
+| `model` | string | ✅ Yes | `runwayml-gen3a_turbo-5` | The model to use for the request |
+| `promptText` | string | ❌ No | `cat dance` | Prompttext parameter |
+| `watermark` | boolean | ❌ No | `false` | Watermark parameter |
+| `duration` | integer | ❌ No | `5` | Duration parameter |
+| `ratio` | string | ❌ No | `1280:768` | Ratio parameter |
+
+
+
+
+
+
+
+
+
 

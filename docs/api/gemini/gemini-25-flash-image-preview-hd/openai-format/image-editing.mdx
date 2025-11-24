@@ -2,26 +2,20 @@
 title: 'Image Editing '
 api: 'POST /v1/images/edits'
 description: 'Image Editing '
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image editing  functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `image` | file | ✅ Yes | - | image parameter |
-| `prompt` | string | ✅ Yes | `Flying Pig` | prompt parameter |
-| `file` | string | ✅ Yes | - | file parameter |
-| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` | model parameter |
-| `n` | string | ✅ Yes | `1` | n parameter |
+Gemini's openai format for the image editing API.
 
 
 
 
-<ResponseExample>
+
+
+
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -60,5 +54,20 @@ This endpoint provides image editing  functionality.
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | file | ✅ Yes | - | image parameter |
+| `prompt` | string | ✅ Yes | `Flying Pig` | prompt parameter |
+| `file` | string | ✅ Yes | - | file parameter |
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` | model parameter |
+| `n` | string | ✅ Yes | `1` | n parameter |
+
+
+
+
+
 

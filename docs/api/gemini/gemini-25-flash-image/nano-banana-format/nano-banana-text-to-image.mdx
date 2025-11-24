@@ -2,26 +2,22 @@
 title: 'Nano-banana-text-to-image'
 api: 'POST /api/v3/google/nano-banana/text-to-image'
 description: 'Nano-banana-text-to-image'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides nano-banana-text-to-image functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `The cat is climbing on the tree` | Prompt parameter |
-| `aspect_ratio` | string | ❌ No | `3:2` | Aspect Ratio parameter |
-| `output_format` | string | ❌ No | `jpeg` | Output Format parameter |
-| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
-| `enable_base64_output` | boolean | ❌ No | `true` | Enable Base64 Output parameter |
+Gemini's nano banana format for the nano banana text to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/google/nano-banana/text-to-image" \
@@ -121,11 +117,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -164,5 +158,24 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `The cat is climbing on the tree` | Prompt parameter |
+| `aspect_ratio` | string | ❌ No | `3:2` | Aspect Ratio parameter |
+| `output_format` | string | ❌ No | `jpeg` | Output Format parameter |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
+| `enable_base64_output` | boolean | ❌ No | `true` | Enable Base64 Output parameter |
+
+
+
+
+
+
+
+
+
 

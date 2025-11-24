@@ -2,35 +2,25 @@
 title: 'Text to Image'
 api: 'POST /v1/images/generations'
 description: 'Generate images from text prompts. This OpenAI-compatible endpoint is powered by Gemini 3 pro Image, providing state-of-the-art image generation capabilities. [OpenAI API Reference](https://platform.openai.com/docs/api-reference/images/create) | [Gemini Documentation](https://ai.google.dev/gemini-api/docs/image-generation)'
+mode: 'wide'
 ---
 
 
 ## Overview
 
-This endpoint provides powerful image generation functionality following the OpenAI images/generations API format, powered by Gemini 2.5 Flash Image. Given a text prompt, the model will generate high-quality images matching your description.
-
-**API Compatibility**: This endpoint follows the [OpenAI `/v1/images/generations`](https://platform.openai.com/docs/api-reference/images/create) format, making it easy to integrate as a drop-in replacement for OpenAI's image generation API.
-
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gemini-3-pro-image-preview` | The model to use for image generation. Use `gemini-3-pro-image-preview` for production workflows. |
-| `prompt` | string | ✅ Yes | `A serene landscape with mountains and a lake at sunset` | A text description of the desired image(s). Maximum length: 1000 characters (OpenAI standard) / 32,000 characters (extended support). The more detailed and specific your prompt, the better the results. |
-| `n` | integer | ❌ No | `1` | Number of images to generate. Accepts values between 1-10. Each image counts as 1,290 output tokens. |
-| `size` | string | ❌ No | `1024x1024` | The size of the generated images. Supported values: - `256x256` - Small square (legacy support) - `512x512` - Medium square - `1024x1024` - Large square (recommended) - `1024x1536` - Portrait orientation - `1536x1024` - Landscape orientation |
-| `quality` | string | ❌ No | `standard` | The quality of the image generation. Options: - `standard` - Standard quality, faster generation - `hd` - High definition, more detailed results (if supported) |
-| `response_format` | string | ❌ No | `url` | The format in which the generated images are returned. Must be one of: - `url` - Returns HTTPS URLs to the images (valid for 60 minutes) - `b64_json` - Returns base64-encoded JSON data |
-| `style` | string | ❌ No | `vivid` | The style of the generated images. Options: - `vivid` - Hyper-real and dramatic images - `natural` - More natural, less hyper-real looking images |
-| `user` | string | ❌ No | - | A unique identifier representing your end-user, which can help monitor and detect abuse. |
+Gemini's openai format for the create image API.
 
 
 
 
-### Basic Image Generation
 
-<RequestExample>
+
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -130,13 +120,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-### Generate Multiple Images
-
-Generate multiple variations of the same prompt:
-
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -178,7 +164,81 @@ result = response.json()
 for i, image in enumerate(result['data']):
     print(f"Image {i+1}: {image['url']}")
 ```
-</RequestExample>
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gemini-3-pro-image-preview` | The model to use for image generation. Use `gemini-3-pro-image-preview` for production workflows. |
+| `prompt` | string | ✅ Yes | `A serene landscape with mountains and a lake at sunset` | A text description of the desired image(s). Maximum length: 1000 characters (OpenAI standard) / 32,000 characters (extended support). The more detailed and specific your prompt, the better the results. |
+| `n` | integer | ❌ No | `1` | Number of images to generate. Accepts values between 1-10. Each image counts as 1,290 output tokens. |
+| `size` | string | ❌ No | `1024x1024` | The size of the generated images. Supported values: - `256x256` - Small square (legacy support) - `512x512` - Medium square - `1024x1024` - Large square (recommended) - `1024x1536` - Portrait orientation - `1536x1024` - Landscape orientation |
+| `quality` | string | ❌ No | `standard` | The quality of the image generation. Options: - `standard` - Standard quality, faster generation - `hd` - High definition, more detailed results (if supported) |
+| `response_format` | string | ❌ No | `url` | The format in which the generated images are returned. Must be one of: - `url` - Returns HTTPS URLs to the images (valid for 60 minutes) - `b64_json` - Returns base64-encoded JSON data |
+| `style` | string | ❌ No | `vivid` | The style of the generated images. Options: - `vivid` - Hyper-real and dramatic images - `natural` - More natural, less hyper-real looking images |
+| `user` | string | ❌ No | - | A unique identifier representing your end-user, which can help monitor and detect abuse. |
+
+
+
+
+### Basic Image Generation
+
+
+
+### Generate Multiple Images
+
+Generate multiple variations of the same prompt:
+
+
 
 ## OpenAI SDK Compatibility
 
@@ -251,51 +311,5 @@ To get the best results from image generation:
 
 
 
-<ResponseExample>
 
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
-
-```json 403 - Invalid Token
-{
-  "error": {
-    "message": "Invalid Token",
-    "type": "403"
-  }
-}
-```
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</ResponseExample>
 

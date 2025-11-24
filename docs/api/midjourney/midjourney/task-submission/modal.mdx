@@ -2,24 +2,22 @@
 title: 'Modal'
 api: 'POST /mj/submit/modal'
 description: 'Submit Local Re-drawing, ZOOM'
+mode: 'wide'
 ---
 
 ## Overview
 
-Submit Local Re-drawing, ZOOM
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `maskBase64` | string | ❌ No | - | Maskbase64 parameter |
-| `prompt` | string | ✅ Yes | - | Prompt parameter |
-| `taskId` | string | ❌ No | `14001934816969359` | Taskid parameter |
+Midjourney's task submission for the modal API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/mj/submit/modal" \
@@ -111,11 +109,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -154,5 +150,22 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `maskBase64` | string | ❌ No | - | Maskbase64 parameter |
+| `prompt` | string | ✅ Yes | - | Prompt parameter |
+| `taskId` | string | ❌ No | `14001934816969359` | Taskid parameter |
+
+
+
+
+
+
+
+
+
 

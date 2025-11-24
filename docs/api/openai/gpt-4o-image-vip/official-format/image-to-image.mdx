@@ -2,26 +2,22 @@
 title: 'Image to Image'
 api: 'POST /v1/images/edits'
 description: 'Image to Image'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to image functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `image` | file | ✅ Yes | - | image parameter |
-| `prompt` | string | ✅ Yes | - | prompt parameter |
-| `mask` | file | ✅ Yes | - | mask parameter |
-| `model` | string | ✅ Yes | `gpt-4o-image-vip` | model parameter |
-| `n` | string | ✅ Yes | `1` | n parameter |
+OpenAI's official format for the image to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/edits" \
@@ -133,11 +129,9 @@ func main() {
     fmt.Println(string(responseBody))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -176,5 +170,24 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | file | ✅ Yes | - | image parameter |
+| `prompt` | string | ✅ Yes | - | prompt parameter |
+| `mask` | file | ✅ Yes | - | mask parameter |
+| `model` | string | ✅ Yes | `gpt-4o-image-vip` | model parameter |
+| `n` | string | ✅ Yes | `1` | n parameter |
+
+
+
+
+
+
+
+
+
 

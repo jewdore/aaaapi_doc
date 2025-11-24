@@ -8,16 +8,11 @@ description: 'Convert Music Link to Suno (Upload)'
 
 This endpoint provides convert music link to suno (upload) functionality.
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `url` | string | ❌ No | `https://filesystem.site/cdn/20240722/7YSGZwU59FRhWzhRwWiL3A8pNmcJHC.mp3` | Url parameter |
 
 
 
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/suno/uploads/audio-url" \
@@ -101,11 +96,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -144,5 +137,20 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `url` | string | ❌ No | `https://filesystem.site/cdn/20240722/7YSGZwU59FRhWzhRwWiL3A8pNmcJHC.mp3` | Url parameter |
+
+
+
+
+
+
+
+
+
 

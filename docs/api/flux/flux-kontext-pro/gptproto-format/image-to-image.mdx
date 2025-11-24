@@ -2,25 +2,22 @@
 title: 'Image to Image'
 api: 'POST /v1/images/generations'
 description: 'Image to Image'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to image functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `cat with a red hat https://xxx.png` | Prompt parameter |
-| `model` | string | ✅ Yes | `flux-kontext-pro` | The model to use for the request |
-| `size` | string | ❌ No | `16:9` | Size parameter |
-| `n` | integer | ❌ No | `1` | Number of completions to generate |
+Flux's GPTProto format for the image to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -116,11 +113,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -159,5 +154,23 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `cat with a red hat https://xxx.png` | Prompt parameter |
+| `model` | string | ✅ Yes | `flux-kontext-pro` | The model to use for the request |
+| `size` | string | ❌ No | `16:9` | Size parameter |
+| `n` | integer | ❌ No | `1` | Number of completions to generate |
+
+
+
+
+
+
+
+
+
 

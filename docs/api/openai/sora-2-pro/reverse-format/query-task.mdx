@@ -8,16 +8,11 @@ description: 'Query Task'
 
 This endpoint provides query result functionality.
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `task_id` | string | ❌ No | `sora-2-pro:task_xxxx` | task id : sora-2-pro:task_xxx |
 
 
 
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X GET "https://gptproto.com/api/v3/predictions/sora-2-pro:task_xxx/result" \
@@ -82,35 +77,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-```json
-{
-  "data": {
-    "id": "sora-2-pro:task_xxxx",
-    "model": "sora-2",
-    "outputs": [
-      "https://oss.heyoos.com/sora/xxxxxxxxx.mp4"
-    ],
-    "urls": {
-      "get": "https://gptproto.com/api/v3/predictions/sora-2-pro:task_xxxx/result"
-    },
-    "status": "completed",
-    "error": null,
-    "executionTime": 0,
-    "timings": {
-      "inference": 0
-    },
-    "has_nsfw_contents": [],
-    "created_at": "2025-10-16 21:06:38"
-  },
-  "message": "success",
-  "code": 200
-}
-
-```
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -149,5 +118,44 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `task_id` | string | ❌ No | `sora-2-pro:task_xxxx` | task id : sora-2-pro:task_xxx |
+
+
+
+
+
+
+```json
+{
+  "data": {
+    "id": "sora-2-pro:task_xxxx",
+    "model": "sora-2",
+    "outputs": [
+      "https://oss.heyoos.com/sora/xxxxxxxxx.mp4"
+    ],
+    "urls": {
+      "get": "https://gptproto.com/api/v3/predictions/sora-2-pro:task_xxxx/result"
+    },
+    "status": "completed",
+    "error": null,
+    "executionTime": 0,
+    "timings": {
+      "inference": 0
+    },
+    "has_nsfw_contents": [],
+    "created_at": "2025-10-16 21:06:38"
+  },
+  "message": "success",
+  "code": 200
+}
+
+```
+
+
 

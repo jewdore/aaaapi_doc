@@ -2,52 +2,13 @@
 title: 'Query Task'
 api: 'GET /api/v3/predictions/cb9a85905ba74dbaa0dab65a2fa5313b/result'
 description: 'Query Task'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides query task functionality.
+Minimax's GPTProto format for the query task API.
 
 
 
-<ResponseExample>
-
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
-
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</ResponseExample>
 

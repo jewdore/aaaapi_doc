@@ -8,19 +8,9 @@ description: 'Image to Video'
 
 This endpoint provides image to video functionality.
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `sora-2-pro` | model parameter |
-| `prompt` | string | ✅ Yes | `The character walks slowly and then sits on the ground` | prompt parameter |
-| `input_reference` | string | ✅ Yes | `/Users/Downloads/20251014-010839.jpeg` | input_reference parameter |
-| `size` | string | ✅ Yes | `720x1280` | size parameter |
 
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -59,5 +49,19 @@ This endpoint provides image to video functionality.
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `sora-2-pro` | model parameter |
+| `prompt` | string | ✅ Yes | `The character walks slowly and then sits on the ground` | prompt parameter |
+| `input_reference` | string | ✅ Yes | `/Users/Downloads/20251014-010839.jpeg` | input_reference parameter |
+| `size` | string | ✅ Yes | `720x1280` | size parameter |
+
+
+
+
+
 

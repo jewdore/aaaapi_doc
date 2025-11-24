@@ -2,18 +2,22 @@
 title: 'Query Task'
 api: 'GET /v1beta/models/{model_name}/operations/{operation_id}'
 description: 'Query the status of a video generation task'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint retrieves the status and result of a video generation operation. After submitting a video generation request, use this endpoint to check if the operation is complete and retrieve the generated video.
-
-## Parameters
+Gemini's veo 3.1 fast generate preview for the query task API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/mg3pt9cbmvr1' \
@@ -74,11 +78,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -108,5 +110,16 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+
+
+
+
+
+
+
+
 

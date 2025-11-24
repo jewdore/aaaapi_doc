@@ -2,26 +2,22 @@
 title: 'Describe'
 api: 'POST /mj/submit/describe'
 description: 'Image to Text'
+mode: 'wide'
 ---
 
 ## Overview
 
-Image to Text
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `botType` | string | ❌ No | `MID_JOURNEY` | Bottype parameter |
-| `base64` | string | ❌ No | `data:image/png;base64,xxx` | Base64 parameter |
-| `accountFilter` | object | ❌ No | `{&quot;channelId&quot;: &quot;&quot;, &quot;instanceId&quot;: &quot;&quot;, &quot;modes&quot;: [], &quot;remark&quot;: &quot;&quot;, &quot;remix&quot;: true, &quot;remixAutoConsidered&quot;: true}` | Accountfilter parameter |
-| `notifyHook` | string | ❌ No | - | Notifyhook parameter |
-| `state` | string | ❌ No | - | State parameter |
+Midjourney's describe.mdx for the describe API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/mj/submit/describe" \
@@ -149,11 +145,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -192,5 +186,24 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `botType` | string | ❌ No | `MID_JOURNEY` | Bottype parameter |
+| `base64` | string | ❌ No | `data:image/png;base64,xxx` | Base64 parameter |
+| `accountFilter` | object | ❌ No | `{&quot;channelId&quot;: &quot;&quot;, &quot;instanceId&quot;: &quot;&quot;, &quot;modes&quot;: [], &quot;remark&quot;: &quot;&quot;, &quot;remix&quot;: true, &quot;remixAutoConsidered&quot;: true}` | Accountfilter parameter |
+| `notifyHook` | string | ❌ No | - | Notifyhook parameter |
+| `state` | string | ❌ No | - | State parameter |
+
+
+
+
+
+
+
+
+
 

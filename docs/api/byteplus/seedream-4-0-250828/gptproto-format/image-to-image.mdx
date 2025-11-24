@@ -2,29 +2,22 @@
 title: 'Image to Image'
 api: 'POST /api/v3/images/generations'
 description: 'Image to Image'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to image functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `Generate a twin photo from two images and take a photo in the snow` | Image generation prompt describing the desired image content |
-| `image` | array | ❌ No | `[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;]` | Input image URL(s) for image-to-image generation |
-| `model` | string | ✅ Yes | `seedream-4-0-250828` | The model to use for the request |
-| `sequential_image_generation` | string | ❌ No | `disabled` | Sequential Image Generation parameter |
-| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
-| `size` | string | ❌ No | `2K` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
-| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
-| `watermark` | boolean | ❌ No | `false` | Whether to add watermark to generated image |
+BytePlus's GPTProto format for the image to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/images/generations" \
@@ -148,11 +141,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -191,5 +182,27 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `Generate a twin photo from two images and take a photo in the snow` | Image generation prompt describing the desired image content |
+| `image` | array | ❌ No | `[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;]` | Input image URL(s) for image-to-image generation |
+| `model` | string | ✅ Yes | `seedream-4-0-250828` | The model to use for the request |
+| `sequential_image_generation` | string | ❌ No | `disabled` | Sequential Image Generation parameter |
+| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
+| `size` | string | ❌ No | `2K` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+| `watermark` | boolean | ❌ No | `false` | Whether to add watermark to generated image |
+
+
+
+
+
+
+
+
+
 

@@ -2,24 +2,22 @@
 title: "Image Analysis"
 api: 'POST /v1/responses'
 description: "Analyze and understand image content using vision-enabled models"
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image-to-text functionality using vision-enabled models in response mode.  provide image URLs to extract text content, describe scenes, or analyze visual information.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gpt-4o` | The model to use for the request. Must be a vision-enabled model. |
-| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects supporting the following types: - **input_text**: Text prompt with `text` field - **input_image**: Image input with `image_url` field, supports: - Base64 encoded images: `data:image/jpeg;base64,{base64_string}` - Supported formats: JPG, PNG Example with base64 encoded image: ```json [ { "role": "user", "content": [ { "type": "input_text", "text": "What is in this image?" }, { "type": "input_image", "image_url": "data:image/jpeg;base64,${base64Image}" } ] } ] ``` |
-| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+OpenAI's official format(response) for the image analysis API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/responses' \
@@ -167,9 +165,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-<ResponseExample>
+<CodeGroup>
 
 ```json 200 - Success
 {
@@ -227,4 +225,18 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-4o` | The model to use for the request. Must be a vision-enabled model. |
+| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects supporting the following types: - **input_text**: Text prompt with `text` field - **input_image**: Image input with `image_url` field, supports: - Base64 encoded images: `data:image/jpeg;base64,{base64_string}` - Supported formats: JPG, PNG Example with base64 encoded image: ```json [ { "role": "user", "content": [ { "type": "input_text", "text": "What is in this image?" }, { "type": "input_image", "image_url": "data:image/jpeg;base64,${base64Image}" } ] } ] ``` |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+
+
+
+
+
+

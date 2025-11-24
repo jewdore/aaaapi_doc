@@ -2,6 +2,7 @@
 title: 'Image to Image'
 api: 'POST /v1/images/edits'
 description: 'Edit an existing image based on a text prompt. This OpenAI-compatible endpoint is powered by Gemini 2.5 Flash Image, providing advanced image editing capabilities. [OpenAI API Reference](https://platform.openai.com/docs/api-reference/images/createEdit) | [Gemini Documentation](https://ai.google.dev/gemini-api/docs/image-generation)'
+mode: 'wide'
 ---
 
 ## Caution
@@ -10,30 +11,19 @@ The `gemini-2.0-flash-preview-image-generation` and `gemini-2.5-flash-image-prev
 
 ## Overview
 
-This endpoint provides powerful image editing functionality following the OpenAI images/edits API format, powered by Gemini 2.5 Flash Image. Given an input image and a text prompt describing the desired modifications, the model will generate an edited version of the image.
-
-**API Compatibility**: This endpoint follows the [OpenAI `/v1/images/edits`](https://platform.openai.com/docs/api-reference/images/createEdit) format, making it easy to integrate as a drop-in replacement for OpenAI's image editing API.
-
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` | The model to use for image editing. Use `gemini-2.5-flash-image-preview` or `gemini-2.5-flash-image` for production workflows. |
-| `image` | file | ✅ Yes | - | The image file to edit. Must be a valid PNG file, less than 4MB, and square for full OpenAI compatibility. Supported formats: PNG, JPEG, WebP. |
-| `prompt` | string | ✅ Yes | `Add a wizard hat to the subject` | A text description of the desired image modifications. Maximum length: 1000 characters (OpenAI standard) / 32,000 characters (extended support). |
-| `mask` | file | ❌ No | - | An optional mask image (PNG format) with the same dimensions as the input image. Transparent areas (alpha = 0) indicate regions to be edited. Must be less than 4MB. |
-| `n` | integer | ❌ No | `1` | Number of edited images to generate. Accepts values between 1-10. |
-| `size` | string | ❌ No | `1024x1024` | The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024` for OpenAI compatibility. |
-| `response_format` | string | ❌ No | `url` | The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are valid for 60 minutes. |
-| `user` | string | ❌ No | - | A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. |
+Gemini's openai format for the image editing API.
 
 
 
 
-### Basic Image Edit
 
-<RequestExample>
+
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/edits" \
@@ -151,13 +141,9 @@ func main() {
     fmt.Println(string(responseBody))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-### Image Edit with Mask
-
-When you want to edit only specific regions of an image, use a mask:
-
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/edits" \
@@ -194,7 +180,81 @@ response = requests.post(url, headers=headers, files=files, data=data)
 result = response.json()
 print(result)
 ```
-</RequestExample>
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` | The model to use for image editing. Use `gemini-2.5-flash-image-preview` or `gemini-2.5-flash-image` for production workflows. |
+| `image` | file | ✅ Yes | - | The image file to edit. Must be a valid PNG file, less than 4MB, and square for full OpenAI compatibility. Supported formats: PNG, JPEG, WebP. |
+| `prompt` | string | ✅ Yes | `Add a wizard hat to the subject` | A text description of the desired image modifications. Maximum length: 1000 characters (OpenAI standard) / 32,000 characters (extended support). |
+| `mask` | file | ❌ No | - | An optional mask image (PNG format) with the same dimensions as the input image. Transparent areas (alpha = 0) indicate regions to be edited. Must be less than 4MB. |
+| `n` | integer | ❌ No | `1` | Number of edited images to generate. Accepts values between 1-10. |
+| `size` | string | ❌ No | `1024x1024` | The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024` for OpenAI compatibility. |
+| `response_format` | string | ❌ No | `url` | The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are valid for 60 minutes. |
+| `user` | string | ❌ No | - | A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. |
+
+
+
+
+### Basic Image Edit
+
+
+
+### Image Edit with Mask
+
+When you want to edit only specific regions of an image, use a mask:
+
+
 
 ## OpenAI SDK Compatibility
 
@@ -246,51 +306,5 @@ print(image_url)
 
 
 
-<ResponseExample>
 
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
-
-```json 403 - Invalid Token
-{
-  "error": {
-    "message": "Invalid Token",
-    "type": "403"
-  }
-}
-```
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</ResponseExample>
 

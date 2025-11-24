@@ -2,25 +2,22 @@
 title: 'Image To Video Pro'
 api: 'POST /api/v3/openai/sora-2/image-to-video-pro'
 description: 'Image To Video Pro'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to video pro functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `A video of a horse dancing.` | Prompt parameter |
-| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/material/land-part1-default.png` | Image parameter |
-| `duration` | integer | ❌ No | `4` | Duration parameter |
-| `resolution` | string | ❌ No | `720p` | Resolution parameter |
+Sora's GPTProto format for the image to video pro API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "api/api/v3/openai/sora-2/image-to-video-pro" \
@@ -116,11 +113,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -159,5 +154,23 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `A video of a horse dancing.` | Prompt parameter |
+| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/material/land-part1-default.png` | Image parameter |
+| `duration` | integer | ❌ No | `4` | Duration parameter |
+| `resolution` | string | ❌ No | `720p` | Resolution parameter |
+
+
+
+
+
+
+
+
+
 

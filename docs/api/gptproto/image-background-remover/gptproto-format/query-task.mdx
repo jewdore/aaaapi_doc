@@ -2,28 +2,20 @@
 title: 'Query Task'
 api: 'GET /api/v3/predictions/${requestId}/result'
 description: 'Query Task'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides query task functionality.
+Gptproto's GPTProto format for the query task API.
 
-## Path Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| requestId | string | Yes | The unique identifier of the task to query. This ID is returned when you create a task. |
 
-## Response Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| id | string | The unique identifier of the task |
-| status | string | Task status: `pending`, `processing`, `completed`, or `failed` |
-| result | object | The result object containing the processed image (only present when status is `completed`) |
-| error | object | Error information (only present when status is `failed`) |
 
-<ResponseExample>
+
+
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -62,5 +54,22 @@ This endpoint provides query task functionality.
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| requestId | string | Yes | The unique identifier of the task to query. This ID is returned when you create a task. |
+
+## Response Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| id | string | The unique identifier of the task |
+| status | string | Task status: `pending`, `processing`, `completed`, or `failed` |
+| result | object | The result object containing the processed image (only present when status is `completed`) |
+| error | object | Error information (only present when status is `failed`) |
+
+
 

@@ -2,29 +2,22 @@
 title: 'generate video'
 api: 'POST /v1/higgsfield/generate'
 description: 'generate video'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides generate video functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `Generate a dance scene` | Prompt parameter |
-| `model` | string | ✅ Yes | `higgsfield-lite` | The model to use for the request |
-| `motion_id` | string | ❌ No | `5d0eee15-569c-4006-a1c7-46d1c42d9315` | Motion Id parameter |
-| `enhance_prompt` | boolean | ❌ No | `true` | Enhance Prompt parameter |
-| `image` | array | ❌ No | `[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/022cc0f0-8b08-4e8b-9822-2b41ba6c64ad.png&quot;]` | Image parameter |
-| `seed` | integer | ❌ No | `1000` | Seed parameter |
-| `height` | integer | ❌ No | `1080` | Height parameter |
-| `width` | integer | ❌ No | `720` | Width parameter |
+Higgsfield's GPTProto format for the generate video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/higgsfield/generate" \
@@ -144,11 +137,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -187,5 +178,27 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `Generate a dance scene` | Prompt parameter |
+| `model` | string | ✅ Yes | `higgsfield-lite` | The model to use for the request |
+| `motion_id` | string | ❌ No | `5d0eee15-569c-4006-a1c7-46d1c42d9315` | Motion Id parameter |
+| `enhance_prompt` | boolean | ❌ No | `true` | Enhance Prompt parameter |
+| `image` | array | ❌ No | `[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/022cc0f0-8b08-4e8b-9822-2b41ba6c64ad.png&quot;]` | Image parameter |
+| `seed` | integer | ❌ No | `1000` | Seed parameter |
+| `height` | integer | ❌ No | `1080` | Height parameter |
+| `width` | integer | ❌ No | `720` | Width parameter |
+
+
+
+
+
+
+
+
+
 

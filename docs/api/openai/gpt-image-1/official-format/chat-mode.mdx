@@ -2,27 +2,22 @@
 title: 'chat mode'
 api: 'POST /v1/chat/completions'
 description: 'chat mode'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides chat mode functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gpt-4o-image-vip` | The model to use for the request. `gpt-4o-image-vip` |
-| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   * role:user,The role of the message. * role:assistant,The role of the message. * role:system,The role of the message. |
-| `content` | array | ✅ Yes | - |   text , image_url |
-| `text` | string | ✅ Yes | - | * type:text,The positive prompt for the generation. * type:image_url,Optional image reference that guides generation. |
-| `image_url` | object | ✅ Yes | - |  * type:image_url,The URL of the image to use for the generation. |
-| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
+OpenAI's official format for the chat mode API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/chat/completions" \
@@ -134,11 +129,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -177,5 +170,25 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-4o-image-vip` | The model to use for the request. `gpt-4o-image-vip` |
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   * role:user,The role of the message. * role:assistant,The role of the message. * role:system,The role of the message. |
+| `content` | array | ✅ Yes | - |   text , image_url |
+| `text` | string | ✅ Yes | - | * type:text,The positive prompt for the generation. * type:image_url,Optional image reference that guides generation. |
+| `image_url` | object | ✅ Yes | - |  * type:image_url,The URL of the image to use for the generation. |
+| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
+
+
+
+
+
+
+
+
+
 

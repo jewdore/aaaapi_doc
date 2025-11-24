@@ -2,30 +2,22 @@
 title: 'Image to Image'
 api: 'POST /api/v3/chat/completions'
 description: 'Image to Image'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to image functionality using Volcengine Doubao official format.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `seedream-4-0-250828` | The endpoint ID for the model. Format: ep-xxxxxxxxxx-xxxxx |
-| `messages` | array | ✅ Yes | `[{'role': 'user', 'content': 'Who are you?'}]` | Array of message objects for the conversation. Each message must have a role (system, user, or assistant) and content. |
-| `temperature` | number | ❌ No | `0.7` | Controls randomness in the output. Range: 0.0 to 1.0 |
-| `top_p` | number | ❌ No | `0.9` | Nucleus sampling parameter. Range: 0.0 to 1.0 |
-| `max_tokens` | integer | ❌ No | `2048` | The maximum number of tokens to generate |
-| `stream` | boolean | ❌ No | `false` | Whether to stream the response using SSE (Server-Sent Events) |
-| `frequency_penalty` | number | ❌ No | `0.0` | Penalize frequent tokens. Range: -2.0 to 2.0 |
-| `presence_penalty` | number | ❌ No | `0.0` | Penalize new tokens based on presence. Range: -2.0 to 2.0 |
-| `stop` | array | ❌ No | - | Up to 4 sequences where the API will stop generating further tokens |
+BytePlus's official format for the image to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/chat/completions" \
@@ -135,11 +127,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 400 - Bad Request
 {
@@ -190,5 +180,28 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `seedream-4-0-250828` | The endpoint ID for the model. Format: ep-xxxxxxxxxx-xxxxx |
+| `messages` | array | ✅ Yes | `[{'role': 'user', 'content': 'Who are you?'}]` | Array of message objects for the conversation. Each message must have a role (system, user, or assistant) and content. |
+| `temperature` | number | ❌ No | `0.7` | Controls randomness in the output. Range: 0.0 to 1.0 |
+| `top_p` | number | ❌ No | `0.9` | Nucleus sampling parameter. Range: 0.0 to 1.0 |
+| `max_tokens` | integer | ❌ No | `2048` | The maximum number of tokens to generate |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response using SSE (Server-Sent Events) |
+| `frequency_penalty` | number | ❌ No | `0.0` | Penalize frequent tokens. Range: -2.0 to 2.0 |
+| `presence_penalty` | number | ❌ No | `0.0` | Penalize new tokens based on presence. Range: -2.0 to 2.0 |
+| `stop` | array | ❌ No | - | Up to 4 sequences where the API will stop generating further tokens |
+
+
+
+
+
+
+
+
+
 

@@ -2,19 +2,79 @@
 title: "gemini-2.5-flash-image-text-to-image"
 api: "POST /api/v3/google/gemini-2.5-flash-image/text-to-image"
 description: "gemini-2.5-flash-image"
+mode: 'wide'
 ---
 
 ## Overview
 
-**Nano-Banana Text-to-Image** is Google’s lightweight yet powerful **AI image generation model**, built for creators who need fast, high-quality visuals from simple text prompts. It transforms words into expressive, realistic images with remarkable clarity, composition, and style diversity — all within seconds.
+Gemini's nano banana format for the nano banana text to image API.
 
-- **Text-to-Image:** Generate high-quality images from simple or complex text descriptions.
+
+
+
 
 ## Supported inputs & outputs :
 
 Inputs: Text
 
 Outputs: Text and image
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/predictions/e2e61cbf-XXX/result' \
+--header 'Authorization: sk-xxxx' \
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
@@ -28,13 +88,7 @@ Outputs: Text and image
 
 ### **Query Result**
 
-<RequestExample>
 
-```bash cURL
-curl --location 'https://gptproto.com/api/v3/predictions/e2e61cbf-XXX/result' \
---header 'Authorization: sk-xxxx' \
-```
-</RequestExample>
 
 
 ## Response
@@ -79,47 +133,4 @@ curl --location 'https://gptproto.com/api/v3/predictions/e2e61cbf-XXX/result' \
 | data.timings           | object  | Object containing timing details                                                 |
 | data.timings.inference | integer | Inference time in milliseconds                                                   |
 
-<ResponseExample>
 
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
-
-
-
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</ResponseExample>

@@ -8,62 +8,11 @@ description: 'Music generation interface, can generate new music directly or con
 
 Music generation interface, can generate new music directly or continue existing musicIf you want to continue a user-uploaded music, you need to add `-upload` after the mv field, for example `chirp-v3-5-upload`
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `[Verse]
-Stars they shine above me
-Moonlight softly glows
-Whispers in the night sky
-Dreams that only grow
-
-[Verse 2]
-Midnight winds are calling
-Carrying a tune
-Heartbeats echo softly
-Dancing with the moon
-
-[Chorus]
-Starry night starry night
-Let your light ignite ignite
-Bright as day bright as day
-Guide my way guide my way
-
-[Verse 3]
-Shadows move and twinkle
-Nighttime come alive
-Mystery in the heavens
-Stories that survive
-
-[Bridge]
-Magic fills the darkness
-Wonder in the air
-Every star a secret
-In the sky I stare
-
-[Chorus]
-Starry night starry night
-Let your light ignite ignite
-Bright as day bright as day
-Guide my way guide my way` | Prompt parameter |
-| `generation_type` | string | ❌ No | `TEXT` | Generation Type parameter |
-| `tags` | string | ❌ No | `rock, punk` | Tags parameter |
-| `negative_tags` | string | ❌ No | - | Negative Tags parameter |
-| `mv` | string | ❌ No | `chirp-v3-5-tau` | Mv parameter |
-| `title` | string | ❌ No | `Starry (Cover)` | Title parameter |
-| `continue_clip_id` | string | ❌ No | `None` | Continue Clip Id parameter |
-| `continue_at` | string | ❌ No | `None` | Continue At parameter |
-| `continued_aligned_prompt` | string | ❌ No | `None` | Continued Aligned Prompt parameter |
-| `infill_start_s` | string | ❌ No | `None` | Infill Start S parameter |
-| `infill_end_s` | string | ❌ No | `None` | Infill End S parameter |
-| `task` | string | ❌ No | `cover` | Task parameter |
-| `cover_clip_id` | string | ❌ No | `0438be7f-6f3f-4c3d-9616-ea218c602854` | Cover Clip Id parameter |
 
 
 
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/suno/generate" \
@@ -195,11 +144,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -238,5 +185,66 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `[Verse]
+Stars they shine above me
+Moonlight softly glows
+Whispers in the night sky
+Dreams that only grow
+
+[Verse 2]
+Midnight winds are calling
+Carrying a tune
+Heartbeats echo softly
+Dancing with the moon
+
+[Chorus]
+Starry night starry night
+Let your light ignite ignite
+Bright as day bright as day
+Guide my way guide my way
+
+[Verse 3]
+Shadows move and twinkle
+Nighttime come alive
+Mystery in the heavens
+Stories that survive
+
+[Bridge]
+Magic fills the darkness
+Wonder in the air
+Every star a secret
+In the sky I stare
+
+[Chorus]
+Starry night starry night
+Let your light ignite ignite
+Bright as day bright as day
+Guide my way guide my way` | Prompt parameter |
+| `generation_type` | string | ❌ No | `TEXT` | Generation Type parameter |
+| `tags` | string | ❌ No | `rock, punk` | Tags parameter |
+| `negative_tags` | string | ❌ No | - | Negative Tags parameter |
+| `mv` | string | ❌ No | `chirp-v3-5-tau` | Mv parameter |
+| `title` | string | ❌ No | `Starry (Cover)` | Title parameter |
+| `continue_clip_id` | string | ❌ No | `None` | Continue Clip Id parameter |
+| `continue_at` | string | ❌ No | `None` | Continue At parameter |
+| `continued_aligned_prompt` | string | ❌ No | `None` | Continued Aligned Prompt parameter |
+| `infill_start_s` | string | ❌ No | `None` | Infill Start S parameter |
+| `infill_end_s` | string | ❌ No | `None` | Infill End S parameter |
+| `task` | string | ❌ No | `cover` | Task parameter |
+| `cover_clip_id` | string | ❌ No | `0438be7f-6f3f-4c3d-9616-ea218c602854` | Cover Clip Id parameter |
+
+
+
+
+
+
+
+
+
 

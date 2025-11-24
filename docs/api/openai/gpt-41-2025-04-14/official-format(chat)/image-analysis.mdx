@@ -2,42 +2,22 @@
 title: "Image Analysis"
 api: 'POST /v1/chat/completions'
 description: "Analyze and understand image content using vision-enabled models"
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image-to-text functionality using vision-enabled models.
-
-## Request Body
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gpt-41-2025-04-14` | The model to use for the request. Must be a vision-enabled model. |
-| `messages` | array | ✅ Yes | - | Array of message objects with role and content |
-| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
-
-### Messages Array Structure
-
-Each message object in the `messages` array should have the following structure:
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `role` | string | ✅ Yes | Role of the message sender. Can be: `user` or `assistant` |
-| `content` | array | ✅ Yes | Array of content objects (can include text and images) |
-
-### Content Array Structure
-
-Each content object in the `content` array should have the following structure:
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `type` | string | ✅ Yes | Type of content. Can be: `text` or `image_url` |
-| `text` | string | ✅ Yes (if type is `text`) | Text prompt content |
-| `image_url` | object | ✅ Yes (if type is `image_url`) | Image URL object with `url` field containing image URL or base64 encoded image |
+OpenAI's official format(chat) for the image analysis API.
 
 
 
-<RequestExample>
+
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/chat/completions' \
@@ -194,9 +174,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-<ResponseExample>
+<CodeGroup>
 
 ```json 200 - Success
 {
@@ -259,5 +239,38 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Request Body
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-41-2025-04-14` | The model to use for the request. Must be a vision-enabled model. |
+| `messages` | array | ✅ Yes | - | Array of message objects with role and content |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+
+### Messages Array Structure
+
+Each message object in the `messages` array should have the following structure:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `role` | string | ✅ Yes | Role of the message sender. Can be: `user` or `assistant` |
+| `content` | array | ✅ Yes | Array of content objects (can include text and images) |
+
+### Content Array Structure
+
+Each content object in the `content` array should have the following structure:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `type` | string | ✅ Yes | Type of content. Can be: `text` or `image_url` |
+| `text` | string | ✅ Yes (if type is `text`) | Text prompt content |
+| `image_url` | object | ✅ Yes (if type is `image_url`) | Image URL object with `url` field containing image URL or base64 encoded image |
+
+
+
+
+
+
 

@@ -2,11 +2,16 @@
 title: "Image to Image"
 api: "POST /v1/chat/completions"
 description: "Image to Image"
+mode: 'wide'
 ---
 
 ## Overview
 
-Google Gemini 2.5 Flash Image preview, a powerful new image generation and editing model with advanced features and creative control.
+Gemini's openai format for the image to image API.
+
+
+
+
 
 ## Supported inputs & outputs :
 
@@ -14,22 +19,11 @@ Inputs: Text and Images
 
 Outputs: Text and image
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   role of user. |
-| `content` | string | ✅ Yes | - | The prompt for the generation. |
-| `experimental_attachments` | array | ✅ Yes | - |   Supported MIME types:image/png, image/jpeg, image/webp |
-| `url` | string | ✅ Yes | - | image url. |
-| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` |  |
 
 
-## Image to Image
 
-The default output size for chat mode is 1:1 (1024x1024)
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/chat/completions" \
@@ -180,49 +174,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-## Response
-
-  ```json
-  {
-    "candidates": [
-        {
-            "content": {
-                "role": "model",
-                "parts": [
-                    {
-                        "inlineData": {
-                            "mimeType": "image/png",
-                            "data": "base64"
-                        }
-                    }
-                ]
-            },
-            "finishReason": "STOP"
-        }
-    ],
-    "usageMetadata": {
-        "promptTokenCount": 1302,
-        "candidatesTokenCount": 1290,
-        "totalTokenCount": 2592,
-        "thoughtsTokenCount": 0,
-        "promptTokensDetails": [
-            {
-                "modality": "IMAGE",
-                "tokenCount": 1290
-            },
-            {
-                "modality": "TEXT",
-                "tokenCount": 12
-            }
-        ]
-    },
-    "modelVersion": "gemini-2.5-flash-image-preview"
-  }
-  ```
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -265,4 +219,63 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   role of user. |
+| `content` | string | ✅ Yes | - | The prompt for the generation. |
+| `experimental_attachments` | array | ✅ Yes | - |   Supported MIME types:image/png, image/jpeg, image/webp |
+| `url` | string | ✅ Yes | - | image url. |
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` |  |
+
+
+## Image to Image
+
+The default output size for chat mode is 1:1 (1024x1024)
+
+
+
+## Response
+
+  ```json
+  {
+    "candidates": [
+        {
+            "content": {
+                "role": "model",
+                "parts": [
+                    {
+                        "inlineData": {
+                            "mimeType": "image/png",
+                            "data": "base64"
+                        }
+                    }
+                ]
+            },
+            "finishReason": "STOP"
+        }
+    ],
+    "usageMetadata": {
+        "promptTokenCount": 1302,
+        "candidatesTokenCount": 1290,
+        "totalTokenCount": 2592,
+        "thoughtsTokenCount": 0,
+        "promptTokensDetails": [
+            {
+                "modality": "IMAGE",
+                "tokenCount": 1290
+            },
+            {
+                "modality": "TEXT",
+                "tokenCount": 12
+            }
+        ]
+    },
+    "modelVersion": "gemini-2.5-flash-image-preview"
+  }
+  ```
+
+

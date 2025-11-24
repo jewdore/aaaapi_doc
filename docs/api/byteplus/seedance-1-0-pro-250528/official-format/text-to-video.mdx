@@ -2,28 +2,22 @@
 title: 'Text to video'
 api: 'POST /api/v3/contents/generations/tasks'
 description: 'Text to video'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides text to video functionality using Volcengine official format.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `seedance-1-0-pro-250528` | The model identifier for video generation (endpoint ID) |
-| `prompt` | string | ✅ Yes | - | Video generation prompt describing the desired video content |
-| `loop` | boolean | ❌ No | `false` | Whether to generate a looping video |
-| `duration` | string | ❌ No | `5s` | Video duration. Options: 5s, 10s |
-| `dimension` | string | ❌ No | `768:768` | Video resolution. Options: 768:768, 768:1280, 1280:768 |
-| `seed` | integer | ❌ No | - | Random seed for reproducible results (range: 1-2147483647) |
-| `logo` | object | ❌ No | - | Watermark configuration with position and url |
+BytePlus's official format for the text to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/contents/generations/tasks" \
@@ -127,11 +121,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 400 - Bad Request
 {
@@ -182,5 +174,26 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `seedance-1-0-pro-250528` | The model identifier for video generation (endpoint ID) |
+| `prompt` | string | ✅ Yes | - | Video generation prompt describing the desired video content |
+| `loop` | boolean | ❌ No | `false` | Whether to generate a looping video |
+| `duration` | string | ❌ No | `5s` | Video duration. Options: 5s, 10s |
+| `dimension` | string | ❌ No | `768:768` | Video resolution. Options: 768:768, 768:1280, 1280:768 |
+| `seed` | integer | ❌ No | - | Random seed for reproducible results (range: 1-2147483647) |
+| `logo` | object | ❌ No | - | Watermark configuration with position and url |
+
+
+
+
+
+
+
+
+
 

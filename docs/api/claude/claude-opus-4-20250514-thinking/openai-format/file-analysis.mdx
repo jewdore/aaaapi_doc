@@ -2,26 +2,22 @@
 title: "File Analysis"
 api: 'POST /v1/chat/completions'
 description: "Analyze and extract information from various file types including documents, spreadsheets, and PDFs using Claude 3.5 Haiku"
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides file analysis functionality using Claude 3.5 Haiku. Upload files or provide file URLs to extract content, analyze data, summarize documents, or process structured information from various file formats including PDF, DOCX, TXT, and more.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `claude-opus-4-20250514-thinking` | The model to use for file analysis. Must be `claude-opus-4-20250514-thinking` or another Claude model with file analysis capabilities. |
-| `messages` | array | ✅ Yes | - | Array of message objects for the conversation. Each message contains: - **role**: `user`, `assistant`, or `system` - **content**: Array of content objects supporting: - **type: "text"**: Text prompt with `text` field - **type: "file"**: File input with `file` object containing: - `filename`: Name of the file - `file_data`: URL to file or base64 encoded data Supported file formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML Maximum file size: 20MB Example structure: ```json [ { "role": "user", "content": [ { "type": "text", "text": "Summarize the contents of this document" }, { "type": "file", "file": { "filename": "document.pdf", "file_data": "https://example.com/document.pdf" } } ] } ] ``` |
-| `max_tokens` | integer | ❌ No | `1000` | Maximum number of tokens to generate in the response |
-| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
-| `temperature` | number | ❌ No | `1.0` | Sampling temperature between 0 and 2. Higher values make output more random. |
+Claude's openai format for the file analysis API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL (with URL)
 curl -X POST "https://gptproto.com/v1/chat/completions" \
@@ -365,10 +361,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 200 - Success
 {
@@ -431,4 +426,22 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `claude-opus-4-20250514-thinking` | The model to use for file analysis. Must be `claude-opus-4-20250514-thinking` or another Claude model with file analysis capabilities. |
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation. Each message contains: - **role**: `user`, `assistant`, or `system` - **content**: Array of content objects supporting: - **type: "text"**: Text prompt with `text` field - **type: "file"**: File input with `file` object containing: - `filename`: Name of the file - `file_data`: URL to file or base64 encoded data Supported file formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML Maximum file size: 20MB Example structure: ```json [ { "role": "user", "content": [ { "type": "text", "text": "Summarize the contents of this document" }, { "type": "file", "file": { "filename": "document.pdf", "file_data": "https://example.com/document.pdf" } } ] } ] ``` |
+| `max_tokens` | integer | ❌ No | `1000` | Maximum number of tokens to generate in the response |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+| `temperature` | number | ❌ No | `1.0` | Sampling temperature between 0 and 2. Higher values make output more random. |
+
+
+
+
+
+
+
+

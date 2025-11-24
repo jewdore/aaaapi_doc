@@ -2,23 +2,22 @@
 title: 'Image to Image'
 api: 'POST /v1beta/models/gemini-2.5-flash-image-hd:generateContent'
 description: 'Image to Image'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to image functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ❌ No | `[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation&quot;}, {&quot;inline_data&quot;: {&quot;mime_type&quot;: &quot;image/jpeg&quot;, &quot;data&quot;: &quot;base64&quot;}}]}]` | Contents parameter |
-| `generationConfig` | object | ❌ No | `{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;]}` | Generationconfig parameter |
+Gemini's official format for the image to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent" \
@@ -182,11 +181,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -225,5 +222,21 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ❌ No | `[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation&quot;}, {&quot;inline_data&quot;: {&quot;mime_type&quot;: &quot;image/jpeg&quot;, &quot;data&quot;: &quot;base64&quot;}}]}]` | Contents parameter |
+| `generationConfig` | object | ❌ No | `{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;]}` | Generationconfig parameter |
+
+
+
+
+
+
+
+
+
 

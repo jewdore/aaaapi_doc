@@ -2,26 +2,22 @@
 title: 'Image to Video'
 api: 'POST /api/v3/kwaivgi/kling-v2.1-i2v-standard'
 description: 'Image to Video'
+mode: 'wide'
 ---
 
 ## Overview
 
-**Kling v2.1** is an AI video generation model developed by ​**KlingAI (Kuaishou)**​. It is purpose-built for creators, artists, and production teams seeking fast, realistic video generation from image and text prompts. Ideal for rapid prototyping, rough drafts, and creative iteration, it balances performance with affordability—while maintaining high-quality motion dynamics and visual coherence.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | - | The positive prompt for the generation. |
-| `negative_prompt` | string | ❌ No | - | The negative prompt for the generation. |
-| `image` | string | ✅ Yes | - | First frame of the video; Supported image formats include.jpg/.jpeg/.png; The image file size cannot exceed 10MB, and the image resolution should not be less than 300*300px. |
-| `guidance_scale` | number | ❌ No | `0.5` | 0.00 ~ 1.00 . The guidance scale to use for the generation. |
-| `duration` | integer | ❌ No | `5` | 5, 10. default 5 . The duration of the generated media in seconds. |
+Kling's GPTProto format for the image to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-standard" \
@@ -35,9 +31,9 @@ curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-standard" \
     "duration": "5"
 }'
 ```
-</RequestExample>
+</CodeGroup>
 
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -76,5 +72,22 @@ curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-standard" \
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | - | The positive prompt for the generation. |
+| `negative_prompt` | string | ❌ No | - | The negative prompt for the generation. |
+| `image` | string | ✅ Yes | - | First frame of the video; Supported image formats include.jpg/.jpeg/.png; The image file size cannot exceed 10MB, and the image resolution should not be less than 300*300px. |
+| `guidance_scale` | number | ❌ No | `0.5` | 0.00 ~ 1.00 . The guidance scale to use for the generation. |
+| `duration` | integer | ❌ No | `5` | 5, 10. default 5 . The duration of the generated media in seconds. |
+
+
+
+
+
+
+
 

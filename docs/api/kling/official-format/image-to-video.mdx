@@ -2,28 +2,22 @@
 title: 'Image to Video'
 api: 'POST /kling/v1/videos/image2video'
 description: 'Image to Video'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to video functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `flow` | Prompt parameter |
-| `negative_prompt` | string | ❌ No | - | Negative Prompt parameter |
-| `image` | string | ❌ No | `https://img.jpg` | Image parameter |
-| `image_tail` | string | ❌ No | - | Image Tail parameter |
-| `aspect_ratio` | string | ❌ No | `1:1` | Aspect Ratio parameter |
-| `mode` | string | ❌ No | `std` | Mode parameter |
-| `duration` | string | ❌ No | `5` | Duration parameter |
+Kling's image to video.mdx for the image to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/kling/v1/videos/image2video" \
@@ -138,9 +132,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -179,5 +173,24 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `flow` | Prompt parameter |
+| `negative_prompt` | string | ❌ No | - | Negative Prompt parameter |
+| `image` | string | ❌ No | `https://img.jpg` | Image parameter |
+| `image_tail` | string | ❌ No | - | Image Tail parameter |
+| `aspect_ratio` | string | ❌ No | `1:1` | Aspect Ratio parameter |
+| `mode` | string | ❌ No | `std` | Mode parameter |
+| `duration` | string | ❌ No | `5` | Duration parameter |
+
+
+
+
+
+
+
 

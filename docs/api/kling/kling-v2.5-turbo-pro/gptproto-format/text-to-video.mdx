@@ -2,28 +2,22 @@
 title: 'Text to Video'
 api: 'POST /api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-video'
 description: 'Text to Video'
+mode: 'wide'
 ---
 
 ## Overview
 
-**Kling 2.5 Turbo Pro** is an advanced text-to-video model that produces ultra-smooth motion, cinematic visuals, and accurate prompt adherence.
-
-Its improved **dynamic processing** and **text-to-motion control** allow for seamless transitions while maintaining style fidelity across various looks.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | - | The positive prompt for the generation. |
-| `negative_prompt` | string | ❌ No | - | The negative prompt for the generation. |
-| `aspect_ratio` | string | ❌ No | `16:9` | 1:1, 9:16, 16:9. default 16:9 . The aspect ratio of the generated media. |
-| `duration` | integer | ❌ No | `5` | 5, 10. default 5 . The duration of the generated media in seconds. |
-| `guidance_scale` | number | ❌ No | `0.5` | 0.00 ~ 1.00 . The guidance scale to use for the generation. |
+Kling's GPTProto format for the text to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-video" \
@@ -36,9 +30,9 @@ curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-v
     "guidance_scale": 0.5
 }'
 ```
-</RequestExample>
+</CodeGroup>
 
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -77,5 +71,22 @@ curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-v
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | - | The positive prompt for the generation. |
+| `negative_prompt` | string | ❌ No | - | The negative prompt for the generation. |
+| `aspect_ratio` | string | ❌ No | `16:9` | 1:1, 9:16, 16:9. default 16:9 . The aspect ratio of the generated media. |
+| `duration` | integer | ❌ No | `5` | 5, 10. default 5 . The duration of the generated media in seconds. |
+| `guidance_scale` | number | ❌ No | `0.5` | 0.00 ~ 1.00 . The guidance scale to use for the generation. |
+
+
+
+
+
+
+
 

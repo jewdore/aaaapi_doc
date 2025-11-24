@@ -8,19 +8,11 @@ description: 'Image To Video Pro'
 
 This endpoint provides image to video pro functionality.
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `A video of a horse dancing.` | Prompt parameter |
-| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/material/land-part1-default.png` | Image parameter |
-| `duration` | integer | ❌ No | `4` | Duration parameter |
-| `resolution` | string | ❌ No | `720p` | Resolution parameter |
 
 
 
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video-pro" \
@@ -116,11 +108,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -159,5 +149,23 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `A video of a horse dancing.` | Prompt parameter |
+| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/material/land-part1-default.png` | Image parameter |
+| `duration` | integer | ❌ No | `4` | Duration parameter |
+| `resolution` | string | ❌ No | `720p` | Resolution parameter |
+
+
+
+
+
+
+
+
+
 

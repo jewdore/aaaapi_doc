@@ -2,26 +2,22 @@
 title: 'Image to Video'
 api: 'POST /api/v3/minimax/hailuo-02/pro'
 description: 'Image to Video'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to video functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `The girl in the image begins performing a graceful ballet solo on a grand theater stage, she twirls and lifts one leg into an arabesque, soft spotlight follows her every move, cinematic lighting, slow camera pan from left to right, elegant and fluid motion` | Prompt parameter |
-| `image` | string | ❌ No | `https://d1q70pf5vjeyhc.cloudfront.net/media/images/1751883836278138425_vVeazvso.jpeg` | Image parameter |
-| `duration` | integer | ❌ No | `6` | Duration parameter |
-| `enable_prompt_expansion` | boolean | ❌ No | `true` | Enable Prompt Expansion parameter |
-| `go_fast` | boolean | ❌ No | `true` | Go Fast parameter |
+Minimax's GPTProto format for the image to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/minimax/hailuo-02/pro" \
@@ -121,11 +117,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -164,5 +158,24 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `The girl in the image begins performing a graceful ballet solo on a grand theater stage, she twirls and lifts one leg into an arabesque, soft spotlight follows her every move, cinematic lighting, slow camera pan from left to right, elegant and fluid motion` | Prompt parameter |
+| `image` | string | ❌ No | `https://d1q70pf5vjeyhc.cloudfront.net/media/images/1751883836278138425_vVeazvso.jpeg` | Image parameter |
+| `duration` | integer | ❌ No | `6` | Duration parameter |
+| `enable_prompt_expansion` | boolean | ❌ No | `true` | Enable Prompt Expansion parameter |
+| `go_fast` | boolean | ❌ No | `true` | Go Fast parameter |
+
+
+
+
+
+
+
+
+
 

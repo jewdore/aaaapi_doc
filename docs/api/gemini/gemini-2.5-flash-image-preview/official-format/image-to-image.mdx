@@ -2,6 +2,7 @@
 title: "Image to Image"
 api: "POST /v1beta/models/gemini-2.5-flash-image-preview:generateContent"
 description: "Image to Image"
+mode: 'wide'
 ---
 
 ## Caution
@@ -9,7 +10,11 @@ description: "Image to Image"
 The `gemini-2.0-flash-preview-image-generation` and `gemini-2.5-flash-image-preview` models will be retired on October 31, 2025. Migrate any workflows to `gemini-2.5-flash-image` before that date to avoid service disruption.
 ## Overview
 
-Google Gemini 2.5 Flash Image preview, a powerful new image generation and editing model with advanced features and creative control.
+Gemini's official format for the image to image API.
+
+
+
+
 
 ## Supported inputs & outputs :
 
@@ -17,20 +22,11 @@ Inputs: Text and Images
 
 Outputs: Text and image
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ✅ Yes | - |     The prompt for the generation. |
-| `inline_data` | object | ✅ Yes | - |   Supported MIME types:image/png, image/jpeg, image/webp |
-| `data` | string | ✅ Yes | - | image base64. |
-| `generationConfig` | object | ❌ No | - |   The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`). |
-| `imageConfig` | object | ❌ No | - |   1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9 |
 
 
-## Image to Image
 
-<RequestExample>
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent" \
@@ -197,7 +193,67 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - |     The prompt for the generation. |
+| `inline_data` | object | ✅ Yes | - |   Supported MIME types:image/png, image/jpeg, image/webp |
+| `data` | string | ✅ Yes | - | image base64. |
+| `generationConfig` | object | ❌ No | - |   The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`). |
+| `imageConfig` | object | ❌ No | - |   1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9 |
+
+
+## Image to Image
+
+
 
 **Technical specifications**
 
@@ -273,47 +329,4 @@ The model defaults to matching the output image size to that of your input image
   }
   ```
 
-<ResponseExample>
 
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
-
-
-
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</ResponseExample>

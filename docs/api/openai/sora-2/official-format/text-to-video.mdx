@@ -8,32 +8,9 @@ description: 'Text to Video'
 
 Sora is OpenAI’s newest frontier in generative media – a state-of-the-art video model capable of creating richly detailed, dynamic clips with audio from natural language or images. Built on years of research into multimodal diffusion and trained on diverse visual data, Sora brings a deep understanding of 3D space, motion, and scene continuity to text-to-video generation.
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `sora-2` | The video generation model to use. Defaults to sora-2. |
-| `prompt` | string | ✅ Yes | `A calico cat playing a piano on stage` | Text prompt that describes the video to generate. |
-| `size` | string | ✅ Yes | `720x1280` | Output resolution formatted as width x height. 720x1280 & 1280x720 ，Defaults to 720x1280. |
-| `seconds` | string | ❌ No | `4` | Clip duration in seconds.4, 8, 12 . Defaults to 4 seconds. |
 
 
-```json
-{
-    "id": "video_xxxx",
-    "object": "video",
-    "status": "queued",
-    "model": "sora-2",
-    "progress": 0,
-    "seconds": "4",
-    "size": "720x1280",
-    "createdAt": 1761897415
-}
-
-```
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -72,5 +49,32 @@ Sora is OpenAI’s newest frontier in generative media – a state-of-the-art vi
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `sora-2` | The video generation model to use. Defaults to sora-2. |
+| `prompt` | string | ✅ Yes | `A calico cat playing a piano on stage` | Text prompt that describes the video to generate. |
+| `size` | string | ✅ Yes | `720x1280` | Output resolution formatted as width x height. 720x1280 & 1280x720 ，Defaults to 720x1280. |
+| `seconds` | string | ❌ No | `4` | Clip duration in seconds.4, 8, 12 . Defaults to 4 seconds. |
+
+
+```json
+{
+    "id": "video_xxxx",
+    "object": "video",
+    "status": "queued",
+    "model": "sora-2",
+    "progress": 0,
+    "seconds": "4",
+    "size": "720x1280",
+    "createdAt": 1761897415
+}
+
+```
+
+
+
 

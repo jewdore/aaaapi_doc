@@ -8,16 +8,11 @@ description: 'Upload files to Google Generative AI API (North America region)'
 
 This endpoint allows you to upload files for use with Google's Generative AI models in the North America region.
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `file` | file | ✅ Yes | - | The file to upload |
 
 
 
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://api-na.gptproto.com/v1beta/files' \
@@ -98,11 +93,9 @@ func main() {
     fmt.Println(string(responseBody))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -123,5 +116,20 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `file` | file | ✅ Yes | - | The file to upload |
+
+
+
+
+
+
+
+
+
 

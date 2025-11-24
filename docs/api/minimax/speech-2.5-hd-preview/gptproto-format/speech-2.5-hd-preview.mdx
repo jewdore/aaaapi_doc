@@ -2,35 +2,22 @@
 title: 'speech-2.5-hd-preview'
 api: 'POST /api/v3/minimax/speech-2.5-hd-preview'
 description: 'speech-2.5-hd-preview'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides speech-2.5-hd-preview functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `text` | string | ✅ Yes | `Hello world! This is a test of the text-to-speech system.` | Text to convert to speech. Every character is 1 token. Maximum 10000 characters. Use between words to control pause duration (0.01-99.99s). |
-| `voice_id` | string | ✅ Yes | `Wise_Woman` | * Desired voice ID. One of the following system voice IDs: Wise_Woman, Friendly_Person, Inspirational_girl, Deep_Voice_Man, Calm_Woman, Casual_Guy, Lively_Girl, Patient_Man, Young_Knight, Determined_Man, Lovely_Girl, Decent_Boy, Imposing_Manner, Elegant_Man, Abbess, Sweet_Girl_2, Exuberant_Girl. * Use a voice ID you have trained. |
-| `speed` | number | ❌ No | `1` | 0.50 ~ 2.00 . Speech speed. Range: 0.5-2.0, where 1.0 is normal speed. |
-| `volume` | number | ❌ No | `1` | 0.10 ~ 10.00 . Speech volume. Range: 0.1-10.0, where 1.0 is normal volume. |
-| `pitch` | integer | ❌ No | `0` | -12 ~ 12 .Speech pitch. Range: -12 to 12, where 0 is normal pitch. |
-| `emotion` | string | ❌ No | `happy` | happy, sad, angry, fearful, disgusted, surprised, neutral . The emotion of the generated speech. |
-| `english_normalization` | boolean | ❌ No | `false` | This parameter supports English text normalization, which improves performance in number-reading scenarios. |
-| `sample_rate` | integer | ❌ No | `8000` | 8000, 16000, 22050, 24000, 32000, 44100 .Sample rate of generated sound. |
-| `bitrate` | integer | ❌ No | `32000` | 32000, 64000, 128000, 256000. Bitrate of generated sound. |
-| `channel` | string | ❌ No | `1` | 1, 2 . The number of channels of the generated audio. 1: mono, 2: stereo. |
-| `format` | string | ❌ No | `mp3` | mp3, wav, pcm, flac .Format of generated sound. |
-| `language_boost` | string | ❌ No | `auto` | Chinese, Chinese,Yue, English, Arabic, Russian, Spanish, French, Portuguese, German, Turkish, Dutch, Ukrainian, Vietnamese, Indonesian, Japanese, Italian, Korean, Thai, Polish, Romanian, Greek, Czech, Finnish, Hindi, auto Enhance the ability to recognize specified languages and dialects. |
-| `enable_base64_output` | boolean | ❌ No | `false` | If enabled, the output will be encoded into a BASE64 string instead of a URL. This property is only available through the API. |
-| `enable_sync_mode` | boolean | ❌ No | `false` | If set to true, the function will wait for the result to be generated and uploaded before returning the response. It allows you to get the result directly in the response. This property is only available through the API. |
+Minimax's GPTProto format for the speech 2.5 hd preview API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/minimax/speech-2.5-hd-preview" \
@@ -150,9 +137,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -191,5 +178,31 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `text` | string | ✅ Yes | `Hello world! This is a test of the text-to-speech system.` | Text to convert to speech. Every character is 1 token. Maximum 10000 characters. Use between words to control pause duration (0.01-99.99s). |
+| `voice_id` | string | ✅ Yes | `Wise_Woman` | * Desired voice ID. One of the following system voice IDs: Wise_Woman, Friendly_Person, Inspirational_girl, Deep_Voice_Man, Calm_Woman, Casual_Guy, Lively_Girl, Patient_Man, Young_Knight, Determined_Man, Lovely_Girl, Decent_Boy, Imposing_Manner, Elegant_Man, Abbess, Sweet_Girl_2, Exuberant_Girl. * Use a voice ID you have trained. |
+| `speed` | number | ❌ No | `1` | 0.50 ~ 2.00 . Speech speed. Range: 0.5-2.0, where 1.0 is normal speed. |
+| `volume` | number | ❌ No | `1` | 0.10 ~ 10.00 . Speech volume. Range: 0.1-10.0, where 1.0 is normal volume. |
+| `pitch` | integer | ❌ No | `0` | -12 ~ 12 .Speech pitch. Range: -12 to 12, where 0 is normal pitch. |
+| `emotion` | string | ❌ No | `happy` | happy, sad, angry, fearful, disgusted, surprised, neutral . The emotion of the generated speech. |
+| `english_normalization` | boolean | ❌ No | `false` | This parameter supports English text normalization, which improves performance in number-reading scenarios. |
+| `sample_rate` | integer | ❌ No | `8000` | 8000, 16000, 22050, 24000, 32000, 44100 .Sample rate of generated sound. |
+| `bitrate` | integer | ❌ No | `32000` | 32000, 64000, 128000, 256000. Bitrate of generated sound. |
+| `channel` | string | ❌ No | `1` | 1, 2 . The number of channels of the generated audio. 1: mono, 2: stereo. |
+| `format` | string | ❌ No | `mp3` | mp3, wav, pcm, flac .Format of generated sound. |
+| `language_boost` | string | ❌ No | `auto` | Chinese, Chinese,Yue, English, Arabic, Russian, Spanish, French, Portuguese, German, Turkish, Dutch, Ukrainian, Vietnamese, Indonesian, Japanese, Italian, Korean, Thai, Polish, Romanian, Greek, Czech, Finnish, Hindi, auto Enhance the ability to recognize specified languages and dialects. |
+| `enable_base64_output` | boolean | ❌ No | `false` | If enabled, the output will be encoded into a BASE64 string instead of a URL. This property is only available through the API. |
+| `enable_sync_mode` | boolean | ❌ No | `false` | If set to true, the function will wait for the result to be generated and uploaded before returning the response. It allows you to get the result directly in the response. This property is only available through the API. |
+
+
+
+
+
+
+
 

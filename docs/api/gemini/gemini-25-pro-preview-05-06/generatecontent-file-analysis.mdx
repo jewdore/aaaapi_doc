@@ -2,28 +2,22 @@
 title: 'generateContent  file analysis   '
 api: 'POST /v1beta/models/:model:generateContent'
 description: 'generateContent  file analysis   '
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides generatecontent  file analysis    functionality.
-
-## Path Parameters
-
-
-## Query Parameters
-
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ❌ No | `[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Please summarize the main content of this PDF&quot;}, {&quot;file_data&quot;: {&quot;mime_type&quot;: &quot;application/pdf&quot;, &quot;file_uri&quot;: &quot;https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf&quot;}}]}]` | Contents parameter |
+Gemini's generatecontent file analysis.mdx for the generatecontent file analysis API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1beta/models/:model:generateContent" \
@@ -163,11 +157,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -206,5 +198,26 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Path Parameters
+
+
+## Query Parameters
+
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ❌ No | `[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Please summarize the main content of this PDF&quot;}, {&quot;file_data&quot;: {&quot;mime_type&quot;: &quot;application/pdf&quot;, &quot;file_uri&quot;: &quot;https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf&quot;}}]}]` | Contents parameter |
+
+
+
+
+
+
+
+
+
 

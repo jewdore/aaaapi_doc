@@ -2,11 +2,15 @@
 title: "Text to Image"
 api: "POST /v1/chat/completions"
 description: "Text to Image"
+mode: 'wide'
 ---
 
 ## Overview
 
-Google Gemini 2.5 Flash Image preview, a powerful new image generation and editing model with advanced features and creative control.
+Gemini's openai format for the text to image API.
+
+
+
 
 
 ## Supported inputs & outputs :
@@ -18,6 +22,53 @@ Outputs: Text and image
 # **Text-to-Image**
 
 The default output size for chat mode is 1:1 (1024x1024)
+
+
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
 
 ## Parameters
 
@@ -64,47 +115,3 @@ The default output size for chat mode is 1:1 (1024x1024)
   }
   ```
 
-<ResponseExample>
-
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
-
-
-
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</ResponseExample>

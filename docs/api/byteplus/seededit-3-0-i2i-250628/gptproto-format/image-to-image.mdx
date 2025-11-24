@@ -2,29 +2,22 @@
 title: 'Image to Image'
 api: 'POST /v1/images/generations'
 description: 'Image to Image'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to image functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `seededit-3-0-i2i-250628` | The model to use for the request |
-| `prompt` | string | ✅ Yes | `Change bubbles into heart shape` | Image generation prompt describing the desired image content |
-| `image` | string | ❌ No | `https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg` | Input image URL(s) for image-to-image generation |
-| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
-| `size` | string | ❌ No | `adaptive` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
-| `seed` | integer | ❌ No | `21` | Random seed for reproducible results |
-| `guidance_scale` | number | ❌ No | `5.5` | Controls how closely the image follows the prompt (higher = more strict, typical range: 1.0-7.0) |
-| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to generated image |
+BytePlus's GPTProto format for the image to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -136,11 +129,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -179,5 +170,27 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `seededit-3-0-i2i-250628` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `Change bubbles into heart shape` | Image generation prompt describing the desired image content |
+| `image` | string | ❌ No | `https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg` | Input image URL(s) for image-to-image generation |
+| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
+| `size` | string | ❌ No | `adaptive` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
+| `seed` | integer | ❌ No | `21` | Random seed for reproducible results |
+| `guidance_scale` | number | ❌ No | `5.5` | Controls how closely the image follows the prompt (higher = more strict, typical range: 1.0-7.0) |
+| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to generated image |
+
+
+
+
+
+
+
+
+
 

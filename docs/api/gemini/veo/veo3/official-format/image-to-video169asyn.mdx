@@ -2,26 +2,22 @@
 title: 'Image to Video（16:9）Asyn '
 api: 'POST /v1/veo/videos'
 description: 'Image to Video（16:9）Asyn '
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to video（16:9）asyn  functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `Generate a video of a monk playing basketball with a tomahawk dunk` | Prompt parameter |
-| `model` | string | ✅ Yes | `veo3-pro-frames` | The model to use for the request |
-| `enhance_prompt` | boolean | ❌ No | `true` | Enhance Prompt parameter |
-| `aspect_ratio` | string | ❌ No | `16:9` | Aspect Ratio parameter |
-| `images` | array | ❌ No | `[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
+Gemini's veo3 for the image to video169asyn API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/veo/videos" \
@@ -129,11 +125,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -172,5 +166,24 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `Generate a video of a monk playing basketball with a tomahawk dunk` | Prompt parameter |
+| `model` | string | ✅ Yes | `veo3-pro-frames` | The model to use for the request |
+| `enhance_prompt` | boolean | ❌ No | `true` | Enhance Prompt parameter |
+| `aspect_ratio` | string | ❌ No | `16:9` | Aspect Ratio parameter |
+| `images` | array | ❌ No | `[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
+
+
+
+
+
+
+
+
+
 

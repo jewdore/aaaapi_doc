@@ -2,23 +2,22 @@
 title: 'Audio to Video'
 api: 'POST /api/v3/bytedance/realman_change_lips/audio-to-video'
 description: 'Audio to Video'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides audio to video functionality for lip-sync generation.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `url` | string | ✅ Yes | `https://d1q70pf5vjeyhc.cloudfront.net/predictions/80ab53675b544f058826918526090b78/1.mp4` | The video URL to apply lip-sync to. |
-| `pure_audio_url` | string | ✅ Yes | `https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai/api45003a21-b355-4214-877d-a83d2fd92858.mp3` | The audio URL to sync with the video. |
+BytePlus's GPTProto format for the audio to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/api/v3/bytedance/realman_change_lips/audio-to-video' \
@@ -106,11 +105,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -149,5 +146,21 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `url` | string | ✅ Yes | `https://d1q70pf5vjeyhc.cloudfront.net/predictions/80ab53675b544f058826918526090b78/1.mp4` | The video URL to apply lip-sync to. |
+| `pure_audio_url` | string | ✅ Yes | `https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai/api45003a21-b355-4214-877d-a83d2fd92858.mp3` | The audio URL to sync with the video. |
+
+
+
+
+
+
+
+
+
 

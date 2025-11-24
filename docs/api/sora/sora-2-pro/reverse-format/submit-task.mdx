@@ -8,20 +8,11 @@ description: 'Submit Task'
 
 This endpoint provides submit task functionality.
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `sora-2` | The model to use for the request |
-| `orientation` | string | ❌ No | `portrait` | Orientation parameter |
-| `prompt` | string | ✅ Yes | `A video of a horse dancing.` | Prompt parameter |
-| `images` | array | ❌ No | `[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
-| `duration` | integer | ❌ No | `15` | Duration parameter |
 
 
 
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/video/create" \
@@ -129,11 +120,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -172,5 +161,24 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `sora-2` | The model to use for the request |
+| `orientation` | string | ❌ No | `portrait` | Orientation parameter |
+| `prompt` | string | ✅ Yes | `A video of a horse dancing.` | Prompt parameter |
+| `images` | array | ❌ No | `[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
+| `duration` | integer | ❌ No | `15` | Duration parameter |
+
+
+
+
+
+
+
+
+
 

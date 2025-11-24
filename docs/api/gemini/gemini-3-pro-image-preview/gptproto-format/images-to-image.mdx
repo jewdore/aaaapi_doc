@@ -2,29 +2,22 @@
 title: 'Images to Image'
 api: 'POST /api/v3/google/{model}/image-to-edit'
 description: 'Generate images from existing images using gemini-3-pro-image-preview'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint allows you to generate images from existing images using gemini-3-pro-image-preview.
+Gemini's GPTProto format for the images to image API.
 
 
 
-## Parameters
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `image` | array | ✅ Yes | N/A | Array of image URLs to use as input for image generation. |
-| `prompt` | string | ✅ Yes | `a cat` | A text description of the desired image(s). |
-| `size` | string | ❌ No | - | The size of the generated images. Options: `1K`, `2K`, `4K` |
-| `aspect_ratio` | string | ❌ No | `1:1` | The aspect ratio of the generated image. Supported values: `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `9:16`, `16:9`, `21:9` |
-| `n` | integer | ❌ No | `1` | The number of images to generate. Must be between 1 and 10. |
-| `background` | string | ❌ No | `auto` | Allows to set transparency for the background of the generated image(s). This parameter is only supported for gpt-image-1. Must be one of `transparent`, `opaque` or `auto` (default value). When `auto` is used, the model will automatically determine the best background for the image. |
-| `enable_base64_output` | boolean | ❌ No | `false` | Whether to enable base64 output format. Options: `false`, `true` |
-| `enable_sync_mode` | boolean | ❌ No | `false` | Whether to enable synchronous mode. Options: `false`, `true` |
-| `output_format` | string | ❌ No | `png` | The output format of the generated image. Example: `png` |
 
-<RequestExample>
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location --request POST 'https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/image-to-edit' \
@@ -147,11 +140,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -199,5 +190,25 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | array | ✅ Yes | N/A | Array of image URLs to use as input for image generation. |
+| `prompt` | string | ✅ Yes | `a cat` | A text description of the desired image(s). |
+| `size` | string | ❌ No | - | The size of the generated images. Options: `1K`, `2K`, `4K` |
+| `aspect_ratio` | string | ❌ No | `1:1` | The aspect ratio of the generated image. Supported values: `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `9:16`, `16:9`, `21:9` |
+| `n` | integer | ❌ No | `1` | The number of images to generate. Must be between 1 and 10. |
+| `background` | string | ❌ No | `auto` | Allows to set transparency for the background of the generated image(s). This parameter is only supported for gpt-image-1. Must be one of `transparent`, `opaque` or `auto` (default value). When `auto` is used, the model will automatically determine the best background for the image. |
+| `enable_base64_output` | boolean | ❌ No | `false` | Whether to enable base64 output format. Options: `false`, `true` |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Whether to enable synchronous mode. Options: `false`, `true` |
+| `output_format` | string | ❌ No | `png` | The output format of the generated image. Example: `png` |
+
+
+
+
+
+
 

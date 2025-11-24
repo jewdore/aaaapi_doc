@@ -2,28 +2,22 @@
 title: 'Text to Image'
 api: 'POST /v1/images/generations'
 description: 'Text to Image'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides text to image functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `seedream-4-0-250828` | The model to use for the request |
-| `prompt` | string | ✅ Yes | `Fisheye lens, a cat&apos;&apos;&apos;s head, the picture shows the cat&apos;&apos;&apos;s facial features are distorted due to the shooting method.` | Image generation prompt describing the desired image content |
-| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
-| `size` | string | ❌ No | `1024x1024` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
-| `seed` | integer | ❌ No | `12` | Random seed for reproducible results |
-| `guidance_scale` | number | ❌ No | `2.5` | Controls how closely the image follows the prompt (higher = more strict, typical range: 1.0-7.0) |
-| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to generated image |
+BytePlus's GPTProto format for the text to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -131,11 +125,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -174,5 +166,26 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `seedream-4-0-250828` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `Fisheye lens, a cat&apos;&apos;&apos;s head, the picture shows the cat&apos;&apos;&apos;s facial features are distorted due to the shooting method.` | Image generation prompt describing the desired image content |
+| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
+| `size` | string | ❌ No | `1024x1024` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
+| `seed` | integer | ❌ No | `12` | Random seed for reproducible results |
+| `guidance_scale` | number | ❌ No | `2.5` | Controls how closely the image follows the prompt (higher = more strict, typical range: 1.0-7.0) |
+| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to generated image |
+
+
+
+
+
+
+
+
+
 

@@ -2,24 +2,22 @@
 title: 'Text to Audio'
 api: 'POST /v1/audio/speech'
 description: 'Text to Audio'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides text to audio functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gpt-4o-mini-tts` | The model to use for the request |
-| `input` | string | ✅ Yes | `The quick brown fox jumped over the lazy dog.` | Input parameter |
-| `voice` | string | ❌ No | `alloy` | Voice parameter |
+Gpt's official format copy for the text to audio API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/audio/speech" \
@@ -111,11 +109,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -154,5 +150,22 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-4o-mini-tts` | The model to use for the request |
+| `input` | string | ✅ Yes | `The quick brown fox jumped over the lazy dog.` | Input parameter |
+| `voice` | string | ❌ No | `alloy` | Voice parameter |
+
+
+
+
+
+
+
+
+
 

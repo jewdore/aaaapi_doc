@@ -2,25 +2,22 @@
 title: 'Web Search'
 api: 'POST /v1/responses'
 description: 'Search the web and get AI-powered answers with real-time information'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides web search functionality using advanced language models in response mode. Send search queries and receive AI-generated responses enhanced with real-time web search results. Perfect for getting up-to-date information, news, research, and factual data from across the internet.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `o3` | The model to use for the request. Web search functionality is available for all models. |
-| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects with the following type: - **input_text**: Text input with `text` field containing your search query or question Example: ```json [ { "role": "user", "tools": [ { "type": "web_search_preview" } ], "content": [ { "type": "input_text", "text": "What are the latest developments in artificial intelligence in 2025?" } ] } ] ``` |
-| `tools` | array | ✅ Yes | - | Array of tool objects to enable special capabilities. For web search functionality, include: ```json [ { "type": "web_search_preview" } ] ``` Available tool types: - **web_search_preview**: Enables real-time web search to enhance responses with current information |
-| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+OpenAI's official format(response) for the web search API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/responses' \
@@ -184,9 +181,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-<ResponseExample>
+<CodeGroup>
 
 ```json 200 - Success
 {
@@ -260,5 +257,21 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `o3` | The model to use for the request. Web search functionality is available for all models. |
+| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects with the following type: - **input_text**: Text input with `text` field containing your search query or question Example: ```json [ { "role": "user", "tools": [ { "type": "web_search_preview" } ], "content": [ { "type": "input_text", "text": "What are the latest developments in artificial intelligence in 2025?" } ] } ] ``` |
+| `tools` | array | ✅ Yes | - | Array of tool objects to enable special capabilities. For web search functionality, include: ```json [ { "type": "web_search_preview" } ] ``` Available tool types: - **web_search_preview**: Enables real-time web search to enhance responses with current information |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+
+
+
+
+
+
+
 

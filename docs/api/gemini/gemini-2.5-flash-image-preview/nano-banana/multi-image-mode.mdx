@@ -2,25 +2,22 @@
 title: 'Multi-image mode'
 api: 'POST /api/v3/google/nano-banana/edit'
 description: 'Multi-image mode'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides multi-image mode functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `output_format` | string | ❌ No | `png` | Output Format parameter |
-| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
-| `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
-| `images` | array | ❌ No | `[&quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png&quot;, &quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg&quot;]` | Images parameter |
+Gemini's nano banana for the multi image mode API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/google/nano-banana/edit" \
@@ -128,11 +125,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -171,5 +166,23 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `output_format` | string | ❌ No | `png` | Output Format parameter |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
+| `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
+| `images` | array | ❌ No | `[&quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png&quot;, &quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg&quot;]` | Images parameter |
+
+
+
+
+
+
+
+
+
 

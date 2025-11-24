@@ -2,25 +2,22 @@
 title: 'Text to Image'
 api: 'POST /v1/images/generations'
 description: '[Image](https://platform.openai.com/docs/api-reference/images)Given a prompt and/or input image, the model will generate a new image.Related Guides: [Image Generation](https://platform.openai.com/docs/guides/images)Create an image based on the prompt.'
+mode: 'wide'
 ---
 
 ## Overview
 
-[Image](https://platform.openai.com/docs/api-reference/images)Given a prompt and/or input image, the model will generate a new image.Related Guides: [Image Generation](https://platform.openai.com/docs/guides/images)Create an image based on the prompt.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` | The model to use for the request |
-| `prompt` | string | ✅ Yes | `oxen and horses` | Prompt parameter |
-| `n` | integer | ❌ No | `1` | Number of completions to generate |
-| `size` | string | ❌ No | `1024x1024` | Size parameter |
+Gemini's openai format for the create image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -116,11 +113,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -159,5 +154,23 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image-preview` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `oxen and horses` | Prompt parameter |
+| `n` | integer | ❌ No | `1` | Number of completions to generate |
+| `size` | string | ❌ No | `1024x1024` | Size parameter |
+
+
+
+
+
+
+
+
+
 

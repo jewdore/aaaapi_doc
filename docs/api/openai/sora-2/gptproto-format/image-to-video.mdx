@@ -8,18 +8,11 @@ description: 'Image To Video'
 
 Turn a single reference image into a coherent video clip with synchronized audio. Built on Sora 2’s core advances, the image-to-video pipeline preserves identity, lighting, and composition while synthesizing believable motion and camera dynamics.
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | The positive prompt for the generation. |
-| `image` | string | ❌ No | `https://filesystem.site/cdn/202xxx/xxxx.png` | The image for generating the output. |
-| `duration` | integer | ❌ No | `4` | The duration of the generated video in seconds.4, 8, 12 |
 
 
 
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video" \
@@ -111,9 +104,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -152,5 +145,20 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | The positive prompt for the generation. |
+| `image` | string | ❌ No | `https://filesystem.site/cdn/202xxx/xxxx.png` | The image for generating the output. |
+| `duration` | integer | ❌ No | `4` | The duration of the generated video in seconds.4, 8, 12 |
+
+
+
+
+
+
+
 

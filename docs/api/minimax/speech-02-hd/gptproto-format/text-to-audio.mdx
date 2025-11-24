@@ -2,31 +2,22 @@
 title: 'Text to Audio'
 api: 'POST /api/v3/minimax/speech-02-hd'
 description: 'Text to Audio'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides text to audio functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `emotion` | string | ❌ No | `surprised` | Emotion parameter |
-| `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
-| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
-| `english_normalization` | boolean | ❌ No | `false` | English Normalization parameter |
-| `pitch` | integer | ❌ No | `0` | Pitch parameter |
-| `speed` | number | ❌ No | `0.9` | Speed parameter |
-| `text` | string | ❌ No | `Hi there! Minimax speech 2.5 now live on Gptproto! Let&apos;s try it!` | Text parameter |
-| `voice_id` | string | ❌ No | `Deep_Voice_Man` | Voice Id parameter |
-| `volume` | integer | ❌ No | `1` | Volume parameter |
-| `language_boost` | string | ❌ No | `Chinese` | Language Boost parameter |
+Minimax's GPTProto format for the text to audio API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/minimax/speech-02-hd" \
@@ -146,11 +137,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -189,5 +178,29 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `emotion` | string | ❌ No | `surprised` | Emotion parameter |
+| `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
+| `english_normalization` | boolean | ❌ No | `false` | English Normalization parameter |
+| `pitch` | integer | ❌ No | `0` | Pitch parameter |
+| `speed` | number | ❌ No | `0.9` | Speed parameter |
+| `text` | string | ❌ No | `Hi there! Minimax speech 2.5 now live on Gptproto! Let&apos;s try it!` | Text parameter |
+| `voice_id` | string | ❌ No | `Deep_Voice_Man` | Voice Id parameter |
+| `volume` | integer | ❌ No | `1` | Volume parameter |
+| `language_boost` | string | ❌ No | `Chinese` | Language Boost parameter |
+
+
+
+
+
+
+
+
+
 

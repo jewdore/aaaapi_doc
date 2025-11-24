@@ -2,25 +2,22 @@
 title: 'Image to Video'
 api: 'POST /api/v3/kwaivgi/kling-v2.1-i2v-master'
 description: 'Image to Video'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to video functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character&apos;&apos;&apos;s face` | Prompt parameter |
-| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png` | Image parameter |
-| `guidance_scale` | number | ❌ No | `0.5` | Guidance Scale parameter |
-| `duration` | integer | ❌ No | `5` | Duration parameter |
+Kling's GPTProto format for the image to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-master" \
@@ -116,11 +113,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -159,5 +154,23 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character&apos;&apos;&apos;s face` | Prompt parameter |
+| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png` | Image parameter |
+| `guidance_scale` | number | ❌ No | `0.5` | Guidance Scale parameter |
+| `duration` | integer | ❌ No | `5` | Duration parameter |
+
+
+
+
+
+
+
+
+
 

@@ -8,18 +8,11 @@ description: 'Query Result'
 
 This endpoint provides query result functionality.
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `data` | object | ❌ No | `{&quot;id&quot;: &quot;sora-2:task_xxxx&quot;, &quot;model&quot;: &quot;sora-2-pro&quot;, &quot;outputs&quot;: [&quot;https://oss.heyoos.com/sora/xxxxxxxxx.mp4&quot;], &quot;urls&quot;: {&quot;get&quot;: &quot;https://gptproto.com/api/v3/predictions/sora-2:task_xxxx/result&quot;}, &quot;status&quot;: &quot;completed&quot;, &quot;error&quot;: null, &quot;executionTime&quot;: 0, &quot;timings&quot;: {&quot;inference&quot;: 0}, &quot;has_nsfw_contents&quot;: [], &quot;created_at&quot;: &quot;2025-10-16 21:06:38&quot;}` | Data parameter |
-| `message` | string | ❌ No | `success` | Message parameter |
-| `code` | integer | ❌ No | `200` | Code parameter |
 
 
 
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X GET "gptproto/api/v3/predictions/sora-2:task_xxx/result" \
@@ -179,11 +172,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -222,5 +213,22 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `data` | object | ❌ No | `{&quot;id&quot;: &quot;sora-2:task_xxxx&quot;, &quot;model&quot;: &quot;sora-2-pro&quot;, &quot;outputs&quot;: [&quot;https://oss.heyoos.com/sora/xxxxxxxxx.mp4&quot;], &quot;urls&quot;: {&quot;get&quot;: &quot;https://gptproto.com/api/v3/predictions/sora-2:task_xxxx/result&quot;}, &quot;status&quot;: &quot;completed&quot;, &quot;error&quot;: null, &quot;executionTime&quot;: 0, &quot;timings&quot;: {&quot;inference&quot;: 0}, &quot;has_nsfw_contents&quot;: [], &quot;created_at&quot;: &quot;2025-10-16 21:06:38&quot;}` | Data parameter |
+| `message` | string | ❌ No | `success` | Message parameter |
+| `code` | integer | ❌ No | `200` | Code parameter |
+
+
+
+
+
+
+
+
+
 

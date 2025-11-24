@@ -2,26 +2,22 @@
 title: 'Text to Video'
 api: 'POST /v1/veo/videos'
 description: 'Text to Video'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides text to video functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `A beautiful woman is dancing in a European and American style` | Prompt parameter |
-| `model` | string | ✅ Yes | `veo3.1` | The model to use for the request |
-| `upsample` | boolean | ❌ No | `true` | Upsample parameter |
-| `reference` | boolean | ❌ No | `false` | Reference parameter |
-| `aspect_ratio` | string | ❌ No | `16:9` | Aspect Ratio parameter 16:9 ,9:16 |
+Gemini's veo 3.1 fast generate preview for the text to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/veo/videos" \
@@ -121,11 +117,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -164,5 +158,24 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `A beautiful woman is dancing in a European and American style` | Prompt parameter |
+| `model` | string | ✅ Yes | `veo3.1` | The model to use for the request |
+| `upsample` | boolean | ❌ No | `true` | Upsample parameter |
+| `reference` | boolean | ❌ No | `false` | Reference parameter |
+| `aspect_ratio` | string | ❌ No | `16:9` | Aspect Ratio parameter 16:9 ,9:16 |
+
+
+
+
+
+
+
+
+
 

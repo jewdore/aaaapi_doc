@@ -2,26 +2,24 @@
 title: 'Text to Text'
 api: 'POST /v1/suno/submit/lyrics'
 description: 'Generate creative song lyrics using Suno AI. Create original lyrics for any genre, mood, or theme with simple text prompts.'
+mode: 'wide'
 ---
 
 ## Overview
 
-[Suno AI](https://suno.com) provides a powerful lyrics generation capability that creates high-quality song lyrics from text descriptions. Using Suno's API, you can generate original lyrics for any musical style, theme, or mood by simply describing what you want in natural language.
-
-Related Guides: [Suno Official Documentation](https://suno.com/docs) | [Lyrics Generation Guide](https://suno.com/guides/lyrics-generation)
-
-This endpoint allows you to submit lyrics generation tasks using simple text prompts. The generation is processed asynchronously - you'll receive a task ID immediately, which you can use to check the status and retrieve the generated lyrics once complete.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `Write lyrics about a sunrise over the ocean with a hopeful tone` | Description of the lyrics you want to generate. Provide detailed information about the theme, mood, style, and any specific elements you want included in the lyrics. |
+Suno's text to text.mdx for the text to text API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/suno/submit/lyrics' \
@@ -154,11 +152,9 @@ func main() {
     }
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 400 - Invalid prompt
 {
@@ -207,7 +203,47 @@ func main() {
   "message": "Content may not meet the guidelines. Please adjust and try again."
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+<CodeGroup>
+
+```text Good Examples
+"Write romantic lyrics about falling in love under the stars, with poetic and emotional language suitable for a slow ballad"
+
+"Create uplifting lyrics about chasing dreams and never giving up, with motivational themes for a pop-rock anthem"
+
+"Generate melancholic lyrics about lost love and memories, using metaphors of rain and autumn for an indie folk song"
+
+"Write energetic rap lyrics about success and overcoming obstacles, with strong rhythm and confident wordplay"
+
+"Create nostalgic lyrics about childhood summers and friendship, with vivid imagery for an acoustic folk song"
+```
+
+```text Avoid
+"Write some lyrics" (too vague)
+
+"Make it good" (no specific direction)
+
+"Song words" (no context)
+
+"Love song" (too generic, lacks detail)
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `Write lyrics about a sunrise over the ocean with a hopeful tone` | Description of the lyrics you want to generate. Provide detailed information about the theme, mood, style, and any specific elements you want included in the lyrics. |
+
+
+
+
+
+
+
+
+
 
 ## Next Steps
 
@@ -293,30 +329,7 @@ if result["code"] == "success":
 
 ### Example Prompts
 
-<RequestExample>
 
-```text Good Examples
-"Write romantic lyrics about falling in love under the stars, with poetic and emotional language suitable for a slow ballad"
-
-"Create uplifting lyrics about chasing dreams and never giving up, with motivational themes for a pop-rock anthem"
-
-"Generate melancholic lyrics about lost love and memories, using metaphors of rain and autumn for an indie folk song"
-
-"Write energetic rap lyrics about success and overcoming obstacles, with strong rhythm and confident wordplay"
-
-"Create nostalgic lyrics about childhood summers and friendship, with vivid imagery for an acoustic folk song"
-```
-
-```text Avoid
-"Write some lyrics" (too vague)
-
-"Make it good" (no specific direction)
-
-"Song words" (no context)
-
-"Love song" (too generic, lacks detail)
-```
-</RequestExample>
 
 ### Prompt Templates by Genre
 

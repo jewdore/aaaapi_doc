@@ -2,20 +2,20 @@
 title: 'Query Task'
 api: 'GET /api/v3/predictions/{task_id}/result'
 description: 'Query Task'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides query task functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `task_id` | string | ❌ No | - | task ID |
+Minimax's GPTProto format for the query task API.
 
 
-<ResponseExample>
+
+
+
+
+
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -54,5 +54,14 @@ This endpoint provides query task functionality.
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `task_id` | string | ❌ No | - | task ID |
+
+
+
 

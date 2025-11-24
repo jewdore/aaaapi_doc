@@ -2,27 +2,22 @@
 title: 'Video to Video'
 api: 'POST /api/v3/alibaba/wan-2.2/animate'
 description: 'Video to Video'
+mode: 'wide'
 ---
 
 ## Overview
 
-Wan2.2-Animate is a unified model for character animation and replacement with holistic movement and expression replication. 
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `image` | string | ❌ No | - | The image for generating the output. |
-| `video` | string | ❌ No | - | The video for generating the output. |
-| `prompt` | string | ❌ No | - | The positive prompt for the generation. |
-| `mode` | string | ❌ No | `animate` | animate, replace .The mode of the generation. Animate Mode: animate the character in input image with movements from the input video. Replace Mode: replace the character in input video with the character in input image. |
-| `resolution` | string | ❌ No | `-1` | 480p, 720p . The resolution of the output video. |
-| `seed` | integer | ❌ No | `720p` | -1 ~ 2147483647 . The random seed to use for the generation. -1 means a random seed will be used. |
+Qwen's GPTProto format for the video to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/api/v3/alibaba/wan-2.2/animate' \
@@ -126,33 +121,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-```json
-{
-    "data": {
-        "id": "4ec5973904e74f31bc9cd4ce94e3878e",
-        "model": "wan-2.2/animate",
-        "outputs": [
-        ],
-        "urls": {
-            "get": "https://gptproto.com/api/v3/predictions/4ec5973904e74f31bc9cd4ce94e3878e/result"
-        },
-        "status": "processing",
-        "error": "",
-        "executionTime": 380841,
-        "timings": {
-            "inference": 380841
-        },
-        "has_nsfw_contents": null,
-        "created_at": "2025-11-07T02:35:15.34950574Z"
-    },
-    "message": "success",
-    "code": 200
-}
-```
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -191,5 +162,47 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | string | ❌ No | - | The image for generating the output. |
+| `video` | string | ❌ No | - | The video for generating the output. |
+| `prompt` | string | ❌ No | - | The positive prompt for the generation. |
+| `mode` | string | ❌ No | `animate` | animate, replace .The mode of the generation. Animate Mode: animate the character in input image with movements from the input video. Replace Mode: replace the character in input video with the character in input image. |
+| `resolution` | string | ❌ No | `-1` | 480p, 720p . The resolution of the output video. |
+| `seed` | integer | ❌ No | `720p` | -1 ~ 2147483647 . The random seed to use for the generation. -1 means a random seed will be used. |
+
+
+
+
+
+
+```json
+{
+    "data": {
+        "id": "4ec5973904e74f31bc9cd4ce94e3878e",
+        "model": "wan-2.2/animate",
+        "outputs": [
+        ],
+        "urls": {
+            "get": "https://gptproto.com/api/v3/predictions/4ec5973904e74f31bc9cd4ce94e3878e/result"
+        },
+        "status": "processing",
+        "error": "",
+        "executionTime": 380841,
+        "timings": {
+            "inference": 380841
+        },
+        "has_nsfw_contents": null,
+        "created_at": "2025-11-07T02:35:15.34950574Z"
+    },
+    "message": "success",
+    "code": 200
+}
+```
+
+
 

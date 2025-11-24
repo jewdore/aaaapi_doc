@@ -2,22 +2,20 @@
 title: 'FileUpload'
 api: 'POST /v1/file/upload'
 description: 'FileUpload'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides fileupload functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `file` | string | ✅ Yes | `/Users/Downloads/1948381787193495554.jpg` | file parameter |
+Minimax's official format for the fileupload API.
 
 
 
 
-<ResponseExample>
+
+
+
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -56,5 +54,16 @@ This endpoint provides fileupload functionality.
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `file` | string | ✅ Yes | `/Users/Downloads/1948381787193495554.jpg` | file parameter |
+
+
+
+
+
 

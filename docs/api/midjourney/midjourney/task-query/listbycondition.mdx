@@ -2,22 +2,22 @@
 title: 'ListByCondition'
 api: 'POST /mj/task/list-by-condition'
 description: 'ListByCondition'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides listbycondition functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `ids` | array | ❌ No | `[&quot;string&quot;]` | Ids parameter |
+Midjourney's task query for the listbycondition API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/mj/task/list-by-condition" \
@@ -109,11 +109,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -152,5 +150,20 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `ids` | array | ❌ No | `[&quot;string&quot;]` | Ids parameter |
+
+
+
+
+
+
+
+
+
 

@@ -2,11 +2,16 @@
 title: "Text to Image"
 api: "POST /api/v3/alibaba/wan-2.5/text-to-image"
 description: "Text to Image"
+mode: 'wide'
 ---
 
 ## Overview
 
-Alibaba WAN 2.5 is a cutting-edge text-to-image model on Alibaba Cloud’s DashScope. It generates high-quality, detailed images directly from text prompts and supports multiple output resolutions.
+Qwen's GPTProto format for the text to image API.
+
+
+
+
 
 ## Supported inputs & outputs :
 
@@ -14,41 +19,9 @@ Inputs: Text
 
 Outputs: Text and image
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `a blue cat` | The positive prompt for the generation. |
-| `size` | string | ❌ No | `1024*1024` | 768 ~ 1440 per dimension . The size of the generated image in pixels (width*height). |
-| `enable_prompt_expansion` | boolean | ❌ No | `1024*1024` | If set to true, the prompt optimizer will be enabled. |
-| `negative_prompt` | string | ❌ No | - | The negative prompt for the generation. |
-| `seed` | integer | ❌ No | `-1` | -1 ~ 2147483647. The random seed to use for the generation. -1 means a random seed will be used. |
 
 
-```json
-{
-  "data": {
-    "id": "5d87273c75ea40f19a34dea994276673",
-    "model": "alibaba/wan-2.5/text-to-image",
-    "outputs": [],
-    "urls": {
-      "get": "https://gptproto.com/api/v3/predictions/5d87273c75ea40f19a34dea994276673/result"
-    },
-    "hasNsfwContents": [],
-    "status": "created",
-    "createdAt": "2025-11-10T09:50:05.977Z",
-    "error": "",
-    "executionTime": 0,
-    "timings": {
-      "inference": 0
-    }
-  },
-  "message": "success",
-  "code": 200
-}
-```
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -91,4 +64,39 @@ Outputs: Text and image
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `a blue cat` | The positive prompt for the generation. |
+| `size` | string | ❌ No | `1024*1024` | 768 ~ 1440 per dimension . The size of the generated image in pixels (width*height). |
+| `enable_prompt_expansion` | boolean | ❌ No | `1024*1024` | If set to true, the prompt optimizer will be enabled. |
+| `negative_prompt` | string | ❌ No | - | The negative prompt for the generation. |
+| `seed` | integer | ❌ No | `-1` | -1 ~ 2147483647. The random seed to use for the generation. -1 means a random seed will be used. |
+
+
+```json
+{
+  "data": {
+    "id": "5d87273c75ea40f19a34dea994276673",
+    "model": "alibaba/wan-2.5/text-to-image",
+    "outputs": [],
+    "urls": {
+      "get": "https://gptproto.com/api/v3/predictions/5d87273c75ea40f19a34dea994276673/result"
+    },
+    "hasNsfwContents": [],
+    "status": "created",
+    "createdAt": "2025-11-10T09:50:05.977Z",
+    "error": "",
+    "executionTime": 0,
+    "timings": {
+      "inference": 0
+    }
+  },
+  "message": "success",
+  "code": 200
+}
+```
+

@@ -2,24 +2,22 @@
 title: 'Act-one Emotion Migration'
 api: 'POST /runway/v1/pro/act_one'
 description: 'Act-one Emotion Migration'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides act-one emotion migration functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `video` | string | ❌ No | `http://source.wike.cc/attachments/video/runway/20241015/82bc23c83b5c32e75059c8328df5cffb.mp4` | Video parameter |
-| `image` | string | ❌ No | `http://source.wike.cc/1.jpeg` | Image parameter |
-| `options` | object | ❌ No | `{&quot;motion_multiplier&quot;: 3, &quot;flip&quot;: true}` | Options parameter |
+Runway's act one emotion migration.mdx for the act one emotion migration API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/runway/v1/pro/act_one" \
@@ -123,11 +121,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -166,5 +162,22 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `video` | string | ❌ No | `http://source.wike.cc/attachments/video/runway/20241015/82bc23c83b5c32e75059c8328df5cffb.mp4` | Video parameter |
+| `image` | string | ❌ No | `http://source.wike.cc/1.jpeg` | Image parameter |
+| `options` | object | ❌ No | `{&quot;motion_multiplier&quot;: 3, &quot;flip&quot;: true}` | Options parameter |
+
+
+
+
+
+
+
+
+
 

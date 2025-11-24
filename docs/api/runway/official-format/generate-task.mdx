@@ -2,26 +2,22 @@
 title: 'generate Generate Task'
 api: 'POST /runway/v1/pro/generate'
 description: 'generate Generate Task'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides generate generate task functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `ratio` | string | ❌ No | `16:9` | Ratio parameter |
-| `prompt` | string | ✅ Yes | `a kitten` | Prompt parameter |
-| `style` | string | ❌ No | `cinematic` | Style parameter |
-| `model` | string | ✅ Yes | `runwayml-gen3a_turbo-5` | The model to use for the request |
-| `options` | object | ❌ No | `{&quot;seconds&quot;: 10, &quot;motion_vector&quot;: {&quot;x&quot;: 0, &quot;y&quot;: 0.3999999999999999, &quot;z&quot;: 0, &quot;r&quot;: -6, &quot;bg_x_pan&quot;: 0, &quot;bg_y_pan&quot;: 0}}` | Options parameter |
+Runway's generate task.mdx for the generate task API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/runway/v1/pro/generate" \
@@ -161,11 +157,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -204,5 +198,24 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `ratio` | string | ❌ No | `16:9` | Ratio parameter |
+| `prompt` | string | ✅ Yes | `a kitten` | Prompt parameter |
+| `style` | string | ❌ No | `cinematic` | Style parameter |
+| `model` | string | ✅ Yes | `runwayml-gen3a_turbo-5` | The model to use for the request |
+| `options` | object | ❌ No | `{&quot;seconds&quot;: 10, &quot;motion_vector&quot;: {&quot;x&quot;: 0, &quot;y&quot;: 0.3999999999999999, &quot;z&quot;: 0, &quot;r&quot;: -6, &quot;bg_x_pan&quot;: 0, &quot;bg_y_pan&quot;: 0}}` | Options parameter |
+
+
+
+
+
+
+
+
+
 

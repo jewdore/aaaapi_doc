@@ -2,28 +2,22 @@
 title: 'image-upscaler'
 api: 'POST /api/v3/image-upscaler'
 description: 'image-upscaler'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image-upscaler functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `creativity` | integer | ❌ No | `0` | Creativity parameter |
-| `target_resolution` | string | ❌ No | `8k` | Target Resolution parameter |
-| `image` | string | ❌ No | `https://heyoo.oss-ap-southeast-1.aliyuncs.com/2025/08/27/9652984c8a374ee7a74bde2c6dd014fa.jpeg` | Image parameter |
-| `output_format` | string | ❌ No | `jpeg` | Output Format parameter |
-| `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
-| `enable_sync_mode` | boolean | ❌ No | `true` | Enable Sync Mode parameter |
-| `model` | string | ✅ Yes | `image-upscaler` | The model to use for the request |
+Gptproto's  for the image upscaler API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/image-upscaler" \
@@ -131,11 +125,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -174,5 +166,26 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `creativity` | integer | ❌ No | `0` | Creativity parameter |
+| `target_resolution` | string | ❌ No | `8k` | Target Resolution parameter |
+| `image` | string | ❌ No | `https://heyoo.oss-ap-southeast-1.aliyuncs.com/2025/08/27/9652984c8a374ee7a74bde2c6dd014fa.jpeg` | Image parameter |
+| `output_format` | string | ❌ No | `jpeg` | Output Format parameter |
+| `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
+| `enable_sync_mode` | boolean | ❌ No | `true` | Enable Sync Mode parameter |
+| `model` | string | ✅ Yes | `image-upscaler` | The model to use for the request |
+
+
+
+
+
+
+
+
+
 

@@ -2,19 +2,22 @@
 title: 'Query Task'
 api: 'GET /api/v3/contents/generations/tasks/{task_Id}'
 description: 'Query Task'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides query task functionality.
+BytePlus's GPTProto format for the query task API.
 
-## Parameters
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `task_Id` (Path) | string | ✅ Yes | - | The unique identifier of the task to query |
 
-<RequestExample>
+
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X GET "https://gptproto.com/api/v3/contents/generations/tasks/{task_Id}" \
@@ -90,11 +93,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -133,5 +134,17 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `task_Id` (Path) | string | ✅ Yes | - | The unique identifier of the task to query |
+
+
+
+
+
+
 

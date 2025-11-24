@@ -2,24 +2,22 @@
 title: 'Text to Text'
 api: 'POST /v1/responses'
 description: 'Generate text responses using advanced language models'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides text-to-text functionality using advanced language models in response mode. Send text prompts and receive AI-generated text responses for various use cases including conversation, content generation, question answering, and more.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gpt-5-mini` | The model to use for the request |
-| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects with the following type: - **input_text**: Text input with `text` field containing your prompt or message Example: ```json [ { "role": "user", "content": [ { "type": "input_text", "text": "Hello, how can you help me today?" } ] } ] ``` |
-| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+OpenAI's official format(response) for the text to text API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/responses' \
@@ -148,9 +146,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-<ResponseExample>
+<CodeGroup>
 
 ```json 200 - Success
 {
@@ -204,5 +202,20 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-5-mini` | The model to use for the request |
+| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects with the following type: - **input_text**: Text input with `text` field containing your prompt or message Example: ```json [ { "role": "user", "content": [ { "type": "input_text", "text": "Hello, how can you help me today?" } ] } ] ``` |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+
+
+
+
+
+
+
 

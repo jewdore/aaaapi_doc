@@ -2,51 +2,22 @@
 title: "Image Analysis"
 api: 'POST /v1/chat/completions'
 description: "Analyze and understand image content using vision-enabled models"
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image analysis functionality using the OpenAI-compatible chat completions API. Upload images or provide image URLs to analyze and understand image content with vision-enabled models.
-
-## Request Body
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gpt-4.1` | The model to use for the request |
-| `messages` | array | ✅ Yes | - | Array of message objects for the conversation |
-| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
-
-### Messages Array Structure
-
-Each message object in the `messages` array should have the following structure:
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `role` | string | ✅ Yes | The role of the message. Can be: `user`, `assistant`, or `system` |
-| `content` | array | ✅ Yes | Array of content objects (can include text and images) |
-
-### Content Array Items
-
-The `content` array can contain multiple items of different types:
-
-#### Text Content
-
-| Field | Type | Required | Example | Description |
-|-------|------|----------|---------|-------------|
-| `type` | string | ✅ Yes | `"text"` | Must be `text` for text content |
-| `text` | string | ✅ Yes | `"What is in this image?"` | The text prompt or question |
-
-#### Image URL Content
-
-| Field | Type | Required | Example | Description |
-|-------|------|----------|---------|-------------|
-| `type` | string | ✅ Yes | `"image_url"` | Must be `image_url` for image content |
-| `image_url` | object | ✅ Yes | See below | Object containing the image URL |
-| `image_url.url` | string | ✅ Yes | `"https://example.com/image.jpg"` | The URL of the image to analyze |
+OpenAI's official format(chat) for the image analysis API.
 
 
 
-<RequestExample>
+
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/chat/completions" \
@@ -201,10 +172,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 200 - Success
 {
@@ -271,4 +241,46 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Request Body
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-4.1` | The model to use for the request |
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation |
+| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
+
+### Messages Array Structure
+
+Each message object in the `messages` array should have the following structure:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `role` | string | ✅ Yes | The role of the message. Can be: `user`, `assistant`, or `system` |
+| `content` | array | ✅ Yes | Array of content objects (can include text and images) |
+
+### Content Array Items
+
+The `content` array can contain multiple items of different types:
+
+#### Text Content
+
+| Field | Type | Required | Example | Description |
+|-------|------|----------|---------|-------------|
+| `type` | string | ✅ Yes | `"text"` | Must be `text` for text content |
+| `text` | string | ✅ Yes | `"What is in this image?"` | The text prompt or question |
+
+#### Image URL Content
+
+| Field | Type | Required | Example | Description |
+|-------|------|----------|---------|-------------|
+| `type` | string | ✅ Yes | `"image_url"` | Must be `image_url` for image content |
+| `image_url` | object | ✅ Yes | See below | Object containing the image URL |
+| `image_url.url` | string | ✅ Yes | `"https://example.com/image.jpg"` | The URL of the image to analyze |
+
+
+
+
+
+

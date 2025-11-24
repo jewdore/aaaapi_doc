@@ -2,16 +2,16 @@
 title: "Image to Image"
 api: "POST /v1/chat/completions"
 description: "Image to Image"
+mode: 'wide'
 ---
 
 ## Overview
 
-Google Gemini 2.5 Flash Image, a powerful new image generation and editing model with advanced features and creative control.
+Gemini's openai format for the image to image API.
 
-- **Image + Text-to-Image (Editing):** Provide an image and use text prompts to add, remove, or modify elements, change the style, or adjust the color grading.
-- **Multi-Image to Image (Composition & Style Transfer):** Use multiple input images to compose a new scene or transfer the style from one image to another.
-- **Iterative Refinement:** Engage in a conversation to progressively refine your image over multiple turns, making small adjustments until it's perfect.
-- **High-Fidelity Text Rendering:** Accurately generate images that contain legible and well-placed text, ideal for logos, diagrams, and posters.
+
+
+
 
 ## Supported inputs & outputs :
 
@@ -19,22 +19,15 @@ Inputs: Text and Images
 
 Outputs: Text and image
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   role of user. |
-| `content` | string | ✅ Yes | - | The prompt for the generation. |
-| `experimental_attachments` | array | ✅ Yes | - |   Supported MIME types:image/png, image/jpeg, image/webp |
-| `url` | string | ✅ Yes | - | image url. |
-| `model` | string | ✅ Yes | `gemini-2.5-flash-image` |  |
 
 
-## Image to Image
 
-The default output size for chat mode is 1:1 (1024x1024)
 
-<RequestExample>
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/chat/completions" \
@@ -185,49 +178,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-## Response
-
-  ```json
-  {
-    "candidates": [
-        {
-            "content": {
-                "role": "model",
-                "parts": [
-                    {
-                        "inlineData": {
-                            "mimeType": "image/png",
-                            "data": "base64"
-                        }
-                    }
-                ]
-            },
-            "finishReason": "STOP"
-        }
-    ],
-    "usageMetadata": {
-        "promptTokenCount": 1302,
-        "candidatesTokenCount": 1290,
-        "totalTokenCount": 2592,
-        "thoughtsTokenCount": 0,
-        "promptTokensDetails": [
-            {
-                "modality": "IMAGE",
-                "tokenCount": 1290
-            },
-            {
-                "modality": "TEXT",
-                "tokenCount": 12
-            }
-        ]
-    },
-    "modelVersion": "gemini-2.5-flash-image"
-  }
-  ```
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -270,15 +223,9 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
 
-
-
-## Adding and removing elements
-
-Provide an image and describe your change. The model will match the original image's style, lighting, and perspective.
-
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/chat/completions' \
@@ -300,18 +247,9 @@ curl --location 'https://gptproto.com/v1/chat/completions' \
   ]
 }'
 ```
-</RequestExample>
+</CodeGroup>
 
-| Input                                              | Output                                                                        |
-| -------------------------------------------------- | ----------------------------------------------------------------------------- |
-| ![Input](/images/gemini_Input_1.png)               | ![Output](/images/gemini_Output_1.png)                                        |
-| A photorealistic picture of a fluffy ginger cat... | Using the provided image of my cat, please add a small, knitted wizard hat... |
-
-## Advanced composition: Combining multiple images
-
-Provide multiple images as context to create a new, composite scene. This is perfect for product mockups or creative collages.
-
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1/chat/completions' \
@@ -336,7 +274,85 @@ curl --location 'https://gptproto.com/v1/chat/completions' \
   ]
 }'
 ```
-</RequestExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   role of user. |
+| `content` | string | ✅ Yes | - | The prompt for the generation. |
+| `experimental_attachments` | array | ✅ Yes | - |   Supported MIME types:image/png, image/jpeg, image/webp |
+| `url` | string | ✅ Yes | - | image url. |
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image` |  |
+
+
+## Image to Image
+
+The default output size for chat mode is 1:1 (1024x1024)
+
+
+
+## Response
+
+  ```json
+  {
+    "candidates": [
+        {
+            "content": {
+                "role": "model",
+                "parts": [
+                    {
+                        "inlineData": {
+                            "mimeType": "image/png",
+                            "data": "base64"
+                        }
+                    }
+                ]
+            },
+            "finishReason": "STOP"
+        }
+    ],
+    "usageMetadata": {
+        "promptTokenCount": 1302,
+        "candidatesTokenCount": 1290,
+        "totalTokenCount": 2592,
+        "thoughtsTokenCount": 0,
+        "promptTokensDetails": [
+            {
+                "modality": "IMAGE",
+                "tokenCount": 1290
+            },
+            {
+                "modality": "TEXT",
+                "tokenCount": 12
+            }
+        ]
+    },
+    "modelVersion": "gemini-2.5-flash-image"
+  }
+  ```
+
+
+
+
+
+## Adding and removing elements
+
+Provide an image and describe your change. The model will match the original image's style, lighting, and perspective.
+
+
+
+| Input                                              | Output                                                                        |
+| -------------------------------------------------- | ----------------------------------------------------------------------------- |
+| ![Input](/images/gemini_Input_1.png)               | ![Output](/images/gemini_Output_1.png)                                        |
+| A photorealistic picture of a fluffy ginger cat... | Using the provided image of my cat, please add a small, knitted wizard hat... |
+
+## Advanced composition: Combining multiple images
+
+Provide multiple images as context to create a new, composite scene. This is perfect for product mockups or creative collages.
+
+
 
 | Input1                                                       | Input2                                              | Output                                            |
 | ------------------------------------------------------------ | --------------------------------------------------- | ------------------------------------------------- |

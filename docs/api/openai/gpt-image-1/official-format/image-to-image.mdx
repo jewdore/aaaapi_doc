@@ -2,27 +2,22 @@
 title: 'Image to Image'
 api: 'POST /v1/images/edits'
 description: '[Image](https://platform.openai.com/docs/api-reference/images/createEdit)Creates an edited or extended image given an original image and a prompt.Related Guides: [Image Generation](https://platform.openai.com/docs/guides/images)Edit an existing image based on the prompt.'
+mode: 'wide'
 ---
 
 ## Overview
 
-[Image](https://platform.openai.com/docs/api-reference/images/createEdit)Creates an edited or extended image given an original image and a prompt.Related Guides: [Image Generation](https://platform.openai.com/docs/guides/images)Edit an existing image based on the prompt.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gpt-image-1` | The model to use for the request |
-| `image` | file | ✅ Yes | - | The image to edit. Must be a valid PNG file, less than 4MB, and square. |
-| `prompt` | string | ✅ Yes | `A cat wearing a hat` | A text description of the desired image(s). The maximum length is 1000 characters. |
-| `mask` | file | ❌ No | - | An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as image. |
-| `n` | integer | ❌ No | `1` | The number of images to generate. Must be between 1 and 10. |
-| `size` | string | ❌ No | `1024x1024` | The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`. |
+OpenAI's official format for the image to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/edits" \
@@ -133,11 +128,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -176,5 +169,25 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-image-1` | The model to use for the request |
+| `image` | file | ✅ Yes | - | The image to edit. Must be a valid PNG file, less than 4MB, and square. |
+| `prompt` | string | ✅ Yes | `A cat wearing a hat` | A text description of the desired image(s). The maximum length is 1000 characters. |
+| `mask` | file | ❌ No | - | An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as image. |
+| `n` | integer | ❌ No | `1` | The number of images to generate. Must be between 1 and 10. |
+| `size` | string | ❌ No | `1024x1024` | The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`. |
+
+
+
+
+
+
+
+
+
 

@@ -2,28 +2,22 @@
 title: 'text to video'
 api: 'POST /kling/v1/videos/text2video'
 description: 'text to video'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides text to video functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `kling-video-std-10-v1-6` | The model to use for the request |
-| `prompt` | string | ✅ Yes | `The plane flew over the head` | Prompt parameter |
-| `negative_prompt` | string | ❌ No | - | Negative Prompt parameter |
-| `mode` | string | ❌ No | `std` | Mode parameter |
-| `aspect_ratio` | string | ❌ No | `16:9` | Aspect Ratio parameter |
-| `duration` | string | ❌ No | `10` | Duration parameter |
-| `callback_url` | string | ❌ No | - | Callback Url parameter |
+Kling's text to video.mdx for the text to video API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/kling/v1/videos/text2video" \
@@ -163,11 +157,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -206,5 +198,26 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `kling-video-std-10-v1-6` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `The plane flew over the head` | Prompt parameter |
+| `negative_prompt` | string | ❌ No | - | Negative Prompt parameter |
+| `mode` | string | ❌ No | `std` | Mode parameter |
+| `aspect_ratio` | string | ❌ No | `16:9` | Aspect Ratio parameter |
+| `duration` | string | ❌ No | `10` | Duration parameter |
+| `callback_url` | string | ❌ No | - | Callback Url parameter |
+
+
+
+
+
+
+
+
+
 

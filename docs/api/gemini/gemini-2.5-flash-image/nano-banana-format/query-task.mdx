@@ -2,11 +2,16 @@
 title: 'Query-Task'
 api: 'GET /api/v3/predictions/{taskid}/result'
 description: 'Nano-banana-Query-Task'
+mode: 'wide'
 ---
 
 ## Overview
 
-Nano-banana  Query TaskIf enable_sync_mode set to true, the function will wait for the result to be generated and uploaded before returning the response. It allows you to get the result directly in the response. This property is only available through the API.
+Gemini's nano banana format for the query task API.
+
+
+
+
 
 ## Request Parameter
 
@@ -39,44 +44,5 @@ Nano-banana  Query TaskIf enable_sync_mode set to true, the function will wait f
 ```
 
 
-<ResponseExample>
 
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
-
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</ResponseExample>
 

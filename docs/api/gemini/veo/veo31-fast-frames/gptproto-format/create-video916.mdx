@@ -2,27 +2,22 @@
 title: 'Create Video（9:16）'
 api: 'POST /v1/veo/videos'
 description: 'Create Video（9:16）'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides create video（9:16） functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `A beautiful woman is dancing in a European and American style` | Prompt parameter |
-| `model` | string | ✅ Yes | `veo3.1-pro` | The model to use for the request |
-| `upsample` | boolean | ❌ No | `true` | Upsample parameter |
-| `reference` | boolean | ❌ No | `false` | Reference parameter |
-| `aspect_ratio` | string | ❌ No | `16:9` | Aspect Ratio parameter |
-| `images` | array | ❌ No | `[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg&quot;]` | Images parameter |
+Gemini's veo31 fast frames for the create video916 API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/veo/videos" \
@@ -138,11 +133,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -181,5 +174,25 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | `A beautiful woman is dancing in a European and American style` | Prompt parameter |
+| `model` | string | ✅ Yes | `veo3.1-pro` | The model to use for the request |
+| `upsample` | boolean | ❌ No | `true` | Upsample parameter |
+| `reference` | boolean | ❌ No | `false` | Reference parameter |
+| `aspect_ratio` | string | ❌ No | `16:9` | Aspect Ratio parameter |
+| `images` | array | ❌ No | `[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170918_yyy1.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/20251017_170932_yyy2.jpeg&quot;]` | Images parameter |
+
+
+
+
+
+
+
+
+
 

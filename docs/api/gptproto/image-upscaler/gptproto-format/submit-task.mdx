@@ -2,27 +2,22 @@
 title: 'Submit task'
 api: 'POST /api/v3/image-upscaler'
 description: 'Submit task'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides submit task functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png` | Image parameter |
-| `creativity` | integer | ❌ No | `0` | Creativity parameter |
-| `target_resolution` | string | ❌ No | `2k` | Target Resolution parameter |
-| `output_format` | string | ❌ No | `jpeg` | Output Format parameter |
-| `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
-| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
+Gptproto's GPTProto format for the submit task API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/image-upscaler" \
@@ -126,11 +121,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -169,5 +162,25 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png` | Image parameter |
+| `creativity` | integer | ❌ No | `0` | Creativity parameter |
+| `target_resolution` | string | ❌ No | `2k` | Target Resolution parameter |
+| `output_format` | string | ❌ No | `jpeg` | Output Format parameter |
+| `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
+
+
+
+
+
+
+
+
+
 

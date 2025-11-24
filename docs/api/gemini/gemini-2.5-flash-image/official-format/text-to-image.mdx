@@ -2,19 +2,69 @@
 title: "Text to Image"
 api: "POST /v1beta/models/gemini-2.5-flash-image:generateContent"
 description: "Text to Image"
+mode: 'wide'
 ---
 
 ## Overview
 
-Google Gemini 2.5 Flash Image, a powerful new image generation and editing model with advanced features and creative control.
+Gemini's official format for the text to image API.
 
-- **Text-to-Image:** Generate high-quality images from simple or complex text descriptions.
+
+
+
 
 ## Supported inputs & outputs :
 
 Inputs: Text
 
 Outputs: Text and image
+
+
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
 
 ## Parameters
 
@@ -60,47 +110,3 @@ Outputs: Text and image
       "modelVersion": "gemini-2.5-flash-image"
   }
   ```
-<ResponseExample>
-
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
-
-
-
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</ResponseExample>

@@ -2,18 +2,22 @@
 title: 'Query Task'
 api: 'GET /api/v3/contents/generations/tasks/{task_id}'
 description: 'Query the status and result of a video generation task'
+mode: 'wide'
 ---
 
 ## Overview
 
-Query the status and result of a video generation task created by the seedance-1-0-lite-i2v-250428 model. This endpoint allows you to check if the video generation is complete and retrieve the video URL.
-
-## Path Parameters
+BytePlus's official format for the query task API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X GET "https://gptproto.com/api/v3/contents/generations/tasks/{task_id}" \
@@ -78,11 +82,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 400 - Bad Request
 {
@@ -123,5 +125,16 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Path Parameters
+
+
+
+
+
+
+
+
+
 

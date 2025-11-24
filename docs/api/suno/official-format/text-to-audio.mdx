@@ -2,34 +2,24 @@
 title: 'Text to Audio'
 api: 'POST /v1/suno/submit/music'
 description: 'Generate high-quality music from text descriptions using Suno AI powerful music generation model. Create original songs, background music, and audio compositions with simple text prompts.'
+mode: 'wide'
 ---
 
 ## Overview
 
-[Suno AI](https://suno.com) is a powerful music generation platform that creates high-quality music from text descriptions. Using Suno's API, you can create original songs, background music, instrumentals, and custom audio compositions by simply describing what you want in natural language.
-
-Related Guides: [Suno Official Documentation](https://suno.com/docs) | [Music Generation Guide](https://suno.com/guides/music-generation)
-
-This endpoint allows you to submit music generation tasks using simple text prompts. The generation is processed asynchronously - you'll receive a task ID immediately, which you can use to check the status and retrieve the generated audio once complete.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ❌ No | `Compose a tense pre-battle anthem` | Custom-mode lyrics or description. Provide detailed text description of the music you want to generate for custom mode with specific lyrics or theme. |
-| `gpt_description_prompt` | string | ❌ No | `Ethereal female vocals blending with cinematic drums` | Inspiration-mode prompt. Use AI to generate music from a high-level description. This mode lets the AI interpret and create music based on your creative description. Great for exploring new musical ideas. |
-| `make_instrumental` | boolean | ❌ No | `false` | Set to `true` to generate instrumental music without vocals. Set to `false` to include vocals in the generated music. |
-| `mv` | string | ❌ No | `chirp-v3-0` | Model version to use for generation. Available options: - `"chirp-v3-5"` - Latest model with improved quality - `"chirp-v3-0"` - Default stable model |
-| `tags` | string | ❌ No | `cinematic,epic,ambient` | Music style tags separated by commas for custom mode (e.g., "cinematic,epic,ambient", "orchestral,dramatic,intense"). These tags help guide the style and mood of the generated music. |
-| `title` | string | ❌ No | `Before the Charge` | Custom-mode title for the generated song. If not provided, a title will be auto-generated based on the prompt or description. |
-| `continue_at` | number | ❌ No | `8` | Extension length in seconds. Specify how many seconds to extend from the original clip (e.g., 8 for 8 seconds extension). Used when extending existing music. |
-| `continue_clip_id` | string | ❌ No | `clip-123456` | Clip ID to extend from (e.g., "clip-123456"). Use this parameter to continue or extend previously generated music clips. Get the clip ID from previous generation responses. |
-| `task_id` | string | ❌ No | `task-001` | Follow-up task ID for tracking related generation tasks. Use this to link multiple generation requests together for better organization and tracking. |
+Suno's text to audio.mdx for the text to audio API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL - Basic
 curl --location 'https://gptproto.com/v1/suno/submit/music' \
@@ -333,11 +323,9 @@ func main() {
     }
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 400 - Invalid prompt
 {
@@ -386,7 +374,67 @@ func main() {
   "message": "Content may not meet the guidelines. Please adjust and try again."
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+<CodeGroup>
+
+```text Good Examples - Inspiration Mode
+"Ethereal female vocals blending with cinematic drums and atmospheric synths"
+
+"Gentle piano melody with soft string accompaniment for peaceful meditation"
+
+"Intense electric guitar riffs with heavy bass and driving drums for action scenes"
+
+"Smooth jazz saxophone with light piano backing and subtle percussion"
+```
+
+```text Good Examples - Custom Mode
+Prompt: "Epic orchestral battle music with dramatic crescendo"
+Tags: "orchestral,epic,cinematic,dramatic,intense"
+Title: "Warriors March"
+
+Prompt: "Calm acoustic music for meditation"
+Tags: "acoustic,calm,peaceful,meditation,ambient"
+Title: "Inner Peace"
+
+Prompt: "Upbeat dance music for party"
+Tags: "electronic,dance,upbeat,energetic,party"
+Title: "Night Fever"
+```
+
+```text Avoid
+"Make some music" (too vague)
+
+"Sad but energetic music" (contradictory)
+
+"Music" (no context)
+
+"Something cool" (not descriptive)
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ❌ No | `Compose a tense pre-battle anthem` | Custom-mode lyrics or description. Provide detailed text description of the music you want to generate for custom mode with specific lyrics or theme. |
+| `gpt_description_prompt` | string | ❌ No | `Ethereal female vocals blending with cinematic drums` | Inspiration-mode prompt. Use AI to generate music from a high-level description. This mode lets the AI interpret and create music based on your creative description. Great for exploring new musical ideas. |
+| `make_instrumental` | boolean | ❌ No | `false` | Set to `true` to generate instrumental music without vocals. Set to `false` to include vocals in the generated music. |
+| `mv` | string | ❌ No | `chirp-v3-0` | Model version to use for generation. Available options: - `"chirp-v3-5"` - Latest model with improved quality - `"chirp-v3-0"` - Default stable model |
+| `tags` | string | ❌ No | `cinematic,epic,ambient` | Music style tags separated by commas for custom mode (e.g., "cinematic,epic,ambient", "orchestral,dramatic,intense"). These tags help guide the style and mood of the generated music. |
+| `title` | string | ❌ No | `Before the Charge` | Custom-mode title for the generated song. If not provided, a title will be auto-generated based on the prompt or description. |
+| `continue_at` | number | ❌ No | `8` | Extension length in seconds. Specify how many seconds to extend from the original clip (e.g., 8 for 8 seconds extension). Used when extending existing music. |
+| `continue_clip_id` | string | ❌ No | `clip-123456` | Clip ID to extend from (e.g., "clip-123456"). Use this parameter to continue or extend previously generated music clips. Get the clip ID from previous generation responses. |
+| `task_id` | string | ❌ No | `task-001` | Follow-up task ID for tracking related generation tasks. Use this to link multiple generation requests together for better organization and tracking. |
+
+
+
+
+
+
+
+
+
 
 ## Generation Modes
 
@@ -509,42 +557,7 @@ if result["code"] == "success":
 
 ### Example Prompts
 
-<RequestExample>
 
-```text Good Examples - Inspiration Mode
-"Ethereal female vocals blending with cinematic drums and atmospheric synths"
-
-"Gentle piano melody with soft string accompaniment for peaceful meditation"
-
-"Intense electric guitar riffs with heavy bass and driving drums for action scenes"
-
-"Smooth jazz saxophone with light piano backing and subtle percussion"
-```
-
-```text Good Examples - Custom Mode
-Prompt: "Epic orchestral battle music with dramatic crescendo"
-Tags: "orchestral,epic,cinematic,dramatic,intense"
-Title: "Warriors March"
-
-Prompt: "Calm acoustic music for meditation"
-Tags: "acoustic,calm,peaceful,meditation,ambient"
-Title: "Inner Peace"
-
-Prompt: "Upbeat dance music for party"
-Tags: "electronic,dance,upbeat,energetic,party"
-Title: "Night Fever"
-```
-
-```text Avoid
-"Make some music" (too vague)
-
-"Sad but energetic music" (contradictory)
-
-"Music" (no context)
-
-"Something cool" (not descriptive)
-```
-</RequestExample>
 
 ### Model Selection
 

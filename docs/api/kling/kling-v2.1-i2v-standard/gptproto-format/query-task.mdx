@@ -2,23 +2,20 @@
 title: 'Query Task'
 api: 'GET /api/v3/predictions/{task_id}/result'
 description: 'Query Task'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides query task functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `task_id` | string | ✅ Yes | - | Unique identifier for the prediction, Task Id |
+Kling's GPTProto format for the query task API.
 
 
-## Response
 
 
-<ResponseExample>
+
+
+
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -57,5 +54,17 @@ This endpoint provides query task functionality.
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `task_id` | string | ✅ Yes | - | Unique identifier for the prediction, Task Id |
+
+
+## Response
+
+
+
 

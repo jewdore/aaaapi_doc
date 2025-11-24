@@ -2,24 +2,22 @@
 title: 'Images to Image'
 api: 'POST /v1/images/generations'
 description: 'Images to Image'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides images to image functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gemini-2.5-flash-image` | The model to use for the request |
-| `prompt` | string | ✅ Yes | `image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.` | Prompt parameter |
-| `size` | string | ❌ No | `16:9` | Size parameter |
+Gemini's GPTProto format for the images to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -111,11 +109,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -154,5 +150,22 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gemini-2.5-flash-image` | The model to use for the request |
+| `prompt` | string | ✅ Yes | `image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.` | Prompt parameter |
+| `size` | string | ❌ No | `16:9` | Size parameter |
+
+
+
+
+
+
+
+
+
 

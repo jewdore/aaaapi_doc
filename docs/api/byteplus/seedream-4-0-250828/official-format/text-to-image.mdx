@@ -2,28 +2,22 @@
 title: 'Text to Image'
 api: 'POST /api/v3/images/generations'
 description: 'Text to Image'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides text to image functionality using Volcengine official format.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `seedream-4-0-250828` | The model identifier for image generation/editing |
-| `prompt` | string | ✅ Yes | - | Description of the desired image transformation or generation |
-| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
-| `size` | string | ❌ No | `adaptive` | Output image resolution. Options: adaptive, 1024x1024, 2K, 4K |
-| `seed` | integer | ❌ No | - | Random seed for reproducible results |
-| `guidance_scale` | number | ❌ No | `5.5` | Controls adherence to the prompt. Range: 1.0-10.0, recommended: 3.0-7.0 |
-| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to the generated image |
+BytePlus's official format for the text to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/images/generations" \
@@ -135,11 +129,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 400 - Bad Request
 {
@@ -190,5 +182,26 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `seedream-4-0-250828` | The model identifier for image generation/editing |
+| `prompt` | string | ✅ Yes | - | Description of the desired image transformation or generation |
+| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
+| `size` | string | ❌ No | `adaptive` | Output image resolution. Options: adaptive, 1024x1024, 2K, 4K |
+| `seed` | integer | ❌ No | - | Random seed for reproducible results |
+| `guidance_scale` | number | ❌ No | `5.5` | Controls adherence to the prompt. Range: 1.0-10.0, recommended: 3.0-7.0 |
+| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to the generated image |
+
+
+
+
+
+
+
+
+
 

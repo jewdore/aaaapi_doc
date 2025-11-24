@@ -2,28 +2,22 @@
 title: 'File Analysis (Stream)'
 api: 'POST /v1beta/models/{model}:streamGenerateContent'
 description: 'File Analysis (Stream)'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides file analysis functionality (stream).
-
-## Path Parameters
-
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ✅ Yes | - | An array of content objects representing the conversation history and file data.   The role of the message sender. Typically `"user"` or `"model"`. Optional for single-turn requests. |
-| `parts` | array | ✅ Yes | - | An array of parts that make up the message content. Can include both text and file data.   Text content of the message or prompt for analyzing the file. |
-| `file_data` | object | ❌ No | - | Reference to file data for analysis (PDF, images, etc.).   The MIME type of the file (e.g., `"application/pdf"`, `"image/jpeg"`, `"image/png"`). |
-| `file_uri` | string | ✅ Yes | - | The URI of the file to analyze. Can be a public URL. |
+Gemini's official format for the file analysis with stream API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl --location 'https://gptproto.com/v1beta/models/gemini-3-pro-preview:streamGenerateContent' \
@@ -169,11 +163,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 503 - Content policy violation
 {
@@ -183,4 +175,25 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Path Parameters
+
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - | An array of content objects representing the conversation history and file data.   The role of the message sender. Typically `"user"` or `"model"`. Optional for single-turn requests. |
+| `parts` | array | ✅ Yes | - | An array of parts that make up the message content. Can include both text and file data.   Text content of the message or prompt for analyzing the file. |
+| `file_data` | object | ❌ No | - | Reference to file data for analysis (PDF, images, etc.).   The MIME type of the file (e.g., `"application/pdf"`, `"image/jpeg"`, `"image/png"`). |
+| `file_uri` | string | ✅ Yes | - | The URI of the file to analyze. Can be a public URL. |
+
+
+
+
+
+
+
+
+

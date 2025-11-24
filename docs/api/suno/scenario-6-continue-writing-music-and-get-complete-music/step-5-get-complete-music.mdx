@@ -8,17 +8,11 @@ description: 'After writing music, get the complete music of the original music 
 
 After writing music, get the complete music of the original music and the merged music
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `clip_id` | string | ❌ No | `186653a1-ef95-4db5-8808-af10247267ce` | Clip Id parameter |
-| `is_infill` | boolean | ❌ No | `false` | Is Infill parameter |
 
 
 
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/suno/generate/concat/v2" \
@@ -106,11 +100,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -149,5 +141,21 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `clip_id` | string | ❌ No | `186653a1-ef95-4db5-8808-af10247267ce` | Clip Id parameter |
+| `is_infill` | boolean | ❌ No | `false` | Is Infill parameter |
+
+
+
+
+
+
+
+
+
 

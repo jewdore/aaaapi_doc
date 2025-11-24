@@ -2,26 +2,22 @@
 title: 'Change'
 api: 'POST /mj/submit/change'
 description: 'UPSCALE、VARIATION、REROLL, etc.'
+mode: 'wide'
 ---
 
 ## Overview
 
-UPSCALE、VARIATION、REROLL, etc.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `action` | string | ❌ No | `UPSCALE` | Action parameter |
-| `index` | integer | ❌ No | `1` | Index parameter |
-| `notifyHook` | string | ❌ No | `string` | Notifyhook parameter |
-| `state` | string | ❌ No | `string` | State parameter |
-| `taskId` | string | ❌ No | `1320098173412546` | Taskid parameter |
+Midjourney's change.mdx for the change API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/mj/submit/change" \
@@ -121,11 +117,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -164,5 +158,24 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `action` | string | ❌ No | `UPSCALE` | Action parameter |
+| `index` | integer | ❌ No | `1` | Index parameter |
+| `notifyHook` | string | ❌ No | `string` | Notifyhook parameter |
+| `state` | string | ❌ No | `string` | State parameter |
+| `taskId` | string | ❌ No | `1320098173412546` | Taskid parameter |
+
+
+
+
+
+
+
+
+
 

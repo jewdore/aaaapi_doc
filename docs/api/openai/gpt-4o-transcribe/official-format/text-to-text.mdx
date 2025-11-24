@@ -2,27 +2,20 @@
 title: 'Text to Text'
 api: 'POST /v1/audio/transcriptions'
 description: 'Text to Text'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides text to text functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `file` | string | ✅ Yes | - | file parameter |
-| `model` | string | ✅ Yes | `gpt-4o-transcribe` | model parameter |
-| `language` | string | ✅ Yes | `zh` | language parameter |
-| `prompt` | string | ✅ Yes | - | prompt parameter |
-| `response_format` | string | ✅ Yes | `json` | response_format parameter |
-| `temperature` | string | ✅ Yes | `0` | temperature parameter |
+OpenAI's official format for the text to text API.
 
 
 
 
-<ResponseExample>
+
+
+
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -61,5 +54,21 @@ This endpoint provides text to text functionality.
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `file` | string | ✅ Yes | - | file parameter |
+| `model` | string | ✅ Yes | `gpt-4o-transcribe` | model parameter |
+| `language` | string | ✅ Yes | `zh` | language parameter |
+| `prompt` | string | ✅ Yes | - | prompt parameter |
+| `response_format` | string | ✅ Yes | `json` | response_format parameter |
+| `temperature` | string | ✅ Yes | `0` | temperature parameter |
+
+
+
+
+
 

@@ -8,23 +8,11 @@ description: 'Music generation interface, can generate new music directly or con
 
 Music generation interface, can generate new music directly or continue existing musicIf you want to continue a user-uploaded music, you need to add `-upload` after the mv field, for example `chirp-v3-5-upload`
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | - | Prompt parameter |
-| `tags` | string | ❌ No | `heavy metal` | Tags parameter |
-| `mv` | string | ❌ No | `chirp-v3-5` | Mv parameter |
-| `title` | string | ❌ No | `Starry ` | Title parameter |
-| `continue_clip_id` | string | ❌ No | `None` | Continue Clip Id parameter |
-| `continue_at` | string | ❌ No | `None` | Continue At parameter |
-| `infill_start_s` | string | ❌ No | `None` | Infill Start S parameter |
-| `infill_end_s` | string | ❌ No | `None` | Infill End S parameter |
 
 
 
 
-<RequestExample>
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/suno/generate" \
@@ -136,11 +124,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -179,5 +165,27 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | - | Prompt parameter |
+| `tags` | string | ❌ No | `heavy metal` | Tags parameter |
+| `mv` | string | ❌ No | `chirp-v3-5` | Mv parameter |
+| `title` | string | ❌ No | `Starry ` | Title parameter |
+| `continue_clip_id` | string | ❌ No | `None` | Continue Clip Id parameter |
+| `continue_at` | string | ❌ No | `None` | Continue At parameter |
+| `infill_start_s` | string | ❌ No | `None` | Infill Start S parameter |
+| `infill_end_s` | string | ❌ No | `None` | Infill End S parameter |
+
+
+
+
+
+
+
+
+
 

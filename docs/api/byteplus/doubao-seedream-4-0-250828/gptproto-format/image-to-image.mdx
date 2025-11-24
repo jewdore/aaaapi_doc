@@ -2,32 +2,22 @@
 title: 'Image to Image'
 api: 'POST /v1/images/generations'
 description: 'Image to Image'
+mode: 'wide'
 ---
 
 ## Overview
 
-This endpoint provides image to image functionality.
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `image` | array | ❌ No | `[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;]` | Input image URL(s) for image-to-image generation |
-| `hd` | boolean | ❌ No | `true` | Hd parameter |
-| `model` | string | ✅ Yes | `doubao-seedream-4-0-250828` | The model to use for the request |
-| `n` | integer | ❌ No | `1` | Number of completions to generate |
-| `prompt` | string | ✅ Yes | `Generate close-up photos of characters in the snow` | Image generation prompt describing the desired image content |
-| `prompt_enhancement` | boolean | ❌ No | `false` | Prompt Enhancement parameter |
-| `quality` | string | ❌ No | `auto` | Quality parameter |
-| `reflection_enabled` | boolean | ❌ No | `false` | Reflection Enabled parameter |
-| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
-| `seed` | integer | ❌ No | `12` | Random seed for reproducible results |
-| `size` | string | ❌ No | `1024x1280` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
+BytePlus's GPTProto format for the image to image API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/images/generations" \
@@ -163,11 +153,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -206,5 +194,30 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | array | ❌ No | `[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;]` | Input image URL(s) for image-to-image generation |
+| `hd` | boolean | ❌ No | `true` | Hd parameter |
+| `model` | string | ✅ Yes | `doubao-seedream-4-0-250828` | The model to use for the request |
+| `n` | integer | ❌ No | `1` | Number of completions to generate |
+| `prompt` | string | ✅ Yes | `Generate close-up photos of characters in the snow` | Image generation prompt describing the desired image content |
+| `prompt_enhancement` | boolean | ❌ No | `false` | Prompt Enhancement parameter |
+| `quality` | string | ❌ No | `auto` | Quality parameter |
+| `reflection_enabled` | boolean | ❌ No | `false` | Reflection Enabled parameter |
+| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
+| `seed` | integer | ❌ No | `12` | Random seed for reproducible results |
+| `size` | string | ❌ No | `1024x1280` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
+
+
+
+
+
+
+
+
+
 

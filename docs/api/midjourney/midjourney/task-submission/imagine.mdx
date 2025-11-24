@@ -2,27 +2,22 @@
 title: 'Imagine'
 api: 'POST /mj/submit/imagine'
 description: 'Text to Image, Image to Text'
+mode: 'wide'
 ---
 
 ## Overview
 
-Text to Image, Image to Text
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `botType` | string | ❌ No | `MID_JOURNEY` | Bottype parameter |
-| `prompt` | string | ✅ Yes | `Cat` | Prompt parameter |
-| `base64Array` | array | ❌ No | `[]` | Base64Array parameter |
-| `accountFilter` | object | ❌ No | `{&quot;channelId&quot;: &quot;&quot;, &quot;instanceId&quot;: &quot;&quot;, &quot;modes&quot;: [], &quot;remark&quot;: &quot;&quot;, &quot;remix&quot;: true, &quot;remixAutoConsidered&quot;: true}` | Accountfilter parameter |
-| `notifyHook` | string | ❌ No | - | Notifyhook parameter |
-| `state` | string | ❌ No | - | State parameter |
+Midjourney's task submission for the imagine API.
 
 
 
 
-<RequestExample>
+
+
+
+
+
+<CodeGroup>
 
 ```bash cURL
 curl -X POST "https://gptproto.com/mj/submit/imagine" \
@@ -154,11 +149,9 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-</RequestExample>
+</CodeGroup>
 
-
-
-<ResponseExample>
+<CodeGroup>
 
 ```json 401 - Invalid signature
 {
@@ -197,5 +190,25 @@ func main() {
   }
 }
 ```
-</ResponseExample>
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `botType` | string | ❌ No | `MID_JOURNEY` | Bottype parameter |
+| `prompt` | string | ✅ Yes | `Cat` | Prompt parameter |
+| `base64Array` | array | ❌ No | `[]` | Base64Array parameter |
+| `accountFilter` | object | ❌ No | `{&quot;channelId&quot;: &quot;&quot;, &quot;instanceId&quot;: &quot;&quot;, &quot;modes&quot;: [], &quot;remark&quot;: &quot;&quot;, &quot;remix&quot;: true, &quot;remixAutoConsidered&quot;: true}` | Accountfilter parameter |
+| `notifyHook` | string | ❌ No | - | Notifyhook parameter |
+| `state` | string | ❌ No | - | State parameter |
+
+
+
+
+
+
+
+
+
 
