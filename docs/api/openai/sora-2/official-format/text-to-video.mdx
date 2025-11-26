@@ -1,14 +1,111 @@
 ---
-title: 'Text to Video'
+title: 'Text To Video'
 api: 'POST /v1/videos'
-description: 'Text to Video'
+description: 'Text To Video'
 mode: 'wide'
 ---
 
 ## sora-2 (text to video)
 
-Sora is OpenAI’s newest frontier in generative media – a state-of-the-art video model capable of creating richly detailed, dynamic clips with audio from natural language or images. Built on years of research into multimodal diffusion and trained on diverse visual data, Sora brings a deep understanding of 3D space, motion, and scene continuity to text-to-video generation.
+Sora is OpenAI's newest frontier in generative media – a state-of-the-art video model capable of creating richly detailed, dynamic clips with audio from natural language or images. Built on years of research into multimodal diffusion and trained on diverse visual data, Sora brings a deep understanding of 3D space, motion, and scene continuity to text-to-video generation.
 
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/videos" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "sora-2",
+  "prompt": "A calico cat playing a piano on stage",
+  "size": "720x1280",
+  "seconds": "4"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/videos"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "model": "sora-2",
+    "prompt": "A calico cat playing a piano on stage",
+    "size": "720x1280",
+    "seconds": "4"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/videos";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "sora-2",
+  "prompt": "A calico cat playing a piano on stage",
+  "size": "720x1280",
+  "seconds": "4"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/videos"
+
+    payload := []byte(`{
+  "model": "sora-2",
+  "prompt": "A calico cat playing a piano on stage",
+  "size": "720x1280",
+  "seconds": "4"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
 
 
 <CodeGroup>
@@ -22,7 +119,14 @@ Sora is OpenAI’s newest frontier in generative media – a state-of-the-art vi
 }
 ```
 
-
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
 
 ```json 403 - Insufficient balance
 {
@@ -57,25 +161,6 @@ Sora is OpenAI’s newest frontier in generative media – a state-of-the-art vi
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `model` | string | ✅ Yes | `sora-2` | The video generation model to use. Defaults to sora-2. |
-| `prompt` | string | ✅ Yes | `A calico cat playing a piano on stage` | Text prompt that describes the video to generate. |
-| `size` | string | ✅ Yes | `720x1280` | Output resolution formatted as width x height. 720x1280 & 1280x720 ，Defaults to 720x1280. |
-| `seconds` | string | ❌ No | `4` | Clip duration in seconds.4, 8, 12 . Defaults to 4 seconds. |
-
-
-```json
-{
-    "id": "video_xxxx",
-    "object": "video",
-    "status": "queued",
-    "model": "sora-2",
-    "progress": 0,
-    "seconds": "4",
-    "size": "720x1280",
-    "createdAt": 1761897415
-}
-
-```
-
-
-
-
+| `prompt` | string | ✅ Yes | - | Text prompt that describes the video to generate. |
+| `size` | string | ✅ Yes | `720x1280` | Output resolution formatted as width x height. Only supports 720x1280 or 1280x720. |
+| `seconds` | string | ❌ No | `4` | Clip duration in seconds. 4, 8, 12. Defaults to 4 seconds. |

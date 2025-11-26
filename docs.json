@@ -37,11 +37,11 @@
             {
                 "tab": "API Reference",
                 "icon": "code",
-                "expanded": false,
                 "groups": [
                     {
                         "group": "API Reference",
                         "icon": "code",
+                        "expanded": false,
                         "pages": [
                             {
                                 "group": "OpenAI",
@@ -497,6 +497,16 @@
                                                 ]
                                             },
                                             {
+                                                "group": "Official Format",
+                                                "pages": [
+                                                    "docs/api/openai/sora-2/official-format/text-to-video",
+                                                    "docs/api/openai/sora-2/official-format/image-to-video",
+                                                    "docs/api/openai/sora-2/official-format/get-video",
+                                                    "docs/api/openai/sora-2/official-format/get-thumbnail",
+                                                    "docs/api/openai/sora-2/official-format/get-spritesheet"
+                                                ]
+                                            },
+                                            {
                                                 "group": "OpenAI Format",
                                                 "pages": [
                                                     "docs/api/openai/sora-2/openai-format/text-to-video",
@@ -524,6 +534,16 @@
                                                     "docs/api/openai/sora-2-pro/gptproto-format/text-to-video",
                                                     "docs/api/openai/sora-2-pro/gptproto-format/image-to-video",
                                                     "docs/api/openai/sora-2-pro/gptproto-format/query-task"
+                                                ]
+                                            },
+                                            {
+                                                "group": "Official Format",
+                                                "pages": [
+                                                    "docs/api/openai/sora-2-pro/official-format/text-to-video",
+                                                    "docs/api/openai/sora-2-pro/official-format/image-to-video",
+                                                    "docs/api/openai/sora-2-pro/official-format/get-video",
+                                                    "docs/api/openai/sora-2-pro/official-format/get-thumbnail",
+                                                    "docs/api/openai/sora-2-pro/official-format/get-spritesheet"
                                                 ]
                                             },
                                             {

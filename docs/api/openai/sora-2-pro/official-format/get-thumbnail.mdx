@@ -1,18 +1,145 @@
 ---
-title: 'Get thumbnail'
-api: 'GET /v1/videos/video_68ed20580fd8819092c3e1779bab74300197d63c305fecf8/content'
-description: 'Get thumbnail'
+title: 'Get Thumbnail'
+api: 'GET /v1/videos/{video_id}/content'
+description: 'Get Thumbnail'
 mode: 'wide'
 ---
 
 ## sora-2-pro (get thumbnail)
 
-This endpoint provides get thumbnail functionality.
+For each completed video, you can also download a **thumbnail** and a ​**spritesheet**​. These are lightweight assets useful for previews, scrubbers, or catalog displays. Use the `variant` query parameter to specify what you want to download. The default is `variant=video` for the MP4.
 
-## Query Parameters
+<CodeGroup>
 
+```bash cURL
+curl -L "https://gptproto.com/v1/videos/video_abc123/content?variant=thumbnail" \
+  -H "Authorization: YOUR_API_KEY" \
+  --output thumbnail.webp
+```
 
+```python Python
+import requests
 
+url = "https://gptproto.com/v1/videos/video_abc123/content"
+headers = {
+    "Authorization": "YOUR_API_KEY"
+}
+params = {
+    "variant": "thumbnail"
+}
 
+response = requests.get(url, headers=headers, params=params)
 
+with open("thumbnail.webp", "wb") as f:
+    f.write(response.content)
 
+print("Thumbnail saved to thumbnail.webp")
+```
+
+```javascript JavaScript
+const fs = require("fs");
+
+const videoId = "video_abc123";
+const url = `https://gptproto.com/v1/videos/${videoId}/content?variant=thumbnail`;
+const headers = {
+  "Authorization": "YOUR_API_KEY"
+};
+
+fetch(url, {
+  method: "GET",
+  headers: headers
+})
+  .then(response => response.arrayBuffer())
+  .then(buffer => {
+    fs.writeFileSync("thumbnail.webp", Buffer.from(buffer));
+    console.log("Thumbnail saved to thumbnail.webp");
+  })
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "fmt"
+    "io"
+    "net/http"
+    "os"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/videos/video_abc123/content?variant=thumbnail"
+
+    req, _ := http.NewRequest("GET", url, nil)
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    file, _ := os.Create("thumbnail.webp")
+    defer file.Close()
+
+    io.Copy(file, resp.Body)
+    fmt.Println("Thumbnail saved to thumbnail.webp")
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `video_id` | string | ✅ Yes | - | The identifier of the video task. |
+| `variant` | string | ✅ Yes | `thumbnail` | The type of content to download. Use `thumbnail` for thumbnail image. |

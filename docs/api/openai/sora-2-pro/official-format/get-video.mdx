@@ -1,15 +1,141 @@
 ---
-title: 'Get video'
-api: 'GET /v1/videos/video_68ed20580fd8819092c3e1779bab74300197d63c305fecf8/content'
-description: 'Get video'
+title: 'Get Video'
+api: 'GET /v1/videos/{video_id}/content'
+description: 'Get Video'
 mode: 'wide'
 ---
 
 ## sora-2-pro (get video)
 
-This endpoint provides get video functionality.
+Once the job reaches status completed, fetch the MP4 with GET `/videos/{video_id}/content`. This endpoint streams the binary video data and returns standard content headers, so you can either save the file directly to disk or pipe it to cloud storage.
 
+<CodeGroup>
 
+```bash cURL
+curl -L "https://gptproto.com/v1/videos/video_abc123/content" \
+  -H "Authorization: YOUR_API_KEY" \
+  --output video.mp4
+```
 
+```python Python
+import requests
 
+url = "https://gptproto.com/v1/videos/video_abc123/content"
+headers = {
+    "Authorization": "YOUR_API_KEY"
+}
 
+response = requests.get(url, headers=headers)
+
+with open("video.mp4", "wb") as f:
+    f.write(response.content)
+
+print("Video saved to video.mp4")
+```
+
+```javascript JavaScript
+const fs = require("fs");
+
+const videoId = "video_abc123";
+const url = `https://gptproto.com/v1/videos/${videoId}/content`;
+const headers = {
+  "Authorization": "YOUR_API_KEY"
+};
+
+fetch(url, {
+  method: "GET",
+  headers: headers
+})
+  .then(response => response.arrayBuffer())
+  .then(buffer => {
+    fs.writeFileSync("video.mp4", Buffer.from(buffer));
+    console.log("Video saved to video.mp4");
+  })
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "fmt"
+    "io"
+    "net/http"
+    "os"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/videos/video_abc123/content"
+
+    req, _ := http.NewRequest("GET", url, nil)
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    file, _ := os.Create("video.mp4")
+    defer file.Close()
+
+    io.Copy(file, resp.Body)
+    fmt.Println("Video saved to video.mp4")
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `video_id` | string | ✅ Yes | - | The identifier of the video task. |
