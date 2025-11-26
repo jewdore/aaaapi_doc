@@ -1,11 +1,10 @@
 ---
-title: 'Download Video'
+title: 'sora-2 (download video)'
+sidebarTitle: 'Download Video'
 api: 'GET /v1/videos/{video_id}/content'
 description: 'Download Video'
 mode: 'wide'
 ---
-
-## sora-2 (download video)
 
 Once the job reaches status completed, fetch the MP4 with GET `/videos/{video_id}/content`. This endpoint streams the binary video data and returns standard content headers, so you can either save the file directly to disk or pipe it to cloud storage.
 

@@ -8,6 +8,11 @@
         "light": "#07C983",
         "dark": "#0D9373"
     },
+    "seo": {
+        "metatags": {
+            "canonical": "https://gptproto.com"
+        }
+    },
     "title": "GPTProto API Documentation",
     "logo": {
         "light": "/logo/light.png",
