@@ -10,7 +10,7 @@
     },
     "seo": {
         "metatags": {
-            "canonical": "https://docs.gptproto.com/"
+            "canonical": "https://docs.gptproto.com"
         }
     },
     "title": "GPTProto API Documentation",
