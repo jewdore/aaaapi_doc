@@ -20,7 +20,7 @@ Gptproto's GPTProto format for the submit task API.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/image-background-remover" \
+curl -X POST "https://gptproto.com/api/v3/gptproto/image-background-remover" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -34,7 +34,7 @@ curl -X POST "https://gptproto.com/api/v3/image-background-remover" \
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/image-background-remover"
+url = "https://gptproto.com/api/v3/gptproto/image-background-remover"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -52,7 +52,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/image-background-remover";
+const url = "https://gptproto.com/api/v3/gptproto/image-background-remover";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -86,7 +86,7 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/image-background-remover"
+    url := "https://gptproto.com/api/v3/gptproto/image-background-remover"
 
     payload := []byte(`{
 "image": "The URL of the image to generate an image from.",
@@ -156,7 +156,7 @@ func main() {
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `image` | string | ❌ No | `The URL of the image to generate an image from.` | Image parameter |
+| `image` | string | ✅ Yes | `The URL of the image to generate an image from.` | Image parameter |
 | `enable_base64_output` | boolean | ❌ No | `false` | Enable Base64 Output parameter |
 | `enable_sync_mode` | boolean | ❌ No | `false` | Enable Sync Mode parameter |
 
