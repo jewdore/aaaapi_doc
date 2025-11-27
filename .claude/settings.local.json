@@ -25,7 +25,9 @@
       "Bash(do if ! grep -q mode: $file)",
       "Bash(then echo $file)",
       "Bash(fi)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(/Users/wsh/code/gptproto_doc/generate_web_search_docs.sh:*)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []
