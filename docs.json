@@ -1485,13 +1485,24 @@
                                 "group": "Grok",
                                 "pages": [
                                     {
+                                        "group": "grok-4-image",
+                                        "pages": [
+                                            {
+                                                "group": "OpenAI Format",
+                                                "pages": [
+                                                    "docs/api/grok/grok-4-image/openai-format/text-to-image.mdx"
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
                                         "group": "grok-4",
                                         "pages": [
                                             {
                                                 "group": "OpenAI Format",
                                                 "pages": [
                                                     "docs/api/grok/grok-4/openai-format/text-to-text",
-                                                    "docs/api/grok/grok-4/openai-format/image-analysis"
+                                                    "docs/api/grok/grok-4/openai-format/image-to-image"
                                                 ]
                                             }
                                         ]
