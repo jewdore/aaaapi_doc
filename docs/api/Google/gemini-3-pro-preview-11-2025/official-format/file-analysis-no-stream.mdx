@@ -1,0 +1,198 @@
+---
+title: 'gemini-3-pro-preview-11-2025 (file analysis)'
+sidebarTitle: 'File Analysis (No Stream)'
+api: 'POST /v1beta/models/{model}:generateContent'
+description: 'File Analysis (No Stream)'
+mode: 'wide'
+---
+
+Gemini's official format for the file analysis without stream API.
+
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent' \
+--header 'Authorization: sk-***********' \
+--header 'Content-Type: application/json' \
+--data '{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "帮我分析这份文件"
+                },
+                {
+                    "file_data": {
+                        "mime_type": "application/pdf",
+                        "file_uri": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+                    }
+                }
+            ]
+        }
+    ]
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent"
+headers = {
+    "Authorization": "sk-***********",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "帮我分析这份文件"
+                },
+                {
+                    "file_data": {
+                        "mime_type": "application/pdf",
+                        "file_uri": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+                    }
+                }
+            ]
+        }
+    ]
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent";
+const headers = {
+  "Authorization": "sk-***********",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "帮我分析这份文件"
+        },
+        {
+          "file_data": {
+            "mime_type": "application/pdf",
+            "file_uri": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+          }
+        }
+      ]
+    }
+  ]
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent"
+
+    payload := map[string]interface{}{
+        "contents": []map[string]interface{}{
+            {
+                "role": "user",
+                "parts": []map[string]interface{}{
+                    {
+                        "text": "帮我分析这份文件",
+                    },
+                    {
+                        "file_data": map[string]string{
+                            "mime_type": "application/pdf",
+                            "file_uri":  "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf",
+                        },
+                    },
+                },
+            },
+        },
+    }
+
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "sk-***********")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Path Parameters
+
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - | An array of content objects representing the conversation history and file data.   The role of the message sender. Typically `"user"` or `"model"`. Optional for single-turn requests. |
+| `parts` | array | ✅ Yes | - | An array of parts that make up the message content. Can include both text and file data.   Text content of the message or prompt for analyzing the file. |
+| `file_data` | object | ❌ No | - | Reference to file data for analysis (PDF, images, etc.).   The MIME type of the file (e.g., `"application/pdf"`, `"image/jpeg"`, `"image/png"`). |
+| `file_uri` | string | ✅ Yes | - | The URI of the file to analyze. Can be a public URL. |
+
+
+
+
+
+
+
+
+
