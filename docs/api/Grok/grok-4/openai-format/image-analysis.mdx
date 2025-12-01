@@ -1,0 +1,229 @@
+---
+title: 'grok-4 (image to text)'
+sidebarTitle: 'image-analysis'
+api: 'POST /v1/chat/completions'
+description: 'Image to text'
+mode: 'wide'
+---
+
+Grok's openai format for the image to text API.
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "grok-4",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is in this image?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://oss.heyoos.com/ai-draw/user/-76dda2d5-eeda-4da8-9a76-94de0f2c93c1.png"
+          }
+        }
+      ]
+    }
+  ],
+  "max_tokens": 5000
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "gptproto/v1/chat/completions"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "model": "grok-4",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is in this image?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://oss.heyoos.com/ai-draw/user/-76dda2d5-eeda-4da8-9a76-94de0f2c93c1.png"
+          }
+        }
+      ]
+    }
+  ],
+  "max_tokens": 5000
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "gptproto/v1/chat/completions";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "grok-4",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is in this image?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://oss.heyoos.com/ai-draw/user/-76dda2d5-eeda-4da8-9a76-94de0f2c93c1.png"
+          }
+        }
+      ]
+    }
+  ],
+  "max_tokens": 5000
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "gptproto/v1/chat/completions"
+
+    payload := []byte(`{
+"model": "grok-4",
+"messages": [
+{
+"role": "user",
+"content": [
+{
+"type": "text",
+"text": "What is in this image?"
+},
+{
+"type": "image_url",
+"image_url": {
+"url": "https://oss.heyoos.com/ai-draw/user/-76dda2d5-eeda-4da8-9a76-94de0f2c93c1.png"
+}
+}
+]
+}
+],
+"max_tokens": 5000
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `grok-4` | The model to use for the request. `grok-4` |
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   * role:user,The role of the message. * role:assistant,The role of the message. * role:system,The role of the message. |
+| `content` | array | ✅ Yes | - |   text , image_url |
+| `text` | string | ✅ Yes | - | * type:text,The positive prompt for the generation. * type:image_url,Optional image reference that guides generation. |
+| `image_url` | object | ✅ Yes | - |  * type:image_url,The URL of the image to use for the generation. |
+| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+---
+title: 'kling-lipsync (text to video)'
+sidebarTitle: 'Text to Speech Lip Sync'
+api: 'POST /api/v3/kwaivgi/kling-lipsync/text-to-video'
+description: 'Text to Speech with Lip Sync'
+mode: 'wide'
+---
+
+Kling's GPTProto format for the text to video API.
+
+
+
+
+
+## Usage Notes
+
+- **Face Requirements**: The video should contain a clear, visible face for optimal lip synchronization. The model creates unique movement trajectories based on facial features
+- **Natural Lip Movements**: The AI generates naturally matched lip movements that synchronize precisely with the generated audio
+- **Video Integrity**: Areas outside the face remain consistent with the original video, ensuring visual integrity and continuity
+- **Voice Models**: Different `voice_id` values provide different character voices and speaking styles (e.g., "genshin_klee2" for anime-style voices)
+- **Language Support**: Use the `voice_language` parameter to specify the language for speech generation (e.g., "en" for English, "zh" for Chinese, "ja" for Japanese)
+- **Speed Control**: The `voice_speed` parameter allows you to control speech rate. Default is 1.0 (normal speed), values > 1.0 increase speed, values < 1.0 decrease speed
+- **Processing Time**: Processing duration varies based on text length, video length, and complexity
+- **Query Results**: Use the task ID returned in the response to query the generation status via the [Query Task](/api/kling/kling-lipsync/gptproto-format/query-task) endpoint

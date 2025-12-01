@@ -1,0 +1,69 @@
+---
+title: 'speech-2.5-turbo-preview-voice-clone (file upload)'
+sidebarTitle: 'FileUpload'
+api: 'POST /v1/file/upload'
+description: 'FileUpload'
+mode: 'wide'
+---
+
+Minimax's GPTProto format for the fileupload API.
+
+
+
+
+
+
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `file` | string | ✅ Yes | `/Users/Downloads/1948381787193495554.jpg` | file parameter |
+
+
+## Response
+
+
+
+

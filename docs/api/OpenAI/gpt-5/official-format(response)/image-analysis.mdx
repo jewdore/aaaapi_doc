@@ -1,0 +1,241 @@
+---
+title: 'gpt-5 (image analysis)'
+sidebarTitle: 'Image Analysis'
+api: 'POST /v1/responses'
+description: "Analyze and understand image content using vision-enabled models"
+mode: 'wide'
+---
+
+OpenAI's official format(response) for the image analysis API.
+
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1/responses' \
+--header 'Authorization: sk-*****' \
+--header 'Content-Type: application/json' \
+--data '{
+    "model": "gpt-5",
+    "input": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "input_text",
+                    "text": "What is in this image?"
+                },
+                {
+                    "type": "input_image",
+                    "image_url": "data:image/jpeg;base64,${base64Image}"
+                }
+            ]
+        }
+    ]
+}'
+```
+
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/responses"
+headers = {
+    "Authorization": "sk-*****",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "model": "gpt-5",
+    "input": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "input_text",
+                    "text": "What is in this image?"
+                },
+                {
+                    "type": "input_image",
+                    "image_url": "data:image/jpeg;base64,${base64Image}"
+                }
+            ]
+        }
+    ]
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/responses";
+const headers = {
+  "Authorization": "sk-*****",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "gpt-5",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "What is in this image?"
+        },
+        {
+          "type": "input_image",
+          "image_url": "data:image/jpeg;base64,${base64Image}"
+        }
+      ]
+    }
+  ]
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/responses"
+
+    payload := map[string]interface{}{
+        "model": "gpt-5",
+        "input": []map[string]interface{}{
+            {
+                "role": "user",
+                "content": []map[string]interface{}{
+                    {
+                        "type": "input_text",
+                        "text": "What is in this image?",
+                    },
+                    {
+                        "type":     "input_image",
+                        "image_url": "data:image/jpeg;base64,${base64Image}",
+                    },
+                },
+            },
+        },
+    }
+
+    jsonData, _ := json.Marshal(payload)
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "sk-*****")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 200 - Success
+{
+  "id": "resp-abc123",
+  "object": "response",
+  "created": 1699896916,
+  "model": "gpt-5",
+  "output": "The image shows a wooden boardwalk path extending through a lush green grassland. The boardwalk appears to lead toward a distant tree line under a bright blue sky with some clouds. The grass on either side of the boardwalk is vibrant green, suggesting it might be spring or summer. The scene has a peaceful, natural atmosphere with good visibility and sunny weather conditions.",
+  "usage": {
+    "prompt_tokens": 1250,
+    "completion_tokens": 89,
+    "total_tokens": 1339
+  }
+}
+```
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-5` | The model to use for the request. Must be a vision-enabled model. |
+| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects supporting the following types: - **input_text**: Text prompt with `text` field - **input_image**: Image input with `image_url` field, supports: - Base64 encoded images: `data:image/jpeg;base64,{base64_string}` - Supported formats: JPG, PNG Example with base64 encoded image: ```json [ { "role": "user", "content": [ { "type": "input_text", "text": "What is in this image?" }, { "type": "input_image", "image_url": "data:image/jpeg;base64,${base64Image}" } ] } ] ``` |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+
+
+
+
+
+

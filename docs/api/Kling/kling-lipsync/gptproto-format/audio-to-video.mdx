@@ -1,0 +1,176 @@
+---
+title: 'kling-lipsync (audio to video)'
+sidebarTitle: 'Audio To Video (Lip Sync)'
+api: 'POST /api/v3/kwaivgi/kling-lipsync/audio-to-video'
+description: 'Audio To Video (Lip Sync)'
+mode: 'wide'
+---
+
+Kling's GPTProto format for the audio to video API.
+
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/kwaivgi/kling-lipsync/audio-to-video' \
+--header 'Authorization: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "audio": "https://d1q70pf5vjeyhc.cloudfront.net/predictions/1a91a2f60dff4594b2ad9d5396aef8de/1.mp3",
+  "video": "https://d2p7pge43lyniu.cloudfront.net/output/2e375cce-8989-4d72-9629-be85e616b295-u1_07850bf7-c365-46c6-a636-9e5fa6822173.mp4"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/kwaivgi/kling-lipsync/audio-to-video"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "audio": "https://d1q70pf5vjeyhc.cloudfront.net/predictions/1a91a2f60dff4594b2ad9d5396aef8de/1.mp3",
+  "video": "https://d2p7pge43lyniu.cloudfront.net/output/2e375cce-8989-4d72-9629-be85e616b295-u1_07850bf7-c365-46c6-a636-9e5fa6822173.mp4"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/kwaivgi/kling-lipsync/audio-to-video";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "audio": "https://d1q70pf5vjeyhc.cloudfront.net/predictions/1a91a2f60dff4594b2ad9d5396aef8de/1.mp3",
+  "video": "https://d2p7pge43lyniu.cloudfront.net/output/2e375cce-8989-4d72-9629-be85e616b295-u1_07850bf7-c365-46c6-a636-9e5fa6822173.mp4"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/kwaivgi/kling-lipsync/audio-to-video"
+
+    payload := []byte(`{
+"audio": "https://d1q70pf5vjeyhc.cloudfront.net/predictions/1a91a2f60dff4594b2ad9d5396aef8de/1.mp3",
+"video": "https://d2p7pge43lyniu.cloudfront.net/output/2e375cce-8989-4d72-9629-be85e616b295-u1_07850bf7-c365-46c6-a636-9e5fa6822173.mp4"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+    ```json 401 - Invalid signature
+    {
+        "error": {
+        "message": "Invalid signature",
+        "type": "401"
+    }
+    }
+    ```
+
+    ```json 403 - Invalid Token
+    {
+        "error": {
+        "message": "Invalid Token",
+        "type": "403"
+    }
+    }
+    ```
+
+    ```json 403 - Insufficient balance
+    {
+        "error": {
+        "message": "Insufficient balance",
+        "type": "403"
+    }
+    }
+    ```
+
+    ```json 500 - Internal server error
+    {
+        "error": {
+        "message": "Internal server error",
+        "type": "500"
+    }
+    }
+    ```
+
+    ```json 503 - Content policy violation
+    {
+        "error": {
+        "message": "Input may not meet the guidelines. Please adjust and try again.",
+        "type": "503"
+    }
+    }
+    ```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `audio` | string | ✅ Yes | - | The URL pointing to the audio file that will be used for generating synchronized lip movements. Supported audio file formats: .mp3/.wav/.m4a/.aac, with a maximum file size of 5MB. |
+| `video` | string | ✅ Yes | - | The URL of the video file for generating synchronized lip movements. Video files support .mp4/.mov, file size does not exceed 100MB, video length does not exceed 10s and is not shorter than 2s, only 720p and 1080p are supported, length and width dimensions should both be between 720px and 1920px. |
+
+
+
+
+
+
+
+
+## Usage Notes
+
+- The video should contain a clear, visible face for optimal lip synchronization
+- Audio duration should match or be shorter than the video duration
+- Processing time varies based on video length and complexity
+- Use the task ID returned in the response to query the generation status via the [Query Task](/api/kling/official-format/query-task) endpoint

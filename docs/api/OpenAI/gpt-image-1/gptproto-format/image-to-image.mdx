@@ -1,0 +1,207 @@
+---
+title: 'gpt-image-1 (image to image)'
+sidebarTitle: 'Image to Image'
+api: 'POST /api/v3/openai/gpt-image-1/image-edit'
+description: 'Edit and transform images based on text prompts'
+mode: 'wide'
+---
+
+OpenAI's GPTProto format for the image to image API.
+
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1/image-edit' \
+  --header 'Authorization: YOUR_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "image": [
+        "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
+    ],
+    "prompt": "The cat is running on the grassland",
+    "n": 1,
+    "quality": "auto",
+    "background": "auto",
+    "enable_sync_mode": "false",
+    "response_format": "b64_json"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "image": [
+        "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
+    ],
+    "prompt": "The cat is running on the grassland",
+    "n": 1,
+    "quality": "auto",
+    "background": "auto",
+    "enable_sync_mode": "false",
+    "response_format": "b64_json"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
+  ],
+  "prompt": "The cat is running on the grassland",
+  "n": 1,
+  "quality": "auto",
+  "background": "auto",
+  "enable_sync_mode": "false",
+  "response_format": "b64_json"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit"
+
+    payload := []byte(`{
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
+  ],
+  "prompt": "The cat is running on the grassland",
+  "n": 1,
+  "quality": "auto",
+  "background": "auto",
+  "enable_sync_mode": "false",
+  "response_format": "b64_json"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 400 - Invalid parameters
+{
+  "error": {
+    "message": "Invalid image URL or parameters",
+    "type": "400"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | array | ✅ Yes | - | The images to edit. A maximum of 16 reference images can be uploaded. |
+| `prompt` | string | ✅ Yes | `The cat is running on the grassland` | A text description of the desired image(s). The maximum length is 32000 characters for gpt-image-1. |
+| `mask` | string | ❌ No | - | An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited. If there are multiple images provided, the mask will be applied on the first image. Must be a valid PNG file, less than 4MB, and have the same dimensions as image. |
+| `n` | integer | ❌ No | `1` | The number of images to generate. Must be between 1 and 10. |
+| `quality` | string | ❌ No | `auto` | The quality of the image that will be generated. Options: `high`, `medium`, `low`. Only supported for gpt-image-1. |
+| `background` | string | ❌ No | `auto` | Allows to set transparency for the background of the generated image(s). This parameter is only supported for gpt-image-1. Must be one of `transparent`, `opaque` or `auto` (default value). When `auto` is used, the model will automatically determine the best background for the image. |
+| `enable_sync_mode` | string | ❌ No | `false` | Whether to enable synchronous mode. Options: `false`, `true` |
+| `response_format` | string | ❌ No | `b64_json` | The format in which the generated images are returned. Must be one of `url` or `b64_json`. |
+
+
+
+
+
+
+
+
+

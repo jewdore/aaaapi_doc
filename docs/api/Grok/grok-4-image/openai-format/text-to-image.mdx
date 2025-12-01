@@ -1,0 +1,150 @@
+---
+title: 'grok-4-image (text to image)'
+sidebarTitle: 'text to imaget'
+api: 'POST /v1/images/generations'
+description: 'Grok text to image generation API.'
+mode: 'wide'
+---
+
+<CodeGroup>
+
+```bash cURL
+curl --location --request POST 'https://gptproto.com/v1/images/generations' \
+--header 'Authorization: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "model": "grok-4-image",
+    "prompt": "Over-the-shoulder shot, horizontal lens. From behind a tall, bald man in a dark coat, we see into a chaotic, party-lit laboratory. The man'\''s sharp silhouette frames the scene. In the distance, under a spinning disco ball, three small, yellow creatures are dancing wildly among waving robotic arms. The man'\''s head is slightly tilted, and though we can'\''t see his full face, the corner of a smile is visible, suggesting his anger has been replaced by fond exasperation. The room is a swirl of color and light."
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/images/generations"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "model": "grok-4-image",
+  "prompt": "Over-the-shoulder shot, horizontal lens. From behind a tall, bald man in a dark coat, we see into a chaotic, party-lit laboratory. The man's sharp silhouette frames the scene. In the distance, under a spinning disco ball, three small, yellow creatures are dancing wildly among waving robotic arms. The man's head is slightly tilted, and though we can't see his full face, the corner of a smile is visible, suggesting his anger has been replaced by fond exasperation. The room is a swirl of color and light."
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/images/generations";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "grok-4-image",
+  "prompt": "Over-the-shoulder shot, horizontal lens. From behind a tall, bald man in a dark coat, we see into a chaotic, party-lit laboratory. The man's sharp silhouette frames the scene. In the distance, under a spinning disco ball, three small, yellow creatures are dancing wildly among waving robotic arms. The man's head is slightly tilted, and though we can't see his full face, the corner of a smile is visible, suggesting his anger has been replaced by fond exasperation. The room is a swirl of color and light."
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/images/generations"
+
+    payload := []byte(`{
+"model": "grok-4-image",
+"prompt": "Over-the-shoulder shot, horizontal lens. From behind a tall, bald man in a dark coat, we see into a chaotic, party-lit laboratory. The man's sharp silhouette frames the scene. In the distance, under a spinning disco ball, three small, yellow creatures are dancing wildly among waving robotic arms. The man's head is slightly tilted, and though we can't see his full face, the corner of a smile is visible, suggesting his anger has been replaced by fond exasperation. The room is a swirl of color and light."
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `grok-4-image` | The model to use for image generation. `grok-4-image` |
+| `prompt` | string | ✅ Yes | - | The text prompt describing the image to generate |
+
+
+
+
+

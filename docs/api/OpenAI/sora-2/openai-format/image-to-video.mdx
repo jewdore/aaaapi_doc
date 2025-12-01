@@ -1,0 +1,258 @@
+---
+title: 'sora-2 (image to video)'
+sidebarTitle: 'Image to Video'
+api: 'POST /v1/chat/completions'
+description: 'Image to Video'
+mode: 'wide'
+---
+
+This endpoint provides chat mode functionality.
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "sora-2",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "video of a girl dancing"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+          }
+        }
+      ]
+    }
+  ],
+  "stream": true
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/chat/completions"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "model": "sora-2",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "video of a girl dancing"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+          }
+        }
+      ]
+    }
+  ],
+  "stream": true
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/chat/completions";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "sora-2",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "video of a girl dancing"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+          }
+        }
+      ]
+    }
+  ],
+  "stream": true
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/chat/completions"
+
+    payload := []byte(`{
+"model": "sora-2",
+"messages": [
+{
+"role": "user",
+"content": [
+{
+"type": "text",
+"text": "video of a girl dancing"
+},
+{
+"type": "image_url",
+"image_url": {
+"url": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+}
+}
+]
+}
+],
+"stream": true
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `sora-2` | The model to use for the request. `sora-2` |
+| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   * role:user,The role of the message. * role:assistant,The role of the message. * role:system,The role of the message. |
+| `content` | array | ✅ Yes | - |   text , image_url |
+| `text` | string | ✅ Yes | - | * type:text,The positive prompt for the generation. * type:image_url,Optional image reference that guides generation. |
+| `image_url` | object | ✅ Yes | - |  * type:image_url,The URL of the image to use for the generation. |
+| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
+
+
+
+
+
+
+## Response
+
+```
+{
+    "choices": [
+        {
+            "delta": {
+                "content": "> ✅ Video generated successfully, [click here](https://oss.heyoos.com/sora/XXXXX83.mp4) to view video~~~\n\n",
+                "role": "assistant"
+            },
+            "index": 0
+        }
+    ],
+    "created": 0,
+    "id": "39a5d-xxxxx",
+    "model": "sora-2",
+    "object": "chat.completion.chunk"
+}
+```
+
+## F&Q
+Q: How to control the video duration?
+
+A:  Can control the duration. 
+you need to add a duration flag in the prompt, such as' duration: 5 seconds'. Sora-2 supports videos of up to 15 seconds.
+
+
+
+

@@ -1,0 +1,66 @@
+---
+title: 'speech-2.5-turbo-preview-voice-clone (get task)'
+sidebarTitle: 'Query Task'
+api: 'GET /api/v3/predictions/{task_id}/result'
+description: 'Query Task'
+mode: 'wide'
+---
+
+Minimax's GPTProto format for the get task API.
+
+
+
+
+
+
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `task_id` | string | ❌ No | - | task ID |
+
+
+
+

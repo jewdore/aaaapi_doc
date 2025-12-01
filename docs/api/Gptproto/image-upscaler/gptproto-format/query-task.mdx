@@ -1,0 +1,64 @@
+---
+title: 'image-upscaler (query task)'
+sidebarTitle: 'Query Task'
+api: 'GET /api/v3/predictions/$:requestId/result'
+description: 'Query Task'
+mode: 'wide'
+---
+
+Gptproto's GPTProto format for the query task API.
+
+
+
+
+
+
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Path Parameters
+
+
+
+
+
+

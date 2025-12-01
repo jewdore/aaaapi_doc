@@ -1,0 +1,192 @@
+---
+title: 'gpt-image-1 (image to image)'
+sidebarTitle: 'Image to Image'
+api: 'POST /v1/images/edits'
+description: '[Image](https://platform.openai.com/docs/api-reference/images/createEdit)Creates an edited or extended image given an original image and a prompt.Related Guides: [Image Generation](https://platform.openai.com/docs/guides/images)Edit an existing image based on the prompt.'
+mode: 'wide'
+---
+
+OpenAI's official format for the image to image API.
+
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/images/edits" \
+  -H "Authorization: YOUR_API_KEY" \
+  -F "model=gpt-image-1" \
+  -F "image=@/path/to/image.png" \
+  -F "prompt=A cat wearing a hat" \
+  -F "mask=@/path/to/mask.png" \
+  -F "n=1" \
+  -F "size=1024x1024"
+```
+
+```python Python
+import requests
+
+url = "https://gptproto.com/v1/images/edits"
+headers = {
+    "Authorization": "YOUR_API_KEY"
+}
+
+files = {
+    "model": (None, "gpt-image-1"),
+    "image": open("/path/to/image.png", "rb"),
+    "prompt": (None, "A cat wearing a hat"),
+    "mask": open("/path/to/mask.png", "rb"),
+    "n": (None, "1"),
+    "size": (None, "1024x1024")
+}
+
+response = requests.post(url, headers=headers, files=files)
+result = response.json()
+print(result)
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/images/edits";
+const headers = {
+  "Authorization": "YOUR_API_KEY"
+};
+
+const formData = new FormData();
+formData.append("model", "gpt-image-1");
+formData.append("image", imageFile); // imageFile is a File object
+formData.append("prompt", "A cat wearing a hat");
+formData.append("mask", maskFile); // maskFile is a File object (optional)
+formData.append("n", "1");
+formData.append("size", "1024x1024");
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: formData
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "fmt"
+    "io"
+    "io/ioutil"
+    "mime/multipart"
+    "net/http"
+    "os"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/images/edits"
+
+    var b bytes.Buffer
+    w := multipart.NewWriter(&b)
+
+    w.WriteField("model", "gpt-image-1")
+
+    imageFile, _ := os.Open("/path/to/image.png")
+    defer imageFile.Close()
+    imagePart, _ := w.CreateFormFile("image", "image.png")
+    io.Copy(imagePart, imageFile)
+
+    w.WriteField("prompt", "A cat wearing a hat")
+
+    maskFile, _ := os.Open("/path/to/mask.png")
+    defer maskFile.Close()
+    maskPart, _ := w.CreateFormFile("mask", "mask.png")
+    io.Copy(maskPart, maskFile)
+
+    w.WriteField("n", "1")
+    w.WriteField("size", "1024x1024")
+    w.Close()
+
+    req, _ := http.NewRequest("POST", url, &b)
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", w.FormDataContentType())
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-image-1` | The model to use for the request |
+| `image` | file | ✅ Yes | - | The image to edit. Must be a valid PNG file, less than 4MB, and square. |
+| `prompt` | string | ✅ Yes | `A cat wearing a hat` | A text description of the desired image(s). The maximum length is 1000 characters. |
+| `mask` | file | ❌ No | - | An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as image. |
+| `n` | integer | ❌ No | `1` | The number of images to generate. Must be between 1 and 10. |
+| `size` | string | ❌ No | `1024x1024` | The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`. |
+
+
+
+
+
+
+
+
+
+

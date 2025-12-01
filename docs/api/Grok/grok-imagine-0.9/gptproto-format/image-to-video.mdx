@@ -1,0 +1,169 @@
+---
+title: 'grok-imagine-0.9 (image to video)'
+sidebarTitle: 'Image to Video'
+api: 'POST /api/v3/grok/grok-imagine-0.9/image-to-video'
+description: 'Image to Video'
+mode: 'wide'
+---
+
+Grok's GPTProto format for the image to video API.
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/grok/grok-imagine-0.9/image-to-video" \
+  -H "Authorization: sk-***********" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "grok-imagine-0.9",
+    "prompt": "跳舞",
+    "image": "https://oss.heyoos.com/2025/11/20/4cc8f98d0e7e4b19a5c73b0f8fc8c16c.jpeg",
+    "size": ""
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/grok/grok-imagine-0.9/image-to-video"
+headers = {
+    "Authorization": "sk-***********",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "model": "grok-imagine-0.9",
+    "prompt": "跳舞",
+    "image": "https://oss.heyoos.com/2025/11/20/4cc8f98d0e7e4b19a5c73b0f8fc8c16c.jpeg",
+    "size": ""
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/grok/grok-imagine-0.9/image-to-video";
+const headers = {
+  "Authorization": "sk-***********",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "grok-imagine-0.9",
+  "prompt": "跳舞",
+  "image": "https://oss.heyoos.com/2025/11/20/4cc8f98d0e7e4b19a5c73b0f8fc8c16c.jpeg",
+  "size": ""
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/grok/grok-imagine-0.9/image-to-video"
+
+    payload := []byte(`{
+"model": "grok-imagine-0.9",
+"prompt": "跳舞",
+"image": "https://oss.heyoos.com/2025/11/20/4cc8f98d0e7e4b19a5c73b0f8fc8c16c.jpeg",
+"size": ""
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "sk-***********")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 200 - Success
+{
+  "status": "success",
+  "task_id": "3cafe8541391455fba76ce18829ef4c9"
+}
+```
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `Authorization` (Header) | string | ✅ Yes | - | Your API key in the format: `sk-***********` |
+| `model` | string | ✅ Yes | `grok-imagine-0.9` | The model identifier |
+| `prompt` | string | ✅ Yes | - | The prompt describing the desired video animation |
+| `image` | string | ✅ Yes | - | URL of the input image to animate |
+| `size` | string | ❌ No | - | Optional size parameter for the output video |
+

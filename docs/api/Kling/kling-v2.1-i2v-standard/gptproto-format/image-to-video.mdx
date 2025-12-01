@@ -1,0 +1,92 @@
+---
+title: 'kling-v2.1-i2v-standard (image to video)'
+sidebarTitle: 'Image to Video'
+api: 'POST /api/v3/kwaivgi/kling-v2.1-i2v-standard'
+description: 'Image to Video'
+mode: 'wide'
+---
+
+Kling's GPTProto format for the image to video API.
+
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-standard" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "image": "https://h2.inkwai.com/bs2/upload-ylab-stunt/se/ai_portal_queue_mmu_image_upscale_aiweb/3214b798-e1b4-4b00-b7af-72b5b0417420_raw_image_0.jpg",
+    "prompt": "The astronaut stood up and walked away",
+    "negative_prompt": "",
+    "guidance_scale": 0.5,
+    "duration": "5"
+}'
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | - | The positive prompt for the generation. |
+| `negative_prompt` | string | ❌ No | - | The negative prompt for the generation. |
+| `image` | string | ✅ Yes | - | First frame of the video; Supported image formats include.jpg/.jpeg/.png; The image file size cannot exceed 10MB, and the image resolution should not be less than 300*300px. |
+| `guidance_scale` | number | ❌ No | `0.5` | 0.00 ~ 1.00 . The guidance scale to use for the generation. |
+| `duration` | integer | ❌ No | `5` | 5, 10. default 5 . The duration of the generated media in seconds. |
+
+
+
+
+
+
+
+

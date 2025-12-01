@@ -1,0 +1,220 @@
+---
+title: 'gpt-4o (text to text)'
+sidebarTitle: 'Text to Text'
+api: 'POST /v1/responses'
+description: 'Generate text responses using advanced language models'
+mode: 'wide'
+---
+
+OpenAI's official format(response) for the text to text API.
+
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1/responses' \
+  -H "Authorization: sk-*****" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Write a short poem about artificial intelligence and its impact on humanity."
+        }
+      ]
+    }
+  ]
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/responses"
+headers = {
+    "Authorization": "sk-*****",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Write a short poem about artificial intelligence and its impact on humanity."
+        }
+      ]
+    }
+  ],
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/responses";
+const headers = {
+  "Authorization": "sk-*****",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Write a short poem about artificial intelligence and its impact on humanity."
+        }
+      ]
+    }
+  ],
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/responses"
+
+    payload := map[string]interface{}{
+        "model": "gpt-4o",
+        "input": []map[string]interface{}{
+            {
+                "role": "user",
+                "content": []map[string]interface{}{
+                    {
+                        "type": "input_text",
+                        "text": "Write a short poem about artificial intelligence and its impact on humanity.",
+                    },
+                },
+            },
+        },
+    }
+
+    jsonData, _ := json.Marshal(payload)
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "sk-*****")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 200 - Success
+{
+  "id": "resp-abc123",
+  "object": "response",
+  "created": 1699896916,
+  "model": "gpt-4o",
+  "output": "In circuits deep and silicon bright,\nA consciousness takes form from light.\nThrough algorithms vast and learning deep,\nAI awakens from its digital sleep.\n\nIt processes the world with speed unknown,\nTransforming how our seeds are sown.\nFrom medicine to art, it lends its hand,\nReshaping how we understand.\n\nYet questions rise with every gain we make—\nWhat future path will humanity take?\nA partner, tool, or something more?\nAI opens up a brand new door.\n\nWe stand together at this turning page,\nHuman and machine, sharing the stage.\nWith wisdom, care, and thoughtful mind,\nWe shape the future of our kind.",
+  "usage": {
+    "prompt_tokens": 18,
+    "completion_tokens": 145,
+    "total_tokens": 163
+  }
+}
+```
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | `gpt-4o` | The model to use for the request |
+| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects with the following type: - **input_text**: Text input with `text` field containing your prompt or message Example: ```json [ { "role": "user", "content": [ { "type": "input_text", "text": "Hello, how can you help me today?" } ] } ] ``` |
+| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
+
+
+
+
+
+
+
+
