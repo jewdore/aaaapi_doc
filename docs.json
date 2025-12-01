@@ -596,54 +596,6 @@
                                                 ]
                                             }
                                         ]
-                                    },
-                                    {
-                                        "group": "sora2-pro-10-large",
-                                        "pages": [
-                                            {
-                                                "group": "gptproto-format",
-                                                "pages": [
-                                                    "docs/api/OpenAI/sora2-pro-10-large/gptproto-format/image-to-video-pro",
-                                                    "docs/api/OpenAI/sora2-pro-10-large/gptproto-format/text-to-video-pro"
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "group": "sora2-pro-10-small",
-                                        "pages": [
-                                            {
-                                                "group": "gptproto-format",
-                                                "pages": [
-                                                    "docs/api/OpenAI/sora2-pro-10-small/gptproto-format/image-to-video-pro",
-                                                    "docs/api/OpenAI/sora2-pro-10-small/gptproto-format/text-to-video-pro"
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "group": "sora2-pro-15-large",
-                                        "pages": [
-                                            {
-                                                "group": "gptproto-format",
-                                                "pages": [
-                                                    "docs/api/OpenAI/sora2-pro-15-large/gptproto-format/image-to-video-pro",
-                                                    "docs/api/OpenAI/sora2-pro-15-large/gptproto-format/text-to-video-pro"
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "group": "sora2-pro-15-small",
-                                        "pages": [
-                                            {
-                                                "group": "gptproto-format",
-                                                "pages": [
-                                                    "docs/api/OpenAI/sora2-pro-15-small/gptproto-format/image-to-video-pro",
-                                                    "docs/api/OpenAI/sora2-pro-15-small/gptproto-format/text-to-video-pro"
-                                                ]
-                                            }
-                                        ]
                                     }
                                 ],
                                 "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/GPT.png"
