@@ -19,16 +19,14 @@ BytePlus's official format for the text to video API.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/contents/generations/tasks" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "model": "seedance-1-0-lite-i2v-250428",
-  "prompt": "Photorealistic style: Under a clear blue sky, a vast expanse of white daisy fields stretches out. The camera gradually zooms in and finally fixates on a close - up of a single daisy, with several glistening dewdrops resting on its petals.  --ratio 16:9  --resolution 720p  --duration 5 --camerafixed false",
-  "loop": false,
-  "duration": "10s",
-  "dimension": "768:768",
-  "seed": 12345
+curl --location 'https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-t2v-250428/text-to-video' \
+--header 'authorization: sk-xx' \
+--data '{
+    "prompt": "The camera enters a bright and cozy band rehearsal room—empty of people but full of instruments: guitars, amps, bass, drums. The scene is rich in realistic detail. [Slow pan] as the drumhead subtly quivers in the silence.",
+    "aspect_ratio": "16:9",
+    "resolution": "480p",
+    "duration": "5",
+    "seed": -1
 }'
 ```
 
@@ -36,19 +34,17 @@ curl -X POST "https://gptproto.com/api/v3/contents/generations/tasks" \
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/contents/generations/tasks"
+url = "https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-t2v-250428/text-to-video"
 headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
-    "Content-Type": "application/json"
+    "authorization": "sk-xx"
 }
 
 data = {
-    "model": "seedance-1-0-lite-i2v-250428",
-    "prompt": "Photorealistic style: Under a clear blue sky, a vast expanse of white daisy fields stretches out. The camera gradually zooms in and finally fixates on a close - up of a single daisy, with several glistening dewdrops resting on its petals.  --ratio 16:9  --resolution 720p  --duration 5 --camerafixed false",
-    "loop": False,
-    "duration": "10s",
-    "dimension": "768:768",
-    "seed": 12345
+    "prompt": "The camera enters a bright and cozy band rehearsal room—empty of people but full of instruments: guitars, amps, bass, drums. The scene is rich in realistic detail. [Slow pan] as the drumhead subtly quivers in the silence.",
+    "aspect_ratio": "16:9",
+    "resolution": "480p",
+    "duration": "5",
+    "seed": -1
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -57,19 +53,17 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/contents/generations/tasks";
+const url = "https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-t2v-250428/text-to-video";
 const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
-  "Content-Type": "application/json"
+  "authorization": "sk-xx"
 };
 
 const data = {
-  model: "seedance-1-0-lite-i2v-250428",
-  prompt: "Photorealistic style: Under a clear blue sky, a vast expanse of white daisy fields stretches out. The camera gradually zooms in and finally fixates on a close - up of a single daisy, with several glistening dewdrops resting on its petals.  --ratio 16:9  --resolution 720p  --duration 5 --camerafixed false",
-  loop: false,
-  duration: "10s",
-  dimension: "768:768",
-  seed: 12345
+  prompt: "The camera enters a bright and cozy band rehearsal room—empty of people but full of instruments: guitars, amps, bass, drums. The scene is rich in realistic detail. [Slow pan] as the drumhead subtly quivers in the silence.",
+  aspect_ratio: "16:9",
+  resolution: "480p",
+  duration: "5",
+  seed: -1
 };
 
 fetch(url, {
@@ -94,20 +88,18 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/contents/generations/tasks"
+    url := "https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-t2v-250428/text-to-video"
 
     payload := []byte(`{
-  "model": "seedance-1-0-lite-i2v-250428",
-  "prompt": "Photorealistic style: Under a clear blue sky, a vast expanse of white daisy fields stretches out. The camera gradually zooms in and finally fixates on a close - up of a single daisy, with several glistening dewdrops resting on its petals.  --ratio 16:9  --resolution 720p  --duration 5 --camerafixed false",
-  "loop": false,
-  "duration": "10s",
-  "dimension": "768:768",
-  "seed": 12345
+  "prompt": "The camera enters a bright and cozy band rehearsal room—empty of people but full of instruments: guitars, amps, bass, drums. The scene is rich in realistic detail. [Slow pan] as the drumhead subtly quivers in the silence.",
+  "aspect_ratio": "16:9",
+  "resolution": "480p",
+  "duration": "5",
+  "seed": -1
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
+    req.Header.Set("authorization", "sk-xx")
 
     client := &http.Client{}
     resp, err := client.Do(req)

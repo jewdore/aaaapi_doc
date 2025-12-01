@@ -19,27 +19,18 @@ BytePlus's GPTProto format for the image to video API.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/contents/generations/tasks" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "camerafixed": false,
-  "content": [
-    {
-      "type": "image_url",
-      "image_url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg"
-    },
-    {
-      "type": "text",
-      "text": "The camera pans from left to right, revealing the full scene of the image"
-    }
-  ],
-  "framepersecond": 24,
-  "model": "seedance-1-0-lite-i2v-250428",
-  "ratio": "16:9",
-  "resolution": "1080p",
-  "seed": -1,
-  "watermark": false
+curl --location 'https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-i2v-250428/image-to-video' \
+--header 'Authorization: sk-xx' \
+--header 'Content-Type: application/json' \
+--data '{
+    "prompt": "Tail flick slow-motion, cut to POV shot through window of sparrows taking flight, ending with resigned yawn",
+    "image":"https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1753708615921599101_VpKMX8di.png",
+    "last_image":"",
+    "duration": 5,
+    "aspect_ratio": "1:1",
+    "camera_fixed": false,
+    "resolution": "480p",
+    "seed": -1
 }'
 ```
 
@@ -47,30 +38,21 @@ curl -X POST "https://gptproto.com/api/v3/contents/generations/tasks" \
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/contents/generations/tasks"
+url = "https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-i2v-250428/image-to-video"
 headers = {
-    "Authorization": "YOUR_API_KEY",
+    "Authorization": "sk-xx",
     "Content-Type": "application/json"
 }
 
 data = {
-  "camerafixed": false,
-  "content": [
-    {
-      "type": "image_url",
-      "image_url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg"
-    },
-    {
-      "type": "text",
-      "text": "The camera pans from left to right, revealing the full scene of the image"
-    }
-  ],
-  "framepersecond": 24,
-  "model": "seedance-1-0-lite-i2v-250428",
-  "ratio": "16:9",
-  "resolution": "1080p",
-  "seed": -1,
-  "watermark": false
+    "prompt": "Tail flick slow-motion, cut to POV shot through window of sparrows taking flight, ending with resigned yawn",
+    "image": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1753708615921599101_VpKMX8di.png",
+    "last_image": "",
+    "duration": 5,
+    "aspect_ratio": "1:1",
+    "camera_fixed": False,
+    "resolution": "480p",
+    "seed": -1
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -79,30 +61,21 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/contents/generations/tasks";
+const url = "https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-i2v-250428/image-to-video";
 const headers = {
-  "Authorization": "YOUR_API_KEY",
+  "Authorization": "sk-xx",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "camerafixed": false,
-  "content": [
-    {
-      "type": "image_url",
-      "image_url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg"
-    },
-    {
-      "type": "text",
-      "text": "The camera pans from left to right, revealing the full scene of the image"
-    }
-  ],
-  "framepersecond": 24,
-  "model": "seedance-1-0-lite-i2v-250428",
-  "ratio": "16:9",
-  "resolution": "1080p",
-  "seed": -1,
-  "watermark": false
+    "prompt": "Tail flick slow-motion, cut to POV shot through window of sparrows taking flight, ending with resigned yawn",
+    "image": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1753708615921599101_VpKMX8di.png",
+    "last_image": "",
+    "duration": 5,
+    "aspect_ratio": "1:1",
+    "camera_fixed": false,
+    "resolution": "480p",
+    "seed": -1
 };
 
 fetch(url, {
@@ -127,30 +100,21 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/contents/generations/tasks"
+    url := "https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-i2v-250428/image-to-video"
 
     payload := []byte(`{
-"camerafixed": false,
-"content": [
-{
-"type": "image_url",
-"image_url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg"
-},
-{
-"type": "text",
-"text": "The camera pans from left to right, revealing the full scene of the image"
-}
-],
-"framepersecond": 24,
-"model": "seedance-1-0-lite-i2v-250428",
-"ratio": "16:9",
-"resolution": "1080p",
-"seed": -1,
-"watermark": false
+    "prompt": "Tail flick slow-motion, cut to POV shot through window of sparrows taking flight, ending with resigned yawn",
+    "image": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1753708615921599101_VpKMX8di.png",
+    "last_image": "",
+    "duration": 5,
+    "aspect_ratio": "1:1",
+    "camera_fixed": false,
+    "resolution": "480p",
+    "seed": -1
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Authorization", "sk-xx")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -211,14 +175,14 @@ func main() {
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `camerafixed` | boolean | ❌ No | `false` | Camerafixed parameter |
-| `content` | array | ❌ No | `[{&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: &quot;https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg&quot;}, {&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;The camera pans from left to right, revealing the full scene of the image&quot;}]` | Video generation prompt. Can include parameters like --ratio (16:9, 9:16, 1:1), --resolution (480p, 720p, 1080p), --duration (5-10s), --camerafixed (true/false) |
-| `framepersecond` | integer | ❌ No | `24` | Framepersecond parameter |
-| `model` | string | ✅ Yes | `seedance-1-0-lite-i2v-250428` | The model to use for the request |
-| `ratio` | string | ❌ No | `16:9` | Ratio parameter |
-| `resolution` | string | ❌ No | `1080p` | Resolution parameter |
-| `seed` | integer | ❌ No | `-1` | Seed parameter |
-| `watermark` | boolean | ❌ No | `false` | Watermark parameter |
+| `prompt` | string | ✅ Yes | - | Video generation prompt describing the desired modifications |
+| `image` | string | ✅ Yes | - | Input image URL for image-to-video generation |
+| `last_image` | string | ❌ No | - | Optional ending frame image URL |
+| `duration` | integer | ❌ No | `5` | Video duration in seconds |
+| `aspect_ratio` | string | ❌ No | `1:1` | Video aspect ratio (e.g., 1:1, 16:9, 9:16) |
+| `camera_fixed` | boolean | ❌ No | `false` | Whether camera remains fixed |
+| `resolution` | string | ❌ No | `480p` | Output video resolution (e.g., 480p, 720p, 1080p) |
+| `seed` | integer | ❌ No | `-1` | Random seed for reproducible results (-1 for random) |
 
 
 

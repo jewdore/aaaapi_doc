@@ -19,18 +19,18 @@ BytePlus's GPTProto format for the text to video API.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "model": "seedance-1-0-lite-i2v-250428",
-  "content": [
-    {
-      "type": "text",
-      "text": "Photorealistic style: Under a clear blue sky, a vast expanse of white daisy fields stretches out. The camera gradually zooms in and finally fixates on a close - up of a single daisy, with several glistening dewdrops resting on its petals.  --ratio 16:9  --resolution 720p  --duration 5 --camerafixed false"
-    }
-  ],
-  "duration": 10
+curl --location 'https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-t2v-250428/image-to-video' \
+--header 'Authorization: sk-xx' \
+--header 'Content-Type: application/json' \
+--data '{
+    "prompt": "Tail flick slow-motion, cut to POV shot through window of sparrows taking flight, ending with resigned yawn",
+    "image":"https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1753708615921599101_VpKMX8di.png",
+    "last_image":"",
+    "duration": 5,
+    "aspect_ratio": "1:1",
+    "camera_fixed": false,
+    "resolution": "480p",
+    "seed": -1
 }'
 ```
 
@@ -38,21 +38,21 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
 import requests
 import json
 
-url = "https://gptproto.com/v1/chat/completions"
+url = "https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-t2v-250428/image-to-video"
 headers = {
-    "Authorization": "YOUR_API_KEY",
+    "Authorization": "sk-xx",
     "Content-Type": "application/json"
 }
 
 data = {
-  "model": "seedance-1-0-lite-i2v-250428",
-  "content": [
-    {
-      "type": "text",
-      "text": "Photorealistic style: Under a clear blue sky, a vast expanse of white daisy fields stretches out. The camera gradually zooms in and finally fixates on a close - up of a single daisy, with several glistening dewdrops resting on its petals.  --ratio 16:9  --resolution 720p  --duration 5 --camerafixed false"
-    }
-  ],
-  "duration": 10
+    "prompt": "Tail flick slow-motion, cut to POV shot through window of sparrows taking flight, ending with resigned yawn",
+    "image": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1753708615921599101_VpKMX8di.png",
+    "last_image": "",
+    "duration": 5,
+    "aspect_ratio": "1:1",
+    "camera_fixed": False,
+    "resolution": "480p",
+    "seed": -1
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -61,21 +61,21 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1/chat/completions";
+const url = "https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-t2v-250428/image-to-video";
 const headers = {
-  "Authorization": "YOUR_API_KEY",
+  "Authorization": "sk-xx",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "model": "seedance-1-0-lite-i2v-250428",
-  "content": [
-    {
-      "type": "text",
-      "text": "Photorealistic style: Under a clear blue sky, a vast expanse of white daisy fields stretches out. The camera gradually zooms in and finally fixates on a close - up of a single daisy, with several glistening dewdrops resting on its petals.  --ratio 16:9  --resolution 720p  --duration 5 --camerafixed false"
-    }
-  ],
-  "duration": 10
+    "prompt": "Tail flick slow-motion, cut to POV shot through window of sparrows taking flight, ending with resigned yawn",
+    "image": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1753708615921599101_VpKMX8di.png",
+    "last_image": "",
+    "duration": 5,
+    "aspect_ratio": "1:1",
+    "camera_fixed": false,
+    "resolution": "480p",
+    "seed": -1
 };
 
 fetch(url, {
@@ -100,21 +100,21 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/v1/chat/completions"
+    url := "https://gptproto.com/api/v3/bytedance/seedance-1-0-lite-t2v-250428/image-to-video"
 
     payload := []byte(`{
-"model": "seedance-1-0-lite-i2v-250428",
-"content": [
-{
-"type": "text",
-"text": "Photorealistic style: Under a clear blue sky, a vast expanse of white daisy fields stretches out. The camera gradually zooms in and finally fixates on a close - up of a single daisy, with several glistening dewdrops resting on its petals.  --ratio 16:9  --resolution 720p  --duration 5 --camerafixed false"
-}
-],
-"duration": 10
+    "prompt": "Tail flick slow-motion, cut to POV shot through window of sparrows taking flight, ending with resigned yawn",
+    "image": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1753708615921599101_VpKMX8di.png",
+    "last_image": "",
+    "duration": 5,
+    "aspect_ratio": "1:1",
+    "camera_fixed": false,
+    "resolution": "480p",
+    "seed": -1
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Authorization", "sk-xx")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -175,12 +175,14 @@ func main() {
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `seedance-1-0-lite-i2v-250428` | The model to use for the request. `seedance-1-0-lite-i2v-250428` |
-| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   * role:user,The role of the message. * role:assistant,The role of the message. * role:system,The role of the message. |
-| `content` | array | ✅ Yes | - |   text , image_url |
-| `text` | string | ✅ Yes | - | * type:text,The positive prompt for the generation. * type:image_url,Optional image reference that guides generation. |
-| `image_url` | object | ✅ Yes | - |  * type:image_url,The URL of the image to use for the generation. |
-| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
+| `prompt` | string | ✅ Yes | - | Video generation prompt describing the desired modifications |
+| `image` | string | ✅ Yes | - | Input image URL for image-to-video generation |
+| `last_image` | string | ❌ No | - | Optional ending frame image URL |
+| `duration` | integer | ❌ No | `5` | Video duration in seconds |
+| `aspect_ratio` | string | ❌ No | `1:1` | Video aspect ratio (e.g., 1:1, 16:9, 9:16) |
+| `camera_fixed` | boolean | ❌ No | `false` | Whether camera remains fixed |
+| `resolution` | string | ❌ No | `480p` | Output video resolution (e.g., 480p, 720p, 1080p) |
+| `seed` | integer | ❌ No | `-1` | Random seed for reproducible results (-1 for random) |
 
 
 

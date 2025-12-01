@@ -25,9 +25,8 @@ curl -X POST "https://gptproto.com/api/v3/images/generations" \
   -d '{
   "model": "seedream-4-0-250828",
   "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-  
   "response_format": "url",
-  "size": "adaptive",
+  "size": "2k",
   "seed": 12,
   "guidance_scale": 2.5,
   "watermark": true
@@ -47,9 +46,9 @@ headers = {
 data = {
     "model": "seedream-4-0-250828",
     "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-    
+
     "response_format": "url",
-    "size": "adaptive",
+    "size": "2k",
     "seed": 12,
     "guidance_scale": 2.5,
     "watermark": True
@@ -70,9 +69,9 @@ const headers = {
 const data = {
   model: "seedream-4-0-250828",
   prompt: "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-  
+
   response_format: "url",
-  size: "adaptive",
+  size: "2k",
   seed: 12,
   guidance_scale: 2.5,
   watermark: true
@@ -105,9 +104,9 @@ func main() {
     payload := []byte(`{
   "model": "seedream-4-0-250828",
   "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-  
+
   "response_format": "url",
-  "size": "adaptive",
+  "size": "2k",
   "seed": 12,
   "guidance_scale": 2.5,
   "watermark": true

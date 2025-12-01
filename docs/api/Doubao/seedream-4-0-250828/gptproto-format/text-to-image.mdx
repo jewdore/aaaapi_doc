@@ -1,7 +1,7 @@
 ---
 title: 'seedream-4-0-250828 (text to image)'
 sidebarTitle: 'Text to Image'
-api: 'POST /v1/images/generations'
+api: 'POST /api/v3/doubao/seedream-4-0-250828/text-to-imgae'
 description: 'Text to Image'
 mode: 'wide'
 ---
@@ -19,17 +19,14 @@ BytePlus's GPTProto format for the text to image API.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/images/generations" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "model": "seedream-4-0-250828",
-  "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-  "response_format": "url",
-  "size": "1024x1024",
-  "seed": 12,
-  "guidance_scale": 2.5,
-  "watermark": true
+curl --location 'https://gptproto.com/api/v3/bytedance/seedream-4-0-250828/text-to-imgae' \
+--header 'Authorization: sk-xx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "enable_base64_output": false,
+  "enable_sync_mode": false,
+  "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character'\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
+  "size": "2227*3183"
 }'
 ```
 
@@ -37,20 +34,17 @@ curl -X POST "https://gptproto.com/v1/images/generations" \
 import requests
 import json
 
-url = "https://gptproto.com/v1/images/generations"
+url = "https://gptproto.com/api/v3/bytedance/seedream-4-0-250828/text-to-imgae"
 headers = {
-    "Authorization": "YOUR_API_KEY",
+    "Authorization": "sk-xx",
     "Content-Type": "application/json"
 }
 
 data = {
-  "model": "seedream-4-0-250828",
-  "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-  "response_format": "url",
-  "size": "1024x1024",
-  "seed": 12,
-  "guidance_scale": 2.5,
-  "watermark": true
+  "enable_base64_output": False,
+  "enable_sync_mode": False,
+  "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character's image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
+  "size": "2227*3183"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -59,20 +53,17 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1/images/generations";
+const url = "https://gptproto.com/api/v3/bytedance/seedream-4-0-250828/text-to-imgae";
 const headers = {
-  "Authorization": "YOUR_API_KEY",
+  "Authorization": "sk-xx",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "model": "seedream-4-0-250828",
-  "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-  "response_format": "url",
-  "size": "1024x1024",
-  "seed": 12,
-  "guidance_scale": 2.5,
-  "watermark": true
+  "enable_base64_output": false,
+  "enable_sync_mode": false,
+  "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character's image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
+  "size": "2227*3183"
 };
 
 fetch(url, {
@@ -97,20 +88,17 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/v1/images/generations"
+    url := "https://gptproto.com/api/v3/bytedance/seedream-4-0-250828/text-to-imgae"
 
     payload := []byte(`{
-"model": "seedream-4-0-250828",
-"prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-"response_format": "url",
-"size": "1024x1024",
-"seed": 12,
-"guidance_scale": 2.5,
-"watermark": true
+  "enable_base64_output": false,
+  "enable_sync_mode": false,
+  "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character's image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
+  "size": "2227*3183"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Authorization", "sk-xx")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -171,13 +159,10 @@ func main() {
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `seedream-4-0-250828` | The model to use for the request |
-| `prompt` | string | ✅ Yes | `Fisheye lens, a cat&apos;&apos;&apos;s head, the picture shows the cat&apos;&apos;&apos;s facial features are distorted due to the shooting method.` | Image generation prompt describing the desired image content |
-| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
-| `size` | string | ❌ No | `1024x1024` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
-| `seed` | integer | ❌ No | `12` | Random seed for reproducible results |
-| `guidance_scale` | number | ❌ No | `2.5` | Controls how closely the image follows the prompt (higher = more strict, typical range: 1.0-7.0) |
-| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to generated image |
+| `enable_base64_output` | boolean | ❌ No | `false` | Whether to output the result as base64 encoded string |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Whether to enable synchronous mode (wait for result) |
+| `prompt` | string | ✅ Yes | `Turn this photo into a characterfigure. Behind it, place a box withthe character&apos;s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.` | Image generation prompt describing the desired image content |
+| `size` | string | ❌ No | `2227*3183` | Output image resolution (format: width*height) |
 
 
 

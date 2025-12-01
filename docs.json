@@ -1758,6 +1758,7 @@
                                                 "group": "gptproto-format",
                                                 "pages": [
                                                     "docs/api/Doubao/doubao-seedream-4-0-250828/gptproto-format/image-to-image",
+                                                    "docs/api/Doubao/doubao-seedream-4-0-250828/gptproto-format/query-task",
                                                     "docs/api/Doubao/doubao-seedream-4-0-250828/gptproto-format/text-to-image"
                                                 ]
                                             },
@@ -1765,6 +1766,7 @@
                                                 "group": "official-format",
                                                 "pages": [
                                                     "docs/api/Doubao/doubao-seedream-4-0-250828/official-format/image-to-image",
+                                                    "docs/api/Doubao/doubao-seedream-4-0-250828/official-format/query-task",
                                                     "docs/api/Doubao/doubao-seedream-4-0-250828/official-format/text-to-image"
                                                 ]
                                             }
@@ -1864,6 +1866,7 @@
                                                 "group": "gptproto-format",
                                                 "pages": [
                                                     "docs/api/Doubao/seedream-4-0-250828/gptproto-format/image-to-image",
+                                                    "docs/api/Doubao/seedream-4-0-250828/gptproto-format/query-task",
                                                     "docs/api/Doubao/seedream-4-0-250828/gptproto-format/text-to-image"
                                                 ]
                                             },
@@ -1871,6 +1874,7 @@
                                                 "group": "official-format",
                                                 "pages": [
                                                     "docs/api/Doubao/seedream-4-0-250828/official-format/image-to-image",
+                                                    "docs/api/Doubao/seedream-4-0-250828/official-format/query-task",
                                                     "docs/api/Doubao/seedream-4-0-250828/official-format/text-to-image"
                                                 ]
                                             }

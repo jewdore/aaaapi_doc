@@ -19,19 +19,18 @@ BytePlus's official format for the image to image API.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/chat/completions" \
+curl -X POST "https://gptproto.com/api/v3/images/generations" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "model": "doubao-seedream-4-0-250828",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Hello, please introduce yourself"
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 2048
+  "prompt": "Change bubbles into heart shape",
+  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "response_format": "url",
+  "size": "2k",
+  "seed": 21,
+  "guidance_scale": 5.5,
+  "watermark": true
 }'
 ```
 
@@ -39,19 +38,21 @@ curl -X POST "https://gptproto.com/api/v3/chat/completions" \
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/chat/completions"
+url = "https://gptproto.com/api/v3/images/generations"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-    "model": "doubao-seedream-4-0-250828",
-    "messages": [
-        {"role": "user", "content": "Hello, please introduce yourself"}
-    ],
-    "temperature": 0.7,
-    "max_tokens": 2048
+  "model": "doubao-seedream-4-0-250828",
+  "prompt": "Change bubbles into heart shape",
+  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "response_format": "url",
+  "size": "2k",
+  "seed": 21,
+  "guidance_scale": 5.5,
+  "watermark": True
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -60,7 +61,7 @@ print(json.dumps(result, indent=2, ensure_ascii=False))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/chat/completions";
+const url = "https://gptproto.com/api/v3/images/generations";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -68,11 +69,13 @@ const headers = {
 
 const data = {
   model: "doubao-seedream-4-0-250828",
-  messages: [
-    { role: "user", content: "Hello, please introduce yourself" }
-  ],
-  temperature: 0.7,
-  max_tokens: 2048
+  prompt: "Change bubbles into heart shape",
+  image: "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  response_format: "url",
+  size: "2k",
+  seed: 21,
+  guidance_scale: 5.5,
+  watermark: true
 };
 
 fetch(url, {
@@ -97,18 +100,17 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/chat/completions"
+    url := "https://gptproto.com/api/v3/images/generations"
 
     payload := []byte(`{
   "model": "doubao-seedream-4-0-250828",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Hello, please introduce yourself"
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 2048
+  "prompt": "Change bubbles into heart shape",
+  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "response_format": "url",
+  "size": "2k",
+  "seed": 21,
+  "guidance_scale": 5.5,
+  "watermark": true
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -185,15 +187,14 @@ func main() {
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `doubao-seedream-4-0-250828` | The endpoint ID for the model. Format: ep-xxxxxxxxxx-xxxxx |
-| `messages` | array | ✅ Yes | `[{'role': 'user', 'content': 'Who are you?'}]` | Array of message objects for the conversation. Each message must have a role (system, user, or assistant) and content. |
-| `temperature` | number | ❌ No | `0.7` | Controls randomness in the output. Range: 0.0 to 1.0 |
-| `top_p` | number | ❌ No | `0.9` | Nucleus sampling parameter. Range: 0.0 to 1.0 |
-| `max_tokens` | integer | ❌ No | `2048` | The maximum number of tokens to generate |
-| `stream` | boolean | ❌ No | `false` | Whether to stream the response using SSE (Server-Sent Events) |
-| `frequency_penalty` | number | ❌ No | `0.0` | Penalize frequent tokens. Range: -2.0 to 2.0 |
-| `presence_penalty` | number | ❌ No | `0.0` | Penalize new tokens based on presence. Range: -2.0 to 2.0 |
-| `stop` | array | ❌ No | - | Up to 4 sequences where the API will stop generating further tokens |
+| `model` | string | ✅ Yes | `doubao-seedream-4-0-250828` | The model identifier for image generation/editing |
+| `prompt` | string | ✅ Yes | - | Description of the desired image transformation or generation |
+| `image` | string | ✅ Yes | - | Input image URL for image-to-image generation |
+| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
+| `size` | string | ❌ No | `adaptive` | Output image resolution. Options: adaptive, 1024x1024, 2K, 4K |
+| `seed` | integer | ❌ No | - | Random seed for reproducible results |
+| `guidance_scale` | number | ❌ No | `5.5` | Controls adherence to the prompt. Range: 1.0-10.0, recommended: 3.0-7.0 |
+| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to the generated image |
 
 
 
