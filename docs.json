@@ -1579,6 +1579,18 @@
                                                 ]
                                             }
                                         ]
+                                    },
+                                    {
+                                        "group": "grok-imagine-0.9",
+                                        "pages": [
+                                            {
+                                                "group": "Gptproto Format",
+                                                "pages": [
+                                                    "docs/api/grok/grok-imagine-0.9/gptproto-format/image-to-video",
+                                                    "docs/api/grok/grok-imagine-0.9/gptproto-format/query-task"
+                                                ]
+                                            }
+                                        ]
                                     }
                                 ],
                                 "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Grok.png"

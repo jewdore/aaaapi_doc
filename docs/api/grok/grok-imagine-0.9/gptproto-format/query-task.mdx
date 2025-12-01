@@ -1,12 +1,12 @@
 ---
-title: 'grok-imagine-0.9 (image to video)'
-sidebarTitle: 'Image to Video'
-api: 'POST /api/v3/grok/grok-imagine-0.9/image-to-video'
-description: 'Image to Video'
+title: 'grok-imagine-0.9 (query task)'
+sidebarTitle: 'Query Task'
+api: 'GET /api/v3/predictions/{task_id}/result'
+description: 'Query Task'
 mode: 'wide'
 ---
 
-Grok's GPTProto format for the image to video API.
+Grok's GPTProto format for the query task API.
 
 
 
@@ -14,57 +14,36 @@ Grok's GPTProto format for the image to video API.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/grok/grok-imagine-0.9/image-to-video" \
+curl -X GET "https://gptproto.com/api/v3/predictions/{task_id}/result" \
   -H "Authorization: sk-***********" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "grok-imagine-0.9",
-    "prompt": "跳舞",
-    "image": "https://oss.heyoos.com/2025/11/20/4cc8f98d0e7e4b19a5c73b0f8fc8c16c.jpeg",
-    "size": ""
-}'
+  -H "Content-Type: application/json"
 ```
 
 ```python Python
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/grok/grok-imagine-0.9/image-to-video"
+url = "https://gptproto.com/api/v3/predictions/{task_id}/result"
 headers = {
     "Authorization": "sk-***********",
     "Content-Type": "application/json"
 }
 
-data = {
-    "model": "grok-imagine-0.9",
-    "prompt": "跳舞",
-    "image": "https://oss.heyoos.com/2025/11/20/4cc8f98d0e7e4b19a5c73b0f8fc8c16c.jpeg",
-    "size": ""
-}
-
-response = requests.post(url, headers=headers, json=data)
+response = requests.get(url, headers=headers)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/grok/grok-imagine-0.9/image-to-video";
+const url = "https://gptproto.com/api/v3/predictions/{task_id}/result";
 const headers = {
   "Authorization": "sk-***********",
   "Content-Type": "application/json"
 };
 
-const data = {
-  "model": "grok-imagine-0.9",
-  "prompt": "跳舞",
-  "image": "https://oss.heyoos.com/2025/11/20/4cc8f98d0e7e4b19a5c73b0f8fc8c16c.jpeg",
-  "size": ""
-};
-
 fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
+  method: "GET",
+  headers: headers
 })
   .then(response => response.json())
   .then(data => console.log(data))
@@ -75,7 +54,6 @@ fetch(url, {
 package main
 
 import (
-    "bytes"
     "encoding/json"
     "fmt"
     "io/ioutil"
@@ -83,16 +61,9 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/grok/grok-imagine-0.9/image-to-video"
+    url := "https://gptproto.com/api/v3/predictions/{task_id}/result"
 
-    payload := []byte(`{
-"model": "grok-imagine-0.9",
-"prompt": "跳舞",
-"image": "https://oss.heyoos.com/2025/11/20/4cc8f98d0e7e4b19a5c73b0f8fc8c16c.jpeg",
-"size": ""
-}`)
-
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req, _ := http.NewRequest("GET", url, nil)
     req.Header.Set("Authorization", "sk-***********")
     req.Header.Set("Content-Type", "application/json")
 
@@ -114,7 +85,7 @@ func main() {
 ```json 200 - Success
 {
   "status": "success",
-  "task_id": "3cafe8541391455fba76ce18829ef4c9"
+  "result": {}
 }
 ```
 
@@ -162,8 +133,5 @@ func main() {
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `Authorization` (Header) | string | ✅ Yes | - | Your API key in the format: `sk-***********` |
-| `model` | string | ✅ Yes | `grok-imagine-0.9` | The model identifier |
-| `prompt` | string | ✅ Yes | - | The prompt describing the desired video animation |
-| `image` | string | ✅ Yes | - | URL of the input image to animate |
-| `size` | string | ❌ No | - | Optional size parameter for the output video |
+| `task_id` (Path) | string | ✅ Yes | - | The task ID returned from the generation request |
 
