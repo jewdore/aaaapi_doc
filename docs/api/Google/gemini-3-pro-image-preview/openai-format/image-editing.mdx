@@ -143,44 +143,6 @@ func main() {
 ```
 </CodeGroup>
 
-<CodeGroup>
-
-```bash cURL
-curl -X POST "https://gptproto.com/v1/images/edits" \
-  -H "Authorization: YOUR_API_KEY" \
-  -F "model=gemini-2.5-flash-image-preview" \
-  -F "image=@/path/to/image.png" \
-  -F "mask=@/path/to/mask.png" \
-  -F "prompt=Fill the masked area with a starry night sky" \
-  -F "n=1" \
-  -F "size=1024x1024"
-```
-
-```python Python
-import requests
-
-url = "https://gptproto.com/v1/images/edits"
-headers = {
-    "Authorization": "YOUR_API_KEY"
-}
-
-files = {
-    "image": open("/path/to/image.png", "rb"),
-    "mask": open("/path/to/mask.png", "rb")
-}
-
-data = {
-    "model": "gemini-2.5-flash-image-preview",
-    "prompt": "Fill the masked area with a starry night sky",
-    "n": 1,
-    "size": "1024x1024"
-}
-
-response = requests.post(url, headers=headers, files=files, data=data)
-result = response.json()
-print(result)
-```
-</CodeGroup>
 
 <CodeGroup>
 

@@ -521,8 +521,6 @@
                                             {
                                                 "group": "official-format",
                                                 "pages": [
-                                                    "docs/api/OpenAI/sora-2/official-format/get-spritesheet",
-                                                    "docs/api/OpenAI/sora-2/official-format/get-thumbnail",
                                                     "docs/api/OpenAI/sora-2/official-format/get-video",
                                                     "docs/api/OpenAI/sora-2/official-format/image-to-video",
                                                     "docs/api/OpenAI/sora-2/official-format/query-task",
@@ -540,12 +538,10 @@
                                             {
                                                 "group": "reverse-format",
                                                 "pages": [
-                                                    "docs/api/OpenAI/sora-2/reverse-format/image-to-video(obsolete)",
                                                     "docs/api/OpenAI/sora-2/reverse-format/image-to-video",
                                                     "docs/api/OpenAI/sora-2/reverse-format/query-result",
                                                     "docs/api/OpenAI/sora-2/reverse-format/query-task",
                                                     "docs/api/OpenAI/sora-2/reverse-format/submit-task",
-                                                    "docs/api/OpenAI/sora-2/reverse-format/text-to-video(obsolete)",
                                                     "docs/api/OpenAI/sora-2/reverse-format/text-to-video"
                                                 ]
                                             }
@@ -942,31 +938,12 @@
                                         "group": "veo-3.1-fast-generate-preview",
                                         "pages": [
                                             {
-                                                "group": "gptproto-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/gptproto-format/firstlast-frame",
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/gptproto-format/get-task-status",
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/gptproto-format/image-to-video916",
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/gptproto-format/text-to-video"
-                                                ]
-                                            },
-                                            {
                                                 "group": "official-format",
                                                 "pages": [
                                                     "docs/api/Google/veo-3.1-fast-generate-preview/official-format/image-to-video",
                                                     "docs/api/Google/veo-3.1-fast-generate-preview/official-format/query-task",
                                                     "docs/api/Google/veo-3.1-fast-generate-preview/official-format/text-to-video",
                                                     "docs/api/Google/veo-3.1-fast-generate-preview/official-format/video-to-video"
-                                                ]
-                                            },
-                                            {
-                                                "group": "openai-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/openai-format/image-to-video-916",
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/openai-format/image-to-video",
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/openai-format/image-to-video169",
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/openai-format/text-to-video-169",
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/openai-format/text-to-video"
                                                 ]
                                             }
                                         ]
@@ -975,31 +952,12 @@
                                         "group": "veo-3.1-generate-preview",
                                         "pages": [
                                             {
-                                                "group": "gptproto-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo-3.1-generate-preview/gptproto-format/firstlast-frame",
-                                                    "docs/api/Google/veo-3.1-generate-preview/gptproto-format/get-task-status",
-                                                    "docs/api/Google/veo-3.1-generate-preview/gptproto-format/image-to-video916",
-                                                    "docs/api/Google/veo-3.1-generate-preview/gptproto-format/text-to-video"
-                                                ]
-                                            },
-                                            {
                                                 "group": "official-format",
                                                 "pages": [
                                                     "docs/api/Google/veo-3.1-generate-preview/official-format/image-to-video",
                                                     "docs/api/Google/veo-3.1-generate-preview/official-format/query-task",
                                                     "docs/api/Google/veo-3.1-generate-preview/official-format/text-to-video",
                                                     "docs/api/Google/veo-3.1-generate-preview/official-format/video-to-video"
-                                                ]
-                                            },
-                                            {
-                                                "group": "openai-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo-3.1-generate-preview/openai-format/image-to-video-916",
-                                                    "docs/api/Google/veo-3.1-generate-preview/openai-format/image-to-video",
-                                                    "docs/api/Google/veo-3.1-generate-preview/openai-format/image-to-video169",
-                                                    "docs/api/Google/veo-3.1-generate-preview/openai-format/text-to-video-169",
-                                                    "docs/api/Google/veo-3.1-generate-preview/openai-format/text-to-video"
                                                 ]
                                             }
                                         ]
@@ -1014,14 +972,6 @@
                                                     "docs/api/Google/veo3/gptproto-format/image-to-video169",
                                                     "docs/api/Google/veo3/gptproto-format/text-to-video-169",
                                                     "docs/api/Google/veo3/gptproto-format/text-to-video-916"
-                                                ]
-                                            },
-                                            {
-                                                "group": "official-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3/official-format/get-task-status",
-                                                    "docs/api/Google/veo3/official-format/image-to-video-916-asyn",
-                                                    "docs/api/Google/veo3/official-format/image-to-video169asyn"
                                                 ]
                                             }
                                         ]
@@ -1123,16 +1073,6 @@
                                                     "docs/api/Google/veo3.1/gptproto-format/image-to-video(9:16)",
                                                     "docs/api/Google/veo3.1/gptproto-format/text-to-video(16:9)"
                                                 ]
-                                            },
-                                            {
-                                                "group": "openai-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3.1/openai-format/firstlast-frame",
-                                                    "docs/api/Google/veo3.1/openai-format/image-to-video(16:9)",
-                                                    "docs/api/Google/veo3.1/openai-format/image-to-video(9:16)",
-                                                    "docs/api/Google/veo3.1/openai-format/text-to-video(16:9)",
-                                                    "docs/api/Google/veo3.1/openai-format/text-to-video(9:16)"
-                                                ]
                                             }
                                         ]
                                     },
@@ -1145,23 +1085,6 @@
                                                     "docs/api/Google/veo3.1-fast/gptproto-format/image-to-video",
                                                     "docs/api/Google/veo3.1-fast/gptproto-format/text-to-video"
                                                 ]
-                                            },
-                                            {
-                                                "group": "official-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3.1-fast/official-format/image-to-video",
-                                                    "docs/api/Google/veo3.1-fast/official-format/text-to-video"
-                                                ]
-                                            },
-                                            {
-                                                "group": "openai-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3.1-fast/openai-format/firstlast-frame",
-                                                    "docs/api/Google/veo3.1-fast/openai-format/image-to-video-916",
-                                                    "docs/api/Google/veo3.1-fast/openai-format/image-to-video169",
-                                                    "docs/api/Google/veo3.1-fast/openai-format/text-to-video-169",
-                                                    "docs/api/Google/veo3.1-fast/openai-format/text-to-video-916"
-                                                ]
                                             }
                                         ]
                                     },
@@ -1169,29 +1092,12 @@
                                         "group": "veo3.1-fast-frames",
                                         "pages": [
                                             {
-                                                "group": "chat-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3.1-fast-frames/chat-format/firstlast-frame",
-                                                    "docs/api/Google/veo3.1-fast-frames/chat-format/image-to-video-916",
-                                                    "docs/api/Google/veo3.1-fast-frames/chat-format/image-to-video169",
-                                                    "docs/api/Google/veo3.1-fast-frames/chat-format/text-to-video-169",
-                                                    "docs/api/Google/veo3.1-fast-frames/chat-format/text-to-video-916"
-                                                ]
-                                            },
-                                            {
                                                 "group": "gptproto-format",
                                                 "pages": [
                                                     "docs/api/Google/veo3.1-fast-frames/gptproto-format/create-video169",
                                                     "docs/api/Google/veo3.1-fast-frames/gptproto-format/create-video916",
                                                     "docs/api/Google/veo3.1-fast-frames/gptproto-format/firstlast-frame",
                                                     "docs/api/Google/veo3.1-fast-frames/gptproto-format/get-task-status"
-                                                ]
-                                            },
-                                            {
-                                                "group": "official-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3.1-fast-frames/official-format/image-to-video",
-                                                    "docs/api/Google/veo3.1-fast-frames/official-format/text-to-video"
                                                 ]
                                             }
                                         ]
@@ -1207,16 +1113,6 @@
                                                     "docs/api/Google/veo3.1-pro/gptproto-format/image-to-video(9:16)",
                                                     "docs/api/Google/veo3.1-pro/gptproto-format/text-to-video(16:9)"
                                                 ]
-                                            },
-                                            {
-                                                "group": "openai-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3.1-pro/openai-format/firstlast-frame",
-                                                    "docs/api/Google/veo3.1-pro/openai-format/image-to-video(16:9)",
-                                                    "docs/api/Google/veo3.1-pro/openai-format/image-to-video(9:16)",
-                                                    "docs/api/Google/veo3.1-pro/openai-format/text-to-video(16:9)",
-                                                    "docs/api/Google/veo3.1-pro/openai-format/text-to-video(9:16)"
-                                                ]
                                             }
                                         ]
                                     },
@@ -1230,16 +1126,6 @@
                                                     "docs/api/Google/veo3.1-pro-frames/gptproto-format/get-task-status",
                                                     "docs/api/Google/veo3.1-pro-frames/gptproto-format/image-to-video",
                                                     "docs/api/Google/veo3.1-pro-frames/gptproto-format/text-to-video"
-                                                ]
-                                            },
-                                            {
-                                                "group": "openai-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3.1-pro-frames/openai-format/firstlast-frame",
-                                                    "docs/api/Google/veo3.1-pro-frames/openai-format/image-to-video-916",
-                                                    "docs/api/Google/veo3.1-pro-frames/openai-format/image-to-video169",
-                                                    "docs/api/Google/veo3.1-pro-frames/openai-format/text-to-video-169",
-                                                    "docs/api/Google/veo3.1-pro-frames/openai-format/text-to-video-916"
                                                 ]
                                             }
                                         ]

@@ -15,7 +15,7 @@ This endpoint provides query result functionality.
 <CodeGroup>
 
 ```bash cURL
-curl -X GET "gptproto/api/v3/predictions/sora-2:task_xxx/result" \
+curl -X GET "gptproto.com/api/v3/predictions/sora-2:task_xxx/result" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -46,7 +46,7 @@ curl -X GET "gptproto/api/v3/predictions/sora-2:task_xxx/result" \
 import requests
 import json
 
-url = "gptproto/api/v3/predictions/sora-2:task_xxx/result"
+url = "gptproto.com/api/v3/predictions/sora-2:task_xxx/result"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -81,7 +81,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/api/v3/predictions/sora-2:task_xxx/result";
+const url = "gptproto.com/api/v3/predictions/sora-2:task_xxx/result";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -132,7 +132,7 @@ import (
 )
 
 func main() {
-    url := "gptproto/api/v3/predictions/sora-2:task_xxx/result"
+    url := "gptproto.com/api/v3/predictions/sora-2:task_xxx/result"
 
     payload := []byte(`{
 "data": {
