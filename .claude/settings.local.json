@@ -27,7 +27,9 @@
       "Bash(fi)",
       "Bash(node:*)",
       "Bash(/Users/wsh/code/gptproto_doc/generate_web_search_docs.sh:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(for dir in docs/api/qwen/wan-2.2-animate docs/api/qwen/wan-2.2-plus docs/api/qwen/wan-2.5 docs/api/qwen/wan-2.5-fast)",
+      "Bash(do echo \"=== $dir ===\" find \"$dir\" -name \"*.mdx\")"
     ],
     "deny": [],
     "ask": []

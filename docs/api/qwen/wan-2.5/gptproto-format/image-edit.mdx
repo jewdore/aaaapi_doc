@@ -1,0 +1,184 @@
+---
+title: 'wan-2.5 (image edit)'
+sidebarTitle: 'Image Edit'
+api: 'POST /api/v3/alibaba/wan-2.5/image-edit'
+description: 'Edit and transform images using Qwen wan-2.5 model'
+mode: 'wide'
+---
+
+Edit and transform images based on text prompts using Qwen's wan-2.5 model with GPTProto format API.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/alibaba/wan-2.5/image-edit' \
+--header 'Authorization: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "prompt": "Turn into ghibli style.",
+    "images": [
+        "https://oss.heyoos.com//gptproto/images-6e236488-506a-4978-8b6a-39adb68206f3.jpeg"
+    ],
+    "size": "1280*1786",
+    "seed": -1
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/alibaba/wan-2.5/image-edit"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "prompt": "Turn into ghibli style.",
+    "images": [
+        "https://oss.heyoos.com//gptproto/images-6e236488-506a-4978-8b6a-39adb68206f3.jpeg"
+    ],
+    "size": "1280*1786",
+    "seed": -1
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/alibaba/wan-2.5/image-edit";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "Turn into ghibli style.",
+  "images": [
+    "https://oss.heyoos.com//gptproto/images-6e236488-506a-4978-8b6a-39adb68206f3.jpeg"
+  ],
+  "size": "1280*1786",
+  "seed": -1
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/alibaba/wan-2.5/image-edit"
+
+    payload := []byte(`{
+  "prompt": "Turn into ghibli style.",
+    "images": [
+        "https://oss.heyoos.com//gptproto/images-6e236488-506a-4978-8b6a-39adb68206f3.jpeg"
+    ],
+    "size": "1280*1786",
+    "seed": -1
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+## Response
+
+<CodeGroup>
+
+```json 200 - Success
+{
+  "data": {
+    "id": "abc123def456",
+    "model": "alibaba/wan-2.5/image-edit",
+    "outputs": [],
+    "urls": {
+      "get": "https://gptproto.com/api/v3/predictions/abc123def456/result"
+    },
+    "status": "created",
+    "createdAt": "2025-12-01T10:00:00.000Z",
+    "error": "",
+    "executionTime": 0
+  },
+  "message": "success",
+  "code": 200
+}
+```
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | - | Text description of the desired image transformation or editing instructions |
+| `images` | array | ✅ Yes | - | Array of image URLs to be edited. Supports one or multiple input images |
+| `size` | string | ❌ No | - | The size of the output image in pixels (width*height), e.g., "1280*1786" |
+| `seed` | integer | ❌ No | `-1` | Random seed for generation reproducibility. Set to `-1` for random generation |

@@ -1,0 +1,165 @@
+---
+title: 'wan-2.2-plus (text to video)'
+sidebarTitle: 'Text to Video'
+api: 'POST /api/v3/alibaba/wan-2.2-plus/text-to-video'
+description: 'Generate videos from text descriptions using Qwen wan-2.2-plus model'
+mode: 'wide'
+---
+
+Generate videos from text prompts using Qwen's wan-2.2-plus model with GPTProto format API.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/alibaba/wan-2.2-plus/text-to-video' \
+--header 'Authorization: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+     "prompt": "An older couple, seen from behind, sits on a wooden bench watching the sunset over the ocean. The man gently places his arm around the woman'\''s shoulder. The scene is peaceful and filled with unspoken history. --Static wide shot, silhouette, warm golden hour colors, photorealistic, emotionally resonant.",
+    "enable_prompt_expansion": false,
+    "seed": -1,
+    "size": "1920*1080"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/alibaba/wan-2.2-plus/text-to-video"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "prompt": "An older couple, seen from behind, sits on a wooden bench watching the sunset over the ocean. The man gently places his arm around the woman's shoulder. The scene is peaceful and filled with unspoken history. --Static wide shot, silhouette, warm golden hour colors, photorealistic, emotionally resonant.",
+    "enable_prompt_expansion": False,
+    "seed": -1,
+    "size": "1920*1080"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/alibaba/wan-2.2-plus/text-to-video";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "An older couple, seen from behind, sits on a wooden bench watching the sunset over the ocean. The man gently places his arm around the woman's shoulder. The scene is peaceful and filled with unspoken history. --Static wide shot, silhouette, warm golden hour colors, photorealistic, emotionally resonant.",
+  "enable_prompt_expansion": false,
+  "seed": -1,
+  "size": "1920*1080"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/alibaba/wan-2.2-plus/text-to-video"
+
+    payload := []byte(`{
+     "prompt": "An older couple, seen from behind, sits on a wooden bench watching the sunset over the ocean. The man gently places his arm around the woman's shoulder. The scene is peaceful and filled with unspoken history. --Static wide shot, silhouette, warm golden hour colors, photorealistic, emotionally resonant.",
+    "enable_prompt_expansion": false,
+    "seed": -1,
+    "size": "1920*1080"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+## Response
+
+<CodeGroup>
+
+```json 200 - Success
+{
+  "task_id": "abc123def456",
+  "status": "processing",
+  "message": "Video generation task submitted successfully"
+}
+```
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `prompt` | string | ✅ Yes | - | - | Text description for the video generation, describing the desired scene, actions, style, and cinematography |
+| `size` | string | ❌ No | `"1920*1080"` | `1920*1080`, `832*480` | Video resolution/size. Available options: `1920*1080` for Full HD or `832*480` for standard definition |
+| `enable_prompt_expansion` | boolean | ❌ No | `false` | - | Enable automatic prompt expansion and optimization. When set to `true`, the system will enhance and expand the input prompt |
+| `seed` | integer | ❌ No | `-1` | `-1` ~ `2147483647` | Random seed for generation reproducibility. Set to `-1` for random generation |

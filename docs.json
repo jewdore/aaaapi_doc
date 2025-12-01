@@ -1856,21 +1856,54 @@
                                 "group": "Qwen",
                                 "pages": [
                                     {
-                                        "group": "image/generations",
-                                        "pages": [
-                                            "docs/api/qwen/imagegenerations/image-edit",
-                                            "docs/api/qwen/imagegenerations/create-image"
-                                        ]
-                                    },
-                                    {
                                         "group": "wan-2.5",
                                         "pages": [
                                             {
                                                 "group": "Gptproto Format",
                                                 "pages": [
                                                     "docs/api/qwen/wan-2.5/gptproto-format/text-to-image",
+                                                    "docs/api/qwen/wan-2.5/gptproto-format/text-to-video",
+                                                    "docs/api/qwen/wan-2.5/gptproto-format/image-edit",
                                                     "docs/api/qwen/wan-2.5/gptproto-format/image-to-video",
                                                     "docs/api/qwen/wan-2.5/gptproto-format/query-task"
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "group": "wan-2.5-fast",
+                                        "pages": [
+                                            {
+                                                "group": "Gptproto Format",
+                                                "pages": [
+                                                    "docs/api/qwen/wan-2.5-fast/gptproto-format/text-to-video",
+                                                    "docs/api/qwen/wan-2.5-fast/gptproto-format/image-to-video",
+                                                    "docs/api/qwen/wan-2.5-fast/gptproto-format/query-task"
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "group": "wan-2.2-plus",
+                                        "pages": [
+                                            {
+                                                "group": "Gptproto Format",
+                                                "pages": [
+                                                    "docs/api/qwen/wan-2.2-plus/gptproto-format/text-to-video",
+                                                    "docs/api/qwen/wan-2.2-plus/gptproto-format/image-to-video",
+                                                    "docs/api/qwen/wan-2.2-plus/gptproto-format/query-task"
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "group": "wan-2.2-animate",
+                                        "pages": [
+                                            {
+                                                "group": "Gptproto Format",
+                                                "pages": [
+                                                    "docs/api/qwen/wan-2.2-animate/gptproto-format/video-to-video",
+                                                    "docs/api/qwen/wan-2.2-animate/gptproto-format/query-task"
                                                 ]
                                             }
                                         ]
