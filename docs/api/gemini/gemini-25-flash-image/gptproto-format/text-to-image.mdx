@@ -1,31 +1,25 @@
 ---
-title: 'gemini-25-flash-image (text to image)'
+title: 'gemini-2.5-flash-image (text to image)'
 sidebarTitle: 'Text to Image'
-api: 'POST /v1/images/generations'
-description: 'Text to Image'
+api: 'POST /api/v3/google/gemini-2.5-flash-image/text-to-image'
+description: 'Generate images from text using Gemini 2.5 Flash Image model'
 mode: 'wide'
 ---
 
-Gemini's GPTProto format for the text to image API.
-
-
-
-
-
-
-
-
+Generate images from text prompts using Google's Gemini 2.5 Flash Image model with GPTProto format API.
 
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/images/generations" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "model": "gemini-2.5-flash-image",
-  "prompt": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme",
-  "size": "16:9"
+curl --location 'https://gptproto.com/api/v3/google/gemini-2.5-flash-image/text-to-image' \
+--header 'Authorization: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+    "aspect_ratio": "1:1",
+    "enable_base64_output": false,
+    "enable_sync_mode": true,
+    "output_format": "png",
+    "prompt": "The man is reading the book."
 }'
 ```
 
@@ -33,16 +27,18 @@ curl -X POST "https://gptproto.com/v1/images/generations" \
 import requests
 import json
 
-url = "gptproto/v1/images/generations"
+url = "https://gptproto.com/api/v3/google/gemini-2.5-flash-image/text-to-image"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-  "model": "gemini-2.5-flash-image",
-  "prompt": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme",
-  "size": "16:9"
+    "aspect_ratio": "1:1",
+    "enable_base64_output": False,
+    "enable_sync_mode": True,
+    "output_format": "png",
+    "prompt": "The man is reading the book."
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -51,16 +47,18 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1/images/generations";
+const url = "https://gptproto.com/api/v3/google/gemini-2.5-flash-image/text-to-image";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "model": "gemini-2.5-flash-image",
-  "prompt": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme",
-  "size": "16:9"
+  "aspect_ratio": "1:1",
+  "enable_base64_output": false,
+  "enable_sync_mode": true,
+  "output_format": "png",
+  "prompt": "The man is reading the book."
 };
 
 fetch(url, {
@@ -85,12 +83,14 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1/images/generations"
+    url := "https://gptproto.com/api/v3/google/gemini-2.5-flash-image/text-to-image"
 
     payload := []byte(`{
-"model": "gemini-2.5-flash-image",
-"prompt": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme",
-"size": "16:9"
+    "aspect_ratio": "1:1",
+    "enable_base64_output": false,
+    "enable_sync_mode": true,
+    "output_format": "png",
+    "prompt": "The man is reading the book."
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -110,7 +110,18 @@ func main() {
 ```
 </CodeGroup>
 
+## Response
+
 <CodeGroup>
+
+```json 200 - Success
+{
+  "task_id": "abc123def456",
+  "status": "completed",
+  "image_url": "https://example.com/generated-image.png",
+  "message": "Image generated successfully"
+}
+```
 
 ```json 401 - Invalid signature
 {
@@ -120,8 +131,6 @@ func main() {
   }
 }
 ```
-
-
 
 ```json 403 - Insufficient balance
 {
@@ -155,16 +164,8 @@ func main() {
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gemini-2.5-flash-image` | The model to use for the request |
-| `prompt` | string | ✅ Yes | `Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme` | Prompt parameter |
-| `size` | string | ❌ No | `16:9` | Size parameter |
-
-
-
-
-
-
-
-
-
-
+| `prompt` | string | ✅ Yes | - | Text description for the image generation |
+| `aspect_ratio` | string | ❌ No | `"1:1"` | Aspect ratio of the generated image. Common values: `"1:1"`, `"16:9"`, `"9:16"` |
+| `output_format` | string | ❌ No | `"png"` | Output image format. Supported formats: `"png"`, `"jpeg"`, `"webp"` |
+| `enable_sync_mode` | boolean | ❌ No | `true` | Enable synchronous mode. When `true`, the API waits for generation to complete before responding |
+| `enable_base64_output` | boolean | ❌ No | `false` | Enable base64 encoded output. When `true`, returns the image as base64 string instead of URL |

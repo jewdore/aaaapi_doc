@@ -1,31 +1,28 @@
 ---
-title: 'gemini-25-flash-image (images to image)'
-sidebarTitle: 'Images to Image'
-api: 'POST /v1/images/generations'
-description: 'Images to Image'
+title: 'gemini-2.5-flash-image (image edit)'
+sidebarTitle: 'Image Edit'
+api: 'POST /api/v3/google/gemini-2.5-flash-image/image-edit'
+description: 'Edit images using Gemini 2.5 Flash Image model'
 mode: 'wide'
 ---
 
-Gemini's GPTProto format for the images to image API.
-
-
-
-
-
-
-
-
+Edit and transform images based on text prompts using Google's Gemini 2.5 Flash Image model with GPTProto format API.
 
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/images/generations" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "model": "gemini-2.5-flash-image",
-  "prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
-  "size": "16:9"
+curl --location 'https://gptproto.com/api/v3/google/gemini-2.5-flash-image/image-edit' \
+--header 'Authorization: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+    "prompt": "The man is reading the book.",
+    "aspect_ratio": "1:1",
+    "output_format": "jpeg",
+    "enable_sync_mode": false,
+    "enable_base64_output": false,
+    "images": [
+        "https://oss.heyoos.com/2025/11/13/8b54e86f21f94731884e92f264e0cc74.jpeg"
+    ]
 }'
 ```
 
@@ -33,16 +30,21 @@ curl -X POST "https://gptproto.com/v1/images/generations" \
 import requests
 import json
 
-url = "gptproto/v1/images/generations"
+url = "https://gptproto.com/api/v3/google/gemini-2.5-flash-image/image-edit"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-  "model": "gemini-2.5-flash-image",
-  "prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
-  "size": "16:9"
+    "prompt": "The man is reading the book.",
+    "aspect_ratio": "1:1",
+    "output_format": "jpeg",
+    "enable_sync_mode": False,
+    "enable_base64_output": False,
+    "images": [
+        "https://oss.heyoos.com/2025/11/13/8b54e86f21f94731884e92f264e0cc74.jpeg"
+    ]
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -51,16 +53,21 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1/images/generations";
+const url = "https://gptproto.com/api/v3/google/gemini-2.5-flash-image/image-edit";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "model": "gemini-2.5-flash-image",
-  "prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
-  "size": "16:9"
+  "prompt": "The man is reading the book.",
+  "aspect_ratio": "1:1",
+  "output_format": "jpeg",
+  "enable_sync_mode": false,
+  "enable_base64_output": false,
+  "images": [
+    "https://oss.heyoos.com/2025/11/13/8b54e86f21f94731884e92f264e0cc74.jpeg"
+  ]
 };
 
 fetch(url, {
@@ -85,12 +92,17 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1/images/generations"
+    url := "https://gptproto.com/api/v3/google/gemini-2.5-flash-image/image-edit"
 
     payload := []byte(`{
-"model": "gemini-2.5-flash-image",
-"prompt": "image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.",
-"size": "16:9"
+    "prompt": "The man is reading the book.",
+    "aspect_ratio": "1:1",
+    "output_format": "jpeg",
+    "enable_sync_mode": false,
+    "enable_base64_output": false,
+    "images": [
+        "https://oss.heyoos.com/2025/11/13/8b54e86f21f94731884e92f264e0cc74.jpeg"
+    ]
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -110,7 +122,17 @@ func main() {
 ```
 </CodeGroup>
 
+## Response
+
 <CodeGroup>
+
+```json 200 - Success
+{
+  "task_id": "abc123def456",
+  "status": "processing",
+  "message": "Image edit task submitted successfully"
+}
+```
 
 ```json 401 - Invalid signature
 {
@@ -120,8 +142,6 @@ func main() {
   }
 }
 ```
-
-
 
 ```json 403 - Insufficient balance
 {
@@ -155,16 +175,9 @@ func main() {
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gemini-2.5-flash-image` | The model to use for the request |
-| `prompt` | string | ✅ Yes | `image_url1 , image_url2. Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.` | Prompt parameter |
-| `size` | string | ❌ No | `16:9` | Size parameter |
-
-
-
-
-
-
-
-
-
-
+| `prompt` | string | ✅ Yes | - | Text description of the desired image transformation or editing instructions |
+| `images` | array | ✅ Yes | - | Array of image URLs to be edited. Supports one or multiple input images |
+| `aspect_ratio` | string | ❌ No | `"1:1"` | Aspect ratio of the output image. Common values: `"1:1"`, `"16:9"`, `"9:16"` |
+| `output_format` | string | ❌ No | `"jpeg"` | Output image format. Supported formats: `"png"`, `"jpeg"`, `"webp"` |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Enable synchronous mode. When `true`, the API waits for processing to complete before responding |
+| `enable_base64_output` | boolean | ❌ No | `false` | Enable base64 encoded output. When `true`, returns the image as base64 string instead of URL |
