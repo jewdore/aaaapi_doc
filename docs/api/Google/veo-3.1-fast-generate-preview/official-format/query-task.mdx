@@ -1,7 +1,7 @@
 ---
 title: 'veo (query task)'
 sidebarTitle: 'Query Task'
-api: 'GET /v1beta/models/{model_name}/operations/{operation_id}'
+api: 'GET /v1beta/models/veo-3.1-fast-generate-preview/operations/{operation_id}'
 description: 'Query the status of a video generation task'
 mode: 'wide'
 ---
@@ -19,14 +19,14 @@ Gemini's veo 3.1 fast generate preview for the query task API.
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/mg3pt9cbmvr1' \
+curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/{operation_id}' \
   --header 'x-goog-api-key: YOUR_API_KEY'
 ```
 
 ```python Python
 import requests
 
-url = "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/mg3pt9cbmvr1"
+url = "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/{operation_id}"
 headers = {
     "x-goog-api-key": "YOUR_API_KEY"
 }
@@ -37,7 +37,7 @@ print(result)
 ```
 
 ```javascript JavaScript
-const url = "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/mg3pt9cbmvr1";
+const url = "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/{operation_id}";
 const headers = {
   "x-goog-api-key": "YOUR_API_KEY"
 };
@@ -61,7 +61,7 @@ import (
 )
 
 func main() {
-    url := "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/mg3pt9cbmvr1"
+    url := "https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/{operation_id}"
 
     req, _ := http.NewRequest("GET", url, nil)
     req.Header.Set("x-goog-api-key", "YOUR_API_KEY")
