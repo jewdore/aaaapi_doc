@@ -1,15 +1,12 @@
-curl --location --request POST 'https://gptproto.com/api/v3/google/veo3-fast/image-to-video' \
+curl --location --request POST 'https://gptproto.com/api/v3/google/veo3-pro/text-to-video' \
 --header 'Authorization: Bearer sk-xxxxxx' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "prompt": "A young woman walks alone under a transparent umbrella in a quiet alley during light rain, soft city lights reflecting on the wet pavement. Her pace is calm and thoughtful. The camera follows slowly behind her, occasional droplets hitting the lens. Subtle piano music plays, evoking a melancholic but peaceful mood. Dreamy, cinematic, slightly slow motion.",
     "aspect_ratio": "16:9",
-    "image": "https://oss.heyoos.com/2025/11/12/d5c2f08479b9452aacbcf9963631ce21.jpeg",
     "enhance_prompt": true
 }'
 
 prompt	string	Yes			The positive prompt for the generation.
 aspect_ratio	string	No	16:9	16:9, 9:16	The aspect ratio of the generated media.
-image	string	Yes			The image to use for the generation.
-last_image	string	No			The end image for generating the output.
 enhance_prompt	boolean	No	TRUE	TRUE, FALSE
