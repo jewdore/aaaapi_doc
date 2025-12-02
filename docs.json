@@ -940,10 +940,10 @@
                                             {
                                                 "group": "gptproto-format",
                                                 "pages": [
-                                                    "docs/api/Google/veo3/gptproto-format/image-to-video-916",
-                                                    "docs/api/Google/veo3/gptproto-format/image-to-video169",
-                                                    "docs/api/Google/veo3/gptproto-format/text-to-video-169",
-                                                    "docs/api/Google/veo3/gptproto-format/text-to-video-916"
+                                                    "docs/api/Google/veo3/gptproto-format/image-to-video",
+                                                    "docs/api/Google/veo3/gptproto-format/reference-to-video",
+                                                    "docs/api/Google/veo3/gptproto-format/text-to-video",
+                                                    "docs/api/Google/veo3/gptproto-format/query-task"
                                                 ]
                                             }
                                         ]
@@ -954,9 +954,10 @@
                                             {
                                                 "group": "gptproto-format",
                                                 "pages": [
-                                                    "docs/api/Google/veo3-fast/gptproto-format/create-video169",
-                                                    "docs/api/Google/veo3-fast/gptproto-format/create-video916",
-                                                    "docs/api/Google/veo3-fast/gptproto-format/get-task-status"
+                                                    "docs/api/Google/veo3-fast/gptproto-format/image-to-video",
+                                                    "docs/api/Google/veo3-fast/gptproto-format/reference-to-video",
+                                                    "docs/api/Google/veo3-fast/gptproto-format/text-to-video",
+                                                    "docs/api/Google/veo3-fast/gptproto-format/query-task"
                                                 ]
                                             }
                                         ]
@@ -967,9 +968,9 @@
                                             {
                                                 "group": "gptproto-format",
                                                 "pages": [
-                                                    "docs/api/Google/veo3-pro/gptproto-format/create-video169",
-                                                    "docs/api/Google/veo3-pro/gptproto-format/create-video916",
-                                                    "docs/api/Google/veo3-pro/gptproto-format/get-task-status"
+                                                    "docs/api/Google/veo3-pro/gptproto-format/image-to-video",
+                                                    "docs/api/Google/veo3-pro/gptproto-format/text-to-video",
+                                                    "docs/api/Google/veo3-pro/gptproto-format/query-task"
                                                 ]
                                             }
                                         ]
@@ -980,10 +981,10 @@
                                             {
                                                 "group": "gptproto-format",
                                                 "pages": [
-                                                    "docs/api/Google/veo3.1/gptproto-format/firstlast-frame",
-                                                    "docs/api/Google/veo3.1/gptproto-format/get-task-status",
-                                                    "docs/api/Google/veo3.1/gptproto-format/image-to-video(9:16)",
-                                                    "docs/api/Google/veo3.1/gptproto-format/text-to-video(16:9)"
+                                                    "docs/api/Google/veo3.1/gptproto-format/image-to-video",
+                                                    "docs/api/Google/veo3.1/gptproto-format/reference-to-video",
+                                                    "docs/api/Google/veo3.1/gptproto-format/text-to-video",
+                                                    "docs/api/Google/veo3.1/gptproto-format/query-task"
                                                 ]
                                             }
                                         ]
@@ -995,7 +996,9 @@
                                                 "group": "gptproto-format",
                                                 "pages": [
                                                     "docs/api/Google/veo3.1-fast/gptproto-format/image-to-video",
-                                                    "docs/api/Google/veo3.1-fast/gptproto-format/text-to-video"
+                                                    "docs/api/Google/veo3.1-fast/gptproto-format/reference-to-video",
+                                                    "docs/api/Google/veo3.1-fast/gptproto-format/text-to-video",
+                                                    "docs/api/Google/veo3.1-fast/gptproto-format/query-task"
                                                 ]
                                             }
                                         ]
@@ -1006,10 +1009,9 @@
                                             {
                                                 "group": "gptproto-format",
                                                 "pages": [
-                                                    "docs/api/Google/veo3.1-pro/gptproto-format/firstlast-frame",
-                                                    "docs/api/Google/veo3.1-pro/gptproto-format/get-task-status",
-                                                    "docs/api/Google/veo3.1-pro/gptproto-format/image-to-video(9:16)",
-                                                    "docs/api/Google/veo3.1-pro/gptproto-format/text-to-video(16:9)"
+                                                    "docs/api/Google/veo3.1-pro/gptproto-format/image-to-video",
+                                                    "docs/api/Google/veo3.1-pro/gptproto-format/text-to-video",
+                                                    "docs/api/Google/veo3.1-pro/gptproto-format/query-task"
                                                 ]
                                             }
                                         ]
