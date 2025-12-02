@@ -248,9 +248,9 @@ func main() {
 
 After successfully submitting a lyrics generation task, you'll receive a task ID. Use this ID to:
 
-1. **Check Task Status** - Query the [Task Status endpoint](/api/suno/official-format/query-task) to monitor progress
+1. **Check Task Status** - Query the [Task Status endpoint](docs/api/Suno/suno-lyrics/official-format/query-task) to monitor progress
 2. **Retrieve Generated Lyrics** - Once completed, get the lyrics content from the task status response
-3. **Use with Music Generation** - Combine the generated lyrics with the [Text to Audio](/api/suno/official-format/text-to-audio) endpoint to create complete songs
+3. **Use with Music Generation** - Combine the generated lyrics with the [Text to Audio](docs/api/Suno/suno-music/official-format/text-to-audio) endpoint to create complete songs
 
 ### Example Workflow
 
@@ -438,8 +438,8 @@ music_response = requests.post(
 
 ## Related Endpoints
 
-- [Text to Audio](/api/suno/official-format/text-to-audio) - Generate music from text or lyrics
-- [Query Task Status](/api/suno/official-format/query-task) - Check generation progress and retrieve results
+- [Text to Audio](docs/api/Suno/suno-music/official-format/text-to-audio) - Generate music from text or lyrics
+- [Query Task Status](docs/api/Suno/suno-lyrics/official-format/query-task) - Check generation progress and retrieve results
 
 ## Official Resources
 
