@@ -980,15 +980,6 @@
                                         "group": "veo3-fast",
                                         "pages": [
                                             {
-                                                "group": "chat-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3-fast/chat-format/image-to-video-916",
-                                                    "docs/api/Google/veo3-fast/chat-format/image-to-video169",
-                                                    "docs/api/Google/veo3-fast/chat-format/text-to-video-169",
-                                                    "docs/api/Google/veo3-fast/chat-format/text-to-video-916"
-                                                ]
-                                            },
-                                            {
                                                 "group": "gptproto-format",
                                                 "pages": [
                                                     "docs/api/Google/veo3-fast/gptproto-format/create-video169",
@@ -1001,13 +992,6 @@
                                     {
                                         "group": "veo3-fast-frames",
                                         "pages": [
-                                            {
-                                                "group": "chat-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3-fast-frames/chat-format/image-to-video-916",
-                                                    "docs/api/Google/veo3-fast-frames/chat-format/image-to-video169"
-                                                ]
-                                            },
                                             {
                                                 "group": "gptproto-format",
                                                 "pages": [
@@ -1022,15 +1006,6 @@
                                         "group": "veo3-pro",
                                         "pages": [
                                             {
-                                                "group": "chat-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3-pro/chat-format/image-to-video-916",
-                                                    "docs/api/Google/veo3-pro/chat-format/image-to-video169",
-                                                    "docs/api/Google/veo3-pro/chat-format/text-to-video-169",
-                                                    "docs/api/Google/veo3-pro/chat-format/text-to-video-916"
-                                                ]
-                                            },
-                                            {
                                                 "group": "gptproto-format",
                                                 "pages": [
                                                     "docs/api/Google/veo3-pro/gptproto-format/create-video169",
@@ -1043,15 +1018,6 @@
                                     {
                                         "group": "veo3-pro-frames",
                                         "pages": [
-                                            {
-                                                "group": "chat-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3-pro-frames/chat-format/image-to-video-916",
-                                                    "docs/api/Google/veo3-pro-frames/chat-format/image-to-video169",
-                                                    "docs/api/Google/veo3-pro-frames/chat-format/text-to-video-169",
-                                                    "docs/api/Google/veo3-pro-frames/chat-format/text-to-video-916"
-                                                ]
-                                            },
                                             {
                                                 "group": "gptproto-format",
                                                 "pages": [
