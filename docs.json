@@ -935,34 +935,6 @@
                                         ]
                                     },
                                     {
-                                        "group": "veo-3.1-fast-generate-preview",
-                                        "pages": [
-                                            {
-                                                "group": "official-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/official-format/image-to-video",
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/official-format/query-task",
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/official-format/text-to-video",
-                                                    "docs/api/Google/veo-3.1-fast-generate-preview/official-format/video-to-video"
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "group": "veo-3.1-generate-preview",
-                                        "pages": [
-                                            {
-                                                "group": "official-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo-3.1-generate-preview/official-format/image-to-video",
-                                                    "docs/api/Google/veo-3.1-generate-preview/official-format/query-task",
-                                                    "docs/api/Google/veo-3.1-generate-preview/official-format/text-to-video",
-                                                    "docs/api/Google/veo-3.1-generate-preview/official-format/video-to-video"
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
                                         "group": "veo3",
                                         "pages": [
                                             {
@@ -990,19 +962,6 @@
                                         ]
                                     },
                                     {
-                                        "group": "veo3-fast-frames",
-                                        "pages": [
-                                            {
-                                                "group": "gptproto-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3-fast-frames/gptproto-format/create-video169",
-                                                    "docs/api/Google/veo3-fast-frames/gptproto-format/create-video916",
-                                                    "docs/api/Google/veo3-fast-frames/gptproto-format/get-task-status"
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
                                         "group": "veo3-pro",
                                         "pages": [
                                             {
@@ -1011,19 +970,6 @@
                                                     "docs/api/Google/veo3-pro/gptproto-format/create-video169",
                                                     "docs/api/Google/veo3-pro/gptproto-format/create-video916",
                                                     "docs/api/Google/veo3-pro/gptproto-format/get-task-status"
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "group": "veo3-pro-frames",
-                                        "pages": [
-                                            {
-                                                "group": "gptproto-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3-pro-frames/gptproto-format/create-video169",
-                                                    "docs/api/Google/veo3-pro-frames/gptproto-format/create-video916",
-                                                    "docs/api/Google/veo3-pro-frames/gptproto-format/get-task-status"
                                                 ]
                                             }
                                         ]
@@ -1055,20 +1001,6 @@
                                         ]
                                     },
                                     {
-                                        "group": "veo3.1-fast-frames",
-                                        "pages": [
-                                            {
-                                                "group": "gptproto-format",
-                                                "pages": [
-                                                    "docs/api/Google/veo3.1-fast-frames/gptproto-format/create-video169",
-                                                    "docs/api/Google/veo3.1-fast-frames/gptproto-format/create-video916",
-                                                    "docs/api/Google/veo3.1-fast-frames/gptproto-format/firstlast-frame",
-                                                    "docs/api/Google/veo3.1-fast-frames/gptproto-format/get-task-status"
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
                                         "group": "veo3.1-pro",
                                         "pages": [
                                             {
@@ -1083,15 +1015,29 @@
                                         ]
                                     },
                                     {
-                                        "group": "veo3.1-pro-frames",
+                                        "group": "veo-3.1-fast-generate-preview",
                                         "pages": [
                                             {
-                                                "group": "gptproto-format",
+                                                "group": "official-format",
                                                 "pages": [
-                                                    "docs/api/Google/veo3.1-pro-frames/gptproto-format/firstlast-frame",
-                                                    "docs/api/Google/veo3.1-pro-frames/gptproto-format/get-task-status",
-                                                    "docs/api/Google/veo3.1-pro-frames/gptproto-format/image-to-video",
-                                                    "docs/api/Google/veo3.1-pro-frames/gptproto-format/text-to-video"
+                                                    "docs/api/Google/veo-3.1-fast-generate-preview/official-format/image-to-video",
+                                                    "docs/api/Google/veo-3.1-fast-generate-preview/official-format/query-task",
+                                                    "docs/api/Google/veo-3.1-fast-generate-preview/official-format/text-to-video",
+                                                    "docs/api/Google/veo-3.1-fast-generate-preview/official-format/video-to-video"
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "group": "veo-3.1-generate-preview",
+                                        "pages": [
+                                            {
+                                                "group": "official-format",
+                                                "pages": [
+                                                    "docs/api/Google/veo-3.1-generate-preview/official-format/image-to-video",
+                                                    "docs/api/Google/veo-3.1-generate-preview/official-format/query-task",
+                                                    "docs/api/Google/veo-3.1-generate-preview/official-format/text-to-video",
+                                                    "docs/api/Google/veo-3.1-generate-preview/official-format/video-to-video"
                                                 ]
                                             }
                                         ]
