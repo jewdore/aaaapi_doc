@@ -2417,6 +2417,9 @@
             "display": "simple"
         }
     },
+    "styles": {
+        "global": "/styles/custom.css"
+    },
     "contextual": {
         "options": [
             "copy",

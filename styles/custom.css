@@ -1,0 +1,30 @@
+/* 全局表格样式优化 - 避免横向滚动 */
+
+table {
+  width: 100% !important;
+  table-layout: auto !important;
+}
+
+table th,
+table td {
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+/* 第一列（Parameter列）不换行 */
+table th:nth-child(1),
+table td:nth-child(1) {
+  white-space: nowrap !important;
+}
+
+/* 第一列中的代码块也不换行 */
+table td:nth-child(1) code,
+table th:nth-child(1) code {
+  white-space: nowrap !important;
+}
+
+/* 表格中其他列的代码块正常换行 */
+table code {
+  white-space: normal !important;
+  word-break: break-word !important;
+}
