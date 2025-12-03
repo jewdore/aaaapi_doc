@@ -1,12 +1,12 @@
 ---
-title: 'doubao-seededit-3-0-i2i-250628 (image to image)'
-sidebarTitle: 'Image to Image'
+title: 'flux-kontext-pro (image edit)'
+sidebarTitle: 'Image Edit'
 api: 'POST /v1/images/generations'
-description: 'Image to Image'
+description: 'Image Edit'
 mode: 'wide'
 ---
 
-BytePlus's GPTProto format for the image to image API.
+Flux's GPTProto format for the image edit API.
 
 
 
@@ -23,14 +23,10 @@ curl -X POST "https://gptproto.com/v1/images/generations" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "model": "doubao-seededit-3-0-i2i-250628",
-  "prompt": "Change bubbles into heart shape",
-  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
-  "response_format": "url",
-  "size": "adaptive",
-  "seed": 21,
-  "guidance_scale": 5.5,
-  "watermark": true
+  "prompt": "cat with a red hat https://xxx.png",
+  "model": "flux-kontext-pro",
+  "size": "16:9",
+  "n": 1
 }'
 ```
 
@@ -45,14 +41,10 @@ headers = {
 }
 
 data = {
-  "model": "doubao-seededit-3-0-i2i-250628",
-  "prompt": "Change bubbles into heart shape",
-  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
-  "response_format": "url",
-  "size": "adaptive",
-  "seed": 21,
-  "guidance_scale": 5.5,
-  "watermark": true
+  "prompt": "cat with a red hat https://xxx.png",
+  "model": "flux-kontext-pro",
+  "size": "16:9",
+  "n": 1
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -68,14 +60,10 @@ const headers = {
 };
 
 const data = {
-  "model": "doubao-seededit-3-0-i2i-250628",
-  "prompt": "Change bubbles into heart shape",
-  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
-  "response_format": "url",
-  "size": "adaptive",
-  "seed": 21,
-  "guidance_scale": 5.5,
-  "watermark": true
+  "prompt": "cat with a red hat https://xxx.png",
+  "model": "flux-kontext-pro",
+  "size": "16:9",
+  "n": 1
 };
 
 fetch(url, {
@@ -103,14 +91,10 @@ func main() {
     url := "https://gptproto.com/v1/images/generations"
 
     payload := []byte(`{
-"model": "doubao-seededit-3-0-i2i-250628",
-"prompt": "Change bubbles into heart shape",
-"image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
-"response_format": "url",
-"size": "adaptive",
-"seed": 21,
-"guidance_scale": 5.5,
-"watermark": true
+"prompt": "cat with a red hat https://xxx.png",
+"model": "flux-kontext-pro",
+"size": "16:9",
+"n": 1
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -175,14 +159,10 @@ func main() {
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `doubao-seededit-3-0-i2i-250628` | The model to use for the request |
-| `prompt` | string | ✅ Yes | `Change bubbles into heart shape` | Image generation prompt describing the desired image content |
-| `image` | string | ❌ No | `https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg` | Input image URL(s) for image-to-image generation |
-| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
-| `size` | string | ❌ No | `adaptive` | Output image resolution (e.g., 1024x1024, 2K, 4K) |
-| `seed` | integer | ❌ No | `21` | Random seed for reproducible results |
-| `guidance_scale` | number | ❌ No | `5.5` | Controls how closely the image follows the prompt (higher = more strict, typical range: 1.0-7.0) |
-| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to generated image |
+| `prompt` | string | ✅ Yes | `cat with a red hat https://xxx.png` | Prompt parameter |
+| `model` | string | ✅ Yes | `flux-kontext-pro` | The model to use for the request |
+| `size` | string | ❌ No | `16:9` | Size parameter |
+| `n` | integer | ❌ No | `1` | Number of completions to generate |
 
 
 

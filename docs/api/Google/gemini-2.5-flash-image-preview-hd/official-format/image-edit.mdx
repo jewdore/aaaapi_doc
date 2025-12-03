@@ -1,12 +1,12 @@
 ---
-title: 'gemini-2.5-flash-image-hd (image to image)'
-sidebarTitle: 'Image to Image'
-api: 'POST /v1beta/models/gemini-2.5-flash-image-hd:generateContent'
-description: 'Image to Image'
+title: 'gemini-25-flash-image-preview-hd (image edit)'
+sidebarTitle: 'Image Edit'
+api: 'POST /v1beta/models/gemini-2.5-flash-image-preview-hd:generateContent'
+description: 'Image Edit'
 mode: 'wide'
 ---
 
-Gemini's official format for the image to image API.
+Gemini's official format for the image edit API.
 
 
 
@@ -19,7 +19,7 @@ Gemini's official format for the image to image API.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent" \
+curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-preview-hd:generateContent" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -27,7 +27,7 @@ curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:gener
     {
       "parts": [
         {
-          "text": "Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation"
+          "text": "'Hi, This is a picture of me. Can you add a llama next to me"
         },
         {
           "inline_data": {
@@ -51,7 +51,7 @@ curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:gener
 import requests
 import json
 
-url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent"
+url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-preview-hd:generateContent"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -62,7 +62,7 @@ data = {
     {
       "parts": [
         {
-          "text": "Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation"
+          "text": "'Hi, This is a picture of me. Can you add a llama next to me"
         },
         {
           "inline_data": {
@@ -87,7 +87,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent";
+const url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-preview-hd:generateContent";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -98,7 +98,7 @@ const data = {
     {
       "parts": [
         {
-          "text": "Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation"
+          "text": "'Hi, This is a picture of me. Can you add a llama next to me"
         },
         {
           "inline_data": {
@@ -139,14 +139,14 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent"
+    url := "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-preview-hd:generateContent"
 
     payload := []byte(`{
 "contents": [
 {
 "parts": [
 {
-"text": "Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation"
+"text": "'Hi, This is a picture of me. Can you add a llama next to me"
 },
 {
 "inline_data": {
@@ -227,7 +227,7 @@ func main() {
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `contents` | array | ❌ No | `[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation&quot;}, {&quot;inline_data&quot;: {&quot;mime_type&quot;: &quot;image/jpeg&quot;, &quot;data&quot;: &quot;base64&quot;}}]}]` | Contents parameter |
+| `contents` | array | ❌ No | `[{&quot;parts&quot;: [{&quot;text&quot;: &quot;&apos;Hi, This is a picture of me. Can you add a llama next to me&quot;}, {&quot;inline_data&quot;: {&quot;mime_type&quot;: &quot;image/jpeg&quot;, &quot;data&quot;: &quot;base64&quot;}}]}]` | Contents parameter |
 | `generationConfig` | object | ❌ No | `{&quot;responseModalities&quot;: [&quot;TEXT&quot;, &quot;IMAGE&quot;]}` | Generationconfig parameter |
 
 
