@@ -191,7 +191,7 @@ func main() {
 | `prompt` | string | ✅ Yes | - | Description of the desired image transformation or generation |
 | `image` | string | ✅ Yes | - | Input image URL for image-to-image generation |
 | `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
-| `size` | string | ❌ No | `adaptive` | Output image resolution. Options: adaptive, 1024x1024, 2K, 4K |
+| `size` | string | ❌ No | `2048x2048` | Output image resolution. Options:  1024x1024, 1K, 2K, 4K |
 | `seed` | integer | ❌ No | - | Random seed for reproducible results |
 | `guidance_scale` | number | ❌ No | `5.5` | Controls adherence to the prompt. Range: 1.0-10.0, recommended: 3.0-7.0 |
 | `watermark` | boolean | ❌ No | `true` | Whether to add watermark to the generated image |
