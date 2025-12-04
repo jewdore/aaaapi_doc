@@ -18,9 +18,9 @@ Claude's openai format for the file analysis API.
 
 <CodeGroup>
 
-```bash cURL (with URL)
+```bash cURL
 curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: YOUR_API_KEY" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "claude-sonnet-4-20250514",
@@ -47,42 +47,13 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
   }'
 ```
 
-```bash cURL (with Base64)
-curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "claude-sonnet-4-20250514",
-    "messages": [
-      {
-        "role": "user",
-        "content": [
-          {
-            "type": "text",
-            "text": "Please analyze this PDF document and extract the key information, main topics, and summary"
-          },
-          {
-            "type": "file",
-            "file": {
-              "filename": "document.pdf",
-              "file_data": "data:application/pdf;base64,JVBERi0xLjQKJeLjz9MK..."
-            }
-          }
-        ]
-      }
-    ],
-    "max_tokens": 2000,
-    "stream": false
-  }'
-```
-
-```python Python (with URL)
+```python Python
 import requests
 import json
 
 url = "https://gptproto.com/v1/chat/completions"
 headers = {
-    "Authorization": "YOUR_API_KEY",
+    "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
@@ -115,54 +86,10 @@ result = response.json()
 print(json.dumps(result, indent=2))
 ```
 
-```python Python (with Base64)
-import requests
-import json
-import base64
-
-url = "https://gptproto.com/v1/chat/completions"
-headers = {
-    "Authorization": "YOUR_API_KEY",
-    "Content-Type": "application/json"
-}
-
-# Read and encode file
-with open("document.pdf", "rb") as file:
-    base64_file = base64.b64encode(file.read()).decode('utf-8')
-
-data = {
-    "model": "claude-sonnet-4-20250514",
-    "messages": [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "text",
-                    "text": "Please analyze this PDF document and extract the key information, main topics, and summary"
-                },
-                {
-                    "type": "file",
-                    "file": {
-                        "filename": "document.pdf",
-                        "file_data": f"data:application/pdf;base64,{base64_file}"
-                    }
-                }
-            ]
-        }
-    ],
-    "max_tokens": 2000,
-    "stream": False
-}
-
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
-```
-
-```javascript JavaScript (with URL)
+```javascript JavaScript
 const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
-  "Authorization": "YOUR_API_KEY",
+  "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
@@ -200,52 +127,7 @@ fetch(url, {
   .catch(error => console.error("Error:", error));
 ```
 
-```javascript JavaScript (with Base64)
-const url = "https://gptproto.com/v1/chat/completions";
-const headers = {
-  "Authorization": "YOUR_API_KEY",
-  "Content-Type": "application/json"
-};
-
-// Read and encode file
-const fs = require('fs');
-const base64File = fs.readFileSync('document.pdf').toString('base64');
-
-const data = {
-  "model": "claude-sonnet-4-20250514",
-  "messages": [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Please analyze this PDF document and extract the key information, main topics, and summary"
-        },
-        {
-          "type": "file",
-          "file": {
-            "filename": "document.pdf",
-            "file_data": `data:application/pdf;base64,${base64File}`
-          }
-        }
-      ]
-    }
-  ],
-  "max_tokens": 2000,
-  "stream": false
-};
-
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
-```
-
-```go Go (with URL)
+```go Go
 package main
 
 import (
@@ -285,68 +167,7 @@ func main() {
 
     jsonData, _ := json.Marshal(payload)
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
-
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
-}
-```
-
-```go Go (with Base64)
-package main
-
-import (
-    "bytes"
-    "encoding/base64"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
-    "os"
-)
-
-func main() {
-    url := "https://gptproto.com/v1/chat/completions"
-
-    // Read and encode file
-    fileData, _ := os.ReadFile("document.pdf")
-    base64File := base64.StdEncoding.EncodeToString(fileData)
-
-    payload := map[string]interface{}{
-        "model": "claude-sonnet-4-20250514",
-        "messages": []map[string]interface{}{
-            {
-                "role": "user",
-                "content": []map[string]interface{}{
-                    {
-                        "type": "text",
-                        "text": "Please analyze this PDF document and extract the key information, main topics, and summary",
-                    },
-                    {
-                        "type": "file",
-                        "file": map[string]string{
-                            "filename":  "document.pdf",
-                            "file_data": "data:application/pdf;base64," + base64File,
-                        },
-                    },
-                },
-            },
-        },
-        "max_tokens": 2000,
-        "stream":     false,
-    }
-
-    jsonData, _ := json.Marshal(payload)
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
