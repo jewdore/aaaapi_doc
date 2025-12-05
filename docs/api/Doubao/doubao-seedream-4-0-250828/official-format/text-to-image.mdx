@@ -24,9 +24,8 @@ curl -X POST "https://gptproto.com/api/v3/images/generations" \
   -H "Content-Type: application/json" \
   -d '{
   "model": "doubao-seedream-4-0-250828",
-  "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
+  "prompt": "Fisheye lens, a cat'\''s head, the picture shows the cat'\''s facial features are distorted due to the shooting method.",
   "response_format": "url",
-  "size": "adaptive",
   "seed": 12,
   "guidance_scale": 2.5,
   "watermark": true
@@ -45,10 +44,9 @@ headers = {
 
 data = {
     "model": "doubao-seedream-4-0-250828",
-    "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-    
+    "prompt": "Fisheye lens, a cat's head, the picture shows the cat's facial features are distorted due to the shooting method.",
+
     "response_format": "url",
-    "size": "adaptive",
     "seed": 12,
     "guidance_scale": 2.5,
     "watermark": True
@@ -68,10 +66,9 @@ const headers = {
 
 const data = {
   model: "doubao-seedream-4-0-250828",
-  prompt: "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-  
+  prompt: "Fisheye lens, a cat's head, the picture shows the cat's facial features are distorted due to the shooting method.",
+
   response_format: "url",
-  size: "adaptive",
   seed: 12,
   guidance_scale: 2.5,
   watermark: true
@@ -103,10 +100,9 @@ func main() {
 
     payload := []byte(`{
   "model": "doubao-seedream-4-0-250828",
-  "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-  
+  "prompt": "Fisheye lens, a cat's head, the picture shows the cat's facial features are distorted due to the shooting method.",
+
   "response_format": "url",
-  "size": "adaptive",
   "seed": 12,
   "guidance_scale": 2.5,
   "watermark": true
@@ -184,15 +180,15 @@ func main() {
 
 ## Parameters
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `doubao-seedream-4-0-250828` | The model identifier for image generation/editing |
-| `prompt` | string | ✅ Yes | - | Description of the desired image transformation or generation |
-| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
-| `size` | string | ❌ No | `adaptive` | Output image resolution. Options: adaptive, 1024x1024, 2K, 4K |
-| `seed` | integer | ❌ No | - | Random seed for reproducible results |
-| `guidance_scale` | number | ❌ No | `5.5` | Controls adherence to the prompt. Range: 1.0-10.0, recommended: 3.0-7.0 |
-| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to the generated image |
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `model` | string | ✅ Yes | `doubao-seedream-4-0-250828` | - | The model identifier for image generation/editing |
+| `prompt` | string | ✅ Yes | - | - | Description of the desired image transformation or generation |
+| `response_format` | string | ❌ No | `url` | - | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
+| `size` | string | ❌ No | `adaptive` | - | Output image resolution. Options: adaptive, 1024x1024, 2K, 4K |
+| `seed` | integer | ❌ No | - | - | Random seed for reproducible results |
+| `guidance_scale` | number | ❌ No | `5.5` | 1.0-10.0 | Controls adherence to the prompt. Recommended: 3.0-7.0 |
+| `watermark` | boolean | ❌ No | `true` | - | Whether to add watermark to the generated image |
 
 
 
