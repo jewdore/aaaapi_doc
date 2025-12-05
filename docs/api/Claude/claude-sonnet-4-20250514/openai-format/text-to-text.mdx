@@ -20,7 +20,7 @@ Claude's openai format for the text to text API.
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: YOUR_API_KEY" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "model": "claude-sonnet-4-20250514",
@@ -40,7 +40,7 @@ import json
 
 url = "https://gptproto.com/v1/chat/completions"
 headers = {
-    "Authorization": "YOUR_API_KEY",
+    "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
@@ -63,7 +63,7 @@ print(json.dumps(result, indent=2))
 ```javascript JavaScript
 const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
-  "Authorization": "YOUR_API_KEY",
+  "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
@@ -114,7 +114,7 @@ func main() {
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -173,13 +173,18 @@ func main() {
 
 ## Parameters
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `claude-sonnet-4-20250514` | The model to use for the request. `claude-sonnet-4-20250514` |
-| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   * role:user,The role of the message. * role:assistant,The role of the message. * role:system,The role of the message. |
-| `content` | array | ✅ Yes | - |   text |
-| `text` | string | ✅ Yes | - | * type:text,The positive prompt for the generation. |
-| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `model` | string | ✅ Yes | `claude-sonnet-4-20250514` | - | The model to use for the request. `claude-sonnet-4-20250514` |
+| `messages` | array | ✅ Yes | - | - | Array of message objects for the conversation. Each message must have a `role` (user/assistant) and `content` (string or array of content blocks) |
+| `max_tokens` | integer | ❌ No | - | 1-32000 | Maximum number of tokens to generate in the response |
+| `temperature` | number | ❌ No | `1.0` | 0.0-2.0 | Controls randomness in output. Use lower values (closer to 0.0) for analytical tasks, higher values (closer to 2.0) for creative tasks |
+| `top_p` | number | ❌ No | - | 0.0-1.0 | Nucleus sampling threshold. Controls diversity by considering only tokens with cumulative probability up to top_p. Recommended for advanced use only. Do not use with temperature |
+| `top_k` | integer | ❌ No | - | >0 | Only sample from the top K options for each token. Removes low probability responses. Recommended for advanced use only |
+| `stream` | boolean | ❌ No | `false` | - | Whether to stream the response incrementally using server-sent events |
+| `stop` | array | ❌ No | - | Max 8191 sequences | Custom text sequences that will cause the model to stop generating. Each sequence must contain non-whitespace characters |
+| `presence_penalty` | number | ❌ No | `0` | -2.0 to 2.0 | Positive values penalize new tokens based on whether they appear in the text so far |
+| `frequency_penalty` | number | ❌ No | `0` | -2.0 to 2.0 | Positive values penalize new tokens based on their existing frequency in the text so far |
 
 
 
@@ -195,15 +200,15 @@ func main() {
 
 Each message object in the `messages` array should have the following structure:
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `role` | string | ✅ Yes | The role of the message. Can be: `user`, `assistant`, or `system` |
-| `content` | array/string | ✅ Yes | The content of the message |
+| Field | Type | Required | Range | Description |
+|-------|------|----------|-------|-------------|
+| `role` | string | ✅ Yes | - | The role of the message. Can be: `user` or `assistant` |
+| `content` | array/string | ✅ Yes | - | The content of the message. Can be a simple string for text-only messages, or an array of content blocks for multimodal content |
 
-### Content Array Structure (when content is an array)
+### Content Block Structure (when content is an array)
 
-| Field | Type | Required | Example | Description |
-|-------|------|----------|---------|-------------|
-| `type` | string | ✅ Yes | `text` | The type of content |
-| `text` | string | ✅ Yes | `"The positive prompt for the generation."` | The text content when type is `text` |
+| Field | Type | Required | Range | Description |
+|-------|------|----------|-------|-------------|
+| `type` | string | ✅ Yes | - | Must be `text` |
+| `text` | string | ✅ Yes | - | The text content |
 
