@@ -1,0 +1,58 @@
+```bash cURL
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "claude-opus-4-5-20251101",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Please analyze this PDF document and provide a summary of its content"
+          },
+          {
+            "type": "file",
+            "file": {
+              "filename": "api-doc.pdf",
+              "file_data": "https://www.bt.cn/data/api-doc.pdf"
+            }
+          }
+        ]
+      }
+    ],
+    "max_tokens": 1000,
+    "stream": false
+  }'
+```
+
+```bash cURL (variant 2)
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "claude-opus-4-5-20251101",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Please analyze this PDF document and extract the key information, main topics, and summary"
+          },
+          {
+            "type": "file",
+            "file": {
+              "filename": "document.pdf",
+              "file_data": "data:application/pdf;base64,JVBERi0xLjQKJeLjz9MK..."
+            }
+          }
+        ]
+      }
+    ],
+    "max_tokens": 2000,
+    "stream": false
+  }'
+```
+

@@ -1,0 +1,20 @@
+```bash cURL
+curl -X POST "https://gptproto.com/mj/submit/imagine" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "botType": "MID_JOURNEY",
+  "prompt": "Cat",
+  "base64Array": [],
+  "accountFilter": {
+    "channelId": "",
+    "instanceId": "",
+    "modes": [],
+    "remark": "",
+    "remix": true,
+    "remixAutoConsidered": true
+  },
+  "notifyHook": "",
+  "state": ""
+}'
+```

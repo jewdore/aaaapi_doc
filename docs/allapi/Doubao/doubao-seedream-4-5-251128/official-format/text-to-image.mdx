@@ -1,0 +1,13 @@
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/images/generations" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "doubao-seedream-4-0-250828",
+  "prompt": "Fisheye lens, a cat'\''s head, the picture shows the cat'\''s facial features are distorted due to the shooting method.",
+  "response_format": "url",
+  "seed": 12,
+  "guidance_scale": 2.5,
+  "watermark": true
+}'
+```

@@ -1,0 +1,10 @@
+```bash cURL
+curl -X POST "https://gptproto.com/v1/images/edits" \
+  -H "Authorization: YOUR_API_KEY" \
+  -F "model=gpt-image-1" \
+  -F "image=@/path/to/image.png" \
+  -F "prompt=A cat wearing a hat" \
+  -F "mask=@/path/to/mask.png" \
+  -F "n=1" \
+  -F "size=1024x1024"
+```

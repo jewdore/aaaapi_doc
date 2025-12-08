@@ -1,0 +1,23 @@
+```bash cURL
+curl -X POST "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent" \
+  -H "Authorization: sk-***********" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "What is in this image?"
+                },
+                {
+                    "inline_data": {
+                        "mime_type": "image/jpeg",
+                        "data": "base64_encoded_image_data"
+                    }
+                }
+            ]
+        }
+    ]
+}'
+```

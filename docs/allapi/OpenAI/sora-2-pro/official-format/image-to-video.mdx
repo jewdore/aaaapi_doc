@@ -1,0 +1,9 @@
+```bash cURL
+curl --location "https://gptproto.com/v1/videos" \
+  --header "Authorization: Bearer YOUR_API_KEY" \
+  --form 'model="sora-2-pro"' \
+  --form 'prompt="The character walks slowly and then sits on the ground"' \
+  --form 'input_reference=@"sample_720p.jpeg"' \
+  --form 'size="720x1280"' \
+  --form 'seconds="4"'
+```

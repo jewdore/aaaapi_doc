@@ -1,0 +1,20 @@
+```bash cURL
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "sora-2-pro",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "video of cow and horse dancing"
+        }
+      ]
+    }
+  ],
+  "stream": true
+}'
+```

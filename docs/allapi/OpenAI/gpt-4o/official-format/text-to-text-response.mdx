@@ -1,0 +1,19 @@
+```bash cURL
+curl --location 'https://gptproto.com/v1/responses' \
+  -H "Authorization: sk-*****" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Write a short poem about artificial intelligence and its impact on humanity."
+        }
+      ]
+    }
+  ]
+}'
+```

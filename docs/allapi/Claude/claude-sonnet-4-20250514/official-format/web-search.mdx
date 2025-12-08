@@ -1,0 +1,21 @@
+```bash cURL
+curl --location --request POST 'https://gptproto.com/v1/messages' \
+  --header 'Authorization: Bearer YOUR_API_KEY' \
+  --header 'anthropic-version: 2023-06-01' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+  "model": "claude-sonnet-4-20250514",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What'\''s the weather in NYC?"
+    }
+  ],
+  "tools": [{
+    "type": "web_search_20250305",
+    "name": "web_search",
+    "max_uses": 5
+  }]
+}'
+```

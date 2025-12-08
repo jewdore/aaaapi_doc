@@ -1,0 +1,32 @@
+```bash cURL
+curl --location 'https://gptproto.com/v1beta/models/gemini-3-pro-image-preview:generateContent' \
+--header 'Authorization: sk-***********' \
+--header 'Content-Type: application/json' \
+--data '{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation"
+                },
+                {
+                    "inline_data": {
+                        "mime_type": "image/jpeg",
+                        "data": "base64_encoded_image_data"
+                    }
+                }
+            ]
+        }
+    ],
+    "generationConfig": {
+        "responseModalities": [
+            "IMAGE"
+        ],
+        "imageConfig": {
+            "aspectRatio": "16:9",
+            "imageSize": "1K"
+        }
+    }
+}'
+```

@@ -1,0 +1,15 @@
+```bash cURL
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "gpt-5",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": false
+}'
+```

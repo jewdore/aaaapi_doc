@@ -1,0 +1,13 @@
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image' \
+--header 'authorization: sk-xx' \
+--header 'content-type: application/json' \
+--data '{
+    "prompt": "a cat",
+    "size":"4K",
+    "aspect_ratio": "1:1",
+    "enable_base64_output": false,
+    "enable_sync_mode": false,
+    "output_format": "png"
+  }'
+```

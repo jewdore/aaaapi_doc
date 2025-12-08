@@ -1,0 +1,24 @@
+```bash cURL
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Two people standing together",
+      "experimental_attachments": [
+        {
+          "contentType": "image/png",
+          "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png"
+        },
+        {
+          "contentType": "image/jpeg",
+          "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
+        }
+      ],
+  	  "model": "gemini-2.5-flash-image"
+    }
+  ]
+}'
+```

@@ -1,0 +1,28 @@
+```bash cURL
+curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "contents": [
+    {
+      "parts": [
+        {
+          "text": "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off."
+        },
+        {
+          "inline_data": {
+            "mime_type": "image/jpeg",
+            "data": "iVBORw0KGgoAAAANSUhEUgAAANQAAAFPCA...."
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "responseModalities": [
+      "TEXT",
+      "IMAGE"
+    ]
+  }
+}'
+```

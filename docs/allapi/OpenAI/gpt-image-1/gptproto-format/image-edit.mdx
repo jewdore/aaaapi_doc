@@ -1,0 +1,16 @@
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1/image-edit' \
+  --header 'Authorization: YOUR_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "image": [
+        "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/d95aeb5f-2081-4db5-9e41-7230f51b49e0.png"
+    ],
+    "prompt": "The cat is running on the grassland",
+    "n": 1,
+    "quality": "auto",
+    "background": "auto",
+    "enable_sync_mode": "false",
+    "response_format": "b64_json"
+}'
+```

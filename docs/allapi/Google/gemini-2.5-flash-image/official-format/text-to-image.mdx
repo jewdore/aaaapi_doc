@@ -1,0 +1,27 @@
+```bash cURL
+curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
+--header 'Authorization: sk-***********' \
+--header 'Content-Type: application/json' \
+--data '{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Create a beautiful image of a serene landscape with mountains and a lake at sunset"
+                }
+            ]
+        }
+    ],
+    "generationConfig": {
+        "responseModalities": [
+            "TEXT",
+            "IMAGE"
+        ],
+        "imageConfig": {
+            "aspectRatio": "16:9",
+            "imageSize": "1K"
+        }
+    }
+}'
+```

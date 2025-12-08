@@ -1,0 +1,22 @@
+```bash cURL
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "claude-opus-4-5-20251101",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What'\''s the weather in NYC?"
+    }
+  ],
+  "tools": [
+    {
+      "type": "web_search_20250305",
+      "name": "web_search",
+      "max_uses": 5
+    }
+  ],
+  "stream": false
+}'
+```

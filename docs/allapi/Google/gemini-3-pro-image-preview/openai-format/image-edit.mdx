@@ -1,0 +1,11 @@
+```bash cURL
+curl -X POST "https://gptproto.com/v1/images/edits" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "gemini-3-pro-image-preview",
+  "image": "https://example.com/image.jpg",
+  "prompt": "Add a sunset background to this image",
+  "size": "1024x1024"
+}'
+```

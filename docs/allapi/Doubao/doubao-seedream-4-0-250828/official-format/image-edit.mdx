@@ -1,0 +1,15 @@
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/images/generations" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "doubao-seedream-4-0-250828",
+  "prompt": "Change bubbles into heart shape",
+  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "response_format": "url",
+  "size": "2k",
+  "seed": 21,
+  "guidance_scale": 5.5,
+  "watermark": true
+}'
+```

@@ -1,0 +1,26 @@
+```bash cURL
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "grok-4",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is in this image?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://oss.heyoos.com/ai-draw/user/-76dda2d5-eeda-4da8-9a76-94de0f2c93c1.png"
+          }
+        }
+      ]
+    }
+  ],
+  "max_tokens": 5000
+}'
+```

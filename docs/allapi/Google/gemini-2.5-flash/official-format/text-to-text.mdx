@@ -1,0 +1,36 @@
+```bash cURL
+curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash:streamGenerateContent' \
+--header 'Authorization: sk-***********' \
+--header 'Content-Type: application/json' \
+--data '{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "hello"
+                }
+            ]
+        }
+    ]
+}'
+```
+
+```bash cURL (no-stream)
+curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash:generateContent' \
+--header 'Authorization: sk-***********' \
+--header 'Content-Type: application/json' \
+--data '{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "hello"
+                }
+            ]
+        }
+    ]
+}'
+```
+

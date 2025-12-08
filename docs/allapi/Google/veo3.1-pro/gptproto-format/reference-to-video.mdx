@@ -1,0 +1,11 @@
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/google/veo3.1-pro/reference-to-video' \
+--header 'Authorization: Bearer sk-xxxxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "prompt": "Transform this reference video into a cinematic style with enhanced colors and dramatic lighting",
+  "aspect_ratio": "16:9",
+  "reference_video": "https://example.com/reference_video.mp4",
+  "enhance_prompt": true
+}'
+```

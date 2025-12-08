@@ -1,0 +1,14 @@
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1/text-to-image' \
+  --header 'Authorization: YOUR_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "prompt": "a cat",
+    "n": 2,
+    "background": "auto",
+    "quality": "medium",
+    "size": "1024x1024",
+    "enable_sync_mode": true,
+    "response_format": "b64_json"
+}'
+```

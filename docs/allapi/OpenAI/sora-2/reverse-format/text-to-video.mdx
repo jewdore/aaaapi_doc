@@ -1,0 +1,13 @@
+```bash cURL
+curl --request POST \
+  --url https://gptproto.com/api/v3/openai/reverse/sora-2/text-to-video \
+  --header 'Authorization: YOUR_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "orientation": "portrait",
+  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
+  "size": "small",
+  "duration": 10,
+  "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
+}'
+```
