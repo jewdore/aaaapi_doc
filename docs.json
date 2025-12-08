@@ -367,18 +367,6 @@
                                         ]
                                     },
                                     {
-                                        "group": "gpt-5-thinking",
-                                        "pages": [
-                                            {
-                                                "group": "official-format(chat)",
-                                                "pages": [
-                                                    "docs/api/OpenAI/gpt-5-thinking/official-format(chat)/image-analysis",
-                                                    "docs/api/OpenAI/gpt-5-thinking/official-format(chat)/text-to-text"
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
                                         "group": "gpt-5.1",
                                         "pages": [
                                             {
