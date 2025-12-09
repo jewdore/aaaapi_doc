@@ -1,0 +1,343 @@
+---
+title: 'claude-haiku-4-5-20251001 (file analysis)'
+sidebarTitle: 'File Analysis'
+api: 'POST /v1/messages'
+description: 'Analyze and extract information from various file types using Anthropic native format'
+mode: 'wide'
+---
+
+Claude's official format for the file analysis API.
+
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/messages" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "anthropic-version: 2023-06-01" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "claude-haiku-4-5-20251001",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Please analyze this PDF document and provide a summary of its content"
+        },
+        {
+          "type": "document",
+          "source": {
+            "type": "url",
+            "url": "https://www.bt.cn/data/api-doc.pdf"
+          }
+        }
+      ]
+    }
+  ]
+}'
+```
+
+```python Python
+import anthropic
+
+client = anthropic.Anthropic(
+    api_key="Bearer YOUR_API_KEY",
+    base_url="https://gptproto.com"
+)
+
+message = client.messages.create(
+    model="claude-haiku-4-5-20251001",
+    max_tokens=1024,
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Please analyze this PDF document and provide a summary of its content"
+                },
+                {
+                    "type": "document",
+                    "source": {
+                        "type": "url",
+                        "url": "https://www.bt.cn/data/api-doc.pdf"
+                    }
+                }
+            ]
+        }
+    ]
+)
+
+print(message.content)
+```
+
+```javascript JavaScript
+import Anthropic from '@anthropic-ai/sdk';
+
+const client = new Anthropic({
+  apiKey: 'Bearer YOUR_API_KEY',
+  baseURL: 'https://gptproto.com'
+});
+
+const message = await client.messages.create({
+  model: 'claude-haiku-4-5-20251001',
+  max_tokens: 1024,
+  messages: [
+    {
+      role: 'user',
+      content: [
+        {
+          type: 'text',
+          text: 'Please analyze this PDF document and provide a summary of its content'
+        },
+        {
+          type: 'document',
+          source: {
+            type: 'url',
+            url: 'https://www.bt.cn/data/api-doc.pdf'
+          }
+        }
+      ]
+    }
+  ]
+});
+
+console.log(message.content);
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/messages"
+
+    payload := []byte(`{
+  "model": "claude-haiku-4-5-20251001",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Please analyze this PDF document and provide a summary of its content"
+        },
+        {
+          "type": "document",
+          "source": {
+            "type": "url",
+            "url": "https://www.bt.cn/data/api-doc.pdf"
+          }
+        }
+      ]
+    }
+  ]
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("anthropic-version", "2023-06-01")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid API Key
+{
+  "error": {
+    "type": "authentication_error",
+    "message": "Invalid API key"
+  }
+}
+```
+
+```json 403 - Permission Denied
+{
+  "error": {
+    "type": "permission_error",
+    "message": "Your API key does not have permission to use the specified resource"
+  }
+}
+```
+
+```json 400 - Invalid Request
+{
+  "error": {
+    "type": "invalid_request_error",
+    "message": "messages: field required"
+  }
+}
+```
+
+```json 404 - Not Found
+{
+  "error": {
+    "type": "not_found_error",
+    "message": "The requested resource was not found"
+  }
+}
+```
+
+```json 429 - Rate Limit Exceeded
+{
+  "error": {
+    "type": "rate_limit_error",
+    "message": "Rate limit exceeded"
+  }
+}
+```
+
+```json 500 - Internal Server Error
+{
+  "error": {
+    "type": "api_error",
+    "message": "Internal server error"
+  }
+}
+```
+
+```json 529 - Overloaded
+{
+  "error": {
+    "type": "overloaded_error",
+    "message": "Service is temporarily overloaded"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `model` | string | ✅ Yes | `claude-haiku-4-5-20251001` | - | The model identifier. Use `claude-haiku-4-5-20251001` for this model |
+| `messages` | array | ✅ Yes | - | - | Input messages for the conversation. Each message must have a `role` (user/assistant) and `content`. Content can include text blocks or document blocks with base64 or URL sources. Supported formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML. Max file size: 20MB. See [Messages Structure](#messages-structure) below for details |
+| `max_tokens` | integer | ✅ Yes | - | 1-64000 | Maximum number of tokens to generate. The model may stop before reaching this limit |
+| `temperature` | number | ❌ No | `1.0` | 0.0-1.0 | Controls randomness in output. Use lower values (closer to 0.0) for analytical tasks, higher values (closer to 1.0) for creative tasks. Note: Even at 0.0, results are not fully deterministic |
+| `top_p` | number | ❌ No | - | 0.0-1.0 | Nucleus sampling threshold. Controls diversity by considering only tokens with cumulative probability up to top_p. Recommended for advanced use only. Do not use with temperature |
+| `top_k` | integer | ❌ No | - | >0 | Only sample from the top K options for each token. Removes low probability responses. Recommended for advanced use only |
+| `stream` | boolean | ❌ No | `false` | - | Whether to stream the response incrementally using server-sent events |
+| `stop_sequences` | array | ❌ No | - | Max 8191 sequences | Custom text sequences that will cause the model to stop generating. Each sequence must contain non-whitespace characters |
+
+### Messages Structure
+
+**Basic structure:**
+```json
+{
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": "Please analyze this document"
+    },
+    {
+      "type": "document",
+      "source": {
+        "type": "url",
+        "url": "https://example.com/document.pdf"
+      }
+    }
+  ]
+}
+```
+
+**With Base64:**
+```json
+{
+  "type": "document",
+  "source": {
+    "type": "base64",
+    "media_type": "application/pdf",
+    "data": "JVBERi0xLjQK..."
+  }
+}
+```
+
+
+### Messages Array Structure
+
+Each message object in the `messages` array should have the following structure:
+
+| Field | Type | Required | Range | Description |
+|-------|------|----------|-------|-------------|
+| `role` | string | ✅ Yes | - | The role of the message. Can be: `user` or `assistant` |
+| `content` | array/string | ✅ Yes | - | The content of the message. Can be a string or an array of content blocks |
+
+### Content Block Structure
+
+When `content` is an array, each element can be one of the following types:
+
+#### Text Content Block
+
+| Field | Type | Required | Range | Description |
+|-------|------|----------|-------|-------------|
+| `type` | string | ✅ Yes | - | Must be `text` |
+| `text` | string | ✅ Yes | - | The text content |
+
+#### Document Content Block
+
+| Field | Type | Required | Range | Description |
+|-------|------|----------|-------|-------------|
+| `type` | string | ✅ Yes | - | Must be `document` |
+| `source` | object | ✅ Yes | - | The document source (base64 or URL) |
+
+#### Document Source Structure (URL)
+
+| Field | Type | Required | Range | Description |
+|-------|------|----------|-------|-------------|
+| `type` | string | ✅ Yes | - | Must be `url` |
+| `url` | string | ✅ Yes | - | The URL of the document file |
+
+#### Document Source Structure (Base64)
+
+| Field | Type | Required | Range | Description |
+|-------|------|----------|-------|-------------|
+| `type` | string | ✅ Yes | - | Must be `base64` |
+| `media_type` | string | ✅ Yes | - | The MIME type of the document (e.g., `application/pdf`, `application/vnd.openxmlformats-officedocument.wordprocessingml.document`) |
+| `data` | string | ✅ Yes | - | Base64-encoded document data |
+
+### Supported Document Formats
+
+| Format | MIME Type | Extension |
+|--------|-----------|-----------|
+| PDF | `application/pdf` | `.pdf` |
+| Word | `application/vnd.openxmlformats-officedocument.wordprocessingml.document` | `.docx` |
+| Excel | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` | `.xlsx` |
+| Plain Text | `text/plain` | `.txt` |
+| CSV | `text/csv` | `.csv` |
+| JSON | `application/json` | `.json` |
+| XML | `application/xml` or `text/xml` | `.xml` |
+| HTML | `text/html` | `.html` |
+
+**Note**: Maximum file size is 20MB.
