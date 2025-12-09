@@ -1,0 +1,249 @@
+---
+title: 'gemini-3-pro-preview (file analysis)'
+sidebarTitle: 'File Analysis'
+api: 'POST /v1/models/gemini-3-pro-preview:generateContent'
+description: 'File Analysis'
+mode: 'wide'
+---
+
+Gemini's official format for the file analysis API.
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1/models/gemini-3-pro-preview:generateContent' \
+--header 'Authorization: Bearer sk-***********' \
+--header 'Content-Type: application/json' \
+--data '{
+    "contents": [
+        {
+            "parts": [
+                {
+                    "text": "帮我分析这份文件"
+                },
+                {
+                    "fileData": {
+                        "mimeType": "application/pdf",
+                        "fileUri": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+                    }
+                }
+            ]
+        }
+    ],
+    "generationConfig": {
+        "temperature": 0.3
+    },
+    "safetySettings": [
+        {
+            "category": "HARM_CATEGORY_HARASSMENT",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        },
+        {
+            "category": "HARM_CATEGORY_HATE_SPEECH",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        }
+    ]
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/models/gemini-3-pro-preview:generateContent"
+headers = {
+    "Authorization": "Bearer sk-***********",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "contents": [
+        {
+            "parts": [
+                {
+                    "text": "帮我分析这份文件"
+                },
+                {
+                    "fileData": {
+                        "mimeType": "application/pdf",
+                        "fileUri": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+                    }
+                }
+            ]
+        }
+    ],
+    "generationConfig": {
+        "temperature": 0.3
+    },
+    "safetySettings": [
+        {
+            "category": "HARM_CATEGORY_HARASSMENT",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        },
+        {
+            "category": "HARM_CATEGORY_HATE_SPEECH",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        }
+    ]
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/models/gemini-3-pro-preview:generateContent";
+const headers = {
+  "Authorization": "Bearer sk-***********",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "contents": [
+    {
+      "parts": [
+        {
+          "text": "帮我分析这份文件"
+        },
+        {
+          "fileData": {
+            "mimeType": "application/pdf",
+            "fileUri": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "temperature": 0.3
+  },
+  "safetySettings": [
+    {
+      "category": "HARM_CATEGORY_HARASSMENT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+      "category": "HARM_CATEGORY_HATE_SPEECH",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    }
+  ]
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/models/gemini-3-pro-preview:generateContent"
+
+    payload := map[string]interface{}{
+        "contents": []map[string]interface{}{
+            {
+                "parts": []map[string]interface{}{
+                    {
+                        "text": "帮我分析这份文件",
+                    },
+                    {
+                        "fileData": map[string]string{
+                            "mimeType": "application/pdf",
+                            "fileUri":  "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf",
+                        },
+                    },
+                },
+            },
+        },
+        "generationConfig": map[string]interface{}{
+            "temperature": 0.3,
+        },
+        "safetySettings": []map[string]interface{}{
+            {
+                "category":  "HARM_CATEGORY_HARASSMENT",
+                "threshold": "BLOCK_MEDIUM_AND_ABOVE",
+            },
+            {
+                "category":  "HARM_CATEGORY_HATE_SPEECH",
+                "threshold": "BLOCK_MEDIUM_AND_ABOVE",
+            },
+        },
+    }
+
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "Bearer sk-***********")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "code": 400,
+    "message": "Content blocked due to safety concerns.",
+    "status": "INVALID_ARGUMENT"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - | Contains the content to be analyzed, including text and file references. |
+| `parts` | array | ✅ Yes | - | Parts of the content, can include text and file data. |
+| `text` | string | ✅ Yes | - | The text prompt for the file analysis. |
+| `fileData` | object | ✅ Yes | - | The file to analyze. |
+| `mimeType` | string | ✅ Yes | - | The MIME type of the file (e.g., "application/pdf"). |
+| `fileUri` | string | ✅ Yes | - | The URL of the file to analyze. |
+| `generationConfig` | object | ❌ No | - | Generation configuration settings. |
+| `temperature` | number | ❌ No | 0.3 | Controls randomness in the response (0.0 to 1.0). |
+| `safetySettings` | array | ❌ No | - | Safety settings for content filtering. |
+| `category` | string | ✅ Yes | - | The harm category to filter. |
+| `threshold` | string | ✅ Yes | - | The threshold for blocking content (e.g., "BLOCK_MEDIUM_AND_ABOVE"). |
+
+
+
+
+
+
+
+

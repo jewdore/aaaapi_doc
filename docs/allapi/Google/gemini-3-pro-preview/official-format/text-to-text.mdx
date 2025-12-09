@@ -1,0 +1,304 @@
+---
+title: 'gemini-3-pro-preview (text to text)'
+sidebarTitle: 'Text to Text'
+api: 'POST /v1beta/models/gemini-3-pro-preview:generateContent'
+description: 'Text to Text'
+mode: 'wide'
+---
+
+Gemini's official format for the text to text API.
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent' \
+--header 'Authorization: Bearer sk-***********' \
+--header 'Content-Type: application/json' \
+--data '{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "介绍一下量子计算的基本原理"
+                }
+            ]
+        }
+    ],
+    "generationConfig": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "topK": 64,
+        "maxOutputTokens": 8192
+    },
+    "safetySettings": [
+        {
+            "category": "HARM_CATEGORY_HARASSMENT",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        },
+        {
+            "category": "HARM_CATEGORY_HATE_SPEECH",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        },
+        {
+            "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        },
+        {
+            "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        }
+    ]
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent"
+headers = {
+    "Authorization": "Bearer sk-***********",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "介绍一下量子计算的基本原理"
+                }
+            ]
+        }
+    ],
+    "generationConfig": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "topK": 64,
+        "maxOutputTokens": 8192
+    },
+    "safetySettings": [
+        {
+            "category": "HARM_CATEGORY_HARASSMENT",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        },
+        {
+            "category": "HARM_CATEGORY_HATE_SPEECH",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        },
+        {
+            "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        },
+        {
+            "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+        }
+    ]
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent";
+const headers = {
+  "Authorization": "Bearer sk-***********",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "介绍一下量子计算的基本原理"
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "temperature": 0.3,
+    "topP": 0.95,
+    "topK": 64,
+    "maxOutputTokens": 8192
+  },
+  "safetySettings": [
+    {
+      "category": "HARM_CATEGORY_HARASSMENT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+      "category": "HARM_CATEGORY_HATE_SPEECH",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+      "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+      "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    }
+  ]
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent"
+
+    payload := map[string]interface{}{
+        "contents": []map[string]interface{}{
+            {
+                "role": "user",
+                "parts": []map[string]interface{}{
+                    {
+                        "text": "介绍一下量子计算的基本原理",
+                    },
+                },
+            },
+        },
+        "generationConfig": map[string]interface{}{
+            "temperature":     0.3,
+            "topP":            0.95,
+            "topK":            64,
+            "maxOutputTokens": 8192,
+        },
+        "safetySettings": []map[string]interface{}{
+            {
+                "category":  "HARM_CATEGORY_HARASSMENT",
+                "threshold": "BLOCK_MEDIUM_AND_ABOVE",
+            },
+            {
+                "category":  "HARM_CATEGORY_HATE_SPEECH",
+                "threshold": "BLOCK_MEDIUM_AND_ABOVE",
+            },
+            {
+                "category":  "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                "threshold": "BLOCK_MEDIUM_AND_ABOVE",
+            },
+            {
+                "category":  "HARM_CATEGORY_DANGEROUS_CONTENT",
+                "threshold": "BLOCK_MEDIUM_AND_ABOVE",
+            },
+        },
+    }
+
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "Bearer sk-***********")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "code": 401,
+    "message": "Invalid API key provided.",
+    "status": "UNAUTHENTICATED"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "code": 403,
+    "message": "Insufficient balance for the requested operation.",
+    "status": "PERMISSION_DENIED"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "code": 500,
+    "message": "An internal error occurred.",
+    "status": "INTERNAL"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "code": 400,
+    "message": "Content blocked due to safety concerns.",
+    "status": "INVALID_ARGUMENT"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `contents` | array | ✅ Yes | - | Contains the content to be processed. |
+| `role` | string | ✅ Yes | - | The role of the message sender (e.g., "user"). |
+| `parts` | array | ✅ Yes | - | Parts of the content, containing text. |
+| `text` | string | ✅ Yes | - | The text prompt for the generation. |
+| `generationConfig` | object | ❌ No | - | Generation configuration settings. |
+| `temperature` | number | ❌ No | 0.3 | Controls randomness in the response (0.0 to 1.0). |
+| `topP` | number | ❌ No | 0.95 | Controls diversity via nucleus sampling. |
+| `topK` | number | ❌ No | 64 | Limits the number of tokens considered. |
+| `maxOutputTokens` | number | ❌ No | 8192 | Maximum number of tokens in the response. |
+| `safetySettings` | array | ❌ No | - | Safety settings for content filtering. |
+| `category` | string | ✅ Yes | - | The harm category to filter. |
+| `threshold` | string | ✅ Yes | - | The threshold for blocking content. |
+
+
+
+
+
+
+
+

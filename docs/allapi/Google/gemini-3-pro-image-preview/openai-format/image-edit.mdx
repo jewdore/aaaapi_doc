@@ -1,0 +1,166 @@
+---
+title: 'gemini-3-pro-image-preview (image edit)' 
+sidebarTitle: 'Image Edit'
+api: 'POST /v1/images/edits'
+description: 'Image Edit'
+mode: 'wide'
+---
+
+Gemini's OpenAI-compatible format for the image edit API.
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1/images/edits' \
+--header 'Authorization: sk-***********' \
+--form 'model="gemini-3-pro-image-preview"' \
+--form 'image="@/path/to/image.jpg"' \
+--form 'prompt="Add a smiling face to the image"' \
+--form 'n="1"' \
+--form 'size="1024x1024"'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/images/edits"
+headers = {
+    "Authorization": "sk-***********",
+}
+
+files = {
+    "model": (None, "gemini-3-pro-image-preview"),
+    "image": ("image.jpg", open("/path/to/image.jpg", "rb"), "image/jpeg"),
+    "prompt": (None, "Add a smiling face to the image"),
+    "n": (None, "1"),
+    "size": (None, "1024x1024"),
+}
+
+response = requests.post(url, headers=headers, files=files)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+// Note: JavaScript requires handling file uploads differently
+const url = "https://gptproto.com/v1/images/edits";
+const headers = {
+  "Authorization": "sk-***********",
+};
+
+// Create a FormData object
+const formData = new FormData();
+formData.append("model", "gemini-3-pro-image-preview");
+formData.append("image", document.querySelector('input[type="file"]').files[0]);
+formData.append("prompt", "Add a smiling face to the image");
+formData.append("n", "1");
+formData.append("size", "1024x1024");
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: formData,
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "net/url"
+    "os"
+    "path/filepath"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/images/edits"
+
+    // Create a multipart form
+    file, err := os.Open("/path/to/image.jpg")
+    if err != nil {
+        panic(err)
+    }
+    defer file.Close()
+
+    // Create request
+    req, err := http.NewRequest("POST", url, nil)
+    if err != nil {
+        panic(err)
+    }
+
+    // Set headers
+    req.Header.Set("Authorization", "sk-***********")
+
+    // Create form data
+    form := &url.Values{}
+    form.Add("model", "gemini-3-pro-image-preview")
+    form.Add("prompt", "Add a smiling face to the image")
+    form.Add("n", "1")
+    form.Add("size", "1024x1024")
+
+    // Note: Complete implementation would require proper multipart form handling
+    // This is a simplified example
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 400 - Invalid request
+{
+  "error": {
+    "message": "Invalid request: The image format is not supported",
+    "type": "400"
+  }
+}
+```
+</CodeGroup>
+
+## Path Parameters
+
+
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | - | The model to use for image editing (e.g., "gemini-3-pro-image-preview"). |
+| `image` | file | ✅ Yes | - | The image file to edit. Must be a PNG, JPEG, or WEBP file. |
+| `mask` | file | ❌ No | - | An optional mask image that specifies where to edit the image. |
+| `prompt` | string | ✅ Yes | - | The text prompt describing the desired edits. |
+| `n` | integer | ❌ No | 1 | The number of images to generate. |
+| `size` | string | ❌ No | 1024x1024 | The size of the generated images (e.g., "256x256", "512x512", "1024x1024"). |
+| `response_format` | string | ❌ No | url | The format of the response ("url" or "b64_json"). |
+| `style` | string | ❌ No | vivid | The style of the generated images ("vivid" or "natural"). |
+
+
+
+
+
+
+
+

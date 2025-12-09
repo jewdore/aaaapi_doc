@@ -1,0 +1,214 @@
+---
+title: 'gemini-3-pro-preview (file analysis)'
+sidebarTitle: 'File Analysis'
+api: 'POST /v1/chat/completions'
+description: 'File Analysis'
+mode: 'wide'
+---
+
+Gemini's OpenAI-compatible format for the file analysis API.
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/v1/chat/completions' \
+--header 'Authorization: sk-***********' \
+--header 'Content-Type: application/json' \
+--data '{
+    "model": "gemini-3-pro-preview",
+    "messages": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "帮我分析这份文件"
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+                    }
+                }
+            ]
+        }
+    ],
+    "stream": false
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/chat/completions"
+headers = {
+    "Authorization": "sk-***********",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "model": "gemini-3-pro-preview",
+    "messages": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "帮我分析这份文件"
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+                    }
+                }
+            ]
+        }
+    ],
+    "stream": False
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/chat/completions";
+const headers = {
+  "Authorization": "sk-***********",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "gemini-3-pro-preview",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "帮我分析这份文件"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "stream": false
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/chat/completions"
+
+    payload := map[string]interface{}{
+        "model": "gemini-3-pro-preview",
+        "messages": []map[string]interface{}{
+            {
+                "role": "user",
+                "content": []map[string]interface{}{
+                    {
+                        "type": "text",
+                        "text": "帮我分析这份文件",
+                    },
+                    {
+                        "type": "image_url",
+                        "image_url": map[string]string{
+                            "url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf",
+                        },
+                    },
+                },
+            },
+        },
+        "stream": false,
+    }
+
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "sk-***********")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Path Parameters
+
+
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `model` | string | ✅ Yes | - | The model to use for file analysis (e.g., "gemini-3-pro-preview"). |
+| `messages` | array | ✅ Yes | - | An array of message objects representing the conversation history and file data. |
+| `role` | string | ✅ Yes | - | The role of the message sender (e.g., "user" or "assistant"). |
+| `content` | array | ✅ Yes | - | An array of content objects containing the prompt text and file data. |
+| `type` | string | ✅ Yes | - | The type of content ("text" or "image_url" for file references). |
+| `text` | string | ✅ Yes | - | The text prompt for the file analysis. |
+| `image_url` | object | ✅ Yes | - | Reference to a file URL for analysis. |
+| `url` | string | ✅ Yes | - | The URL of the file to analyze (PDF, images, etc.). |
+| `stream` | boolean | ❌ No | false | Whether to stream the response. |
+
+
+
+
+
+
+
+
