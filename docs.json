@@ -2298,14 +2298,6 @@
                 "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1754623057482-20250808-111710.png"
               },
               {
-                "group": "Quick Start",
-                "icon": "rocket",
-                "pages": [
-                  "docs/api/quickstart/openai",
-                  "docs/api/quickstart/gemini"
-                ]
-              },
-              {
                 "group": "Qwen",
                 "pages": [
                   {
@@ -2363,6 +2355,14 @@
                   }
                 ],
                 "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755663073115-111.png"
+              },
+              {
+                "group": "Quick Start",
+                "icon": "rocket",
+                "pages": [
+                  "docs/api/quickstart/openai",
+                  "docs/api/quickstart/gemini"
+                ]
               }
             ]
           }
