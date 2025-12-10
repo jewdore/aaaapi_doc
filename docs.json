@@ -829,12 +829,6 @@
                         ]
                       },
                       {
-                        "group": "nano-banana-format",
-                        "pages": [
-                          "docs/allapi/Google/gemini-3-pro-image-preview/nano-banana-format/text-to-image"
-                        ]
-                      },
-                      {
                         "group": "official-format",
                         "pages": [
                           "docs/allapi/Google/gemini-3-pro-image-preview/official-format/image-edit",
