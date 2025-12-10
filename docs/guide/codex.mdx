@@ -1,6 +1,6 @@
 ---
-title: 'How to Use Codex'
-description: 'Installation, configuration and usage guide - Support for direct API connection in China'
+title: "How to Use Codex"
+description: "Installation, configuration and usage guide - Support for direct API connection in China"
 ---
 
 # OpenAI Codex CLI Complete Tutorial
@@ -8,9 +8,9 @@ description: 'Installation, configuration and usage guide - Support for direct A
 Installation, Configuration and Usage Guide - Support for Direct API Connection in China
 
 <Note>
-**📖 Contents Covered:**
+  **📖 Contents Covered:**
 
-This article provides detailed instructions on how to install and configure [OpenAI Codex CLI](https://github.com/openai/openai-codex), combined with [GPT Proto Aggregation API](https://gptproto.com), which can be used directly in China without configuring a proxy. Supports Windows/Linux/Mac multi-platform, and can be configured with third-party IDEs such as VS Code.
+  This article provides detailed instructions on how to install and configure [OpenAI Codex CLI](https://github.com/openai/openai-codex), combined with [GPT Proto Aggregation API](https://gptproto.com), which can be used directly in China without configuring a proxy. Supports Windows/Linux/Mac multi-platform, and can be configured with third-party IDEs such as VS Code.
 </Note>
 
 ## 1. Codex CLI Introduction and System Requirements
@@ -21,12 +21,12 @@ This article provides detailed instructions on how to install and configure [Ope
 
 ### System Requirements
 
-| Item | Requirement |
-|------|------------|
-| Officially Supported Systems | macOS and Linux (Recommended) |
-| Windows Users | Strongly recommend using [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) |
-| Node.js Version | Node.js 18+ (Required) |
-| npm Version | npm 10.x.x or higher |
+| Item                         | Requirement                                                                                                         |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Officially Supported Systems | macOS and Linux (Recommended)                                                                                       |
+| Windows Users                | Strongly recommend using [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) |
+| Node.js Version              | Node.js 18+ (Required)                                                                                              |
+| npm Version                  | npm 10.x.x or higher                                                                                                |
 
 ---
 
@@ -76,7 +76,7 @@ codex --version  # Should display version number, e.g., 0.40.0
 ```
 
 <Note>
-**🎉 Congratulations! Codex CLI installation is complete!**
+  **🎉 Congratulations! Codex CLI installation is complete!**
 </Note>
 
 ### macOS Installation Method
@@ -128,13 +128,13 @@ After restarting, follow the Ubuntu installation steps above to complete Codex C
 **1. Get API Key**
 
 <Note>
-**Recommended: Use GPT Proto Aggregation API (Direct Connection in China)**
+  **Recommended: Use GPT Proto Aggregation API (Direct Connection in China)**
 
-Visit [https://gptproto.com](https://gptproto.com) to get API Key
+  Visit https://gptproto.com to get API Key
 
-- ✅ Direct connection in China, no proxy needed
-- ✅ Supports multiple OpenAI models
-- ✅ Affordable pricing, pay-as-you-go
+  - ✅ Direct connection in China, no proxy needed
+  - ✅ Supports multiple OpenAI models
+  - ✅ Affordable pricing, pay-as-you-go
 </Note>
 
 **2. Temporary Configuration (Valid for Current Session)**
@@ -177,32 +177,17 @@ Default configuration file path: `~/.codex/config.toml`
 
 Official configuration documentation: [Codex Configuration Documentation](https://github.com/openai/openai-codex/blob/main/docs/configuration.md)
 
-**Basic Configuration Example**
-
-```toml
-# ~/.codex/config.toml
-
-model = "gpt-5-codex"
-model_provider = "openai-chat-completions"
-
-[model_providers.openai-chat-completions]
-name = "OpenAI using Chat Completions"
-base_url = "https://gptproto.com/v1"
-env_key = "OPENAI_API_KEY"
-wire_api = "chat"
-```
-
 <Note>
-**Configuration Explanation:**
+  **Configuration Explanation:**
 
-- `model`: Model name to use (e.g., gpt-4, gpt-3.5-turbo, etc.)
-- `model_provider`: Model provider configuration
-- `base_url`: API base address (using GPT Proto Aggregation API)
-- `env_key`: Environment variable name
-- `wire_api`: API type (chat or completions)
+  - `model`: Model name to use (e.g., gpt-4, gpt-3.5-turbo, etc.)
+  - `model_provider`: Model provider configuration
+  - `base_url`: API base address (using GPT Proto Aggregation API)
+  - `env_key`: Environment variable name
+  - `wire_api`: API type (chat or completions)
 </Note>
 
-**Advanced Configuration Options**
+**Basic Configuration Options**
 
 ```toml
 # Advanced configuration example
@@ -240,11 +225,11 @@ For third-party IDEs (such as [VS Code](https://code.visualstudio.com/)), you ne
 
 ### Other IDE Support
 
-| IDE | Support Status | Description |
-|-----|---------------|-------------|
-| VS Code | Official Support | Full plugin support |
+| IDE              | Support Status    | Description                 |
+| ---------------- | ----------------- | --------------------------- |
+| VS Code          | Official Support  | Full plugin support         |
 | JetBrains Series | Community Support | Integrated through terminal |
-| Vim/Neovim | Community Support | Supported through plugins |
+| Vim/Neovim       | Community Support | Supported through plugins   |
 
 ---
 
@@ -294,14 +279,14 @@ codex
 
 ### Common Interactive Commands
 
-| Command | Function Description |
-|---------|---------------------|
-| `/help` | Display help information |
-| `/exit` or `Ctrl+C` | Exit Codex |
-| `/clear` | Clear conversation history |
-| `/config` | View current configuration |
-| `/model <name>` | Switch model |
-| `/tokens` | View token usage |
+| Command             | Function Description       |
+| ------------------- | -------------------------- |
+| `/help`             | Display help information   |
+| `/exit` or `Ctrl+C` | Exit Codex                 |
+| `/clear`            | Clear conversation history |
+| `/config`           | View current configuration |
+| `/model <name>`     | Switch model               |
+| `/tokens`           | View token usage           |
 
 ### Usage Scenario Examples
 
@@ -344,67 +329,67 @@ codex "Generate API documentation for the entire project"
 **1. Permission Issues**
 
 <Warning>
-**Problem:** Encountering permission error "EACCES: permission denied"
+  **Problem:** Encountering permission error "EACCES: permission denied"
 
-**Solution:**
+  **Solution:**
 
-```bash
-# Method 1: Use sudo
-sudo npm install -g @openai/codex
-
-# Method 2: Modify npm global directory permissions (recommended)
-mkdir ~/.npm-global
-npm config set prefix '~/.npm-global'
-echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
-source ~/.bashrc
-```
+  ```bash
+  # Method 1: Use sudo
+  sudo npm install -g @openai/codex
+  
+  # Method 2: Modify npm global directory permissions (recommended)
+  mkdir ~/.npm-global
+  npm config set prefix '~/.npm-global'
+  echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
+  source ~/.bashrc
+  ```
 </Warning>
 
 **2. Node Version Issues**
 
 <Warning>
-**Problem:** Node.js version too low
+  **Problem:** Node.js version too low
 
-**Solution:**
+  **Solution:**
 
-```bash
-# Use nvm to manage Node.js versions
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-nvm install 22
-nvm use 22
-```
+  ```bash
+  # Use nvm to manage Node.js versions
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+  nvm install 22
+  nvm use 22
+  ```
 </Warning>
 
 **3. Network Connection Issues**
 
 <Warning>
-**Problem:** Cannot connect to API
+  **Problem:** Cannot connect to API
 
-**Solution:**
+  **Solution:**
 
-- Confirm API Key is configured correctly
-- Check if `base_url` configuration is correct
-- Use [GPT Proto](https://gptproto.com) to ensure direct connection in China
-- Verify network connection: `curl https://gptproto.com/v1/models`
+  - Confirm API Key is configured correctly
+  - Check if `base_url` configuration is correct
+  - Use [GPT Proto](https://gptproto.com) to ensure direct connection in China
+  - Verify network connection: `curl https://gptproto.com/v1/models`
 </Warning>
 
 **4. Invalid API Key**
 
 <Warning>
-**Problem:** "Invalid API Key" error
+  **Problem:** "Invalid API Key" error
 
-**Solution:**
+  **Solution:**
 
-```bash
-# Check environment variable
-echo $OPENAI_API_KEY
-
-# Reset API Key
-export OPENAI_API_KEY="sk-your-key"
-
-# Verify configuration
-codex --help
-```
+  ```bash
+  # Check environment variable
+  echo $OPENAI_API_KEY
+  
+  # Reset API Key
+  export OPENAI_API_KEY="sk-your-key"
+  
+  # Verify configuration
+  codex --help
+  ```
 </Warning>
 
 ### Verify Configuration
@@ -493,15 +478,15 @@ alias cdx-doc="codex --mode documentation"
 
 ## 8. Best Practice Recommendations
 
-| Recommendation | Description |
-|---------------|-------------|
-| Clear Prompts | Provide clear, specific instructions, explaining expected output format and requirements |
-| Context Information | Provide sufficient context, such as project tech stack, coding standards, etc. |
+| Recommendation         | Description                                                                                            |
+| ---------------------- | ------------------------------------------------------------------------------------------------------ |
+| Clear Prompts          | Provide clear, specific instructions, explaining expected output format and requirements               |
+| Context Information    | Provide sufficient context, such as project tech stack, coding standards, etc.                         |
 | Iterative Optimization | Gradually improve code through multiple rounds of dialogue, rather than expecting perfection in one go |
-| Code Review | Always review AI-generated code to ensure it meets project standards |
-| Version Control | Use Git to track changes for easy rollback and comparison |
-| Security Awareness | Don't send sensitive information (keys, passwords, etc.) to AI |
-| Cost Control | Monitor token usage to avoid unnecessary API calls |
+| Code Review            | Always review AI-generated code to ensure it meets project standards                                   |
+| Version Control        | Use Git to track changes for easy rollback and comparison                                              |
+| Security Awareness     | Don't send sensitive information (keys, passwords, etc.) to AI                                         |
+| Cost Control           | Monitor token usage to avoid unnecessary API calls                                                     |
 
 ---
 
@@ -526,17 +511,17 @@ alias cdx-doc="codex --mode documentation"
 ## Summary
 
 <Note>
-**Through this guide, you have successfully:**
+  **Through this guide, you have successfully:**
 
-- ✅ Understood basic concepts and features of OpenAI Codex CLI
-- ✅ Installed Codex CLI on Linux/macOS/Windows systems
-- ✅ Configured GPT Proto Aggregation API (direct connection in China)
-- ✅ Mastered basic usage methods and common commands
-- ✅ Understood IDE integration methods
-- ✅ Learned troubleshooting and problem solving
-- ✅ Mastered advanced usage tips and best practices
+  - ✅ Understood basic concepts and features of OpenAI Codex CLI
+  - ✅ Installed Codex CLI on Linux/macOS/Windows systems
+  - ✅ Configured GPT Proto Aggregation API (direct connection in China)
+  - ✅ Mastered basic usage methods and common commands
+  - ✅ Understood IDE integration methods
+  - ✅ Learned troubleshooting and problem solving
+  - ✅ Mastered advanced usage tips and best practices
 
-**🚀 You can now start enjoying the efficient coding experience brought by Codex CLI!**
+  **🚀 You can now start enjoying the efficient coding experience brought by Codex CLI!**
 </Note>
 
 ### Need Help?
