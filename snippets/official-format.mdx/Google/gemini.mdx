@@ -1,0 +1,7 @@
+### Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `prompt` | string | ✅ Yes | - | - | Description of the edit to be made to the image(s). Be specific about the desired changes. |
+| `images` | array | ✅ Yes | - | - | Array of image URLs to be edited. Supported MIME types: `image/png`, `image/jpeg`, `image/webp` |
+| `output_format` | string | ❌ No | `png` | `png`,`jpeg` | The format of the output image. Supported formats: `png`, `jpeg` |
+| `size` | string | ❌ No | `1:1` | `1:1`, `3:2`, `2:3`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`, `21:9` | Aspect ratio of the output image. Options: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9. The model defaults to matching the output image size to that of your input image, or otherwise generates 1:1 squares. |
