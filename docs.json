@@ -2363,8 +2363,7 @@
                   "docs/api/quickstart/openai",
                   "docs/api/quickstart/gemini"
                 ]
-              },
-              "test"
+              }
             ]
           }
         ]
