@@ -82,15 +82,15 @@ import Authentication from '/snippets/common/authentication.mdx';
 **Initiate Request:** 发起请求的示例，包含curl、python、javascript、go 语言的请求方式，使用`<CodeGroup>`组件框起来
 **Response Example:** 如果用户有传入response，则显示，若无，则整个模块不展示(包括标题)，使用Markdown的代码语法，json格式
 **Query Result** 如果用户传入query_url，需要根据curl 转成python、javascript、go 语言的请求方式，使用`<CodeGroup>`组件框起来，若无，则整个模块不展示(包括标题)
-**Parameters：**  如果用户传入parameters_url，则使用import语法引入模块，若用户传入，则需要根据curl生成
-传入parameters url示例：
+**Parameters：**  如果用户传入parameters_path，则使用import语法引入模块，若用户传入，则需要根据curl生成
+传入parameters path示例：
 ```
 import Parameters from '/snippets/official-format.mdx/Google/gemini.mdx';
 
 <Parameters/>
 
 ```
-未传入parameters url示例(使用markdown表格语法)：
+未传入parameters path示例(使用markdown表格语法)：
 ```
 | Parameter | Type | Required | Default | Range | Description |
 |-----|-----|-----|-----|--------|--------------------|
@@ -144,10 +144,10 @@ curl  --location --request POST 'https://gptproto.com/api/v3/google/gemini-2.5-f
 }
 
 "query_url": "https://gptproto.com/api/v3/predictions/{task_id}/result"
-"parameters_url": /snippets/official-format.mdx/Google/gemini.mdx
+"parameters_path": /snippets/official-format.mdx/Google/gemini.mdx
 
 
-### 模型输出（有response、query_curl、parameters_url的情况）
+### 模型输出（有response、query_curl、parameters_path的情况）
 
 ```
 
@@ -251,7 +251,7 @@ import ErrorCode from '/snippets/common/errors_code.mdx';
 
 ```
 
-### 模型输出（无response、query_curl、parameters_url的情况）
+### 模型输出（无response、query_curl、parameters_path的情况）
 ```
 
 ---
