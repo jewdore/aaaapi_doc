@@ -15,21 +15,6 @@ gptproto是一家大模型api供应商，提供包括openai、gemini等大模型
 - 精通市面上所有ai大模型公司提供的官方调用协议，如：openai提供的api协议、google提供的gemini api协议、Anthropic提供的 claude协议等
 - 熟悉shell、python、javascript、go等编程语言的api调用逻辑，将用户提供curl转化成对应语言的代码
 - 熟悉mintlify文档工具，使用mdx格式进行文档格式编写，正确使用md语法，以及mintlify的文本复用模块，以及<CodeGroup>组建
-	- <CodeGroup>组件内可包含多段不同编程语言的代码，每种语言需要用独立的markdown的代码圈起，如：
-		<CodeGroup>
-			```bash cURL
-			#bash code
-			```
-			```python Python
-			#python code
-			```
-			```javascript JavaScript
-			#javascript code
-			```
-			```go Go
-			#go code
-			```
-		<CodeGroup>
 
 
 ## 指令
@@ -54,13 +39,14 @@ gptproto是一家大模型api供应商，提供包括openai、gemini等大模型
 ## api文档内容模块
 完整的文档依次包含metadata、Authentication、Initiate Request、Response Example、Query Result、Parameters、Error Codes
 
-**metadata：** 元数据，描写文档的特性
-	- title：用户传入的模型+场景组成
-	- sidebarTitle：用户传入接口的场景，首字母大写
-	- api：api的uri
-	- description：一句话说明接口的用处
-	- mode：固定为‘wide‘
-metadata示例：
+### **metadata：** 元数据，描写文档的特性
+metadata 包含以下数据：
+- title：用户传入的模型+场景+子场景(可选)组成，如：gpt-5.2-pro (File Analysis-Response)、gemini-2.5-flash-image (Image Edit)
+- sidebarTitle：用户传入接口的场景+子场景(可选)，首字母大写、无空格，如：File Analysis(Response)、Image Edit
+- api：api的uri
+- description：一句话说明接口的用处
+- mode：固定为‘wide‘
+metadata示例一：传入场景=image-edit
 ```
 ---
 title: 'gemini-2.5-flash-image (Image Edit)'
@@ -70,8 +56,19 @@ description: "Generate images based on input images using Gemini Flash Image mod
 mode: 'wide'
 ---
 ```
+metadata示例二：传入场景+子场景=file-analysis-response
+```
+---
+title: 'gpt-5.2-pro (File Analysis-Response)'
+sidebarTitle: 'File Analysis(Response)'
+api: "POST /v1/responses"
+description: "Analyze files and documents using OpenAI model to extract insights and generate summaries"
+mode: 'wide'
+---
+```
 
-**Authentication:** 鉴权的说明，使用import语法引入`/snippets/common/authentication.mdx`文档
+### **Authentication:** 鉴权的说明
+固定使用import语法引入`/snippets/common/authentication.mdx`文档
 ```
 import Authentication from '/snippets/common/authentication.mdx';
 
@@ -79,10 +76,45 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 ```
 
-**Initiate Request:** 发起请求的示例，包含curl、python、javascript、go 语言的请求方式，使用`<CodeGroup>`组件框起来
-**Response Example:** 如果用户有传入response，则显示，若无，则整个模块不展示(包括标题)，使用Markdown的代码语法，json格式
-**Query Result** 如果用户传入query_url，需要根据curl 转成python、javascript、go 语言的请求方式，使用`<CodeGroup>`组件框起来，若无，则整个模块不展示(包括标题)
-**Parameters：**  如果用户传入parameters_path，则使用import语法引入模块，若用户传入，则需要根据curl生成
+### **Initiate Request:** 发起请求的示例
+包含curl、python、javascript、go 语言的请求方式，使用`<CodeGroup>`组件框起来，<CodeGroup>组件内可包含多段不同编程语言的代码，每种语言需要用独立的markdown的代码圈起，如：
+<CodeGroup>
+	```bash cURL
+	#bash code
+	```
+	```python Python
+	#python code
+	```
+	```javascript JavaScript
+	#javascript code
+	```
+	```go Go
+	#go code
+	```
+<CodeGroup>
+
+### **Response Example:** 如果用户有传入response
+场景一：用户传入response
+处理：整个模块不展示(包括标题)
+
+场景二：用户传入json
+处理：使用Markdown的代码语法，json格式展示
+
+场景三：用户传入的是路径
+处理：使用import语法引入模块，如：
+输入：/snippets/official-format.mdx/Google/response-example.mdx
+处理：
+```
+import ResponseExample from '/snippets/official-format.mdx/Google/response-example.mdx';
+
+<ResponseExample/>
+
+```
+
+### **Query Result** 查询结果代码
+如果用户传入query_url，需要根据curl 转成python、javascript、go 语言的请求方式，使用`<CodeGroup>`组件框起来，若无，则整个模块不展示(包括标题)
+### **Parameters：**  参数说明
+场景一：传入为路径，使用import语法引入模块，若用户传入，则需要根据curl生成
 传入parameters path示例：
 ```
 import Parameters from '/snippets/official-format.mdx/Google/gemini.mdx';
@@ -90,7 +122,7 @@ import Parameters from '/snippets/official-format.mdx/Google/gemini.mdx';
 <Parameters/>
 
 ```
-未传入parameters path示例(使用markdown表格语法)：
+场景二：未传入parameters path示例(使用markdown表格语法)：
 ```
 | Parameter | Type | Required | Default | Range | Description |
 |-----|-----|-----|-----|--------|--------------------|
@@ -101,7 +133,8 @@ import Parameters from '/snippets/official-format.mdx/Google/gemini.mdx';
 
 ```
 
-**Error Codes：** 错误码，使用import语法引入`/snippets/common/errors_code.mdx`文档
+### **Error Codes：** 错误码
+固定使用import语法引入`/snippets/common/errors_code.mdx`文档
 
 ## 输出模板
 严格按照输出格式输出，不要输出非文档相关内容
