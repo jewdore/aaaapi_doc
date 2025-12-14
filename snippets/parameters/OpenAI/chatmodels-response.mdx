@@ -1,0 +1,109 @@
+## Parameters
+
+### Core Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `model` | string | ✅ Yes | - | - | Model ID used to generate the response, like `gpt-4o` or `o3`. |
+| `input` | string/array | ✅ Yes | - | - | Input content for the model. |
+| `>input.role` | string | ✅ Yes | - | `user`<br />`assistant`<br />`system`<br />`developer` | The role of the message input. One of user, assistant, system, or developer. |
+| `>input.content` | string/array | ✅ Yes | - | - | A text input to the model when string; a list of one or many input items to the model, containing different content types when array. See [Multimodal Input](#multimodal-input) for details. |
+
+
+### Advanced Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `stream` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to stream the response back incrementally. Defaults to false. |
+| `max_output_tokens` | integer | ❌ No | - | - | An upper bound for the number of tokens that can be generated for a response, including visible output tokens and reasoning tokens. |
+| `tools` | array | ❌ No | - | - | A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. See [Tools Parameters](#tools-parameters) for details. |
+
+
+
+
+### Multimodal Input
+<CodeGroup>
+```json Input text
+{
+  "role": "user",
+  "content": [
+    {
+      "type": "input_text",
+      "text": "Who are you?"
+    }
+  ]
+}
+```
+
+```json Input image
+{
+  "role": "user",
+  "content": [
+    {
+      "type": "input_image",
+      "detail": "high",
+      "image_url": "https://example.com/image.jpg"
+    }
+  ]
+}
+```
+
+```json Input file
+{
+  "role": "user",
+  "content": [
+    {
+      "type": "input_file",
+      "filename": "file.pdf",
+      "file_url": "https://example.com/file.pdf"
+    }
+  ]
+}
+```
+</CodeGroup>
+
+| parameter | Type | Required | Default | Range / Example | Description |
+|---------------|------|----------|---------|-----------------|-------------|
+| `content.type` | string | ✅ Yes | — | `input_text`<br />`input_image`<br />`input_file` | Identifies the content block type for multimodal input. |
+| `content.text` | string | ❌ No | — | - | The text input to the model. |
+| `content.file_id` | string | ❌ No | - | - | The ID of the file to be sent to the model. |
+| `content.detail` | string | ❌ No | `auto` | `high`<br />`low`<br />`auto` | The detail level of the image to be sent to the model. One of high, low, or auto. Defaults to auto. <br />Only required when `type=input_image`. |
+| `content.image_url` | string | ❌ No | - | - | The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.  <br />Only required when `type=input_image`. |
+| `content.file_url` | string | ❌ No | - | - | The URL of the file to be sent to the model. <br />Only required when `type=input_file`. |
+| `content.file_data` | string | ❌ No | - | - | The content of the file to be sent to the model. <br />Only required when `type=input_file`. |
+| `content.filename` | string | ❌ No | - | - | The name of the file to be sent to the model. <br />Only required when `type=input_file`. |
+
+
+### Tools Parameters
+<CodeGroup>
+```json Web search 
+{
+  "tools": [
+    {
+        "type": "web_search",
+        "filters": {
+        "allowed_domains": ["example.com"]
+        },
+        "search_context_size": "low",
+        "user_location":{
+            "city": "San Francisco",
+            "country": "US",
+            "region": "California",
+            "timezone": "America/Los_Angeles",
+            "type": "approximate"
+        }
+    }
+  ]
+}
+```
+</CodeGroup>
+| parameter | Type | Required | Default | Range / Example | Description |
+|---------------|------|----------|---------|-----------------|-------------|
+| `type` | string | ✅ Yes | — | `web_search`<br />`web_search_2025_08_26` | The type of the web search tool. One of `web_search` or `web_search_2025_08_26`. |
+| `filters` | object | ❌ No | - | - | Filters for the search. |
+| `>filters.allowed_domains` | string | ❌ No | - | `["pubmed.ncbi.nlm.nih.gov"]` | Allowed domains for the search. If not provided, all domains are allowed. Subdomains of the provided domains are allowed as well. |
+| `tools.search_context_size` | string | ❌ No | `medium` | `low`<br />`medium`<br />`high` | High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default. |
+| `user_location` | object | ❌ No | - | - | The approximate location of the user. |
+| `>user_location.city` | string | ❌ No | - | - | Free text input for the city of the user, e.g. San Francisco. |
+| `>user_location.country` | string | ❌ No | - | - | The two-letter ISO country code of the user, e.g. US. |
+| `>user_location.region` | string | ❌ No | - | - | Free text input for the region of the user, e.g. California. |
+| `>user_location.timezone` | string | ❌ No | - | - | The IANA timezone of the user, e.g. America/Los_Angeles. |
+| `>user_location.type` | string | ❌ No | `approximate` | - | The type of location approximation. Always approximate. |
