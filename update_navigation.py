@@ -40,17 +40,23 @@ for vendor in os.listdir(allapi_dir):
                                 page_path = f"docs/allapi/{vendor}/{model}/{protocol}/{filename[:-4]}"
                                 pages.append(page_path)
                         
-                        # 如果有文档，添加该协议到模型的pages中
+                        # 如果有文档，对页面进行字母排序并添加该协议到模型的pages中
                         if pages:
+                            # 对页面进行字母排序
+                            pages.sort()
                             protocol_data = {"group": protocol, "pages": pages}
                             model_data["pages"].append(protocol_data)
                 
-                # 如果模型有协议文档，添加该模型到厂商的pages中
+                # 如果模型有协议文档，对协议进行字母排序并添加到厂商的pages中
                 if model_data["pages"]:
+                    # 对协议进行字母排序
+                    model_data["pages"].sort(key=lambda x: x["group"])
                     vendor_data["pages"].append(model_data)
         
         # 如果厂商有模型文档，添加该厂商到新的导航中
         if vendor_data["pages"]:
+            # 对模型进行字母排序
+            vendor_data["pages"].sort(key=lambda x: x["group"])
             # 使用映射后的厂商名称作为键
             new_navigation[vendor_name] = vendor_data
 
@@ -112,6 +118,9 @@ for tab in docs_data["navigation"]["tabs"]:
                         for model_name, new_model in new_models.items():
                             if model_name not in existing_models:
                                 merged_models.append(new_model)
+                        
+                        # 对合并后的模型进行字母排序
+                        merged_models.sort(key=lambda x: x["group"])
                         
                         # 更新厂商的pages
                         merged_vendor["pages"] = merged_models
