@@ -30,7 +30,7 @@ curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
         {
           "type": "image_url",
           "image_url": {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+            "url": "https://tos.gptproto.com/resource/cat.png"
           }
         }
       ]
@@ -61,7 +61,7 @@ response = client.chat.completions.create(
                 {
                     "type": "image_url",
                     "image_url": {
-                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+                        "url": "https://tos.gptproto.com/resource/cat.png"
                     }
                 }
             ]
@@ -95,7 +95,7 @@ async function main() {
                     {
                         type: "image_url",
                         image_url: {
-                            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+                            url: "https://tos.gptproto.com/resource/cat.png"
                         }
                     }
                 ]
@@ -139,7 +139,7 @@ func main() {
 						{
 							Type: openai.ChatMessagePartTypeImageURL,
 							ImageURL: &openai.ChatMessageImageURL{
-								URL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
+								URL: "https://tos.gptproto.com/resource/cat.png",
 							},
 						},
 					},

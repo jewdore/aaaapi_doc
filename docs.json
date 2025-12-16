@@ -146,22 +146,6 @@
                     ]
                   },
                   {
-                    "group": "gpt-4o-2024-08-06",
-                    "pages": [
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/allapi/OpenAI/gpt-4o-2024-08-06/official-format/file-analysis-response",
-                          "docs/allapi/OpenAI/gpt-4o-2024-08-06/official-format/image-to-text-chat",
-                          "docs/allapi/OpenAI/gpt-4o-2024-08-06/official-format/image-to-text-response",
-                          "docs/allapi/OpenAI/gpt-4o-2024-08-06/official-format/text-to-text-chat",
-                          "docs/allapi/OpenAI/gpt-4o-2024-08-06/official-format/text-to-text-response",
-                          "docs/allapi/OpenAI/gpt-4o-2024-08-06/official-format/web-search-response"
-                        ]
-                      }
-                    ]
-                  },
-                  {
                     "group": "gpt-4o-2024-11-20",
                     "pages": [
                       {
