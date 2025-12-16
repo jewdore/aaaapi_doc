@@ -1,47 +1,39 @@
 ---
-title: 'gpt-5-chat (image analysis)'
-sidebarTitle: 'Image Analysis'
-api: 'POST /v1/chat/completions'
-description: "Analyze and understand image content using vision-enabled models"
+title: 'gpt-5-chat (Image to Text (Response))'
+sidebarTitle: 'Image to Text (Response)'
+api: "POST /v1/responses"
+description: "Analyze images and generate text descriptions using GPT-5 Chat model"
 mode: 'wide'
 ---
 
-OpenAI's official format(chat) for the image analysis API.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1/chat/completions' \
---header 'Authorization: sk-*****' \
+curl --location --request POST 'https://gptproto.com/v1/responses' \
+--header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data '{
+--data-raw '{
     "model": "gpt-5-chat",
-    "messages": [
+    "input": [
         {
             "role": "user",
             "content": [
                 {
-                    "type": "text",
+                    "type": "input_text",
                     "text": "What is in this image?"
                 },
                 {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": "data:image/jpeg;base64,${base64Image}"
-                    }
+                    "type": "input_image",
+                    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
                 }
             ]
         }
-    ],
-    "stream": false
+    ]
 }'
 ```
 
@@ -49,76 +41,73 @@ curl --location 'https://gptproto.com/v1/chat/completions' \
 import requests
 import json
 
-url = "https://gptproto.com/v1/chat/completions"
+url = "https://gptproto.com/v1/responses"
+
 headers = {
-    "Authorization": "sk-*****",
+    "Authorization": "GPTPROTO_API_KEY",
     "Content-Type": "application/json"
 }
 
-data = {
+payload = {
     "model": "gpt-5-chat",
-    "messages": [
+    "input": [
         {
             "role": "user",
             "content": [
                 {
-                    "type": "text",
+                    "type": "input_text",
                     "text": "What is in this image?"
                 },
                 {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": "data:image/jpeg;base64,${base64Image}"
-                    }
+                    "type": "input_image",
+                    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
                 }
             ]
         }
-    ],
-    "stream": False
+    ]
 }
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+response = requests.post(url, headers=headers, json=payload)
+print(response.json())
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1/chat/completions";
+const fetch = require('node-fetch');
+
+const url = 'https://gptproto.com/v1/responses';
+
 const headers = {
-  "Authorization": "sk-*****",
-  "Content-Type": "application/json"
+    'Authorization': 'GPTPROTO_API_KEY',
+    'Content-Type': 'application/json'
 };
 
-const data = {
-  "model": "gpt-5-chat",
-  "messages": [
-    {
-      "role": "user",
-      "content": [
+const payload = {
+    model: 'gpt-5-chat',
+    input: [
         {
-          "type": "text",
-          "text": "What is in this image?"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "data:image/jpeg;base64,${base64Image}"
-          }
+            role: 'user',
+            content: [
+                {
+                    type: 'input_text',
+                    text: 'What is in this image?'
+                },
+                {
+                    type: 'input_image',
+                    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg'
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "stream": false
+    ]
 };
 
 fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(payload)
 })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
 ```
 
 ```go Go
@@ -133,39 +122,38 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/v1/chat/completions"
+    url := "https://gptproto.com/v1/responses"
 
     payload := map[string]interface{}{
         "model": "gpt-5-chat",
-        "messages": []map[string]interface{}{
+        "input": []map[string]interface{}{
             {
                 "role": "user",
                 "content": []map[string]interface{}{
                     {
-                        "type": "text",
+                        "type": "input_text",
                         "text": "What is in this image?",
                     },
                     {
-                        "type": "image_url",
-                        "image_url": map[string]interface{}{
-                            "url": "data:image/jpeg;base64,${base64Image}",
-                        },
+                        "type": "input_image",
+                        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
                     },
                 },
             },
         },
-        "stream": false,
     }
 
-    jsonData, _ := json.Marshal(payload)
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "sk-*****")
+    jsonPayload, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
     resp, err := client.Do(req)
     if err != nil {
-        panic(err)
+        fmt.Println("Error:", err)
+        return
     }
     defer resp.Body.Close()
 
@@ -173,11 +161,11 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+
 </CodeGroup>
 
-<CodeGroup>
-
-```json 200 - Success
+## Response Example
+```json
 {
   "id": "chatcmpl-abc123",
   "object": "chat.completion",
@@ -201,75 +189,10 @@ func main() {
 }
 ```
 
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
+import Parameters from '/snippets/parameters/OpenAI/chatmodels-response.mdx';
 
+<Parameters/>
 
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</CodeGroup>
-
-## Request Body
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gpt-5-chat` | The model to use for the request. Must be a vision-enabled model. |
-| `messages` | array | ✅ Yes | - | Array of message objects with role and content |
-| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
-
-### Messages Array Structure
-
-Each message object in the `messages` array should have the following structure:
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `role` | string | ✅ Yes | Role of the message sender. Can be: `user` or `assistant` |
-| `content` | array | ✅ Yes | Array of content objects (can include text and images) |
-
-### Content Array Structure
-
-Each content object in the `content` array should have the following structure:
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `type` | string | ✅ Yes | Type of content. Can be: `text` or `image_url` |
-| `text` | string | ✅ Yes (if type is `text`) | Text prompt content |
-| `image_url` | object | ✅ Yes (if type is `image_url`) | Image URL object with `url` field containing image URL or base64 encoded image |
-
-
-
-
-
-
-
+<ErrorCode/>

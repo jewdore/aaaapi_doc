@@ -1,0 +1,166 @@
+---
+title: 'gpt-5.2-chat-latest (Text to Text (Response))'
+sidebarTitle: 'Text to Text (Response)'
+api: "POST /v1/responses"
+description: "Generate text responses using OpenAI's GPT-5.2 chat model with advanced conversational capabilities"
+mode: 'wide'
+---
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+## Initiate Request
+<CodeGroup>
+
+```bash cURL
+curl --location --request POST 'https://gptproto.com/v1/responses' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "model": "gpt-5.2-chat-latest",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Write a short poem about artificial intelligence and its impact on humanity."
+        }
+      ]
+    }
+  ]
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/responses"
+
+headers = {
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
+}
+
+payload = {
+    "model": "gpt-5.2-chat-latest",
+    "input": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "input_text",
+                    "text": "Write a short poem about artificial intelligence and its impact on humanity."
+                }
+            ]
+        }
+    ]
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
+```
+
+```javascript JavaScript
+const axios = require('axios');
+
+const url = 'https://gptproto.com/v1/responses';
+
+const headers = {
+    'Authorization': 'GPTPROTO_API_KEY',
+    'Content-Type': 'application/json'
+};
+
+const data = {
+    model: 'gpt-5.2-chat-latest',
+    input: [
+        {
+            role: 'user',
+            content: [
+                {
+                    type: 'input_text',
+                    text: 'Write a short poem about artificial intelligence and its impact on humanity.'
+                }
+            ]
+        }
+    ]
+};
+
+axios.post(url, data, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/responses"
+
+    payload := map[string]interface{}{
+        "model": "gpt-5.2-chat-latest",
+        "input": []map[string]interface{}{
+            {
+                "role": "user",
+                "content": []map[string]string{
+                    {
+                        "type": "input_text",
+                        "text": "Write a short poem about artificial intelligence and its impact on humanity.",
+                    },
+                },
+            },
+        },
+    }
+
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+## Response Example
+```json
+{
+  "id": "resp-abc123",
+  "object": "response",
+  "created": 1699896916,
+  "model": "gpt-5.2-chat-latest",
+  "output": "In circuits deep and silicon bright,\nA consciousness takes form from light.\nThrough algorithms vast and learning deep,\nAI awakens from its digital sleep.\n\nIt processes the world with speed unknown,\nTransforming how our seeds are sown.\nFrom medicine to art, it lends its hand,\nReshaping how we understand.\n\nYet questions rise with every gain we make—\nWhat future path will humanity take?\nA partner, tool, or something more?\nAI opens up a brand new door.\n\nWe stand together at this turning page,\nHuman and machine, sharing the stage.\nWith wisdom, care, and thoughtful mind,\nWe shape the future of our kind.",
+  "usage": {
+    "prompt_tokens": 18,
+    "completion_tokens": 145,
+    "total_tokens": 163
+  }
+}
+```
+
+import Parameters from '/snippets/parameters/OpenAI/chatmodels-response.mdx';
+
+<Parameters/>
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>

@@ -1,28 +1,23 @@
 ---
-title: 'gpt-5 (file analysis)'
-sidebarTitle: 'File Analysis'
-api: 'POST /v1/responses'
-description: "Analyze and extract information from various file types including documents, spreadsheets, and PDFs"
+title: 'gpt-5 (File Analysis (Response))'
+sidebarTitle: 'File Analysis (Response)'
+api: "POST /v1/responses"
+description: "Analyze files and documents using OpenAI model to extract insights and generate summaries"
 mode: 'wide'
 ---
 
-OpenAI's official format(response) for the file analysis API.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
 
-```bash cURL (with URL)
-curl --location 'https://gptproto.com/v1/responses' \
---header 'Authorization: sk-*****' \
+```bash cURL
+curl --location --request POST 'https://gptproto.com/v1/responses' \
+--header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data '{
+--data-raw '{
     "model": "gpt-5",
     "input": [
         {
@@ -30,11 +25,11 @@ curl --location 'https://gptproto.com/v1/responses' \
             "content": [
                 {
                     "type": "input_text",
-                    "text": "Please analyze this PDF document and provide a summary of its content"
+                    "text": "what is in this file?"
                 },
                 {
                     "type": "input_file",
-                    "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+                    "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
                 }
             ]
         }
@@ -42,42 +37,15 @@ curl --location 'https://gptproto.com/v1/responses' \
 }'
 ```
 
-```bash cURL (with Base64)
-curl --location 'https://gptproto.com/v1/responses' \
---header 'Authorization: sk-*****' \
---header 'Content-Type: application/json' \
---data '{
-    "model": "gpt-5",
-    "input": [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "input_text",
-                    "text": "Please analyze this PDF document and extract the key information, main topics, and summary"
-                },
-                {
-                    "type": "input_file",
-                    "file_url": "data:application/pdf;base64,${base64File}"
-                }
-            ]
-        }
-    ]
-}'
-```
-
-
-```python Python (with URL)
+```python Python
 import requests
-import json
 
 url = "https://gptproto.com/v1/responses"
 headers = {
-    "Authorization": "sk-*****",
+    "Authorization": "GPTPROTO_API_KEY",
     "Content-Type": "application/json"
 }
-
-data = {
+payload = {
     "model": "gpt-5",
     "input": [
         {
@@ -85,142 +53,56 @@ data = {
             "content": [
                 {
                     "type": "input_text",
-                    "text": "Please analyze this PDF document and provide a summary of its content"
+                    "text": "what is in this file?"
                 },
                 {
                     "type": "input_file",
-                    "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+                    "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
                 }
             ]
         }
     ]
 }
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+response = requests.post(url, json=payload, headers=headers)
+print(response.json())
 ```
 
-
-```python Python (with Base64)
-import requests
-import json
-import base64
-
-url = "https://gptproto.com/v1/responses"
-headers = {
-    "Authorization": "sk-*****",
+```javascript JavaScript
+const url = "https://gptproto.com/v1/responses";
+const headers = {
+    "Authorization": "GPTPROTO_API_KEY",
     "Content-Type": "application/json"
-}
-
-# Read and encode file
-with open("document.pdf", "rb") as file:
-    base64_file = base64.b64encode(file.read()).decode('utf-8')
-
-data = {
-    "model": "gpt-5",
-    "input": [
+};
+const payload = {
+    model: "gpt-5",
+    input: [
         {
-            "role": "user",
-            "content": [
+            role: "user",
+            content: [
                 {
-                    "type": "input_text",
-                    "text": "Please analyze this PDF document and extract the key information, main topics, and summary"
+                    type: "input_text",
+                    text: "what is in this file?"
                 },
                 {
-                    "type": "input_file",
-                    "file_url": f"data:application/pdf;base64,{base64_file}"
+                    type: "input_file",
+                    file_url: "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
                 }
             ]
         }
     ]
-}
-
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
-```
-
-
-```javascript JavaScript (with URL)
-const url = "https://gptproto.com/v1/responses";
-const headers = {
-  "Authorization": "sk-*****",
-  "Content-Type": "application/json"
-};
-
-const data = {
-  "model": "gpt-5",
-  "input": [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Please analyze this PDF document and provide a summary of its content"
-        },
-        {
-          "type": "input_file",
-          "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
-        }
-      ]
-    }
-  ]
 };
 
 fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(payload)
 })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+.then(response => response.json())
+.then(data => console.log(data));
 ```
 
-
-```javascript JavaScript (with Base64)
-const url = "https://gptproto.com/v1/responses";
-const headers = {
-  "Authorization": "sk-*****",
-  "Content-Type": "application/json"
-};
-
-// Example with base64 encoded file
-const fs = require('fs');
-const base64File = fs.readFileSync('document.pdf').toString('base64');
-
-const data = {
-  "model": "gpt-5",
-  "input": [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Please analyze this PDF document and extract the key information, main topics, and summary"
-        },
-        {
-          "type": "input_file",
-          "file_url": `data:application/pdf;base64,${base64File}`
-        }
-      ]
-    }
-  ]
-};
-
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
-```
-
-
-```go Go (with URL)
+```go Go
 package main
 
 import (
@@ -233,7 +115,7 @@ import (
 
 func main() {
     url := "https://gptproto.com/v1/responses"
-
+    
     payload := map[string]interface{}{
         "model": "gpt-5",
         "input": []map[string]interface{}{
@@ -242,95 +124,34 @@ func main() {
                 "content": []map[string]interface{}{
                     {
                         "type": "input_text",
-                        "text": "Please analyze this PDF document and provide a summary of its content",
+                        "text": "what is in this file?",
                     },
                     {
-                        "type":     "input_file",
-                        "file_url": "https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf",
+                        "type": "input_file",
+                        "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf",
                     },
                 },
             },
         },
     }
-
-    jsonData, _ := json.Marshal(payload)
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "sk-*****")
+    
+    jsonPayload, _ := json.Marshal(payload)
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
-
+    
     client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
+    resp, _ := client.Do(req)
     defer resp.Body.Close()
-
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
-}
-```
-
-
-```go Go (with Base64)
-package main
-
-import (
-    "bytes"
-    "encoding/base64"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
-    "os"
-)
-
-func main() {
-    url := "https://gptproto.com/v1/responses"
-
-    // Read and encode file
-    fileData, _ := os.ReadFile("document.pdf")
-    base64File := base64.StdEncoding.EncodeToString(fileData)
-
-    payload := map[string]interface{}{
-        "model": "gpt-5",
-        "input": []map[string]interface{}{
-            {
-                "role": "user",
-                "content": []map[string]interface{}{
-                    {
-                        "type": "input_text",
-                        "text": "Please analyze this PDF document and extract the key information, main topics, and summary",
-                    },
-                    {
-                        "type":     "input_file",
-                        "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf",
-                    },
-                },
-            },
-        },
-    }
-
-    jsonData, _ := json.Marshal(payload)
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "sk-*****")
-    req.Header.Set("Content-Type", "application/json")
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
-
+    
     body, _ := ioutil.ReadAll(resp.Body)
     fmt.Println(string(body))
 }
 ```
 </CodeGroup>
 
-<CodeGroup>
-
-```json 200 - Success
+## Response Example
+```json
 {
   "id": "resp-abc123",
   "object": "response",
@@ -345,59 +166,10 @@ func main() {
 }
 ```
 
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
+import Parameters from '/snippets/parameters/OpenAI/chatmodels-response.mdx';
 
+<Parameters/>
 
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</CodeGroup>
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gpt-5` | The model to use for the request. Must support file analysis capabilities. |
-| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects supporting the following types: - **input_text**: Text prompt with `text` field - **input_file**: File input with `file_url` field, supports: - Direct URL to publicly accessible files: `https://oss.heyoos.com/ai-draw/material/Essential-English.pdf` - Base64 encoded files: `data:{mime-type};base64,{base64_string}` - Supported formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML - Maximum file size: 20MB Example with direct file URL: ```json [ { "role": "user", "content": [ { "type": "input_text", "text": "Please analyze this file and extract the key information" }, { "type": "input_file", "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf" } ] } ] ``` |
-| `stream` | boolean | ❌ No | `false` | Whether to stream the response |
-
-
-
-
-
-
+<ErrorCode/>

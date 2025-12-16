@@ -71,19 +71,14 @@
                     "group": "gpt-4.1-2025-04-14",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-4.1-2025-04-14/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/gpt-4.1-2025-04-14/official-format(chat)/text-to-text"
-                        ]
-                      },
-                      {
-                        "group": "official-format(response)",
-                        "pages": [
-                          "docs/api/OpenAI/gpt-4.1-2025-04-14/official-format(response)/file-analysis",
-                          "docs/api/OpenAI/gpt-4.1-2025-04-14/official-format(response)/image-analysis",
-                          "docs/api/OpenAI/gpt-4.1-2025-04-14/official-format(response)/text-to-text",
-                          "docs/api/OpenAI/gpt-4.1-2025-04-14/official-format(response)/web-search"
+                          "docs/allapi/OpenAI/gpt-4.1-2025-04-14/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-4.1-2025-04-14/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4.1-2025-04-14/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4.1-2025-04-14/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4.1-2025-04-14/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4.1-2025-04-14/official-format/web-search-response"
                         ]
                       }
                     ]
@@ -92,19 +87,14 @@
                     "group": "gpt-4.1-mini",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-4.1-mini/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/gpt-4.1-mini/official-format(chat)/text-to-text"
-                        ]
-                      },
-                      {
-                        "group": "official-format(response)",
-                        "pages": [
-                          "docs/api/OpenAI/gpt-4.1-mini/official-format(response)/file-analysis",
-                          "docs/api/OpenAI/gpt-4.1-mini/official-format(response)/image-analysis",
-                          "docs/api/OpenAI/gpt-4.1-mini/official-format(response)/text-to-text",
-                          "docs/api/OpenAI/gpt-4.1-mini/official-format(response)/web-search"
+                          "docs/allapi/OpenAI/gpt-4.1-mini/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-4.1-mini/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4.1-mini/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4.1-mini/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4.1-mini/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4.1-mini/official-format/web-search-response"
                         ]
                       }
                     ]
@@ -113,19 +103,13 @@
                     "group": "gpt-4.1-nano",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-4.1-nano/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/gpt-4.1-nano/official-format(chat)/text-to-text"
-                        ]
-                      },
-                      {
-                        "group": "official-format(response)",
-                        "pages": [
-                          "docs/api/OpenAI/gpt-4.1-nano/official-format(response)/file-analysis",
-                          "docs/api/OpenAI/gpt-4.1-nano/official-format(response)/image-analysis",
-                          "docs/api/OpenAI/gpt-4.1-nano/official-format(response)/text-to-text",
-                          "docs/api/OpenAI/gpt-4.1-nano/official-format(response)/web-search"
+                          "docs/allapi/OpenAI/gpt-4.1-nano/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-4.1-nano/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4.1-nano/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4.1-nano/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4.1-nano/official-format/text-to-text-response"
                         ]
                       }
                     ]
@@ -134,19 +118,13 @@
                     "group": "gpt-4.1-nano-2025-04-14",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-4.1-nano-2025-04-14/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/gpt-4.1-nano-2025-04-14/official-format(chat)/text-to-text"
-                        ]
-                      },
-                      {
-                        "group": "official-format(response)",
-                        "pages": [
-                          "docs/api/OpenAI/gpt-4.1-nano-2025-04-14/official-format(response)/file-analysis",
-                          "docs/api/OpenAI/gpt-4.1-nano-2025-04-14/official-format(response)/image-analysis",
-                          "docs/api/OpenAI/gpt-4.1-nano-2025-04-14/official-format(response)/text-to-text",
-                          "docs/api/OpenAI/gpt-4.1-nano-2025-04-14/official-format(response)/web-search"
+                          "docs/allapi/OpenAI/gpt-4.1-nano-2025-04-14/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-4.1-nano-2025-04-14/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4.1-nano-2025-04-14/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4.1-nano-2025-04-14/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4.1-nano-2025-04-14/official-format/text-to-text-response"
                         ]
                       }
                     ]
@@ -184,13 +162,29 @@
                     ]
                   },
                   {
+                    "group": "gpt-4o-2024-11-20",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-4o-2024-11-20/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-4o-2024-11-20/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4o-2024-11-20/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4o-2024-11-20/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4o-2024-11-20/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4o-2024-11-20/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "gpt-4o-all",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-4o-all/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/gpt-4o-all/official-format(chat)/text-to-text"
+                          "docs/allapi/OpenAI/gpt-4o-all/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4o-all/official-format/text-to-text-chat"
                         ]
                       }
                     ]
@@ -217,6 +211,38 @@
                           "docs/api/OpenAI/gpt-4o-image-vip/official-format/chat-mode",
                           "docs/api/OpenAI/gpt-4o-image-vip/official-format/image-edit",
                           "docs/api/OpenAI/gpt-4o-image-vip/official-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gpt-4o-mini",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-4o-mini/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-4o-mini/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4o-mini/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4o-mini/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4o-mini/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4o-mini/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gpt-4o-mini-2024-07-18",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-4o-mini-2024-07-18/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-4o-mini-2024-07-18/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4o-mini-2024-07-18/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4o-mini-2024-07-18/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-4o-mini-2024-07-18/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-4o-mini-2024-07-18/official-format/web-search-response"
                         ]
                       }
                     ]
@@ -275,10 +301,10 @@
                     "group": "gpt-5-all",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-5-all/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/gpt-5-all/official-format(chat)/text-to-text"
+                          "docs/allapi/OpenAI/gpt-5-all/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5-all/official-format/text-to-text-chat"
                         ]
                       }
                     ]
@@ -300,22 +326,31 @@
                     ]
                   },
                   {
+                    "group": "gpt-5-codex",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-5-codex/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5-codex/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5-codex/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5-codex/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "gpt-5-mini",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-5-mini/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/gpt-5-mini/official-format(chat)/text-to-text"
-                        ]
-                      },
-                      {
-                        "group": "official-format(response)",
-                        "pages": [
-                          "docs/api/OpenAI/gpt-5-mini/official-format(response)/file-analysis",
-                          "docs/api/OpenAI/gpt-5-mini/official-format(response)/image-analysis",
-                          "docs/api/OpenAI/gpt-5-mini/official-format(response)/text-to-text",
-                          "docs/api/OpenAI/gpt-5-mini/official-format(response)/web-search"
+                          "docs/allapi/OpenAI/gpt-5-mini/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5-mini/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5-mini/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5-mini/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5-mini/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5-mini/official-format/web-search-response"
                         ]
                       }
                     ]
@@ -324,19 +359,14 @@
                     "group": "gpt-5-nano",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-5-nano/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/gpt-5-nano/official-format(chat)/text-to-text"
-                        ]
-                      },
-                      {
-                        "group": "official-format(response)",
-                        "pages": [
-                          "docs/api/OpenAI/gpt-5-nano/official-format(response)/file-analysis",
-                          "docs/api/OpenAI/gpt-5-nano/official-format(response)/image-analysis",
-                          "docs/api/OpenAI/gpt-5-nano/official-format(response)/text-to-text",
-                          "docs/api/OpenAI/gpt-5-nano/official-format(response)/web-search"
+                          "docs/allapi/OpenAI/gpt-5-nano/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5-nano/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5-nano/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5-nano/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5-nano/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5-nano/official-format/web-search-response"
                         ]
                       }
                     ]
@@ -345,19 +375,14 @@
                     "group": "gpt-5-pro",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-5-pro/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/gpt-5-pro/official-format(chat)/text-to-text"
-                        ]
-                      },
-                      {
-                        "group": "official-format(response)",
-                        "pages": [
-                          "docs/api/OpenAI/gpt-5-pro/official-format(response)/file-analysis",
-                          "docs/api/OpenAI/gpt-5-pro/official-format(response)/image-analysis",
-                          "docs/api/OpenAI/gpt-5-pro/official-format(response)/text-to-text",
-                          "docs/api/OpenAI/gpt-5-pro/official-format(response)/web-search"
+                          "docs/allapi/OpenAI/gpt-5-pro/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5-pro/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5-pro/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5-pro/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5-pro/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5-pro/official-format/web-search-response"
                         ]
                       }
                     ]
@@ -368,8 +393,102 @@
                       {
                         "group": "official-format",
                         "pages": [
+                          "docs/allapi/OpenAI/gpt-5.1/official-format/file-analysis-response",
                           "docs/allapi/OpenAI/gpt-5.1/official-format/image-to-text-chat",
-                          "docs/allapi/OpenAI/gpt-5.1/official-format/text-to-text-chat"
+                          "docs/allapi/OpenAI/gpt-5.1/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.1/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5.1/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.1/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gpt-5.1-codex",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-5.1-codex/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5.1-codex/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.1-codex/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.1-codex/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gpt-5.2",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-5.2/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5.2/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5.2/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5.2/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gpt-5.2-2025-12-11",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-5.2-2025-12-11/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5.2-2025-12-11/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5.2-2025-12-11/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2-2025-12-11/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5.2-2025-12-11/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2-2025-12-11/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gpt-5.2-chat-latest",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-5.2-chat-latest/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5.2-chat-latest/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5.2-chat-latest/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2-chat-latest/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5.2-chat-latest/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2-chat-latest/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gpt-5.2-pro",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-5.2-pro/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5.2-pro/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2-pro/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2-pro/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gpt-5.2-pro-2025-12-11",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-5.2-pro-2025-12-11/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5.2-pro-2025-12-11/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2-pro-2025-12-11/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2-pro-2025-12-11/official-format/web-search-response"
                         ]
                       }
                     ]
@@ -410,19 +529,14 @@
                     "group": "o3",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/o3/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/o3/official-format(chat)/text-to-text"
-                        ]
-                      },
-                      {
-                        "group": "official-format(response)",
-                        "pages": [
-                          "docs/api/OpenAI/o3/official-format(response)/file-analysis",
-                          "docs/api/OpenAI/o3/official-format(response)/image-analysis",
-                          "docs/api/OpenAI/o3/official-format(response)/text-to-text",
-                          "docs/api/OpenAI/o3/official-format(response)/web-search"
+                          "docs/allapi/OpenAI/o3/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/o3/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/o3/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/o3/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/o3/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/o3/official-format/web-search-response"
                         ]
                       }
                     ]
@@ -431,19 +545,14 @@
                     "group": "o3-deep-research",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/o3-deep-research/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/o3-deep-research/official-format(chat)/text-to-text"
-                        ]
-                      },
-                      {
-                        "group": "official-format(response)",
-                        "pages": [
-                          "docs/api/OpenAI/o3-deep-research/official-format(response)/file-analysis",
-                          "docs/api/OpenAI/o3-deep-research/official-format(response)/image-analysis",
-                          "docs/api/OpenAI/o3-deep-research/official-format(response)/text-to-text",
-                          "docs/api/OpenAI/o3-deep-research/official-format(response)/web-search"
+                          "docs/allapi/OpenAI/o3-deep-research/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/o3-deep-research/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/o3-deep-research/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/o3-deep-research/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/o3-deep-research/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/o3-deep-research/official-format/web-search-response"
                         ]
                       }
                     ]
@@ -452,19 +561,14 @@
                     "group": "o4-mini",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/o4-mini/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/o4-mini/official-format(chat)/text-to-text"
-                        ]
-                      },
-                      {
-                        "group": "official-format(response)",
-                        "pages": [
-                          "docs/api/OpenAI/o4-mini/official-format(response)/file-analysis",
-                          "docs/api/OpenAI/o4-mini/official-format(response)/image-analysis",
-                          "docs/api/OpenAI/o4-mini/official-format(response)/text-to-text",
-                          "docs/api/OpenAI/o4-mini/official-format(response)/web-search"
+                          "docs/allapi/OpenAI/o4-mini/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/o4-mini/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/o4-mini/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/o4-mini/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/o4-mini/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/o4-mini/official-format/web-search-response"
                         ]
                       }
                     ]
@@ -473,19 +577,14 @@
                     "group": "o4-mini-deep-research",
                     "pages": [
                       {
-                        "group": "official-format(chat)",
+                        "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/o4-mini-deep-research/official-format(chat)/image-analysis",
-                          "docs/api/OpenAI/o4-mini-deep-research/official-format(chat)/text-to-text"
-                        ]
-                      },
-                      {
-                        "group": "official-format(response)",
-                        "pages": [
-                          "docs/api/OpenAI/o4-mini-deep-research/official-format(response)/file-analysis",
-                          "docs/api/OpenAI/o4-mini-deep-research/official-format(response)/image-analysis",
-                          "docs/api/OpenAI/o4-mini-deep-research/official-format(response)/text-to-text",
-                          "docs/api/OpenAI/o4-mini-deep-research/official-format(response)/web-search"
+                          "docs/allapi/OpenAI/o4-mini-deep-research/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/o4-mini-deep-research/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/o4-mini-deep-research/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/o4-mini-deep-research/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/o4-mini-deep-research/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/o4-mini-deep-research/official-format/web-search-response"
                         ]
                       }
                     ]
@@ -497,7 +596,6 @@
                         "group": "gptproto-format",
                         "pages": [
                           "docs/allapi/OpenAI/sora-2/gptproto-format/image-to-video",
-                          "docs/api/OpenAI/sora-2/gptproto-format/query-task",
                           "docs/allapi/OpenAI/sora-2/gptproto-format/text-to-video"
                         ]
                       },
@@ -505,7 +603,6 @@
                         "group": "official-format",
                         "pages": [
                           "docs/allapi/OpenAI/sora-2/official-format/image-to-video",
-                          "docs/api/OpenAI/sora-2/official-format/query-task",
                           "docs/allapi/OpenAI/sora-2/official-format/text-to-video"
                         ]
                       },
@@ -520,10 +617,7 @@
                         "group": "reverse-format",
                         "pages": [
                           "docs/allapi/OpenAI/sora-2/reverse-format/image-to-video",
-                          "docs/allapi/OpenAI/sora-2/reverse-format/text-to-video",
-                          "docs/api/OpenAI/sora-2/reverse-format/query-result",
-                          "docs/api/OpenAI/sora-2/reverse-format/query-task",
-                          "docs/api/OpenAI/sora-2/reverse-format/submit-task"
+                          "docs/allapi/OpenAI/sora-2/reverse-format/text-to-video"
                         ]
                       }
                     ]
@@ -535,19 +629,14 @@
                         "group": "gptproto-format",
                         "pages": [
                           "docs/allapi/OpenAI/sora-2-pro/gptproto-format/image-to-video",
-                          "docs/allapi/OpenAI/sora-2-pro/gptproto-format/text-to-video",
-                          "docs/api/OpenAI/sora-2-pro/gptproto-format/query-task"
+                          "docs/allapi/OpenAI/sora-2-pro/gptproto-format/text-to-video"
                         ]
                       },
                       {
                         "group": "official-format",
                         "pages": [
                           "docs/allapi/OpenAI/sora-2-pro/official-format/image-to-video",
-                          "docs/allapi/OpenAI/sora-2-pro/official-format/text-to-video",
-                          "docs/api/OpenAI/sora-2-pro/official-format/get-spritesheet",
-                          "docs/api/OpenAI/sora-2-pro/official-format/get-thumbnail",
-                          "docs/api/OpenAI/sora-2-pro/official-format/get-video",
-                          "docs/api/OpenAI/sora-2-pro/official-format/query-task"
+                          "docs/allapi/OpenAI/sora-2-pro/official-format/text-to-video"
                         ]
                       },
                       {
@@ -561,10 +650,7 @@
                         "group": "reverse-format",
                         "pages": [
                           "docs/allapi/OpenAI/sora-2-pro/reverse-format/image-to-video",
-                          "docs/allapi/OpenAI/sora-2-pro/reverse-format/text-to-video",
-                          "docs/api/OpenAI/sora-2-pro/reverse-format/query-result",
-                          "docs/api/OpenAI/sora-2-pro/reverse-format/query-task",
-                          "docs/api/OpenAI/sora-2-pro/reverse-format/submit-task"
+                          "docs/allapi/OpenAI/sora-2-pro/reverse-format/text-to-video"
                         ]
                       }
                     ]
@@ -623,8 +709,8 @@
                         "group": "openai-format",
                         "pages": [
                           "docs/allapi/Google/gemini-2.5-flash/openai-format/file-analysis",
-                          "docs/allapi/Google/gemini-2.5-flash/openai-format/text-to-text",
-                          "docs/allapi/Google/gemini-2.5-flash/openai-format/image-to-text"
+                          "docs/allapi/Google/gemini-2.5-flash/openai-format/image-to-text",
+                          "docs/allapi/Google/gemini-2.5-flash/openai-format/text-to-text"
                         ]
                       }
                     ]
@@ -829,6 +915,12 @@
                         ]
                       },
                       {
+                        "group": "nano-banana-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3-pro-image-preview/nano-banana-format/text-to-image"
+                        ]
+                      },
+                      {
                         "group": "official-format",
                         "pages": [
                           "docs/allapi/Google/gemini-3-pro-image-preview/official-format/image-edit",
@@ -859,8 +951,8 @@
                         "group": "openai-format",
                         "pages": [
                           "docs/allapi/Google/gemini-3-pro-preview/openai-format/file-analysis",
-                          "docs/allapi/Google/gemini-3-pro-preview/openai-format/text-to-text",
-                          "docs/allapi/Google/gemini-3-pro-preview/openai-format/image-to-text"
+                          "docs/allapi/Google/gemini-3-pro-preview/openai-format/image-to-text",
+                          "docs/allapi/Google/gemini-3-pro-preview/openai-format/text-to-text"
                         ]
                       }
                     ]
@@ -891,6 +983,34 @@
                     "pages": [
                       "docs/api/Google/google-file-upload//file-upload-north-america",
                       "docs/api/Google/google-file-upload//file-upload"
+                    ]
+                  },
+                  {
+                    "group": "veo-3.1-fast-generate-preview",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/image-to-video",
+                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/query-task",
+                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/text-to-video",
+                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/video-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "veo-3.1-generate-preview",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/api/Google/veo-3.1-generate-preview/official-format/image-to-video",
+                          "docs/api/Google/veo-3.1-generate-preview/official-format/query-task",
+                          "docs/api/Google/veo-3.1-generate-preview/official-format/text-to-video",
+                          "docs/api/Google/veo-3.1-generate-preview/official-format/video-to-video"
+                        ]
+                      }
                     ]
                   },
                   {
@@ -942,8 +1062,7 @@
                         "pages": [
                           "docs/allapi/Google/veo3.1/gptproto-format/image-to-video",
                           "docs/allapi/Google/veo3.1/gptproto-format/reference-to-video",
-                          "docs/allapi/Google/veo3.1/gptproto-format/text-to-video",
-                          "docs/api/Google/veo3.1/gptproto-format/query-task"
+                          "docs/allapi/Google/veo3.1/gptproto-format/text-to-video"
                         ]
                       }
                     ]
@@ -969,36 +1088,7 @@
                         "group": "gptproto-format",
                         "pages": [
                           "docs/allapi/Google/veo3.1-pro/gptproto-format/image-to-video",
-                          "docs/allapi/Google/veo3.1-pro/gptproto-format/text-to-video",
-                          "docs/api/Google/veo3.1-pro/gptproto-format/query-task"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "veo-3.1-fast-generate-preview",
-                    "pages": [
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/image-to-video",
-                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/query-task",
-                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/text-to-video",
-                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/video-to-video"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "veo-3.1-generate-preview",
-                    "pages": [
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/api/Google/veo-3.1-generate-preview/official-format/image-to-video",
-                          "docs/api/Google/veo-3.1-generate-preview/official-format/query-task",
-                          "docs/api/Google/veo-3.1-generate-preview/official-format/text-to-video",
-                          "docs/api/Google/veo-3.1-generate-preview/official-format/video-to-video"
+                          "docs/allapi/Google/veo3.1-pro/gptproto-format/text-to-video"
                         ]
                       }
                     ]
@@ -1631,16 +1721,14 @@
                         "group": "gptproto-format",
                         "pages": [
                           "docs/allapi/Doubao/doubao-seedream-4-0-250828/gptproto-format/image-edit",
-                          "docs/allapi/Doubao/doubao-seedream-4-0-250828/gptproto-format/text-to-image",
-                          "docs/api/Doubao/doubao-seedream-4-0-250828/gptproto-format/query-task"
+                          "docs/allapi/Doubao/doubao-seedream-4-0-250828/gptproto-format/text-to-image"
                         ]
                       },
                       {
                         "group": "official-format",
                         "pages": [
                           "docs/allapi/Doubao/doubao-seedream-4-0-250828/official-format/image-edit",
-                          "docs/allapi/Doubao/doubao-seedream-4-0-250828/official-format/text-to-image",
-                          "docs/api/Doubao/doubao-seedream-4-0-250828/official-format/query-task"
+                          "docs/allapi/Doubao/doubao-seedream-4-0-250828/official-format/text-to-image"
                         ]
                       }
                     ]
@@ -1758,16 +1846,14 @@
                         "group": "gptproto-format",
                         "pages": [
                           "docs/allapi/Doubao/seedream-4-0-250828/gptproto-format/image-edit",
-                          "docs/allapi/Doubao/seedream-4-0-250828/gptproto-format/text-to-image",
-                          "docs/api/Doubao/seedream-4-0-250828/gptproto-format/query-task"
+                          "docs/allapi/Doubao/seedream-4-0-250828/gptproto-format/text-to-image"
                         ]
                       },
                       {
                         "group": "official-format",
                         "pages": [
                           "docs/allapi/Doubao/seedream-4-0-250828/official-format/image-edit",
-                          "docs/allapi/Doubao/seedream-4-0-250828/official-format/text-to-image",
-                          "docs/api/Doubao/seedream-4-0-250828/official-format/query-task"
+                          "docs/allapi/Doubao/seedream-4-0-250828/official-format/text-to-image"
                         ]
                       }
                     ]
