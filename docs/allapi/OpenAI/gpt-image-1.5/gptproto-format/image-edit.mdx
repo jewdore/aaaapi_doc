@@ -1,8 +1,8 @@
 ---
-title: 'gpt-image-1 (Image Edit)'
+title: 'gpt-image-1.5 (Image Edit)'
 sidebarTitle: 'Image Edit'
-api: "POST /api/v3/openai/gpt-image-1/image-edit"
-description: "Edit and modify images using OpenAI's GPT Image model with customizable quality and size options"
+api: "POST /api/v3/openai/gpt-image-1.5/image-edit"
+description: "Edit and modify images using GPT Image 1.5 model with precise control over quality and output format"
 mode: 'wide'
 ---
 
@@ -14,7 +14,7 @@ import Authentication from '/snippets/common/authentication.mdx';
 <CodeGroup>
 
 ```bash cURL
-curl --location --request POST "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit" \
+curl --location --request POST "https://gptproto.com/api/v3/openai/gpt-image-1.5/image-edit" \
 --header "Authorization: GPTPROTO_API_KEY" \
 --header "Content-Type: application/json" \
 --data-raw '{
@@ -34,7 +34,7 @@ curl --location --request POST "https://gptproto.com/api/v3/openai/gpt-image-1/i
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit"
+url = "https://gptproto.com/api/v3/openai/gpt-image-1.5/image-edit"
 
 headers = {
     "Authorization": "GPTPROTO_API_KEY",
@@ -60,7 +60,7 @@ print(response.json())
 ```javascript JavaScript
 const axios = require('axios');
 
-const url = 'https://gptproto.com/api/v3/openai/gpt-image-1/image-edit';
+const url = 'https://gptproto.com/api/v3/openai/gpt-image-1.5/image-edit';
 
 const headers = {
     'Authorization': 'GPTPROTO_API_KEY',
@@ -80,12 +80,8 @@ const data = {
 };
 
 axios.post(url, data, { headers })
-    .then(response => {
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
 ```
 
 ```go Go
@@ -100,18 +96,18 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit"
+    url := "https://gptproto.com/api/v3/openai/gpt-image-1.5/image-edit"
 
     payload := map[string]interface{}{
         "image": []string{
             "https://tos.gptproto.com/resource/cat.png",
         },
-        "prompt":            "Girl holding cat",
-        "quality":           "medium",
-        "size":              "1024x1024",
-        "background":        "auto",
-        "enable_sync_mode":  false,
-        "response_format":   "url",
+        "prompt":           "Girl holding cat",
+        "quality":          "medium",
+        "size":             "1024x1024",
+        "background":       "auto",
+        "enable_sync_mode": false,
+        "response_format":  "url",
     }
 
     jsonData, _ := json.Marshal(payload)
@@ -131,6 +127,7 @@ func main() {
     fmt.Println(string(body))
 }
 ```
+
 </CodeGroup>
 
 ## Response Example
@@ -138,7 +135,7 @@ func main() {
 {
     "data": {
         "id": "7ba2419*******",
-        "model": "gpt-image-1",
+        "model": "gpt-image-1.5",
         "outputs": [],
         "urls": {
             "get": "https://gptproto.com/api/v3/predictions/7ba2419*******/result"
@@ -156,16 +153,13 @@ func main() {
 }
 ```
 
-
 import QueryResult from '/snippets/parameters/common/gptproto/query-result.mdx';
 
 <QueryResult/>
 
-
 import Parameters from '/snippets/parameters/common/gptproto/imagemodel.mdx';
 
 <Parameters/>
-
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

@@ -1,8 +1,8 @@
 ---
-title: 'gpt-image-1 (Image Edit)'
+title: 'gpt-image-1.5 (Image Edit)'
 sidebarTitle: 'Image Edit'
 api: "POST /v1/images/edits"
-description: "Edit and modify existing images using OpenAI's image model with natural language prompts"
+description: "Edit and modify images using OpenAI's GPT Image 1.5 model with text prompts"
 mode: 'wide'
 ---
 
@@ -11,12 +11,13 @@ import Authentication from '/snippets/common/authentication.mdx';
 <Authentication/>
 
 ## Initiate Request
+
 <CodeGroup>
 
 ```bash cURL
 curl --location --request POST "https://gptproto.com/v1/images/edits" \
 --header "Authorization: GPTPROTO_API_KEY" \
---form "model=gpt-image-1" \
+--form "model=gpt-image-1.5" \
 --form "image[]=@/cat.jpg" \
 --form "prompt=Put a hat on the cat"
 ```
@@ -30,12 +31,12 @@ headers = {
 }
 
 files = {
-    "image[]": open("/cat.jpg", "rb")
+    'image[]': open('/cat.jpg', 'rb')
 }
 
 data = {
-    "model": "gpt-image-1",
-    "prompt": "Put a hat on the cat"
+    'model': 'gpt-image-1.5',
+    'prompt': 'Put a hat on the cat'
 }
 
 response = requests.post(url, headers=headers, files=files, data=data)
@@ -43,23 +44,27 @@ print(response.json())
 ```
 
 ```javascript JavaScript
-const fs = require('fs');
 const FormData = require('form-data');
+const fs = require('fs');
 const axios = require('axios');
 
 const form = new FormData();
-form.append('model', 'gpt-image-1');
+form.append('model', 'gpt-image-1.5');
 form.append('image[]', fs.createReadStream('/cat.jpg'));
 form.append('prompt', 'Put a hat on the cat');
 
 axios.post('https://gptproto.com/v1/images/edits', form, {
-    headers: {
-        'Authorization': 'GPTPROTO_API_KEY',
-        ...form.getHeaders()
-    }
+  headers: {
+    'Authorization': 'GPTPROTO_API_KEY',
+    ...form.getHeaders()
+  }
 })
-.then(response => console.log(response.data))
-.catch(error => console.error(error));
+.then(response => {
+  console.log(response.data);
+})
+.catch(error => {
+  console.error(error);
+});
 ```
 
 ```go Go
@@ -80,13 +85,14 @@ func main() {
     body := &bytes.Buffer{}
     writer := multipart.NewWriter(body)
     
-    writer.WriteField("model", "gpt-image-1")
+    writer.WriteField("model", "gpt-image-1.5")
     writer.WriteField("prompt", "Put a hat on the cat")
     
     file, _ := os.Open("/cat.jpg")
     defer file.Close()
     part, _ := writer.CreateFormFile("image[]", "cat.jpg")
     io.Copy(part, file)
+    
     writer.Close()
     
     req, _ := http.NewRequest("POST", url, body)
@@ -97,13 +103,15 @@ func main() {
     resp, _ := client.Do(req)
     defer resp.Body.Close()
     
-    respBody, _ := io.ReadAll(resp.Body)
-    fmt.Println(string(respBody))
+    responseBody, _ := io.ReadAll(resp.Body)
+    fmt.Println(string(responseBody))
 }
 ```
+
 </CodeGroup>
 
 ## Response Example
+
 ```json
 {
     "created": 1765953949,

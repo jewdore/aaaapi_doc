@@ -41,8 +41,8 @@ gptproto是一家大模型api供应商，提供包括openai、gemini等大模型
 
 ### **metadata：** 元数据，描写文档的特性
 metadata 包含以下数据：
-- title：用户传入的模型+场景+子场景(可选)组成，如：gpt-5.2-pro (File Analysis-Response)、gemini-2.5-flash-image (Image Edit)
-- sidebarTitle：用户传入接口的场景+子场景(可选)，首字母大写、无空格，如：File Analysis(Response)、Image Edit
+- title：用户传入的模型+场景(取`场景实际名称映射模块`的实际名称)组成，如：gpt-5.2-pro (File Analysis (Chat))、gemini-2.5-flash-image (Image Edit)
+- sidebarTitle：用户传入接口的场景(取`场景实际名称映射模块`的实际名称)，如：File Analysis(Response)、Image Edit
 - api：api的uri
 - description：一句话说明接口的用处
 - mode：固定为‘wide‘
@@ -66,6 +66,40 @@ description: "Analyze files and documents using OpenAI model to extract insights
 mode: 'wide'
 ---
 ```
+#### 场景实际名称映射
+
+{
+  "scenarios": {
+    "text-to-text": "Text to Text",
+    "text-to-image": "Text to Image",
+    "image-to-image": "Image to Image",
+    "text-to-video": "Text to Video",
+    "text-to-audio": "Text to Audio",
+    "image-to-text": "Image To Text",
+    "image-edit": "Image Edit",
+    "image-to-video": "Image to Video",
+    "reference-to-video": "Reference to Video",
+    "video-to-video": "Video To Video",
+    "image-to-3d": "Image to 3d",
+    "start-end-framed": "Start End Frame",
+    "web-search": "Web Search",
+    "file-analysis": "File Analysis",
+
+    "web-search-chat": "Web Search (Chat)",
+    "text-to-text-chat": "Text to Text (Chat)",
+    "file-analysis-chat": "File Analysis (Chat)",
+    "image-to-text-chat": "Image To Text (Chat)",
+
+    "web-search-response": "Web Search (Response)",
+    "text-to-text-response": "Text to Text (Response)",
+    "file-analysis-response": "File Analysis (Response)",
+    "image-to-text-response": "Image To Text (Response)",
+
+    "voice-clone": "Voice Clone",
+    "audio-to-text": "Audio To Text"
+  }
+}
+
 
 ### **Authentication:** 鉴权的说明
 固定使用import语法引入`/snippets/common/authentication.mdx`文档
@@ -112,7 +146,14 @@ import ResponseExample from '/snippets/official-format.mdx/Google/response-examp
 ```
 
 ### **Query Result** 查询结果代码
-如果用户传入query_url，需要根据curl 转成python、javascript、go 语言的请求方式，使用`<CodeGroup>`组件框起来，若无，则整个模块不展示(包括标题)
+如果用户传入query_url，使用import语法引入模块，若没有传入，则整个模块不展示(包括标题)
+传入parameters path示例：
+```
+import Parameters from '/snippets/official-format.mdx/Google/gemini.mdx';
+
+<Parameters/>
+
+```
 ### **Parameters：**  参数说明
 场景一：传入为路径，使用import语法引入模块，若用户传入，则需要根据curl生成
 传入parameters path示例：
@@ -176,7 +217,7 @@ curl  --location --request POST 'https://gptproto.com/api/v3/google/gemini-2.5-f
   }
 }
 
-"query_url": "https://gptproto.com/api/v3/predictions/{task_id}/result"
+"query_url": "/snippets/parameters/common/gptproto/query-result.mdx"
 "parameters_path": /snippets/official-format.mdx/Google/gemini.mdx
 
 
@@ -251,28 +292,9 @@ curl --request POST 'https://gptproto.com/api/v3/google/gemini-2.5-flash-image/i
   }
   ```
 
-## Query Result
-<CodeGroup>
+import QueryResult from '/snippets/parameters/common/gptproto/query-result.mdx';
 
-```bash cURL
-curl --request GET "https://gptproto.com/api/v3/predictions/{task_id}/result" \
---header  "Authorization: GPTPROTO_API_KEY" \
---header  "Content-Type: application/json"
-```
-
-```python Python
-#python code
-
-```
-
-```javascript JavaScript
-#javascript code
-```
-
-```go Go
-#go code
-```
-</CodeGroup>
+<QueryResult/>
 
 import Parameters from '/snippets/official-format.mdx/Google/gemini.mdx';
 
@@ -344,7 +366,4 @@ import ErrorCode from '/snippets/common/errors_code.mdx';
 <ErrorCode/>
 
 ```
-
-
-
 

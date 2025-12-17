@@ -1,0 +1,19 @@
+## Parameters
+
+### Core Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `model` | string | ✅ Yes | `gptproto-image-1` | - | The model to use for image editing. Defaults to gptproto-image-1. |
+| `prompt` | string | ✅ Yes | - | - | A text description of the desired image(s). The maximum length is 32000 characters. |
+| `image` | string or file | ❌ No | - | - | Each image should be a png, webp, or jpg file less than 50MB. You can provide up to 16 images. |
+
+### Advanced Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `mask` | file | ❌ No | - | - | An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as image. |
+| `n` | integer | ❌ No | `1` | `1-10` | The number of images to generate. Must be between 1 and 10. |
+| `size` | string | ❌ No | `1024x1024` | `256x256`<br />`512x512`<br />`1024x1024`<br />`1536x1024`<br />`1024x1536` | The size of the generated images. |
+| `quality` | string | ❌ No | `medium` | `high`<br />`medium`<br />`low` | The quality of the generated images. |
+| `background` | string | ❌ No | `auto` | `transparent`<br />`opaque`<br />`auto` | Allows to set transparency for the background of the generated image(s). When auto is used, the model will automatically determine the best background for the image. |
+| `enable_sync_mode` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to enable synchronous mode for image generation. |
+| `response_format` | string | ❌ No | `url` | `url`<br />`b64_json` | The format in which the generated images are returned. |

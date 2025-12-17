@@ -1,8 +1,8 @@
 ---
-title: 'gpt-image-1 (Image Edit)'
+title: 'gpt-4o-image-vip (Image Edit)'
 sidebarTitle: 'Image Edit'
 api: "POST /v1/images/edits"
-description: "Edit and modify existing images using OpenAI's image model with natural language prompts"
+description: "Edit and modify images using OpenAI's GPT-4o Image VIP model"
 mode: 'wide'
 ---
 
@@ -16,7 +16,7 @@ import Authentication from '/snippets/common/authentication.mdx';
 ```bash cURL
 curl --location --request POST "https://gptproto.com/v1/images/edits" \
 --header "Authorization: GPTPROTO_API_KEY" \
---form "model=gpt-image-1" \
+--form "model=gpt-4o-image-vip" \
 --form "image[]=@/cat.jpg" \
 --form "prompt=Put a hat on the cat"
 ```
@@ -34,7 +34,7 @@ files = {
 }
 
 data = {
-    "model": "gpt-image-1",
+    "model": "gpt-4o-image-vip",
     "prompt": "Put a hat on the cat"
 }
 
@@ -43,12 +43,12 @@ print(response.json())
 ```
 
 ```javascript JavaScript
-const fs = require('fs');
 const FormData = require('form-data');
+const fs = require('fs');
 const axios = require('axios');
 
 const form = new FormData();
-form.append('model', 'gpt-image-1');
+form.append('model', 'gpt-4o-image-vip');
 form.append('image[]', fs.createReadStream('/cat.jpg'));
 form.append('prompt', 'Put a hat on the cat');
 
@@ -80,12 +80,12 @@ func main() {
     body := &bytes.Buffer{}
     writer := multipart.NewWriter(body)
     
-    writer.WriteField("model", "gpt-image-1")
+    writer.WriteField("model", "gpt-4o-image-vip")
     writer.WriteField("prompt", "Put a hat on the cat")
     
     file, _ := os.Open("/cat.jpg")
     defer file.Close()
-    part, _ := writer.CreateFormFile("image[]", "cat.jpg")
+    part, _ := writer.CreateFormFile("image[]", "/cat.jpg")
     io.Copy(part, file)
     writer.Close()
     

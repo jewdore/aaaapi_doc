@@ -179,9 +179,8 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-4o-image/official-format/chat-mode",
-                          "docs/api/OpenAI/gpt-4o-image/official-format/image-edit",
-                          "docs/api/OpenAI/gpt-4o-image/official-format/text-to-image"
+                          "docs/allapi/OpenAI/gpt-4o-image/official-format/image-edit",
+                          "docs/allapi/OpenAI/gpt-4o-image/official-format/text-to-image"
                         ]
                       }
                     ]
@@ -192,9 +191,8 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-4o-image-vip/official-format/chat-mode",
-                          "docs/api/OpenAI/gpt-4o-image-vip/official-format/image-edit",
-                          "docs/api/OpenAI/gpt-4o-image-vip/official-format/text-to-image"
+                          "docs/allapi/OpenAI/gpt-4o-image-vip/official-format/image-edit",
+                          "docs/allapi/OpenAI/gpt-4o-image-vip/official-format/text-to-image"
                         ]
                       }
                     ]
@@ -500,11 +498,36 @@
                     "group": "gpt-image-1-vip",
                     "pages": [
                       {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-image-1-vip/gptproto-format/image-edit",
+                          "docs/allapi/OpenAI/gpt-image-1-vip/gptproto-format/text-to-image"
+                        ]
+                      },
+                      {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/OpenAI/gpt-image-1-vip/official-format/chat-mode",
-                          "docs/api/OpenAI/gpt-image-1-vip/official-format/image-edit",
-                          "docs/api/OpenAI/gpt-image-1-vip/official-format/text-to-image"
+                          "docs/allapi/OpenAI/gpt-image-1-vip/official-format/image-edit",
+                          "docs/allapi/OpenAI/gpt-image-1-vip/official-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gpt-image-1.5",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-image-1.5/gptproto-format/image-edit",
+                          "docs/allapi/OpenAI/gpt-image-1.5/gptproto-format/text-to-image"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-image-1.5/official-format/image-edit",
+                          "docs/allapi/OpenAI/gpt-image-1.5/official-format/text-to-image"
                         ]
                       }
                     ]

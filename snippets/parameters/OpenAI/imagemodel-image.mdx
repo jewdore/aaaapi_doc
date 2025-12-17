@@ -3,15 +3,17 @@
 ### Core Parameters
 | Parameter | Type | Required | Default | Range | Description |
 |-----|-----|-----|-----|--------|--------------------|
-| `image` | file | ✅ Yes | - | - | For gpt-image-1, each image should be a png, webp, or jpg file less than 50MB. You can provide up to 16 images. |
-| `prompt` | string | ✅ Yes | - | - | A text description of the desired image(s). The maximum length is 32000 characters for gpt-image-1. |
 | `model` | string | ✅ Yes | `gpt-image-1` | - | The model to use for image editing. Defaults to gpt-image-1. |
+| `prompt` | string | ✅ Yes | - | - | A text description of the desired image(s). The maximum length is 32000 characters for gpt-image-1. |
+| `image` | string or file | ❌ No | - | - | For gpt-image-1, each image should be a png, webp, or jpg file less than 50MB. You can provide up to 16 images. |
 
 ### Advanced Parameters
 | Parameter | Type | Required | Default | Range | Description |
 |-----|-----|-----|-----|--------|--------------------|
 | `mask` | file | ❌ No | - | - | An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as image. |
-| `n` | integer | ❌ No | `1` | `1-10` | The number of images to generate. Must be between 1 and 10. For dall-e-3, only n=1 is supported. |
+| `n` | integer | ❌ No | `1` | `1-10` | The number of images to generate. Must be between 1 and 10. |
 | `size` | string | ❌ No | `auto` | `256x256`<br />`512x512`<br />`1024x1024`<br />`1536x1024`<br />`1024x1536` | The size of the generated images. Must be one of 256x256, 512x512, or 1024x1024 for dall-e-2, and one of 1024x1024, 1792x1024, or 1024x1792 for dall-e-3. |
 | `quality` | string | ❌ No | `auto` | `high`<br />`medium`<br />`low` | The quality of the generated images. Must be one of low, high or medium. Defaults to auto. |
+| `background` | string | ❌ No | `auto` | `transparent`<br />`opaque`<br />`auto` | Allows to set transparency for the background of the generated image(s). Must be one of transparent, opaque or auto (default value). When auto is used, the model will automatically determine the best background for the image. |
+
 

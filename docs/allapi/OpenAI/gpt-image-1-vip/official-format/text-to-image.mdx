@@ -1,5 +1,5 @@
 ---
-title: 'gpt-image-1 (Text to Image)'
+title: 'gpt-image-1-vip (Text to Image)'
 sidebarTitle: 'Text to Image'
 api: "POST /v1/images/generations"
 description: "Generate high-quality images from text prompts using OpenAI's GPT Image model"
@@ -18,9 +18,9 @@ curl --location --request POST "https://gptproto.com/v1/images/generations" \
 --header "Authorization: GPTPROTO_API_KEY" \
 --header "Content-Type: application/json" \
 --data-raw "{
-    \"model\": \"gpt-image-1\",
+    \"model\": \"gpt-image-1-vip\",
     \"prompt\": \"a cat\",
-    \"size\": \"1024x1024\"
+    \"size\":\"1024x1024\"
 }"
 ```
 
@@ -36,7 +36,7 @@ headers = {
 }
 
 payload = {
-    "model": "gpt-image-1",
+    "model": "gpt-image-1-vip",
     "prompt": "a cat",
     "size": "1024x1024"
 }
@@ -46,24 +46,27 @@ print(response.json())
 ```
 
 ```javascript JavaScript
-const axios = require('axios');
-
-const url = 'https://gptproto.com/v1/images/generations';
+const url = "https://gptproto.com/v1/images/generations";
 
 const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
 };
 
-const data = {
-    model: 'gpt-image-1',
-    prompt: 'a cat',
-    size: '1024x1024'
+const payload = {
+    model: "gpt-image-1-vip",
+    prompt: "a cat",
+    size: "1024x1024"
 };
 
-axios.post(url, data, { headers })
-    .then(response => console.log(response.data))
-    .catch(error => console.error(error));
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(payload)
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error("Error:", error));
 ```
 
 ```go Go
@@ -81,21 +84,22 @@ func main() {
     url := "https://gptproto.com/v1/images/generations"
 
     payload := map[string]interface{}{
-        "model":  "gpt-image-1",
+        "model":  "gpt-image-1-vip",
         "prompt": "a cat",
         "size":   "1024x1024",
     }
 
-    jsonData, _ := json.Marshal(payload)
+    jsonPayload, _ := json.Marshal(payload)
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
     req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
     resp, err := client.Do(req)
     if err != nil {
-        panic(err)
+        fmt.Println("Error:", err)
+        return
     }
     defer resp.Body.Close()
 
@@ -103,7 +107,6 @@ func main() {
     fmt.Println(string(body))
 }
 ```
-
 </CodeGroup>
 
 ## Response Example
