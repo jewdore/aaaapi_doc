@@ -1,0 +1,134 @@
+---
+title: 'gpt-image-1.5-plus (Image Edit)'
+sidebarTitle: 'Image Edit'
+api: "POST /v1/images/edits"
+description: "Edit and modify images using OpenAI's GPT Image model with precise control over transformations"
+mode: 'wide'
+---
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+## Initiate Request
+<CodeGroup>
+
+```bash cURL
+curl --location --request POST "https://gptproto.com/v1/images/edits" \
+--header "Authorization: GPTPROTO_API_KEY" \
+--form "model=gpt-image-1.5-plus" \
+--form "image[]=@/cat.jpg" \
+--form "prompt=Put a hat on the cat"
+```
+
+```python Python
+import requests
+
+url = "https://gptproto.com/v1/images/edits"
+headers = {
+    "Authorization": "GPTPROTO_API_KEY"
+}
+
+files = {
+    'image[]': open('/cat.jpg', 'rb')
+}
+
+data = {
+    'model': 'gpt-image-1.5-plus',
+    'prompt': 'Put a hat on the cat'
+}
+
+response = requests.post(url, headers=headers, files=files, data=data)
+print(response.json())
+```
+
+```javascript JavaScript
+const formData = new FormData();
+formData.append('model', 'gpt-image-1.5-plus');
+formData.append('image[]', fileInput.files[0]);
+formData.append('prompt', 'Put a hat on the cat');
+
+fetch('https://gptproto.com/v1/images/edits', {
+    method: 'POST',
+    headers: {
+        'Authorization': 'GPTPROTO_API_KEY'
+    },
+    body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "fmt"
+    "io"
+    "mime/multipart"
+    "net/http"
+    "os"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/images/edits"
+    
+    body := &bytes.Buffer{}
+    writer := multipart.NewWriter(body)
+    
+    writer.WriteField("model", "gpt-image-1.5-plus")
+    writer.WriteField("prompt", "Put a hat on the cat")
+    
+    file, _ := os.Open("/cat.jpg")
+    defer file.Close()
+    part, _ := writer.CreateFormFile("image[]", "/cat.jpg")
+    io.Copy(part, file)
+    writer.Close()
+    
+    req, _ := http.NewRequest("POST", url, body)
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
+    req.Header.Set("Content-Type", writer.FormDataContentType())
+    
+    client := &http.Client{}
+    resp, _ := client.Do(req)
+    defer resp.Body.Close()
+}
+```
+</CodeGroup>
+
+## Response Example
+```json
+{
+    "created": 1765953949,
+    "background": "opaque",
+    "data": [
+        {"b64_json": "B64_JSON_DATA"}
+    ],
+    "output_format": "png",
+    "quality": "high",
+    "size": "1024x1024",
+    "usage": {
+        "input_tokens": 12,
+        "input_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 12
+        },
+        "output_tokens": 4467,
+        "output_tokens_details": {
+            "image_tokens": 4160,
+            "text_tokens": 307
+        },
+        "total_tokens": 4479
+    }
+}
+```
+
+import Parameters from '/snippets/parameters/OpenAI/imagemodel-image.mdx';
+
+<Parameters/>
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>
