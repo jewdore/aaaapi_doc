@@ -1,8 +1,8 @@
 ---
-title: 'gemini-3-pro-image-preview (Text to Image)'
+title: 'gemini-2.5-flash-image-preview-hd (Text to Image)'
 sidebarTitle: 'Text to Image'
 api: "POST /v1/images/generations"
-description: "Generate images from text prompts using Gemini 3 Pro Image Preview model"
+description: "Generate high-quality images from text prompts using Gemini Flash Image Preview HD model"
 mode: 'wide'
 ---
 
@@ -18,9 +18,9 @@ curl --location --request POST 'https://gptproto.com/v1/images/generations' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "model": "gemini-3-pro-image-preview",
+    "model": "gemini-2.5-flash-image-preview-hd",
     "prompt": "a cat",
-    "size": "1:1"
+    "size":"1:1"
 }'
 ```
 
@@ -33,7 +33,7 @@ client = OpenAI(
 )
 
 response = client.images.generate(
-    model="gemini-3-pro-image-preview",
+    model="gemini-2.5-flash-image-preview-hd",
     prompt="a cat",
     size="1:1"
 )
@@ -49,9 +49,9 @@ const client = new OpenAI({
     baseURL: "https://gptproto.com/v1"
 });
 
-async function main() {
+async function generateImage() {
     const response = await client.images.generate({
-        model: "gemini-3-pro-image-preview",
+        model: "gemini-2.5-flash-image-preview-hd",
         prompt: "a cat",
         size: "1:1"
     });
@@ -59,7 +59,7 @@ async function main() {
     console.log(response);
 }
 
-main();
+generateImage();
 ```
 
 ```go Go
@@ -68,7 +68,7 @@ package main
 import (
     "context"
     "fmt"
-    openai "github.com/sashabaranov/go-openai"
+    "github.com/sashabaranov/go-openai"
 )
 
 func main() {
@@ -76,15 +76,13 @@ func main() {
     config.BaseURL = "https://gptproto.com/v1"
     client := openai.NewClientWithConfig(config)
 
-    resp, err := client.CreateImage(
-        context.Background(),
-        openai.ImageRequest{
-            Model:  "gemini-3-pro-image-preview",
-            Prompt: "a cat",
-            Size:   "1:1",
-        },
-    )
+    req := openai.ImageRequest{
+        Model:  "gemini-2.5-flash-image-preview-hd",
+        Prompt: "a cat",
+        Size:   "1:1",
+    }
 
+    resp, err := client.CreateImage(context.Background(), req)
     if err != nil {
         fmt.Printf("Image generation error: %v\n", err)
         return
@@ -110,7 +108,7 @@ func main() {
     ],
     "created": 1766481392,
     "id": "chatcmpl-**",
-    "model": "gemini-3-pro-image-preview",
+    "model": "gemini-2.5-flash-image-preview-hd",
     "object": "chat.completion",
     "usage": {
         "completion_tokens": 1319,

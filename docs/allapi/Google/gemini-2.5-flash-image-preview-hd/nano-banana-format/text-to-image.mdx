@@ -1,8 +1,8 @@
 ---
-title: 'gemini-3-pro-image-preview (Text to Image)'
+title: 'gemini-2.5-flash-image-preview-hd (Text to Image)'
 sidebarTitle: 'Text to Image'
-api: "POST /api/v3/google/gemini-3-pro-image-preview/text-to-image"
-description: "Generate high-quality images from text prompts using Gemini 3 Pro Image Preview model"
+api: "POST /api/v3/google/nano-banana-pro/text-to-image"
+description: "Generate high-quality images from text descriptions using Gemini Flash Image Preview HD model"
 mode: 'wide'
 ---
 
@@ -14,7 +14,7 @@ import Authentication from '/snippets/common/authentication.mdx';
 <CodeGroup>
 
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image' \
+curl --location --request POST 'https://gptproto.com/api/v3/google/nano-banana-pro/text-to-image' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -29,9 +29,8 @@ curl --location --request POST 'https://gptproto.com/api/v3/google/gemini-3-pro-
 
 ```python Python
 import requests
-import json
 
-url = "https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image"
+url = "https://gptproto.com/api/v3/google/nano-banana-pro/text-to-image"
 
 headers = {
     "Authorization": "GPTPROTO_API_KEY",
@@ -47,36 +46,35 @@ payload = {
     "enable_sync_mode": False
 }
 
-response = requests.post(url, headers=headers, json=payload)
+response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 ```
 
 ```javascript JavaScript
-const axios = require('axios');
-
-const url = 'https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image';
+const url = "https://gptproto.com/api/v3/google/nano-banana-pro/text-to-image";
 
 const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
 };
 
-const data = {
-    prompt: 'Put a hat on the cat',
-    output_format: 'jpeg',
-    size: '1K',
-    aspect_ratio: '1:1',
+const payload = {
+    prompt: "Put a hat on the cat",
+    output_format: "jpeg",
+    size: "1K",
+    aspect_ratio: "1:1",
     enable_base64_output: false,
     enable_sync_mode: false
 };
 
-axios.post(url, data, { headers })
-    .then(response => {
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(payload)
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error("Error:", error));
 ```
 
 ```go Go
@@ -91,7 +89,7 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image"
+    url := "https://gptproto.com/api/v3/google/nano-banana-pro/text-to-image"
 
     payload := map[string]interface{}{
         "prompt":               "Put a hat on the cat",
@@ -102,9 +100,16 @@ func main() {
         "enable_sync_mode":     false,
     }
 
-    jsonData, _ := json.Marshal(payload)
+    jsonData, err := json.Marshal(payload)
+    if err != nil {
+        panic(err)
+    }
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    if err != nil {
+        panic(err)
+    }
+
     req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
@@ -115,11 +120,14 @@ func main() {
     }
     defer resp.Body.Close()
 
-    body, _ := ioutil.ReadAll(resp.Body)
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        panic(err)
+    }
+
     fmt.Println(string(body))
 }
 ```
-
 </CodeGroup>
 
 ## Response Example
@@ -127,7 +135,7 @@ func main() {
 {
     "data": {
         "id": "2b9a360d9",
-        "model": "gemini-3-pro-image-preview",
+        "model": "gemini-2.5-flash-image-preview-hd",
         "outputs": [],
         "urls": {
             "get": "https://gptproto.com/api/v3/predictions/2b9a360d9/result"

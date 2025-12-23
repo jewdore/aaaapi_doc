@@ -1,310 +1,154 @@
 ---
-title: 'gemini-2.5-flash-image (image edit)'
+title: 'gemini-2.5-flash-image (Image Edit)'
 sidebarTitle: 'Image Edit'
-api: "POST /v1/chat/completions"
-description: "Image Edit"
+api: "POST /v1/images/edits"
+description: "Edit images using Gemini Flash Image model with text prompts"
 mode: 'wide'
 ---
 
-Gemini's openai format for the image edit API.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
+
+## Initiate Request
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "messages": [
-    {
-      "role": "user",
-      "content": "Two people standing together",
-      "experimental_attachments": [
-        {
-          "contentType": "image/png",
-          "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png"
-        },
-        {
-          "contentType": "image/jpeg",
-          "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
-        }
-      ]
-    }
-  ],
-  "model": "gemini-2.5-flash-image"
-}'
+curl --location --request POST 'https://gptproto.com/v1/images/edits' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--form 'model=gemini-2.5-flash-image' \
+--form 'image[]=@/cat.jpg' \
+--form 'prompt=Put a hat on the cat'
 ```
-
 
 ```python Python
 import requests
-import json
 
-url = "https://gptproto.com/v1/chat/completions"
+url = "https://gptproto.com/v1/images/edits"
 headers = {
-    "Authorization": "YOUR_API_KEY",
-    "Content-Type": "application/json"
+    "Authorization": "GPTPROTO_API_KEY"
+}
+
+files = {
+    'image[]': open('/cat.jpg', 'rb')
 }
 
 data = {
-  "messages": [
-    {
-      "role": "user",
-      "content": "Two people standing together",
-      "experimental_attachments": [
-        {
-          "contentType": "image/png",
-          "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png"
-        },
-        {
-          "contentType": "image/jpeg",
-          "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
-        }
-      ]
-    }
-  ],
-  "model": "gemini-2.5-flash-image"
+    'model': 'gemini-2.5-flash-image',
+    'prompt': 'Put a hat on the cat'
 }
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+response = requests.post(url, headers=headers, files=files, data=data)
+print(response.json())
 ```
-
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1/chat/completions";
-const headers = {
-  "Authorization": "YOUR_API_KEY",
-  "Content-Type": "application/json"
-};
+const FormData = require('form-data');
+const fs = require('fs');
+const axios = require('axios');
 
-const data = {
-  "messages": [
-    {
-      "role": "user",
-      "content": "Two people standing together",
-      "experimental_attachments": [
-        {
-          "contentType": "image/png",
-          "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png"
-        },
-        {
-          "contentType": "image/jpeg",
-          "url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
-        }
-      ]
-    }
-  ],
-  "model": "gemini-2.5-flash-image"
-};
+const form = new FormData();
+form.append('model', 'gemini-2.5-flash-image');
+form.append('image[]', fs.createReadStream('/cat.jpg'));
+form.append('prompt', 'Put a hat on the cat');
 
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
+axios.post('https://gptproto.com/v1/images/edits', form, {
+  headers: {
+    'Authorization': 'GPTPROTO_API_KEY',
+    ...form.getHeaders()
+  }
 })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+.then(response => {
+  console.log(response.data);
+})
+.catch(error => {
+  console.error(error);
+});
 ```
-
 
 ```go Go
 package main
 
 import (
     "bytes"
-    "encoding/json"
     "fmt"
-    "io/ioutil"
+    "io"
+    "mime/multipart"
     "net/http"
+    "os"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/chat/completions"
-
-    payload := []byte(`{
-"messages": [
-{
-"role": "user",
-"content": "Two people standing together",
-"experimental_attachments": [
-{
-"contentType": "image/png",
-"url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png"
-},
-{
-"contentType": "image/jpeg",
-"url": "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
-}
-]
-}
-],
-"model": "gemini-2.5-flash-image"
-}`)
-
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-
+    url := "https://gptproto.com/v1/images/edits"
+    
+    payload := &bytes.Buffer{}
+    writer := multipart.NewWriter(payload)
+    
+    writer.WriteField("model", "gemini-2.5-flash-image")
+    writer.WriteField("prompt", "Put a hat on the cat")
+    
+    file, _ := os.Open("/cat.jpg")
+    defer file.Close()
+    part, _ := writer.CreateFormFile("image[]", "/cat.jpg")
+    io.Copy(part, file)
+    
+    writer.Close()
+    
     client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
-
-    body, _ := ioutil.ReadAll(resp.Body)
+    req, _ := http.NewRequest("POST", url, payload)
+    
+    req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+    req.Header.Set("Content-Type", writer.FormDataContentType())
+    
+    res, _ := client.Do(req)
+    defer res.Body.Close()
+    
+    body, _ := io.ReadAll(res.Body)
     fmt.Println(string(body))
 }
 ```
 </CodeGroup>
 
-<CodeGroup>
-
-```json 401 - Invalid signature
+## Response Example
+```json
 {
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
-
-
-
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</CodeGroup>
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   role of user. |
-| `content` | string | ✅ Yes | - | The prompt for the generation. |
-| `experimental_attachments` | array | ✅ Yes | - |   Supported MIME types:image/png, image/jpeg, image/webp |
-| `url` | string | ✅ Yes | - | image url. |
-| `model` | string | ✅ Yes | `gemini-2.5-flash-image` |  |
-
-
-## Image Edit
-
-The default output size for chat mode is 1:1 (1024x1024)
-
-
-
-## Response
-
-  ```json
-  {
-    "candidates": [
+    "choices": [
         {
-            "content": {
-                "role": "model",
-                "parts": [
-                    {
-                        "inlineData": {
-                            "mimeType": "image/png",
-                            "data": "base64"
-                        }
-                    }
-                ]
-            },
-            "finishReason": "STOP"
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+                "content": "![image](data:image/jpeg;base64,*****)",
+                "role": "assistant"
+            }
         }
     ],
-    "usageMetadata": {
-        "promptTokenCount": 1302,
-        "candidatesTokenCount": 1290,
-        "totalTokenCount": 2592,
-        "thoughtsTokenCount": 0,
-        "promptTokensDetails": [
-            {
-                "modality": "IMAGE",
-                "tokenCount": 1290
-            },
-            {
-                "modality": "TEXT",
-                "tokenCount": 12
-            }
-        ]
-    },
-    "modelVersion": "gemini-2.5-flash-image"
-  }
-  ```
+    "created": 1766481392,
+    "id": "chatcmpl-**",
+    "model": "gemini-2.5-flash-image",
+    "object": "chat.completion",
+    "usage": {
+        "completion_tokens": 1319,
+        "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 116,
+            "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 265,
+        "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+        },
+        "total_tokens": 1584
+    }
+}
+```
 
+import Parameters from '/snippets/parameters/openai-format/Google/imagemodels.mdx';
 
+<Parameters/>
 
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-
-## Adding and removing elements
-
-Provide an image and describe your change. The model will match the original image's style, lighting, and perspective.
-
-
-
-| Input                                              | Output                                                                        |
-| -------------------------------------------------- | ----------------------------------------------------------------------------- |
-| ![Input](/images/gemini_Input_1.png)               | ![Output](/images/gemini_Output_1.png)                                        |
-| A photorealistic picture of a fluffy ginger cat... | Using the provided image of my cat, please add a small, knitted wizard hat... |
-
-## Advanced composition: Combining multiple images
-
-Provide multiple images as context to create a new, composite scene. This is perfect for product mockups or creative collages.
-
-
-
-| Input1                                                       | Input2                                              | Output                                            |
-| ------------------------------------------------------------ | --------------------------------------------------- | ------------------------------------------------- |
-| ![Input](/images/gemini_Input_4_1.png)                       | ![Input](/images/gemini_Input_4_2.png)              | ![Output](/images/gemini_Output_4.png)            |
-| A professionally shot photo of a blue floral summer dress... | Full-body shot of a woman with her hair in a bun... | Create a professional e-commerce fashion photo... |
-
-#### Best Practices
-
-To elevate your results from good to great, incorporate these professional strategies into your workflow.
-
-- **Be Hyper-Specific:** The more detail you provide, the more control you have. Instead of "fantasy armor," describe it: "ornate elven plate armor, etched with silver leaf patterns, with a high collar and pauldrons shaped like falcon wings."
-- **Provide Context and Intent:** Explain the _purpose_ of the image. The model's understanding of context will influence the final output. For example, "Create a logo for a high-end, minimalist skincare brand" will yield better results than just "Create a logo."
-- **Iterate and Refine:** Don't expect a perfect image on the first try. Use the conversational nature of the model to make small changes. Follow up with prompts like, "That's great, but can you make the lighting a bit warmer?" or "Keep everything the same, but change the character's expression to be more serious."
-- **Use Step-by-Step Instructions:** For complex scenes with many elements, break your prompt into steps. "First, create a background of a serene, misty forest at dawn. Then, in the foreground, add a moss-covered ancient stone altar. Finally, place a single, glowing sword on top of the altar."
-- **Use "Semantic Negative Prompts":** Instead of saying "no cars," describe the desired scene positively: "an empty, deserted street with no signs of traffic."
-- **Control the Camera:** Use photographic and cinematic language to control the composition. Terms like `wide-angle shot`, `macro shot`, `low-angle perspective`.
-
-#### Limitations
-
-- For best performance, use the following languages: EN, es-MX, ja-JP, zh-CN, hi-IN.
-- Image generation does not support audio or video inputs.
-- The model won't always follow the exact number of image outputs that the user explicitly asks for.
-- The model works best with up to 3 images as an input.
-- When generating text for an image, Gemini works best if you first generate the text and then ask for an image with the text.
-- Uploading images of children is not currently supported in EEA, CH, and UK.
+<ErrorCode/>

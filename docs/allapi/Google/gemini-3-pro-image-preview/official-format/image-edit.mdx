@@ -1,147 +1,108 @@
 ---
-title: 'gemini-3-pro-image-preview (image edit)'
+title: 'gemini-3-pro-image-preview (Image Edit)'
 sidebarTitle: 'Image Edit'
-api: 'POST /v1beta/models/{model}:generateContent'
-description: 'Generate images based on input images using Gemini Flash Image model'
+api: "POST /v1beta/models/gemini-3-pro-image-preview:generateContent"
+description: "Edit and transform images using Gemini 3 Pro Image model based on text instructions"
 mode: 'wide'
 ---
 
-Gemini's official format for the image edit API.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-3-pro-image-preview:generateContent' \
---header 'Authorization: sk-***********' \
+curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-3-pro-image-preview:generateContent' \
+--header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data '{
+--data-raw '{
     "contents": [
         {
             "role": "user",
             "parts": [
                 {
-                    "text": "Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation"
+                    "text": "Put a hat on the cat"
                 },
                 {
-                    "inline_data": {
-                        "mime_type": "image/jpeg",
-                        "data": "base64_encoded_image_data"
+                    "fileData": {
+                        "mimeType": "image/png",
+                        "fileUri": "https://tos.gptproto.com/resource/cat.png"
                     }
                 }
             ]
         }
-    ],
-    "generationConfig": {
-        "responseModalities": [
-            "IMAGE"
-        ],
-        "imageConfig": {
-            "aspectRatio": "16:9",
-            "imageSize": "1K"
-        }
-    }
+    ]
 }'
 ```
 
 ```python Python
 import requests
 import json
-import base64
 
 url = "https://gptproto.com/v1beta/models/gemini-3-pro-image-preview:generateContent"
+
 headers = {
-    "Authorization": "sk-***********",
+    "Authorization": "GPTPROTO_API_KEY",
     "Content-Type": "application/json"
 }
 
-# Read and encode image
-with open("input_image.jpg", "rb") as image_file:
-    image_data = base64.b64encode(image_file.read()).decode('utf-8')
-
-data = {
+payload = {
     "contents": [
         {
             "role": "user",
             "parts": [
                 {
-                    "text": "Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation"
+                    "text": "Put a hat on the cat"
                 },
                 {
-                    "inline_data": {
-                        "mime_type": "image/jpeg",
-                        "data": image_data
+                    "fileData": {
+                        "mimeType": "image/png",
+                        "fileUri": "https://tos.gptproto.com/resource/cat.png"
                     }
                 }
             ]
         }
-    ],
-    "generationConfig": {
-        "responseModalities": [
-            "IMAGE"
-        ],
-        "imageConfig": {
-            "aspectRatio": "16:9",
-            "imageSize": "1K"
-        }
-    }
+    ]
 }
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1beta/models/gemini-3-pro-image-preview:generateContent";
+const axios = require('axios');
+
+const url = 'https://gptproto.com/v1beta/models/gemini-3-pro-image-preview:generateContent';
+
 const headers = {
-  "Authorization": "sk-***********",
-  "Content-Type": "application/json"
+    'Authorization': 'GPTPROTO_API_KEY',
+    'Content-Type': 'application/json'
 };
 
 const data = {
-  "contents": [
-    {
-      "role": "user",
-      "parts": [
+    contents: [
         {
-          "text": "Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation"
-        },
-        {
-          "inline_data": {
-            "mime_type": "image/jpeg",
-            "data": "base64_encoded_image_data"
-          }
+            role: 'user',
+            parts: [
+                {
+                    text: 'Put a hat on the cat'
+                },
+                {
+                    fileData: {
+                        mimeType: 'image/png',
+                        fileUri: 'https://tos.gptproto.com/resource/cat.png'
+                    }
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "responseModalities": [
-      "IMAGE"
-    ],
-    "imageConfig": {
-      "aspectRatio": "16:9",
-      "imageSize": "1K"
-    }
-  }
+    ]
 };
 
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+axios.post(url, data, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
 ```
 
 ```go Go
@@ -151,7 +112,7 @@ import (
     "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
+    "io"
     "net/http"
 )
 
@@ -164,22 +125,15 @@ func main() {
                 "role": "user",
                 "parts": []map[string]interface{}{
                     {
-                        "text": "Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation",
+                        "text": "Put a hat on the cat",
                     },
                     {
-                        "inline_data": map[string]string{
-                            "mime_type": "image/jpeg",
-                            "data":      "base64_encoded_image_data",
+                        "fileData": map[string]string{
+                            "mimeType": "image/png",
+                            "fileUri":  "https://tos.gptproto.com/resource/cat.png",
                         },
                     },
                 },
-            },
-        },
-        "generationConfig": map[string]interface{}{
-            "responseModalities": []string{"IMAGE"},
-            "imageConfig": map[string]string{
-                "aspectRatio": "16:9",
-                "imageSize":   "1K",
             },
         },
     }
@@ -187,7 +141,7 @@ func main() {
     jsonData, _ := json.Marshal(payload)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "sk-***********")
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -197,79 +151,60 @@ func main() {
     }
     defer resp.Body.Close()
 
-    body, _ := ioutil.ReadAll(resp.Body)
+    body, _ := io.ReadAll(resp.Body)
     fmt.Println(string(body))
 }
 ```
+
 </CodeGroup>
 
-<CodeGroup>
-
-```json 401 - Invalid signature
+## Response Example
+```json
 {
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "inlineData": {
+              "mimeType": "image/jpeg",
+              "data": "base64_encode_data"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 7,
+    "candidatesTokenCount": 1202,
+    "totalTokenCount": 1347,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 7
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "IMAGE",
+        "tokenCount": 1120
+      }
+    ],
+    "thoughtsTokenCount": 138
+  },
+  "modelVersion": "gemini-3-pro-image-preview",
+  "responseId": "rUhKaeiQJceM-sAP5p7bsAo"
 }
 ```
 
-```json 403 - Invalid Token
-{
-  "error": {
-    "message": "Invalid Token",
-    "type": "403"
-  }
-}
-```
+import Parameters from '/snippets/parameters/official-format/Google/imagemodel.mdx';
 
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
+<Parameters/>
 
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</CodeGroup>
-
-## Path Parameters
-
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ✅ Yes | - | An array of content objects representing the generation prompt and input image.   The role of the message sender. Typically `"user"`. Optional for single-turn requests. |
-| `parts` | array | ✅ Yes | - | An array of parts that make up the message content, including text prompt and input image.   Text prompt for image transformation. |
-| `inline_data` | object | ❌ No | - | Input image data in base64 format.   The MIME type of the image (e.g., `"image/jpeg"`, `"image/png"`). |
-| `data` | string | ✅ Yes | - | Base64-encoded image data. |
-| `generationConfig` | object | ❌ No | - | Configuration for the image generation behavior.   Response modalities. For image generation, use `["TEXT", "IMAGE"]`. |
-| `imageConfig` | object | ❌ No | - | Image-specific configuration.   Aspect ratio for the generated image. Examples: `"16:9"`, `"1:1"`, `"9:16"`. |
-
-
-
-
-
-
-
-
-
+<ErrorCode/>

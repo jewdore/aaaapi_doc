@@ -1,111 +1,185 @@
 ---
-title: 'gemini-2.5-flash-image (text to image)'
+title: 'gemini-2.5-flash-image (Text to Image)'
 sidebarTitle: 'Text to Image'
 api: "POST /v1beta/models/gemini-2.5-flash-image:generateContent"
-description: "Text to Image"
+description: "Generate images from text prompts using Gemini Flash Image model"
 mode: 'wide'
 ---
 
-Gemini's official format for the text to image API.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
-
-## Supported inputs & outputs :
-
-Inputs: Text
-
-Outputs: Text and image
-
-
-
+## Initiate Request
 <CodeGroup>
 
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
+```bash cURL
+curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Put a hat on the cat"
+                }
+            ]
+        }
+    ]
+}'
 ```
 
+```python Python
+import requests
+import json
 
+url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent"
 
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
+headers = {
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
 }
+
+payload = {
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Put a hat on the cat"
+                }
+            ]
+        }
+    ]
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
 ```
 
+```javascript JavaScript
+const axios = require('axios');
 
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
+const url = 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent';
+
+const headers = {
+    'Authorization': 'GPTPROTO_API_KEY',
+    'Content-Type': 'application/json'
+};
+
+const data = {
+    contents: [
+        {
+            role: 'user',
+            parts: [
+                {
+                    text: 'Put a hat on the cat'
+                }
+            ]
+        }
+    ]
+};
+
+axios.post(url, data, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
 ```
 
+```go Go
+package main
 
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent"
+    
+    payload := map[string]interface{}{
+        "contents": []map[string]interface{}{
+            {
+                "role": "user",
+                "parts": []map[string]interface{}{
+                    {
+                        "text": "Put a hat on the cat",
+                    },
+                },
+            },
+        },
+    }
+    
+    jsonData, _ := json.Marshal(payload)
+    
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+    
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+    
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
 }
 ```
 </CodeGroup>
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ✅ Yes | - |     The prompt for the generation. |
-| `generationConfig` | object | ❌ No | - |   The model defaults to returning text and image responses (`['Text', 'Image']`). You can configure the response to return only images without text using ( `['Image']`). |
-| `imageConfig` | object | ❌ No | - |   1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9. default 1:1 | aspectRatio | Resolution | | ------------ | ---------- | | 1:1 | 1024x1024 | | 2:3 | 832x1248 | | 3:2 | 1248x832 | | 3:4 | 864x1184 | | 4:3 | 1184x864 | | 4:5 | 896x1152 | | 5:4 | 1152x896 | | 9:16 | 768x1344 | | 16:9 | 1344x768 | | 21:9 | 1536x672 | |
-
-
-## Response
-
-  ```json
-  {
-      "candidates": [
+## Response Example
+```json
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
           {
-              "content": {
-                  "role": "model",
-                  "parts": [
-                      {
-                          "inlineData": {
-                              "mimeType": "image/png",
-                              "data": "image base64"
-                          }
-                      }
-                  ]
-              },
-              "finishReason": "STOP"
+            "inlineData": {
+              "mimeType": "image/jpeg",
+              "data": "base64_encode_data"
+            }
           }
-      ],
-      "usageMetadata": {
-          "promptTokenCount": 16,
-          "candidatesTokenCount": 1290,
-          "totalTokenCount": 1306,
-          "thoughtsTokenCount": 0,
-          "promptTokensDetails": [
-              {
-                  "modality": "TEXT",
-                  "tokenCount": 16
-              }
-          ]
+        ],
+        "role": "model"
       },
-      "modelVersion": "gemini-2.5-flash-image"
-  }
-  ```
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 7,
+    "candidatesTokenCount": 1202,
+    "totalTokenCount": 1347,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 7
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "IMAGE",
+        "tokenCount": 1120
+      }
+    ],
+    "thoughtsTokenCount": 138
+  },
+  "modelVersion": "gemini-2.5-flash-image",
+  "responseId": "rUhKaeiQJceM-sAP5p7bsAo"
+}
+```
+
+import Parameters from '/snippets/parameters/official-format/Google/imagemodel.mdx';
+
+<Parameters/>
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>

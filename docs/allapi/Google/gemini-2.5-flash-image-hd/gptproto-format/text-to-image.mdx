@@ -1,8 +1,8 @@
 ---
-title: 'gemini-3-pro-image-preview (Text to Image)'
+title: 'gemini-2.5-flash-image-hd (Text to Image)'
 sidebarTitle: 'Text to Image'
-api: "POST /api/v3/google/gemini-3-pro-image-preview/text-to-image"
-description: "Generate high-quality images from text prompts using Gemini 3 Pro Image Preview model"
+api: "POST /api/v3/google/gemini-2.5-flash-image-hd/text-to-image"
+description: "Generate high-quality images from text descriptions using Gemini Flash Image HD model"
 mode: 'wide'
 ---
 
@@ -11,10 +11,11 @@ import Authentication from '/snippets/common/authentication.mdx';
 <Authentication/>
 
 ## Initiate Request
+
 <CodeGroup>
 
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image' \
+curl --location --request POST 'https://gptproto.com/api/v3/google/gemini-2.5-flash-image-hd/text-to-image' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -31,7 +32,7 @@ curl --location --request POST 'https://gptproto.com/api/v3/google/gemini-3-pro-
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image"
+url = "https://gptproto.com/api/v3/google/gemini-2.5-flash-image-hd/text-to-image"
 
 headers = {
     "Authorization": "GPTPROTO_API_KEY",
@@ -47,14 +48,14 @@ payload = {
     "enable_sync_mode": False
 }
 
-response = requests.post(url, headers=headers, json=payload)
+response = requests.post(url, headers=headers, data=json.dumps(payload))
 print(response.json())
 ```
 
 ```javascript JavaScript
 const axios = require('axios');
 
-const url = 'https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image';
+const url = 'https://gptproto.com/api/v3/google/gemini-2.5-flash-image-hd/text-to-image';
 
 const headers = {
     'Authorization': 'GPTPROTO_API_KEY',
@@ -71,12 +72,8 @@ const data = {
 };
 
 axios.post(url, data, { headers })
-    .then(response => {
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
 ```
 
 ```go Go
@@ -91,15 +88,15 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image"
+    url := "https://gptproto.com/api/v3/google/gemini-2.5-flash-image-hd/text-to-image"
 
     payload := map[string]interface{}{
-        "prompt":               "Put a hat on the cat",
-        "output_format":        "jpeg",
-        "size":                 "1K",
-        "aspect_ratio":         "1:1",
-        "enable_base64_output": false,
-        "enable_sync_mode":     false,
+        "prompt":                "Put a hat on the cat",
+        "output_format":         "jpeg",
+        "size":                  "1K",
+        "aspect_ratio":          "1:1",
+        "enable_base64_output":  false,
+        "enable_sync_mode":      false,
     }
 
     jsonData, _ := json.Marshal(payload)
@@ -123,11 +120,12 @@ func main() {
 </CodeGroup>
 
 ## Response Example
+
 ```json
 {
     "data": {
         "id": "2b9a360d9",
-        "model": "gemini-3-pro-image-preview",
+        "model": "gemini-2.5-flash-image-hd",
         "outputs": [],
         "urls": {
             "get": "https://gptproto.com/api/v3/predictions/2b9a360d9/result"

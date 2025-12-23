@@ -1,8 +1,8 @@
 ---
-title: 'gemini-3-pro-image-preview (Text to Image)'
-sidebarTitle: 'Text to Image'
-api: "POST /api/v3/google/gemini-3-pro-image-preview/text-to-image"
-description: "Generate high-quality images from text prompts using Gemini 3 Pro Image Preview model"
+title: 'gemini-2.5-flash-image-hd (Image Edit)'
+sidebarTitle: 'Image Edit'
+api: "POST /api/v3/google/gemini-2.5-flash-image-hd/image-edit"
+description: "Edit and modify images with precision using Gemini Flash Image HD model"
 mode: 'wide'
 ---
 
@@ -14,11 +14,14 @@ import Authentication from '/snippets/common/authentication.mdx';
 <CodeGroup>
 
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image' \
+curl --location --request POST 'https://gptproto.com/api/v3/google/gemini-2.5-flash-image-hd/image-edit' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "prompt": "Put a hat on the cat",
+    "images": [
+        "https://tos.gptproto.com/resource/cat.png"
+    ],
     "output_format": "jpeg",
     "size": "1K",
     "aspect_ratio": "1:1",
@@ -31,7 +34,7 @@ curl --location --request POST 'https://gptproto.com/api/v3/google/gemini-3-pro-
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image"
+url = "https://gptproto.com/api/v3/google/gemini-2.5-flash-image-hd/image-edit"
 
 headers = {
     "Authorization": "GPTPROTO_API_KEY",
@@ -40,6 +43,9 @@ headers = {
 
 payload = {
     "prompt": "Put a hat on the cat",
+    "images": [
+        "https://tos.gptproto.com/resource/cat.png"
+    ],
     "output_format": "jpeg",
     "size": "1K",
     "aspect_ratio": "1:1",
@@ -52,31 +58,33 @@ print(response.json())
 ```
 
 ```javascript JavaScript
-const axios = require('axios');
-
-const url = 'https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image';
+const url = "https://gptproto.com/api/v3/google/gemini-2.5-flash-image-hd/image-edit";
 
 const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
 };
 
-const data = {
-    prompt: 'Put a hat on the cat',
-    output_format: 'jpeg',
-    size: '1K',
-    aspect_ratio: '1:1',
+const payload = {
+    prompt: "Put a hat on the cat",
+    images: [
+        "https://tos.gptproto.com/resource/cat.png"
+    ],
+    output_format: "jpeg",
+    size: "1K",
+    aspect_ratio: "1:1",
     enable_base64_output: false,
     enable_sync_mode: false
 };
 
-axios.post(url, data, { headers })
-    .then(response => {
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(payload)
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error("Error:", error));
 ```
 
 ```go Go
@@ -86,20 +94,22 @@ import (
     "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
     "net/http"
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/google/gemini-3-pro-image-preview/text-to-image"
+    url := "https://gptproto.com/api/v3/google/gemini-2.5-flash-image-hd/image-edit"
 
     payload := map[string]interface{}{
-        "prompt":               "Put a hat on the cat",
-        "output_format":        "jpeg",
-        "size":                 "1K",
-        "aspect_ratio":         "1:1",
+        "prompt": "Put a hat on the cat",
+        "images": []string{
+            "https://tos.gptproto.com/resource/cat.png",
+        },
+        "output_format": "jpeg",
+        "size": "1K",
+        "aspect_ratio": "1:1",
         "enable_base64_output": false,
-        "enable_sync_mode":     false,
+        "enable_sync_mode": false,
     }
 
     jsonData, _ := json.Marshal(payload)
@@ -111,15 +121,16 @@ func main() {
     client := &http.Client{}
     resp, err := client.Do(req)
     if err != nil {
-        panic(err)
+        fmt.Println("Error:", err)
+        return
     }
     defer resp.Body.Close()
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+    var result map[string]interface{}
+    json.NewDecoder(resp.Body).Decode(&result)
+    fmt.Println(result)
 }
 ```
-
 </CodeGroup>
 
 ## Response Example
@@ -127,7 +138,7 @@ func main() {
 {
     "data": {
         "id": "2b9a360d9",
-        "model": "gemini-3-pro-image-preview",
+        "model": "gemini-2.5-flash-image-hd",
         "outputs": [],
         "urls": {
             "get": "https://gptproto.com/api/v3/predictions/2b9a360d9/result"

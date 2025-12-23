@@ -1,8 +1,8 @@
 ---
-title: 'gemini-3-pro-image-preview (Text to Image)'
+title: 'gemini-2.5-flash-image-hd (Text to Image)'
 sidebarTitle: 'Text to Image'
 api: "POST /v1/images/generations"
-description: "Generate images from text prompts using Gemini 3 Pro Image Preview model"
+description: "Generate high-quality images from text prompts using Gemini Flash Image HD model"
 mode: 'wide'
 ---
 
@@ -11,6 +11,7 @@ import Authentication from '/snippets/common/authentication.mdx';
 <Authentication/>
 
 ## Initiate Request
+
 <CodeGroup>
 
 ```bash cURL
@@ -18,7 +19,7 @@ curl --location --request POST 'https://gptproto.com/v1/images/generations' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "model": "gemini-3-pro-image-preview",
+    "model": "gemini-2.5-flash-image-hd",
     "prompt": "a cat",
     "size": "1:1"
 }'
@@ -33,7 +34,7 @@ client = OpenAI(
 )
 
 response = client.images.generate(
-    model="gemini-3-pro-image-preview",
+    model="gemini-2.5-flash-image-hd",
     prompt="a cat",
     size="1:1"
 )
@@ -44,14 +45,14 @@ print(response)
 ```javascript JavaScript
 import OpenAI from "openai";
 
-const client = new OpenAI({
+const openai = new OpenAI({
     apiKey: "GPTPROTO_API_KEY",
     baseURL: "https://gptproto.com/v1"
 });
 
 async function main() {
-    const response = await client.images.generate({
-        model: "gemini-3-pro-image-preview",
+    const response = await openai.images.generate({
+        model: "gemini-2.5-flash-image-hd",
         prompt: "a cat",
         size: "1:1"
     });
@@ -75,27 +76,29 @@ func main() {
     config := openai.DefaultConfig("GPTPROTO_API_KEY")
     config.BaseURL = "https://gptproto.com/v1"
     client := openai.NewClientWithConfig(config)
-
-    resp, err := client.CreateImage(
-        context.Background(),
-        openai.ImageRequest{
-            Model:  "gemini-3-pro-image-preview",
-            Prompt: "a cat",
-            Size:   "1:1",
-        },
-    )
-
+    
+    ctx := context.Background()
+    
+    req := openai.ImageRequest{
+        Model:  "gemini-2.5-flash-image-hd",
+        Prompt: "a cat",
+        Size:   "1:1",
+    }
+    
+    resp, err := client.CreateImage(ctx, req)
     if err != nil {
-        fmt.Printf("Image generation error: %v\n", err)
+        fmt.Printf("Image creation error: %v\n", err)
         return
     }
-
+    
     fmt.Println(resp)
 }
 ```
+
 </CodeGroup>
 
 ## Response Example
+
 ```json
 {
     "choices": [
@@ -110,7 +113,7 @@ func main() {
     ],
     "created": 1766481392,
     "id": "chatcmpl-**",
-    "model": "gemini-3-pro-image-preview",
+    "model": "gemini-2.5-flash-image-hd",
     "object": "chat.completion",
     "usage": {
         "completion_tokens": 1319,

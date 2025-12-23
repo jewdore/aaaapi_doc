@@ -1,8 +1,8 @@
 ---
-title: 'gemini-2.5-flash-image (Image Edit)'
+title: 'gemini-2.5-flash-image-preview (Image Edit)'
 sidebarTitle: 'Image Edit'
-api: "POST /v1beta/models/gemini-2.5-flash-image:generateContent"
-description: "Edit and manipulate images using the Gemini Flash Image model with text prompts"
+api: "POST /v1beta/models/gemini-2.5-flash-image-preview:generateContent"
+description: "Edit images by applying text-based modifications using Gemini Flash Image Preview model"
 mode: 'wide'
 ---
 
@@ -14,7 +14,7 @@ import Authentication from '/snippets/common/authentication.mdx';
 <CodeGroup>
 
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent' \
+curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -41,7 +41,7 @@ curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-fl
 import requests
 import json
 
-url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent"
+url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent"
 
 headers = {
     "Authorization": "GPTPROTO_API_KEY",
@@ -72,14 +72,16 @@ print(response.json())
 ```
 
 ```javascript JavaScript
-const url = 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent';
+const axios = require('axios');
+
+const url = 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent';
 
 const headers = {
     'Authorization': 'GPTPROTO_API_KEY',
     'Content-Type': 'application/json'
 };
 
-const payload = {
+const data = {
     contents: [
         {
             role: 'user',
@@ -98,14 +100,13 @@ const payload = {
     ]
 };
 
-fetch(url, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(payload)
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+axios.post(url, data, { headers })
+    .then(response => {
+        console.log(response.data);
+    })
+    .catch(error => {
+        console.error(error);
+    });
 ```
 
 ```go Go
@@ -120,8 +121,8 @@ import (
 )
 
 func main() {
-    url := "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent"
-    
+    url := "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent"
+
     payload := map[string]interface{}{
         "contents": []map[string]interface{}{
             {
@@ -133,32 +134,31 @@ func main() {
                     {
                         "fileData": map[string]string{
                             "mimeType": "image/png",
-                            "fileUri": "https://tos.gptproto.com/resource/cat.png",
+                            "fileUri":  "https://tos.gptproto.com/resource/cat.png",
                         },
                     },
                 },
             },
         },
     }
-    
+
     jsonData, _ := json.Marshal(payload)
-    
+
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
     req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
-    
+
     client := &http.Client{}
     resp, err := client.Do(req)
     if err != nil {
         panic(err)
     }
     defer resp.Body.Close()
-    
+
     body, _ := ioutil.ReadAll(resp.Body)
     fmt.Println(string(body))
 }
 ```
-
 </CodeGroup>
 
 ## Response Example
@@ -199,7 +199,7 @@ func main() {
     ],
     "thoughtsTokenCount": 138
   },
-  "modelVersion": "gemini-2.5-flash-image",
+  "modelVersion": "gemini-2.5-flash-image-preview",
   "responseId": "rUhKaeiQJceM-sAP5p7bsAo"
 }
 ```

@@ -1,8 +1,8 @@
 ---
-title: 'gemini-3-pro-image-preview (Text to Image)'
-sidebarTitle: 'Text to Image'
-api: "POST /v1/images/generations"
-description: "Generate images from text prompts using Gemini 3 Pro Image Preview model"
+title: 'gemini-3-pro-image-preview (Text to Image (Chat))'
+sidebarTitle: 'Text to Image (Chat)'
+api: "POST /v1/chat/completions"
+description: "Generate images from text prompts using Gemini 3 Pro Image Preview model in chat format"
 mode: 'wide'
 ---
 
@@ -14,13 +14,22 @@ import Authentication from '/snippets/common/authentication.mdx';
 <CodeGroup>
 
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1/images/generations' \
+curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "model": "gemini-3-pro-image-preview",
-    "prompt": "a cat",
-    "size": "1:1"
+  "model": "gemini-3-pro-image-preview",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Put a hat on the cat"
+        }
+      ]
+    }
+  ]
 }'
 ```
 
@@ -32,10 +41,19 @@ client = OpenAI(
     base_url="https://gptproto.com/v1"
 )
 
-response = client.images.generate(
+response = client.chat.completions.create(
     model="gemini-3-pro-image-preview",
-    prompt="a cat",
-    size="1:1"
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Put a hat on the cat"
+                }
+            ]
+        }
+    ]
 )
 
 print(response)
@@ -44,16 +62,25 @@ print(response)
 ```javascript JavaScript
 import OpenAI from "openai";
 
-const client = new OpenAI({
+const openai = new OpenAI({
     apiKey: "GPTPROTO_API_KEY",
     baseURL: "https://gptproto.com/v1"
 });
 
 async function main() {
-    const response = await client.images.generate({
+    const response = await openai.chat.completions.create({
         model: "gemini-3-pro-image-preview",
-        prompt: "a cat",
-        size: "1:1"
+        messages: [
+            {
+                role: "user",
+                content: [
+                    {
+                        type: "text",
+                        text: "Put a hat on the cat"
+                    }
+                ]
+            }
+        ]
     });
     
     console.log(response);
@@ -76,17 +103,26 @@ func main() {
     config.BaseURL = "https://gptproto.com/v1"
     client := openai.NewClientWithConfig(config)
 
-    resp, err := client.CreateImage(
+    resp, err := client.CreateChatCompletion(
         context.Background(),
-        openai.ImageRequest{
-            Model:  "gemini-3-pro-image-preview",
-            Prompt: "a cat",
-            Size:   "1:1",
+        openai.ChatCompletionRequest{
+            Model: "gemini-3-pro-image-preview",
+            Messages: []openai.ChatCompletionMessage{
+                {
+                    Role: openai.ChatMessageRoleUser,
+                    MultiContent: []openai.ChatMessagePart{
+                        {
+                            Type: openai.ChatMessagePartTypeText,
+                            Text: "Put a hat on the cat",
+                        },
+                    },
+                },
+            },
         },
     )
 
     if err != nil {
-        fmt.Printf("Image generation error: %v\n", err)
+        fmt.Printf("Error: %v\n", err)
         return
     }
 
@@ -130,7 +166,7 @@ func main() {
 }
 ```
 
-import Parameters from '/snippets/parameters/openai-format/Google/imagemodels.mdx';
+import Parameters from '/snippets/parameters/openai-format/Google/imagemodels-chat.mdx';
 
 <Parameters/>
 

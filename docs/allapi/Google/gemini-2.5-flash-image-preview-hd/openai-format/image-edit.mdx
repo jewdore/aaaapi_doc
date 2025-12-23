@@ -1,8 +1,8 @@
 ---
-title: 'gemini-3-pro-image-preview (Image Edit)'
+title: 'gemini-2.5-flash-image-preview-hd (Image Edit)'
 sidebarTitle: 'Image Edit'
 api: "POST /v1/images/edits"
-description: "Edit and modify images using Gemini 3 Pro Image Preview model with natural language prompts"
+description: "Edit and transform images with AI-powered modifications using Gemini Flash Image Preview HD model"
 mode: 'wide'
 ---
 
@@ -11,13 +11,14 @@ import Authentication from '/snippets/common/authentication.mdx';
 <Authentication/>
 
 ## Initiate Request
+
 <CodeGroup>
 
 ```bash cURL
 curl --location --request POST 'https://gptproto.com/v1/images/edits' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---form 'model=gemini-3-pro-image-preview' \
+--form 'model=gemini-2.5-flash-image-preview-hd' \
 --form 'image[]=@/cat.jpg' \
 --form 'prompt=Put a hat on the cat'
 ```
@@ -28,11 +29,12 @@ import requests
 url = "https://gptproto.com/v1/images/edits"
 
 headers = {
-    "Authorization": "GPTPROTO_API_KEY"
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
 }
 
 files = {
-    'model': (None, 'gemini-3-pro-image-preview'),
+    'model': (None, 'gemini-2.5-flash-image-preview-hd'),
     'image[]': open('/cat.jpg', 'rb'),
     'prompt': (None, 'Put a hat on the cat')
 }
@@ -42,21 +44,27 @@ print(response.json())
 ```
 
 ```javascript JavaScript
-const formData = new FormData();
-formData.append('model', 'gemini-3-pro-image-preview');
-formData.append('image[]', fs.createReadStream('/cat.jpg'));
-formData.append('prompt', 'Put a hat on the cat');
+const FormData = require('form-data');
+const fs = require('fs');
+const axios = require('axios');
 
-const response = await fetch('https://gptproto.com/v1/images/edits', {
-  method: 'POST',
+const form = new FormData();
+form.append('model', 'gemini-2.5-flash-image-preview-hd');
+form.append('image[]', fs.createReadStream('/cat.jpg'));
+form.append('prompt', 'Put a hat on the cat');
+
+axios.post('https://gptproto.com/v1/images/edits', form, {
   headers: {
-    'Authorization': 'GPTPROTO_API_KEY'
-  },
-  body: formData
+    'Authorization': 'GPTPROTO_API_KEY',
+    ...form.getHeaders()
+  }
+})
+.then(response => {
+  console.log(response.data);
+})
+.catch(error => {
+  console.error(error);
 });
-
-const data = await response.json();
-console.log(data);
 ```
 
 ```go Go
@@ -64,6 +72,7 @@ package main
 
 import (
     "bytes"
+    "fmt"
     "io"
     "mime/multipart"
     "net/http"
@@ -76,12 +85,12 @@ func main() {
     body := &bytes.Buffer{}
     writer := multipart.NewWriter(body)
     
-    writer.WriteField("model", "gemini-3-pro-image-preview")
+    writer.WriteField("model", "gemini-2.5-flash-image-preview-hd")
     writer.WriteField("prompt", "Put a hat on the cat")
     
     file, _ := os.Open("/cat.jpg")
     defer file.Close()
-    part, _ := writer.CreateFormFile("image[]", "cat.jpg")
+    part, _ := writer.CreateFormFile("image[]", "/cat.jpg")
     io.Copy(part, file)
     
     writer.Close()
@@ -93,11 +102,16 @@ func main() {
     client := &http.Client{}
     resp, _ := client.Do(req)
     defer resp.Body.Close()
+    
+    responseBody, _ := io.ReadAll(resp.Body)
+    fmt.Println(string(responseBody))
 }
 ```
+
 </CodeGroup>
 
 ## Response Example
+
 ```json
 {
     "choices": [
@@ -112,7 +126,7 @@ func main() {
     ],
     "created": 1766481392,
     "id": "chatcmpl-**",
-    "model": "gemini-3-pro-image-preview",
+    "model": "gemini-2.5-flash-image-preview-hd",
     "object": "chat.completion",
     "usage": {
         "completion_tokens": 1319,
