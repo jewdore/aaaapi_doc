@@ -205,6 +205,8 @@ Google Gemini API provides two methods for content generation, distinguished by 
 ```
 </CodeGroup>
 
+> **Note:** `thinking_level` is only supported on Gemini 3.0 and above. It cannot be used together with `thinking_budget`; doing so will return an error.
+
 | parameter | Type | Required | Default | Range / Example | Description |
 |---------------|------|----------|---------|-----------------|-------------|
 | `thinking_config` | object | ❌ No | - | - | Configuration for thinking functionality. |
