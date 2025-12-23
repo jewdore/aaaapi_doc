@@ -1,192 +1,170 @@
 ---
-title: 'gemini-3-pro-preview (text to text)'
+title: 'gemini-3-pro-preview (Text to Text)'
 sidebarTitle: 'Text to Text'
-api: 'POST /v1/chat/completions'
-description: 'Text to Text'
+api: "POST /v1/chat/completions"
+description: "Generate text responses using Gemini 3 Pro Preview model through OpenAI-compatible chat completion endpoint"
 mode: 'wide'
 ---
 
-Gemini's openai format for the text to text API.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
   "model": "gemini-3-pro-preview",
   "messages": [
     {
       "role": "user",
-      "content": "Who are you?"
+      "content": [
+        {
+          "type": "text",
+          "text": "who are you"
+        }
+      ]
     }
-  ],
-  "stream": false
+  ]
 }'
 ```
 
 ```python Python
-import requests
-import json
+from openai import OpenAI
 
-url = "https://gptproto.com/v1/chat/completions"
-headers = {
-    "Authorization": "YOUR_API_KEY",
-    "Content-Type": "application/json"
-}
+client = OpenAI(
+    api_key="GPTPROTO_API_KEY",
+    base_url="https://gptproto.com/v1"
+)
 
-data = {
-  "model": "gemini-3-pro-preview",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Who are you?"
-    }
-  ],
-  "stream": false
-}
+response = client.chat.completions.create(
+    model="gemini-3-pro-preview",
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "who are you"
+                }
+            ]
+        }
+    ]
+)
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+print(response)
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1/chat/completions";
-const headers = {
-  "Authorization": "YOUR_API_KEY",
-  "Content-Type": "application/json"
-};
+import OpenAI from 'openai';
 
-const data = {
-  "model": "gemini-3-pro-preview",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Who are you?"
-    }
-  ],
-  "stream": false
-};
+const client = new OpenAI({
+  apiKey: 'GPTPROTO_API_KEY',
+  baseURL: 'https://gptproto.com/v1'
+});
 
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+async function main() {
+  const response = await client.chat.completions.create({
+    model: 'gemini-3-pro-preview',
+    messages: [
+      {
+        role: 'user',
+        content: [
+          {
+            type: 'text',
+            text: 'who are you'
+          }
+        ]
+      }
+    ]
+  });
+
+  console.log(response);
+}
+
+main();
 ```
 
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
+    "context"
     "fmt"
-    "io/ioutil"
-    "net/http"
+    openai "github.com/sashabaranov/go-openai"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/chat/completions"
+    config := openai.DefaultConfig("GPTPROTO_API_KEY")
+    config.BaseURL = "https://gptproto.com/v1"
+    client := openai.NewClientWithConfig(config)
 
-    payload := []byte(`{
-"model": "gemini-3-pro-preview",
-"messages": [
-{
-"role": "user",
-"content": "Who are you?"
-}
-],
-"stream": false
-}`)
+    resp, err := client.CreateChatCompletion(
+        context.Background(),
+        openai.ChatCompletionRequest{
+            Model: "gemini-3-pro-preview",
+            Messages: []openai.ChatCompletionMessage{
+                {
+                    Role: openai.ChatMessageRoleUser,
+                    Content: "who are you",
+                },
+            },
+        },
+    )
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
     if err != nil {
-        panic(err)
+        fmt.Printf("ChatCompletion error: %v\n", err)
+        return
     }
-    defer resp.Body.Close()
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+    fmt.Println(resp)
 }
 ```
 </CodeGroup>
 
-<CodeGroup>
-
-```json 401 - Invalid signature
+## Response Example
+```json
 {
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
+    "choices": [
+        {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+                "content": "I am Gemini, a large language model trained by Google.",
+                "role": "assistant"
+            }
+        }
+    ],
+    "created": 1766411193,
+    "id": "chatcmpl-***",
+    "model": "gemini-3-pro-preview",
+    "object": "chat.completion",
+    "usage": {
+        "completion_tokens": 611,
+        "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 599,
+            "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 3,
+        "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+        },
+        "total_tokens": 614
+    }
 }
 ```
 
+import Parameters from '/snippets/parameters/OpenAI/chatmodels-chat.mdx';
 
+<Parameters/>
 
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</CodeGroup>
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gemini-3-pro-preview` | The model to use for the request. `gemini-3-pro-preview` |
-| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   * role:user,The role of the message. * role:assistant,The role of the message. * role:system,The role of the message. |
-| `content` | array | ✅ Yes | - |   text |
-| `text` | string | ✅ Yes | - | * type:text,The positive prompt for the generation. |
-| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
-
-
-
-
-
-
-
-
-
-
+<ErrorCode/>

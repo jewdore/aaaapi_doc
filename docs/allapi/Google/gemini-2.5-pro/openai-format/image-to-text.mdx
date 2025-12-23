@@ -1,28 +1,23 @@
 ---
-title: 'gemini-2.5-pro (image to text)'
-sidebarTitle: 'Image Analysis'
-api: 'POST /v1/chat/completions'
-description: 'Image Analysis'
+title: 'gemini-2.5-pro (Image To Text)'
+sidebarTitle: 'Image To Text'
+api: "POST /v1/chat/completions"
+description: "Analyze and describe images using Gemini Pro model with vision capabilities"
 mode: 'wide'
 ---
 
-Gemini's openai format for the image to text API.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
   "model": "gemini-2.5-pro",
   "messages": [
     {
@@ -30,208 +25,175 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
       "content": [
         {
           "type": "text",
-          "text": ",What is in this image?"
+          "text": "What is shown in this PNG image?"
         },
         {
           "type": "image_url",
           "image_url": {
-            "url": "data:image/jpeg;base64,${base64Image}"
+            "url": "https://tos.gptproto.com/resource/cat.png"
           }
         }
       ]
     }
-  ],
-  "stream": false
+  ]
 }'
 ```
 
 ```python Python
-import requests
-import json
+from openai import OpenAI
 
-url = "https://gptproto.com/v1/chat/completions"
-headers = {
-    "Authorization": "YOUR_API_KEY",
-    "Content-Type": "application/json"
-}
+client = OpenAI(
+    api_key="GPTPROTO_API_KEY",
+    base_url="https://gptproto.com/v1"
+)
 
-data = {
-  "model": "gemini-2.5-pro",
-  "messages": [
-    {
-      "role": "user",
-      "content": [
+response = client.chat.completions.create(
+    model="gemini-2.5-pro",
+    messages=[
         {
-          "type": "text",
-          "text": ",What is in this image?"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "data:image/jpeg;base64,${base64Image}"
-          }
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "What is shown in this PNG image?"
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://tos.gptproto.com/resource/cat.png"
+                    }
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "stream": false
-}
+    ]
+)
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+print(response.choices[0].message.content)
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1/chat/completions";
-const headers = {
-  "Authorization": "YOUR_API_KEY",
-  "Content-Type": "application/json"
-};
+import OpenAI from "openai";
 
-const data = {
-  "model": "gemini-2.5-pro",
-  "messages": [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": ",What is in this image?"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "data:image/jpeg;base64,${base64Image}"
-          }
-        }
-      ]
-    }
-  ],
-  "stream": false
-};
+const client = new OpenAI({
+    apiKey: "GPTPROTO_API_KEY",
+    baseURL: "https://gptproto.com/v1"
+});
 
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+async function main() {
+    const response = await client.chat.completions.create({
+        model: "gemini-2.5-pro",
+        messages: [
+            {
+                role: "user",
+                content: [
+                    {
+                        type: "text",
+                        text: "What is shown in this PNG image?"
+                    },
+                    {
+                        type: "image_url",
+                        image_url: {
+                            url: "https://tos.gptproto.com/resource/cat.png"
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+
+    console.log(response.choices[0].message.content);
+}
+
+main();
 ```
 
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
+    "context"
     "fmt"
-    "io/ioutil"
-    "net/http"
+    openai "github.com/sashabaranov/go-openai"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/chat/completions"
+    config := openai.DefaultConfig("GPTPROTO_API_KEY")
+    config.BaseURL = "https://gptproto.com/v1"
+    client := openai.NewClientWithConfig(config)
 
-    payload := []byte(`{
-"model": "gemini-2.5-pro",
-"messages": [
-{
-"role": "user",
-"content": [
-{
-"type": "text",
-"text": ",What is in this image?"
-},
-{
-"type": "image_url",
-"image_url": {
-"url": "data:image/jpeg;base64,${base64Image}"
-}
-}
-]
-}
-],
-"stream": false
-}`)
+    resp, err := client.CreateChatCompletion(
+        context.Background(),
+        openai.ChatCompletionRequest{
+            Model: "gemini-2.5-pro",
+            Messages: []openai.ChatCompletionMessage{
+                {
+                    Role: openai.ChatMessageRoleUser,
+                    MultiContent: []openai.ChatMessagePart{
+                        {
+                            Type: openai.ChatMessagePartTypeText,
+                            Text: "What is shown in this PNG image?",
+                        },
+                        {
+                            Type: openai.ChatMessagePartTypeImageURL,
+                            ImageURL: &openai.ChatMessageImageURL{
+                                URL: "https://tos.gptproto.com/resource/cat.png",
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    )
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
     if err != nil {
-        panic(err)
+        fmt.Printf("ChatCompletion error: %v\n", err)
+        return
     }
-    defer resp.Body.Close()
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+    fmt.Println(resp.Choices[0].Message.Content)
 }
 ```
 </CodeGroup>
 
-<CodeGroup>
-
-```json 401 - Invalid signature
+## Response Example
+```json
 {
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
+    "choices": [
+        {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+                "content": "Based on the image provided, here is a description of what is shown:\n\n**Main Subject:**\n*   **The Cat:** A fluffy, long-haired orange tabby cat is the central focus. It is sitting upright on a wooden windowsill, looking calmly toward the viewer with bright green eyes. Its tail is curled neatly around its paws.\n\n**Setting and Atmosphere:**\n*   **The Window:** The cat is perched on the sill of a large window with a wooden frame. Through the glass, you can see a blurred outdoor scene with a large tree trunk and greenery, suggesting a garden or park.\n*   **Lighting:** Warm, natural sunlight is streaming in from the left, illuminating the cat's fur and creating a soft, hazy atmosphere with visible dust motes floating in the air. The mood is serene and domestic.\n\n**Surrounding Objects:**\n*   **Book:** To the left of the cat on the windowsill lies a thick, closed hardcover book.\n*   **Tea:** In the foreground on the right, resting on a small round side table, is a teacup and saucer. Steam is rising from the cup, indicating a hot beverage like tea or coffee.\n*   **Furniture:** To the right of the window, there is a tall bookshelf filled with books. partially visible is a leather armchair with a chunky, cream-colored knit blanket draped over it, adding to the cozy aesthetic.\n\nOverall, the image conveys a sense of \"hygge\"—a feeling of cozy contentment and well-being.",
+                "role": "assistant"
+            }
+        }
+    ],
+    "created": 1766411359,
+    "id": "chatcmpl-***",
+    "model": "gemini-2.5-pro",
+    "object": "chat.completion",
+    "usage": {
+        "completion_tokens": 1258,
+        "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 943,
+            "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 1097,
+        "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+        },
+        "total_tokens": 2355
+    }
 }
 ```
 
+import Parameters from '/snippets/parameters/OpenAI/chatmodels-chat.mdx';
 
+<Parameters/>
 
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</CodeGroup>
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `gemini-2.5-pro` | The model to use for the request. `gemini-2.5-pro` |
-| `messages` | array | ✅ Yes | - | Array of message objects for the conversation   * role:user,The role of the message. * role:assistant,The role of the message. * role:system,The role of the message. |
-| `content` | array | ✅ Yes | - |   text , image_url |
-| `text` | string | ✅ Yes | - | * type:text,The positive prompt for the generation. * type:image_url,Optional image reference that guides generation. |
-| `image_url` | object | ✅ Yes | - |  * type:image_url,The URL of the image to use for the generation. |
-| `stream` | boolean | ❌ No | `true` | Whether to stream the response |
-
-
-
-
-
-
-
-
-
-
+<ErrorCode/>

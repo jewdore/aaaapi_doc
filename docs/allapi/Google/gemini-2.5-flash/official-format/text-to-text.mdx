@@ -1,37 +1,33 @@
 ---
-title: 'gemini-2.5-flash (text to text)'
+title: 'gemini-2.5-flash (Text to Text)'
 sidebarTitle: 'Text to Text'
-api: 'POST /v1beta/models/{model}:generateContent'
-description: 'Generate content using Gemini models with the official Gemini API format'
+api: "POST /v1beta/models/gemini-2.5-flash:generateContent"
+description: "Generate text responses using Google's Gemini 2.5 Flash model"
 mode: 'wide'
 ---
 
-Gemini's official format for the text to text API.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash:generateContent' \
---header 'Authorization: sk-***********' \
+curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-flash:generateContent' \
+--header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data '{
-    "contents": [
+--data-raw '{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
         {
-            "role": "user",
-            "parts": [
-                {
-                    "text": "hello"
-                }
-            ]
+          "text": "who are you?"
         }
-    ]
+      ]
+    }
+  ]
 }'
 ```
 
@@ -40,57 +36,58 @@ import requests
 import json
 
 url = "https://gptproto.com/v1beta/models/gemini-2.5-flash:generateContent"
+
 headers = {
-    "Authorization": "sk-***********",
+    "Authorization": "GPTPROTO_API_KEY",
     "Content-Type": "application/json"
 }
 
-data = {
+payload = {
     "contents": [
         {
             "role": "user",
             "parts": [
                 {
-                    "text": "hello"
+                    "text": "who are you?"
                 }
             ]
         }
     ]
 }
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+response = requests.post(url, headers=headers, json=payload)
+print(response.json())
 ```
 
 ```javascript JavaScript
 const url = "https://gptproto.com/v1beta/models/gemini-2.5-flash:generateContent";
+
 const headers = {
-  "Authorization": "sk-***********",
-  "Content-Type": "application/json"
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
 };
 
-const data = {
-  "contents": [
-    {
-      "role": "user",
-      "parts": [
+const payload = {
+    contents: [
         {
-          "text": "hello"
+            role: "user",
+            parts: [
+                {
+                    text: "who are you?"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 };
 
 fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(payload)
 })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
 ```
 
 ```go Go
@@ -100,7 +97,6 @@ import (
     "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
     "net/http"
 )
 
@@ -113,7 +109,7 @@ func main() {
                 "role": "user",
                 "parts": []map[string]interface{}{
                     {
-                        "text": "hello",
+                        "text": "who are you?",
                     },
                 },
             },
@@ -123,86 +119,70 @@ func main() {
     jsonData, _ := json.Marshal(payload)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "sk-***********")
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
     resp, err := client.Do(req)
     if err != nil {
-        panic(err)
+        fmt.Println("Error:", err)
+        return
     }
     defer resp.Body.Close()
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+    var result map[string]interface{}
+    json.NewDecoder(resp.Body).Decode(&result)
+    fmt.Println(result)
 }
 ```
 </CodeGroup>
 
-<CodeGroup>
-
-```json 401 - Invalid signature
+## Response Example
+```json
 {
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
+    "candidates": [
+        {
+            "content": {
+                "role": "model",
+                "parts": [
+                    {
+                        "text": "I am Gemini, a large language model built by Google.",
+                        "thoughtSignature": "CvUOAY8***"
+                    }
+                ]
+            },
+            "finishReason": "STOP"
+        }
+    ],
+    "usageMetadata": {
+        "promptTokenCount": 4,
+        "candidatesTokenCount": 12,
+        "totalTokenCount": 508,
+        "trafficType": "ON_DEMAND",
+        "promptTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 4
+            }
+        ],
+        "candidatesTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 12
+            }
+        ],
+        "thoughtsTokenCount": 492
+    },
+    "modelVersion": "gemini-2.5-flash",
+    "createTime": "2025-12-22T13:15:39.906733Z",
+    "responseId": "e0RJae2rN46R998P096OmQU"
 }
 ```
 
+import Parameters from '/snippets/parameters/Google/chatmodel.mdx';
 
+<Parameters/>
 
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</CodeGroup>
-
-## Path Parameters
-
-
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ✅ Yes | - | An array of content objects representing the conversation history.   The role of the message sender. Typically `"user"` or `"model"`. |
-| `parts` | array | ✅ Yes | - | An array of parts that make up the message content.   Text content of the message. |
-| `inlineData` | object | ❌ No | - | Inline data for images or other media (base64 encoded). |
-| `functionResponse` | object | ❌ No | - | Response from a function call. |
-| `fileData` | object | ❌ No | - | Reference to uploaded file data. |
-| `videoMetadata` | object | ❌ No | - | Metadata for video content. |
-| `functionCall` | object | ❌ No | - | Function call request. |
-| `functionCalls` | array | ❌ No | - | Multiple function calls. |
-| `thoughtSignature` | string | ❌ No | - | Signature for thought content. |
-| `thought` | string | ❌ No | - | Thought content for reasoning models. |
-
-
-
-
-
-
-
-
+<ErrorCode/>

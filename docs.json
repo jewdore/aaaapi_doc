@@ -712,17 +712,17 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Google/gemini-2.0-flash/official-format/file-analysis-no-stream",
-                          "docs/api/Google/gemini-2.0-flash/official-format/file-analysis-stream",
-                          "docs/api/Google/gemini-2.0-flash/official-format/text-to-text-no-stream",
-                          "docs/api/Google/gemini-2.0-flash/official-format/text-to-text-stream"
+                          "docs/allapi/Google/gemini-2.0-flash/official-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.0-flash/official-format/image-to-text",
+                          "docs/allapi/Google/gemini-2.0-flash/official-format/text-to-text"
                         ]
                       },
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Google/gemini-2.0-flash/openai-format/image-to-text",
-                          "docs/api/Google/gemini-2.0-flash/openai-format/text-to-text"
+                          "docs/allapi/Google/gemini-2.0-flash/openai-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.0-flash/openai-format/image-to-text",
+                          "docs/allapi/Google/gemini-2.0-flash/openai-format/text-to-text"
                         ]
                       }
                     ]
@@ -733,9 +733,17 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Google/gemini-2.0-flash-exp/official-format/generatecontent-file-analysis",
-                          "docs/api/Google/gemini-2.0-flash-exp/official-format/generatecontent",
-                          "docs/api/Google/gemini-2.0-flash-exp/official-format/streamgeneratecontent"
+                          "docs/allapi/Google/gemini-2.0-flash-exp/official-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.0-flash-exp/official-format/image-to-text",
+                          "docs/allapi/Google/gemini-2.0-flash-exp/official-format/text-to-text"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-2.0-flash-exp/openai-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.0-flash-exp/openai-format/image-to-text",
+                          "docs/allapi/Google/gemini-2.0-flash-exp/openai-format/text-to-text"
                         ]
                       }
                     ]
@@ -747,6 +755,7 @@
                         "group": "official-format",
                         "pages": [
                           "docs/allapi/Google/gemini-2.5-flash/official-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.5-flash/official-format/image-to-text",
                           "docs/allapi/Google/gemini-2.5-flash/official-format/text-to-text"
                         ]
                       },
@@ -863,17 +872,17 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Google/gemini-2.5-flash-lite/official-format/file-analysis-no-stream",
-                          "docs/api/Google/gemini-2.5-flash-lite/official-format/file-analysis-stream",
-                          "docs/api/Google/gemini-2.5-flash-lite/official-format/text-to-text-no-stream",
-                          "docs/api/Google/gemini-2.5-flash-lite/official-format/text-to-text-stream"
+                          "docs/allapi/Google/gemini-2.5-flash-lite/official-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.5-flash-lite/official-format/image-to-text",
+                          "docs/allapi/Google/gemini-2.5-flash-lite/official-format/text-to-text"
                         ]
                       },
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Google/gemini-2.5-flash-lite/openai-format/image-to-text",
-                          "docs/api/Google/gemini-2.5-flash-lite/openai-format/text-to-text"
+                          "docs/allapi/Google/gemini-2.5-flash-lite/openai-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.5-flash-lite/openai-format/image-to-text",
+                          "docs/allapi/Google/gemini-2.5-flash-lite/openai-format/text-to-text"
                         ]
                       }
                     ]
@@ -884,17 +893,17 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Google/gemini-2.5-flash-nothinking/official-format/file-analysis-no-stream",
-                          "docs/api/Google/gemini-2.5-flash-nothinking/official-format/file-analysis-stream",
-                          "docs/api/Google/gemini-2.5-flash-nothinking/official-format/text-to-text-no-stream",
-                          "docs/api/Google/gemini-2.5-flash-nothinking/official-format/text-to-text-stream"
+                          "docs/allapi/Google/gemini-2.5-flash-nothinking/official-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.5-flash-nothinking/official-format/image-to-text",
+                          "docs/allapi/Google/gemini-2.5-flash-nothinking/official-format/text-to-text"
                         ]
                       },
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Google/gemini-2.5-flash-nothinking/openai-format/image-to-text",
-                          "docs/api/Google/gemini-2.5-flash-nothinking/openai-format/text-to-text"
+                          "docs/allapi/Google/gemini-2.5-flash-nothinking/openai-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.5-flash-nothinking/openai-format/image-to-text",
+                          "docs/allapi/Google/gemini-2.5-flash-nothinking/openai-format/text-to-text"
                         ]
                       }
                     ]
@@ -906,6 +915,7 @@
                         "group": "official-format",
                         "pages": [
                           "docs/allapi/Google/gemini-2.5-pro/official-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.5-pro/official-format/image-to-text",
                           "docs/allapi/Google/gemini-2.5-pro/official-format/text-to-text"
                         ]
                       },
@@ -925,11 +935,17 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Google/gemini-2.5-pro-deepsearch/official-format/file-analysis",
-                          "docs/api/Google/gemini-2.5-pro-deepsearch/official-format/generatecontent",
-                          "docs/api/Google/gemini-2.5-pro-deepsearch/official-format/image-to-text",
-                          "docs/api/Google/gemini-2.5-pro-deepsearch/official-format/streamgeneratecontent",
-                          "docs/api/Google/gemini-2.5-pro-deepsearch/official-format/text-to-text"
+                          "docs/allapi/Google/gemini-2.5-pro-deepsearch/official-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.5-pro-deepsearch/official-format/image-to-text",
+                          "docs/allapi/Google/gemini-2.5-pro-deepsearch/official-format/text-to-text"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-2.5-pro-deepsearch/openai-format/file-analysis",
+                          "docs/allapi/Google/gemini-2.5-pro-deepsearch/openai-format/image-to-text",
+                          "docs/allapi/Google/gemini-2.5-pro-deepsearch/openai-format/text-to-text"
                         ]
                       }
                     ]
@@ -945,6 +961,27 @@
                           "docs/api/Google/gemini-2.5-pro-preview-05-06/official-format/image-to-text",
                           "docs/api/Google/gemini-2.5-pro-preview-05-06/official-format/streamgeneratecontent",
                           "docs/api/Google/gemini-2.5-pro-preview-05-06/official-format/text-to-text"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gemini-3-flash-preview",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3-flash-preview/official-format/file-analysis",
+                          "docs/allapi/Google/gemini-3-flash-preview/official-format/image-to-text",
+                          "docs/allapi/Google/gemini-3-flash-preview/official-format/text-to-text"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3-flash-preview/openai-format/file-analysis",
+                          "docs/allapi/Google/gemini-3-flash-preview/openai-format/image-to-text",
+                          "docs/allapi/Google/gemini-3-flash-preview/openai-format/text-to-text"
                         ]
                       }
                     ]

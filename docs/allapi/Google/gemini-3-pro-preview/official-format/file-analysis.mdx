@@ -1,150 +1,108 @@
 ---
-title: 'gemini-3-pro-preview (file analysis)'
+title: 'gemini-3-pro-preview (File Analysis)'
 sidebarTitle: 'File Analysis'
-api: 'POST /v1/models/gemini-3-pro-preview:generateContent'
-description: 'File Analysis'
+api: "POST /v1beta/models/gemini-3-pro-preview:generateContent"
+description: "Analyze files and documents using Gemini 3 Pro Preview model to extract insights and generate summaries"
 mode: 'wide'
 ---
 
-Gemini's official format for the file analysis API.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
-
-
-
+## Initiate Request
 
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1/models/gemini-3-pro-preview:generateContent' \
---header 'Authorization: Bearer sk-***********' \
+curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent' \
+--header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data '{
-    "contents": [
+--data-raw '{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
         {
-            "parts": [
-                {
-                    "text": "帮我分析这份文件"
-                },
-                {
-                    "fileData": {
-                        "mimeType": "application/pdf",
-                        "fileUri": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
-                    }
-                }
-            ]
-        }
-    ],
-    "generationConfig": {
-        "temperature": 0.3
-    },
-    "safetySettings": [
-        {
-            "category": "HARM_CATEGORY_HARASSMENT",
-            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+          "text": "what is in this file?"
         },
         {
-            "category": "HARM_CATEGORY_HATE_SPEECH",
-            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+          "file_data": {
+            "mime_type": "application/pdf",
+            "file_uri": "https://tos.gptproto.com/resource/gptproto.pdf"
+          }
         }
-    ]
+      ]
+    }
+  ]
 }'
 ```
 
 ```python Python
 import requests
-import json
+import os
 
-url = "https://gptproto.com/v1/models/gemini-3-pro-preview:generateContent"
+url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent"
+
 headers = {
-    "Authorization": "Bearer sk-***********",
+    "Authorization": os.environ.get("GPTPROTO_API_KEY"),
     "Content-Type": "application/json"
 }
 
 data = {
     "contents": [
         {
+            "role": "user",
             "parts": [
                 {
-                    "text": "帮我分析这份文件"
+                    "text": "what is in this file?"
                 },
                 {
-                    "fileData": {
-                        "mimeType": "application/pdf",
-                        "fileUri": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+                    "file_data": {
+                        "mime_type": "application/pdf",
+                        "file_uri": "https://tos.gptproto.com/resource/gptproto.pdf"
                     }
                 }
             ]
-        }
-    ],
-    "generationConfig": {
-        "temperature": 0.3
-    },
-    "safetySettings": [
-        {
-            "category": "HARM_CATEGORY_HARASSMENT",
-            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-        },
-        {
-            "category": "HARM_CATEGORY_HATE_SPEECH",
-            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
         }
     ]
 }
 
 response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+print(response.json())
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1/models/gemini-3-pro-preview:generateContent";
-const headers = {
-  "Authorization": "Bearer sk-***********",
-  "Content-Type": "application/json"
-};
+const apiKey = process.env.GPTPROTO_API_KEY;
 
-const data = {
-  "contents": [
-    {
-      "parts": [
-        {
-          "text": "帮我分析这份文件"
-        },
-        {
-          "fileData": {
-            "mimeType": "application/pdf",
-            "fileUri": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
-          }
-        }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "temperature": 0.3
+const response = await fetch('https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent', {
+  method: 'POST',
+  headers: {
+    'Authorization': apiKey,
+    'Content-Type': 'application/json'
   },
-  "safetySettings": [
-    {
-      "category": "HARM_CATEGORY_HARASSMENT",
-      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-    },
-    {
-      "category": "HARM_CATEGORY_HATE_SPEECH",
-      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-    }
-  ]
-};
+  body: JSON.stringify({
+    contents: [
+      {
+        role: "user",
+        parts: [
+          {
+            text: "what is in this file?"
+          },
+          {
+            file_data: {
+              mime_type: "application/pdf",
+              file_uri: "https://tos.gptproto.com/resource/gptproto.pdf"
+            }
+          }
+        ]
+      }
+    ]
+  })
+});
 
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+const data = await response.json();
+console.log(data);
 ```
 
 ```go Go
@@ -154,96 +112,104 @@ import (
     "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
+    "io"
     "net/http"
+    "os"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/models/gemini-3-pro-preview:generateContent"
-
+    url := "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent"
+    
     payload := map[string]interface{}{
         "contents": []map[string]interface{}{
             {
+                "role": "user",
                 "parts": []map[string]interface{}{
                     {
-                        "text": "帮我分析这份文件",
+                        "text": "what is in this file?",
                     },
                     {
-                        "fileData": map[string]string{
-                            "mimeType": "application/pdf",
-                            "fileUri":  "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf",
+                        "file_data": map[string]string{
+                            "mime_type": "application/pdf",
+                            "file_uri":  "https://tos.gptproto.com/resource/gptproto.pdf",
                         },
                     },
                 },
             },
         },
-        "generationConfig": map[string]interface{}{
-            "temperature": 0.3,
-        },
-        "safetySettings": []map[string]interface{}{
-            {
-                "category":  "HARM_CATEGORY_HARASSMENT",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE",
-            },
-            {
-                "category":  "HARM_CATEGORY_HATE_SPEECH",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE",
-            },
-        },
     }
-
+    
     jsonData, _ := json.Marshal(payload)
-
+    
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "Bearer sk-***********")
+    req.Header.Set("Authorization", os.Getenv("GPTPROTO_API_KEY"))
     req.Header.Set("Content-Type", "application/json")
-
+    
     client := &http.Client{}
     resp, err := client.Do(req)
     if err != nil {
         panic(err)
     }
     defer resp.Body.Close()
-
-    body, _ := ioutil.ReadAll(resp.Body)
+    
+    body, _ := io.ReadAll(resp.Body)
     fmt.Println(string(body))
 }
 ```
+
 </CodeGroup>
 
-<CodeGroup>
+## Response Example
 
-```json 503 - Content policy violation
+```json
 {
-  "error": {
-    "code": 400,
-    "message": "Content blocked due to safety concerns.",
-    "status": "INVALID_ARGUMENT"
-  }
+    "candidates": [
+        {
+            "content": {
+                "role": "model",
+                "parts": [
+                    {
+                        "text": "This file is a long screenshot of a technical **API Documentation page** titled **\"Authentication\"** for a service called **GPTProto**.\n\nHere is a breakdown of the specific sections contained in the document:\n\n**1. Header and Intro**\n*   **Title:** Authentication.\n*   **Description:** Explains that the GPTProto API uses **Bearer token authentication** and that requests must include the API key in the header.\n\n**2. Getting Your API Key**\n*   **Instructions:** Four steps to sign up at `gptproto.com`, navigate to the dashboard, and generate a key.\n*   **Security Warning:** A yellow box advises users to keep keys secure, not commit them to version control, and rotate them regularly.\n\n**3. Making Authenticated Requests**\n*   **Code Block:** Shows a code snippet (specifically `cURL`) demonstrating how to structure a request to `https://gptproto.com/v1/chat/completions` using the `Authorization: Bearer` header.\n\n**4. Environment Variables**\n*   **Recommended Setup:** Advises storing keys in environment variables rather than hardcoding them.\n*   **Code Examples:** Shows how to export variables in Linux/macOS and how to use `.env` files in Python using `python-dotenv`.\n*   **Warning:** Advises adding `.env` files to `.gitignore`.\n\n**5. Authentication Errors**\n*   Lists common HTTP error codes with example JSON responses:\n    *   **401 Unauthorized:** Missing or invalid key.\n    *   **403 Forbidden:** No permission for the resource.\n    *   **429 Too Many Requests:** Rate limit exceeded.\n\n**6. Best Practices**\n*   A section listing expandable tips such as \"Use Environment Variables,\" \"Implement Key Rotation,\" and \"Monitor Usage.\"\n\n**7. API Key Management**\n*   **Generating New Keys:** Step-by-step guide to creating keys in the dashboard.\n*   **Revoking Keys:** Instructions on how to revoke a compromised key.\n\n**8. Support**\n*   **Troubleshooting:** Bullet points for checking key formatting and validity.\n*   **Contact Information:** Provides a support email address: `jacoblam3219@gmail.com`.",
+                        "thoughtSignature": "CvwjAY89***"
+                    }
+                ]
+            },
+            "finishReason": "STOP"
+        }
+    ],
+    "usageMetadata": {
+        "promptTokenCount": 519,
+        "candidatesTokenCount": 481,
+        "totalTokenCount": 2126,
+        "trafficType": "ON_DEMAND",
+        "promptTokensDetails": [
+            {
+                "modality": "IMAGE",
+                "tokenCount": 513
+            },
+            {
+                "modality": "TEXT",
+                "tokenCount": 6
+            }
+        ],
+        "candidatesTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 481
+            }
+        ],
+        "thoughtsTokenCount": 1126
+    },
+    "modelVersion": "gemini-3-pro-preview",
+    "createTime": "2025-12-22T13:23:06.358679Z",
+    "responseId": "OkZJaZfyFfzN998P1tDo4Q0"
 }
 ```
-</CodeGroup>
 
-## Parameters
+import Parameters from '/snippets/parameters/Google/chatmodel.mdx';
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ✅ Yes | - | Contains the content to be analyzed, including text and file references. |
-| `parts` | array | ✅ Yes | - | Parts of the content, can include text and file data. |
-| `text` | string | ✅ Yes | - | The text prompt for the file analysis. |
-| `fileData` | object | ✅ Yes | - | The file to analyze. |
-| `mimeType` | string | ✅ Yes | - | The MIME type of the file (e.g., "application/pdf"). |
-| `fileUri` | string | ✅ Yes | - | The URL of the file to analyze. |
-| `generationConfig` | object | ❌ No | - | Generation configuration settings. |
-| `temperature` | number | ❌ No | 0.3 | Controls randomness in the response (0.0 to 1.0). |
-| `safetySettings` | array | ❌ No | - | Safety settings for content filtering. |
-| `category` | string | ✅ Yes | - | The harm category to filter. |
-| `threshold` | string | ✅ Yes | - | The threshold for blocking content (e.g., "BLOCK_MEDIUM_AND_ABOVE"). |
+<Parameters/>
 
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-
-
-
-
-
-
+<ErrorCode/>

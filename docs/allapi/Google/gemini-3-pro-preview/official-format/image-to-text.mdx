@@ -1,56 +1,39 @@
 ---
-title: 'gemini-3-pro-preview (image to text)'
-sidebarTitle: 'Image Analysis'
-api: 'POST /v1beta/models/gemini-3-pro-preview:generateContent'
-description: 'Image Analysis'
+title: 'gemini-3-pro-preview (Image to Text)'
+sidebarTitle: 'Image to Text'
+api: "POST /v1beta/models/gemini-3-pro-preview:generateContent"
+description: "Analyze and extract text descriptions from images using Gemini 3 Pro Preview model"
 mode: 'wide'
 ---
 
-Gemini's official format for the image to text API.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent' \
---header 'Authorization: Bearer sk-***********' \
+curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent' \
+--header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data '{
-    "contents": [
+--data-raw '{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
         {
-            "role": "user",
-            "parts": [
-                {
-                    "text": "这张图片里有什么？"
-                },
-                {
-                    "inlineData": {
-                        "mimeType": "image/jpeg",
-                        "data": "${base64Image}"
-                    }
-                }
-            ]
-        }
-    ],
-    "generationConfig": {
-        "temperature": 0.3
-    },
-    "safetySettings": [
-        {
-            "category": "HARM_CATEGORY_HARASSMENT",
-            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+          "file_data": {
+            "mime_type": "image/png",
+            "file_uri": "https://tos.gptproto.com/resource/cat.png"
+          }
         },
         {
-            "category": "HARM_CATEGORY_HATE_SPEECH",
-            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+          "text": "What is shown in this PNG image?"
         }
-    ]
+      ]
+    }
+  ]
 }'
 ```
 
@@ -59,95 +42,67 @@ import requests
 import json
 
 url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent"
+
 headers = {
-    "Authorization": "Bearer sk-***********",
+    "Authorization": "GPTPROTO_API_KEY",
     "Content-Type": "application/json"
 }
 
-data = {
+payload = {
     "contents": [
         {
             "role": "user",
             "parts": [
                 {
-                    "text": "这张图片里有什么？"
+                    "file_data": {
+                        "mime_type": "image/png",
+                        "file_uri": "https://tos.gptproto.com/resource/cat.png"
+                    }
                 },
                 {
-                    "inlineData": {
-                        "mimeType": "image/jpeg",
-                        "data": "${base64Image}"
-                    }
+                    "text": "What is shown in this PNG image?"
                 }
             ]
-        }
-    ],
-    "generationConfig": {
-        "temperature": 0.3
-    },
-    "safetySettings": [
-        {
-            "category": "HARM_CATEGORY_HARASSMENT",
-            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-        },
-        {
-            "category": "HARM_CATEGORY_HATE_SPEECH",
-            "threshold": "BLOCK_MEDIUM_AND_ABOVE"
         }
     ]
 }
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent";
+const axios = require('axios');
+
+const url = 'https://gptproto.com/v1beta/models/gemini-3-pro-preview:generateContent';
+
 const headers = {
-  "Authorization": "Bearer sk-***********",
-  "Content-Type": "application/json"
+    'Authorization': 'GPTPROTO_API_KEY',
+    'Content-Type': 'application/json'
 };
 
 const data = {
-  "contents": [
-    {
-      "role": "user",
-      "parts": [
+    contents: [
         {
-          "text": "这张图片里有什么？"
-        },
-        {
-          "inlineData": {
-            "mimeType": "image/jpeg",
-            "data": "${base64Image}"
-          }
+            role: 'user',
+            parts: [
+                {
+                    file_data: {
+                        mime_type: 'image/png',
+                        file_uri: 'https://tos.gptproto.com/resource/cat.png'
+                    }
+                },
+                {
+                    text: 'What is shown in this PNG image?'
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "generationConfig": {
-    "temperature": 0.3
-  },
-  "safetySettings": [
-    {
-      "category": "HARM_CATEGORY_HARASSMENT",
-      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-    },
-    {
-      "category": "HARM_CATEGORY_HATE_SPEECH",
-      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-    }
-  ]
+    ]
 };
 
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+axios.post(url, data, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
 ```
 
 ```go Go
@@ -157,7 +112,6 @@ import (
     "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
     "net/http"
 )
 
@@ -170,28 +124,15 @@ func main() {
                 "role": "user",
                 "parts": []map[string]interface{}{
                     {
-                        "text": "这张图片里有什么？",
-                    },
-                    {
-                        "inlineData": map[string]string{
-                            "mimeType": "image/jpeg",
-                            "data":     "${base64Image}",
+                        "file_data": map[string]string{
+                            "mime_type": "image/png",
+                            "file_uri":  "https://tos.gptproto.com/resource/cat.png",
                         },
                     },
+                    {
+                        "text": "What is shown in this PNG image?",
+                    },
                 },
-            },
-        },
-        "generationConfig": map[string]interface{}{
-            "temperature": 0.3,
-        },
-        "safetySettings": []map[string]interface{}{
-            {
-                "category":  "HARM_CATEGORY_HARASSMENT",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE",
-            },
-            {
-                "category":  "HARM_CATEGORY_HATE_SPEECH",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE",
             },
         },
     }
@@ -199,7 +140,7 @@ func main() {
     jsonData, _ := json.Marshal(payload)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "Bearer sk-***********")
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -209,76 +150,63 @@ func main() {
     }
     defer resp.Body.Close()
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+    var result map[string]interface{}
+    json.NewDecoder(resp.Body).Decode(&result)
+    fmt.Println(result)
 }
 ```
 </CodeGroup>
 
-<CodeGroup>
-
-```json 401 - Invalid signature
+## Response Example
+```json
 {
-  "error": {
-    "code": 401,
-    "message": "Invalid API key provided.",
-    "status": "UNAUTHENTICATED"
-  }
+    "candidates": [
+        {
+            "content": {
+                "role": "model",
+                "parts": [
+                    {
+                        "text": "This image depicts a cozy, serene indoor scene, likely generated by AI or created as digital art, characterized by warm lighting and a peaceful atmosphere. Here are the key elements shown:\n\n**The Subject:**\n*   **The Cat:** The central focus is a fluffy, orange (ginger) tabby cat sitting upright on a wooden window sill. The cat has striking green eyes, long white whiskers, and a very bushy tail that curls slightly over the edge of the sill. It is looking forward with a calm expression.\n\n**The Setting:**\n*   **Window:** The cat is positioned in front of a large window with a wooden frame. Through the glass, you can see large trees with green foliage, suggesting a garden or park outside. The background is blurred (bokeh effect), keeping the focus on the interior.\n*   **Lighting:** Soft, golden sunlight is streaming in from the left, illuminating the cat's fur and creating a halo effect. There are visible dust motes or magical sparkles floating in the sunbeams, adding to the dreamy quality.\n\n**Surrounding Objects:**\n*   **Book:** To the left of the cat on the window sill, there is a thick, closed book lying flat.\n*   **Tea:** In the lower right corner, sitting on a small round wooden side table, is a teacup on a saucer. Steam is rising from the cup, indicating a hot beverage. A tea bag tag hangs over the side.\n*   **Interior Details:** On the right side of the image, there is a dark wooden bookshelf filled with books. Partially visible is a brown leather armchair with a chunky, cream-colored knit blanket draped over it, enhancing the \"hygge\" or cozy feel.\n*   **Wall Art:** A framed picture hangs on the wall near the bookshelf, though the image inside the frame is indistinct.\n\nOverall, the image conveys a sense of comfort, quiet contemplation, and the warmth of a relaxing afternoon.",
+                        "thoughtSignature": "Cv0oAY89a19fZ/pV0io*****"
+                    }
+                ]
+            },
+            "finishReason": "STOP"
+        }
+    ],
+    "usageMetadata": {
+        "promptTokenCount": 1097,
+        "candidatesTokenCount": 403,
+        "totalTokenCount": 2779,
+        "trafficType": "ON_DEMAND",
+        "promptTokensDetails": [
+            {
+                "modality": "IMAGE",
+                "tokenCount": 1089
+            },
+            {
+                "modality": "TEXT",
+                "tokenCount": 8
+            }
+        ],
+        "candidatesTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 403
+            }
+        ],
+        "thoughtsTokenCount": 1279
+    },
+    "modelVersion": "gemini-3-pro-preview",
+    "createTime": "2025-12-22T13:20:13.753813Z",
+    "responseId": "jUVJaZWBLvzN998P1tDo4Q0"
 }
 ```
 
-```json 403 - Insufficient balance
-{
-  "error": {
-    "code": 403,
-    "message": "Insufficient balance for the requested operation.",
-    "status": "PERMISSION_DENIED"
-  }
-}
-```
+import Parameters from '/snippets/parameters/Google/chatmodel.mdx';
 
-```json 500 - Internal server error
-{
-  "error": {
-    "code": 500,
-    "message": "An internal error occurred.",
-    "status": "INTERNAL"
-  }
-}
-```
+<Parameters/>
 
-```json 503 - Content policy violation
-{
-  "error": {
-    "code": 400,
-    "message": "Content blocked due to safety concerns.",
-    "status": "INVALID_ARGUMENT"
-  }
-}
-```
-</CodeGroup>
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ✅ Yes | - | Contains the content to be analyzed, including text and image references. |
-| `role` | string | ✅ Yes | - | The role of the message sender (e.g., "user"). |
-| `parts` | array | ✅ Yes | - | Parts of the content, can include text and image data. |
-| `text` | string | ✅ Yes | - | The text prompt for the image analysis. |
-| `inlineData` | object | ✅ Yes | - | The inline image data to be analyzed. |
-| `mimeType` | string | ✅ Yes | - | The MIME type of the image (e.g., "image/jpeg"). |
-| `data` | string | ✅ Yes | - | The base64-encoded image data. |
-| `generationConfig` | object | ❌ No | - | Generation configuration settings. |
-| `temperature` | number | ❌ No | 0.3 | Controls randomness in the response (0.0 to 1.0). |
-| `safetySettings` | array | ❌ No | - | Safety settings for content filtering. |
-| `category` | string | ✅ Yes | - | The harm category to filter. |
-| `threshold` | string | ✅ Yes | - | The threshold for blocking content (e.g., "BLOCK_MEDIUM_AND_ABOVE"). |
-
-
-
-
-
-
-
-
+<ErrorCode/>

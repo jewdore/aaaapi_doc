@@ -151,3 +151,47 @@ with open(docs_json_path, "w", encoding="utf-8") as f:
     json.dump(docs_data, f, ensure_ascii=False, indent=2)
 
 print("导航结构更新完成！")
+
+
+# 文档文件存在性检查
+print("\n开始检查文档文件...")
+print("===============================")
+
+# 提取所有docs/开头的路径
+import re
+
+doc_paths = set()
+
+# 使用正则表达式提取所有docs/开头的路径
+with open(docs_json_path, "r", encoding="utf-8") as f:
+    content = f.read()
+    # 查找所有"docs/..."格式的字符串
+    matches = re.findall(r'"(docs/[^\"]+)"', content)
+    for match in matches:
+        doc_paths.add(match)
+
+# 检查每个文档路径是否存在对应的.mdx文件
+missing_count = 0
+found_count = 0
+
+for doc_path in sorted(doc_paths):
+    # 添加.mdx扩展名
+    mdx_file = os.path.join(docs_root, f"{doc_path}.mdx")
+    
+    # 检查文件是否存在
+    if os.path.exists(mdx_file):
+        found_count += 1
+    else:
+        print(f"❌ 缺失: {doc_path}.mdx")
+        missing_count += 1
+
+print("===============================")
+print("📊 检查汇总")
+print("===============================")
+print(f"总文件数: {found_count + missing_count}")
+print(f"✅ 存在: {found_count} 个")
+print(f"❌ 缺失: {missing_count} 个")
+if missing_count == 0:
+    print("")
+    print("🎉 所有文档文件都存在！")
+print("===============================")

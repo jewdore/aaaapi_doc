@@ -1,0 +1,170 @@
+---
+title: 'gemini-2.0-flash-exp (Text to Text)'
+sidebarTitle: 'Text to Text'
+api: "POST /v1/chat/completions"
+description: "Generate text completions using Gemini 2.0 Flash Experimental model"
+mode: 'wide'
+---
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+## Initiate Request
+<CodeGroup>
+
+```bash cURL
+curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "model": "gemini-2.0-flash-exp",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "who are you"
+        }
+      ]
+    }
+  ]
+}'
+```
+
+```python Python
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="GPTPROTO_API_KEY",
+    base_url="https://gptproto.com/v1"
+)
+
+response = client.chat.completions.create(
+    model="gemini-2.0-flash-exp",
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "who are you"
+                }
+            ]
+        }
+    ]
+)
+
+print(response)
+```
+
+```javascript JavaScript
+const OpenAI = require('openai');
+
+const client = new OpenAI({
+    apiKey: 'GPTPROTO_API_KEY',
+    baseURL: 'https://gptproto.com/v1'
+});
+
+async function main() {
+    const response = await client.chat.completions.create({
+        model: 'gemini-2.0-flash-exp',
+        messages: [
+            {
+                role: 'user',
+                content: [
+                    {
+                        type: 'text',
+                        text: 'who are you'
+                    }
+                ]
+            }
+        ]
+    });
+    
+    console.log(response);
+}
+
+main();
+```
+
+```go Go
+package main
+
+import (
+    "context"
+    "fmt"
+    openai "github.com/sashabaranov/go-openai"
+)
+
+func main() {
+    config := openai.DefaultConfig("GPTPROTO_API_KEY")
+    config.BaseURL = "https://gptproto.com/v1"
+    client := openai.NewClientWithConfig(config)
+
+    resp, err := client.CreateChatCompletion(
+        context.Background(),
+        openai.ChatCompletionRequest{
+            Model: "gemini-2.0-flash-exp",
+            Messages: []openai.ChatCompletionMessage{
+                {
+                    Role: openai.ChatMessageRoleUser,
+                    Content: "who are you",
+                },
+            },
+        },
+    )
+
+    if err != nil {
+        fmt.Printf("Error: %v\n", err)
+        return
+    }
+
+    fmt.Println(resp)
+}
+```
+</CodeGroup>
+
+## Response Example
+```json
+{
+    "choices": [
+        {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+                "content": "I am Gemini, a large language model trained by Google.",
+                "role": "assistant"
+            }
+        }
+    ],
+    "created": 1766411193,
+    "id": "chatcmpl-***",
+    "model": "gemini-2.0-flash-exp",
+    "object": "chat.completion",
+    "usage": {
+        "completion_tokens": 611,
+        "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 599,
+            "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 3,
+        "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+        },
+        "total_tokens": 614
+    }
+}
+```
+
+import Parameters from '/snippets/parameters/OpenAI/chatmodels-chat.mdx';
+
+<Parameters/>
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>

@@ -1,37 +1,33 @@
 ---
-title: 'gemini-2.5-pro (text to text)'
+title: 'gemini-2.5-pro (Text to Text)'
 sidebarTitle: 'Text to Text'
-api: 'POST /v1beta/models/{model}:generateContent'
-description: 'Text to Text'
+api: "POST /v1beta/models/gemini-2.5-pro:generateContent"
+description: "Generate text responses using Gemini 2.5 Pro model"
 mode: 'wide'
 ---
 
-Gemini's official format for the text to text API.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent' \
---header 'Authorization: sk-***********' \
+curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent' \
+--header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data '{
-    "contents": [
+--data-raw '{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
         {
-            "role": "user",
-            "parts": [
-                {
-                    "text": "用100字以内介绍一下自己"
-                }
-            ]
+          "text": "who are you?"
         }
-    ]
+      ]
+    }
+  ]
 }'
 ```
 
@@ -40,57 +36,58 @@ import requests
 import json
 
 url = "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent"
+
 headers = {
-    "Authorization": "sk-***********",
+    "Authorization": "GPTPROTO_API_KEY",
     "Content-Type": "application/json"
 }
 
-data = {
+payload = {
     "contents": [
         {
             "role": "user",
             "parts": [
                 {
-                    "text": "用100字以内介绍一下自己"
+                    "text": "who are you?"
                 }
             ]
         }
     ]
 }
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
 ```
 
 ```javascript JavaScript
 const url = "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent";
+
 const headers = {
-  "Authorization": "sk-***********",
-  "Content-Type": "application/json"
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
 };
 
-const data = {
-  "contents": [
-    {
-      "role": "user",
-      "parts": [
+const payload = {
+    contents: [
         {
-          "text": "用100字以内介绍一下自己"
+            role: "user",
+            parts: [
+                {
+                    text: "who are you?"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 };
 
 fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(payload)
 })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error("Error:", error));
 ```
 
 ```go Go
@@ -113,23 +110,24 @@ func main() {
                 "role": "user",
                 "parts": []map[string]interface{}{
                     {
-                        "text": "用100字以内介绍一下自己",
+                        "text": "who are you?",
                     },
                 },
             },
         },
     }
 
-    jsonData, _ := json.Marshal(payload)
+    jsonPayload, _ := json.Marshal(payload)
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "sk-***********")
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
     resp, err := client.Do(req)
     if err != nil {
-        panic(err)
+        fmt.Println("Error:", err)
+        return
     }
     defer resp.Body.Close()
 
@@ -139,36 +137,52 @@ func main() {
 ```
 </CodeGroup>
 
-<CodeGroup>
-
-```json 503 - Content policy violation
+## Response Example
+```json
 {
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
+    "candidates": [
+        {
+            "content": {
+                "role": "model",
+                "parts": [
+                    {
+                        "text": "I am Gemini, a large language model built by Google.",
+                        "thoughtSignature": "CvUOAY8***"
+                    }
+                ]
+            },
+            "finishReason": "STOP"
+        }
+    ],
+    "usageMetadata": {
+        "promptTokenCount": 4,
+        "candidatesTokenCount": 12,
+        "totalTokenCount": 508,
+        "trafficType": "ON_DEMAND",
+        "promptTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 4
+            }
+        ],
+        "candidatesTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 12
+            }
+        ],
+        "thoughtsTokenCount": 492
+    },
+    "modelVersion": "gemini-2.5-pro",
+    "createTime": "2025-12-22T13:15:39.906733Z",
+    "responseId": "e0RJae2rN46R998P096OmQU"
 }
 ```
-</CodeGroup>
 
-## Path Parameters
+import Parameters from '/snippets/parameters/Google/chatmodel.mdx';
 
+<Parameters/>
 
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `contents` | array | ✅ Yes | - | An array of content objects representing the conversation history.   The role of the message sender. Typically `"user"` or `"model"`. Optional for single-turn requests. |
-| `parts` | array | ✅ Yes | - | An array of parts that make up the message content.   Text content of the message or prompt. |
-| `inlineData` | object | ❌ No | - | Inline media data.   The MIME type of the media. |
-| `functionCall` | object | ❌ No | - | A function call generated by the model.   The name of the function to call. |
-| `candidates` | array | ❌ No | - | An array of generated content candidates from the model.   The content of the generated response. |
-
-
-
-
-
-
-
-
+<ErrorCode/>
