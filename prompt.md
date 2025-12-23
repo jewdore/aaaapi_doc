@@ -218,7 +218,7 @@ curl  --location --request POST 'https://gptproto.com/api/v3/google/gemini-2.5-f
   }
 }
 
-"query_url": "/snippets/parameters/common/gptproto/query-result.mdx"
+"query_url": "/snippets/parameters/gptproto-format/common/query-result.mdx"
 "parameters_path": /snippets/official-format.mdx/Google/gemini.mdx
 
 
@@ -293,7 +293,7 @@ curl --request POST 'https://gptproto.com/api/v3/google/gemini-2.5-flash-image/i
   }
   ```
 
-import QueryResult from '/snippets/parameters/common/gptproto/query-result.mdx';
+import QueryResult from '/snippets/parameters/gptproto-format/common/query-result.mdx';
 
 <QueryResult/>
 
