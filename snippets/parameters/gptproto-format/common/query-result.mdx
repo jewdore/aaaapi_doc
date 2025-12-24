@@ -1,5 +1,5 @@
 ## Query Result
-If the request that generated your content has the parameter `enable_sync_mode` set to `true`, you **must** call the Query Result endpoint to retrieve the final output.
+If the request that generated your content includes the parameter `enable_sync_mode` set to `true` (some models do not support this parameter, but you still need to query the result by id), you **must** call the Query Result endpoint to retrieve the final output.
 ### How to obtain the id
 
 After submitting your prediction request, the response will contain the id you need.  
