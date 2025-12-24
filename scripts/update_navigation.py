@@ -19,6 +19,7 @@ for vendor in os.listdir(allapi_dir):
     if os.path.isdir(vendor_path):
         # 特殊处理：将Doubao映射为BytePlus
         vendor_name = "BytePlus" if vendor == "Doubao" else vendor
+        vendor_name = "Qwen" if vendor == "Alibaba" else vendor
         vendor_data = {"group": vendor_name, "pages": []}
         
         # 遍历模型目录（第二级）

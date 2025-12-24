@@ -2291,6 +2291,19 @@
                         ]
                       }
                     ]
+                  },
+                  {
+                    "group": "kling-v2.5-turbo-std",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/image-to-video",
+                          "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/query-task",
+                          "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
                   }
                 ],
                 "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Kling.png"
@@ -2557,6 +2570,21 @@
                           "docs/api/Alibaba/wan-2.5-fast/gptproto-format/image-to-video",
                           "docs/api/Alibaba/wan-2.5-fast/gptproto-format/query-task",
                           "docs/api/Alibaba/wan-2.5-fast/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "wan-2.5-preview",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Alibaba/wan-2.5-preview/gptproto-format/image-edit",
+                          "docs/allapi/Alibaba/wan-2.5-preview/gptproto-format/image-to-video",
+                          "docs/allapi/Alibaba/wan-2.5-preview/gptproto-format/query-task",
+                          "docs/allapi/Alibaba/wan-2.5-preview/gptproto-format/text-to-image",
+                          "docs/allapi/Alibaba/wan-2.5-preview/gptproto-format/text-to-video"
                         ]
                       }
                     ]

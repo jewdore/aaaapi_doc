@@ -1,0 +1,190 @@
+---
+title: 'wan-2.5-preview (text to image)'
+sidebarTitle: 'Text to Image'
+api: 'POST /api/v3/alibaba/wan-2.5-preview/text-to-image'
+description: 'Generate images from text descriptions using Qwen wan-2.5-preview model'
+mode: 'wide'
+---
+
+Generate images from text prompts using Qwen's wan-2.5-preview model with GPTProto format API.
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/alibaba/wan-2.5-preview/text-to-image' \
+--header 'Authorization: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+    "prompt": "a cat",
+    "size": "1024*1024",
+    "resolution": "720p",
+    "enable_prompt_expansion": "false",
+    "negative_prompt": "",
+    "seed": -1
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/alibaba/wan-2.5-preview/text-to-image"
+headers = {
+    "Authorization": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "prompt": "a cat",
+    "size": "1024*1024",
+    "resolution": "720p",
+    "enable_prompt_expansion": "false",
+    "negative_prompt": "",
+    "seed": -1
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/alibaba/wan-2.5-preview/text-to-image";
+const headers = {
+  "Authorization": "YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "a cat",
+  "size": "1024*1024",
+  "resolution": "720p",
+  "enable_prompt_expansion": "false",
+  "negative_prompt": "",
+  "seed": -1
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/alibaba/wan-2.5-preview/text-to-image"
+
+    payload := []byte(`{
+    "prompt": "a cat",
+    "size": "1024*1024",
+    "resolution": "720p",
+    "enable_prompt_expansion": "false",
+    "negative_prompt": "",
+    "seed": -1
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+## Response
+
+<CodeGroup>
+
+```json 200 - Success
+{
+  "data": {
+    "id": "5d87273c75ea40f19a34dea994276673",
+    "model": "alibaba/wan-2.5-preview/text-to-image",
+    "outputs": [],
+    "urls": {
+      "get": "https://gptproto.com/api/v3/predictions/5d87273c75ea40f19a34dea994276673/result"
+    },
+    "hasNsfwContents": [],
+    "status": "created",
+    "createdAt": "2025-11-10T09:50:05.977Z",
+    "error": "",
+    "executionTime": 0,
+    "timings": {
+      "inference": 0
+    }
+  },
+  "message": "success",
+  "code": 200
+}
+```
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `prompt` | string | ✅ Yes | - | - | Text description for the image generation |
+| `size` | string | ❌ No | `"1024*1024"` | 768 ~ 1440 per dimension | The size of the generated image in pixels (width*height) |
+| `resolution` | string | ❌ No | `"720p"` | - | Output resolution quality setting |
+| `enable_prompt_expansion` | string | ❌ No | `"false"` | - | Enable automatic prompt expansion and optimization. Set to `"true"` or `"false"` |
+| `negative_prompt` | string | ❌ No | `""` | - | Negative prompt to specify what should not appear in the generated image |
+| `seed` | integer | ❌ No | `-1` | `-1` ~ `2147483647` | Random seed for generation reproducibility. Set to `-1` for random generation |

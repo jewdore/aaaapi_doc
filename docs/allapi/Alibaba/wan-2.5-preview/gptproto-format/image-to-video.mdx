@@ -1,0 +1,122 @@
+---
+title: 'wan-2.5-preview (image to video)'
+sidebarTitle: 'Image to Video'
+api: 'POST /api/v3/alibaba/wan-2.5-preview/image-to-video-fast'
+description: 'Image to Video'
+mode: 'wide'
+---
+
+Qwen's GPTProto format for the image to video API.
+
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+
+curl --location 'https://gptproto.com/api/v3/alibaba/wan-2.5-preview/image-to-video' \
+--header 'Authorization: sk-xx' \
+--header 'Content-Type: application/json' \
+--data '{
+    "image": "https://d1q70pf5vjeyhc.cloudfront.net/media/fb8f674bbb1a429d947016fd223cfae1/images/1758532447268876299_CLRNKHEA.jpeg",
+    "audio": "",
+    "prompt": "A confident woman in her 40s stands on a stage with a microphone. The background shows a large LED screen with abstract visuals. She smiles and begins speaking to the audience: “Good evening everyone. Tonight, I want to share three powerful lessons about leadership and innovation.” Her lip movements match her voice, and she uses expressive hand gestures while speaking.",
+    "negative_prompt": "",
+    "resolution": "720p",
+    "duration": 5,
+    "enable_prompt_expansion": false,
+    "seed": -1
+}'
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `image` | string | ✅ Yes | - | The image for generating the output. |
+| `audio` | string | ❌ No | - | Audio URL to guide generation (optional). |
+| `prompt` | string | ✅ Yes | - | The positive prompt for the generation. |
+| `negative_prompt` | string | ✅ Yes | - | The negative prompt for the generation. |
+| `resolution` | string | ❌ No | `720p` | 480p, 720p, 1080p . The resolution of the generated media. |
+| `duration` | integer | ❌ No | `5` | 3, 4, 5, 6, 7, 8, 9, 10 . The duration of the generated media in seconds. |
+| `enable_prompt_expansion` | boolean | ❌ No | `false` | If set to true, the prompt optimizer will be enabled. |
+| `seed` | integer | ❌ No | `-1` | -1 ~ 2147483647 . The random seed to use for the generation. -1 means a random seed will be used. |
+
+
+
+
+
+
+```json
+{
+  "data": {
+    "id": "5d87273c75exxxx",
+    "model": "alibaba/wan-2.5-preview/image-to-video",
+    "outputs": [],
+    "urls": {
+      "get": "https://gptproto.com/api/v3/predictions/5d87273c75exxxx/result"
+    },
+    "hasNsfwContents": [],
+    "status": "created",
+    "createdAt": "2025-11-10T09:50:05.977Z",
+    "error": "",
+    "executionTime": 0,
+    "timings": {
+      "inference": 0
+    }
+  },
+  "message": "success",
+  "code": 200
+}
+
+```
+
+
