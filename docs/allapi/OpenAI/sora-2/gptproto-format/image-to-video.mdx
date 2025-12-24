@@ -1,26 +1,25 @@
 ---
-title: 'sora-2 (image to video)'
-sidebarTitle: 'Image To Video'
-api: 'POST /api/v3/openai/sora-2/image-to-video'
-description: 'Image To Video'
+title: 'sora-2 (Image to Video)'
+sidebarTitle: 'Image to Video'
+api: "POST /api/v3/openai/sora-2/image-to-video"
+description: "Generate videos from static images using OpenAI's Sora 2 model"
 mode: 'wide'
 ---
 
-Turn a single reference image into a coherent video clip with synchronized audio. Built on Sora 2’s core advances, the image-to-video pipeline preserves identity, lighting, and composition while synthesizing believable motion and camera dynamics.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
-
+## Initiate Request
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-  "image": "https://filesystem.site/cdn/202xxx/xxxx.png",
+curl --location --request POST 'https://gptproto.com/api/v3/openai/sora-2/image-to-video' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "prompt": "Put a hat on the cat",
+  "image": "https://tos.gptproto.com/resource/cat.png",
   "duration": 4
 }'
 ```
@@ -30,43 +29,44 @@ import requests
 import json
 
 url = "https://gptproto.com/api/v3/openai/sora-2/image-to-video"
+
 headers = {
-    "Authorization": "YOUR_API_KEY",
+    "Authorization": "GPTPROTO_API_KEY",
     "Content-Type": "application/json"
 }
 
-data = {
-  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-  "image": "https://filesystem.site/cdn/202xxx/xxxx.png",
-  "duration": 4
+payload = {
+    "prompt": "Put a hat on the cat",
+    "image": "https://tos.gptproto.com/resource/cat.png",
+    "duration": 4
 }
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/openai/sora-2/image-to-video";
+const url = 'https://gptproto.com/api/v3/openai/sora-2/image-to-video';
+
 const headers = {
-  "Authorization": "YOUR_API_KEY",
-  "Content-Type": "application/json"
+    'Authorization': 'GPTPROTO_API_KEY',
+    'Content-Type': 'application/json'
 };
 
-const data = {
-  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-  "image": "https://filesystem.site/cdn/202xxx/xxxx.png",
-  "duration": 4
+const payload = {
+    prompt: 'Put a hat on the cat',
+    image: 'https://tos.gptproto.com/resource/cat.png',
+    duration: 4
 };
 
 fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(payload)
 })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
 ```
 
 ```go Go
@@ -83,14 +83,16 @@ import (
 func main() {
     url := "https://gptproto.com/api/v3/openai/sora-2/image-to-video"
 
-    payload := []byte(`{
-"prompt": "She turns around and smiles, then slowly walks out of the frame.",
-"image": "https://filesystem.site/cdn/202xxx/xxxx.png",
-"duration": 4
-}`)
+    payload := map[string]interface{}{
+        "prompt":   "Put a hat on the cat",
+        "image":    "https://tos.gptproto.com/resource/cat.png",
+        "duration": 4,
+    }
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
+    jsonPayload, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
@@ -106,59 +108,37 @@ func main() {
 ```
 </CodeGroup>
 
-<CodeGroup>
-
-```json 401 - Invalid signature
+## Response Example
+```json
 {
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
+    "data": {
+        "id": "video_123",
+        "model": "sora-2",
+        "outputs": [],
+        "urls": {
+            "get": "https://gptproto.com/api/v3/predictions/video_123/result"
+        },
+        "hasNsfwContents": [],
+        "status": "queued",
+        "createdAt": "2025-12-24 15:59:49",
+        "executionTime": 0,
+        "timings": {
+            "inference": 0
+        }
+    },
+    "message": "success",
+    "code": 200
 }
 ```
 
+import QueryResult from '/snippets/parameters/gptproto-format/common/query-result.mdx';
 
+<QueryResult/>
 
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
+import Parameters from '/snippets/parameters/gptproto-format/OpenAI/sora-2.mdx';
 
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
+<Parameters/>
 
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</CodeGroup>
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | The positive prompt for the generation. |
-| `image` | string | ❌ No | `https://filesystem.site/cdn/202xxx/xxxx.png` | The image for generating the output. |
-| `duration` | integer | ❌ No | `4` | The duration of the generated video in seconds.4, 8, 12 |
-
-
-
-
-
-
-
-
+<ErrorCode/>

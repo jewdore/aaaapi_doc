@@ -1,79 +1,71 @@
 ---
-title: 'sora-2-pro (image to video)'
-sidebarTitle: 'Image To Video'
-api: "POST /api/v3/openai/sora-2/image-to-video-pro"
-description: "Image To Video"
+title: 'sora-2-pro (Image to Video)'
+sidebarTitle: 'Image to Video'
+api: "POST /api/v3/openai/sora-2-pro/image-to-video"
+description: "Generate videos from static images using OpenAI's Sora 2 Pro model"
 mode: 'wide'
 ---
 
-This endpoint provides image to video pro functionality.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-
-
+## Initiate Request
 
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video-pro" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "prompt": "A video of a horse dancing.",
-  "image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
-  "duration": 4,
-  "resolution": "720p"
+curl --location --request POST 'https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "prompt": "Put a hat on the cat",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "duration": 4
 }'
 ```
-
 
 ```python Python
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/openai/sora-2/image-to-video-pro"
+url = "https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video"
+
 headers = {
-    "Authorization": "YOUR_API_KEY",
+    "Authorization": "GPTPROTO_API_KEY",
     "Content-Type": "application/json"
 }
 
-data = {
-  "prompt": "A video of a horse dancing.",
-  "image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
-  "duration": 4,
-  "resolution": "720p"
+payload = {
+    "prompt": "Put a hat on the cat",
+    "image": "https://tos.gptproto.com/resource/cat.png",
+    "duration": 4
 }
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
 ```
 
-
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/openai/sora-2/image-to-video-pro";
+const axios = require('axios');
+
+const url = 'https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video';
+
 const headers = {
-  "Authorization": "YOUR_API_KEY",
-  "Content-Type": "application/json"
+    'Authorization': 'GPTPROTO_API_KEY',
+    'Content-Type': 'application/json'
 };
 
 const data = {
-  "prompt": "A video of a horse dancing.",
-  "image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
-  "duration": 4,
-  "resolution": "720p"
+    prompt: 'Put a hat on the cat',
+    image: 'https://tos.gptproto.com/resource/cat.png',
+    duration: 4
 };
 
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+axios.post(url, data, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
 ```
-
 
 ```go Go
 package main
@@ -82,95 +74,71 @@ import (
     "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
     "net/http"
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/openai/sora-2/image-to-video-pro"
-
-    payload := []byte(`{
-"prompt": "A video of a horse dancing.",
-"image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
-"duration": 4,
-"resolution": "720p"
-}`)
-
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
+    url := "https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video"
+    
+    payload := map[string]interface{}{
+        "prompt":   "Put a hat on the cat",
+        "image":    "https://tos.gptproto.com/resource/cat.png",
+        "duration": 4,
+    }
+    
+    jsonData, _ := json.Marshal(payload)
+    
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
-
+    
     client := &http.Client{}
     resp, err := client.Do(req)
     if err != nil {
         panic(err)
     }
     defer resp.Body.Close()
-
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+    
+    var result map[string]interface{}
+    json.NewDecoder(resp.Body).Decode(&result)
+    fmt.Println(result)
 }
 ```
+
 </CodeGroup>
 
-<CodeGroup>
+## Response Example
 
-```json 401 - Invalid signature
+```json
 {
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
+    "data": {
+        "id": "video_123",
+        "model": "sora-2-pro",
+        "outputs": [],
+        "urls": {
+            "get": "https://gptproto.com/api/v3/predictions/video_123/result"
+        },
+        "hasNsfwContents": [],
+        "status": "queued",
+        "createdAt": "2025-12-24 15:59:49",
+        "executionTime": 0,
+        "timings": {
+            "inference": 0
+        }
+    },
+    "message": "success",
+    "code": 200
 }
 ```
 
+import QueryResult from '/snippets/parameters/gptproto-format/common/query-result.mdx';
 
+<QueryResult/>
 
+import Parameters from '/snippets/parameters/gptproto-format/OpenAI/sora-2.mdx';
 
+<Parameters/>
 
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</CodeGroup>
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `prompt` | string | ✅ Yes | `A video of a horse dancing.` | Prompt parameter |
-| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/material/land-part1-default.png` | Image parameter |
-| `duration` | integer | ❌ No | `4` | Duration parameter |
-| `resolution` | string | ❌ No | `720p` | Resolution parameter |
-
-
-
-
-
-
-
-
+<ErrorCode/>

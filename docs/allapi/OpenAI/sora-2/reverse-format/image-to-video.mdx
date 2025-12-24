@@ -1,29 +1,23 @@
 ---
-title: 'sora-2 (image to video)'
-sidebarTitle: 'Image To Video'
-api: 'POST /api/v3/openai/reverse/sora-2/image-to-video'
-description: 'Image To Video'
+title: 'sora-2 (Image to Video)'
+sidebarTitle: 'Image to Video'
+api: "POST /api/v3/openai/reverse/sora-2/image-to-video"
+description: "Generate videos from images using OpenAI's Sora-2 model"
 mode: 'wide'
 ---
 
-This endpoint provides submit task functionality.
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
 
-## Request Parameter
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
 
 ```bash cURL
-curl --request POST \
-  --url https://gptproto.com/api/v3/openai/reverse/sora-2/image-to-video \
-  --header 'Authorization: YOUR_API_KEY' \
-  --header 'Content-Type: application/json' \
-  --data '{
+curl --location --request POST 'https://gptproto.com/api/v3/openai/reverse/sora-2/image-to-video' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
   "model": "sora-2",
   "orientation": "portrait",
   "size": "small",
@@ -41,55 +35,53 @@ import requests
 import json
 
 url = "https://gptproto.com/api/v3/openai/reverse/sora-2/image-to-video"
+
 headers = {
-    "Authorization": "YOUR_API_KEY",
+    "Authorization": "GPTPROTO_API_KEY",
     "Content-Type": "application/json"
 }
 
-data = {
-  "model": "sora-2",
-  "orientation": "portrait",
-  "size": "small",
-  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-  "images": [
-    "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
-  ],
-  "duration": 10,
-  "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
+payload = {
+    "model": "sora-2",
+    "orientation": "portrait",
+    "size": "small",
+    "prompt": "She turns around and smiles, then slowly walks out of the frame.",
+    "images": [
+        "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+    ],
+    "duration": 10,
+    "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }
 
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
 ```
 
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/openai/reverse/sora-2/image-to-video";
+const axios = require('axios');
+
+const url = 'https://gptproto.com/api/v3/openai/reverse/sora-2/image-to-video';
+
 const headers = {
-  "Authorization": "YOUR_API_KEY",
-  "Content-Type": "application/json"
+    'Authorization': 'GPTPROTO_API_KEY',
+    'Content-Type': 'application/json'
 };
 
 const data = {
-  "model": "sora-2",
-  "orientation": "portrait",
-  "size": "small",
-  "prompt": "She turns around and smiles, then slowly walks out of the frame.",
-  "images": [
-    "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
-  ],
-  "duration": 10,
-  "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
+    model: 'sora-2',
+    orientation: 'portrait',
+    size: 'small',
+    prompt: 'She turns around and smiles, then slowly walks out of the frame.',
+    images: [
+        'https://oss.heyoos.com/ai-draw/material/land-part1-default.png'
+    ],
+    duration: 10,
+    character_url: 'https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4'
 };
 
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
+axios.post(url, data, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
 ```
 
 ```go Go
@@ -99,96 +91,74 @@ import (
     "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
     "net/http"
 )
 
 func main() {
     url := "https://gptproto.com/api/v3/openai/reverse/sora-2/image-to-video"
 
-    payload := []byte(`{
-"model": "sora-2",
-"orientation": "portrait",
-"size": "small",
-"prompt": "She turns around and smiles, then slowly walks out of the frame.",
-"images": [
-"https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
-],
-"duration": 10,
-"character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
-}`)
+    payload := map[string]interface{}{
+        "model":         "sora-2",
+        "orientation":   "portrait",
+        "size":          "small",
+        "prompt":        "She turns around and smiles, then slowly walks out of the frame.",
+        "images":        []string{"https://oss.heyoos.com/ai-draw/material/land-part1-default.png"},
+        "duration":      10,
+        "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4",
+    }
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "YOUR_API_KEY")
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
     req.Header.Set("Content-Type", "application/json")
 
     client := &http.Client{}
     resp, err := client.Do(req)
     if err != nil {
-        panic(err)
+        fmt.Println(err)
+        return
     }
     defer resp.Body.Close()
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+    var result map[string]interface{}
+    json.NewDecoder(resp.Body).Decode(&result)
+    fmt.Println(result)
 }
 ```
 </CodeGroup>
 
-<CodeGroup>
-
-```json 401 - Invalid signature
+## Response Example
+```json
 {
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
+    "data": {
+        "id": "video_123",
+        "model": "sora-2",
+        "outputs": [],
+        "urls": {
+            "get": "https://gptproto.com/api/v3/predictions/video_123/result"
+        },
+        "hasNsfwContents": [],
+        "status": "queued",
+        "createdAt": "2025-12-24 15:59:49",
+        "executionTime": 0,
+        "timings": {
+            "inference": 0
+        }
+    },
+    "message": "success",
+    "code": 200
 }
 ```
 
+import QueryResult from '/snippets/parameters/gptproto-format/common/query-result.mdx';
 
+<QueryResult/>
 
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
+import Parameters from '/snippets/parameters/reverse-format/sora-2.mdx';
 
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
+<Parameters/>
 
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</CodeGroup>
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `sora-2` | The video generation model to use. |
-| `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | The positive prompt for the generation. |
-| `images` | string[] | ✅ Yes | `[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
-| `size` | string | ✅ Yes | `small` | Video size quality. Options: small, large. Only sora-2-pro supports high-definition (large) |
-| `orientation` | string | ❌ No | `portrait` | Video orientation, does not support specific size control. Options: portrait, landscape |
-| `duration` | integer | ❌ No | `10` | The duration of the generated video in seconds. For sora-2: 10, 15. For sora-2-pro: 15, 25 |
-| `character_url` | string | ❌ No | `https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4` | Non-human IP video URL. |
-
-
-
-
-
+<ErrorCode/>
