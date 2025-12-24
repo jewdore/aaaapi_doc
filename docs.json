@@ -652,13 +652,6 @@
                         ]
                       },
                       {
-                        "group": "openai-format",
-                        "pages": [
-                          "docs/allapi/OpenAI/sora-2/openai-format/image-to-video",
-                          "docs/allapi/OpenAI/sora-2/openai-format/text-to-video"
-                        ]
-                      },
-                      {
                         "group": "reverse-format",
                         "pages": [
                           "docs/allapi/OpenAI/sora-2/reverse-format/image-to-video",
@@ -682,13 +675,6 @@
                         "pages": [
                           "docs/allapi/OpenAI/sora-2-pro/official-format/image-to-video",
                           "docs/allapi/OpenAI/sora-2-pro/official-format/text-to-video"
-                        ]
-                      },
-                      {
-                        "group": "openai-format",
-                        "pages": [
-                          "docs/allapi/OpenAI/sora-2-pro/openai-format/image-to-video",
-                          "docs/allapi/OpenAI/sora-2-pro/openai-format/text-to-video"
                         ]
                       },
                       {
