@@ -1,0 +1,93 @@
+## Query Result
+
+<CodeGroup>
+
+```bash cURL
+curl -X GET "https://gptproto.com/api/v3/contents/generations/tasks/{id}" \
+  -H "Authorization: GPTPROTO_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/contents/generations/tasks/{id}"
+headers = {
+    "Authorization: GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
+}
+
+response = requests.get(url, headers=headers)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/contents/generations/tasks/{id}";
+const headers = {
+  "Authorization: GPTPROTO_API_KEY",
+  "Content-Type": "application/json"
+};
+
+fetch(url, {
+  method: "GET",
+  headers: headers
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/contents/generations/tasks/{id}"
+
+    req, _ := http.NewRequest("GET", url, nil)
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+### Response
+```json
+{
+    "id": "cgt-20251225195352-123",
+    "model": "doubao-seedance-1-5-pro-251215",
+    "status": "succeeded",
+    "content": {
+        "video_url": "https://example.com/video.mp4"
+    },
+    "usage": {
+        "completion_tokens": 260100,
+        "total_tokens": 260100
+    },
+    "seed": "16108",
+    "resolution": "720p",
+    "duration": 12,
+    "ratio": "16:9",
+    "created_at": "1766663633",
+    "updated_at": "1766663715",
+    "framespersecond": 24
+}
+```

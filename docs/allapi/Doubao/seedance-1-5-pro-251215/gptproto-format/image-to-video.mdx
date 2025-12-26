@@ -1,0 +1,142 @@
+---
+title: 'seedance-1-5-pro-251215 (Image to Video)'
+sidebarTitle: 'Image to Video'
+api: "POST /api/v3/doubao/seedance-1-5-pro-251215/image-to-video"
+description: "Generate videos from images using Seedance 1.5 Pro model"
+mode: 'wide'
+---
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+## Initiate Request
+<CodeGroup>
+
+```bash cURL
+curl --request POST 'https://gptproto.com/api/v3/doubao/seedance-1-5-pro-251215/image-to-video' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "image": "https://example.com/input-image.jpg",
+    "prompt": "A beautiful sunset scene with waves crashing on the beach"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/doubao/seedance-1-5-pro-251215/image-to-video"
+
+headers = {
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
+}
+
+payload = {
+    "image": "https://example.com/input-image.jpg",
+    "prompt": "A beautiful sunset scene with waves crashing on the beach"
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
+```
+
+```javascript JavaScript
+const fetch = require('node-fetch');
+
+const url = 'https://gptproto.com/api/v3/doubao/seedance-1-5-pro-251215/image-to-video';
+
+const headers = {
+    'Authorization': 'GPTPROTO_API_KEY',
+    'Content-Type': 'application/json'
+};
+
+const payload = {
+    image: 'https://example.com/input-image.jpg',
+    prompt: 'A beautiful sunset scene with waves crashing on the beach'
+};
+
+fetch(url, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(payload)
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/doubao/seedance-1-5-pro-251215/image-to-video"
+    
+    payload := map[string]interface{}{
+        "image": "https://example.com/input-image.jpg",
+        "prompt": "A beautiful sunset scene with waves crashing on the beach",
+    }
+    
+    jsonPayload, _ := json.Marshal(payload)
+    
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+    
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+    
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+## Response Example
+```json
+{
+    "data": {
+        "id": "cgt-20251225201409-abc",
+        "model": "seedance-1-5-pro-251215",
+        "outputs": [],
+        "urls": {
+            "get": "https://gptproto.com/api/v3/predictions/cgt-20251225201409-abc/result"
+        },
+        "hasNsfwContents": [],
+        "status": "created",
+        "createdAt": "2025-12-25 20:14:09",
+        "executionTime": 0,
+        "timings": {
+            "inference": 0
+        }
+    },
+    "message": "success",
+    "code": 200
+}
+```
+
+import QueryResult from '/snippets/parameters/gptproto-format/common/query-result.mdx';
+
+<QueryResult/>
+
+import Parameters from '/snippets/parameters/gptproto-format/Doubao/seedance.mdx';
+
+<Parameters/>
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>

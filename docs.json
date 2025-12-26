@@ -1795,6 +1795,44 @@
                     ]
                   },
                   {
+                    "group": "doubao-seedance-1-0-pro-250528",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Doubao/doubao-seedance-1-0-pro-250528/gptproto-format/image-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-1-0-pro-250528/gptproto-format/text-to-video"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Doubao/doubao-seedance-1-0-pro-250528/official-format/image-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-1-0-pro-250528/official-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "doubao-seedance-1-5-pro-251215",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Doubao/doubao-seedance-1-5-pro-251215/gptproto-format/image-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-1-5-pro-251215/gptproto-format/text-to-video"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Doubao/doubao-seedance-1-5-pro-251215/official-format/image-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-1-5-pro-251215/official-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "doubao-seededit-3-0-i2i-250628",
                     "pages": [
                       {
@@ -1883,15 +1921,15 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/Doubao/seedance-1-0-lite-i2v-250428/gptproto-format/image-to-video",
-                          "docs/api/Doubao/seedance-1-0-lite-i2v-250428/gptproto-format/query-task"
+                          "docs/allapi/Doubao/seedance-1-0-lite-i2v-250428/gptproto-format/image-to-video",
+                          "docs/allapi/Doubao/seedance-1-0-lite-i2v-250428/gptproto-format/text-to-video"
                         ]
                       },
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Doubao/seedance-1-0-lite-i2v-250428/official-format/image-to-video",
-                          "docs/api/Doubao/seedance-1-0-lite-i2v-250428/official-format/query-task"
+                          "docs/allapi/Doubao/seedance-1-0-lite-i2v-250428/official-format/image-to-video",
+                          "docs/allapi/Doubao/seedance-1-0-lite-i2v-250428/official-format/text-to-video"
                         ]
                       }
                     ]
@@ -1902,15 +1940,15 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/Doubao/seedance-1-0-lite-t2v-250428/gptproto-format/query-task",
-                          "docs/api/Doubao/seedance-1-0-lite-t2v-250428/gptproto-format/text-to-video"
+                          "docs/allapi/Doubao/seedance-1-0-lite-t2v-250428/gptproto-format/image-to-video",
+                          "docs/allapi/Doubao/seedance-1-0-lite-t2v-250428/gptproto-format/text-to-video"
                         ]
                       },
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Doubao/seedance-1-0-lite-t2v-250428/official-format/query-task",
-                          "docs/api/Doubao/seedance-1-0-lite-t2v-250428/official-format/text-to-video"
+                          "docs/allapi/Doubao/seedance-1-0-lite-t2v-250428/official-format/image-to-video",
+                          "docs/allapi/Doubao/seedance-1-0-lite-t2v-250428/official-format/text-to-video"
                         ]
                       }
                     ]
@@ -1921,17 +1959,53 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/Doubao/seedance-1-0-pro-250528/gptproto-format/image-to-video",
-                          "docs/api/Doubao/seedance-1-0-pro-250528/gptproto-format/query-task",
-                          "docs/api/Doubao/seedance-1-0-pro-250528/gptproto-format/text-to-video"
+                          "docs/allapi/Doubao/seedance-1-0-pro-250528/gptproto-format/image-to-video",
+                          "docs/allapi/Doubao/seedance-1-0-pro-250528/gptproto-format/text-to-video"
                         ]
                       },
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Doubao/seedance-1-0-pro-250528/official-format/image-to-video",
-                          "docs/api/Doubao/seedance-1-0-pro-250528/official-format/query-task",
-                          "docs/api/Doubao/seedance-1-0-pro-250528/official-format/text-to-video"
+                          "docs/allapi/Doubao/seedance-1-0-pro-250528/official-format/image-to-video",
+                          "docs/allapi/Doubao/seedance-1-0-pro-250528/official-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "seedance-1-0-pro-fast-251015",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Doubao/seedance-1-0-pro-fast-251015/gptproto-format/image-to-video",
+                          "docs/allapi/Doubao/seedance-1-0-pro-fast-251015/gptproto-format/text-to-video"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Doubao/seedance-1-0-pro-fast-251015/official-format/image-to-video",
+                          "docs/allapi/Doubao/seedance-1-0-pro-fast-251015/official-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "seedance-1-5-pro-251215",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Doubao/seedance-1-5-pro-251215/gptproto-format/image-to-video",
+                          "docs/allapi/Doubao/seedance-1-5-pro-251215/gptproto-format/text-to-video"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Doubao/seedance-1-5-pro-251215/official-format/image-to-video",
+                          "docs/allapi/Doubao/seedance-1-5-pro-251215/official-format/text-to-video"
                         ]
                       }
                     ]

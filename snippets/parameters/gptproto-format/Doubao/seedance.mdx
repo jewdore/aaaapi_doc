@@ -1,0 +1,90 @@
+## Parameters
+### Core Parameters
+
+> **Note:** Different models may support different parameter options. For more details, please refer to the [Model Field Compatibility](#model-field-compatibility) table.
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | ✅ Yes | - | Video generation prompt describing the desired video content |
+| `image` | string | ❌ No | - | First frame image URL or Base64 encoded for Image-to-Video scenario |
+| `last_image` | string | ❌ No | - | Last frame image URL or Base64 encoded for First & Last Frame video generation |
+| `duration` | int | ❌ No | 5 | Video duration in seconds, range [2, 12] |
+| `camera_fixed` | boolean | ❌ No | false | Whether to fix the camera position |
+| `aspect_ratio` | string | ❌ No | - | Video aspect ratio, supports `16:9`, `4:3`, `1:1`, `3:4`, `9:16`, `21:9`, `adaptive` |
+| `resolution` | string | ❌ No | `720p` | Video resolution, supports `480p`, `720p`, `1080p` |
+| `seed` | int | ❌ No | -1 | Random seed for controlling generation randomness, range [-1, 2^32-1] |
+| `generate_audio` | boolean | ❌ No | - | Whether to include synchronized sound with the video. Only supported by Seedance 1.5 pro. |
+
+#### Model Field Compatibility
+---
+**resolution:** Video resolution
+> Seedance 1.5 pro, Seedance 1.0 lite default value: `720p`
+> Seedance 1.0 pro&pro-fast default value: `1080p`
+
+Enumeration values:
+* 480p
+* 720p
+* 1080p: Not supported in reference image scenario; temporarily not supported by Seedance 1.5 pro
+---
+**aspect_ratio:** Aspect ratio of the generated video. See [Aspect Ratio & Resolution](#aspect-ratio--resolution) for pixel values corresponding to different aspect ratios.
+> Default for Text-to-Video is generally `16:9`
+> Default for Image-to-Video is generally `adaptive`. Note: Default for Reference Image Video Generation is `16:9`
+> Seedance 1.5 pro default is `adaptive`
+
+Enumeration values:
+* 16:9 
+* 4:3
+* 1:1
+* 3:4
+* 9:16
+* 21:9
+* adaptive: Automatically selects the most appropriate aspect ratio based on the ratio of the uploaded first frame image.
+---
+#### Video Generation Scenarios
+**Note:** Seedance 1.0 pro-fast only supports First-Frame mode; First & Last Frame is **not** supported.
+
+<CodeGroup>
+```json Text-to-Video
+{
+    "prompt": "Multiple shots. A detective enters a dimly lit room. He examines the clues on the table and picks up an item. The camera shifts to him deep in thought. --ratio 16:9"
+}
+```
+
+```json First Frame
+{
+    "prompt": "A girl holding a fox opens her eyes and looks gently at the camera. The fox is held affectionately. The camera slowly pulls back as the girl's hair is blown by the wind. Wind sounds can be heard. --ratio adaptive --dur 5",
+    "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/i2v_foxrgirl.png"
+}
+```
+
+```json First & Last Frame
+{
+    "prompt": "The girl in the picture says 'cheese' to the camera with 360-degree surrounding camera movement",
+    "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seepro_first_frame.jpeg",
+    "last_image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seepro_last_frame.jpeg"
+}
+```
+
+</CodeGroup>
+
+### Aspect Ratio & Resolution
+| Resolution | Aspect Ratio | Width x Height (Seedance 1.0) | Width x Height (Seedance 1.5 pro) |
+|------------|--------------|-------------------------------|-----------------------------------|
+| 480p       | 16:9         | 864×480                       | 864×496                           |
+| 480p       | 4:3          | 736×544                       | 752×560                           |
+| 480p       | 1:1          | 640×640                       | 640×640                           |
+| 480p       | 3:4          | 544×736                       | 560×752                           |
+| 480p       | 9:16         | 480×864                       | 496×864                           |
+| 480p       | 21:9         | 960×416                       | 992×432                           |
+| 720p       | 16:9         | 1248×704                      | 1280×720                          |
+| 720p       | 4:3          | 1120×832                      | 1112×834                          |
+| 720p       | 1:1          | 960×960                       | 960×960                           |
+| 720p       | 3:4          | 832×1120                      | 834×1112                          |
+| 720p       | 9:16         | 704×1248                      | 720×1280                          |
+| 720p       | 21:9         | 1504×640                      | 1470×630                          |
+| 1080p      | 16:9         | 1920×1088                     | -                                 |
+| 1080p      | 4:3          | 1664×1248                     | -                                 |
+| 1080p      | 1:1          | 1440×1440                     | -                                 |
+| 1080p      | 3:4          | 1248×1664                     | -                                 |
+| 1080p      | 9:16         | 1088×1920                     | -                                 |
+| 1080p      | 21:9         | 2176×928                      | -                                 |

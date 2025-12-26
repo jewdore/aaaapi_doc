@@ -18,10 +18,14 @@ for vendor in os.listdir(allapi_dir):
     vendor_path = os.path.join(allapi_dir, vendor)
     if os.path.isdir(vendor_path):
         # 特殊处理：将Doubao映射为BytePlus
-        vendor_name = "BytePlus" if vendor == "Doubao" else vendor
-        vendor_name = "Qwen" if vendor == "Alibaba" else vendor
+        if vendor == "Doubao":
+            vendor_name = "BytePlus"
+        elif vendor == "Alibaba":
+            vendor_name = "Qwen"
+        else:
+            vendor_name = vendor
+
         vendor_data = {"group": vendor_name, "pages": []}
-        
         # 遍历模型目录（第二级）
         for model in os.listdir(vendor_path):
             model_path = os.path.join(vendor_path, model)

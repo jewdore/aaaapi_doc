@@ -1,0 +1,157 @@
+---
+title: 'seedance-1-0-lite-t2v-250428 (Text to Video)'
+sidebarTitle: 'Text to Video'
+api: "POST /api/v3/contents/generations/tasks"
+description: "Generate videos from text descriptions using Seedance model"
+mode: 'wide'
+---
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+## Initiate Request
+<CodeGroup>
+
+```bash cURL
+curl --location --request POST 'https://gptproto.com/api/v3/contents/generations/tasks' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "model": "seedance-1-0-lite-t2v-250428",
+    "content": [
+        {
+            "type": "text",
+            "text": "Multiple shots. A detective enters a dimly lit room. He examines the clues on the table and picks up an item. The camera shifts to him deep in thought."
+        }
+    ],
+    "resolution": "720p",
+    "ratio": "16:9",
+    "duration": 12
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/contents/generations/tasks"
+
+headers = {
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
+}
+
+payload = {
+    "model": "seedance-1-0-lite-t2v-250428",
+    "content": [
+        {
+            "type": "text",
+            "text": "Multiple shots. A detective enters a dimly lit room. He examines the clues on the table and picks up an item. The camera shifts to him deep in thought."
+        }
+    ],
+    "resolution": "720p",
+    "ratio": "16:9",
+    "duration": 12
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/contents/generations/tasks";
+
+const headers = {
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
+};
+
+const payload = {
+    model: "seedance-1-0-lite-t2v-250428",
+    content: [
+        {
+            type: "text",
+            text: "Multiple shots. A detective enters a dimly lit room. He examines the clues on the table and picks up an item. The camera shifts to him deep in thought."
+        }
+    ],
+    resolution: "720p",
+    ratio: "16:9",
+    duration: 12
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(payload)
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/contents/generations/tasks"
+
+    payload := map[string]interface{}{
+        "model": "seedance-1-0-lite-t2v-250428",
+        "content": []map[string]string{
+            {
+                "type": "text",
+                "text": "Multiple shots. A detective enters a dimly lit room. He examines the clues on the table and picks up an item. The camera shifts to him deep in thought.",
+            },
+        },
+        "resolution": "720p",
+        "ratio":      "16:9",
+        "duration":   12,
+    }
+
+    jsonPayload, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        fmt.Println("Error:", err)
+        return
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+## Response Example
+```json
+{
+    "id": "cgt-20251225201056-abc"
+}
+```
+
+import QueryResult from '/snippets/parameters/official-format/Doubao/query-result.mdx';
+
+<QueryResult/>
+
+import Parameters from '/snippets/parameters/official-format/Doubao/seedance.mdx';
+
+<Parameters/>
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>

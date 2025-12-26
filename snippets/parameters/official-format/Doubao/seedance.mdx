@@ -26,6 +26,7 @@
 | `watermark` (wm) | boolean | ❌ No | false | - | Whether to include watermark in the generated video. |
 
 #### Model Field Compatibility
+---
 **resolution (rs):** Video resolution
 > Seedance 1.5 pro, Seedance 1.0 lite default value: `720p`
 > Seedance 1.0 pro&pro-fast default value: `1080p`
@@ -34,7 +35,7 @@ Enumeration values:
 * 480p
 * 720p
 * 1080p: Not supported in reference image scenario; temporarily not supported by Seedance 1.5 pro
-
+---
 **ratio (rt):** Aspect ratio of the generated video. See [Aspect Ratio & Resolution](#aspect-ratio--resolution) for pixel values corresponding to different aspect ratios.
 > Default for Text-to-Video is generally `16:9`
 > Default for Image-to-Video is generally `adaptive`. Note: Default for Reference Image Video Generation is `16:9`
@@ -48,11 +49,11 @@ Enumeration values:
 * 9:16
 * 21:9
 * adaptive: Automatically selects the most appropriate aspect ratio based on the ratio of the uploaded first frame image.
-
+---
 **duration (dur) or frames (frames):**
 > Seedance 1.5 pro does not support `frames` temporarily
 > Choose either duration or frames; frames has higher priority than duration. If you want to generate videos with fractional seconds, it is recommended to specify frames.
-
+---
 #### Video Generation Scenarios
 First frame video generation, first and last frame video generation, and reference image video generation are three mutually exclusive scenarios and cannot be mixed.
 <CodeGroup>
