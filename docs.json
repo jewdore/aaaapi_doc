@@ -960,6 +960,7 @@
                   },
                   {
                     "group": "gemini-2.5-pro-deepsearch",
+                    "hidden": true,
                     "pages": [
                       {
                         "group": "official-format",
