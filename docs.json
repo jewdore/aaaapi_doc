@@ -1922,15 +1922,13 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/allapi/Doubao/seedance-1-0-lite-i2v-250428/gptproto-format/image-to-video",
-                          "docs/allapi/Doubao/seedance-1-0-lite-i2v-250428/gptproto-format/text-to-video"
+                          "docs/allapi/Doubao/seedance-1-0-lite-i2v-250428/gptproto-format/image-to-video"
                         ]
                       },
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/allapi/Doubao/seedance-1-0-lite-i2v-250428/official-format/image-to-video",
-                          "docs/allapi/Doubao/seedance-1-0-lite-i2v-250428/official-format/text-to-video"
+                          "docs/allapi/Doubao/seedance-1-0-lite-i2v-250428/official-format/image-to-video"
                         ]
                       }
                     ]
@@ -1941,14 +1939,12 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/allapi/Doubao/seedance-1-0-lite-t2v-250428/gptproto-format/image-to-video",
                           "docs/allapi/Doubao/seedance-1-0-lite-t2v-250428/gptproto-format/text-to-video"
                         ]
                       },
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/allapi/Doubao/seedance-1-0-lite-t2v-250428/official-format/image-to-video",
                           "docs/allapi/Doubao/seedance-1-0-lite-t2v-250428/official-format/text-to-video"
                         ]
                       }
