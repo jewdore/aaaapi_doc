@@ -10,10 +10,12 @@ Gemini's veo 3.1 fast generate preview for the text to video API.
 
 
 
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
 
 
-
-
+## Initiate Request
 
 
 <CodeGroup>
@@ -118,48 +120,56 @@ func main() {
 ```
 </CodeGroup>
 
+## Response Example
 <CodeGroup>
 
-```json 401 - Invalid signature
+```json Response
 {
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
+    "name": "models/veo-3.1-generate-preview/operations/abc"
 }
 ```
 
-
-
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
 </CodeGroup>
 
-## Parameters
+## Query Task
+
+> The operation_id can be obtained from the response of the predictLongRunning endpoint.
+
+> After a successful query, the API returns a URL (`response.generateVideoResponse.generatedSamples.video.uri`) for downloading the video. This URL is required when making the request.
+
+<CodeGroup>
+
+```bash 1、Query
+curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview/operations/{operation_id}' \
+  --header 'x-goog-api-key: YOUR_API_KEY'
+```
+
+```json 2、Response
+{
+    "name": "models/veo-3.1-fast-generate-preview/operations/abc",
+    "done": true,
+    "response": {
+        "type": "type.googleapis.com/google.ai.generativelanguage.v1beta.PredictLongRunningResponse",
+        "generateVideoResponse": {
+            "generatedSamples": [
+                {
+                    "video": {
+                        "uri": "https://api.gptproto.com/v1beta/files/abc:download?alt=media"
+                    }
+                }
+            ]
+        }
+    },
+    "error": null
+}
+```
+
+```bash 3、Download Video
+curl --location 'https://api.gptproto.com/v1beta/files/abc:download?alt=media' \
+  --header 'x-goog-api-key: YOUR_API_KEY'
+```
+
+</CodeGroup>
 
 
 ## Parameters
