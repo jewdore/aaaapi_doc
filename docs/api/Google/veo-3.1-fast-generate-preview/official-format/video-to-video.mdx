@@ -26,14 +26,15 @@ curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview
   --data '{
     "instances": [
         {
-            "prompt": "a cat",
+            "prompt": "a dog",
             "video": {
-                "uri": "https://generativelanguage.googleapis.com/v1beta/files/acwe2jipjo5j:download?alt=media"
+                "uri": "https://api.gptproto.com/v1beta/files/u5t03mc3obyv:download?alt=media"
             }
         }
     ],
     "parameters": {
-        "resolution": "720p"
+        "resolution": "720p",
+        "aspectRatio": "9:16"
     }
 }'
 ```
