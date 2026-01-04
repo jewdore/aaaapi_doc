@@ -1,0 +1,228 @@
+---
+title: 'gemini-2.5-pro (Web Search)'
+sidebarTitle: 'Web Search'
+api: "POST /v1beta/models/gemini-2.5-pro:generateContent"
+description: "Generate text responses using Google's Gemini 2.5 Flash model"
+mode: 'wide'
+---
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+## Initiate Request
+<CodeGroup>
+
+```bash cURL
+curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "Who won the euro 2024?"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "google_search": {
+        "timeRangeFilter": {
+          "startTime": "2024-01-01T00:00:00Z",
+          "endTime": "2024-01-01T12:00:00Z"
+        }
+      }
+    }
+  ]
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent"
+
+headers = {
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
+}
+
+payload = {
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Who won the euro 2024?"
+                }
+            ]
+        }
+    ],
+    "tools": [
+        {
+            "google_search": {
+                "timeRangeFilter": {
+                    "startTime": "2024-01-01T00:00:00Z",
+                    "endTime": "2024-01-01T12:00:00Z"
+                }
+            }
+        }
+    ]
+}
+
+response = requests.post(url, headers=headers, json=payload)
+print(response.json())
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent";
+
+const headers = {
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
+};
+
+const payload = {
+    contents: [
+        {
+            role: "user",
+            parts: [
+                {
+                    text: "Who won the euro 2024?"
+                }
+            ]
+        }
+    ],
+    "tools": [
+        {
+            "google_search": {
+                "timeRangeFilter": {
+                    "startTime": "2024-01-01T00:00:00Z",
+                    "endTime": "2024-01-01T12:00:00Z"
+                }
+            }
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(payload)
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent"
+
+    payload := map[string]interface{}{
+        "contents": []map[string]interface{}{
+            {
+                "role": "user",
+                "parts": []map[string]interface{}{
+                    {
+                        "text": "Who won the euro 2024?",
+                    },
+                },
+            },
+        },
+        "tools": []map[string]interface{}{
+            {
+                "google_search": map[string]interface{}{
+                    "timeRangeFilter": map[string]interface{}{
+                        "startTime": "2024-01-01T00:00:00Z",
+                        "endTime": "2024-01-01T12:00:00Z"
+                    }
+                }
+            },
+        },
+    }
+
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        fmt.Println("Error:", err)
+        return
+    }
+    defer resp.Body.Close()
+
+    var result map[string]interface{}
+    json.NewDecoder(resp.Body).Decode(&result)
+    fmt.Println(result)
+}
+```
+</CodeGroup>
+
+## Response Example
+```json
+{
+    "candidates": [
+        {
+            "content": {
+                "role": "model",
+                "parts": [
+                    {
+                        "text": "I am Gemini, a large language model built by Google.",
+                        "thoughtSignature": "CvUOAY8***"
+                    }
+                ]
+            },
+            "finishReason": "STOP"
+        }
+    ],
+    "usageMetadata": {
+        "promptTokenCount": 4,
+        "candidatesTokenCount": 12,
+        "totalTokenCount": 508,
+        "trafficType": "ON_DEMAND",
+        "promptTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 4
+            }
+        ],
+        "candidatesTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 12
+            }
+        ],
+        "thoughtsTokenCount": 492
+    },
+    "modelVersion": "gemini-2.5-pro",
+    "createTime": "2025-12-22T13:15:39.906733Z",
+    "responseId": "e0RJae2rN46R998P096OmQU"
+}
+```
+
+import Parameters from '/snippets/parameters/official-format/Google/chatmodel.mdx';
+
+<Parameters/>
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>

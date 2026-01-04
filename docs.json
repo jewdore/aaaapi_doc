@@ -700,7 +700,8 @@
                         "pages": [
                           "docs/allapi/Google/gemini-2.0-flash/official-format/file-analysis",
                           "docs/allapi/Google/gemini-2.0-flash/official-format/image-to-text",
-                          "docs/allapi/Google/gemini-2.0-flash/official-format/text-to-text"
+                          "docs/allapi/Google/gemini-2.0-flash/official-format/text-to-text",
+                          "docs/allapi/Google/gemini-2.0-flash/official-format/web-search"
                         ]
                       },
                       {
@@ -721,7 +722,8 @@
                         "pages": [
                           "docs/allapi/Google/gemini-2.0-flash-exp/official-format/file-analysis",
                           "docs/allapi/Google/gemini-2.0-flash-exp/official-format/image-to-text",
-                          "docs/allapi/Google/gemini-2.0-flash-exp/official-format/text-to-text"
+                          "docs/allapi/Google/gemini-2.0-flash-exp/official-format/text-to-text",
+                          "docs/allapi/Google/gemini-2.0-flash-exp/official-format/web-search"
                         ]
                       },
                       {
@@ -742,7 +744,8 @@
                         "pages": [
                           "docs/allapi/Google/gemini-2.5-flash/official-format/file-analysis",
                           "docs/allapi/Google/gemini-2.5-flash/official-format/image-to-text",
-                          "docs/allapi/Google/gemini-2.5-flash/official-format/text-to-text"
+                          "docs/allapi/Google/gemini-2.5-flash/official-format/text-to-text",
+                          "docs/allapi/Google/gemini-2.5-flash/official-format/web-search"
                         ]
                       },
                       {
@@ -903,7 +906,8 @@
                         "pages": [
                           "docs/allapi/Google/gemini-2.5-flash-lite/official-format/file-analysis",
                           "docs/allapi/Google/gemini-2.5-flash-lite/official-format/image-to-text",
-                          "docs/allapi/Google/gemini-2.5-flash-lite/official-format/text-to-text"
+                          "docs/allapi/Google/gemini-2.5-flash-lite/official-format/text-to-text",
+                          "docs/allapi/Google/gemini-2.5-flash-lite/official-format/web-search"
                         ]
                       },
                       {
@@ -924,7 +928,8 @@
                         "pages": [
                           "docs/allapi/Google/gemini-2.5-flash-nothinking/official-format/file-analysis",
                           "docs/allapi/Google/gemini-2.5-flash-nothinking/official-format/image-to-text",
-                          "docs/allapi/Google/gemini-2.5-flash-nothinking/official-format/text-to-text"
+                          "docs/allapi/Google/gemini-2.5-flash-nothinking/official-format/text-to-text",
+                          "docs/allapi/Google/gemini-2.5-flash-nothinking/official-format/web-search"
                         ]
                       },
                       {
@@ -945,7 +950,8 @@
                         "pages": [
                           "docs/allapi/Google/gemini-2.5-pro/official-format/file-analysis",
                           "docs/allapi/Google/gemini-2.5-pro/official-format/image-to-text",
-                          "docs/allapi/Google/gemini-2.5-pro/official-format/text-to-text"
+                          "docs/allapi/Google/gemini-2.5-pro/official-format/text-to-text",
+                          "docs/allapi/Google/gemini-2.5-pro/official-format/web-search"
                         ]
                       },
                       {
@@ -967,7 +973,8 @@
                         "pages": [
                           "docs/allapi/Google/gemini-2.5-pro-deepsearch/official-format/file-analysis",
                           "docs/allapi/Google/gemini-2.5-pro-deepsearch/official-format/image-to-text",
-                          "docs/allapi/Google/gemini-2.5-pro-deepsearch/official-format/text-to-text"
+                          "docs/allapi/Google/gemini-2.5-pro-deepsearch/official-format/text-to-text",
+                          "docs/allapi/Google/gemini-2.5-pro-deepsearch/official-format/web-search"
                         ]
                       },
                       {
@@ -1003,7 +1010,8 @@
                         "pages": [
                           "docs/allapi/Google/gemini-3-flash-preview/official-format/file-analysis",
                           "docs/allapi/Google/gemini-3-flash-preview/official-format/image-to-text",
-                          "docs/allapi/Google/gemini-3-flash-preview/official-format/text-to-text"
+                          "docs/allapi/Google/gemini-3-flash-preview/official-format/text-to-text",
+                          "docs/allapi/Google/gemini-3-flash-preview/official-format/web-search"
                         ]
                       },
                       {
@@ -1059,7 +1067,8 @@
                         "pages": [
                           "docs/allapi/Google/gemini-3-pro-preview/official-format/file-analysis",
                           "docs/allapi/Google/gemini-3-pro-preview/official-format/image-to-text",
-                          "docs/allapi/Google/gemini-3-pro-preview/official-format/text-to-text"
+                          "docs/allapi/Google/gemini-3-pro-preview/official-format/text-to-text",
+                          "docs/allapi/Google/gemini-3-pro-preview/official-format/web-search"
                         ]
                       },
                       {

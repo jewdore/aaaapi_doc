@@ -1,5 +1,7 @@
 ## Parameters
 
+## Parameters
+
 ### Path Parameters
 | Parameter | Type | Required | Default | Range | Description |
 |-----|-----|-----|-----|--------|--------------------|
@@ -235,4 +237,42 @@ Google Gemini API provides two methods for content generation, distinguished by 
 | >`image_config.aspect_ratio` | string | ❌ No | - | `1:1`<br />`2:3`<br />`3:2`<br />`3:4`<br />`4:3`<br />`9:16`<br />`16:9`<br />`21:9` | Aspect ratio of the generated image. If not specified, the model will select the appropriate aspect ratio based on the specified content. |
 | >`image_config.image_size` | string | ❌ No | - | `1k`<br />`2k`<br />`4k` | Approximate size of the generated image. If not specified, the model will use the default value of 1k. |
 
+### Web Search
 
+Web Search Grounding allows Gemini models to connect with real-time web content, providing more accurate answers with verifiable sources.
+
+#### Basic Usage
+<CodeGroup>
+```json Web Search
+{
+  "tools": [
+    {
+      "google_search": {}
+    }
+  ]
+}
+```
+
+```json Web Search with Time Range Filter
+{
+  "tools": [
+    {
+      "google_search": {
+        "timeRangeFilter": {
+          "startTime": "2024-01-01T00:00:00Z",
+          "endTime": "2024-01-01T12:00:00Z"
+        }
+      }
+    }
+  ]
+}
+```
+</CodeGroup>
+
+| Parameter | Type | Required | Default | Range / Example | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `tools` | array | ❌ No | - | - | Array of tools to use for the request. |
+| >`tools.google_search` | object | ❌ No | - | - | Configuration for Google Search Grounding. |
+| >>`tools.google_search.timeRangeFilter` | object | ❌ No | - | - | Optional time range filter for the search. |
+| >>>`tools.google_search.timeRangeFilter.startTime` | string | ❌ No | - | `2024-01-01T00:00:00Z` | Optional start time for the search in ISO 8601 format. |
+| >>>`tools.google_search.timeRangeFilter.endTime` | string | ❌ No | - | `2024-01-01T00:00:00Z` | Optional end time for the search in ISO 8601 format. |
