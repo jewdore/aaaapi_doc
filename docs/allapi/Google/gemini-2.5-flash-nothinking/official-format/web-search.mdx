@@ -30,12 +30,7 @@ curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-fl
   ],
   "tools": [
     {
-      "google_search": {
-        "timeRangeFilter": {
-          "startTime": "2024-01-01T00:00:00Z",
-          "endTime": "2024-01-01T12:00:00Z"
-        }
-      }
+      "google_search": {}
     }
   ]
 }'
@@ -65,12 +60,7 @@ payload = {
     ],
     "tools": [
         {
-            "google_search": {
-                "timeRangeFilter": {
-                    "startTime": "2024-01-01T00:00:00Z",
-                    "endTime": "2024-01-01T12:00:00Z"
-                }
-            }
+            "google_search": {}
         }
     ]
 }
@@ -100,12 +90,7 @@ const payload = {
     ],
     "tools": [
         {
-            "google_search": {
-                "timeRangeFilter": {
-                    "startTime": "2024-01-01T00:00:00Z",
-                    "endTime": "2024-01-01T12:00:00Z"
-                }
-            }
+            "google_search": {}
         }
     ]
 };
@@ -146,12 +131,7 @@ func main() {
         },
         "tools": []map[string]interface{}{
             {
-                "google_search": map[string]interface{}{
-                    "timeRangeFilter": map[string]interface{}{
-                        "startTime": "2024-01-01T00:00:00Z",
-                        "endTime": "2024-01-01T12:00:00Z"
-                    }
-                }
+                "google_search": map[string]interface{}{}
             },
         },
     }

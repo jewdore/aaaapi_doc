@@ -274,5 +274,5 @@ Web Search Grounding allows Gemini models to connect with real-time web content,
 | `tools` | array | ❌ No | - | - | Array of tools to use for the request. |
 | >`tools.google_search` | object | ❌ No | - | - | Configuration for Google Search Grounding. |
 | >>`tools.google_search.timeRangeFilter` | object | ❌ No | - | - | Optional time range filter for the search. |
-| >>>`tools.google_search.timeRangeFilter.startTime` | string | ❌ No | - | `2024-01-01T00:00:00Z` | Optional start time for the search in ISO 8601 format. |
-| >>>`tools.google_search.timeRangeFilter.endTime` | string | ❌ No | - | `2024-01-01T00:00:00Z` | Optional end time for the search in ISO 8601 format. |
+| >>>`tools.google_search.timeRangeFilter.startTime` | string | ❌ No | - | `2024-01-01T00:00:00Z` or timestamp | Optional start time for the search in ISO 8601 format or timestamp. |
+| >>>`tools.google_search.timeRangeFilter.endTime` | string | ❌ No | - | `2024-01-01T00:00:00Z` or timestamp | Optional end time for the search in ISO 8601 format or timestamp. Note: For Gemini 3 models, the time span cannot exceed 24 hours. |
