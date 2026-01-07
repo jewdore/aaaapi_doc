@@ -194,12 +194,21 @@ Google Gemini API provides two methods for content generation, distinguished by 
 
 ### Thinking Config
 <CodeGroup>
-```json Thinking configuration
+```json Thinking configuration gemini-2*
 {
   "generation_config": {
     "thinking_config": {
       "include_thoughts": true,
-      "thinking_budget": 1000,
+      "thinking_budget": 1000
+    }
+  }
+}
+```
+```json Thinking configuration gemini-3*
+{
+  "generation_config": {
+    "thinking_config": {
+      "include_thoughts": true,
       "thinking_level": "HIGH"
     }
   }
@@ -213,8 +222,8 @@ Google Gemini API provides two methods for content generation, distinguished by 
 |---------------|------|----------|---------|-----------------|-------------|
 | `thinking_config` | object | ❌ No | - | - | Configuration for thinking functionality. |
 | >`thinking_config.include_thoughts` | boolean | ❌ No | - | - | Indicates whether to include thoughts in the response. If true, thoughts are only returned when thinking is enabled. |
-| >`thinking_config.thinking_budget` | integer | ❌ No | - | - | Specifies the maximum number of tokens for generated thoughts. |
-| >`thinking_config.thinking_level` | enum | ❌ No | `THINKING_LEVEL_UNSPECIFIED` | `THINKING_LEVEL_UNSPECIFIED`<br />`HIGH`<br />`LOW` | Controls the maximum depth of the model's internal reasoning process before generating a response. If not specified, the default is HIGH. Recommended for Gemini 3 or newer models. Using it with older models may cause errors. |  
+| >`thinking_config.thinking_budget` | integer | ❌ No | - | 0-24576 | Specifies the maximum number of tokens for generated thoughts. |
+| >`thinking_config.thinking_level` | enum | ❌ No | `high` | `low`<br />`high`<br />`medium`<br />`minimal` | Controls the maximum depth of the model's internal reasoning process before generating a response. If not specified, the default is HIGH. Recommended for Gemini 3 or newer models. Using it with older models may cause errors. |  
 
 
 ### Image Config
