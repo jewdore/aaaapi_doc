@@ -1,8 +1,8 @@
 ---
-title: 'gemini-2.5-flash-image-preview (Text to Image (Chat))'
-sidebarTitle: 'Text to Image (Chat)'
+title: 'gemini-3-pro-preview-11-2025 (Text to Text)'
+sidebarTitle: 'Text to Text'
 api: "POST /v1/chat/completions"
-description: "Generate images from text prompts using Gemini Flash Image Preview model in chat format"
+description: "Generate text responses using Gemini 3 Pro Preview model through OpenAI-compatible chat completion endpoint"
 mode: 'wide'
 ---
 
@@ -18,14 +18,14 @@ curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "model": "gemini-2.5-flash-image-preview",
+  "model": "gemini-3-pro-preview-11-2025",
   "messages": [
     {
       "role": "user",
       "content": [
         {
           "type": "text",
-          "text": "Put a hat on the cat"
+          "text": "who are you"
         }
       ]
     }
@@ -42,14 +42,14 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="gemini-2.5-flash-image-preview",
+    model="gemini-3-pro-preview-11-2025",
     messages=[
         {
             "role": "user",
             "content": [
                 {
                     "type": "text",
-                    "text": "Put a hat on the cat"
+                    "text": "who are you"
                 }
             ]
         }
@@ -60,30 +60,30 @@ print(response)
 ```
 
 ```javascript JavaScript
-const OpenAI = require('openai');
+import OpenAI from 'openai';
 
 const client = new OpenAI({
-    apiKey: 'GPTPROTO_API_KEY',
-    baseURL: 'https://gptproto.com/v1'
+  apiKey: 'GPTPROTO_API_KEY',
+  baseURL: 'https://gptproto.com/v1'
 });
 
 async function main() {
-    const response = await client.chat.completions.create({
-        model: 'gemini-2.5-flash-image-preview',
-        messages: [
-            {
-                role: 'user',
-                content: [
-                    {
-                        type: 'text',
-                        text: 'Put a hat on the cat'
-                    }
-                ]
-            }
+  const response = await client.chat.completions.create({
+    model: 'gemini-3-pro-preview-11-2025',
+    messages: [
+      {
+        role: 'user',
+        content: [
+          {
+            type: 'text',
+            text: 'who are you'
+          }
         ]
-    });
-    
-    console.log(response);
+      }
+    ]
+  });
+
+  console.log(response);
 }
 
 main();
@@ -106,16 +106,11 @@ func main() {
     resp, err := client.CreateChatCompletion(
         context.Background(),
         openai.ChatCompletionRequest{
-            Model: "gemini-2.5-flash-image-preview",
+            Model: "gemini-3-pro-preview-11-2025",
             Messages: []openai.ChatCompletionMessage{
                 {
                     Role: openai.ChatMessageRoleUser,
-                    MultiContent: []openai.ChatMessagePart{
-                        {
-                            Type: openai.ChatMessagePartTypeText,
-                            Text: "Put a hat on the cat",
-                        },
-                    },
+                    Content: "who are you",
                 },
             },
         },
@@ -139,34 +134,34 @@ func main() {
             "finish_reason": "stop",
             "index": 0,
             "message": {
-                "content": "![image](data:image/jpeg;base64,*****)",
+                "content": "I am Gemini, a large language model trained by Google.",
                 "role": "assistant"
             }
         }
     ],
-    "created": 1766481392,
-    "id": "chatcmpl-**",
-    "model": "gemini-2.5-flash-image-preview",
+    "created": 1766411193,
+    "id": "chatcmpl-***",
+    "model": "gemini-3-pro-preview-11-2025",
     "object": "chat.completion",
     "usage": {
-        "completion_tokens": 1319,
+        "completion_tokens": 611,
         "completion_tokens_details": {
             "accepted_prediction_tokens": 0,
             "audio_tokens": 0,
-            "reasoning_tokens": 116,
+            "reasoning_tokens": 599,
             "rejected_prediction_tokens": 0
         },
-        "prompt_tokens": 265,
+        "prompt_tokens": 3,
         "prompt_tokens_details": {
             "audio_tokens": 0,
             "cached_tokens": 0
         },
-        "total_tokens": 1584
+        "total_tokens": 614
     }
 }
 ```
 
-import Parameters from '/snippets/parameters/openai-format/Google/imagemodels-chat.mdx';
+import Parameters from '/snippets/parameters/openai-format/common-chat-format.mdx';
 
 <Parameters/>
 

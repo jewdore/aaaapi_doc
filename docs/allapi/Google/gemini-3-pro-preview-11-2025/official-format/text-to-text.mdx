@@ -1,0 +1,184 @@
+---
+title: 'gemini-3-pro-preview-11-2025 (Text to Text)'
+sidebarTitle: 'Text to Text'
+api: "POST /v1beta/models/gemini-3-pro-preview-11-2025:generateContent"
+description: "Generate text content using Google's Gemini 3 Pro Preview model"
+mode: 'wide'
+---
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+## Initiate Request
+<CodeGroup>
+
+```bash cURL
+curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "who are you?"
+        }
+      ]
+    }
+  ]
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent"
+
+headers = {
+    "Authorization": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
+}
+
+payload = {
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "who are you?"
+                }
+            ]
+        }
+    ]
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
+```
+
+```javascript JavaScript
+const axios = require('axios');
+
+const url = 'https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent';
+
+const headers = {
+    'Authorization': 'GPTPROTO_API_KEY',
+    'Content-Type': 'application/json'
+};
+
+const data = {
+    contents: [
+        {
+            role: 'user',
+            parts: [
+                {
+                    text: 'who are you?'
+                }
+            ]
+        }
+    ]
+};
+
+axios.post(url, data, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent"
+    
+    payload := map[string]interface{}{
+        "contents": []map[string]interface{}{
+            {
+                "role": "user",
+                "parts": []map[string]interface{}{
+                    {
+                        "text": "who are you?",
+                    },
+                },
+            },
+        },
+    }
+    
+    jsonData, _ := json.Marshal(payload)
+    
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+    
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+    
+    var result map[string]interface{}
+    json.NewDecoder(resp.Body).Decode(&result)
+    fmt.Println(result)
+}
+```
+</CodeGroup>
+
+## Response Example
+```json
+{
+    "candidates": [
+        {
+            "content": {
+                "role": "model",
+                "parts": [
+                    {
+                        "text": "I am Gemini, a large language model built by Google.",
+                        "thoughtSignature": "CvUOAY8***"
+                    }
+                ]
+            },
+            "finishReason": "STOP"
+        }
+    ],
+    "usageMetadata": {
+        "promptTokenCount": 4,
+        "candidatesTokenCount": 12,
+        "totalTokenCount": 508,
+        "trafficType": "ON_DEMAND",
+        "promptTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 4
+            }
+        ],
+        "candidatesTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 12
+            }
+        ],
+        "thoughtsTokenCount": 492
+    },
+    "modelVersion": "gemini-3-pro-preview-11-2025",
+    "createTime": "2025-12-22T13:15:39.906733Z",
+    "responseId": "e0RJae2rN46R998P096OmQU"
+}
+```
+
+import Parameters from '/snippets/parameters/official-format/Google/chatmodel.mdx';
+
+<Parameters/>
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>
