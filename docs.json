@@ -2288,6 +2288,18 @@
                 "group": "Kling",
                 "pages": [
                   {
+                    "group": "kling-image-o1",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Kling/kling-image-o1/gptproto-format/image-to-image",
+                          "docs/allapi/Kling/kling-image-o1/gptproto-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "kling-lipsync",
                     "pages": [
                       {

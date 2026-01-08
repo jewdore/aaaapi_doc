@@ -69,7 +69,11 @@ func main() {
 }
 ```
 </CodeGroup>
+After submitting your prediction request, the response will contain the id you need.  
+You can find it in either:
 
+- `data.id` – the unique identifier of the prediction  
+- `data.urls[0].get` – a ready-to-use GET URL that already embeds the id
 ## Response Example
 ```json
 {
@@ -93,8 +97,3 @@ func main() {
     "code": 200
 }
 ```
-After submitting your prediction request, the response will contain the id you need.  
-You can find it in either:
-
-- `data.id` – the unique identifier of the prediction  
-- `data.urls[0].get` – a ready-to-use GET URL that already embeds the id
