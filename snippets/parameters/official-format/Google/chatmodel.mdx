@@ -170,7 +170,7 @@ Google Gemini API provides two methods for content generation, distinguished by 
 <CodeGroup>
 ```json Generation configuration
 {
-  "generation_config": {
+  "generationConfig": {
     "temperature": 0.7,
     "top_p": 0.95,
     "top_k": 40,
@@ -196,20 +196,20 @@ Google Gemini API provides two methods for content generation, distinguished by 
 <CodeGroup>
 ```json Thinking configuration gemini-2*
 {
-  "generation_config": {
-    "thinking_config": {
-      "include_thoughts": true,
-      "thinking_budget": 1000
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingBudget": 1000
     }
   }
 }
 ```
 ```json Thinking configuration gemini-3*
 {
-  "generation_config": {
-    "thinking_config": {
-      "include_thoughts": true,
-      "thinking_level": "HIGH"
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingLevel": "HIGH"
     }
   }
 }
@@ -230,10 +230,10 @@ Google Gemini API provides two methods for content generation, distinguished by 
 <CodeGroup>
 ```json Image configuration
 {
-  "generation_config": {
-    "image_config": {
-      "aspect_ratio": "1:1",
-      "image_size": "1k"
+  "generationConfig": {
+    "imageConfig": {
+      "aspectRatio": "1:1",
+      "imageSize": "1k"
     }
   }
 }
