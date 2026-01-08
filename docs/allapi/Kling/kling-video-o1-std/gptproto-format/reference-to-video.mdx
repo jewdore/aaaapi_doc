@@ -1,0 +1,143 @@
+---
+title: 'kling-video-o1-std (Reference To Video)'
+sidebarTitle: 'Reference To Video'
+api: 'POST http://gptproto.com/api/v3/kwaivgi/kling-video-o1-std/reference-to-video'
+description: ''
+mode: 'wide'
+---
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+
+## Initiate Request
+<CodeGroup>
+```bash cURL
+curl --location 'http://gptproto.com/api/v3/kwaivgi/kling-video-o1-std/reference-to-video' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "prompt": "the girl smile",
+  "images": [
+    "https://oss.gptproto.com/ai/api89e28146-5cc7-4f31-98a0-2d73f17266f7.png"
+  ],
+  "duration": 3
+}'
+
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "prompt": "the girl smile",
+  "images": [
+    "https://oss.gptproto.com/ai/api89e28146-5cc7-4f31-98a0-2d73f17266f7.png"
+  ],
+  "duration": 3
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'http://gptproto.com/api/v3/kwaivgi/kling-video-o1-std/reference-to-video',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
+```python Python
+import requests
+import json
+
+url = "http://gptproto.com/api/v3/kwaivgi/kling-video-o1-std/reference-to-video"
+
+payload = json.dumps({
+  "prompt": "the girl smile",
+  "images": [
+    "https://oss.gptproto.com/ai/api89e28146-5cc7-4f31-98a0-2d73f17266f7.png"
+  ],
+  "duration": 3
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
+```go Go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
+)
+
+func main() {
+
+  url := "http://gptproto.com/api/v3/kwaivgi/kling-video-o1-std/reference-to-video"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "prompt": "the girl smile",
+  "images": [
+    "https://oss.gptproto.com/ai/api89e28146-5cc7-4f31-98a0-2d73f17266f7.png"
+  ],
+  "duration": 3
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+
+```
+</CodeGroup>
+
+import Parameters from '/snippets/Kling/gptproto-format/king-video-o.mdx';
+
+<Parameters/>
+
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>

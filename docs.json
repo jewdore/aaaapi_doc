@@ -958,7 +958,6 @@
                   },
                   {
                     "group": "gemini-2.5-pro-deepsearch",
-                    "hidden": true,
                     "pages": [
                       {
                         "group": "official-format",
@@ -977,7 +976,8 @@
                           "docs/allapi/Google/gemini-2.5-pro-deepsearch/openai-format/text-to-text"
                         ]
                       }
-                    ]
+                    ],
+                    "hidden": true
                   },
                   {
                     "group": "gemini-2.5-pro-preview-05-06",
@@ -2358,6 +2358,34 @@
                           "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/image-to-video",
                           "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/query-task",
                           "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "kling-video-o1-pro",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Kling/kling-video-o1-pro/gptproto-format/image-to-video",
+                          "docs/allapi/Kling/kling-video-o1-pro/gptproto-format/reference-to-video",
+                          "docs/allapi/Kling/kling-video-o1-pro/gptproto-format/text-to-video",
+                          "docs/allapi/Kling/kling-video-o1-pro/gptproto-format/video-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "kling-video-o1-std",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Kling/kling-video-o1-std/gptproto-format/image-to-video",
+                          "docs/allapi/Kling/kling-video-o1-std/gptproto-format/reference-to-video",
+                          "docs/allapi/Kling/kling-video-o1-std/gptproto-format/text-to-video",
+                          "docs/allapi/Kling/kling-video-o1-std/gptproto-format/video-to-video"
                         ]
                       }
                     ]

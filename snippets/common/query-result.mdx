@@ -1,12 +1,6 @@
 ## Query Result
 If the request that generated your content includes the parameter `enable_sync_mode` set to `true` (some models do not support this parameter, but you still need to query the result by id), you **must** call the Query Result endpoint to retrieve the final output.
 
-After submitting your prediction request, the response will contain the id you need.  
-You can find it in either:
-
-- `data.id` – the unique identifier of the prediction  
-- `data.urls[0].get` – a ready-to-use GET URL that already embeds the id
-
 <CodeGroup>
 
 ```bash cURL
@@ -99,3 +93,8 @@ func main() {
     "code": 200
 }
 ```
+After submitting your prediction request, the response will contain the id you need.  
+You can find it in either:
+
+- `data.id` – the unique identifier of the prediction  
+- `data.urls[0].get` – a ready-to-use GET URL that already embeds the id
