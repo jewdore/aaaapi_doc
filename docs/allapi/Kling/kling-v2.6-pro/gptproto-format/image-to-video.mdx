@@ -1,7 +1,7 @@
 ---
-title: 'kling-v2.5-turbo-std (Text To Video)'
-sidebarTitle: 'Text To Video'
-api: 'POST http://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-std/text-to-video'
+title: 'kling-v2.6-pro (Image To Video)'
+sidebarTitle: 'Image To Video'
+api: 'POST http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/image-to-video'
 description: ''
 mode: 'wide'
 ---
@@ -14,13 +14,20 @@ import Authentication from '/snippets/common/authentication.mdx';
 ## Initiate Request
 <CodeGroup>
 ```bash cURL
-curl --location 'http://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-std/text-to-video' \
+curl --location 'http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/image-to-video' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
-  "prompt": "a cat",
+  "prompt": "<<<voice_1>>>say：“hi! welcome to gptproto”",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "last_image": "",
   "negative_prompt": "",
-  "aspect_ratio": "9:16",
+  "sound": true,
+  "voice_list": [
+    {
+      "voice_id": "837076832956186666"
+    }
+  ],
   "duration": 5
 }'
 
@@ -28,16 +35,23 @@ curl --location 'http://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-std/text-to
 ```javascript JavaScript
 const axios = require('axios');
 let data = JSON.stringify({
-  "prompt": "a cat",
+  "prompt": "<<<voice_1>>>say：“hi! welcome to gptproto”",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "last_image": "",
   "negative_prompt": "",
-  "aspect_ratio": "9:16",
+  "sound": true,
+  "voice_list": [
+    {
+      "voice_id": "837076832956186666"
+    }
+  ],
   "duration": 5
 });
 
 let config = {
   method: 'post',
   maxBodyLength: Infinity,
-  url: 'http://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-std/text-to-video',
+  url: 'http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/image-to-video',
   headers: { 
     'Authorization': 'GPTPROTO_API_KEY', 
     'Content-Type': 'application/json'
@@ -59,12 +73,19 @@ axios.request(config)
 import requests
 import json
 
-url = "http://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-std/text-to-video"
+url = "http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/image-to-video"
 
 payload = json.dumps({
-  "prompt": "a cat",
+  "prompt": "<<<voice_1>>>say：“hi! welcome to gptproto”",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "last_image": "",
   "negative_prompt": "",
-  "aspect_ratio": "9:16",
+  "sound": True,
+  "voice_list": [
+    {
+      "voice_id": "837076832956186666"
+    }
+  ],
   "duration": 5
 })
 headers = {
@@ -90,13 +111,20 @@ import (
 
 func main() {
 
-  url := "http://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-std/text-to-video"
+  url := "http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/image-to-video"
   method := "POST"
 
   payload := strings.NewReader(`{
-  "prompt": "a cat",
+  "prompt": "<<<voice_1>>>say：“hi! welcome to gptproto”",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "last_image": "",
   "negative_prompt": "",
-  "aspect_ratio": "9:16",
+  "sound": true,
+  "voice_list": [
+    {
+      "voice_id": "837076832956186666"
+    }
+  ],
   "duration": 5
 }`)
 

@@ -2313,37 +2313,37 @@
                     ]
                   },
                   {
-                    "group": "kling-v2.1-i2v-master",
+                    "group": "kling-v2.1-master",
                     "pages": [
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/Kling/kling-v2.1-i2v-master/gptproto-format/image-to-video",
-                          "docs/api/Kling/kling-v2.1-i2v-master/gptproto-format/query-task"
+                          "docs/allapi/Kling/kling-v2.1-master/gptproto-format/image-to-video",
+                          "docs/allapi/Kling/kling-v2.1-master/gptproto-format/text-to-video"
                         ]
                       }
                     ]
                   },
                   {
-                    "group": "kling-v2.1-i2v-pro",
+                    "group": "kling-v2.1-pro",
                     "pages": [
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/Kling/kling-v2.1-i2v-pro/gptproto-format/image-to-video",
-                          "docs/api/Kling/kling-v2.1-i2v-pro/gptproto-format/query-task"
+                          "docs/allapi/Kling/kling-v2.1-pro/gptproto-format/image-to-video",
+                          "docs/allapi/Kling/kling-v2.1-pro/gptproto-format/text-to-video"
                         ]
                       }
                     ]
                   },
                   {
-                    "group": "kling-v2.1-i2v-standard",
+                    "group": "kling-v2.1-standard",
                     "pages": [
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/Kling/kling-v2.1-i2v-standard/gptproto-format/image-to-video",
-                          "docs/api/Kling/kling-v2.1-i2v-standard/gptproto-format/query-task"
+                          "docs/allapi/Kling/kling-v2.1-standard/gptproto-format/image-to-video",
+                          "docs/allapi/Kling/kling-v2.1-standard/gptproto-format/text-to-video"
                         ]
                       }
                     ]
@@ -2354,9 +2354,8 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/Kling/kling-v2.5-turbo-pro/gptproto-format/image-to-video",
-                          "docs/api/Kling/kling-v2.5-turbo-pro/gptproto-format/query-task",
-                          "docs/api/Kling/kling-v2.5-turbo-pro/gptproto-format/text-to-video"
+                          "docs/allapi/Kling/kling-v2.5-turbo-pro/gptproto-format/image-to-video",
+                          "docs/allapi/Kling/kling-v2.5-turbo-pro/gptproto-format/text-to-video"
                         ]
                       }
                     ]
@@ -2370,6 +2369,18 @@
                           "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/image-to-video",
                           "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/query-task",
                           "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "kling-v2.6-pro",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Kling/kling-v2.6-pro/gptproto-format/image-to-video",
+                          "docs/allapi/Kling/kling-v2.6-pro/gptproto-format/text-to-video"
                         ]
                       }
                     ]
