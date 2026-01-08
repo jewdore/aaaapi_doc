@@ -220,10 +220,10 @@ Google Gemini API provides two methods for content generation, distinguished by 
 
 | parameter | Type | Required | Default | Range / Example | Description |
 |---------------|------|----------|---------|-----------------|-------------|
-| `thinking_config` | object | ❌ No | - | - | Configuration for thinking functionality. |
-| >`thinking_config.include_thoughts` | boolean | ❌ No | - | - | Indicates whether to include thoughts in the response. If true, thoughts are only returned when thinking is enabled. |
-| >`thinking_config.thinking_budget` | integer | ❌ No | - | 0-24576 | Specifies the maximum number of tokens for generated thoughts. |
-| >`thinking_config.thinking_level` | enum | ❌ No | `high` | `low`<br />`high`<br />`medium`<br />`minimal` | Controls the maximum depth of the model's internal reasoning process before generating a response. If not specified, the default is HIGH. Recommended for Gemini 3 or newer models. Using it with older models may cause errors. |  
+| `thinkingConfig` | object | ❌ No | - | - | Configuration for thinking functionality. |
+| >`thinkingConfig.includeThoughts` | boolean | ❌ No | - | - | Indicates whether to include thoughts in the response. If true, thoughts are only returned when thinking is enabled. |
+| >`thinkingConfig.thinkingBudget` | integer | ❌ No | - | 0-24576 | Specifies the maximum number of tokens for generated thoughts. |
+| >`thinkingConfig.thinkingLevel` | enum | ❌ No | `high` | `low`<br />`high`<br />`medium`<br />`minimal` | Controls the maximum depth of the model's internal reasoning process before generating a response. If not specified, the default is HIGH. Recommended for Gemini 3 or newer models. Using it with older models may cause errors. |  
 
 
 ### Image Config
@@ -242,9 +242,9 @@ Google Gemini API provides two methods for content generation, distinguished by 
 
 | parameter | Type | Required | Default | Range / Example | Description |
 |---------------|------|----------|---------|-----------------|-------------|
-| `image_config` | object | ❌ No | - | - | Configuration for image generation. |
-| >`image_config.aspect_ratio` | string | ❌ No | - | `1:1`<br />`2:3`<br />`3:2`<br />`3:4`<br />`4:3`<br />`9:16`<br />`16:9`<br />`21:9` | Aspect ratio of the generated image. If not specified, the model will select the appropriate aspect ratio based on the specified content. |
-| >`image_config.image_size` | string | ❌ No | - | `1k`<br />`2k`<br />`4k` | Approximate size of the generated image. If not specified, the model will use the default value of 1k. |
+| `imageConfig` | object | ❌ No | - | - | Configuration for image generation. |
+| >`imageConfig.aspectRatio` | string | ❌ No | - | `1:1`<br />`2:3`<br />`3:2`<br />`3:4`<br />`4:3`<br />`9:16`<br />`16:9`<br />`21:9` | Aspect ratio of the generated image. If not specified, the model will select the appropriate aspect ratio based on the specified content. |
+| >`imageConfig.imageSize` | string | ❌ No | - | `1k`<br />`2k`<br />`4k` | Approximate size of the generated image. If not specified, the model will use the default value of 1k. |
 
 ### Web Search
 
