@@ -2367,7 +2367,6 @@
                         "group": "gptproto-format",
                         "pages": [
                           "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/image-to-video",
-                          "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/query-task",
                           "docs/allapi/Kling/kling-v2.5-turbo-std/gptproto-format/text-to-video"
                         ]
                       }

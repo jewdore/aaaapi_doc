@@ -3,3 +3,14 @@ import QueryResult from '/snippets/common/query-result.mdx';
 <QueryResult/>
 
 
+## Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `prompt` | string | ✅ Yes | - | - | The positive prompt for the generation. Must not exceed 2,500 characters.|
+| `image` | string | ❌ No | - | - | Source image for image-to-video generation. |
+| `last_image` | string | ❌ No | - | - | last_frame is the last frame. |
+| `images` | array | ❌ No | - | - | Including reference images of the element, scene, style, etc. Max 10 (reduced to 4 when video is provided). |
+| `video` | string | ❌ No | - | - | The video URL for reference-to-video generation. |
+| `aspect_ratio` | string | ❌ No | `16:9` | `16:9, 1:1, 9:16` | The aspect ratio of the generated video. **This parameter is required when the image-to-video or video editing features are not used.** |
+| `duration` | integer | ❌ No | `5` | `3, 4, 5, 6, 7, 8, 9, 10` or <br />`5, 10` | The duration of the generated media in seconds. When using text generated videos, and first frame image generated videos, only 5 and 10 seconds are supported. |
+| `keep_original_sound` | boolean | ❌ No | `true` | `true, false` | Select whether to keep the video original sound through the parameter. |

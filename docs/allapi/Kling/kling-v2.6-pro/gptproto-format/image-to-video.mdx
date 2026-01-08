@@ -18,7 +18,7 @@ curl --location 'http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/image-to-vide
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
-  "prompt": "<<<voice_1>>>say：“hi! welcome to gptproto”",
+  "prompt": "cat say：“hi! welcome to gptproto”",
   "image": "https://tos.gptproto.com/resource/cat.png",
   "last_image": "",
   "negative_prompt": "",
@@ -35,7 +35,7 @@ curl --location 'http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/image-to-vide
 ```javascript JavaScript
 const axios = require('axios');
 let data = JSON.stringify({
-  "prompt": "<<<voice_1>>>say：“hi! welcome to gptproto”",
+  "prompt": "cat say：“hi! welcome to gptproto”",
   "image": "https://tos.gptproto.com/resource/cat.png",
   "last_image": "",
   "negative_prompt": "",
@@ -76,7 +76,7 @@ import json
 url = "http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/image-to-video"
 
 payload = json.dumps({
-  "prompt": "<<<voice_1>>>say：“hi! welcome to gptproto”",
+  "prompt": "cat say：“hi! welcome to gptproto”",
   "image": "https://tos.gptproto.com/resource/cat.png",
   "last_image": "",
   "negative_prompt": "",
@@ -115,7 +115,7 @@ func main() {
   method := "POST"
 
   payload := strings.NewReader(`{
-  "prompt": "<<<voice_1>>>say：“hi! welcome to gptproto”",
+  "prompt": "cat say：“hi! welcome to gptproto”",
   "image": "https://tos.gptproto.com/resource/cat.png",
   "last_image": "",
   "negative_prompt": "",
