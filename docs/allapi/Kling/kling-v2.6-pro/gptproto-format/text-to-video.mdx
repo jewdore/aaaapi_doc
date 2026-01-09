@@ -1,7 +1,7 @@
 ---
 title: 'kling-v2.6-pro (Text To Video)'
 sidebarTitle: 'Text To Video'
-api: 'POST http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/text-to-video'
+api: 'POST https://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/text-to-video'
 description: ''
 mode: 'wide'
 ---
@@ -14,7 +14,7 @@ import Authentication from '/snippets/common/authentication.mdx';
 ## Initiate Request
 <CodeGroup>
 ```bash cURL
-curl --location 'http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/text-to-video' \
+curl --location 'https://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/text-to-video' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -39,7 +39,7 @@ let data = JSON.stringify({
 let config = {
   method: 'post',
   maxBodyLength: Infinity,
-  url: 'http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/text-to-video',
+  url: 'https://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/text-to-video',
   headers: { 
     'Authorization': 'GPTPROTO_API_KEY', 
     'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ axios.request(config)
 import requests
 import json
 
-url = "http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/text-to-video"
+url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/text-to-video"
 
 payload = json.dumps({
   "prompt": "a cat",
@@ -93,7 +93,7 @@ import (
 
 func main() {
 
-  url := "http://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/text-to-video"
+  url := "https://gptproto.com/api/v3/kwaivgi/kling-v2.6-pro/text-to-video"
   method := "POST"
 
   payload := strings.NewReader(`{
