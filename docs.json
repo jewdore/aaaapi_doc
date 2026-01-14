@@ -2449,14 +2449,73 @@
                 "group": "MiniMax",
                 "pages": [
                   {
-                    "group": "hailuo-02",
+                    "group": "hailuo-02-fast",
                     "pages": [
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/MiniMax/hailuo-02/gptproto-format/firstlast-frame",
-                          "docs/api/MiniMax/hailuo-02/gptproto-format/image-to-video",
-                          "docs/api/MiniMax/hailuo-02/gptproto-format/query-task"
+                          "docs/allapi/MiniMax/hailuo-02-fast/gptproto-format/image-to-video",
+                          "docs/allapi/MiniMax/hailuo-02-fast/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "hailuo-02-pro",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/MiniMax/hailuo-02-pro/gptproto-format/image-to-video",
+                          "docs/allapi/MiniMax/hailuo-02-pro/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "hailuo-02-standard",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/MiniMax/hailuo-02-standard/gptproto-format/image-to-video",
+                          "docs/allapi/MiniMax/hailuo-02-standard/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "hailuo-2.3-fast",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/MiniMax/hailuo-2.3-fast/gptproto-format/image-to-video",
+                          "docs/allapi/MiniMax/hailuo-2.3-fast/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "hailuo-2.3-pro",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/MiniMax/hailuo-2.3-pro/gptproto-format/image-to-video",
+                          "docs/allapi/MiniMax/hailuo-2.3-pro/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "hailuo-2.3-standard",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/MiniMax/hailuo-2.3-standard/gptproto-format/image-to-video",
+                          "docs/allapi/MiniMax/hailuo-2.3-standard/gptproto-format/text-to-video"
                         ]
                       }
                     ]
