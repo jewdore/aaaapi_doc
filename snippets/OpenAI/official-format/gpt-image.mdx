@@ -1,5 +1,4 @@
 ## Parameters
-
 ### Core Parameters
 | Parameter | Type | Required | Default | Range | Description |
 |-----|-----|-----|-----|--------|--------------------|
@@ -16,4 +15,27 @@
 | `quality` | string | ❌ No | `auto` | `high`<br />`medium`<br />`low` | The quality of the generated images. Must be one of low, high or medium. Defaults to auto. |
 | `background` | string | ❌ No | `auto` | `transparent`<br />`opaque`<br />`auto` | Allows to set transparency for the background of the generated image(s). Must be one of transparent, opaque or auto (default value). When auto is used, the model will automatically determine the best background for the image. |
 
-
+## Response Example
+```json
+{
+  "created": 1768372402,
+  "background": "opaque",
+  "data": [
+    {
+      "b64_json": "B64_DATA"
+    }
+  ],
+  "output_format": "png",
+  "quality": "high",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 222,
+    "input_tokens_details": {
+      "image_tokens": 194,
+      "text_tokens": 28
+    },
+    "output_tokens": 4160,
+    "total_tokens": 4382
+  }
+}
+```

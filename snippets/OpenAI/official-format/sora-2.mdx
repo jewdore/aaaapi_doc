@@ -1,28 +1,9 @@
-## Response Example
-```json
-{
-  "id": "video_123",
-  "object": "video",
-  "model": "sora-2",
-  "status": "queued",
-  "progress": 0,
-  "created_at": 1712697600,
-  "size": "1024x1792",
-  "seconds": "8",
-  "quality": "standard"
-}
-```
-## Sora 2 Query Interface
-### Overview
-The Sora 2 API provides two endpoints for querying video generation results:
-1. **Task Generation Status Query**: Retrieve detailed information about the video generation task
-2. **Video Content Output**: Directly output the video content
 
+## Query result
 ### How to obtain the id
-
 After submitting your video generation request to `/v1/videos`, the response will contain the `id` you need for querying results.
 
-## 1. Task Generation Status Query
+### Query Task Status 
 Retrieve detailed information about the video generation task, including status, progress, and video URL.
 
 <CodeGroup>
@@ -90,8 +71,7 @@ func main() {
 ```
 </CodeGroup>
 
-### Response
-
+**Query Task Status Response:**
 ```json
 {
     "id": "video_****",
@@ -108,7 +88,7 @@ func main() {
 }
 ```
 
-## 2. Video Content Output
+### Query Video Content
 Directly output the video content for immediate use or download.
 
 <CodeGroup>
@@ -205,6 +185,20 @@ func main() {
 ```
 </CodeGroup>
 
+**Query Video Content Response:**
+```json
+{
+  "id": "video_123",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712697600,
+  "size": "1024x1792",
+  "seconds": "8",
+  "quality": "standard"
+}
+```
 
 ## Parameters
 | Parameter | Type | Required | Default | Range | Description |
@@ -214,3 +208,4 @@ func main() {
 | `model` | string | ❌ No | `sora-2` | `sora-2`<br />`sora-2-pro` | The video generation model to use. Defaults to `sora-2`. |
 | `seconds` | string | ❌ No | `4` | `4`<br />`8`<br />`12` | Clip duration in seconds. Defaults to 4 seconds. |
 | `size` | string | ❌ No | `720x1280` | `720x1280`<br />`1280x720`<br />`1024x1792`<br />`1792x1024` | Output resolution formatted as width x height. Defaults to 720x1280. |
+
