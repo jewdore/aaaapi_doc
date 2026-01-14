@@ -15,7 +15,7 @@ This endpoint allows you to upload files for use with Google's Generative AI mod
 <CodeGroup>
 
 ```bash cURL
-curl --location 'https://api.gptproto.com/v1beta/files' \
+curl --location 'https://api.gptproto.com/upload/v1beta/files' \
   --header 'x-goog-api-key: YOUR_API_KEY' \
   --form 'file=@"/path/to/your/file.pdf"'
 ```
@@ -23,7 +23,7 @@ curl --location 'https://api.gptproto.com/v1beta/files' \
 ```python Python
 import requests
 
-url = "https://api.gptproto.com/v1beta/files"
+url = "https://api.gptproto.com/upload/v1beta/files"
 headers = {
     "x-goog-api-key": "YOUR_API_KEY"
 }
@@ -38,7 +38,7 @@ print(result)
 ```
 
 ```javascript JavaScript
-const url = "https://api.gptproto.com/v1beta/files";
+const url = "https://api.gptproto.com/upload/v1beta/files";
 const formData = new FormData();
 formData.append("file", fileInput.files[0]);
 
@@ -67,7 +67,7 @@ import (
 )
 
 func main() {
-    url := "https://api.gptproto.com/v1beta/files"
+    url := "https://api.gptproto.com/upload/v1beta/files"
 
     file, _ := os.Open("/path/to/your/file.pdf")
     defer file.Close()

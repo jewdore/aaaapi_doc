@@ -1,5 +1,4 @@
 ## Parameters
-
 ### Core Parameters
 | Parameter | Type | Required | Default | Range | Description |
 |-----|-----|-----|-----|--------|--------------------|
@@ -18,3 +17,28 @@
 |-----|-----|-----|-----|--------|--------------------|
 | `max_completion_tokens` | integer / null | ❌ No | - | - | An upper bound for the number of tokens that can be generated for a completion, including visible output tokens and reasoning tokens. |
 | `stream` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to stream the response back incrementally. Defaults to false. |
+
+## Response Example
+```json
+{
+  "id": "chatcmpl-abc123",
+  "object": "chat.completion",
+  "created": 1699896916,
+  "model": "gpt-5-chat",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "The image shows a wooden boardwalk path extending through a lush green grassland."
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1250,
+    "completion_tokens": 89,
+    "total_tokens": 1339
+  }
+}
+```

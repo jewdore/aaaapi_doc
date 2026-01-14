@@ -178,7 +178,7 @@ curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview
             "generatedSamples": [
                 {
                     "video": {
-                        "uri": "https://api.gptproto.com/v1beta/files/abc:download?alt=media"
+                        "uri": "https://api.gptproto.com/upload/v1beta/files/abc:download?alt=media"
                     }
                 }
             ]
@@ -189,7 +189,7 @@ curl --location 'https://api.gptproto.com/v1beta/models/veo-3.1-generate-preview
 ```
 
 ```bash 3、Download Video
-curl --location 'https://api.gptproto.com/v1beta/files/abc:download?alt=media' \
+curl --location 'https://api.gptproto.com/upload/v1beta/files/abc:download?alt=media' \
   --header 'x-goog-api-key: YOUR_API_KEY'
 ```
 

@@ -1,5 +1,4 @@
 ## Parameters
-
 ### Core Parameters
 | Parameter | Type | Required | Default | Range | Description |
 |-----|-----|-----|-----|--------|--------------------|
@@ -115,3 +114,19 @@ Constrains effort on reasoning for reasoning models. Currently supported values 
 - All models before gpt-5.1 default to medium reasoning effort, and do not support none.
 - The gpt-5-pro model defaults to (and only supports) high reasoning effort.
 - xhigh is supported for all models after gpt-5.1-codex-max.
+
+## Response Example
+```json
+{
+  "id": "resp-abc123",
+  "object": "response",
+  "created": 1699896916,
+  "model": "gpt-4.1-2025-04-14",
+  "output": "# Document Analysis Summary\n\n## Key Information:\n- Document Type: Financial Report Q3 2024\n- Total Pages: 45\n- Date: September 30, 2024\n\n## Main Topics:\n1. **Revenue Growth**: The company reported a 23% increase in quarterly revenue, reaching $4.2 billion\n2. **Market Expansion**: Successfully entered three new international markets in Asia-Pacific region\n3. **Product Innovation**: Launched two major product lines with positive customer reception\n4. **Operational Efficiency**: Reduced operational costs by 15% through process optimization\n\n## Financial Highlights:\n- Total Revenue: $4.2B (↑23% YoY)\n- Net Income: $850M (↑18% YoY)\n- Operating Margin: 28.5%\n- Cash Flow: $1.1B positive\n\n## Strategic Initiatives:\n- Investment in R&D increased by 30%\n- New partnership agreements with 5 major technology companies\n- Sustainability goals on track with 40% reduction in carbon emissions\n\n## Future Outlook:\nThe company maintains a positive outlook for Q4 2024, projecting continued growth driven by strong product demand and market expansion efforts.",
+  "usage": {
+    "prompt_tokens": 3500,
+    "completion_tokens": 245,
+    "total_tokens": 3745
+  }
+}
+```
