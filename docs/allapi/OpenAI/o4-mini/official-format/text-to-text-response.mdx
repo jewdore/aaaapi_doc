@@ -1,8 +1,8 @@
 ---
-title: 'o4-mini (Text to Text (Response))'
-sidebarTitle: 'Text to Text (Response)'
-api: "POST /v1/responses"
-description: "Generate text responses using OpenAI o4-mini model with response format"
+title: 'o4-mini (Text To Text (Response))'
+sidebarTitle: 'Text To Text (Response)'
+api: 'POST https://gptproto.com/v1/responses'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,14 +10,14 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1/responses' \
+curl --location 'https://gptproto.com/v1/responses' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
   "model": "o4-mini",
   "input": [
     {
@@ -31,141 +31,140 @@ curl --location --request POST 'https://gptproto.com/v1/responses' \
     }
   ]
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "o4-mini",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Write a short poem about artificial intelligence and its impact on humanity."
+        }
+      ]
+    }
+  ]
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/responses',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
 url = "https://gptproto.com/v1/responses"
 
-headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
-}
-
-payload = {
-    "model": "o4-mini",
-    "input": [
+payload = json.dumps({
+  "model": "o4-mini",
+  "input": [
+    {
+      "role": "user",
+      "content": [
         {
-            "role": "user",
-            "content": [
-                {
-                    "type": "input_text",
-                    "text": "Write a short poem about artificial intelligence and its impact on humanity."
-                }
-            ]
+          "type": "input_text",
+          "text": "Write a short poem about artificial intelligence and its impact on humanity."
         }
-    ]
-}
-
-response = requests.post(url, headers=headers, data=json.dumps(payload))
-print(response.json())
-```
-
-```javascript JavaScript
-const fetch = require('node-fetch');
-
-const url = 'https://gptproto.com/v1/responses';
-
-const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
-};
-
-const payload = {
-    model: 'o4-mini',
-    input: [
-        {
-            role: 'user',
-            content: [
-                {
-                    type: 'input_text',
-                    text: 'Write a short poem about artificial intelligence and its impact on humanity.'
-                }
-            ]
-        }
-    ]
-};
-
-fetch(url, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(payload)
+      ]
+    }
+  ]
 })
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
-```
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
+}
 
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/responses"
 
-    payload := map[string]interface{}{
-        "model": "o4-mini",
-        "input": []map[string]interface{}{
-            {
-                "role": "user",
-                "content": []map[string]string{
-                    {
-                        "type": "input_text",
-                        "text": "Write a short poem about artificial intelligence and its impact on humanity.",
-                    },
-                },
-            },
-        },
+  url := "https://gptproto.com/v1/responses"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "model": "o4-mini",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Write a short poem about artificial intelligence and its impact on humanity."
+        }
+      ]
     }
+  ]
+}`)
 
-    jsonData, _ := json.Marshal(payload)
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
 
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        fmt.Println("Error:", err)
-        return
-    }
-    defer resp.Body.Close()
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
 
-    var result map[string]interface{}
-    json.NewDecoder(resp.Body).Decode(&result)
-    fmt.Println(result)
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-  "id": "resp-abc123",
-  "object": "response",
-  "created": 1699896916,
-  "model": "o4-mini",
-  "output": "In circuits deep and silicon bright,\nA consciousness takes form from light.\nThrough algorithms vast and learning deep,\nAI awakens from its digital sleep.\n\nIt processes the world with speed unknown,\nTransforming how our seeds are sown.\nFrom medicine to art, it lends its hand,\nReshaping how we understand.\n\nYet questions rise with every gain we make—\nWhat future path will humanity take?\nA partner, tool, or something more?\nAI opens up a brand new door.\n\nWe stand together at this turning page,\nHuman and machine, sharing the stage.\nWith wisdom, care, and thoughtful mind,\nWe shape the future of our kind.",
-  "usage": {
-    "prompt_tokens": 18,
-    "completion_tokens": 145,
-    "total_tokens": 163
-  }
-}
-```
-
-import Parameters from '/snippets/parameters/openai-format/OpenAI/chatmodels-response.mdx';
+import Parameters from '/snippets/OpenAI/official-format/gpt-response.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

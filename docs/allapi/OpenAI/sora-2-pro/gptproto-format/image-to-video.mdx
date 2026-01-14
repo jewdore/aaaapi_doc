@@ -1,8 +1,8 @@
 ---
-title: 'sora-2-pro (Image to Video)'
-sidebarTitle: 'Image to Video'
-api: "POST /api/v3/openai/sora-2-pro/image-to-video"
-description: "Generate videos from static images using OpenAI's Sora 2 Pro model"
+title: 'sora-2-pro (Image To Video)'
+sidebarTitle: 'Image To Video'
+api: 'POST https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,134 +10,125 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
-
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video' \
+curl --location 'https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
   "prompt": "Put a hat on the cat",
   "image": "https://tos.gptproto.com/resource/cat.png",
   "duration": 4
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "prompt": "Put a hat on the cat",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "duration": 4
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
 url = "https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video"
 
+payload = json.dumps({
+  "prompt": "Put a hat on the cat",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "duration": 4
+})
 headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-payload = {
-    "prompt": "Put a hat on the cat",
-    "image": "https://tos.gptproto.com/resource/cat.png",
-    "duration": 4
-}
+response = requests.request("POST", url, headers=headers, data=payload)
 
-response = requests.post(url, headers=headers, data=json.dumps(payload))
-print(response.json())
+print(response.text)
+
+
 ```
-
-```javascript JavaScript
-const axios = require('axios');
-
-const url = 'https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video';
-
-const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
-};
-
-const data = {
-    prompt: 'Put a hat on the cat',
-    image: 'https://tos.gptproto.com/resource/cat.png',
-    duration: 4
-};
-
-axios.post(url, data, { headers })
-    .then(response => console.log(response.data))
-    .catch(error => console.error(error));
-```
-
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video"
-    
-    payload := map[string]interface{}{
-        "prompt":   "Put a hat on the cat",
-        "image":    "https://tos.gptproto.com/resource/cat.png",
-        "duration": 4,
-    }
-    
-    jsonData, _ := json.Marshal(payload)
-    
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-    
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
-    
-    var result map[string]interface{}
-    json.NewDecoder(resp.Body).Decode(&result)
-    fmt.Println(result)
-}
-```
 
+  url := "https://gptproto.com/api/v3/openai/sora-2-pro/image-to-video"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "prompt": "Put a hat on the cat",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "duration": 4
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+
+```
 </CodeGroup>
 
-## Response Example
-
-```json
-{
-    "data": {
-        "id": "video_123",
-        "model": "sora-2-pro",
-        "outputs": [],
-        "urls": {
-            "get": "https://gptproto.com/api/v3/predictions/video_123/result"
-        },
-        "hasNsfwContents": [],
-        "status": "queued",
-        "createdAt": "2025-12-24 15:59:49",
-        "executionTime": 0,
-        "timings": {
-            "inference": 0
-        }
-    },
-    "message": "success",
-    "code": 200
-}
-```
-
-import QueryResult from '/snippets/parameters/gptproto-format/common/query-result.mdx';
-
-<QueryResult/>
-
-import Parameters from '/snippets/parameters/gptproto-format/OpenAI/sora-2.mdx';
+import Parameters from '/snippets/OpenAI/gptproto-format/sora-2.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

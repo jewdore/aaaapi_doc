@@ -1,8 +1,8 @@
 ---
 title: 'gpt-5-pro (File Analysis (Response))'
 sidebarTitle: 'File Analysis (Response)'
-api: "POST /v1/responses"
-description: "Analyze files and documents using OpenAI model to extract insights and generate summaries"
+api: 'POST https://gptproto.com/v1/responses'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,172 +10,177 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1/responses' \
+curl --location 'https://gptproto.com/v1/responses' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
-    "model": "gpt-5-pro",
-    "input": [
+--data '{
+  "model": "gpt-5-pro",
+  "input": [
+    {
+      "role": "user",
+      "content": [
         {
-            "role": "user",
-            "content": [
-                {
-                    "type": "input_text",
-                    "text": "what is in this file?"
-                },
-                {
-                    "type": "input_file",
-                    "file_url": "https://tos.gptproto.com/resource/gptproto.pdf"
-                }
-            ]
+          "type": "input_text",
+          "text": "what is in this file?"
+        },
+        {
+          "type": "input_file",
+          "file_url": "https://tos.gptproto.com/resource/gptproto.pdf"
         }
-    ]
+      ]
+    }
+  ]
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "gpt-5-pro",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "what is in this file?"
+        },
+        {
+          "type": "input_file",
+          "file_url": "https://tos.gptproto.com/resource/gptproto.pdf"
+        }
+      ]
+    }
+  ]
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/responses',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
 url = "https://gptproto.com/v1/responses"
 
+payload = json.dumps({
+  "model": "gpt-5-pro",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "what is in this file?"
+        },
+        {
+          "type": "input_file",
+          "file_url": "https://tos.gptproto.com/resource/gptproto.pdf"
+        }
+      ]
+    }
+  ]
+})
 headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-payload = {
-    "model": "gpt-5-pro",
-    "input": [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "input_text",
-                    "text": "what is in this file?"
-                },
-                {
-                    "type": "input_file",
-                    "file_url": "https://tos.gptproto.com/resource/gptproto.pdf"
-                }
-            ]
-        }
-    ]
-}
+response = requests.request("POST", url, headers=headers, data=payload)
 
-response = requests.post(url, headers=headers, data=json.dumps(payload))
-print(response.json())
+print(response.text)
+
+
 ```
-
-```javascript JavaScript
-const axios = require('axios');
-
-const url = 'https://gptproto.com/v1/responses';
-
-const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
-};
-
-const payload = {
-    model: 'gpt-5-pro',
-    input: [
-        {
-            role: 'user',
-            content: [
-                {
-                    type: 'input_text',
-                    text: 'what is in this file?'
-                },
-                {
-                    type: 'input_file',
-                    file_url: 'https://tos.gptproto.com/resource/gptproto.pdf'
-                }
-            ]
-        }
-    ]
-};
-
-axios.post(url, payload, { headers })
-    .then(response => console.log(response.data))
-    .catch(error => console.error(error));
-```
-
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/responses"
 
-    payload := map[string]interface{}{
-        "model": "gpt-5-pro",
-        "input": []map[string]interface{}{
-            {
-                "role": "user",
-                "content": []map[string]interface{}{
-                    {
-                        "type": "input_text",
-                        "text": "what is in this file?",
-                    },
-                    {
-                        "type": "input_file",
-                        "file_url": "https://tos.gptproto.com/resource/gptproto.pdf",
-                    },
-                },
-            },
+  url := "https://gptproto.com/v1/responses"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "model": "gpt-5-pro",
+  "input": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "what is in this file?"
         },
+        {
+          "type": "input_file",
+          "file_url": "https://tos.gptproto.com/resource/gptproto.pdf"
+        }
+      ]
     }
+  ]
+}`)
 
-    jsonPayload, _ := json.Marshal(payload)
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
 
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-  "id": "resp-abc123",
-  "object": "response",
-  "created": 1699896916,
-  "model": "gpt-5-pro",
-  "output": "# Document Analysis Summary\n\n## Key Information:\n- Document Type: Financial Report Q3 2024\n- Total Pages: 45\n- Date: September 30, 2024\n\n## Main Topics:\n1. **Revenue Growth**: The company reported a 23% increase in quarterly revenue, reaching $4.2 billion\n2. **Market Expansion**: Successfully entered three new international markets in Asia-Pacific region\n3. **Product Innovation**: Launched two major product lines with positive customer reception\n4. **Operational Efficiency**: Reduced operational costs by 15% through process optimization\n\n## Financial Highlights:\n- Total Revenue: $4.2B (↑23% YoY)\n- Net Income: $850M (↑18% YoY)\n- Operating Margin: 28.5%\n- Cash Flow: $1.1B positive\n\n## Strategic Initiatives:\n- Investment in R&D increased by 30%\n- New partnership agreements with 5 major technology companies\n- Sustainability goals on track with 40% reduction in carbon emissions\n\n## Future Outlook:\nThe company maintains a positive outlook for Q4 2024, projecting continued growth driven by strong product demand and market expansion efforts.",
-  "usage": {
-    "prompt_tokens": 3500,
-    "completion_tokens": 245,
-    "total_tokens": 3745
-  }
-}
-```
-
-import Parameters from '/snippets/parameters/openai-format/OpenAI/chatmodels-response.mdx';
+import Parameters from '/snippets/OpenAI/official-format/gpt-response.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

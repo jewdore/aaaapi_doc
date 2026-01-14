@@ -1,8 +1,8 @@
 ---
 title: 'gpt-4o-image (Image Edit)'
 sidebarTitle: 'Image Edit'
-api: "POST /v1/images/edits"
-description: "Edit and modify images using GPT-4o Image model based on text prompts"
+api: 'POST https://gptproto.com/v1/images/edits'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,131 +10,138 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST "https://gptproto.com/v1/images/edits" \
---header "Authorization: GPTPROTO_API_KEY" \
---form "model=gpt-4o-image" \
---form "image[]=@/cat.jpg" \
---form "prompt=Put a hat on the cat"
-```
+curl --location 'https://gptproto.com/v1/images/edits' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--form 'model="gpt-4o-image"' \
+--form 'image[]=@"/path/to/file"' \
+--form 'prompt="Put a hat on the cat"'
 
+```
+```javascript JavaScript
+const axios = require('axios');
+const FormData = require('form-data');
+const fs = require('fs');
+let data = new FormData();
+data.append('model', 'gpt-4o-image');
+data.append('image[]', fs.createReadStream('/path/to/file'));
+data.append('prompt', 'Put a hat on the cat');
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/images/edits',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    ...data.getHeaders()
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 
 url = "https://gptproto.com/v1/images/edits"
+
+payload = {'model': 'gpt-4o-image',
+'prompt': 'Put a hat on the cat'}
+files=[
+  ('image[]',('file',open('/path/to/file','rb'),'application/octet-stream'))
+]
 headers = {
-    "Authorization": "GPTPROTO_API_KEY"
-}
-files = {
-    "image[]": open("/cat.jpg", "rb")
-}
-data = {
-    "model": "gpt-4o-image",
-    "prompt": "Put a hat on the cat"
+  'Authorization': 'GPTPROTO_API_KEY'
 }
 
-response = requests.post(url, headers=headers, files=files, data=data)
-print(response.json())
+response = requests.request("POST", url, headers=headers, data=payload, files=files)
+
+print(response.text)
+
+
 ```
-
-```javascript JavaScript
-const FormData = require('form-data');
-const fs = require('fs');
-const axios = require('axios');
-
-const form = new FormData();
-form.append('model', 'gpt-4o-image');
-form.append('image[]', fs.createReadStream('/cat.jpg'));
-form.append('prompt', 'Put a hat on the cat');
-
-axios.post('https://gptproto.com/v1/images/edits', form, {
-    headers: {
-        ...form.getHeaders(),
-        'Authorization': 'GPTPROTO_API_KEY'
-    }
-})
-.then(response => {
-    console.log(response.data);
-})
-.catch(error => {
-    console.error(error);
-});
-```
-
 ```go Go
 package main
 
 import (
-    "bytes"
-    "fmt"
-    "io"
-    "mime/multipart"
-    "net/http"
-    "os"
+  "fmt"
+  "bytes"
+  "mime/multipart"
+  "os"
+  "path/filepath"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/images/edits"
-    
-    body := &bytes.Buffer{}
-    writer := multipart.NewWriter(body)
-    
-    writer.WriteField("model", "gpt-4o-image")
-    writer.WriteField("prompt", "Put a hat on the cat")
-    
-    file, _ := os.Open("/cat.jpg")
-    defer file.Close()
-    part, _ := writer.CreateFormFile("image[]", "/cat.jpg")
-    io.Copy(part, file)
-    writer.Close()
-    
-    req, _ := http.NewRequest("POST", url, body)
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", writer.FormDataContentType())
-    
-    client := &http.Client{}
-    resp, _ := client.Do(req)
-    defer resp.Body.Close()
-    
-    respBody, _ := io.ReadAll(resp.Body)
-    fmt.Println(string(respBody))
+
+  url := "https://gptproto.com/v1/images/edits"
+  method := "POST"
+
+  payload := &bytes.Buffer{}
+  writer := multipart.NewWriter(payload)
+  _ = writer.WriteField("model", "gpt-4o-image")
+  file, errFile2 := os.Open("/path/to/file")
+  defer file.Close()
+  part2,
+         errFile2 := writer.CreateFormFile("image[]",filepath.Base("/path/to/file"))
+  _, errFile2 = io.Copy(part2, file)
+  if errFile2 != nil {
+    fmt.Println(errFile2)
+    return
+  }
+  _ = writer.WriteField("prompt", "Put a hat on the cat")
+  err := writer.Close()
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+
+  req.Header.Set("Content-Type", writer.FormDataContentType())
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-    "created": 1765953949,
-    "background": "opaque",
-    "data": [
-        {"b64_json": "B64_JSON_DATA"}
-    ],
-    "output_format": "png",
-    "quality": "high",
-    "size": "1024x1024",
-    "usage": {
-        "input_tokens": 12,
-        "input_tokens_details": {
-            "image_tokens": 0,
-            "text_tokens": 12
-        },
-        "output_tokens": 4467,
-        "output_tokens_details": {
-            "image_tokens": 4160,
-            "text_tokens": 307
-        },
-        "total_tokens": 4479
-    }
-}
-```
-
-import Parameters from '/snippets/parameters/openai-format/OpenAI/imagemodel-image.mdx';
+import Parameters from '/snippets/OpenAI/official-format/gpt-image.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

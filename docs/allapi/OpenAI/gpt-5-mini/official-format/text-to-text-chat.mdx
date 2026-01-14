@@ -1,8 +1,8 @@
 ---
 title: 'gpt-5-mini (Text to Text (Chat))'
 sidebarTitle: 'Text to Text (Chat)'
-api: "POST /v1/chat/completions"
-description: "Generate conversational responses using GPT-5 Mini model"
+api: 'POST https://gptproto.com/v1/chat/completions'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,14 +10,14 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
   "model": "gpt-5-mini",
   "messages": [
     {
@@ -27,133 +27,128 @@ curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
   ],
   "stream": false
 }'
+
 ```
-
-```python Python
-import openai
-
-client = openai.OpenAI(
-    api_key="GPTPROTO_API_KEY",
-    base_url="https://gptproto.com/v1"
-)
-
-response = client.chat.completions.create(
-    model="gpt-5-mini",
-    messages=[
-        {
-            "role": "user",
-            "content": "Who are you?"
-        }
-    ],
-    stream=False
-)
-
-print(response)
-```
-
 ```javascript JavaScript
-const OpenAI = require('openai');
-
-const client = new OpenAI({
-    apiKey: 'GPTPROTO_API_KEY',
-    baseURL: 'https://gptproto.com/v1'
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "gpt-5-mini",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": false
 });
 
-async function main() {
-    const response = await client.chat.completions.create({
-        model: 'gpt-5-mini',
-        messages: [
-            {
-                role: 'user',
-                content: 'Who are you?'
-            }
-        ],
-        stream: false
-    });
-    
-    console.log(response);
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/chat/completions',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/chat/completions"
+
+payload = json.dumps({
+  "model": "gpt-5-mini",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": False
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-main();
-```
+response = requests.request("POST", url, headers=headers, data=payload)
 
+print(response.text)
+
+
+```
 ```go Go
 package main
 
 import (
-    "context"
-    "fmt"
-    openai "github.com/sashabaranov/go-openai"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    config := openai.DefaultConfig("GPTPROTO_API_KEY")
-    config.BaseURL = "https://gptproto.com/v1"
-    client := openai.NewClientWithConfig(config)
 
-    resp, err := client.CreateChatCompletion(
-        context.Background(),
-        openai.ChatCompletionRequest{
-            Model: "gpt-5-mini",
-            Messages: []openai.ChatCompletionMessage{
-                {
-                    Role:    openai.ChatMessageRoleUser,
-                    Content: "Who are you?",
-                },
-            },
-            Stream: false,
-        },
-    )
+  url := "https://gptproto.com/v1/chat/completions"
+  method := "POST"
 
-    if err != nil {
-        fmt.Printf("ChatCompletion error: %v\n", err)
-        return
+  payload := strings.NewReader(`{
+  "model": "gpt-5-mini",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
     }
+  ],
+  "stream": false
+}`)
 
-    fmt.Println(resp)
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-    "choices": [
-        {
-            "finish_reason": "stop",
-            "index": 0,
-            "message": {
-                "content": "I am an AI language model created by OpenAI, designed to assist with a wide range of questions and tasks by providing information and generating text based on the input I receive. How can I assist you today?",
-                "role": "assistant"
-            }
-        }
-    ],
-    "created": 1765782288,
-    "id": "chatcmpl-adbc",
-    "model": "gpt-5-mini",
-    "object": "chat.completion",
-    "system_fingerprint": "fp_83554c687e",
-    "usage": {
-        "completion_tokens": 42,
-        "completion_tokens_details": {
-            "accepted_prediction_tokens": 0,
-            "audio_tokens": 0,
-            "reasoning_tokens": 0,
-            "rejected_prediction_tokens": 0
-        },
-        "prompt_tokens": 11,
-        "prompt_tokens_details": {
-            "audio_tokens": 0,
-            "cached_tokens": 0
-        },
-        "total_tokens": 53
-    }
-}
-```
-
-import Parameters from '/snippets/parameters/openai-format/OpenAI/chatmodels-chat.mdx';
+import Parameters from '/snippets/OpenAI/official-format/gpt-chat.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

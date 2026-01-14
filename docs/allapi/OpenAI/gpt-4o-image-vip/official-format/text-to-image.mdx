@@ -1,8 +1,8 @@
 ---
-title: 'gpt-4o-image-vip (Text to Image)'
-sidebarTitle: 'Text to Image'
-api: "POST /v1/images/generations"
-description: "Generate high-quality images from text descriptions using OpenAI's GPT-4o Image VIP model"
+title: 'gpt-4o-image-vip (Text To Image)'
+sidebarTitle: 'Text To Image'
+api: 'POST https://gptproto.com/v1/images/generations'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,131 +10,125 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST "https://gptproto.com/v1/images/generations" \
---header "Authorization: GPTPROTO_API_KEY" \
---header "Content-Type: application/json" \
---data-raw '{
-    "model": "gpt-4o-image-vip",
-    "prompt": "a cat",
-    "size": "1024x1024"
+curl --location 'https://gptproto.com/v1/images/generations' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "model": "gpt-4o-image-vip",
+  "prompt": "a cat",
+  "size": "1024x1024"
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "gpt-4o-image-vip",
+  "prompt": "a cat",
+  "size": "1024x1024"
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/images/generations',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
 url = "https://gptproto.com/v1/images/generations"
 
+payload = json.dumps({
+  "model": "gpt-4o-image-vip",
+  "prompt": "a cat",
+  "size": "1024x1024"
+})
 headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-payload = {
-    "model": "gpt-4o-image-vip",
-    "prompt": "a cat",
-    "size": "1024x1024"
-}
+response = requests.request("POST", url, headers=headers, data=payload)
 
-response = requests.post(url, headers=headers, data=json.dumps(payload))
-print(response.json())
+print(response.text)
+
+
 ```
-
-```javascript JavaScript
-const axios = require('axios');
-
-const url = 'https://gptproto.com/v1/images/generations';
-
-const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
-};
-
-const data = {
-    model: 'gpt-4o-image-vip',
-    prompt: 'a cat',
-    size: '1024x1024'
-};
-
-axios.post(url, data, { headers })
-    .then(response => console.log(response.data))
-    .catch(error => console.error(error));
-```
-
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/images/generations"
-    
-    payload := map[string]interface{}{
-        "model":  "gpt-4o-image-vip",
-        "prompt": "a cat",
-        "size":   "1024x1024",
-    }
-    
-    jsonData, _ := json.Marshal(payload)
-    
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-    
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
-    
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+
+  url := "https://gptproto.com/v1/images/generations"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "model": "gpt-4o-image-vip",
+  "prompt": "a cat",
+  "size": "1024x1024"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-    "created": 1765953949,
-    "background": "opaque",
-    "data": [
-        {"b64_json": "B64_JSON_DATA"}
-    ],
-    "output_format": "png",
-    "quality": "high",
-    "size": "1024x1024",
-    "usage": {
-        "input_tokens": 12,
-        "input_tokens_details": {
-            "image_tokens": 0,
-            "text_tokens": 12
-        },
-        "output_tokens": 4467,
-        "output_tokens_details": {
-            "image_tokens": 4160,
-            "text_tokens": 307
-        },
-        "total_tokens": 4479
-    }
-}
-```
-
-import Parameters from '/snippets/parameters/openai-format/OpenAI/imagemodel-image.mdx';
+import Parameters from '/snippets/OpenAI/official-format/gpt-image.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

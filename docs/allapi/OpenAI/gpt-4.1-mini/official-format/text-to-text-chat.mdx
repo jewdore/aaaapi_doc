@@ -1,8 +1,8 @@
 ---
 title: 'gpt-4.1-mini (Text to Text (Chat))'
 sidebarTitle: 'Text to Text (Chat)'
-api: "POST /v1/chat/completions"
-description: "Generate conversational responses using GPT-4.1-mini model"
+api: 'POST https://gptproto.com/v1/chat/completions'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,14 +10,14 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
   "model": "gpt-4.1-mini",
   "messages": [
     {
@@ -27,147 +27,128 @@ curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
   ],
   "stream": false
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "gpt-4.1-mini",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": false
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/chat/completions',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
 url = "https://gptproto.com/v1/chat/completions"
 
+payload = json.dumps({
+  "model": "gpt-4.1-mini",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": False
+})
 headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-payload = {
-    "model": "gpt-4.1-mini",
-    "messages": [
-        {
-            "role": "user",
-            "content": "Who are you?"
-        }
-    ],
-    "stream": False
-}
+response = requests.request("POST", url, headers=headers, data=payload)
 
-response = requests.post(url, headers=headers, data=json.dumps(payload))
-print(response.json())
+print(response.text)
+
+
 ```
-
-```javascript JavaScript
-const axios = require('axios');
-
-const url = 'https://gptproto.com/v1/chat/completions';
-
-const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
-};
-
-const payload = {
-    model: 'gpt-4.1-mini',
-    messages: [
-        {
-            role: 'user',
-            content: 'Who are you?'
-        }
-    ],
-    stream: false
-};
-
-axios.post(url, payload, { headers })
-    .then(response => {
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-```
-
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/chat/completions"
 
-    payload := map[string]interface{}{
-        "model": "gpt-4.1-mini",
-        "messages": []map[string]string{
-            {
-                "role":    "user",
-                "content": "Who are you?",
-            },
-        },
-        "stream": false,
+  url := "https://gptproto.com/v1/chat/completions"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "model": "gpt-4.1-mini",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
     }
+  ],
+  "stream": false
+}`)
 
-    jsonPayload, _ := json.Marshal(payload)
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
 
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-    "choices": [
-        {
-            "finish_reason": "stop",
-            "index": 0,
-            "message": {
-                "content": "I am an AI language model created by OpenAI, designed to assist with a wide range of questions and tasks by providing information and generating text based on the input I receive. How can I assist you today?",
-                "role": "assistant"
-            }
-        }
-    ],
-    "created": 1765782288,
-    "id": "chatcmpl-adbc",
-    "model": "gpt-4.1-mini",
-    "object": "chat.completion",
-    "system_fingerprint": "fp_83554c687e",
-    "usage": {
-        "completion_tokens": 42,
-        "completion_tokens_details": {
-            "accepted_prediction_tokens": 0,
-            "audio_tokens": 0,
-            "reasoning_tokens": 0,
-            "rejected_prediction_tokens": 0
-        },
-        "prompt_tokens": 11,
-        "prompt_tokens_details": {
-            "audio_tokens": 0,
-            "cached_tokens": 0
-        },
-        "total_tokens": 53
-    }
-}
-```
-
-import Parameters from '/snippets/parameters/openai-format/OpenAI/chatmodels-chat.mdx';
+import Parameters from '/snippets/OpenAI/official-format/gpt-chat.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

@@ -1,8 +1,8 @@
 ---
 title: 'gpt-image-1-vip (Image Edit)'
 sidebarTitle: 'Image Edit'
-api: "POST /api/v3/openai/gpt-image-1-vip/image-edit"
-description: "Edit and modify images using OpenAI's GPT Image model with advanced editing capabilities"
+api: 'POST https://gptproto.com/api/v3/openai/gpt-image-1-vip/image-edit'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,162 +10,148 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST "https://gptproto.com/api/v3/openai/gpt-image-1-vip/image-edit" \
---header "Authorization: GPTPROTO_API_KEY" \
---header "Content-Type: application/json" \
---data-raw '{
-    "image": [
-        "https://tos.gptproto.com/resource/cat.png"
-    ],
-    "prompt": "Girl holding cat",
-    "quality": "medium",
-    "size": "1024x1024",
-    "background": "auto",
-    "enable_sync_mode": false,
-    "response_format": "url"
+curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1-vip/image-edit' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "image": [
+    "https://tos.gptproto.com/resource/cat.png"
+  ],
+  "prompt": "Girl holding cat",
+  "quality": "medium",
+  "size": "1024x1024",
+  "background": "auto",
+  "enable_sync_mode": false,
+  "response_format": "url"
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "image": [
+    "https://tos.gptproto.com/resource/cat.png"
+  ],
+  "prompt": "Girl holding cat",
+  "quality": "medium",
+  "size": "1024x1024",
+  "background": "auto",
+  "enable_sync_mode": false,
+  "response_format": "url"
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/api/v3/openai/gpt-image-1-vip/image-edit',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
 url = "https://gptproto.com/api/v3/openai/gpt-image-1-vip/image-edit"
 
-headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
-}
-
-payload = {
-    "image": [
-        "https://tos.gptproto.com/resource/cat.png"
-    ],
-    "prompt": "Girl holding cat",
-    "quality": "medium",
-    "size": "1024x1024",
-    "background": "auto",
-    "enable_sync_mode": False,
-    "response_format": "url"
-}
-
-response = requests.post(url, headers=headers, json=payload)
-print(response.json())
-```
-
-```javascript JavaScript
-const url = "https://gptproto.com/api/v3/openai/gpt-image-1-vip/image-edit";
-
-const headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
-};
-
-const payload = {
-    image: [
-        "https://tos.gptproto.com/resource/cat.png"
-    ],
-    prompt: "Girl holding cat",
-    quality: "medium",
-    size: "1024x1024",
-    background: "auto",
-    enable_sync_mode: false,
-    response_format: "url"
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(payload)
+payload = json.dumps({
+  "image": [
+    "https://tos.gptproto.com/resource/cat.png"
+  ],
+  "prompt": "Girl holding cat",
+  "quality": "medium",
+  "size": "1024x1024",
+  "background": "auto",
+  "enable_sync_mode": False,
+  "response_format": "url"
 })
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error("Error:", error));
-```
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
+}
 
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/openai/gpt-image-1-vip/image-edit"
 
-    payload := map[string]interface{}{
-        "image": []string{
-            "https://tos.gptproto.com/resource/cat.png",
-        },
-        "prompt":           "Girl holding cat",
-        "quality":          "medium",
-        "size":             "1024x1024",
-        "background":       "auto",
-        "enable_sync_mode": false,
-        "response_format":  "url",
-    }
+  url := "https://gptproto.com/api/v3/openai/gpt-image-1-vip/image-edit"
+  method := "POST"
 
-    jsonPayload, _ := json.Marshal(payload)
+  payload := strings.NewReader(`{
+  "image": [
+    "https://tos.gptproto.com/resource/cat.png"
+  ],
+  "prompt": "Girl holding cat",
+  "quality": "medium",
+  "size": "1024x1024",
+  "background": "auto",
+  "enable_sync_mode": false,
+  "response_format": "url"
+}`)
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
 
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        fmt.Println("Error:", err)
-        return
-    }
-    defer resp.Body.Close()
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-    "data": {
-        "id": "7ba2419*******",
-        "model": "gpt-image-1-vip",
-        "outputs": [],
-        "urls": {
-            "get": "https://gptproto.com/api/v3/predictions/7ba2419*******/result"
-        },
-        "hasNsfwContents": [],
-        "status": "created",
-        "createdAt": "2025-12-17 15:05:05",
-        "executionTime": 0,
-        "timings": {
-            "inference": 0
-        }
-    },
-    "message": "success",
-    "code": 200
-}
-```
-
-
-import QueryResult from '/snippets/parameters/gptproto-format/common/query-result.mdx';
-
-<QueryResult/>
-
-
-import Parameters from '/snippets/parameters/gptproto-format/OpenAI/imagemodel.mdx';
+import Parameters from '/snippets/OpenAI/gptproto-format/gpt-image.mdx';
 
 <Parameters/>
-
 
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
