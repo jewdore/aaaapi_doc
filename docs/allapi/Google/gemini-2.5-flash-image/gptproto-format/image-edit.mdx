@@ -25,6 +25,7 @@ curl --location 'https://gptproto.com/api/v3/google/gemini-2.5-flash-image/image
   "output_format": "jpeg",
   "aspect_ratio": "1:1",
   "temperature": 1,
+  "topP": 0.95,
   "enable_base64_output": false,
   "enable_sync_mode": false
 }'
@@ -40,6 +41,7 @@ let data = JSON.stringify({
   "output_format": "jpeg",
   "aspect_ratio": "1:1",
   "temperature": 1,
+  "topP": 0.95,
   "enable_base64_output": false,
   "enable_sync_mode": false
 });
@@ -79,6 +81,7 @@ payload = json.dumps({
   "output_format": "jpeg",
   "aspect_ratio": "1:1",
   "temperature": 1,
+  "topP": 0.95,
   "enable_base64_output": False,
   "enable_sync_mode": False
 })
@@ -116,6 +119,7 @@ func main() {
   "output_format": "jpeg",
   "aspect_ratio": "1:1",
   "temperature": 1,
+  "topP": 0.95,
   "enable_base64_output": false,
   "enable_sync_mode": false
 }`)

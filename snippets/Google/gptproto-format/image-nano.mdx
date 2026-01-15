@@ -24,6 +24,7 @@ Endpoint: `https://gptproto.com/api/v3/google/{model}/{scene}`
 | `size` | string | ❌ No | - | `1K`<br />`2K`<br />`4K` | Approximate size of the generated image. If not specified, the model will use the default value of 1K. only Gemini 3 Pro Image Preview,|
 | `aspect_ratio` | string | ❌ No | `1:1` | `1:1`<br />`2:3`<br />`3:2`<br />`3:4`<br />`4:3`<br />`4:5`<br />`5:4`<br />`9:16`<br />`16:9`<br />`21:9` | The aspect ratio of the generated image. |
 | `temperature` | number | ❌ No | - | 0.0-1.0 | Controls the randomness of the output. |
+| `top_p` | number | ❌ No | - | - | Controls the diversity of the output. |
 | `enable_sync_mode` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to enable synchronous mode for image generation. |
 | `enable_base64_output` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to enable base64 output for image generation. |
 | `output_format` | string | ❌ No | `png` | `png`<br />`jpg`<br />`jpeg` | The format in which the generated images are returned. |
