@@ -27,7 +27,13 @@ curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-3-pro-
                 }
             ]
         }
-    ]
+    ],
+    "generationConfig": {
+        "imageConfig": {
+            "aspectRatio": "1:1",
+            "imageSize": "4K"
+        }
+    }
 }'
 ```
 
@@ -52,7 +58,13 @@ payload = {
                 }
             ]
         }
-    ]
+    ],
+    "generationConfig": {
+        "imageConfig": {
+            "aspectRatio": "1:1",
+            "imageSize": "4K"
+        }
+    }
 }
 
 response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -79,7 +91,13 @@ const data = {
                 }
             ]
         }
-    ]
+    ],
+    generationConfig: {
+        imageConfig: {
+            aspectRatio: '1:1',
+            imageSize: '4K'
+        }
+    }
 };
 
 axios.post(url, data, { headers })
@@ -109,6 +127,12 @@ func main() {
                         "text": "Put a hat on the cat",
                     },
                 },
+            },
+        },
+        "generationConfig": map[string]interface{}{
+            "imageConfig": map[string]interface{}{
+                "aspectRatio": "1:1",
+                "imageSize": "4K",
             },
         },
     }
