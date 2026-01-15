@@ -1,8 +1,8 @@
 ---
 title: 'gemini-2.5-flash (Image To Text)'
 sidebarTitle: 'Image To Text'
-api: "POST /v1/chat/completions"
-description: "Analyze and describe images using Gemini Flash model with vision capabilities"
+api: 'POST https://gptproto.com/v1/chat/completions'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,14 +10,14 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
+curl --location 'https://gptproto.com/v1/chat/completions' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
   "model": "gemini-2.5-flash",
   "messages": [
     {
@@ -37,162 +37,158 @@ curl --location --request POST 'https://gptproto.com/v1/chat/completions' \
     }
   ]
 }'
+
 ```
-
-```python Python
-from openai import OpenAI
-
-client = OpenAI(
-    api_key="GPTPROTO_API_KEY",
-    base_url="https://gptproto.com/v1"
-)
-
-response = client.chat.completions.create(
-    model="gemini-2.5-flash",
-    messages=[
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "text",
-                    "text": "What is shown in this PNG image?"
-                },
-                {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": "https://tos.gptproto.com/resource/cat.png"
-                    }
-                }
-            ]
-        }
-    ]
-)
-
-print(response.choices[0].message.content)
-```
-
 ```javascript JavaScript
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: "GPTPROTO_API_KEY",
-  baseURL: "https://gptproto.com/v1"
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "gemini-2.5-flash",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is shown in this PNG image?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://tos.gptproto.com/resource/cat.png"
+          }
+        }
+      ]
+    }
+  ]
 });
 
-async function analyzeImage() {
-  const completion = await openai.chat.completions.create({
-    model: "gemini-2.5-flash",
-    messages: [
-      {
-        role: "user",
-        content: [
-          {
-            type: "text",
-            text: "What is shown in this PNG image?"
-          },
-          {
-            type: "image_url",
-            image_url: {
-              url: "https://tos.gptproto.com/resource/cat.png"
-            }
-          }
-        ]
-      }
-    ]
-  });
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/chat/completions',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
 
-  console.log(completion.choices[0].message.content);
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/chat/completions"
+
+payload = json.dumps({
+  "model": "gemini-2.5-flash",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is shown in this PNG image?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://tos.gptproto.com/resource/cat.png"
+          }
+        }
+      ]
+    }
+  ]
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-analyzeImage();
-```
+response = requests.request("POST", url, headers=headers, data=payload)
 
+print(response.text)
+
+
+```
 ```go Go
 package main
 
 import (
-	"context"
-	"fmt"
-	"github.com/sashabaranov/go-openai"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-	config := openai.DefaultConfig("GPTPROTO_API_KEY")
-	config.BaseURL = "https://gptproto.com/v1"
-	client := openai.NewClientWithConfig(config)
 
-	resp, err := client.CreateChatCompletion(
-		context.Background(),
-		openai.ChatCompletionRequest{
-			Model: "gemini-2.5-flash",
-			Messages: []openai.ChatCompletionMessage{
-				{
-					Role: openai.ChatMessageRoleUser,
-					MultiContent: []openai.ChatMessagePart{
-						{
-							Type: openai.ChatMessagePartTypeText,
-							Text: "What is shown in this PNG image?",
-						},
-						{
-							Type: openai.ChatMessagePartTypeImageURL,
-							ImageURL: &openai.ChatMessageImageURL{
-								URL: "https://tos.gptproto.com/resource/cat.png",
-							},
-						},
-					},
-				},
-			},
-		},
-	)
+  url := "https://gptproto.com/v1/chat/completions"
+  method := "POST"
 
-	if err != nil {
-		fmt.Printf("ChatCompletion error: %v\n", err)
-		return
-	}
+  payload := strings.NewReader(`{
+  "model": "gemini-2.5-flash",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is shown in this PNG image?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://tos.gptproto.com/resource/cat.png"
+          }
+        }
+      ]
+    }
+  ]
+}`)
 
-	fmt.Println(resp.Choices[0].Message.Content)
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-    "choices": [
-        {
-            "finish_reason": "stop",
-            "index": 0,
-            "message": {
-                "content": "Based on the image provided, here is a description of what is shown:\n\n**Main Subject:**\n*   **The Cat:** A fluffy, long-haired orange tabby cat is the central focus. It is sitting upright on a wooden windowsill, looking calmly toward the viewer with bright green eyes. Its tail is curled neatly around its paws.\n\n**Setting and Atmosphere:**\n*   **The Window:** The cat is perched on the sill of a large window with a wooden frame. Through the glass, you can see a blurred outdoor scene with a large tree trunk and greenery, suggesting a garden or park.\n*   **Lighting:** Warm, natural sunlight is streaming in from the left, illuminating the cat's fur and creating a soft, hazy atmosphere with visible dust motes floating in the air. The mood is serene and domestic.\n\n**Surrounding Objects:**\n*   **Book:** To the left of the cat on the windowsill lies a thick, closed hardcover book.\n*   **Tea:** In the foreground on the right, resting on a small round side table, is a teacup and saucer. Steam is rising from the cup, indicating a hot beverage like tea or coffee.\n*   **Furniture:** To the right of the window, there is a tall bookshelf filled with books. partially visible is a leather armchair with a chunky, cream-colored knit blanket draped over it, adding to the cozy aesthetic.\n\nOverall, the image conveys a sense of \"hygge\"—a feeling of cozy contentment and well-being.",
-                "role": "assistant"
-            }
-        }
-    ],
-    "created": 1766411359,
-    "id": "chatcmpl-***",
-    "model": "gemini-2.5-flash",
-    "object": "chat.completion",
-    "usage": {
-        "completion_tokens": 1258,
-        "completion_tokens_details": {
-            "accepted_prediction_tokens": 0,
-            "audio_tokens": 0,
-            "reasoning_tokens": 943,
-            "rejected_prediction_tokens": 0
-        },
-        "prompt_tokens": 1097,
-        "prompt_tokens_details": {
-            "audio_tokens": 0,
-            "cached_tokens": 0
-        },
-        "total_tokens": 2355
-    }
-}
-```
-
-import Parameters from '/snippets/parameters/openai-format/common-chat-format.mdx';
+import Parameters from '/snippets/Google/openai-format/chat-gemini.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

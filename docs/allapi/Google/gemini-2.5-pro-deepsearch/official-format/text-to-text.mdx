@@ -1,8 +1,8 @@
 ---
-title: 'gemini-2.5-pro-deepsearch (Text to Text)'
-sidebarTitle: 'Text to Text'
-api: "POST /v1beta/models/gemini-2.5-pro-deepsearch:generateContent"
-description: "Generate text responses using Gemini Pro Deep Search model with advanced reasoning capabilities"
+title: 'gemini-2.5-pro-deepsearch (Text To Text)'
+sidebarTitle: 'Text To Text'
+api: 'POST https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,14 +10,14 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent' \
+curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
   "contents": [
     {
       "role": "user",
@@ -27,157 +27,160 @@ curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-pr
         }
       ]
     }
-  ]
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingBudget": 1000
+    }
+  }
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "who are you?"
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingBudget": 1000
+    }
+  }
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
 url = "https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent"
 
+payload = json.dumps({
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "who are you?"
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": True,
+      "thinkingBudget": 1000
+    }
+  }
+})
 headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-payload = {
-    "contents": [
-        {
-            "role": "user",
-            "parts": [
-                {
-                    "text": "who are you?"
-                }
-            ]
-        }
-    ]
-}
+response = requests.request("POST", url, headers=headers, data=payload)
 
-response = requests.post(url, headers=headers, data=json.dumps(payload))
-print(response.json())
+print(response.text)
+
+
 ```
-
-```javascript JavaScript
-const axios = require('axios');
-
-const url = 'https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent';
-
-const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
-};
-
-const data = {
-    contents: [
-        {
-            role: 'user',
-            parts: [
-                {
-                    text: 'who are you?'
-                }
-            ]
-        }
-    ]
-};
-
-axios.post(url, data, { headers })
-    .then(response => console.log(response.data))
-    .catch(error => console.error(error));
-```
-
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent"
 
-    payload := map[string]interface{}{
-        "contents": []map[string]interface{}{
-            {
-                "role": "user",
-                "parts": []map[string]string{
-                    {
-                        "text": "who are you?",
-                    },
-                },
-            },
-        },
+  url := "https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "who are you?"
+        }
+      ]
     }
-
-    jsonData, _ := json.Marshal(payload)
-
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingBudget": 1000
     }
-    defer resp.Body.Close()
+  }
+}`)
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-    "candidates": [
-        {
-            "content": {
-                "role": "model",
-                "parts": [
-                    {
-                        "text": "I am Gemini, a large language model built by Google.",
-                        "thoughtSignature": "CvUOAY8***"
-                    }
-                ]
-            },
-            "finishReason": "STOP"
-        }
-    ],
-    "usageMetadata": {
-        "promptTokenCount": 4,
-        "candidatesTokenCount": 12,
-        "totalTokenCount": 508,
-        "trafficType": "ON_DEMAND",
-        "promptTokensDetails": [
-            {
-                "modality": "TEXT",
-                "tokenCount": 4
-            }
-        ],
-        "candidatesTokensDetails": [
-            {
-                "modality": "TEXT",
-                "tokenCount": 12
-            }
-        ],
-        "thoughtsTokenCount": 492
-    },
-    "modelVersion": "gemini-2.5-pro-deepsearch",
-    "createTime": "2025-12-22T13:15:39.906733Z",
-    "responseId": "e0RJae2rN46R998P096OmQU"
-}
-```
-
-import Parameters from '/snippets/parameters/official-format/Google/chatmodel.mdx';
+import Parameters from '/snippets/Google/official-format/chat-gemini.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

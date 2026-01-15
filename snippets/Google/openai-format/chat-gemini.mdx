@@ -1,0 +1,57 @@
+<Accordion title="Response Example">
+```json
+{
+    "choices": [
+        {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+                "content": "Based on the image provided, this is a technical documentation page titled **\"Authentication\"** for an API service called **GPTProto**. It guides developers on how to securely access and use the API.\n\nHere is a breakdown of the specific sections contained in the file:\n\n**1. API Key Authentication**\n*   It explains that the GPTProto API uses **Bearer token authentication**.\n*   All requests must include the API key in the header.\n\n**2. Getting Your API Key**\n*   Provides a step-by-step guide:\n    1.  Sign up at `https://gptproto.com`.\n    2.  Navigate to the API Keys section in the dashboard.\n    3.  Generate a new key.\n    4.  Copy and store it securely.\n*   **Security Warning:** It explicitly warns users to keep keys secure, not to commit them to version control, and to rotate them regularly.\n\n**3. Making Authenticated Requests**\n*   Shows how to structure the HTTP header: `Authorization: Bearer YOUR_API_KEY`.\n*   Provides a **cURL** code snippet demonstrating a POST request to `https://gptproto.com/v1/chat/completions` using the model \"gpt-4o\".\n\n**4. Environment Variables**\n*   **Recommended Setup:** Advises storing keys in environment variables (e.g., `export GPTPROTO_API_KEY=\"...\"`) rather than hardcoding them.\n*   **Using .env Files:** Shows a Python code example using `python-dotenv` to load credentials securely.\n*   **Warning:** Reminds users to add `.env` files to `.gitignore` to prevent leaking secrets.\n\n**5. Authentication Errors**\n*   Lists common HTTP error codes and their JSON response formats:\n    *   **401 Unauthorized:** Key is missing or invalid.\n    *   **403 Forbidden:** Key doesn't have permission for the resource.\n    *   **429 Too Many Requests:** Rate limit exceeded.\n\n**6. Best Practices**\n*   Lists expandable sections for maintaining security, such as \"Implement Key Rotation,\" \"Use Different Keys for Different Environments,\" and \"Monitor Usage.\"\n\n**7. API Key Management**\n*   **Generating New Keys:** Instructions on how to create descriptive keys via the dashboard. It notes you can only copy the key once.\n*   **Revoking Keys:** Steps to revoke a compromised key and update applications.\n\n**8. Support**\n*   Troubleshooting tips for authentication issues.\n*   Provides a contact email for help: `jacoblam3219@gmail.com`.",
+                "role": "assistant"
+            }
+        }
+    ],
+    "created": 1766411482,
+    "id": "chatcmpl-****",
+    "model": "gemini-2.5-pro",
+    "object": "chat.completion",
+    "usage": {
+        "completion_tokens": 2051,
+        "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 1489,
+            "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 519,
+        "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+        },
+        "total_tokens": 2570
+    }
+}
+```
+</Accordion>
+
+## Parameters
+### Core Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `model` | string | ✅ Yes | - | - | Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the model guide to browse and compare available models. |
+| `messages` | array | ✅ Yes | - | - | A list of messages comprising the conversation so far. Depending on the model you use, different message types (modalities) are supported, like text, images, and audio. |
+| `>messages.role` | string | ✅ Yes | - | `developer`<br />`user`<br />`system` | The role of the messages author. |
+| `>messages.name` | string | ❌ No | - | - | An optional name for the participant. Provides the model information to differentiate between participants of the same role. |
+| `>messages.content` | string / array | ✅ Yes | - | - | The contents of the developer message. |
+| `>>messages.content.type` | string | ✅ Yes | - | `text`<br />`image_url` | The type of the content part |
+| `>>messages.content.text` | string | ❌ No | - | - | The text content |
+| `>>messages.content.image_url` | object | ❌ No | - | - | The image URL content |
+| `>>messages.content.image_url.url` | string | ❌ No | - | - | The URL of the image |
+
+### Advanced Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `max_completion_tokens` | integer / null | ❌ No | - | - | An upper bound for the number of tokens that can be generated for a completion, including visible output tokens and reasoning tokens. |
+| `stream` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to stream the response back incrementally. Defaults to false. |
+
+

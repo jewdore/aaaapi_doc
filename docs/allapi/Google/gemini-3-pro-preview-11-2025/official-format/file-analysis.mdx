@@ -1,8 +1,8 @@
 ---
 title: 'gemini-3-pro-preview-11-2025 (File Analysis)'
 sidebarTitle: 'File Analysis'
-api: "POST /v1beta/models/gemini-3-pro-preview-11-2025:generateContent"
-description: "Analyze files and documents using Gemini 3 Pro Preview model to extract insights and generate summaries"
+api: 'POST https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,15 +10,14 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
-
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent' \
+curl --location 'https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
   "contents": [
     {
       "role": "user",
@@ -34,181 +33,178 @@ curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-3-pro-
         }
       ]
     }
-  ]
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingLevel": "HIGH"
+    }
+  }
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "what is in this file?"
+        },
+        {
+          "file_data": {
+            "mime_type": "application/pdf",
+            "file_uri": "https://tos.gptproto.com/resource/gptproto.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingLevel": "HIGH"
+    }
+  }
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
-import os
+import json
 
 url = "https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent"
 
-headers = {
-    "Authorization": os.environ.get("GPTPROTO_API_KEY"),
-    "Content-Type": "application/json"
-}
-
-data = {
-    "contents": [
+payload = json.dumps({
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
         {
-            "role": "user",
-            "parts": [
-                {
-                    "text": "what is in this file?"
-                },
-                {
-                    "file_data": {
-                        "mime_type": "application/pdf",
-                        "file_uri": "https://tos.gptproto.com/resource/gptproto.pdf"
-                    }
-                }
-            ]
+          "text": "what is in this file?"
+        },
+        {
+          "file_data": {
+            "mime_type": "application/pdf",
+            "file_uri": "https://tos.gptproto.com/resource/gptproto.pdf"
+          }
         }
-    ]
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": True,
+      "thinkingLevel": "HIGH"
+    }
+  }
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-response = requests.post(url, headers=headers, json=data)
-print(response.json())
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
 ```
-
-```javascript JavaScript
-const apiKey = process.env.GPTPROTO_API_KEY;
-
-const response = await fetch('https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent', {
-  method: 'POST',
-  headers: {
-    'Authorization': apiKey,
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    contents: [
-      {
-        role: "user",
-        parts: [
-          {
-            text: "what is in this file?"
-          },
-          {
-            file_data: {
-              mime_type: "application/pdf",
-              file_uri: "https://tos.gptproto.com/resource/gptproto.pdf"
-            }
-          }
-        ]
-      }
-    ]
-  })
-});
-
-const data = await response.json();
-console.log(data);
-```
-
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io"
-    "net/http"
-    "os"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent"
-    
-    payload := map[string]interface{}{
-        "contents": []map[string]interface{}{
-            {
-                "role": "user",
-                "parts": []map[string]interface{}{
-                    {
-                        "text": "what is in this file?",
-                    },
-                    {
-                        "file_data": map[string]string{
-                            "mime_type": "application/pdf",
-                            "file_uri":  "https://tos.gptproto.com/resource/gptproto.pdf",
-                        },
-                    },
-                },
-            },
-        },
-    }
-    
-    jsonData, _ := json.Marshal(payload)
-    
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", os.Getenv("GPTPROTO_API_KEY"))
-    req.Header.Set("Content-Type", "application/json")
-    
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
-    
-    body, _ := io.ReadAll(resp.Body)
-    fmt.Println(string(body))
-}
-```
 
+  url := "https://gptproto.com/v1beta/models/gemini-3-pro-preview-11-2025:generateContent"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "what is in this file?"
+        },
+        {
+          "file_data": {
+            "mime_type": "application/pdf",
+            "file_uri": "https://tos.gptproto.com/resource/gptproto.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingLevel": "HIGH"
+    }
+  }
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+
+```
 </CodeGroup>
 
-## Response Example
-
-```json
-{
-    "candidates": [
-        {
-            "content": {
-                "role": "model",
-                "parts": [
-                    {
-                        "text": "This file is a long screenshot of a technical **API Documentation page** titled **\"Authentication\"** for a service called **GPTProto**.\n\nHere is a breakdown of the specific sections contained in the document:\n\n**1. Header and Intro**\n*   **Title:** Authentication.\n*   **Description:** Explains that the GPTProto API uses **Bearer token authentication** and that requests must include the API key in the header.\n\n**2. Getting Your API Key**\n*   **Instructions:** Four steps to sign up at `gptproto.com`, navigate to the dashboard, and generate a key.\n*   **Security Warning:** A yellow box advises users to keep keys secure, not commit them to version control, and rotate them regularly.\n\n**3. Making Authenticated Requests**\n*   **Code Block:** Shows a code snippet (specifically `cURL`) demonstrating how to structure a request to `https://gptproto.com/v1/chat/completions` using the `Authorization: Bearer` header.\n\n**4. Environment Variables**\n*   **Recommended Setup:** Advises storing keys in environment variables rather than hardcoding them.\n*   **Code Examples:** Shows how to export variables in Linux/macOS and how to use `.env` files in Python using `python-dotenv`.\n*   **Warning:** Advises adding `.env` files to `.gitignore`.\n\n**5. Authentication Errors**\n*   Lists common HTTP error codes with example JSON responses:\n    *   **401 Unauthorized:** Missing or invalid key.\n    *   **403 Forbidden:** No permission for the resource.\n    *   **429 Too Many Requests:** Rate limit exceeded.\n\n**6. Best Practices**\n*   A section listing expandable tips such as \"Use Environment Variables,\" \"Implement Key Rotation,\" and \"Monitor Usage.\"\n\n**7. API Key Management**\n*   **Generating New Keys:** Step-by-step guide to creating keys in the dashboard.\n*   **Revoking Keys:** Instructions on how to revoke a compromised key.\n\n**8. Support**\n*   **Troubleshooting:** Bullet points for checking key formatting and validity.\n*   **Contact Information:** Provides a support email address: `jacoblam3219@gmail.com`.",
-                        "thoughtSignature": "CvwjAY89***"
-                    }
-                ]
-            },
-            "finishReason": "STOP"
-        }
-    ],
-    "usageMetadata": {
-        "promptTokenCount": 519,
-        "candidatesTokenCount": 481,
-        "totalTokenCount": 2126,
-        "trafficType": "ON_DEMAND",
-        "promptTokensDetails": [
-            {
-                "modality": "IMAGE",
-                "tokenCount": 513
-            },
-            {
-                "modality": "TEXT",
-                "tokenCount": 6
-            }
-        ],
-        "candidatesTokensDetails": [
-            {
-                "modality": "TEXT",
-                "tokenCount": 481
-            }
-        ],
-        "thoughtsTokenCount": 1126
-    },
-    "modelVersion": "gemini-3-pro-preview-11-2025",
-    "createTime": "2025-12-22T13:23:06.358679Z",
-    "responseId": "OkZJaZfyFfzN998P1tDo4Q0"
-}
-```
-
-import Parameters from '/snippets/parameters/official-format/Google/chatmodel.mdx';
+import Parameters from '/snippets/Google/official-format/chat-gemini.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

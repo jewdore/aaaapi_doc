@@ -1,8 +1,8 @@
 ---
 title: 'gemini-2.5-pro-deepsearch (Image To Text)'
 sidebarTitle: 'Image To Text'
-api: "POST /v1beta/models/gemini-2.5-pro-deepsearch:generateContent"
-description: "Analyze and extract information from images using Gemini Pro DeepSearch model with advanced visual understanding capabilities"
+api: 'POST https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,203 +10,201 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent' \
+curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
   "contents": [
     {
       "role": "user",
       "parts": [
         {
+          "text": "What is shown in this PNG image?"
+        },
+        {
           "file_data": {
             "mime_type": "image/png",
             "file_uri": "https://tos.gptproto.com/resource/cat.png"
           }
-        },
-        {
-          "text": "What is shown in this PNG image?"
         }
       ]
     }
-  ]
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingBudget": 1000
+    }
+  }
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "What is shown in this PNG image?"
+        },
+        {
+          "file_data": {
+            "mime_type": "image/png",
+            "file_uri": "https://tos.gptproto.com/resource/cat.png"
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingBudget": 1000
+    }
+  }
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
 url = "https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent"
 
+payload = json.dumps({
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "What is shown in this PNG image?"
+        },
+        {
+          "file_data": {
+            "mime_type": "image/png",
+            "file_uri": "https://tos.gptproto.com/resource/cat.png"
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": True,
+      "thinkingBudget": 1000
+    }
+  }
+})
 headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-payload = {
-    "contents": [
-        {
-            "role": "user",
-            "parts": [
-                {
-                    "file_data": {
-                        "mime_type": "image/png",
-                        "file_uri": "https://tos.gptproto.com/resource/cat.png"
-                    }
-                },
-                {
-                    "text": "What is shown in this PNG image?"
-                }
-            ]
-        }
-    ]
-}
+response = requests.request("POST", url, headers=headers, data=payload)
 
-response = requests.post(url, headers=headers, data=json.dumps(payload))
-print(response.json())
+print(response.text)
+
+
 ```
-
-```javascript JavaScript
-const axios = require('axios');
-
-const url = 'https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent';
-
-const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
-};
-
-const data = {
-    contents: [
-        {
-            role: 'user',
-            parts: [
-                {
-                    file_data: {
-                        mime_type: 'image/png',
-                        file_uri: 'https://tos.gptproto.com/resource/cat.png'
-                    }
-                },
-                {
-                    text: 'What is shown in this PNG image?'
-                }
-            ]
-        }
-    ]
-};
-
-axios.post(url, data, { headers })
-    .then(response => console.log(response.data))
-    .catch(error => console.error(error));
-```
-
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent"
 
-    payload := map[string]interface{}{
-        "contents": []map[string]interface{}{
-            {
-                "role": "user",
-                "parts": []map[string]interface{}{
-                    {
-                        "file_data": map[string]string{
-                            "mime_type": "image/png",
-                            "file_uri":  "https://tos.gptproto.com/resource/cat.png",
-                        },
-                    },
-                    {
-                        "text": "What is shown in this PNG image?",
-                    },
-                },
-            },
+  url := "https://gptproto.com/v1beta/models/gemini-2.5-pro-deepsearch:generateContent"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "What is shown in this PNG image?"
         },
+        {
+          "file_data": {
+            "mime_type": "image/png",
+            "file_uri": "https://tos.gptproto.com/resource/cat.png"
+          }
+        }
+      ]
     }
-
-    jsonData, _ := json.Marshal(payload)
-
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        fmt.Println(err)
-        return
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingBudget": 1000
     }
-    defer resp.Body.Close()
+  }
+}`)
 
-    var result map[string]interface{}
-    json.NewDecoder(resp.Body).Decode(&result)
-    fmt.Println(result)
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-    "candidates": [
-        {
-            "content": {
-                "role": "model",
-                "parts": [
-                    {
-                        "text": "This image depicts a cozy, serene indoor scene, likely generated by AI or created as digital art, characterized by warm lighting and a peaceful atmosphere. Here are the key elements shown:\n\n**The Subject:**\n*   **The Cat:** The central focus is a fluffy, orange (ginger) tabby cat sitting upright on a wooden window sill. The cat has striking green eyes, long white whiskers, and a very bushy tail that curls slightly over the edge of the sill. It is looking forward with a calm expression.\n\n**The Setting:**\n*   **Window:** The cat is positioned in front of a large window with a wooden frame. Through the glass, you can see large trees with green foliage, suggesting a garden or park outside. The background is blurred (bokeh effect), keeping the focus on the interior.\n*   **Lighting:** Soft, golden sunlight is streaming in from the left, illuminating the cat's fur and creating a halo effect. There are visible dust motes or magical sparkles floating in the sunbeams, adding to the dreamy quality.\n\n**Surrounding Objects:**\n*   **Book:** To the left of the cat on the window sill, there is a thick, closed book lying flat.\n*   **Tea:** In the lower right corner, sitting on a small round wooden side table, is a teacup on a saucer. Steam is rising from the cup, indicating a hot beverage. A tea bag tag hangs over the side.\n*   **Interior Details:** On the right side of the image, there is a dark wooden bookshelf filled with books. Partially visible is a brown leather armchair with a chunky, cream-colored knit blanket draped over it, enhancing the \"hygge\" or cozy feel.\n*   **Wall Art:** A framed picture hangs on the wall near the bookshelf, though the image inside the frame is indistinct.\n\nOverall, the image conveys a sense of comfort, quiet contemplation, and the warmth of a relaxing afternoon.",
-                        "thoughtSignature": "Cv0oAY89a19fZ/pV0io*****"
-                    }
-                ]
-            },
-            "finishReason": "STOP"
-        }
-    ],
-    "usageMetadata": {
-        "promptTokenCount": 1097,
-        "candidatesTokenCount": 403,
-        "totalTokenCount": 2779,
-        "trafficType": "ON_DEMAND",
-        "promptTokensDetails": [
-            {
-                "modality": "IMAGE",
-                "tokenCount": 1089
-            },
-            {
-                "modality": "TEXT",
-                "tokenCount": 8
-            }
-        ],
-        "candidatesTokensDetails": [
-            {
-                "modality": "TEXT",
-                "tokenCount": 403
-            }
-        ],
-        "thoughtsTokenCount": 1279
-    },
-    "modelVersion": "gemini-2.5-pro-deepsearch",
-    "createTime": "2025-12-22T13:20:13.753813Z",
-    "responseId": "jUVJaZWBLvzN998P1tDo4Q0"
-}
-```
-
-import Parameters from '/snippets/parameters/official-format/Google/chatmodel.mdx';
+import Parameters from '/snippets/Google/official-format/chat-gemini.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 
