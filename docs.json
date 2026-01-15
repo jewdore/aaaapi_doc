@@ -687,7 +687,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/GPT.png"
+                "icon": "https://oss.gptproto.com/ai-draw/AiIcon/GPT.png"
               },
               {
                 "group": "Google",
@@ -1209,7 +1209,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Gemini.png"
+                "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Gemini.png"
               },
               {
                 "group": "Claude",
@@ -1633,7 +1633,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Claude.png"
+                "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Claude.png"
               },
               {
                 "group": "DeepSeek",
@@ -1661,7 +1661,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755520099039-20250818-202809.png"
+                "icon": "https://oss.gptproto.com/ai-content/1755520099039-20250818-202809.png"
               },
               {
                 "group": "BytePlus",
@@ -2063,7 +2063,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/doubao.png"
+                "icon": "https://oss.gptproto.com/ai-draw/AiIcon/doubao.png"
               },
               {
                 "group": "Flux",
@@ -2117,7 +2117,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/2025/05/30/a0ffa3b5d65f4f23a40698c445048c67.png"
+                "icon": "https://oss.gptproto.com/2025/05/30/a0ffa3b5d65f4f23a40698c445048c67.png"
               },
               {
                 "group": "Gptproto",
@@ -2232,7 +2232,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Grok.png"
+                "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Grok.png"
               },
               {
                 "group": "Ideogram",
@@ -2282,7 +2282,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Ideogram.png"
+                "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Ideogram.png"
               },
               {
                 "group": "Kling",
@@ -2413,7 +2413,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Kling.png"
+                "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Kling.png"
               },
               {
                 "group": "Midjourney",
@@ -2443,7 +2443,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Midjourney.png"
+                "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Midjourney.png"
               },
               {
                 "group": "MiniMax",
@@ -2585,7 +2585,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1757932596487-20250915-183623.png"
+                "icon": "https://oss.gptproto.com/ai-content/1757932596487-20250915-183623.png"
               },
               {
                 "group": "Runway",
@@ -2607,7 +2607,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Runway.png"
+                "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Runway.png"
               },
               {
                 "group": "Suno",
@@ -2637,7 +2637,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Suno.png"
+                "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Suno.png"
               },
               {
                 "group": "Higgsfield",
@@ -2682,7 +2682,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1754623057482-20250808-111710.png"
+                "icon": "https://oss.gptproto.com/ai-content/1754623057482-20250808-111710.png"
               },
               {
                 "group": "Qwen",
@@ -2756,7 +2756,7 @@
                     ]
                   }
                 ],
-                "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755663073115-111.png"
+                "icon": "https://oss.gptproto.com/ai-content/1755663073115-111.png"
               },
               {
                 "group": "Quick Start",
