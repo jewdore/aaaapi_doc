@@ -1,8 +1,8 @@
 ---
 title: 'gemini-2.5-flash-image-hd (Image Edit)'
 sidebarTitle: 'Image Edit'
-api: "POST /v1beta/models/gemini-2.5-flash-image-hd:generateContent"
-description: "Edit images using Gemini 2.5 Flash Image HD model with text prompts"
+api: 'POST https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,199 +10,197 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent' \
+curl --location 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
-    "contents": [
+--data '{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
         {
-            "role": "user",
-            "parts": [
-                {
-                    "text": "Put a hat on the cat"
-                },
-                {
-                    "fileData": {
-                        "mimeType": "image/png",
-                        "fileUri": "https://tos.gptproto.com/resource/cat.png"
-                    }
-                }
-            ]
+          "text": "Put a hat on the cat"
+        },
+        {
+          "fileData": {
+            "mimeType": "image/png",
+            "fileUri": "https://tos.gptproto.com/resource/cat.png"
+          }
         }
-    ]
+      ]
+    }
+  ],
+  "generationConfig": {
+    "imageConfig": {
+      "aspectRatio": "1:1"
+    }
+  }
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "Put a hat on the cat"
+        },
+        {
+          "fileData": {
+            "mimeType": "image/png",
+            "fileUri": "https://tos.gptproto.com/resource/cat.png"
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "imageConfig": {
+      "aspectRatio": "1:1"
+    }
+  }
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
 url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent"
 
+payload = json.dumps({
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "Put a hat on the cat"
+        },
+        {
+          "fileData": {
+            "mimeType": "image/png",
+            "fileUri": "https://tos.gptproto.com/resource/cat.png"
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "imageConfig": {
+      "aspectRatio": "1:1"
+    }
+  }
+})
 headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-payload = {
-    "contents": [
-        {
-            "role": "user",
-            "parts": [
-                {
-                    "text": "Put a hat on the cat"
-                },
-                {
-                    "fileData": {
-                        "mimeType": "image/png",
-                        "fileUri": "https://tos.gptproto.com/resource/cat.png"
-                    }
-                }
-            ]
-        }
-    ]
-}
+response = requests.request("POST", url, headers=headers, data=payload)
 
-response = requests.post(url, headers=headers, data=json.dumps(payload))
-print(response.json())
+print(response.text)
+
+
 ```
-
-```javascript JavaScript
-const axios = require('axios');
-
-const url = 'https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent';
-
-const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
-};
-
-const data = {
-    contents: [
-        {
-            role: 'user',
-            parts: [
-                {
-                    text: 'Put a hat on the cat'
-                },
-                {
-                    fileData: {
-                        mimeType: 'image/png',
-                        fileUri: 'https://tos.gptproto.com/resource/cat.png'
-                    }
-                }
-            ]
-        }
-    ]
-};
-
-axios.post(url, data, { headers })
-    .then(response => console.log(response.data))
-    .catch(error => console.error(error));
-```
-
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent"
 
-    payload := map[string]interface{}{
-        "contents": []map[string]interface{}{
-            {
-                "role": "user",
-                "parts": []map[string]interface{}{
-                    {
-                        "text": "Put a hat on the cat",
-                    },
-                    {
-                        "fileData": map[string]string{
-                            "mimeType": "image/png",
-                            "fileUri":  "https://tos.gptproto.com/resource/cat.png",
-                        },
-                    },
-                },
-            },
+  url := "https://gptproto.com/v1beta/models/gemini-2.5-flash-image-hd:generateContent"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "Put a hat on the cat"
         },
+        {
+          "fileData": {
+            "mimeType": "image/png",
+            "fileUri": "https://tos.gptproto.com/resource/cat.png"
+          }
+        }
+      ]
     }
-
-    jsonData, _ := json.Marshal(payload)
-
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
+  ],
+  "generationConfig": {
+    "imageConfig": {
+      "aspectRatio": "1:1"
     }
-    defer resp.Body.Close()
+  }
+}`)
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-  "candidates": [
-    {
-      "content": {
-        "parts": [
-          {
-            "inlineData": {
-              "mimeType": "image/jpeg",
-              "data": "base64_encode_data"
-            }
-          }
-        ],
-        "role": "model"
-      },
-      "finishReason": "STOP",
-      "index": 0
-    }
-  ],
-  "usageMetadata": {
-    "promptTokenCount": 7,
-    "candidatesTokenCount": 1202,
-    "totalTokenCount": 1347,
-    "promptTokensDetails": [
-      {
-        "modality": "TEXT",
-        "tokenCount": 7
-      }
-    ],
-    "candidatesTokensDetails": [
-      {
-        "modality": "IMAGE",
-        "tokenCount": 1120
-      }
-    ],
-    "thoughtsTokenCount": 138
-  },
-  "modelVersion": "gemini-2.5-flash-image-hd",
-  "responseId": "rUhKaeiQJceM-sAP5p7bsAo"
-}
-```
-
-import Parameters from '/snippets/parameters/official-format/Google/imagemodel.mdx';
+import Parameters from '/snippets/Google/official-format/image-nano.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

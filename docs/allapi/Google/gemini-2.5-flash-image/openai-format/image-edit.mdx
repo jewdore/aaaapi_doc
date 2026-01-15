@@ -1,8 +1,8 @@
 ---
 title: 'gemini-2.5-flash-image (Image Edit)'
 sidebarTitle: 'Image Edit'
-api: "POST /v1/images/edits"
-description: "Edit images using Gemini Flash Image model with text prompts"
+api: 'POST https://gptproto.com/v1/images/edits'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,144 +10,138 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1/images/edits' \
+curl --location 'https://gptproto.com/v1/images/edits' \
 --header 'Authorization: GPTPROTO_API_KEY' \
---header 'Content-Type: application/json' \
---form 'model=gemini-2.5-flash-image' \
---form 'image[]=@/cat.jpg' \
---form 'prompt=Put a hat on the cat'
-```
+--form 'model="gemini-2.5-flash-image"' \
+--form 'image[]=@"/path/to/file"' \
+--form 'prompt="Put a hat on the cat"'
 
+```
+```javascript JavaScript
+const axios = require('axios');
+const FormData = require('form-data');
+const fs = require('fs');
+let data = new FormData();
+data.append('model', 'gemini-2.5-flash-image');
+data.append('image[]', fs.createReadStream('/path/to/file'));
+data.append('prompt', 'Put a hat on the cat');
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/images/edits',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    ...data.getHeaders()
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 
 url = "https://gptproto.com/v1/images/edits"
+
+payload = {'model': 'gemini-2.5-flash-image',
+'prompt': 'Put a hat on the cat'}
+files=[
+  ('image[]',('file',open('/path/to/file','rb'),'application/octet-stream'))
+]
 headers = {
-    "Authorization": "GPTPROTO_API_KEY"
+  'Authorization': 'GPTPROTO_API_KEY'
 }
 
-files = {
-    'image[]': open('/cat.jpg', 'rb')
-}
+response = requests.request("POST", url, headers=headers, data=payload, files=files)
 
-data = {
-    'model': 'gemini-2.5-flash-image',
-    'prompt': 'Put a hat on the cat'
-}
+print(response.text)
 
-response = requests.post(url, headers=headers, files=files, data=data)
-print(response.json())
+
 ```
-
-```javascript JavaScript
-const FormData = require('form-data');
-const fs = require('fs');
-const axios = require('axios');
-
-const form = new FormData();
-form.append('model', 'gemini-2.5-flash-image');
-form.append('image[]', fs.createReadStream('/cat.jpg'));
-form.append('prompt', 'Put a hat on the cat');
-
-axios.post('https://gptproto.com/v1/images/edits', form, {
-  headers: {
-    'Authorization': 'GPTPROTO_API_KEY',
-    ...form.getHeaders()
-  }
-})
-.then(response => {
-  console.log(response.data);
-})
-.catch(error => {
-  console.error(error);
-});
-```
-
 ```go Go
 package main
 
 import (
-    "bytes"
-    "fmt"
-    "io"
-    "mime/multipart"
-    "net/http"
-    "os"
+  "fmt"
+  "bytes"
+  "mime/multipart"
+  "os"
+  "path/filepath"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/images/edits"
-    
-    payload := &bytes.Buffer{}
-    writer := multipart.NewWriter(payload)
-    
-    writer.WriteField("model", "gemini-2.5-flash-image")
-    writer.WriteField("prompt", "Put a hat on the cat")
-    
-    file, _ := os.Open("/cat.jpg")
-    defer file.Close()
-    part, _ := writer.CreateFormFile("image[]", "/cat.jpg")
-    io.Copy(part, file)
-    
-    writer.Close()
-    
-    client := &http.Client{}
-    req, _ := http.NewRequest("POST", url, payload)
-    
-    req.Header.Add("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", writer.FormDataContentType())
-    
-    res, _ := client.Do(req)
-    defer res.Body.Close()
-    
-    body, _ := io.ReadAll(res.Body)
-    fmt.Println(string(body))
+
+  url := "https://gptproto.com/v1/images/edits"
+  method := "POST"
+
+  payload := &bytes.Buffer{}
+  writer := multipart.NewWriter(payload)
+  _ = writer.WriteField("model", "gemini-2.5-flash-image")
+  file, errFile2 := os.Open("/path/to/file")
+  defer file.Close()
+  part2,
+         errFile2 := writer.CreateFormFile("image[]",filepath.Base("/path/to/file"))
+  _, errFile2 = io.Copy(part2, file)
+  if errFile2 != nil {
+    fmt.Println(errFile2)
+    return
+  }
+  _ = writer.WriteField("prompt", "Put a hat on the cat")
+  err := writer.Close()
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+
+  req.Header.Set("Content-Type", writer.FormDataContentType())
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-    "choices": [
-        {
-            "finish_reason": "stop",
-            "index": 0,
-            "message": {
-                "content": "![image](data:image/jpeg;base64,*****)",
-                "role": "assistant"
-            }
-        }
-    ],
-    "created": 1766481392,
-    "id": "chatcmpl-**",
-    "model": "gemini-2.5-flash-image",
-    "object": "chat.completion",
-    "usage": {
-        "completion_tokens": 1319,
-        "completion_tokens_details": {
-            "accepted_prediction_tokens": 0,
-            "audio_tokens": 0,
-            "reasoning_tokens": 116,
-            "rejected_prediction_tokens": 0
-        },
-        "prompt_tokens": 265,
-        "prompt_tokens_details": {
-            "audio_tokens": 0,
-            "cached_tokens": 0
-        },
-        "total_tokens": 1584
-    }
-}
-```
-
-import Parameters from '/snippets/parameters/openai-format/Google/imagemodels.mdx';
+import Parameters from '/snippets/Google/openai-format/image-nano.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

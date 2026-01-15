@@ -1,8 +1,8 @@
 ---
-title: 'gemini-2.5-flash-image-preview-hd (Text to Image)'
-sidebarTitle: 'Text to Image'
-api: "POST /v1/images/generations"
-description: "Generate high-quality images from text prompts using Gemini Flash Image Preview HD model"
+title: 'gemini-2.5-flash-image-preview-hd (Text To Image)'
+sidebarTitle: 'Text To Image'
+api: 'POST https://gptproto.com/v1/images/generations'
+description: ''
 mode: 'wide'
 ---
 
@@ -10,127 +10,125 @@ import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1/images/generations' \
+curl --location 'https://gptproto.com/v1/images/generations' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
-    "model": "gemini-2.5-flash-image-preview-hd",
-    "prompt": "a cat",
-    "size":"1:1"
+--data '{
+  "model": "gemini-2.5-flash-image-preview-hd",
+  "prompt": "a cat",
+  "size": "16:9"
 }'
+
 ```
-
-```python Python
-from openai import OpenAI
-
-client = OpenAI(
-    api_key="GPTPROTO_API_KEY",
-    base_url="https://gptproto.com/v1"
-)
-
-response = client.images.generate(
-    model="gemini-2.5-flash-image-preview-hd",
-    prompt="a cat",
-    size="1:1"
-)
-
-print(response)
-```
-
 ```javascript JavaScript
-import OpenAI from "openai";
-
-const client = new OpenAI({
-    apiKey: "GPTPROTO_API_KEY",
-    baseURL: "https://gptproto.com/v1"
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "gemini-2.5-flash-image-preview-hd",
+  "prompt": "a cat",
+  "size": "16:9"
 });
 
-async function generateImage() {
-    const response = await client.images.generate({
-        model: "gemini-2.5-flash-image-preview-hd",
-        prompt: "a cat",
-        size: "1:1"
-    });
-    
-    console.log(response);
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/images/generations',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/images/generations"
+
+payload = json.dumps({
+  "model": "gemini-2.5-flash-image-preview-hd",
+  "prompt": "a cat",
+  "size": "16:9"
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-generateImage();
-```
+response = requests.request("POST", url, headers=headers, data=payload)
 
+print(response.text)
+
+
+```
 ```go Go
 package main
 
 import (
-    "context"
-    "fmt"
-    "github.com/sashabaranov/go-openai"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    config := openai.DefaultConfig("GPTPROTO_API_KEY")
-    config.BaseURL = "https://gptproto.com/v1"
-    client := openai.NewClientWithConfig(config)
 
-    req := openai.ImageRequest{
-        Model:  "gemini-2.5-flash-image-preview-hd",
-        Prompt: "a cat",
-        Size:   "1:1",
-    }
+  url := "https://gptproto.com/v1/images/generations"
+  method := "POST"
 
-    resp, err := client.CreateImage(context.Background(), req)
-    if err != nil {
-        fmt.Printf("Image generation error: %v\n", err)
-        return
-    }
+  payload := strings.NewReader(`{
+  "model": "gemini-2.5-flash-image-preview-hd",
+  "prompt": "a cat",
+  "size": "16:9"
+}`)
 
-    fmt.Println(resp)
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-    "choices": [
-        {
-            "finish_reason": "stop",
-            "index": 0,
-            "message": {
-                "content": "![image](data:image/jpeg;base64,*****)",
-                "role": "assistant"
-            }
-        }
-    ],
-    "created": 1766481392,
-    "id": "chatcmpl-**",
-    "model": "gemini-2.5-flash-image-preview-hd",
-    "object": "chat.completion",
-    "usage": {
-        "completion_tokens": 1319,
-        "completion_tokens_details": {
-            "accepted_prediction_tokens": 0,
-            "audio_tokens": 0,
-            "reasoning_tokens": 116,
-            "rejected_prediction_tokens": 0
-        },
-        "prompt_tokens": 265,
-        "prompt_tokens_details": {
-            "audio_tokens": 0,
-            "cached_tokens": 0
-        },
-        "total_tokens": 1584
-    }
-}
-```
-
-import Parameters from '/snippets/parameters/openai-format/Google/imagemodels.mdx';
+import Parameters from '/snippets/Google/openai-format/image-nano.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 
