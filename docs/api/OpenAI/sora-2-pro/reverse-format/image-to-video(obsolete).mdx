@@ -23,9 +23,9 @@ curl -X POST "https://gptproto.com/v1/video/create" \
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
-    "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+    "https://oss.gptproto.com/ai-draw/material/land-part1-default.png"
   ],
-  "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4",
+  "character_url": "https://oss.gptproto.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4",
   "duration": 15
 }'
 ```
@@ -45,10 +45,10 @@ data = {
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
-    "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+    "https://oss.gptproto.com/ai-draw/material/land-part1-default.png"
   ],
   "duration": 15,
-  "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
+  "character_url": "https://oss.gptproto.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -68,10 +68,10 @@ const data = {
   "orientation": "portrait",
   "prompt": "She turns around and smiles, then slowly walks out of the frame.",
   "images": [
-    "https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+    "https://oss.gptproto.com/ai-draw/material/land-part1-default.png"
   ],  
   "duration": 15,
-  "character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
+  "character_url": "https://oss.gptproto.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 };
 
 fetch(url, {
@@ -103,10 +103,10 @@ func main() {
 "orientation": "portrait",
 "prompt": "She turns around and smiles, then slowly walks out of the frame.",
 "images": [
-"https://oss.heyoos.com/ai-draw/material/land-part1-default.png"
+"https://oss.gptproto.com/ai-draw/material/land-part1-default.png"
 ],
 "duration": 15,
-"character_url": "https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
+"character_url": "https://oss.gptproto.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4"
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
@@ -174,9 +174,9 @@ func main() {
 | `model` | string | ✅ Yes | `sora-2-pro` | The video generation model to use. |
 | `orientation` | string | ❌ No | `portrait` | portrait 、landscape |
 | `prompt` | string | ✅ Yes | `She turns around and smiles, then slowly walks out of the frame.` | The positive prompt for the generation. |
-| `images` | string[] | ✅ Yes | `[&quot;https://oss.heyoos.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
+| `images` | string[] | ✅ Yes | `[&quot;https://oss.gptproto.com/ai-draw/material/land-part1-default.png&quot;]` | Images parameter |
 | `duration` | integer | ❌ No | `4` | The duration of the generated video in seconds.4, 8, 12 |
-| `character_url` | string | ❌ No | `https://oss.heyoos.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4` | Non-human IP video URL. |
+| `character_url` | string | ❌ No | `https://oss.gptproto.com/2025/11/11/fffe18ab440d4fadb16b4563c4cd18d1.mp4` | Non-human IP video URL. |
 
 
 

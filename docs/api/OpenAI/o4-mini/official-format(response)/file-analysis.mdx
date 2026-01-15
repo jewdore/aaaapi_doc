@@ -34,7 +34,7 @@ curl --location 'https://gptproto.com/v1/responses' \
                 },
                 {
                     "type": "input_file",
-                    "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+                    "file_url": "https://oss.gptproto.com/ai-draw/material/Essential-English.pdf"
                 }
             ]
         }
@@ -89,7 +89,7 @@ data = {
                 },
                 {
                     "type": "input_file",
-                    "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+                    "file_url": "https://oss.gptproto.com/ai-draw/material/Essential-English.pdf"
                 }
             ]
         }
@@ -161,7 +161,7 @@ const data = {
         },
         {
           "type": "input_file",
-          "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf"
+          "file_url": "https://oss.gptproto.com/ai-draw/material/Essential-English.pdf"
         }
       ]
     }
@@ -303,7 +303,7 @@ func main() {
                     },
                     {
                         "type":     "input_file",
-                        "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf",
+                        "file_url": "https://oss.gptproto.com/ai-draw/material/Essential-English.pdf",
                     },
                 },
             },
@@ -393,7 +393,7 @@ func main() {
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `model` | string | ✅ Yes | `o4-mini` | The model to use for the request. Must support file analysis capabilities. |
-| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects supporting the following types: - **input_text**: Text prompt with `text` field - **input_file**: File input with `file_url` field, supports: - Direct URL to publicly accessible files: `https://oss.heyoos.com/ai-draw/material/Essential-English.pdf` - Base64 encoded files: `data:{mime-type};base64,{base64_string}` - Supported formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML - Maximum file size: 20MB Example with direct file URL: ```json [ { "role": "user", "content": [ { "type": "input_text", "text": "Please analyze this file and extract the key information" }, { "type": "input_file", "file_url": "https://oss.heyoos.com/ai-draw/material/Essential-English.pdf" } ] } ] ``` |
+| `input` | array | ✅ Yes | - | Array of message objects with role and content. Each message contains: - `role`: "user" or "assistant" - `content`: Array of content objects supporting the following types: - **input_text**: Text prompt with `text` field - **input_file**: File input with `file_url` field, supports: - Direct URL to publicly accessible files: `https://oss.gptproto.com/ai-draw/material/Essential-English.pdf` - Base64 encoded files: `data:{mime-type};base64,{base64_string}` - Supported formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML - Maximum file size: 20MB Example with direct file URL: ```json [ { "role": "user", "content": [ { "type": "input_text", "text": "Please analyze this file and extract the key information" }, { "type": "input_file", "file_url": "https://oss.gptproto.com/ai-draw/material/Essential-English.pdf" } ] } ] ``` |
 | `stream` | boolean | ❌ No | `false` | Whether to stream the response |
 
 

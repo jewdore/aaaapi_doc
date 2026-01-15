@@ -24,7 +24,7 @@ curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-master" \
   -H "Content-Type: application/json" \
   -d '{
   "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
-  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "image": "https://oss.gptproto.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
   "guidance_scale": 0.5,
   "duration": 5
 }'
@@ -42,7 +42,7 @@ headers = {
 
 data = {
   "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
-  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "image": "https://oss.gptproto.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
   "guidance_scale": 0.5,
   "duration": 5
 }
@@ -61,7 +61,7 @@ const headers = {
 
 const data = {
   "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
-  "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+  "image": "https://oss.gptproto.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
   "guidance_scale": 0.5,
   "duration": 5
 };
@@ -92,7 +92,7 @@ func main() {
 
     payload := []byte(`{
 "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
-"image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
+"image": "https://oss.gptproto.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png",
 "guidance_scale": 0.5,
 "duration": 5
 }`)
@@ -160,7 +160,7 @@ func main() {
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `prompt` | string | ✅ Yes | `The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character&apos;&apos;&apos;s face` | Prompt parameter |
-| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png` | Image parameter |
+| `image` | string | ❌ No | `https://oss.gptproto.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png` | Image parameter |
 | `guidance_scale` | number | ❌ No | `0.5` | Guidance Scale parameter |
 | `duration` | integer | ❌ No | `5` | Duration parameter |
 

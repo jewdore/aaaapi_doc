@@ -20,7 +20,7 @@ curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video-pro" \
   -H "Content-Type: application/json" \
   -d '{
   "prompt": "A video of a horse dancing.",
-  "image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
+  "image": "https://oss.gptproto.com/ai-draw/material/land-part1-default.png",
   "duration": 4,
   "resolution": "720p"
 }'
@@ -39,7 +39,7 @@ headers = {
 
 data = {
   "prompt": "A video of a horse dancing.",
-  "image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
+  "image": "https://oss.gptproto.com/ai-draw/material/land-part1-default.png",
   "duration": 4,
   "resolution": "720p"
 }
@@ -59,7 +59,7 @@ const headers = {
 
 const data = {
   "prompt": "A video of a horse dancing.",
-  "image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
+  "image": "https://oss.gptproto.com/ai-draw/material/land-part1-default.png",
   "duration": 4,
   "resolution": "720p"
 };
@@ -91,7 +91,7 @@ func main() {
 
     payload := []byte(`{
 "prompt": "A video of a horse dancing.",
-"image": "https://oss.heyoos.com/ai-draw/material/land-part1-default.png",
+"image": "https://oss.gptproto.com/ai-draw/material/land-part1-default.png",
 "duration": 4,
 "resolution": "720p"
 }`)
@@ -163,7 +163,7 @@ func main() {
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `prompt` | string | ✅ Yes | `A video of a horse dancing.` | Prompt parameter |
-| `image` | string | ❌ No | `https://oss.heyoos.com/ai-draw/material/land-part1-default.png` | Image parameter |
+| `image` | string | ❌ No | `https://oss.gptproto.com/ai-draw/material/land-part1-default.png` | Image parameter |
 | `duration` | integer | ❌ No | `4` | Duration parameter |
 | `resolution` | string | ❌ No | `720p` | Resolution parameter |
 

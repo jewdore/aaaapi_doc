@@ -24,7 +24,7 @@ curl --location 'https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-pro' \
 --header 'Authorization: sk-xxxx' \
 --data '{   
     "prompt" : "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'\''s face",
-    "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png", 
+    "image": "https://oss.gptproto.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png", 
     "guidance_scale": 0.5,
     "duration": 5
 }'
@@ -42,7 +42,7 @@ headers = {
 
 data = {   
     "prompt" : "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'\''s face",
-    "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png", 
+    "image": "https://oss.gptproto.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png", 
     "guidance_scale": 0.5,
     "duration": 5
 }
@@ -61,7 +61,7 @@ const headers = {
 
 const data = {   
     "prompt" : "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'\''s face",
-    "image": "https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png", 
+    "image": "https://oss.gptproto.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png", 
     "guidance_scale": 0.5,
     "duration": 5
 };
@@ -124,7 +124,7 @@ fetch(url, {
 |-----------|------|----------|---------|-------------|
 | `prompt` | string | ✅ Yes | `The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'\''s face` | The positive prompt for the generation. |
 | `negative_prompt` | string | ❌ No | - | The negative prompt for the generation. |
-| `image` | string | ✅ Yes | `https://oss.heyoos.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png` | First frame of the video; Supported image formats include.jpg/.jpeg/.png; The image file size cannot exceed 10MB, and the image resolution should not be less than 300*300px. |
+| `image` | string | ✅ Yes | `https://oss.gptproto.com/ai-draw/user/-ead3cec3-de6b-4ed5-b38c-4d8707731686.png` | First frame of the video; Supported image formats include.jpg/.jpeg/.png; The image file size cannot exceed 10MB, and the image resolution should not be less than 300*300px. |
 | `duration` | integer | ❌ No | `5` | The duration of the generated media in seconds. 5, 10. default 5 |
 | `guidance_scale` | number | ❌ No | `0.5` | The guidance scale to use for the generation. 0.00 ~ 1.00 |
 
