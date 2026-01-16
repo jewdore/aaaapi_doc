@@ -400,6 +400,20 @@
                     ]
                   },
                   {
+                    "group": "gpt-5.1-codex-max",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-5.1-codex-max/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5.1-codex-max/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.1-codex-max/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.1-codex-max/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "gpt-5.2",
                     "pages": [
                       {
@@ -443,6 +457,20 @@
                           "docs/allapi/OpenAI/gpt-5.2-chat-latest/official-format/text-to-text-chat",
                           "docs/allapi/OpenAI/gpt-5.2-chat-latest/official-format/text-to-text-response",
                           "docs/allapi/OpenAI/gpt-5.2-chat-latest/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gpt-5.2-codex",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-5.2-codex/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5.2-codex/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2-codex/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.2-codex/official-format/web-search-response"
                         ]
                       }
                     ]
