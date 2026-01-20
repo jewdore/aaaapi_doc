@@ -1,3 +1,278 @@
 import QueryResult from '/snippets/common/query-result.mdx';
 
 <QueryResult/>
+
+## Parameters
+### Request Body
+#### Core Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `prompt` | string | ✅ Yes | - | - | Image description prompt |
+| `action` | string | ❌ No | `generate` | `generate`<br />`img2img`<br />`infill` | Generation mode |
+| `size` | string | ❌ No | `832x1216` | `64x64` - `49152x49152` | Image size in format `widthxheight`. See [Common Sizes](#common-image-sizes) for recommended values |
+| `n` | integer | ❌ No | `1` | `1` - `4` | Number of images to generate |
+
+#### Prompt Control Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `negative_prompt` | string | ❌ No | `""` | - | Negative prompt to avoid certain elements |
+| `quality_toggle` | boolean | ❌ No | `true` | - | Automatically add quality tags |
+| `uc_preset` | integer | ❌ No | `0` | `0` - `3` | Negative content preset strength:<br />`0` = Heavy,<br />`1` = Light,<br />`2` = Human Focus,<br />`3` = None |
+
+#### AI Generation Control Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `steps` | integer | ❌ No | `28` | `1` - `50` | Sampling steps |
+| `scale` | float | ❌ No | `6.0` | `0` - `10` | CFG Scale (prompt guidance strength) |
+| `sampler` | string | ❌ No | `k_euler_ancestral` | See [Samplers](#supported-samplers) | Sampling method |
+| `noise_schedule` | string | ❌ No | `karras` | `native`<br />`karras`<br />`exponential` | Noise schedule algorithm |
+| `seed` | integer | ❌ No | Random | `0` - `4294967295` | Random seed for reproducibility |
+| `cfg_rescale` | float | ❌ No | `0` | `0` - `1` | CFG rescale value |
+
+#### Advanced Parameters
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `dynamic_thresholding` | boolean | ❌ No | `false` | Enable dynamic thresholding (Decrisper) |
+| `auto_smea` | boolean | ❌ No | `false` | Automatically enable SMEA (V4/V4.5) |
+| `skip_cfg_above_sigma` | integer | ❌ No | `null` | Variety Boost (diversity enhancement) |
+| `legacy` | boolean | ❌ No | `false` | Use legacy mode |
+| `use_coords` | boolean | ❌ No | `false` | Use coordinate positioning (for multi-character) |
+
+#### Image-to-Image Parameters
+<Note>These parameters are only used when `action` is set to `img2img`</Note>
+
+<CodeGroup>
+```json Basic img2img
+{
+  "prompt": "1girl, cute, anime style, colorful",
+  "action": "img2img",
+  "image": "https://example.com/image.jpg",
+  "strength": 0.7,
+  "size": "832x1216"
+}
+```
+
+```json img2img with Base64
+{
+  "prompt": "portrait, oil painting style",
+  "action": "img2img",
+  "image": "/9j/4AAQSkZJRgABAQEASABIAAD...[BASE64_DATA]...",
+  "strength": 0.5,
+  "noise": 0.1
+}
+```
+</CodeGroup>
+
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `image` | string | ✅ Yes<br />(when action=img2img) | - | - | Input image (Base64 encoded or URL) |
+| `strength` | float | ❌ No | `0.7` | `0.01` - `0.99` | Transformation strength. Higher values result in more changes |
+| `noise` | float | ❌ No | `0` | `0` - `0.99` | Additional noise for increased randomness |
+
+#### Vibe Transfer Parameters
+
+<CodeGroup>
+```json Single Reference Image
+{
+  "prompt": "1girl, beautiful landscape, fantasy art",
+  "size": "832x1216",
+  "vibe_transfer": [
+    {
+      "image": "https://example.com/reference.jpg",
+      "strength": 0.7,
+      "information_extracted": 1.0
+    }
+  ]
+}
+```
+
+```json Multiple Reference Images
+{
+  "prompt": "1girl, fantasy art",
+  "vibe_transfer": [
+    {
+      "image": "https://example.com/reference1.jpg",
+      "strength": 0.6,
+      "information_extracted": 1.0
+    },
+    {
+      "image": "https://example.com/reference2.jpg",
+      "strength": 0.4,
+      "information_extracted": 0.8
+    }
+  ]
+}
+```
+</CodeGroup>
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `vibe_transfer` | array | ❌ No | - | Array of style reference images |
+| `vibe_transfer[].image` | string | ✅ Yes | - | Reference image (Base64 or URL) |
+| `vibe_transfer[].information_extracted` | float | ❌ No | `1.0` | Information extraction level (`0.01` - `1.0`) |
+| `vibe_transfer[].strength` | float | ❌ No | `0.6` | Style transfer strength (`0.01` - `1.0`) |
+
+#### Multi-Character Generation (V4.5 Only)
+<Note>Multi-character features are only supported by V4.5 models (`nai-diffusion-4-5-full` or `nai-diffusion-4-5-curated`)</Note>
+
+<CodeGroup>
+```json Two Characters with Positioning
+{
+  "prompt": "2girls, anime style, outdoor",
+  "size": "1216x832",
+  "character_prompts": [
+    {
+      "prompt": "1girl, long hair, blue eyes, smile",
+      "uc": "lowres, bad anatomy",
+      "center": {
+        "x": 0.3,
+        "y": 0.5
+      },
+      "enabled": true
+    },
+    {
+      "prompt": "1girl, short hair, red eyes, serious",
+      "uc": "lowres, bad anatomy",
+      "center": {
+        "x": 0.7,
+        "y": 0.5
+      },
+      "enabled": true
+    }
+  ],
+  "use_coords": true
+}
+```
+</CodeGroup>
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `character_prompts` | array | ❌ No | - | Array of character prompts |
+| `character_prompts[].prompt` | string | ✅ Yes | - | Character-specific prompt |
+| `character_prompts[].uc` | string | ❌ No | `"lowres, aliasing,"` | Character-specific negative prompt |
+| `character_prompts[].center` | object | ❌ No | - | Character position coordinates |
+| `character_prompts[].center.x` | float | ❌ No | `0.5` | X coordinate (`0.1` - `0.9`), `0.5` = horizontal center |
+| `character_prompts[].center.y` | float | ❌ No | `0.5` | Y coordinate (`0.1` - `0.9`), `0.5` = vertical center |
+| `character_prompts[].enabled` | boolean | ❌ No | `true` | Enable this character |
+
+#### ControlNet Parameters (V4/V4.5 Only)
+<Note>ControlNet is only supported by V4 and V4.5 models</Note>
+
+<CodeGroup>
+```json ControlNet with Palette Swap
+{
+  "prompt": "beautiful landscape, detailed, high quality",
+  "controlnet_model": "hed",
+  "controlnet_condition": "https://example.com/control-image.jpg",
+  "controlnet_strength": 1.2,
+  "size": "1216x832"
+}
+```
+
+```json ControlNet with Form Lock
+{
+  "prompt": "1girl, portrait, anime style",
+  "controlnet_model": "midas",
+  "controlnet_condition": "https://example.com/depth-map.jpg",
+  "controlnet_strength": 1.0,
+  "size": "832x1216"
+}
+```
+</CodeGroup>
+
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `controlnet_model` | string | ❌ No | - | See below | ControlNet model type |
+| `controlnet_condition` | string | ❌ No | - | - | Control condition image (Base64 or URL) |
+| `controlnet_strength` | float | ❌ No | `1.0` | `0.1` - `2.0` | Control strength |
+
+**ControlNet Models**:
+- `hed` - Palette Swap
+- `midas` - Form Lock (depth-based)
+- `fake_scribble` - Scribbler
+- `mlsd` - Building Control (line-based)
+- `uniformer` - Landscaper (segmentation-based)
+
+#### Director Reference Parameters (V4/V4.5 Only)
+<Note>Director Reference provides more precise character and style control. Supported models: `nai-diffusion-4-5-full`, `nai-diffusion-4-5-curated`, `nai-diffusion-4-full`, `nai-diffusion-4-curated-preview`</Note>
+
+<CodeGroup>
+```json Director Reference with img2img
+{
+  "prompt": "solo, 1girl, cute, chibi, very aesthetic, masterpiece",
+  "action": "img2img",
+  "size": "896x1472",
+  "image": "https://example.com/reference.jpg",
+  "strength": 0.7,
+  "steps": 23,
+  "scale": 5.0,
+  "sampler": "k_euler_ancestral",
+  "director_reference_descriptions": [
+    {
+      "caption": {
+        "base_caption": "character&style",
+        "char_captions": []
+      },
+      "legacy_uc": false
+    }
+  ],
+  "director_reference_information_extracted": [1],
+  "director_reference_strength_values": [1],
+  "director_reference_secondary_strength_values": [0]
+}
+```
+
+```json Multiple Character References
+{
+  "prompt": "2girls, anime style, colorful",
+  "action": "generate",
+  "size": "832x1216",
+  "director_reference_descriptions": [
+    {
+      "caption": {
+        "base_caption": "character1",
+        "char_captions": []
+      }
+    },
+    {
+      "caption": {
+        "base_caption": "character2",
+        "char_captions": []
+      }
+    }
+  ],
+  "director_reference_information_extracted": [1, 1],
+  "director_reference_strength_values": [0.8, 0.8],
+  "director_reference_secondary_strength_values": [0, 0]
+}
+```
+</CodeGroup>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `director_reference_descriptions` | array | ❌ No | Array of reference descriptions |
+| `director_reference_descriptions[].caption` | object | ✅ Yes | Caption object |
+| `director_reference_descriptions[].caption.base_caption` | string | ✅ Yes | Reference description (e.g., "character&style", "character1") |
+| `director_reference_descriptions[].caption.char_captions` | array | ❌ No | Character caption array, typically empty |
+| `director_reference_descriptions[].legacy_uc` | boolean | ❌ No | Use legacy negative prompt, default `false` |
+| `director_reference_information_extracted` | array | ❌ No | Array of information extraction levels (`0.0` - `1.0`) |
+| `director_reference_strength_values` | array | ❌ No | Array of primary strength values (`0.0` - `1.0`) |
+| `director_reference_secondary_strength_values` | array | ❌ No | Array of secondary strength values (`0.0` - `1.0`), typically `0` |
+
+### Supported Samplers
+| Sampler | Description |
+|---------|-------------|
+| `k_euler_ancestral` | Euler Ancestral (Default, Recommended) |
+| `k_euler` | Euler |
+| `k_dpmpp_2m` | DPM++ 2M |
+| `k_dpmpp_sde` | DPM++ SDE |
+| `k_dpmpp_2s_ancestral` | DPM++ 2S Ancestral |
+| `ddim_v3` | DDIM |
+
+### Common Image Sizes
+| Size Format | Aspect Ratio | Use Case |
+|-------------|--------------|----------|
+| `832x1216` | Portrait (9:13) | Vertical character portraits (Default) |
+| `1024x1024` | Square (1:1) | General purpose |
+| `1216x832` | Landscape (13:9) | Horizontal landscapes |
+| `1472x832` | Widescreen (16:9) | Widescreen backgrounds |
