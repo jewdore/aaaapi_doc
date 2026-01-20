@@ -1,0 +1,171 @@
+---
+title: 'nai-diffusion-4-5-curated (Image To Image)'
+sidebarTitle: 'Image To Image'
+api: 'POST https://gptproto.com/api/v3/novel/nai-diffusion-4-5-curated/image-to-image'
+description: ''
+mode: 'wide'
+---
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+
+## Initiate Request
+<CodeGroup>
+```bash cURL
+curl --location 'https://gptproto.com/api/v3/novel/nai-diffusion-4-5-curated/image-to-image' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "prompt": "1girl, cute, anime style, blue eyes, smile",
+  "negative_prompt": "lowres, bad anatomy, text, error",
+  "action": "img2img",
+  "size": "1400x1400",
+  "n": 1,
+  "quality_toggle": true,
+  "steps": 23,
+  "scale": 5,
+  "sampler": "k_euler_ancestral",
+  "image": "https://oss.gptproto.com/frontend/gptproto/images-32018c61-b144-4a83-acbd-bd4e77688315.png",
+  "strength": 0.5,
+  "noise": 0
+}'
+
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "prompt": "1girl, cute, anime style, blue eyes, smile",
+  "negative_prompt": "lowres, bad anatomy, text, error",
+  "action": "img2img",
+  "size": "1400x1400",
+  "n": 1,
+  "quality_toggle": true,
+  "steps": 23,
+  "scale": 5,
+  "sampler": "k_euler_ancestral",
+  "image": "https://oss.gptproto.com/frontend/gptproto/images-32018c61-b144-4a83-acbd-bd4e77688315.png",
+  "strength": 0.5,
+  "noise": 0
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/api/v3/novel/nai-diffusion-4-5-curated/image-to-image',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/novel/nai-diffusion-4-5-curated/image-to-image"
+
+payload = json.dumps({
+  "prompt": "1girl, cute, anime style, blue eyes, smile",
+  "negative_prompt": "lowres, bad anatomy, text, error",
+  "action": "img2img",
+  "size": "1400x1400",
+  "n": 1,
+  "quality_toggle": True,
+  "steps": 23,
+  "scale": 5,
+  "sampler": "k_euler_ancestral",
+  "image": "https://oss.gptproto.com/frontend/gptproto/images-32018c61-b144-4a83-acbd-bd4e77688315.png",
+  "strength": 0.5,
+  "noise": 0
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
+```go Go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
+)
+
+func main() {
+
+  url := "https://gptproto.com/api/v3/novel/nai-diffusion-4-5-curated/image-to-image"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "prompt": "1girl, cute, anime style, blue eyes, smile",
+  "negative_prompt": "lowres, bad anatomy, text, error",
+  "action": "img2img",
+  "size": "1400x1400",
+  "n": 1,
+  "quality_toggle": true,
+  "steps": 23,
+  "scale": 5,
+  "sampler": "k_euler_ancestral",
+  "image": "https://oss.gptproto.com/frontend/gptproto/images-32018c61-b144-4a83-acbd-bd4e77688315.png",
+  "strength": 0.5,
+  "noise": 0
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+
+```
+</CodeGroup>
+
+import Parameters from '/snippets/NovelAI/gptproto-format/novel-nai-image.mdx';
+
+<Parameters/>
+
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>

@@ -2685,6 +2685,36 @@
                 "icon": "https://oss.gptproto.com/ai-content/1755663073115-111.png"
               },
               {
+                "group": "NovelAI",
+                "pages": [
+                  {
+                    "group": "nai-diffusion-4-5-curated",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/NovelAI/nai-diffusion-4-5-curated/gptproto-format/image-to-image",
+                          "docs/allapi/NovelAI/nai-diffusion-4-5-curated/gptproto-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "nai-diffusion-4-5-full",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/NovelAI/nai-diffusion-4-5-full/gptproto-format/image-to-image",
+                          "docs/allapi/NovelAI/nai-diffusion-4-5-full/gptproto-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "icon": "https://oss.gptproto.com/2025/12/01/f651b2a0c86b419d9442cb6c9d723bac.jpeg"
+              },
+              {
                 "group": "Quick Start",
                 "icon": "rocket",
                 "pages": [
@@ -2692,6 +2722,7 @@
                   "docs/api/quickstart/gemini"
                 ]
               }
+
             ]
           }
         ]
