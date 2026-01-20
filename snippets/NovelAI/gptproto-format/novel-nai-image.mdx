@@ -105,12 +105,12 @@ import QueryResult from '/snippets/common/query-result.mdx';
 ```
 </CodeGroup>
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `vibe_transfer` | array | ❌ No | - | Array of style reference images |
-| `vibe_transfer[].image` | string | ✅ Yes | - | Reference image (Base64 or URL) |
-| `vibe_transfer[].information_extracted` | float | ❌ No | `1.0` | Information extraction level (`0.01` - `1.0`) |
-| `vibe_transfer[].strength` | float | ❌ No | `0.6` | Style transfer strength (`0.01` - `1.0`) |
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `vibe_transfer` | array | ❌ No | - | - | Array of style reference images |
+| `vibe_transfer[].image` | string | ✅ Yes | - | - | Reference image (Base64 or URL) |
+| `vibe_transfer[].information_extracted` | float | ❌ No | `1.0` | `0.01` - `1.0` | Information extraction level |
+| `vibe_transfer[].strength` | float | ❌ No | `0.6` | `0.01` - `1.0` | Style transfer strength |
 
 #### Multi-Character Generation (V4.5 Only)
 <Note>Multi-character features are only supported by V4.5 models (`nai-diffusion-4-5-full` or `nai-diffusion-4-5-curated`)</Note>
@@ -145,15 +145,15 @@ import QueryResult from '/snippets/common/query-result.mdx';
 ```
 </CodeGroup>
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `character_prompts` | array | ❌ No | - | Array of character prompts |
-| `character_prompts[].prompt` | string | ✅ Yes | - | Character-specific prompt |
-| `character_prompts[].uc` | string | ❌ No | `"lowres, aliasing,"` | Character-specific negative prompt |
-| `character_prompts[].center` | object | ❌ No | - | Character position coordinates |
-| `character_prompts[].center.x` | float | ❌ No | `0.5` | X coordinate (`0.1` - `0.9`), `0.5` = horizontal center |
-| `character_prompts[].center.y` | float | ❌ No | `0.5` | Y coordinate (`0.1` - `0.9`), `0.5` = vertical center |
-| `character_prompts[].enabled` | boolean | ❌ No | `true` | Enable this character |
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `character_prompts` | array | ❌ No | - | - | Array of character prompts |
+| `character_prompts[].prompt` | string | ✅ Yes | - | - | Character-specific prompt |
+| `character_prompts[].uc` | string | ❌ No | `"lowres, aliasing,"` | - | Character-specific negative prompt |
+| `character_prompts[].center` | object | ❌ No | - | - | Character position coordinates |
+| `character_prompts[].center.x` | float | ❌ No | `0.5` | `0.1` - `0.9` | X coordinate, `0.5` = horizontal center |
+| `character_prompts[].center.y` | float | ❌ No | `0.5` | `0.1` - `0.9` | Y coordinate, `0.5` = vertical center |
+| `character_prompts[].enabled` | boolean | ❌ No | `true` | - | Enable this character |
 
 #### ControlNet Parameters (V4/V4.5 Only)
 <Note>ControlNet is only supported by V4 and V4.5 models</Note>
@@ -248,16 +248,16 @@ import QueryResult from '/snippets/common/query-result.mdx';
 ```
 </CodeGroup>
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `director_reference_descriptions` | array | ❌ No | Array of reference descriptions |
-| `director_reference_descriptions[].caption` | object | ✅ Yes | Caption object |
-| `director_reference_descriptions[].caption.base_caption` | string | ✅ Yes | Reference description (e.g., "character&style", "character1") |
-| `director_reference_descriptions[].caption.char_captions` | array | ❌ No | Character caption array, typically empty |
-| `director_reference_descriptions[].legacy_uc` | boolean | ❌ No | Use legacy negative prompt, default `false` |
-| `director_reference_information_extracted` | array | ❌ No | Array of information extraction levels (`0.0` - `1.0`) |
-| `director_reference_strength_values` | array | ❌ No | Array of primary strength values (`0.0` - `1.0`) |
-| `director_reference_secondary_strength_values` | array | ❌ No | Array of secondary strength values (`0.0` - `1.0`), typically `0` |
+| Parameter | Type | Required | Range | Description |
+|-----------|------|----------|-------|-------------|
+| `director_reference_descriptions` | array | ❌ No | - | Array of reference descriptions |
+| `director_reference_descriptions[].caption` | object | ✅ Yes | - | Caption object |
+| `director_reference_descriptions[].caption.base_caption` | string | ✅ Yes | - | Reference description (e.g., "character&style", "character1") |
+| `director_reference_descriptions[].caption.char_captions` | array | ❌ No | - | Character caption array, typically empty |
+| `director_reference_descriptions[].legacy_uc` | boolean | ❌ No | - | Use legacy negative prompt, default `false` |
+| `director_reference_information_extracted` | array | ❌ No | `0.0` - `1.0` | Array of information extraction levels |
+| `director_reference_strength_values` | array | ❌ No | `0.0` - `1.0` | Array of primary strength values |
+| `director_reference_secondary_strength_values` | array | ❌ No | `0.0` - `1.0` | Array of secondary strength values, typically `0` |
 
 ### Supported Samplers
 | Sampler | Description |
