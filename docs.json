@@ -2570,6 +2570,50 @@
                 "group": "Qwen",
                 "pages": [
                   {
+                    "group": "qwen-flash",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Alibaba/qwen-flash/openai-format/text-to-text"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "qwen-plus",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Alibaba/qwen-plus/openai-format/text-to-text"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "qwen-turbo",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Alibaba/qwen-turbo/openai-format/text-to-text"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "qwen3-max",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Alibaba/qwen3-max/openai-format/text-to-text"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "wan-2.2-animate",
                     "pages": [
                       {
