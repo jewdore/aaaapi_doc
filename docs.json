@@ -2511,7 +2511,7 @@
                 "group": "Suno",
                 "pages": [
                   {
-                    "group": "suno-lyrics",
+                    "group": "suno-lyrics(unmaintained)",
                     "pages": [
                       {
                         "group": "official-format",
@@ -2523,7 +2523,7 @@
                     ]
                   },
                   {
-                    "group": "suno-music",
+                    "group": "suno-music(unmaintained)",
                     "pages": [
                       {
                         "group": "official-format",
