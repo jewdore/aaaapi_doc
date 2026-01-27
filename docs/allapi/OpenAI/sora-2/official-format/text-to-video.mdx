@@ -16,35 +16,16 @@ import Authentication from '/snippets/common/authentication.mdx';
 ```bash cURL
 curl --location 'https://gptproto.com/v1/videos' \
 --header 'Authorization: GPTPROTO_API_KEY' \
---header 'Content-Type: application/json' \
---data '[
-  {
-    "key": "model",
-    "value": "sora-2",
-    "type": "text"
-  },
-  {
-    "key": "prompt",
-    "value": "Put a hat on the cat",
-    "type": "text"
-  }
-]'
+--form 'model="sora-2"' \
+--form 'prompt="Put a hat on the cat"'
 
 ```
 ```javascript JavaScript
 const axios = require('axios');
-let data = JSON.stringify([
-  {
-    "key": "model",
-    "value": "sora-2",
-    "type": "text"
-  },
-  {
-    "key": "prompt",
-    "value": "Put a hat on the cat",
-    "type": "text"
-  }
-]);
+const FormData = require('form-data');
+let data = new FormData();
+data.append('model', 'sora-2');
+data.append('prompt', 'Put a hat on the cat');
 
 let config = {
   method: 'post',
@@ -52,7 +33,7 @@ let config = {
   url: 'https://gptproto.com/v1/videos',
   headers: { 
     'Authorization': 'GPTPROTO_API_KEY', 
-    'Content-Type': 'application/json'
+    ...data.getHeaders()
   },
   data : data
 };
@@ -69,28 +50,19 @@ axios.request(config)
 ```
 ```python Python
 import requests
-import json
 
 url = "https://gptproto.com/v1/videos"
 
-payload = json.dumps([
-  {
-    "key": "model",
-    "value": "sora-2",
-    "type": "text"
-  },
-  {
-    "key": "prompt",
-    "value": "Put a hat on the cat",
-    "type": "text"
-  }
-])
+payload = {'model': 'sora-2',
+'prompt': 'Put a hat on the cat'}
+files=[
+
+]
 headers = {
-  'Authorization': 'GPTPROTO_API_KEY',
-  'Content-Type': 'application/json'
+  'Authorization': 'GPTPROTO_API_KEY'
 }
 
-response = requests.request("POST", url, headers=headers, data=payload)
+response = requests.request("POST", url, headers=headers, data=payload, files=files)
 
 print(response.text)
 
@@ -101,7 +73,8 @@ package main
 
 import (
   "fmt"
-  "strings"
+  "bytes"
+  "mime/multipart"
   "net/http"
   "io"
 )
@@ -111,18 +84,16 @@ func main() {
   url := "https://gptproto.com/v1/videos"
   method := "POST"
 
-  payload := strings.NewReader(`[
-  {
-    "key": "model",
-    "value": "sora-2",
-    "type": "text"
-  },
-  {
-    "key": "prompt",
-    "value": "Put a hat on the cat",
-    "type": "text"
+  payload := &bytes.Buffer{}
+  writer := multipart.NewWriter(payload)
+  _ = writer.WriteField("model", "sora-2")
+  _ = writer.WriteField("prompt", "Put a hat on the cat")
+  err := writer.Close()
+  if err != nil {
+    fmt.Println(err)
+    return
   }
-]`)
+
 
   client := &http.Client {
   }
@@ -133,8 +104,8 @@ func main() {
     return
   }
   req.Header.Add("Authorization", "GPTPROTO_API_KEY")
-  req.Header.Add("Content-Type", "application/json")
 
+  req.Header.Set("Content-Type", writer.FormDataContentType())
   res, err := client.Do(req)
   if err != nil {
     fmt.Println(err)
