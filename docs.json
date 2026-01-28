@@ -994,8 +994,7 @@
                   {
                     "group": "google-file-upload",
                     "pages": [
-                      "docs/api/Google/google-file-upload//file-upload-north-america",
-                      "docs/api/Google/google-file-upload//file-upload"
+                      "docs/api/Google/google-file-upload/file-upload"
                     ]
                   },
                   {
