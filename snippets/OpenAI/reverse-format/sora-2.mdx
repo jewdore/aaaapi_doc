@@ -7,7 +7,7 @@ import QueryResult from '/snippets/common/query-result.mdx';
 |-----------|------|----------|---------|-------|-------------|
 | `model` | string | ✅ Yes | `sora-2` | `sora-2`<br />`sora-2-pro` | The video generation model to use. |
 | `prompt` | string | ✅ Yes | - | - | The positive prompt for the generation. |
-| `images` | string[] | ✅ Yes | - | - | Images parameter |
+| `images` | string[] | ✅ Yes | - | - | Images parameter ,The image must match the target video’s resolution (size).|
 | `size` | string | ✅ Yes | `small` | `small`<br />`large` | Video size quality. Options: small, large. Only sora-2-pro supports high-definition (large) |
 | `orientation` | string | ❌ No | `portrait` | `portrait`<br />`landscape` | Video orientation, does not support specific size control. Options: portrait, landscape |
 | `duration` | integer | ❌ No | `10` | For sora-2:<br /> `10`、`15`<br />For sora-2-pro: <br />`10`、`15`、`25` | The duration of the generated video in seconds. For sora-2: 10, 15. For sora-2-pro: 10, 15, 25 |
