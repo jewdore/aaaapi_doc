@@ -2717,14 +2717,6 @@
                   }
                 ],
                 "icon": "https://oss.gptproto.com/2025/12/01/f651b2a0c86b419d9442cb6c9d723bac.jpeg"
-              },
-              {
-                "group": "Quick Start",
-                "icon": "rocket",
-                "pages": [
-                  "docs/api/quickstart/openai",
-                  "docs/api/quickstart/gemini"
-                ]
               }
             ]
           }
