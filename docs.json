@@ -32,9 +32,19 @@
             "group": "Get Started",
             "icon": "rocket",
             "pages": [
-              "introduction",
-              "quickstart",
-              "authentication"
+              "docs/get-started/get-started/introduction",
+              "docs/get-started/get-started/quickstart",
+              "docs/get-started/get-started/authentication"
+            ]
+          },
+          {
+            "group": "How to Use",
+            "icon": "rocket",
+            "pages": [
+              "docs/get-started/get-started/how-to-use/ai-chat",
+              "docs/get-started/get-started/how-to-use/claude-code",
+              "docs/get-started/get-started/how-to-use/codex",
+              "docs/get-started/get-started/how-to-use/dify"
             ]
           }
         ]
@@ -2718,22 +2728,6 @@
                 ],
                 "icon": "https://oss.gptproto.com/2025/12/01/f651b2a0c86b419d9442cb6c9d723bac.jpeg"
               }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Guides",
-        "icon": "book",
-        "groups": [
-          {
-            "group": "Guides",
-            "icon": "book",
-            "pages": [
-              "docs/guide/codex",
-              "docs/guide/claude-code",
-              "docs/guide/ai-chat",
-              "docs/guide/how-to-use-in-dify"
             ]
           }
         ]
