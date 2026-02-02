@@ -2060,12 +2060,67 @@
                 "group": "Grok",
                 "pages": [
                   {
+                    "group": "grok-2-image",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Grok/grok-2-image/openai-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "grok-3",
                     "pages": [
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Grok/grok-3/openai-format/text-to-text"
+                          "docs/allapi/Grok/grok-3/openai-format/text-to-text-chat"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "grok-3-deepersearch",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Grok/grok-3-deepersearch/openai-format/text-to-text-chat"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "grok-3-deepersearch-r",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Grok/grok-3-deepersearch-r/openai-format/text-to-text-chat"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "grok-3-deepsearch",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Grok/grok-3-deepsearch/openai-format/text-to-text-chat"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "grok-3-deepsearch-r",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Grok/grok-3-deepsearch-r/openai-format/text-to-text-chat"
                         ]
                       }
                     ]
@@ -2076,7 +2131,7 @@
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Grok/grok-3-mini/openai-format/text-to-text"
+                          "docs/allapi/Grok/grok-3-mini/openai-format/text-to-text-chat"
                         ]
                       }
                     ]
@@ -2087,7 +2142,7 @@
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Grok/grok-3-reasoner/openai-format/text-to-text"
+                          "docs/allapi/Grok/grok-3-reasoner/openai-format/text-to-text-chat"
                         ]
                       }
                     ]
@@ -2098,7 +2153,7 @@
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Grok/grok-3-reasoner-r/openai-format/text-to-text"
+                          "docs/allapi/Grok/grok-3-reasoner-r/openai-format/text-to-text-chat"
                         ]
                       }
                     ]
@@ -2109,8 +2164,44 @@
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Grok/grok-4/openai-format/image-analysis",
-                          "docs/api/Grok/grok-4/openai-format/text-to-text"
+                          "docs/allapi/Grok/grok-4/openai-format/image-to-text-chat",
+                          "docs/allapi/Grok/grok-4/openai-format/text-to-text-chat"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "grok-4-0709",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Grok/grok-4-0709/openai-format/image-to-text-chat",
+                          "docs/allapi/Grok/grok-4-0709/openai-format/text-to-text-chat"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "grok-4-1-fast-non-reasoning",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Grok/grok-4-1-fast-non-reasoning/openai-format/image-to-text-chat",
+                          "docs/allapi/Grok/grok-4-1-fast-non-reasoning/openai-format/text-to-text-chat"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "grok-4-1-fast-reasoning",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Grok/grok-4-1-fast-reasoning/openai-format/image-to-text-chat",
+                          "docs/allapi/Grok/grok-4-1-fast-reasoning/openai-format/text-to-text-chat"
                         ]
                       }
                     ]
@@ -2121,19 +2212,30 @@
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Grok/grok-4-image/openai-format/text-to-image"
+                          "docs/allapi/Grok/grok-4-image/openai-format/text-to-image"
                         ]
                       }
                     ]
                   },
                   {
-                    "group": "grok-imagine-0.9",
+                    "group": "grok-code-fast-1",
                     "pages": [
                       {
-                        "group": "gptproto-format",
+                        "group": "openai-format",
                         "pages": [
-                          "docs/api/Grok/grok-imagine-0.9/gptproto-format/image-to-video",
-                          "docs/api/Grok/grok-imagine-0.9/gptproto-format/query-task"
+                          "docs/allapi/Grok/grok-code-fast-1/openai-format/text-to-text-chat"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "grok-imagine-image",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Grok/grok-imagine-image/openai-format/image-edit",
+                          "docs/allapi/Grok/grok-imagine-image/openai-format/text-to-image"
                         ]
                       }
                     ]

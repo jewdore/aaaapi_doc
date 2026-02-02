@@ -1,0 +1,23 @@
+<Accordion title="Response Example">
+```json
+{
+    "data": [
+        {
+            "url": "https://imgen.x.ai/xai-imgen/xai-tmp-imgen-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.jpeg",
+            "revised_prompt": "a photograph of a cat wearing a hat, sitting on a wooden surface with a neutral expression. The cat has a mix of gray and white fur, with its front paws resting on the hat, which has a wide brim and a dark color, possibly black or dark gray. The background features a blurred indoor setting with a wooden wall and a hint of a window with natural light filtering through. The lighting is soft and natural, suggesting an indoor environment with ample sunlight. The cat's expression is neutral, with its eyes looking directly at the camera, and its ears are pointed upwards. The hat appears to be made of a soft material, possibly felt, and it covers the top of the cat's head while leaving its face visible. The image has a shallow depth of field, focusing sharply on the cat and the hat while blurring the background. There are no texts visible in the image. The cat's posture is relaxed, with its body slightly turned to the side and its tail not visible in the frame. The overall composition is balanced, with the cat and hat as the central elements, and the background includes a wooden structure that could be part of furniture or a wall."
+        }
+    ]
+}
+```
+</Accordion>
+
+## Parameters
+### Core Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `model` | string | ✅ Yes | - | - | Model to be used. |
+| `prompt` | string | ✅ Yes | - | - | Prompt for image generation. |
+| `image` | string or file | ❌ No | - | - | base64-encoded data string of the picture or a public URL. |
+| `n` | integer | ❌ No | `1` | `1-10` | The number of images to generate. Must be between 1 and 10. |
+| `aspect_ratio` | string | ❌ No | `1:1` | `1:1`<br />`3:4`<br />`4:3`<br />`9:16`<br />`16:9`<br />`2:3`<br />`3:2`<br />`9:19.5`<br />`19.5:9`<br />`9:20`<br />`20:9`<br />`1:2`<br />`2:1`<br />`auto` | Aspect ratio of the generated image. Only supported by grok-imagine models. |
+| `response_format` | string | ❌ No | `url` | `b64_json`<br />`url` | Response format to return the image in. Can be url or b64_json. If b64_json is specified, the image will be returned as a base64-encoded string instead of a url to the generated image file. |

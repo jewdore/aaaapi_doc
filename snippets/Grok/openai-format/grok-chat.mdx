@@ -1,0 +1,57 @@
+<Accordion title="Response Example">
+```json
+{
+    "choices": [
+        {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+                "content": "I'm Grok, a helpful and maximally truthful AI built by xAI. I'm designed to answer questions, provide information, and tackle problems with a bit of wit and wisdom—think of me as inspired by the Hitchhiker's Guide to the Galaxy and JARVIS from Iron Man. Not omniscient, but I'll do my best. What's on your mind?",
+                "role": "assistant"
+            }
+        }
+    ],
+    "created": 1770018847,
+    "id": "abc",
+    "model": "grok-4",
+    "object": "chat.completion",
+    "system_fingerprint": "fp_dd0aa291c6",
+    "usage": {
+        "completion_tokens": 196,
+        "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 124,
+            "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 688,
+        "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 679
+        },
+        "total_tokens": 884
+    }
+}
+```
+</Accordion>
+
+## Parameters
+### Core Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `model` | string | ✅ Yes | - | - | Model ID used to generate the completion. Grok offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the model guide to browse and compare available models. |
+| `messages` | array | ✅ Yes | - | - | A list of messages comprising the conversation so far. Depending on the model you use, different message types (modalities) are supported, like text, images, and audio. |
+| `>messages.role` | string | ✅ Yes | - | `developer`<br />`user`<br />`system` | The role of the messages author. |
+| `>messages.name` | string | ❌ No | - | - | An optional name for the participant. Provides the model information to differentiate between participants of the same role. |
+| `>messages.content` | string / array | ✅ Yes | - | - | The contents of the developer message. |
+| `>>messages.content.type` | string | ✅ Yes | - | `text`<br />`image_url` | The type of the content part |
+| `>>messages.content.text` | string | ❌ No | - | - | The text content |
+| `>>messages.content.image_url` | object | ✅ Yes(if type is `image_url`) | - | - | The image URL content |
+| `>>messages.content.image_url.url` | string | ❌ No | - | - | The URL of the image |
+
+### Advanced Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `max_tokens` | integer / null | ❌ No | - | - | An upper bound for the number of tokens that can be generated for a completion, including visible output tokens and reasoning tokens. |
+| `stream` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to stream the response back incrementally. Defaults to false. |
+
