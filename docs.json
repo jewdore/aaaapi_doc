@@ -2813,6 +2813,74 @@
                 "icon": "https://oss.gptproto.com/ai-content/1755663073115-111.png"
               },
               {
+                "group": "Vidu",
+                "pages": [
+                  {
+                    "group": "viduq2",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Vidu/viduq2/gptproto-format/image-to-image",
+                          "docs/allapi/Vidu/viduq2/gptproto-format/reference-to-video",
+                          "docs/allapi/Vidu/viduq2/gptproto-format/text-to-image",
+                          "docs/allapi/Vidu/viduq2/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "viduq2-pro",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Vidu/viduq2-pro/gptproto-format/image-to-video",
+                          "docs/allapi/Vidu/viduq2-pro/gptproto-format/start-end-framed"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "viduq2-pro-fast",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Vidu/viduq2-pro-fast/gptproto-format/image-to-video",
+                          "docs/allapi/Vidu/viduq2-pro-fast/gptproto-format/start-end-framed"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "viduq2-turbo",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Vidu/viduq2-turbo/gptproto-format/image-to-video",
+                          "docs/allapi/Vidu/viduq2-turbo/gptproto-format/start-end-framed"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "viduq3-pro",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Vidu/viduq3-pro/gptproto-format/image-to-video",
+                          "docs/allapi/Vidu/viduq3-pro/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png"
+              },
+              {
                 "group": "NovelAI",
                 "pages": [
                   {

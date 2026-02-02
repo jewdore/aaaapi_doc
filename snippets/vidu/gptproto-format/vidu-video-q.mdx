@@ -1,0 +1,39 @@
+import QueryResult from '/snippets/common/query-result.mdx';
+
+<QueryResult/>
+
+## Parameters
+### Path Parameters
+Endpoint: `https://gptproto.com/api/v3/vidu/{model}/{scene}`
+<Note>Body parameters may vary depending on the scene. Incorrect scene selection may cause parameters to fail. Please choose the appropriate scene based on your actual needs.</Note>
+| scene | example | Available Models |
+|------|---------|-----------------|
+| `text-to-video` | `https://gptproto.com/api/v3/vidu/{model}/text-to-video` | `viduq2` <br />`viduq3-pro` |
+| `reference-to-video` | `https://gptproto.com/api/v3/vidu/{model}/reference-to-video` | `viduq2` |
+| `image-to-video` | `https://gptproto.com/api/v3/vidu/{model}/image-to-video` | `viduq3-pro` <br />`viduq2-pro-fast` <br />`viduq2-pro` <br />`viduq2-turbo` |
+| `start-end-framed` | `https://gptproto.com/api/v3/vidu/{model}/start-end-framed` | `viduq2-pro-fast` <br />`viduq2-pro` <br />`viduq2-turbo` |
+
+
+### Core Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `prompt` | string | ✅ Yes | - | - | The positive prompt for the generation. |
+| `resolution` | string | ❌ No | `720p` | `540p, 720p, 1080p` | The resolution of the generated media. |
+| `duration` | number | ❌ No | `5` | `1 ~ 10` | The duration of the generated media in seconds. |
+| `aspect_ratio` | string | ❌ No | `4:3` | `3:4, 4:3` | The aspect ratio of the generated media. |
+| `movement_amplitude` | string | ❌ No | `auto` | `auto, small, medium, large` | The movement amplitude of objects in the frame. Defaults to auto, accepted value: auto small medium large. |
+| `bgm` | boolean | ❌ No | `false` | `true, false` | The background music for generating the output. |
+| `audio` | boolean | ❌ No | `false` | `true, false` | The audio for generating the output. |
+| `seed` | integer | ❌ No | `1` | `1 ~ 2147483647` | The random seed to use for the generation. 1 means a random seed will be used. |
+
+### image input Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `image` | string | ✅ Yes | - | - | The start image for generating the output. |
+| `last_image` | string | ✅ Yes | - | - | The end image for generating the output. |
+| `subjects` | array | ✅ Yes | - | 1~7 | Information about the subjects in the images. |
+| >>`subjects.id` | string | ✅ Yes | - | - | Usable in prompts via @subjectId. |
+| >>`subjects.images` | array | ✅ Yes | - | 1~3 | URLs of images corresponding to the subject. Each subject supports up to 3 images. |
+| >>`subjects.voice_id` | string | ❌ No | - | - | Used to determine the voice character in the video. The system will automatically recommend a suitable voice, and optional values can be found in the [Voice List](https://shengshu.feishu.cn/sheets/WM45sosS7hEj2mtAATvclDAWnNb). If a voice_id is specified, the audio parameter must be set to `true`. |
+
+

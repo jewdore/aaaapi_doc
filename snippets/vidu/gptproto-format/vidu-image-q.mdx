@@ -1,0 +1,12 @@
+import QueryResult from '/snippets/common/query-result.mdx';
+
+<QueryResult/>
+
+## Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `prompt` | string | ✅ Yes | - | - | The text prompt for generating the image. |
+| `images` | array | ✅ Yes | - | 1~7 items | The reference image to guide the generation. |
+| `aspect_ratio` | string | ❌ No | `1:1` | `1:1`<br />`16:9`<br />`9:16`<br />`4:3`<br />`3:4`<br />`21:9`<br />`2:3`<br />`3:2`<br />`auto` | The aspect ratio for the generated image. |
+| `resolution` | string | ❌ No | `1080p` | `1080p`<br />`2k`<br />`4k` | The output resolution quality: 1080p (1920x1080), 2K (2560x1440), or 4K (3840x2160). |
+| `seed` | integer | ❌ No | `1` | `1~2147483647` | The random seed to use for the generation. 1 means a random seed will be used. |
