@@ -15,13 +15,13 @@ Endpoint: `https://gptproto.com/api/v3/vidu/{model}/{scene}`
 
 
 ### Core Parameters
+<Note>Parameter support varies by model and scene. See the [Model Scene Compatibility Matrix](#model-scene-compatibility-matrix) for detailed information about which parameters are supported for each model and scene combination.</Note>
 | Parameter | Type | Required | Default | Range | Description |
 |-----|-----|-----|-----|--------|--------------------|
 | `prompt` | string | ✅ Yes | - | - | The positive prompt for the generation. |
 | `resolution` | string | ❌ No | `720p` | `540p, 720p, 1080p` | The resolution of the generated media. |
 | `duration` | number | ❌ No | `5` | `1 ~ 10` | The duration of the generated media in seconds. |
 | `aspect_ratio` | string | ❌ No | `4:3` | `3:4, 4:3` | The aspect ratio of the generated media. |
-| `movement_amplitude` | string | ❌ No | `auto` | `auto, small, medium, large` | The movement amplitude of objects in the frame. Defaults to auto, accepted value: auto small medium large. |
 | `bgm` | boolean | ❌ No | `false` | `true, false` | The background music for generating the output. |
 | `audio` | boolean | ❌ No | `false` | `true, false` | The audio for generating the output. |
 | `seed` | integer | ❌ No | `1` | `1 ~ 2147483647` | The random seed to use for the generation. 1 means a random seed will be used. |
@@ -35,5 +35,22 @@ Endpoint: `https://gptproto.com/api/v3/vidu/{model}/{scene}`
 | >>`subjects.id` | string | ✅ Yes | - | - | Usable in prompts via @subjectId. |
 | >>`subjects.images` | array | ✅ Yes | - | 1~3 | URLs of images corresponding to the subject. Each subject supports up to 3 images. |
 | >>`subjects.voice_id` | string | ❌ No | - | - | Used to determine the voice character in the video. The system will automatically recommend a suitable voice, and optional values can be found in the [Voice List](https://shengshu.feishu.cn/sheets/WM45sosS7hEj2mtAATvclDAWnNb). If a voice_id is specified, the audio parameter must be set to `true`. |
+
+## Model Scene Compatibility Matrix
+
+The following table shows which parameters are supported for each model and scene combination. D = Default value, R = Range of supported values.
+
+| Model | text-to-video | reference-to-video | image-to-video | start-end-framed |
+|-------|--------------|-------------------|----------------|------------------|
+| **viduq2** | • **duration:** D=5, R=1-10<br/>• **resolution:** D=720p, R=540p/720p/1080p<br/>• **aspect_ratio:** D=16:9, R=16:9/9:16/3:4/4:3/1:1<br/>• **audio:** Not effective<br/>• **bgm:** D=false, not effective when duration=9-10 | • **duration:** D=5, R=1-10<br/>• **resolution:** D=720p, R=540p/720p/1080p<br/>• **aspect_ratio:** D=16:9, R=any ratio supported<br/>• **audio:** D=false<br/>• **bgm:** Not effective | ❌ Not supported | ❌ Not supported |
+| **viduq2-pro-fast** | ❌ Not supported | ❌ Not supported | • **duration:** D=5, R=1-10<br/>• **resolution:** D=720p, R=720p/1080p<br/>• **aspect_ratio:** Not effective<br/>• **audio:** D=false<br/>• **bgm:** D=false, not effective when duration=9-10 | • **duration:** D=5, R=1-8<br/>• **resolution:** D=720p, R=540p/720p/1080p<br/>• **aspect_ratio:** Not effective<br/>• **audio:** Not effective<br/>• **bgm:** D=false, not effective when duration=9-10 |
+| **viduq2-turbo** | ❌ Not supported | ❌ Not supported | • **duration:** D=5, R=1-10<br/>• **resolution:** D=720p, R=540p/720p/1080p<br/>• **aspect_ratio:** Not effective<br/>• **audio:** D=false<br/>• **bgm:** D=false, not effective when duration=9-10 | • **duration:** D=5, R=1-8<br/>• **resolution:** D=720p, R=540p/720p/1080p<br/>• **aspect_ratio:** Not effective<br/>• **audio:** Not effective<br/>• **bgm:** D=false, not effective when duration=9-10 |
+| **viduq2-pro** | ❌ Not supported | ❌ Not supported | • **duration:** D=5, R=1-10<br/>• **resolution:** D=720p, R=540p/720p/1080p<br/>• **aspect_ratio:** Not effective<br/>• **audio:** D=false<br/>• **bgm:** D=false, not effective when duration=9-10 | • **duration:** D=5, R=1-8<br/>• **resolution:** D=720p, R=540p/720p/1080p<br/>• **aspect_ratio:** Not effective<br/>• **audio:** Not effective<br/>• **bgm:** D=false, not effective when duration=9-10 |
+| **viduq3-pro** | • **duration:** D=5, R=1-16<br/>• **resolution:** D=720p, R=540p/720p/1080p<br/>• **aspect_ratio:** D=16:9, R=16:9/9:16/3:4/4:3/1:1<br/>• **audio:** D=true<br/>• **bgm:** Not effective | ❌ Not supported | • **duration:** D=5, R=1-16<br/>• **resolution:** D=720p, R=540p/720p/1080p<br/>• **aspect_ratio:** Not effective<br/>• **audio:** D=true<br/>• **bgm:** Not effective | ❌ Not supported |
+
+### Key Highlights
+- **viduq2**: Supports text-to-video and reference-to-video scenarios only
+- **viduq2-pro/pro-fast/turbo**: Specialized for image-to-video and start-end-framed modes
+- **viduq3-pro**: Most versatile, supports text-to-video and image-to-video with audio support and up to 16 seconds duration
 
 
