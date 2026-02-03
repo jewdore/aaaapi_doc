@@ -75,16 +75,18 @@ func main() {
 ```json
 {
     "id": "video_****",
-    "object": "video",
-    "status": "completed",
-    "model": "sora-2",
-    "progress": 100,
-    "seconds": "4",
     "size": "720x1280",
-    "soraVideoUrl": "https://oss.gptproto.com/ai/api6ebf99.mp4",
-    "created_at": "1766556441",
-    "completed_at": "1766556506",
-    "expires_at": "1766560106"
+    "error": null,
+    "model": "sora-2",
+    "object": "video",
+    "prompt": "Put a hat on the cat",
+    "status": "completed",
+    "seconds": "4",
+    "progress": 100,
+    "created_at": "1770098584",
+    "expires_at": "1770184984",
+    "completed_at": "1770098708",
+    "remixed_from_video_id": null
 }
 ```
 
@@ -185,20 +187,6 @@ func main() {
 ```
 </CodeGroup>
 
-**Query Video Content Response:**
-```json
-{
-  "id": "video_123",
-  "object": "video",
-  "model": "sora-2",
-  "status": "queued",
-  "progress": 0,
-  "created_at": 1712697600,
-  "size": "1024x1792",
-  "seconds": "8",
-  "quality": "standard"
-}
-```
 
 ## Parameters
 | Parameter | Type | Required | Default | Range | Description |
