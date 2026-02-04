@@ -7,5 +7,5 @@ import QueryResult from '/snippets/common/query-result.mdx';
 |-----|-----|-----|-----|--------|--------------------|
 | `prompt` | string | ✅ Yes | - | - | Text prompt that describes the video to generate. |
 | `image` | file | ❌ No | - | - | Optional image reference that guides generation. The image must match the target video’s resolution (size).|
-| `duration` | string | ❌ No | `4` | `4`<br />`8`<br />`12` | Clip duration in seconds. Defaults to 4 seconds. |
+| `duration` | integer | ❌ No | `4` | `4`<br />`8`<br />`12` | Clip duration in seconds. Defaults to 4 seconds. |
 | `size` | string | ❌ No | `720x1280` | `720x1280`<br />`1280x720`<br />`1024x1792`<br />`1792x1024` | Output resolution formatted as width x height. Defaults to 720x1280. Note: `1024x1792` and `1792x1024` are only supported by sora2-pro model. |

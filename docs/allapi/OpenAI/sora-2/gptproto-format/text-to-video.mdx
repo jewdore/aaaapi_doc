@@ -19,7 +19,7 @@ curl --location 'https://gptproto.com/api/v3/openai/sora-2/text-to-video' \
 --header 'Content-Type: application/json' \
 --data '{
   "prompt": "A video of a horse dancing.",
-  "size": "720*1280",
+  "size": "720x1280",
   "duration": 4
 }'
 
@@ -28,7 +28,7 @@ curl --location 'https://gptproto.com/api/v3/openai/sora-2/text-to-video' \
 const axios = require('axios');
 let data = JSON.stringify({
   "prompt": "A video of a horse dancing.",
-  "size": "720*1280",
+  "size": "720x1280",
   "duration": 4
 });
 
@@ -61,7 +61,7 @@ url = "https://gptproto.com/api/v3/openai/sora-2/text-to-video"
 
 payload = json.dumps({
   "prompt": "A video of a horse dancing.",
-  "size": "720*1280",
+  "size": "720x1280",
   "duration": 4
 })
 headers = {
@@ -92,7 +92,7 @@ func main() {
 
   payload := strings.NewReader(`{
   "prompt": "A video of a horse dancing.",
-  "size": "720*1280",
+  "size": "720x1280",
   "duration": 4
 }`)
 
