@@ -2406,6 +2406,30 @@
                     ]
                   },
                   {
+                    "group": "kling-v3.0-pro",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Kling/kling-v3.0-pro/gptproto-format/image-to-video",
+                          "docs/allapi/Kling/kling-v3.0-pro/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "kling-v3.0-std",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Kling/kling-v3.0-std/gptproto-format/image-to-video",
+                          "docs/allapi/Kling/kling-v3.0-std/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "kling-video-o1-pro",
                     "pages": [
                       {
