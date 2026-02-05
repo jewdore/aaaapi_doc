@@ -2309,19 +2309,6 @@
                     ]
                   },
                   {
-                    "group": "kling-lipsync",
-                    "pages": [
-                      {
-                        "group": "gptproto-format",
-                        "pages": [
-                          "docs/api/Kling/kling-lipsync/gptproto-format/audio-to-video",
-                          "docs/api/Kling/kling-lipsync/gptproto-format/query-task",
-                          "docs/api/Kling/kling-lipsync/gptproto-format/text-to-video"
-                        ]
-                      }
-                    ]
-                  },
-                  {
                     "group": "kling-v2.1-master",
                     "pages": [
                       {
