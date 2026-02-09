@@ -1,0 +1,218 @@
+---
+title: 'claude-opus-4-6 (text to text)'
+sidebarTitle: 'Text to Text'
+api: 'POST /v1/chat/completions'
+description: 'Text to Text'
+mode: 'wide'
+---
+
+Claude's openai format for the text to text API.
+
+
+
+
+
+
+
+
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "claude-opus-4-6",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "max_tokens": 1024,
+  "stream": false
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/chat/completions"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "model": "claude-opus-4-6",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "max_tokens": 1024,
+  "stream": false
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/chat/completions";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "claude-opus-4-6",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "max_tokens": 1024,
+  "stream": false
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/chat/completions"
+
+    payload := []byte(`{
+"model": "claude-opus-4-6",
+"messages": [
+{
+"role": "user",
+"content": "Who are you?"
+}
+],
+"max_tokens": 1024,
+"stream": false
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+<CodeGroup>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+</CodeGroup>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `model` | string | ✅ Yes | `claude-opus-4-6` | - | The model to use for the request. `claude-opus-4-6` |
+| `messages` | array | ✅ Yes | - | - | Array of message objects for the conversation. Each message must have a `role` (user/assistant) and `content` (string or array of content blocks) |
+| `max_tokens` | integer | ✅ Yes | - | 1-64000 | Maximum number of tokens to generate in the response |
+| `temperature` | number | ❌ No | `1.0` | 0.0-2.0 | Controls randomness in output. Use lower values (closer to 0.0) for analytical tasks, higher values (closer to 2.0) for creative tasks |
+| `top_p` | number | ❌ No | - | 0.0-1.0 | Nucleus sampling threshold. Controls diversity by considering only tokens with cumulative probability up to top_p. Recommended for advanced use only. Do not use with temperature |
+| `top_k` | integer | ❌ No | - | >0 | Only sample from the top K options for each token. Removes low probability responses. Recommended for advanced use only |
+| `stream` | boolean | ❌ No | `false` | - | Whether to stream the response incrementally using server-sent events |
+| `stop` | array | ❌ No | - | Max 8191 sequences | Custom text sequences that will cause the model to stop generating. Each sequence must contain non-whitespace characters |
+| `presence_penalty` | number | ❌ No | `0` | -2.0 to 2.0 | Positive values penalize new tokens based on whether they appear in the text so far |
+| `frequency_penalty` | number | ❌ No | `0` | -2.0 to 2.0 | Positive values penalize new tokens based on their existing frequency in the text so far |
+
+
+
+
+
+
+
+
+
+
+
+### Messages Array Structure
+
+Each message object in the `messages` array should have the following structure:
+
+| Field | Type | Required | Range | Description |
+|-------|------|----------|-------|-------------|
+| `role` | string | ✅ Yes | - | The role of the message. Can be: `user` or `assistant` |
+| `content` | array/string | ✅ Yes | - | The content of the message. Can be a simple string for text-only messages, or an array of content blocks for multimodal content |
+
+### Content Block Structure (when content is an array)
+
+| Field | Type | Required | Range | Description |
+|-------|------|----------|-------|-------------|
+| `type` | string | ✅ Yes | - | Must be `text` |
+| `text` | string | ✅ Yes | - | The text content |
+

@@ -1538,6 +1538,27 @@
                         ]
                       }
                     ]
+                  },
+                  {
+                    "group": "claude-opus-4-6",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-6/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-6/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-6/official-format/web-search"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-6/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-6/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-6/openai-format/web-search"
+                        ]
+                      }
+                    ]
                   }
                 ],
                 "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Claude.png"
