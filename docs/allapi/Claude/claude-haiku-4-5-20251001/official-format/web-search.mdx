@@ -1,19 +1,24 @@
 ---
-title: 'claude-haiku-4-5-20251001 (web search)'
+title: 'claude-haiku-4-5-20251001 (Web Search)'
 sidebarTitle: 'Web Search'
-api: 'POST /v1/messages'
-description: "Claude‘s official format for the web search API."
+api: 'POST https://gptproto.com/v1/messages'
+description: ''
 mode: 'wide'
 ---
 
-<CodeGroup>
+import Authentication from '/snippets/common/authentication.mdx';
 
+<Authentication/>
+
+
+## Initiate Request
+<CodeGroup>
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/v1/messages' \
-  --header 'Authorization: Bearer YOUR_API_KEY' \
-  --header 'anthropic-version: 2023-06-01' \
-  --header 'Content-Type: application/json' \
-  --data-raw '{
+curl --location 'https://gptproto.com/v1/messages' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--header 'anthropic-version: 2023-06-01' \
+--data '{
   "model": "claude-haiku-4-5-20251001",
   "max_tokens": 1024,
   "messages": [
@@ -22,77 +27,19 @@ curl --location --request POST 'https://gptproto.com/v1/messages' \
       "content": "What'\''s the weather in NYC?"
     }
   ],
-  "tools": [{
-    "type": "web_search_20250305",
-    "name": "web_search",
-    "max_uses": 5
-  }]
+  "tools": [
+    {
+      "type": "web_search_20250305",
+      "name": "web_search",
+      "max_uses": 5
+    }
+  ]
 }'
+
 ```
-
-```python Python
-import anthropic
-
-client = anthropic.Anthropic(
-    api_key="Bearer YOUR_API_KEY",
-    base_url="https://gptproto.com"
-)
-
-message = client.messages.create(
-    model="claude-haiku-4-5-20251001",
-    max_tokens=1024,
-    messages=[
-        {"role": "user", "content": "What's the weather in NYC?"}
-    ],
-    tools=[{
-        "type": "web_search_20250305",
-        "name": "web_search",
-        "max_uses": 5
-    }]
-)
-
-print(message.content)
-```
-
 ```javascript JavaScript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: 'Bearer YOUR_API_KEY',
-  baseURL: 'https://gptproto.com'
-});
-
-const message = await client.messages.create({
-  model: 'claude-haiku-4-5-20251001',
-  max_tokens: 1024,
-  messages: [
-    { role: 'user', content: "What's the weather in NYC?" }
-  ],
-  tools: [{
-    type: 'web_search_20250305',
-    name: 'web_search',
-    max_uses: 5
-  }]
-});
-
-console.log(message.content);
-```
-
-```go Go
-package main
-
-import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
-)
-
-func main() {
-    url := "https://gptproto.com/v1/messages"
-
-    payload := []byte(`{
+const axios = require('axios');
+let data = JSON.stringify({
   "model": "claude-haiku-4-5-20251001",
   "max_tokens": 1024,
   "messages": [
@@ -101,183 +48,140 @@ func main() {
       "content": "What's the weather in NYC?"
     }
   ],
-  "tools": [{
-    "type": "web_search_20250305",
-    "name": "web_search",
-    "max_uses": 5
-  }]
+  "tools": [
+    {
+      "type": "web_search_20250305",
+      "name": "web_search",
+      "max_uses": 5
+    }
+  ]
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/messages',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json', 
+    'anthropic-version': '2023-06-01'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/messages"
+
+payload = json.dumps({
+  "model": "claude-haiku-4-5-20251001",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What's the weather in NYC?"
+    }
+  ],
+  "tools": [
+    {
+      "type": "web_search_20250305",
+      "name": "web_search",
+      "max_uses": 5
+    }
+  ]
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json',
+  'anthropic-version': '2023-06-01'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
+```go Go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
+)
+
+func main() {
+
+  url := "https://gptproto.com/v1/messages"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "model": "claude-haiku-4-5-20251001",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What's the weather in NYC?"
+    }
+  ],
+  "tools": [
+    {
+      "type": "web_search_20250305",
+      "name": "web_search",
+      "max_uses": 5
+    }
+  ]
 }`)
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
-    req.Header.Set("anthropic-version", "2023-06-01")
-    req.Header.Set("Content-Type", "application/json")
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
 
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("anthropic-version", "2023-06-01")
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-<CodeGroup>
+import Parameters from '/snippets/Claude/official-format/claude-chat.mdx';
 
-```json 401 - Invalid API Key
-{
-  "error": {
-    "type": "authentication_error",
-    "message": "Invalid API key"
-  }
-}
-```
-
-```json 403 - Permission Denied
-{
-  "error": {
-    "type": "permission_error",
-    "message": "Your API key does not have permission to use the specified resource"
-  }
-}
-```
-
-```json 400 - Invalid Request
-{
-  "error": {
-    "type": "invalid_request_error",
-    "message": "messages: field required"
-  }
-}
-```
-
-```json 404 - Not Found
-{
-  "error": {
-    "type": "not_found_error",
-    "message": "The requested resource was not found"
-  }
-}
-```
-
-```json 429 - Rate Limit Exceeded
-{
-  "error": {
-    "type": "rate_limit_error",
-    "message": "Rate limit exceeded"
-  }
-}
-```
-
-```json 500 - Internal Server Error
-{
-  "error": {
-    "type": "api_error",
-    "message": "Internal server error"
-  }
-}
-```
-
-```json 529 - Overloaded
-{
-  "error": {
-    "type": "overloaded_error",
-    "message": "Service is temporarily overloaded"
-  }
-}
-```
-</CodeGroup>
-
-## Parameters
-
-| Parameter | Type | Required | Default | Range | Description |
-|-----------|------|----------|---------|-------|-------------|
-| `model` | string | ✅ Yes | `claude-haiku-4-5-20251001` | - | The model identifier. Use `claude-haiku-4-5-20251001` for this model |
-| `messages` | array | ✅ Yes | - | - | Input messages for the conversation. Each message must have a `role` (user/assistant) and `content` (string or array of content blocks) |
-| `max_tokens` | integer | ✅ Yes | - | 1-64000 | Maximum number of tokens to generate. The model may stop before reaching this limit |
-| `tools` | array | ✅ Yes | - | - | Array of tool objects. For web search, must include the web_search tool configuration with type `web_search_20250305` |
-| `temperature` | number | ❌ No | `1.0` | 0.0-1.0 | Controls randomness in output. Use lower values (closer to 0.0) for analytical tasks, higher values (closer to 1.0) for creative tasks. Note: Even at 0.0, results are not fully deterministic |
-| `top_p` | number | ❌ No | - | 0.0-1.0 | Nucleus sampling threshold. Controls diversity by considering only tokens with cumulative probability up to top_p. Recommended for advanced use only. Do not use with temperature |
-| `top_k` | integer | ❌ No | - | >0 | Only sample from the top K options for each token. Removes low probability responses. Recommended for advanced use only |
-| `stream` | boolean | ❌ No | `false` | - | Whether to stream the response incrementally using server-sent events |
-| `stop_sequences` | array | ❌ No | - | Max 8191 sequences | Custom text sequences that will cause the model to stop generating. Each sequence must contain non-whitespace characters |
+<Parameters/>
 
 
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-### Messages Array Structure
-
-Each message object in the `messages` array should have the following structure:
-
-| Field | Type | Required | Range | Description |
-|-------|------|----------|-------|-------------|
-| `role` | string | ✅ Yes | - | The role of the message. Can be: `user` or `assistant` |
-| `content` | string/array | ✅ Yes | - | The content of the message. Can be a simple string for text-only messages, or an array of content blocks for multimodal content |
-
-### Content Block Structure (when content is an array)
-
-| Field | Type | Required | Range | Description |
-|-------|------|----------|-------|-------------|
-| `type` | string | ✅ Yes | - | Must be `text` |
-| `text` | string | ✅ Yes | - | The text content |
-
-### Tools Array Structure
-
-For web search functionality, the `tools` array should contain a web search tool object:
-
-| Field | Type | Required | Range | Description |
-|-------|------|----------|-------|-------------|
-| `type` | string | ✅ Yes | - | The type of tool. Must be `web_search_20250305` for web search |
-| `name` | string | ✅ Yes | - | The name of the tool. Use `web_search` |
-| `max_uses` | integer | ❌ No | 1-10 | Maximum number of times the web search tool can be used in a single request |
-| `allowed_domains` | array | ❌ No | - | Only include search results from these domains. Cannot be used with `blocked_domains` |
-| `blocked_domains` | array | ❌ No | - | Never include search results from these domains. Cannot be used with `allowed_domains` |
-| `user_location` | object | ❌ No | - | Localize search results based on user's location |
-
-#### Max Uses
-
-The `max_uses` parameter limits the number of searches performed. If Claude attempts more searches than allowed, the `web_search_tool_result` will be an error with the `max_uses_exceeded` error code.
-
-#### Domain Filtering
-
-When using domain filters:
-
-- Domains should not include the HTTP/HTTPS scheme (use `example.com` instead of `https://example.com`)
-- Subdomains are automatically included (`example.com` covers `docs.example.com`)
-- Specific subdomains restrict results to only that subdomain (`docs.example.com` returns only results from that subdomain, not from `example.com` or `api.example.com`)
-- Subpaths are supported (`example.com/blog`)
-- You can use either `allowed_domains` or `blocked_domains`, but not both in the same request
-- Request-level domain restrictions must be compatible with organization-level domain restrictions configured in the Console
-
-#### User Location Structure
-
-The `user_location` object allows you to localize search results based on a user's location:
-
-| Field | Type | Required | Range | Description |
-|-------|------|----------|-------|-------------|
-| `type` | string | ✅ Yes | - | The type of location. Must be `approximate` |
-| `city` | string | ✅ Yes | - | The city name (e.g., `San Francisco`) |
-| `region` | string | ✅ Yes | - | The region or state (e.g., `California`) |
-| `country` | string | ✅ Yes | - | The country code (e.g., `US`) |
-| `timezone` | string | ✅ Yes | - | The IANA timezone ID (e.g., `America/Los_Angeles`) |
-
-#### Complete Tool Configuration Example
-
-```json
-{
-  "type": "web_search_20250305",
-  "name": "web_search",
-  "max_uses": 5,
-  "allowed_domains": ["example.com", "trusteddomain.org"],
-  "user_location": {
-    "type": "approximate",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "timezone": "America/Los_Angeles"
-  }
-}
-```
+<ErrorCode/>

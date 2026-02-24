@@ -1,29 +1,24 @@
 ---
-title: 'claude-sonnet-4-20250514 (text to text)'
-sidebarTitle: 'Text to Text'
-api: 'POST /v1/messages'
-description: 'Text to Text'
+title: 'claude-sonnet-4-20250514 (Text To Text)'
+sidebarTitle: 'Text To Text'
+api: 'POST https://gptproto.com/v1/messages'
+description: ''
 mode: 'wide'
 ---
 
-Claude's official format for the text to text API.
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
 
 
-
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/messages" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "anthropic-version: 2023-06-01" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl --location 'https://gptproto.com/v1/messages' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--header 'anthropic-version: 2023-06-01' \
+--data '{
   "model": "claude-sonnet-4-20250514",
   "max_tokens": 1024,
   "messages": [
@@ -33,61 +28,87 @@ curl -X POST "https://gptproto.com/v1/messages" \
     }
   ]
 }'
+
 ```
-
-```python Python
-import anthropic
-
-client = anthropic.Anthropic(
-    api_key="Bearer YOUR_API_KEY",
-    base_url="https://gptproto.com"
-)
-
-message = client.messages.create(
-    model="claude-sonnet-4-20250514",
-    max_tokens=1024,
-    messages=[
-        {"role": "user", "content": "Who are you?"}
-    ]
-)
-
-print(message.content)
-```
-
 ```javascript JavaScript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: 'Bearer YOUR_API_KEY',
-  baseURL: 'https://gptproto.com'
-});
-
-const message = await client.messages.create({
-  model: 'claude-sonnet-4-20250514',
-  max_tokens: 1024,
-  messages: [
-    { role: 'user', content: 'Who are you?' }
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "claude-sonnet-4-20250514",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
   ]
 });
 
-console.log(message.content);
-```
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/messages',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json', 
+    'anthropic-version': '2023-06-01'
+  },
+  data : data
+};
 
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/messages"
+
+payload = json.dumps({
+  "model": "claude-sonnet-4-20250514",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ]
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json',
+  'anthropic-version': '2023-06-01'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/messages"
 
-    payload := []byte(`{
+  url := "https://gptproto.com/v1/messages"
+  method := "POST"
+
+  payload := strings.NewReader(`{
   "model": "claude-sonnet-4-20250514",
   "max_tokens": 1024,
   "messages": [
@@ -98,117 +119,41 @@ func main() {
   ]
 }`)
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
-    req.Header.Set("anthropic-version", "2023-06-01")
-    req.Header.Set("Content-Type", "application/json")
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
 
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("anthropic-version", "2023-06-01")
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-<CodeGroup>
+import Parameters from '/snippets/Claude/official-format/claude-chat.mdx';
 
-```json 401 - Invalid API Key
-{
-  "error": {
-    "type": "authentication_error",
-    "message": "Invalid API key"
-  }
-}
-```
-
-```json 403 - Permission Denied
-{
-  "error": {
-    "type": "permission_error",
-    "message": "Your API key does not have permission to use the specified resource"
-  }
-}
-```
-
-```json 400 - Invalid Request
-{
-  "error": {
-    "type": "invalid_request_error",
-    "message": "messages: field required"
-  }
-}
-```
-
-```json 429 - Rate Limit Exceeded
-{
-  "error": {
-    "type": "rate_limit_error",
-    "message": "Rate limit exceeded"
-  }
-}
-```
-
-```json 500 - Internal Server Error
-{
-  "error": {
-    "type": "api_error",
-    "message": "Internal server error"
-  }
-}
-```
-
-```json 529 - Overloaded
-{
-  "error": {
-    "type": "overloaded_error",
-    "message": "Service is temporarily overloaded"
-  }
-}
-```
-</CodeGroup>
-
-## Parameters
-
-| Parameter | Type | Required | Default | Range | Description |
-|-----------|------|----------|---------|-------|-------------|
-| `model` | string | ✅ Yes | `claude-sonnet-4-20250514` | - | The model identifier. Use `claude-sonnet-4-20250514` for this model |
-| `messages` | array | ✅ Yes | - | - | Input messages for the conversation. Each message must have a `role` (user/assistant) and `content` (string or array of content blocks) |
-| `max_tokens` | integer | ✅ Yes | - | 1-32000 | Maximum number of tokens to generate. The model may stop before reaching this limit |
-| `temperature` | number | ❌ No | `1.0` | 0.0-1.0 | Controls randomness in output. Use lower values (closer to 0.0) for analytical tasks, higher values (closer to 1.0) for creative tasks. Note: Even at 0.0, results are not fully deterministic |
-| `top_p` | number | ❌ No | - | 0.0-1.0 | Nucleus sampling threshold. Controls diversity by considering only tokens with cumulative probability up to top_p. Recommended for advanced use only. Do not use with temperature |
-| `top_k` | integer | ❌ No | - | >0 | Only sample from the top K options for each token. Removes low probability responses. Recommended for advanced use only |
-| `stream` | boolean | ❌ No | `false` | - | Whether to stream the response incrementally using server-sent events |
-| `stop_sequences` | array | ❌ No | - | Max 8191 sequences | Custom text sequences that will cause the model to stop generating. Each sequence must contain non-whitespace characters |
+<Parameters/>
 
 
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-
-
-
-
-
-
-
-
-### Messages Array Structure
-
-Each message object in the `messages` array should have the following structure:
-
-| Field | Type | Required | Range | Description |
-|-------|------|----------|-------|-------------|
-| `role` | string | ✅ Yes | - | The role of the message. Can be: `user` or `assistant` |
-| `content` | string/array | ✅ Yes | - | The content of the message. Can be a simple string for text-only messages, or an array of content blocks for multimodal content |
-
-### Content Block Structure (when content is an array)
-
-| Field | Type | Required | Range | Description |
-|-------|------|----------|-------|-------------|
-| `type` | string | ✅ Yes | - | Must be `text` |
-| `text` | string | ✅ Yes | - | The text content |
-
+<ErrorCode/>

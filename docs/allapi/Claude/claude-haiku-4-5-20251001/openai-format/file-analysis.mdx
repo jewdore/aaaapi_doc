@@ -1,99 +1,23 @@
 ---
-title: 'claude-haiku-4-5-20251001 (file analysis)'
+title: 'claude-haiku-4-5-20251001 (File Analysis)'
 sidebarTitle: 'File Analysis'
-api: 'POST /v1/chat/completions'
-description: "Analyze and extract information from various file types including documents, spreadsheets, and PDFs using Claude 3.5 Haiku"
+api: 'POST https://gptproto.com/v1/chat/completions'
+description: ''
 mode: 'wide'
 ---
 
-Claude's openai format for the file analysis API.
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
 
 
-
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl -X POST "https://gptproto.com/v1/chat/completions" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "claude-haiku-4-5-20251001",
-    "messages": [
-      {
-        "role": "user",
-        "content": [
-          {
-            "type": "text",
-            "text": "Please analyze this PDF document and provide a summary of its content"
-          },
-          {
-            "type": "file",
-            "file": {
-              "filename": "api-doc.pdf",
-              "file_data": "https://www.bt.cn/data/api-doc.pdf"
-            }
-          }
-        ]
-      }
-    ],
-    "max_tokens": 1000,
-    "stream": false
-  }'
-```
-
-```python Python
-import requests
-import json
-
-url = "https://gptproto.com/v1/chat/completions"
-headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
-    "Content-Type": "application/json"
-}
-
-data = {
-    "model": "claude-haiku-4-5-20251001",
-    "messages": [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "text",
-                    "text": "Please analyze this PDF document and provide a summary of its content"
-                },
-                {
-                    "type": "file",
-                    "file": {
-                        "filename": "api-doc.pdf",
-                        "file_data": "https://www.bt.cn/data/api-doc.pdf"
-                    }
-                }
-            ]
-        }
-    ],
-    "max_tokens": 1000,
-    "stream": False
-}
-
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
-```
-
-```javascript JavaScript
-const url = "https://gptproto.com/v1/chat/completions";
-const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
-  "Content-Type": "application/json"
-};
-
-const data = {
+curl --location 'https://gptproto.com/v1/chat/completions' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
   "model": "claude-haiku-4-5-20251001",
   "messages": [
     {
@@ -106,8 +30,8 @@ const data = {
         {
           "type": "file",
           "file": {
-            "filename": "api-doc.pdf",
-            "file_data": "https://www.bt.cn/data/api-doc.pdf"
+            "filename": "gptproto.pdf",
+            "file_data": "https://tos.gptproto.com/resource/gptproto.pdf"
           }
         }
       ]
@@ -115,253 +39,169 @@ const data = {
   ],
   "max_tokens": 1000,
   "stream": false
+}'
+
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "claude-haiku-4-5-20251001",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Please analyze this PDF document and provide a summary of its content"
+        },
+        {
+          "type": "file",
+          "file": {
+            "filename": "gptproto.pdf",
+            "file_data": "https://tos.gptproto.com/resource/gptproto.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "max_tokens": 1000,
+  "stream": false
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/chat/completions',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
 };
 
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
 })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
-```
+.catch((error) => {
+  console.log(error);
+});
 
+
+```
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/chat/completions"
+
+payload = json.dumps({
+  "model": "claude-haiku-4-5-20251001",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Please analyze this PDF document and provide a summary of its content"
+        },
+        {
+          "type": "file",
+          "file": {
+            "filename": "gptproto.pdf",
+            "file_data": "https://tos.gptproto.com/resource/gptproto.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "max_tokens": 1000,
+  "stream": False
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/v1/chat/completions"
 
-    payload := map[string]interface{}{
-        "model": "claude-haiku-4-5-20251001",
-        "messages": []map[string]interface{}{
-            {
-                "role": "user",
-                "content": []map[string]interface{}{
-                    {
-                        "type": "text",
-                        "text": "Please analyze this PDF document and provide a summary of its content",
-                    },
-                    {
-                        "type": "file",
-                        "file": map[string]string{
-                            "filename":  "api-doc.pdf",
-                            "file_data": "https://www.bt.cn/data/api-doc.pdf",
-                        },
-                    },
-                },
-            },
-        },
-        "max_tokens": 1000,
-        "stream":     false,
-    }
+  url := "https://gptproto.com/v1/chat/completions"
+  method := "POST"
 
-    jsonData, _ := json.Marshal(payload)
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
-
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
-}
-```
-
-</CodeGroup>
-
-<CodeGroup>
-
-```json 200 - Success
-{
-  "id": "chatcmpl-abc123",
-  "object": "chat.completion",
-  "created": 1699896916,
+  payload := strings.NewReader(`{
   "model": "claude-haiku-4-5-20251001",
-  "choices": [
+  "messages": [
     {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": "# Document Analysis Summary\n\n## Key Information:\n- Document Type: Technical API Documentation\n- Total Pages: 35\n- Version: 2.0\n\n## Main Topics:\n1. **Authentication**: The API uses Bearer token authentication with API keys\n2. **Endpoints**: Contains 12 main API endpoints for different operations\n3. **Rate Limiting**: Implements tiered rate limiting based on subscription level\n4. **Error Handling**: Comprehensive error codes and handling strategies\n\n## Key Sections:\n\n### Getting Started\n- Quick start guide for new developers\n- Authentication setup instructions\n- First API call examples in multiple languages\n\n### API Reference\n- Detailed endpoint documentation\n- Request/response formats\n- Parameter descriptions and constraints\n\n### Best Practices\n- Recommended usage patterns\n- Performance optimization tips\n- Security considerations\n\n### Code Examples\n- Python, JavaScript, Go, and cURL examples\n- Common use case implementations\n- Error handling patterns\n\n## Important Notes:\n- All requests must include valid API key\n- Rate limits: 100 requests/minute for free tier, 1000/minute for premium\n- Support for both JSON and XML response formats\n- Webhook notifications available for asynchronous operations"
-      },
-      "finish_reason": "stop"
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Please analyze this PDF document and provide a summary of its content"
+        },
+        {
+          "type": "file",
+          "file": {
+            "filename": "gptproto.pdf",
+            "file_data": "https://tos.gptproto.com/resource/gptproto.pdf"
+          }
+        }
+      ]
     }
   ],
-  "usage": {
-    "prompt_tokens": 3500,
-    "completion_tokens": 285,
-    "total_tokens": 3785
-  }
-}
-```
+  "max_tokens": 1000,
+  "stream": false
+}`)
 
-```json 400 - Bad Request
-{
-  "error": {
-    "message": "Invalid parameter: messages field is required",
-    "type": "invalid_request_error",
-    "param": "messages",
-    "code": null
+  client := &http.Client {
   }
-}
-```
+  req, err := http.NewRequest(method, url, payload)
 
-```json 401 - Unauthorized
-{
-  "error": {
-    "message": "Incorrect API key provided",
-    "type": "invalid_request_error",
-    "param": null,
-    "code": "invalid_api_key"
+  if err != nil {
+    fmt.Println(err)
+    return
   }
-}
-```
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
 
-```json 429 - Rate Limit Exceeded
-{
-  "error": {
-    "message": "Rate limit reached for requests",
-    "type": "requests",
-    "param": null,
-    "code": "rate_limit_exceeded"
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
   }
-}
-```
+  defer res.Body.Close()
 
-```json 500 - Internal Server Error
-{
-  "error": {
-    "message": "The server had an error while processing your request",
-    "type": "server_error",
-    "param": null,
-    "code": null
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
   }
+  fmt.Println(string(body))
 }
-```
 
-```json 503 - Service Unavailable
-{
-  "error": {
-    "message": "The engine is currently overloaded, please try again later",
-    "type": "server_error",
-    "param": null,
-    "code": "service_unavailable"
-  }
-}
 ```
 </CodeGroup>
 
-## Parameters
+import Parameters from '/snippets/Claude/openai-format/claude-chat.mdx';
 
-| Parameter | Type | Required | Default | Range | Description |
-|-----------|------|----------|---------|-------|-------------|
-| `model` | string | ✅ Yes | `claude-haiku-4-5-20251001` | - | The model identifier. Use `claude-haiku-4-5-20251001` for this model |
-| `messages` | array | ✅ Yes | - | - | Input messages for the conversation. Each message must have a `role` (user/assistant/system) and `content`. Content can include text blocks or file blocks. Supported formats: PDF, DOCX, XLSX, TXT, CSV, JSON, XML, HTML. Max file size: 20MB. See [Messages Structure](#messages-structure) below for details |
-| `max_tokens` | integer | ❌ No | `1024` | 1-64000 | Maximum number of tokens to generate. The model may stop before reaching this limit |
-| `temperature` | number | ❌ No | `1.0` | 0.0-2.0 | Controls randomness in output. Use lower values (closer to 0.0) for analytical tasks, higher values for creative tasks |
-| `top_p` | number | ❌ No | `1.0` | 0.0-1.0 | Nucleus sampling threshold. Controls diversity by considering only tokens with cumulative probability up to top_p. Recommended for advanced use only. Do not use with temperature |
-| `stream` | boolean | ❌ No | `false` | - | Whether to stream the response incrementally using server-sent events |
-| `stop` | string/array | ❌ No | `null` | Max 4 sequences | Up to 4 sequences where the API will stop generating further tokens |
-| `presence_penalty` | number | ❌ No | `0` | -2.0-2.0 | Penalty for tokens based on whether they appear in the text so far. Positive values increase model's likelihood to talk about new topics |
-| `frequency_penalty` | number | ❌ No | `0` | -2.0-2.0 | Penalty for tokens based on their frequency in the text so far. Positive values decrease model's likelihood to repeat the same line |
-
-### Messages Structure
-
-**Basic structure with file (URL):**
-```json
-{
-  "role": "user",
-  "content": [
-    {
-      "type": "text",
-      "text": "Please analyze this document"
-    },
-    {
-      "type": "file",
-      "file": {
-        "filename": "document.pdf",
-        "file_data": "https://example.com/document.pdf"
-      }
-    }
-  ]
-}
-```
-
-**With Base64:**
-```json
-{
-  "type": "file",
-  "file": {
-    "filename": "document.pdf",
-    "file_data": "data:application/pdf;base64,JVBERi0xLjQK..."
-  }
-}
-```
-
-### Messages Array Structure
-
-Each message object in the `messages` array should have the following structure:
-
-| Field | Type | Required | Range | Description |
-|-------|------|----------|-------|-------------|
-| `role` | string | ✅ Yes | - | The role of the message. Can be: `user`, `assistant`, or `system` |
-| `content` | array/string | ✅ Yes | - | The content of the message. Can be a string or an array of content blocks |
-
-### Content Block Structure
-
-When `content` is an array, each element can be one of the following types:
-
-#### Text Content Block
-
-| Field | Type | Required | Range | Description |
-|-------|------|----------|-------|-------------|
-| `type` | string | ✅ Yes | - | Must be `text` |
-| `text` | string | ✅ Yes | - | The text content |
-
-#### File Content Block
-
-| Field | Type | Required | Range | Description |
-|-------|------|----------|-------|-------------|
-| `type` | string | ✅ Yes | - | Must be `file` |
-| `file` | object | ✅ Yes | - | The file object containing filename and file_data |
-
-#### File Object Structure
-
-| Field | Type | Required | Range | Description |
-|-------|------|----------|-------|-------------|
-| `filename` | string | ✅ Yes | - | The name of the file (e.g., `document.pdf`) |
-| `file_data` | string | ✅ Yes | - | URL to the file or base64-encoded data with data URI scheme (e.g., `data:application/pdf;base64,<base64_data>`) |
-
-### Supported Document Formats
-
-| Format | MIME Type | Extension |
-|--------|-----------|-----------|
-| PDF | `application/pdf` | `.pdf` |
-| Word | `application/vnd.openxmlformats-officedocument.wordprocessingml.document` | `.docx` |
-| Excel | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` | `.xlsx` |
-| Plain Text | `text/plain` | `.txt` |
-| CSV | `text/csv` | `.csv` |
-| JSON | `application/json` | `.json` |
-| XML | `application/xml` or `text/xml` | `.xml` |
-| HTML | `text/html` | `.html` |
-
-**Note**: Maximum file size is 20MB.
+<Parameters/>
 
 
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-
+<ErrorCode/>

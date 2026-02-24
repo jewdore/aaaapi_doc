@@ -1122,151 +1122,6 @@
                 "group": "Claude",
                 "pages": [
                   {
-                    "group": "claude-3-5-haiku-20241022",
-                    "pages": [
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-5-haiku-20241022/official-format/file-analysis",
-                          "docs/api/Claude/claude-3-5-haiku-20241022/official-format/text-to-text",
-                          "docs/api/Claude/claude-3-5-haiku-20241022/official-format/web-search"
-                        ]
-                      },
-                      {
-                        "group": "openai-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-5-haiku-20241022/openai-format/file-analysis",
-                          "docs/api/Claude/claude-3-5-haiku-20241022/openai-format/text-to-text",
-                          "docs/api/Claude/claude-3-5-haiku-20241022/openai-format/web-search"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "claude-3-5-sonnet-20241022",
-                    "pages": [
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-5-sonnet-20241022/official-format/file-analysis",
-                          "docs/api/Claude/claude-3-5-sonnet-20241022/official-format/text-to-text",
-                          "docs/api/Claude/claude-3-5-sonnet-20241022/official-format/web-search"
-                        ]
-                      },
-                      {
-                        "group": "openai-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-5-sonnet-20241022/openai-format/file-analysis",
-                          "docs/api/Claude/claude-3-5-sonnet-20241022/openai-format/text-to-text",
-                          "docs/api/Claude/claude-3-5-sonnet-20241022/openai-format/web-search"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "claude-3-7-sonnet-20250219",
-                    "pages": [
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-7-sonnet-20250219/official-format/file-analysis",
-                          "docs/api/Claude/claude-3-7-sonnet-20250219/official-format/text-to-text",
-                          "docs/api/Claude/claude-3-7-sonnet-20250219/official-format/web-search"
-                        ]
-                      },
-                      {
-                        "group": "openai-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-7-sonnet-20250219/openai-format/file-analysis",
-                          "docs/api/Claude/claude-3-7-sonnet-20250219/openai-format/text-to-text",
-                          "docs/api/Claude/claude-3-7-sonnet-20250219/openai-format/web-search"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "claude-3-7-sonnet-20250219-thinking",
-                    "pages": [
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-7-sonnet-20250219-thinking/official-format/file-analysis",
-                          "docs/api/Claude/claude-3-7-sonnet-20250219-thinking/official-format/text-to-text",
-                          "docs/api/Claude/claude-3-7-sonnet-20250219-thinking/official-format/web-search"
-                        ]
-                      },
-                      {
-                        "group": "openai-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-7-sonnet-20250219-thinking/openai-format/file-analysis",
-                          "docs/api/Claude/claude-3-7-sonnet-20250219-thinking/openai-format/text-to-text",
-                          "docs/api/Claude/claude-3-7-sonnet-20250219-thinking/openai-format/web-search"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "claude-3-7-sonnet-all",
-                    "pages": [
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-7-sonnet-all/official-format/file-analysis",
-                          "docs/api/Claude/claude-3-7-sonnet-all/official-format/web-search"
-                        ]
-                      },
-                      {
-                        "group": "openai-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-7-sonnet-all/openai-format/text-to-text",
-                          "docs/api/Claude/claude-3-7-sonnet-all/openai-format/web-search"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "claude-3-7-sonnet-thinking",
-                    "pages": [
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-7-sonnet-thinking/official-format/file-analysis",
-                          "docs/api/Claude/claude-3-7-sonnet-thinking/official-format/text-to-text",
-                          "docs/api/Claude/claude-3-7-sonnet-thinking/official-format/web-search"
-                        ]
-                      },
-                      {
-                        "group": "openai-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-7-sonnet-thinking/openai-format/file-analysis",
-                          "docs/api/Claude/claude-3-7-sonnet-thinking/openai-format/text-to-text",
-                          "docs/api/Claude/claude-3-7-sonnet-thinking/openai-format/web-search"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "claude-3-7-sonnet-thinking-all",
-                    "pages": [
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-7-sonnet-thinking-all/official-format/file-analysis",
-                          "docs/api/Claude/claude-3-7-sonnet-thinking-all/official-format/text-to-text",
-                          "docs/api/Claude/claude-3-7-sonnet-thinking-all/official-format/web-search"
-                        ]
-                      },
-                      {
-                        "group": "openai-format",
-                        "pages": [
-                          "docs/api/Claude/claude-3-7-sonnet-thinking-all/openai-format/file-analysis",
-                          "docs/api/Claude/claude-3-7-sonnet-thinking-all/openai-format/text-to-text",
-                          "docs/api/Claude/claude-3-7-sonnet-thinking-all/openai-format/web-search"
-                        ]
-                      }
-                    ]
-                  },
-                  {
                     "group": "claude-haiku-4-5-20251001",
                     "pages": [
                       {
@@ -1335,17 +1190,17 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Claude/claude-opus-4-1-20250805-thinking/official-format/file-analysis",
-                          "docs/api/Claude/claude-opus-4-1-20250805-thinking/official-format/text-to-text",
-                          "docs/api/Claude/claude-opus-4-1-20250805-thinking/official-format/web-search"
+                          "docs/allapi/Claude/claude-opus-4-1-20250805-thinking/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-1-20250805-thinking/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-1-20250805-thinking/official-format/web-search"
                         ]
                       },
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Claude/claude-opus-4-1-20250805-thinking/openai-format/file-analysis",
-                          "docs/api/Claude/claude-opus-4-1-20250805-thinking/openai-format/text-to-text",
-                          "docs/api/Claude/claude-opus-4-1-20250805-thinking/openai-format/web-search"
+                          "docs/allapi/Claude/claude-opus-4-1-20250805-thinking/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-1-20250805-thinking/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-1-20250805-thinking/openai-format/web-search"
                         ]
                       }
                     ]
@@ -1414,6 +1269,27 @@
                     ]
                   },
                   {
+                    "group": "claude-opus-4-6",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-6/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-6/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-6/official-format/web-search"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-6/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-6/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-6/openai-format/web-search"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "claude-opus-4-thinking",
                     "pages": [
                       {
@@ -1461,17 +1337,17 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Claude/claude-sonnet-4-20250514-thinking/official-format/file-analysis",
-                          "docs/api/Claude/claude-sonnet-4-20250514-thinking/official-format/text-to-text",
-                          "docs/api/Claude/claude-sonnet-4-20250514-thinking/official-format/web-search"
+                          "docs/allapi/Claude/claude-sonnet-4-20250514-thinking/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-sonnet-4-20250514-thinking/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-sonnet-4-20250514-thinking/official-format/web-search"
                         ]
                       },
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Claude/claude-sonnet-4-20250514-thinking/openai-format/file-analysis",
-                          "docs/api/Claude/claude-sonnet-4-20250514-thinking/openai-format/text-to-text",
-                          "docs/api/Claude/claude-sonnet-4-20250514-thinking/openai-format/web-search"
+                          "docs/allapi/Claude/claude-sonnet-4-20250514-thinking/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-sonnet-4-20250514-thinking/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-sonnet-4-20250514-thinking/openai-format/web-search"
                         ]
                       }
                     ]
@@ -1503,17 +1379,59 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Claude/claude-sonnet-4-5-20250929-thinking/official-format/file-analysis",
-                          "docs/api/Claude/claude-sonnet-4-5-20250929-thinking/official-format/text-to-text",
-                          "docs/api/Claude/claude-sonnet-4-5-20250929-thinking/official-format/web-search"
+                          "docs/allapi/Claude/claude-sonnet-4-5-20250929-thinking/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-sonnet-4-5-20250929-thinking/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-sonnet-4-5-20250929-thinking/official-format/web-search"
                         ]
                       },
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/api/Claude/claude-sonnet-4-5-20250929-thinking/openai-format/file-analysis",
-                          "docs/api/Claude/claude-sonnet-4-5-20250929-thinking/openai-format/text-to-text",
-                          "docs/api/Claude/claude-sonnet-4-5-20250929-thinking/openai-format/web-search"
+                          "docs/allapi/Claude/claude-sonnet-4-5-20250929-thinking/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-sonnet-4-5-20250929-thinking/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-sonnet-4-5-20250929-thinking/openai-format/web-search"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "claude-sonnet-4-6",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-sonnet-4-6/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-sonnet-4-6/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-sonnet-4-6/official-format/web-search"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-sonnet-4-6/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-sonnet-4-6/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-sonnet-4-6/openai-format/web-search"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "claude-sonnet-4-6-thinking",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-sonnet-4-6-thinking/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-sonnet-4-6-thinking/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-sonnet-4-6-thinking/official-format/web-search"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-sonnet-4-6-thinking/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-sonnet-4-6-thinking/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-sonnet-4-6-thinking/openai-format/web-search"
                         ]
                       }
                     ]
@@ -1535,27 +1453,6 @@
                           "docs/api/Claude/claude-sonnet-4-thinking/openai-format/file-analysis",
                           "docs/api/Claude/claude-sonnet-4-thinking/openai-format/text-to-text",
                           "docs/api/Claude/claude-sonnet-4-thinking/openai-format/web-search"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "claude-opus-4-6",
-                    "pages": [
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/allapi/Claude/claude-opus-4-6/official-format/file-analysis",
-                          "docs/allapi/Claude/claude-opus-4-6/official-format/text-to-text",
-                          "docs/allapi/Claude/claude-opus-4-6/official-format/web-search"
-                        ]
-                      },
-                      {
-                        "group": "openai-format",
-                        "pages": [
-                          "docs/allapi/Claude/claude-opus-4-6/openai-format/file-analysis",
-                          "docs/allapi/Claude/claude-opus-4-6/openai-format/text-to-text",
-                          "docs/allapi/Claude/claude-opus-4-6/openai-format/web-search"
                         ]
                       }
                     ]
