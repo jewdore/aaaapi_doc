@@ -1,7 +1,7 @@
 ---
-title: 'seedream-4-0-250828 (Image Edit)'
-sidebarTitle: 'Image Edit'
-api: 'POST https://gptproto.com/api/v3/bytedance/seedream-4-0-250828/image-edit'
+title: 'doubao-seedream-5-0-260128 (Text To Image)'
+sidebarTitle: 'Text To Image'
+api: 'POST https://gptproto.com/api/v3/bytedance/doubao-seedream-5-0-260128/text-to-imgae'
 description: ''
 mode: 'wide'
 ---
@@ -14,15 +14,12 @@ import Authentication from '/snippets/common/authentication.mdx';
 ## Initiate Request
 <CodeGroup>
 ```bash cURL
-curl --location 'https://gptproto.com/api/v3/bytedance/seedream-4-0-250828/image-edit' \
+curl --location 'https://gptproto.com/api/v3/bytedance/doubao-seedream-5-0-260128/text-to-imgae' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
   "enable_base64_output": false,
   "enable_sync_mode": false,
-  "images": [
-    "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1757414555847323990_Si8cqCBF.jpeg"
-  ],
   "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character'\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
   "size": "2227*3183"
 }'
@@ -33,9 +30,6 @@ const axios = require('axios');
 let data = JSON.stringify({
   "enable_base64_output": false,
   "enable_sync_mode": false,
-  "images": [
-    "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1757414555847323990_Si8cqCBF.jpeg"
-  ],
   "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character's image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
   "size": "2227*3183"
 });
@@ -43,7 +37,7 @@ let data = JSON.stringify({
 let config = {
   method: 'post',
   maxBodyLength: Infinity,
-  url: 'https://gptproto.com/api/v3/bytedance/seedream-4-0-250828/image-edit',
+  url: 'https://gptproto.com/api/v3/bytedance/doubao-seedream-5-0-260128/text-to-imgae',
   headers: { 
     'Authorization': 'GPTPROTO_API_KEY', 
     'Content-Type': 'application/json'
@@ -65,14 +59,11 @@ axios.request(config)
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/bytedance/seedream-4-0-250828/image-edit"
+url = "https://gptproto.com/api/v3/bytedance/doubao-seedream-5-0-260128/text-to-imgae"
 
 payload = json.dumps({
   "enable_base64_output": False,
   "enable_sync_mode": False,
-  "images": [
-    "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1757414555847323990_Si8cqCBF.jpeg"
-  ],
   "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character's image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
   "size": "2227*3183"
 })
@@ -99,15 +90,12 @@ import (
 
 func main() {
 
-  url := "https://gptproto.com/api/v3/bytedance/seedream-4-0-250828/image-edit"
+  url := "https://gptproto.com/api/v3/bytedance/doubao-seedream-5-0-260128/text-to-imgae"
   method := "POST"
 
   payload := strings.NewReader(`{
   "enable_base64_output": false,
   "enable_sync_mode": false,
-  "images": [
-    "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1757414555847323990_Si8cqCBF.jpeg"
-  ],
   "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character's image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
   "size": "2227*3183"
 }`)

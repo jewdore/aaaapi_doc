@@ -1681,40 +1681,6 @@
                     ]
                   },
                   {
-                    "group": "doubao-seededit-3-0-i2i-250628",
-                    "pages": [
-                      {
-                        "group": "gptproto-format",
-                        "pages": [
-                          "docs/api/Doubao/doubao-seededit-3-0-i2i-250628/gptproto-format/image-edit"
-                        ]
-                      },
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/api/Doubao/doubao-seededit-3-0-i2i-250628/official-format/image-edit"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "doubao-seedream-3-0-t2i-250415",
-                    "pages": [
-                      {
-                        "group": "gptproto-format",
-                        "pages": [
-                          "docs/api/Doubao/doubao-seedream-3-0-t2i-250415/gptproto-format/text-to-image"
-                        ]
-                      },
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/api/Doubao/doubao-seedream-3-0-t2i-250415/official-format/text-to-image"
-                        ]
-                      }
-                    ]
-                  },
-                  {
                     "group": "doubao-seedream-4-0-250828",
                     "pages": [
                       {
@@ -1748,6 +1714,25 @@
                         "pages": [
                           "docs/allapi/Doubao/doubao-seedream-4-5-251128/official-format/image-edit",
                           "docs/allapi/Doubao/doubao-seedream-4-5-251128/official-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "doubao-seedream-5-0-260128",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Doubao/doubao-seedream-5-0-260128/gptproto-format/image-edit",
+                          "docs/allapi/Doubao/doubao-seedream-5-0-260128/gptproto-format/text-to-image"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Doubao/doubao-seedream-5-0-260128/official-format/image-edit",
+                          "docs/allapi/Doubao/doubao-seedream-5-0-260128/official-format/text-to-image"
                         ]
                       }
                     ]
@@ -1905,6 +1890,25 @@
                         "pages": [
                           "docs/allapi/Doubao/seedream-4-5-251128/official-format/image-edit",
                           "docs/allapi/Doubao/seedream-4-5-251128/official-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "seedream-5-0-260128",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Doubao/seedream-5-0-260128/gptproto-format/image-edit",
+                          "docs/allapi/Doubao/seedream-5-0-260128/gptproto-format/text-to-image"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Doubao/seedream-5-0-260128/official-format/image-edit",
+                          "docs/allapi/Doubao/seedream-5-0-260128/official-format/text-to-image"
                         ]
                       }
                     ]

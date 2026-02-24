@@ -1,26 +1,21 @@
 ---
-title: 'doubao-seedream-4-5-251128 (image edit)'
+title: 'doubao-seedream-4-5-251128 (Image Edit)'
 sidebarTitle: 'Image Edit'
-api: 'POST /v1/images/generations'
-description: 'Image Edit'
+api: 'POST https://gptproto.com/api/v3/bytedance/doubao-seedream-4-5-251128/image-edit'
+description: ''
 mode: 'wide'
 ---
 
-BytePlus's GPTProto format for the image edit API.
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
 
 
-
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location 'https://gptproto.com/api/v3/doubao/seedream-4-5-251128/image-edit' \
---header 'Authorization: sk-xx' \
+curl --location 'https://gptproto.com/api/v3/bytedance/doubao-seedream-4-5-251128/image-edit' \
+--header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
   "enable_base64_output": false,
@@ -31,41 +26,11 @@ curl --location 'https://gptproto.com/api/v3/doubao/seedream-4-5-251128/image-ed
   "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character'\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
   "size": "2227*3183"
 }'
+
 ```
-
-```python Python
-import requests
-import json
-
-url = "https://gptproto.com/api/v3/doubao/seedream-4-5-251128/image-edit"
-headers = {
-    "Authorization": "sk-xx",
-    "Content-Type": "application/json"
-}
-
-data = {
-  "enable_base64_output": False,
-  "enable_sync_mode": False,
-  "images": [
-    "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1757414555847323990_Si8cqCBF.jpeg"
-  ],
-  "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character's image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
-  "size": "2227*3183"
-}
-
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
-```
-
 ```javascript JavaScript
-const url = "https://gptproto.com/api/v3/doubao/seedream-4-5-251128/image-edit";
-const headers = {
-  "Authorization": "sk-xx",
-  "Content-Type": "application/json"
-};
-
-const data = {
+const axios = require('axios');
+let data = JSON.stringify({
   "enable_base64_output": false,
   "enable_sync_mode": false,
   "images": [
@@ -73,33 +38,71 @@ const data = {
   ],
   "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character's image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
   "size": "2227*3183"
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/api/v3/bytedance/doubao-seedream-4-5-251128/image-edit',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
 };
 
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
 })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
-```
+.catch((error) => {
+  console.log(error);
+});
 
+
+```
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/bytedance/doubao-seedream-4-5-251128/image-edit"
+
+payload = json.dumps({
+  "enable_base64_output": False,
+  "enable_sync_mode": False,
+  "images": [
+    "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/images/1757414555847323990_Si8cqCBF.jpeg"
+  ],
+  "prompt": "Turn this photo into a characterfigure. Behind it, place a box withthe character's image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.",
+  "size": "2227*3183"
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/doubao/seedream-4-5-251128/image-edit"
 
-    payload := []byte(`{
+  url := "https://gptproto.com/api/v3/bytedance/doubao-seedream-4-5-251128/image-edit"
+  method := "POST"
+
+  payload := strings.NewReader(`{
   "enable_base64_output": false,
   "enable_sync_mode": false,
   "images": [
@@ -109,80 +112,40 @@ func main() {
   "size": "2227*3183"
 }`)
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "sk-xx")
-    req.Header.Set("Content-Type", "application/json")
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
 
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-<CodeGroup>
+import Parameters from '/snippets/Doubao/gptproto-format/seedream.mdx';
 
-```json 401 - Invalid signature
-{
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
-}
-```
+<Parameters/>
 
 
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-```json 403 - Insufficient balance
-{
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
-}
-```
-
-```json 500 - Internal server error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
-}
-```
-</CodeGroup>
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `enable_base64_output` | boolean | ❌ No | `false` | Whether to return base64 encoded output |
-| `enable_sync_mode` | boolean | ❌ No | `false` | Whether to enable synchronous mode |
-| `images` | array | ✅ Yes | - | Input image URL(s) for image-to-image generation |
-| `prompt` | string | ✅ Yes | - | Image generation prompt describing the desired image content |
-| `size` | string | ❌ No | - | Output image resolution (e.g., 2227*3183, 1024*1024) |
-
-
-
-
-
-
-
-
-
-
+<ErrorCode/>

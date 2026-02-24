@@ -1,6 +1,6 @@
 ---
-title: 'seedream-4-0-250828 (Image Edit)'
-sidebarTitle: 'Image Edit'
+title: 'doubao-seedream-5-0-260128 (Text To Image)'
+sidebarTitle: 'Text To Image'
 api: 'POST https://gptproto.com/api/v3/images/generations'
 description: ''
 mode: 'wide'
@@ -18,12 +18,11 @@ curl --location 'https://gptproto.com/api/v3/images/generations' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
-  "model": "seedream-4-0-250828",
-  "prompt": "Change bubbles into heart shape",
-  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "model": "doubao-seedream-5-0-260128",
+  "prompt": "Fisheye lens, a cat'\''s head, the picture shows the cat'\''s facial features are distorted due to the shooting method.",
   "response_format": "url",
   "size": "2k",
-  "seed": 21,
+  "seed": 12,
   "watermark": true
 }'
 
@@ -31,12 +30,11 @@ curl --location 'https://gptproto.com/api/v3/images/generations' \
 ```javascript JavaScript
 const axios = require('axios');
 let data = JSON.stringify({
-  "model": "seedream-4-0-250828",
-  "prompt": "Change bubbles into heart shape",
-  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "model": "doubao-seedream-5-0-260128",
+  "prompt": "Fisheye lens, a cat's head, the picture shows the cat's facial features are distorted due to the shooting method.",
   "response_format": "url",
   "size": "2k",
-  "seed": 21,
+  "seed": 12,
   "watermark": true
 });
 
@@ -68,12 +66,11 @@ import json
 url = "https://gptproto.com/api/v3/images/generations"
 
 payload = json.dumps({
-  "model": "seedream-4-0-250828",
-  "prompt": "Change bubbles into heart shape",
-  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "model": "doubao-seedream-5-0-260128",
+  "prompt": "Fisheye lens, a cat's head, the picture shows the cat's facial features are distorted due to the shooting method.",
   "response_format": "url",
   "size": "2k",
-  "seed": 21,
+  "seed": 12,
   "watermark": True
 })
 headers = {
@@ -103,12 +100,11 @@ func main() {
   method := "POST"
 
   payload := strings.NewReader(`{
-  "model": "seedream-4-0-250828",
-  "prompt": "Change bubbles into heart shape",
-  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "model": "doubao-seedream-5-0-260128",
+  "prompt": "Fisheye lens, a cat's head, the picture shows the cat's facial features are distorted due to the shooting method.",
   "response_format": "url",
   "size": "2k",
-  "seed": 21,
+  "seed": 12,
   "watermark": true
 }`)
 

@@ -1,0 +1,12 @@
+import QueryResult from '/snippets/common/query-result.mdx';
+
+<QueryResult/>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `enable_base64_output` | boolean | ❌ No | `false` | Whether to output the result as base64 encoded string |
+| `enable_sync_mode` | boolean | ❌ No | `false` | Whether to enable synchronous mode (wait for result) |
+| `prompt` | string | ✅ Yes | `Turn this photo into a characterfigure. Behind it, place a box withthe character&apos;s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.` | Image generation prompt describing the desired image content |
+| `size` | string | ❌ No | `2227*3183` | Output image resolution (format: width*height) |

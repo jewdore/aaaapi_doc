@@ -1,5 +1,5 @@
 ---
-title: 'seedream-4-0-250828 (Image Edit)'
+title: 'seedream-5-0-260128 (Image Edit)'
 sidebarTitle: 'Image Edit'
 api: 'POST https://gptproto.com/api/v3/images/generations'
 description: ''
@@ -18,7 +18,7 @@ curl --location 'https://gptproto.com/api/v3/images/generations' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
-  "model": "seedream-4-0-250828",
+  "model": "seedream-5-0-260128",
   "prompt": "Change bubbles into heart shape",
   "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
   "response_format": "url",
@@ -31,7 +31,7 @@ curl --location 'https://gptproto.com/api/v3/images/generations' \
 ```javascript JavaScript
 const axios = require('axios');
 let data = JSON.stringify({
-  "model": "seedream-4-0-250828",
+  "model": "seedream-5-0-260128",
   "prompt": "Change bubbles into heart shape",
   "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
   "response_format": "url",
@@ -68,7 +68,7 @@ import json
 url = "https://gptproto.com/api/v3/images/generations"
 
 payload = json.dumps({
-  "model": "seedream-4-0-250828",
+  "model": "seedream-5-0-260128",
   "prompt": "Change bubbles into heart shape",
   "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
   "response_format": "url",
@@ -103,7 +103,7 @@ func main() {
   method := "POST"
 
   payload := strings.NewReader(`{
-  "model": "seedream-4-0-250828",
+  "model": "seedream-5-0-260128",
   "prompt": "Change bubbles into heart shape",
   "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
   "response_format": "url",

@@ -1,204 +1,147 @@
 ---
-title: 'seedream-4-5-251128 (text to image)'
-sidebarTitle: 'Text to Image'
-api: 'POST /api/v3/images/generations'
-description: 'Text to Image'
+title: 'seedream-4-5-251128 (Text To Image)'
+sidebarTitle: 'Text To Image'
+api: 'POST https://gptproto.com/api/v3/images/generations'
+description: ''
 mode: 'wide'
 ---
 
-BytePlus's official format for the text to image API.
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
 
 
-
-
-
-
-
-
-
+## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl -X POST "https://gptproto.com/api/v3/images/generations" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl --location 'https://gptproto.com/api/v3/images/generations' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
   "model": "seedream-4-5-251128",
   "prompt": "Fisheye lens, a cat'\''s head, the picture shows the cat'\''s facial features are distorted due to the shooting method.",
   "response_format": "url",
   "size": "2k",
   "seed": 12,
-  "guidance_scale": 2.5,
   "watermark": true
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "seedream-4-5-251128",
+  "prompt": "Fisheye lens, a cat's head, the picture shows the cat's facial features are distorted due to the shooting method.",
+  "response_format": "url",
+  "size": "2k",
+  "seed": 12,
+  "watermark": true
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/api/v3/images/generations',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
 url = "https://gptproto.com/api/v3/images/generations"
-headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
-    "Content-Type": "application/json"
-}
 
-data = {
-    "model": "seedream-4-5-251128",
-    "prompt": "Fisheye lens, a cat's head, the picture shows the cat's facial features are distorted due to the shooting method.",
-    "response_format": "url",
-    "size": "2k",
-    "seed": 12,
-    "guidance_scale": 2.5,
-    "watermark": True
-}
-
-response = requests.post(url, headers=headers, json=data)
-result = response.json()
-print(json.dumps(result, indent=2))
-```
-
-```javascript JavaScript
-const url = "https://gptproto.com/api/v3/images/generations";
-const headers = {
-  "Authorization": "Bearer YOUR_API_KEY",
-  "Content-Type": "application/json"
-};
-
-const data = {
-  model: "seedream-4-5-251128",
-  prompt: "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-
-  response_format: "url",
-  size: "2k",
-  seed: 12,
-  guidance_scale: 2.5,
-  watermark: true
-};
-
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(data)
+payload = json.dumps({
+  "model": "seedream-4-5-251128",
+  "prompt": "Fisheye lens, a cat's head, the picture shows the cat's facial features are distorted due to the shooting method.",
+  "response_format": "url",
+  "size": "2k",
+  "seed": 12,
+  "watermark": True
 })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
-```
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
+}
 
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/images/generations"
 
-    payload := []byte(`{
+  url := "https://gptproto.com/api/v3/images/generations"
+  method := "POST"
+
+  payload := strings.NewReader(`{
   "model": "seedream-4-5-251128",
-  "prompt": "Fisheye lens, a cat'''s head, the picture shows the cat'''s facial features are distorted due to the shooting method.",
-
+  "prompt": "Fisheye lens, a cat's head, the picture shows the cat's facial features are distorted due to the shooting method.",
   "response_format": "url",
   "size": "2k",
   "seed": 12,
-  "guidance_scale": 2.5,
   "watermark": true
 }`)
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
 
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-<CodeGroup>
+import Parameters from '/snippets/Doubao/official-format/seedream.mdx';
 
-```json 400 - Bad Request
-{
-  "error": {
-    "message": "Invalid request parameters",
-    "type": "invalid_request_error",
-    "code": "invalid_parameters"
-  }
-}
-```
-
-```json 401 - Unauthorized
-{
-  "error": {
-    "message": "Invalid authentication credentials",
-    "type": "authentication_error",
-    "code": "invalid_api_key"
-  }
-}
-```
-
-```json 403 - Forbidden
-{
-  "error": {
-    "message": "Insufficient permissions or quota exceeded",
-    "type": "permission_error",
-    "code": "insufficient_quota"
-  }
-}
-```
-
-```json 429 - Rate Limit Exceeded
-{
-  "error": {
-    "message": "Rate limit exceeded",
-    "type": "rate_limit_error",
-    "code": "rate_limit_exceeded"
-  }
-}
-```
-
-```json 500 - Internal Server Error
-{
-  "error": {
-    "message": "Internal server error",
-    "type": "server_error",
-    "code": "internal_error"
-  }
-}
-```
-</CodeGroup>
-
-## Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `model` | string | ✅ Yes | `seedream-4-5-251128` | The model identifier for image generation/editing |
-| `prompt` | string | ✅ Yes | - | Description of the desired image transformation or generation |
-| `response_format` | string | ❌ No | `url` | Response format: "url" (image URL) or "b64_json" (base64 encoded) |
-| `size` | string | ❌ No | `adaptive` | Output image resolution. Options: adaptive, 1024x1024, 2K, 4K |
-| `seed` | integer | ❌ No | - | Random seed for reproducible results |
-| `guidance_scale` | number | ❌ No | `5.5` | Controls adherence to the prompt. Range: 1.0-10.0, recommended: 3.0-7.0 |
-| `watermark` | boolean | ❌ No | `true` | Whether to add watermark to the generated image |
+<Parameters/>
 
 
+import ErrorCode from '/snippets/common/errors_code.mdx';
 
-
-
-
-
-
-
-
+<ErrorCode/>
