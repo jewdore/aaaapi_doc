@@ -1,27 +1,29 @@
-## Response Example
+<Accordion title="Response Example">
 ```json
 {
-  "id": "chatcmpl-abc123",
-  "object": "chat.completion",
-  "created": 1699896916,
-  "model": "{{model}}",
-  "choices": [
-    {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": "The image shows a wooden boardwalk path extending through a lush green grassland."
-      },
-      "finish_reason": "stop"
+    "id": "msg_abcd",
+    "type": "message",
+    "role": "assistant",
+    "model": "<model>",
+    "content": [
+        {
+            "type": "text",
+            "text": "I'm Claude, an AI assistant made by Anthropic. I'm designed to be helpful, harmless, and honest. I can help with a wide range of tasks like answering questions, writing, analysis, brainstorming, coding, and more.\n\nIs there something I can help you with?"
+        }
+    ],
+    "stop_reason": "end_turn",
+    "usage": {
+        "input_tokens": 11,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 67,
+        "cache_creation": {},
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
     }
-  ],
-  "usage": {
-    "prompt_tokens": 1250,
-    "completion_tokens": 89,
-    "total_tokens": 1339
-  }
 }
 ```
+</Accordion>
 
 ## Parameters
 

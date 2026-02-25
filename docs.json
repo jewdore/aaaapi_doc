@@ -1312,6 +1312,27 @@
                     ]
                   },
                   {
+                    "group": "claude-opus-4-6-thinking",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-6-thinking/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-6-thinking/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-6-thinking/official-format/web-search"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-6-thinking/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-6-thinking/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-6-thinking/openai-format/web-search"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "claude-opus-4-thinking",
                     "pages": [
                       {
