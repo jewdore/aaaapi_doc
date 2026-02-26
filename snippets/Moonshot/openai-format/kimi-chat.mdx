@@ -1,0 +1,50 @@
+## Parameters
+### Core Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `model` | string | ✅ Yes | - | - | Model ID used to generate the response, like `kimi-k2.5`. |
+| `messages` | array | ✅ Yes | - | - | A list of messages comprising the conversation so far. Depending on the model you use, different message types (modalities) are supported, like text, images, and files. |
+| `>messages.role` | string | ✅ Yes | - | `system`<br />`user`<br />`assistant` | The role of the messages author. |
+| `>messages.content` | string / array | ✅ Yes | - | - | The contents of the message. Can be a string for text-only messages or an array for multimodal content. |
+| `>>messages.content.type` | string | ✅ Yes | - | `text`<br />`image_url`<br />`file` | The type of the content part. |
+| `>>messages.content.text` | string | ❌ No | - | - | The text content. |
+| `>>messages.content.image_url` | object | ❌ No | - | - | The image URL content. |
+| `>>messages.content.image_url.url` | string | ❌ No | - | - | The URL of the image. |
+| `>>messages.content.file` | object | ❌ No | - | - | The file content for document analysis. |
+| `>>messages.content.file.filename` | string | ❌ No | - | - | The name of the file. |
+| `>>messages.content.file.file_data` | string | ❌ No | - | - | The URL of the file. |
+
+### Advanced Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `max_tokens` | integer | ❌ No | - | - | The maximum number of tokens to generate in the response. |
+| `temperature` | number | ❌ No | `0.95` | `0.0` - `1.0` | Controls randomness. Lower values make the model more focused and deterministic. |
+| `top_p` | number | ❌ No | `0.7` | `0.0` - `1.0` | Nucleus sampling parameter. The model considers the results of the tokens with top_p probability mass. |
+| `stream` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to stream the response back incrementally using server-sent events. |
+| `tools` | array | ❌ No | - | - | A list of tools the model may call. Use this to enable web search or function calling capabilities. |
+| `stop` | array | ❌ No | - | - | Up to 4 sequences where the API will stop generating further tokens. |
+
+## Response Example
+```json
+{
+  "id": "chatcmpl-abc123",
+  "object": "chat.completion",
+  "created": 1699896916,
+  "model": "kimi-k2.5",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I am Kimi K2.5, a large language model developed by Moonshot AI. I'm designed to assist with a wide range of tasks including answering questions, writing content, analyzing documents, and more."
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 12,
+    "completion_tokens": 45,
+    "total_tokens": 57
+  }
+}
+```

@@ -1527,6 +1527,17 @@
                         ]
                       }
                     ]
+                  },
+                  {
+                    "group": "deepseek-v3.2",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/DeepSeek/deepseek-v3.2/openai-format/text-to-text"
+                        ]
+                      }
+                    ]
                   }
                 ],
                 "icon": "https://oss.gptproto.com/ai-content/1755520099039-20250818-202809.png"
@@ -2446,6 +2457,17 @@
                 "group": "MiniMax",
                 "pages": [
                   {
+                    "group": "MiniMax-M2.5",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/MiniMax/MiniMax-M2.5/openai-format/text-to-text"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "hailuo-02-fast",
                     "pages": [
                       {
@@ -2902,6 +2924,22 @@
                   }
                 ],
                 "icon": "https://raw.githubusercontent.com/chencanbin/gptproto_doc/main/images/zhipu.png"
+              },
+              {
+                "group": "Moonshot",
+                "pages": [
+                  {
+                    "group": "kimi-k2.5",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Moonshot/kimi-k2.5/openai-format/text-to-text"
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
