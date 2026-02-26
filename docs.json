@@ -2895,9 +2895,7 @@
                       {
                         "group": "openai-format",
                         "pages": [
-                          "docs/allapi/Zhipu/glm-5/openai-format/file-analysis",
-                          "docs/allapi/Zhipu/glm-5/openai-format/text-to-text",
-                          "docs/allapi/Zhipu/glm-5/openai-format/web-search"
+                          "docs/allapi/Zhipu/glm-5/openai-format/text-to-text"
                         ]
                       }
                     ]
