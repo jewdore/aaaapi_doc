@@ -906,8 +906,7 @@
                           "docs/allapi/Google/gemini-2.5-pro-deepsearch/openai-format/text-to-text"
                         ]
                       }
-                    ],
-                    "hidden": true
+                    ]
                   },
                   {
                     "group": "gemini-3-flash-preview",
@@ -2885,6 +2884,24 @@
                   }
                 ],
                 "icon": "https://oss.gptproto.com/2025/12/01/f651b2a0c86b419d9442cb6c9d723bac.jpeg"
+              },
+              {
+                "group": "Zhipu",
+                "pages": [
+                  {
+                    "group": "glm-5",
+                    "pages": [
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Zhipu/glm-5/openai-format/file-analysis",
+                          "docs/allapi/Zhipu/glm-5/openai-format/text-to-text",
+                          "docs/allapi/Zhipu/glm-5/openai-format/web-search"
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
