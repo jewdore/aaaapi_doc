@@ -2901,7 +2901,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "icon": "https://raw.githubusercontent.com/chencanbin/gptproto_doc/main/images/zhipu.png"
               }
             ]
           }
