@@ -1,483 +1,282 @@
 ---
-title: 'Claude Cli'
-description: 'Learn about Claude Code workflow, CLAUDE.md configuration, and best practices'
+title: 'Claude Code'
+sidebarTitle: 'Claude Code'
+description: 'Use GPTProto models (GLM, Kimi, MiniMax, DeepSeek and more) in Claude Code'
+mode: 'wide'
 ---
 
-# Complete Claude Code Tutorial
+## What is Claude Code?
 
-Claude Code is an agentic coding tool developed by [Anthropic](https://www.anthropic.com). It runs in the terminal or integrates with IDEs that support terminal functionality, leveraging Claude's language model capabilities to assist with coding, refactoring, debugging, maintenance, and codebase understanding.
+[Claude Code](https://docs.anthropic.com/en/docs/claude-code) is an intelligent coding tool developed by Anthropic that runs in your terminal. It helps developers quickly complete code generation, debugging, refactoring, and other tasks through natural language commands.
 
-## 1. Claude Code Introduction and How It Works
+<Tip>
+  With **GPTProto**, you can use **160+ AI models** from top providers (GLM, Kimi, MiniMax, DeepSeek, and more) directly in Claude Code — all with a single API key and **no code changes** required.
+</Tip>
 
-Before diving into CLAUDE.md, let's quickly understand what Claude Code is and how it interacts with your project.
+<Note>
+  GPTProto provides a fully Anthropic-compatible API endpoint. Claude Code will display model names like `claude-sonnet-4-20250514`, but the actual model running behind the scenes is your chosen model (e.g., GLM-5, Kimi-K2.5, etc.).
+</Note>
 
-### What is Claude Code?
+## Step 1: Install Claude Code
 
-- Claude Code is a command-line (CLI) tool / agentic coding tool provided by Anthropic that allows you to interact directly with your codebase using natural language: letting Claude understand your project structure, generate/modify code, execute shell commands, submit Git changes, and more.
-- It's not just a simple code completion or chatbot, but an intelligent agent that can proactively take actions (editing files, running commands, Git operations, etc.).
-- Claude Code attempts to incorporate project context (file contents, history, prompts) into consideration to make informed decisions.
+**Prerequisites:** [Node.js 18+](https://nodejs.org/en/download/)
 
-### How Claude Acquires Context / Memory
-
-- On startup, Claude Code recursively searches upward from the current directory for CLAUDE.md or CLAUDE.local.md files (CLAUDE.md is currently mainstream), and reads these contents as "memory" or "context".
-- If certain subdirectories (subtrees) also have CLAUDE.md, when entering these subdirectories and reading these subtrees, the CLAUDE.md files in these subtrees will also be included in the context. They are not preloaded at startup.
-- The contents of CLAUDE.md become part of Claude's default "system prompt / background", meaning Claude will reference the instructions within it when thinking/making decisions.
-- During conversations, you can use shortcuts (such as lines starting with #) to write content into CLAUDE.md. For example:
-  ```
-  # Always use descriptive variable names
-  ```
-- Claude will prompt you to place this line into a specific memory file (i.e., which CLAUDE.md).
-- In conversations, you can also use the `/memory` command to directly edit memory files (i.e., open CLAUDE.md or other memory files for modification).
-- CLAUDE.md supports importing other files (using `@path/to/file.md` syntax), allowing you to split instructions or configurations into multiple files.
-- To avoid conflicts or security issues, the import syntax is not interpreted as an import within Markdown code blocks or backticks (``` or `).
-
-### Claude Code Installation and Configuration
-
-**Mac & Linux Configuration**
-
-Ensure your system has [Node.js](https://nodejs.org/) version 18+ installed
-
-**1. Install Homebrew (Recommended for Mac)**
-
-If Homebrew is not yet installed:
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-**2. Install Node.js**
-
-Using Homebrew:
-
-```bash
-brew install node
-```
-
-**3. Install Claude Code**
+Install Claude Code globally via npm:
 
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
-**4. Configure Claude API Key**
-
-Using GPTProto relay API ([https://gptproto.com](https://gptproto.com)) to get Auth Token
-
-<Note>
-**GPTProto Relay API - Claude Code Proxy API - Affordable and Stable Claude API Proxy Service**
-
-Replace `sk-xxx` with your token from the API key page
-</Note>
-
-**Method 1: Using Bash (Recommended)**
+After installation, navigate to your project directory and start Claude Code:
 
 ```bash
-echo 'export ANTHROPIC_AUTH_TOKEN="sk-xxx"' >> ~/.bash_profile
-echo 'export ANTHROPIC_BASE_URL="https://gptproto.com"' >> ~/.bash_profile
-source ~/.bash_profile
-```
-
-**Method 2: Using Zsh (If using Oh My Zsh)**
-
-```bash
-echo 'export ANTHROPIC_AUTH_TOKEN="sk-xxx"' >> ~/.zshrc
-echo 'export ANTHROPIC_BASE_URL="https://gptproto.com"' >> ~/.zshrc
-source ~/.zshrc
-```
-
-<Warning>
-After permanent setup, you need to restart the terminal for changes to take effect.
-</Warning>
-
-**5. Start Using Claude Code**
-
-```bash
-# Navigate to your project directory
-cd your-project-folder
-
-# Start Claude Code
+cd your-project
 claude
 ```
 
-First-time startup requires theme selection and other operations:
+<Warning>
+  During your first run, Claude Code will prompt you to log in to your Anthropic account. You can **skip this step** — we will configure GPTProto API in the next step.
+</Warning>
 
-- Select your preferred theme (press Enter)
-- Confirm security notice (press Enter)
-- Use default Terminal configuration (press Enter)
-- Trust working directory (press Enter)
-- Start coding! 🚀
+## Step 2: Configure GPTProto API
 
----
+### Option A: Quick Setup (Environment Variables)
 
-## 2. Why Write CLAUDE.md - Its Purpose
+The fastest way to get started. Set these environment variables before launching Claude Code:
 
-CLAUDE.md is a background documentation file that Claude reads on startup and incorporates into its thinking. Its purposes include:
+<CodeGroup>
 
-1. **Setting "Behavioral Guidelines" for the Project/Team**
-   For example: variable naming rules, code style, important module descriptions, tool script usage, developer conventions, etc. This helps Claude make decisions or modify code in accordance with team standards.
-
-2. **Reducing Repetitive Background in Each Prompt**
-   Since it's loaded at startup, your subsequent natural language prompts to Claude can omit re-explaining these conventions or rules.
-
-3. **Guiding Claude's Behavior / Restricting Permissions / Specifying Tools**
-   You can specify in CLAUDE.md which tools are safe to use, which require caution, or tell Claude "use this script/command in this situation".
-
-4. **Project Structure Description / Key Modules and Conventions**
-   In multi-person collaboration or large projects, CLAUDE.md helps Claude quickly understand module responsibilities, entry files, dependencies, etc., leading to more reasonable suggestions.
-
-5. **Hierarchical Memory / Subdirectory Customization**
-   Different submodules or subdirectories in a project can have their own CLAUDE.md to customize local behavior. This way, even when calling Claude in a submodule, it can reference the submodule's specific rules.
-
-6. **Import / Combine Multiple Instructions**
-   Using `@` syntax, you can split descriptions of different functional modules into multiple .md files, then import them in the main CLAUDE.md. This makes the structure clearer and easier to maintain.
-
-7. **Improve Claude's Decision Quality / Reduce Guessing**
-   Many users report: the more standardized and explicit the CLAUDE.md, the more stable and expected Claude's output becomes.
-
-In summary, CLAUDE.md is Claude Code's "cockpit manual" - writing it well can significantly enhance the experience.
-
----
-
-## 3. How to Create and Configure CLAUDE.md
-
-Below is a systematic approach (starting from scratch):
-
-### 1. Initialize CLAUDE.md
-
-- In your project root directory, run:
-  ```
-  /init
-  ```
-- Claude Code will attempt to read the project structure, key files, dependencies, etc., then automatically generate a preliminary CLAUDE.md.
-- After generation, it's recommended to manually review and modify it.
-
-### 2. Placement Location and Hierarchy
-
-- Usually placed in the project root directory: `./CLAUDE.md`.
-- For monorepos or multi-module projects, you can also place additional CLAUDE.md files in parent or subdirectories. When Claude works in a subdirectory, it will prioritize loading the subdirectory's CLAUDE.md.
-- You can also place personal preferences / cross-project instructions in your user directory (such as `~/.claude/CLAUDE.md`).
-- Currently CLAUDE.local.md (old name) is gradually being deprecated, with the import mechanism recommended as a replacement.
-
-### 3. CLAUDE.md Content Structure and Recommended Format
-
-Below is a recommended content structure and writing standard, which can be adjusted based on team/project needs:
-
-```markdown
-# Project Name / Introduction
-
-A brief one or two lines: what this project does, key modules, tech stack, etc.
-
----
-
-## Conventions and Rules
-
-- Code style / formatting (e.g., ESLint rules, indentation, naming style, etc.)
-- Naming rules (variable names, function names, class names, interface names, etc.)
-- Branch strategy / Git workflow
-- Commit conventions / commit message format
-- Testing / coverage requirements
-- Build / deployment / environment variable descriptions
-
----
-
-## Directory Structure and Module Descriptions
-
-- `src/`: Frontend code
-- `backend/`: Backend services
-- `scripts/`: Utility scripts
-- `database/`: Database migrations, schema descriptions
-
-(Can also import README, architecture docs, etc.)
-
----
-
-## Common Commands / Utility Scripts
-
-- `npm run dev`: Start development mode
-- `npm run build`: Build
-- `npm test`: Run tests
-- `scripts/generate-report.sh`: Report generation script
-
----
-
-## Special Behaviors / Edge Cases / Warnings
-
-- In certain environments, a certain module must be started in a specific way
-- Certain files cannot be modified or are restricted
-- Performance-sensitive modules require attention
-
----
-
-## Imports (Optional)
-
-You can use `@path/to/file.md` syntax to import other documentation files:
-
-@README.md
-@docs/api-guidelines.md
-
----
-
-(You can add more sections, such as code examples, convention templates, examples, etc.)
+```bash macOS/Linux
+export ANTHROPIC_BASE_URL=https://gptproto.com
+export ANTHROPIC_API_KEY=sk-your-gptproto-api-key
+claude
 ```
 
-**Writing Recommendations:**
-
-- Keep it concise and clear, avoid cramming too many details. Overly long backgrounds might make it harder for Claude to grasp the key points.
-- Write rules in natural language rather than just code snippets. Claude can understand such instructions.
-- Moderately provide examples/templates in rules to help Claude understand the meaning.
-- When the project evolves or standards change, update CLAUDE.md promptly.
-- For team projects, you can commit the main CLAUDE.md to version control so team members can share it.
-
-### 4. Importing Other Files (@syntax)
-
-As mentioned earlier, to avoid making CLAUDE.md bloated, you can write rules for different modules or subsystems into separate .md files, then reference them in the main file using import syntax. For example:
-
-```markdown
-# Main CLAUDE.md
-
-Project introduction and general conventions are here.
-
-# Subsystem Descriptions
-@backend/backend-guidelines.md
-@frontend/style-guidelines.md
+```powershell Windows (PowerShell)
+$env:ANTHROPIC_BASE_URL = "https://gptproto.com"
+$env:ANTHROPIC_API_KEY = "sk-your-gptproto-api-key"
+claude
 ```
 
-This makes the structure clear and easy to maintain.
+</CodeGroup>
+
+<Tip>
+  To make this permanent, add the `export` lines to your shell profile (`~/.bashrc`, `~/.zshrc`, or `~/.profile`).
+</Tip>
+
+### Option B: Configuration File (Recommended)
+
+Edit the Claude Code settings file at `~/.claude/settings.json`:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://gptproto.com",
+    "ANTHROPIC_API_KEY": "sk-your-gptproto-api-key"
+  }
+}
+```
+
+<Warning>
+  If you manually edit `settings.json`, you must **restart Claude Code** for the changes to take effect. If running inside an IDE plugin, restart the IDE as well.
+</Warning>
+
+## Step 3: Choose Your Model
+
+By default, Claude Code maps its internal model tiers to specific models. With GPTProto, you can customize which model powers each tier.
+
+### Default Model Mapping
+
+| Claude Code Tier | Environment Variable | Default Model | Description |
+|:---|:---|:---|:---|
+| Opus (Heavy tasks) | `ANTHROPIC_DEFAULT_OPUS_MODEL` | `claude-opus-4-20250514` | Complex reasoning, architecture |
+| Sonnet (Main) | `ANTHROPIC_DEFAULT_SONNET_MODEL` | `claude-sonnet-4-20250514` | Primary coding model |
+| Haiku (Light tasks) | `ANTHROPIC_DEFAULT_HAIKU_MODEL` | `claude-haiku-3-5-20241022` | Quick completions, small edits |
+
+### Use GLM Models
+
+To use Zhipu GLM models in Claude Code, add to `~/.claude/settings.json`:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://gptproto.com",
+    "ANTHROPIC_API_KEY": "sk-your-gptproto-api-key",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.5-air"
+  }
+}
+```
+
+### Use Kimi Models
+
+To use Moonshot Kimi models:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://gptproto.com",
+    "ANTHROPIC_API_KEY": "sk-your-gptproto-api-key",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "kimi-k2.5",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "kimi-k2.5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kimi-k2.5"
+  }
+}
+```
+
+### Use MiniMax Models
+
+To use MiniMax models:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://gptproto.com",
+    "ANTHROPIC_API_KEY": "sk-your-gptproto-api-key",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M2.5",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M2.5"
+  }
+}
+```
+
+### Use DeepSeek Models
+
+To use DeepSeek models:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://gptproto.com",
+    "ANTHROPIC_API_KEY": "sk-your-gptproto-api-key",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v3.2",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v3.2",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v3.2"
+  }
+}
+```
+
+### Mix and Match (Recommended)
+
+The best approach is to assign different models to different tiers based on their strengths:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://gptproto.com",
+    "ANTHROPIC_API_KEY": "sk-your-gptproto-api-key",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "kimi-k2.5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v3.2"
+  }
+}
+```
+
+<Tip>
+  **Mix and match for best results!** Use a powerful model like GLM-5 for complex tasks (Opus), a balanced model like Kimi-K2.5 for main coding (Sonnet), and a fast model like DeepSeek-V3.2 for quick completions (Haiku).
+</Tip>
+
+## Step 4: Start Using Claude Code
+
+After configuration, start Claude Code in your project directory:
+
+```bash
+cd your-project
+claude
+```
+
+You can now use natural language to interact with your codebase:
+
+```
+> Help me refactor the authentication module to use JWT tokens
+
+> Find and fix the bug in the payment processing logic
+
+> Write unit tests for the user service
+
+> Explain the architecture of this project
+```
 
 <Note>
-Import syntax is not effective within code blocks / backticks.
+  Claude Code will show model names like `claude-sonnet-4-20250514` in the UI, but the actual model running is your configured GPTProto model (e.g., GLM-5, Kimi-K2.5, etc.). This is expected behavior.
 </Note>
 
----
+## Available Models
 
-## 4. Claude Code Basic Usage Flow / Common Commands
+Here are the recommended models available through GPTProto for coding tasks:
 
-After having CLAUDE.md, let's discuss some basic usage and interaction flows of Claude Code.
+| Model | Provider | Best For | Speed |
+|:---|:---|:---|:---|
+| `glm-5` | Zhipu | Complex reasoning, full-stack development | ⭐⭐⭐ |
+| `glm-4.7` | Zhipu | Balanced coding, debugging | ⭐⭐⭐⭐ |
+| `glm-4.5-air` | Zhipu | Quick completions, lightweight tasks | ⭐⭐⭐⭐⭐ |
+| `kimi-k2.5` | Moonshot | Long context, code analysis | ⭐⭐⭐⭐ |
+| `MiniMax-M2.5` | MiniMax | General coding, creative tasks | ⭐⭐⭐⭐ |
+| `deepseek-v3.2` | DeepSeek | Code generation, math | ⭐⭐⭐⭐ |
+| `qwen3-235b` | Qwen | Multilingual, reasoning | ⭐⭐⭐ |
 
-### Installation and Configuration
+<Tip>
+  GPTProto supports **160+ models**. You can use any model from the [model list](https://gptproto.com/v1/models) as long as it supports the chat completions API.
+</Tip>
 
-- Install globally using npm (prerequisite is Node.js installed):
-  ```bash
-  npm install -g @anthropic-ai/claude-code
-  ```
-- First startup will go through a configuration process, including OAuth, API key, permission authorization, etc.
-- After installation, you can run `claude doctor` to check environment and version status.
-- On Windows, you may need to run it in WSL or Git Bash environment.
+## FAQ
 
-### Common Interactions / Commands
+### How to switch models?
 
-Below are commonly used Claude Code interaction commands and tips:
+You can switch models at any time by updating the environment variables in `~/.claude/settings.json` and restarting Claude Code.
 
-| Command / Method | Function / Description |
-|------------|-----------|
-| `claude` | Start interactive session |
-| `claude -p "..."` | Send prompt directly in non-interactive mode (similar to "prompt" mode) |
-| `claude -c` | Continue previous session (maintain context) |
-| `/help` | Display help documentation |
-| `/clear` | Clear current conversation history |
-| `/config` | View / modify configuration |
-| `/cost` | View current session or cumulative token usage / cost |
-| `/model` | Switch Claude model being used (e.g., Sonnet / Opus, etc.) |
-| `/memory` | Open memory editor in conversation (edit CLAUDE.md and other memory files) |
-| `/review` | Request review / suggestions for current code changes |
-| `/vim` | Enter vim mode for editing (if supported) |
-
-Additionally, some commands can be used with shell pipes, for example:
+Alternatively, set environment variables directly in your terminal before launching:
 
 ```bash
-cat logs.txt | claude -p "analyze these errors and suggest fixes"
+ANTHROPIC_DEFAULT_SONNET_MODEL=glm-5 claude
 ```
 
-This will input the contents of logs.txt to Claude as context.
+### Why does the UI still show "Claude" model names?
 
-There's also headless / automation mode (for scripts, CI, etc.):
+This is by design. Claude Code internally uses Anthropic model identifiers. GPTProto acts as a transparent proxy — it receives requests with Claude model names and routes them to your configured model. The functionality is identical; only the display name differs.
 
-- Use `-p` prompt + `--output-format stream-json` to get JSON output
-- Headless mode doesn't preserve conversation context (each is an independent request)
+### Manual config changes not taking effect?
 
-### Example Flow: A Typical Task
+If you edited `~/.claude/settings.json` manually:
 
-From a natural language requirement to code changes, the general flow might look like:
-
-1. Start Claude: `claude`
-2. Present requirement: `> Add user login and registration functionality to this project`
-3. Claude will scan CLAUDE.md, project files, list a plan (subtask checklist), may ask you to confirm the plan first
-4. After you confirm the plan, Claude will make changes to files sequentially (generate, modify, delete, etc.), asking if you accept each modification before proceeding
-5. Finally, Claude will generate commits, PRs, commit messages, etc.
-6. You can then have Claude review changes, write documentation, refactor, fix bugs, etc.
-
-During this process, the rules and conventions in CLAUDE.md will guide Claude's behavior.
-
----
-
-## 5. Practical Examples (Including CLAUDE.md + Input/Output)
-
-Below are several complete examples demonstrating CLAUDE.md + prompts + Claude's output/actions.
-
-### Example 1: Small Node.js Project
-
-**Project Structure:**
-
-```
-my-app/
-  CLAUDE.md
-  package.json
-  src/
-    index.js
-    user.js
-  tests/
-    user.test.js
-```
-
-**CLAUDE.md (Initial Draft):**
-
-```markdown
-# MyApp
-
-This is a simple user management service, including user registration, login, and query interfaces.
-
----
-
-## Conventions and Rules
-
-- Using JavaScript (Node.js, ES6+)
-- Naming style: variables use `camelCase`, class names `PascalCase`
-- Use async/await async style, not callbacks
-- All request inputs must be validated
-- Commit messages use "<module>: <description>" format
-
----
-
-## Common Commands
-
-- `npm run dev`: Start
-- `npm test`: Run tests
-- `npm run lint`: Static check
-```
-
-**Prompt to Claude:**
-
-```
-> Add user registration and login functionality to this project (with email + password), and write tests.
-```
-
-**Claude's Possible Behavior / Output (Simulated):**
-
-1. Claude reads CLAUDE.md, understands project background and conventions
-2. Scans project file structure, finds src/user.js and tests/user.test.js
-3. Returns a plan, for example:
-   ```
-   I suggest implementing in the following steps:
-   1. Add register and login methods in src/user.js
-   2. Write unit tests for register/login in tests/user.test.js
-   3. Add corresponding routes and calls in index.js
-   4. Add necessary dependencies in package.json (e.g., bcrypt, jsonwebtoken)
-   5. Run lint & tests, ensure everything passes
-   ```
-4. After you confirm, Claude generates code changes step by step, asking if you accept each step
-5. Finally generates a commit (e.g., "user: add register & login with tests")
-
-If you then say:
-
-```
-> Review the recent changes, any optimization suggestions?
-```
-
-Claude will give you code review feedback, such as password salting strategy, error handling, exception catching, etc.
-
----
-
-### Example 2: Using Imports for Multiple Documentation Files
-
-Suppose the project is quite large, with frontend and backend modules, each with different rules. You can write the main CLAUDE.md like this:
-
-```markdown
-# Large Project
-
-General background and descriptions are here.
-
-## Frontend Description
-@frontend/CLAUDE.md
-
-## Backend Description
-@backend/CLAUDE.md
-```
-
-Then in `frontend/CLAUDE.md`:
-
-```markdown
-# Frontend Module Rules
-
-- Using React + TypeScript
-- CSS modular or Tailwind
-- Naming: Component names capitalized, props use camelCase
-- Use React Hook style
-```
-
-In `backend/CLAUDE.md`:
-
-```markdown
-# Backend Module Rules
-
-- Using Node.js + Express
-- Route controller separation
-- Unified error handling
-- Logging uses Winston
-```
-
-When you run Claude in the `backend/` directory, Claude will read `backend/CLAUDE.md` and combine it with the main CLAUDE.md's general rules to understand your instructions.
-
-Then you can tell Claude in the backend directory:
-
-```
-> Add a GET /users endpoint to the backend, returning a user list
-```
-
-Claude will write compliant Express code according to the rules in `backend/CLAUDE.md`.
-
----
-
-### Example 3: Debug Logs + Pipe Input
-
-Suppose you have a log file `error.log` containing stack trace / exception information. You want Claude to help analyze the error.
-
-**Command line:**
+1. **Close Claude Code completely** (not just the current session)
+2. If using the IDE plugin, **restart the IDE**
+3. Verify the JSON syntax is valid
+4. Re-launch Claude Code
 
 ```bash
-cat error.log | claude -p "Analyze this error log and suggest possible root causes and fixes"
+# Verify your config
+cat ~/.claude/settings.json | python3 -m json.tool
 ```
 
-(Or use `/prompt` mode)
+### Recommended Claude Code version?
 
-Claude will receive the log content as input, with CLAUDE.md project background in context, thus giving you error analysis suggestions more relevant to the project.
+We recommend using the latest stable version of Claude Code for the best compatibility:
 
----
+```bash
+npm update -g @anthropic-ai/claude-code
+```
 
-## 6. Advanced Tips and Best Practices Summary
+### Connection issues?
 
-Below are some community / official recommended tips to help you write good CLAUDE.md and improve Claude Code's efficiency and stability.
+If you encounter connection errors:
 
-| Tip / Recommendation | Explanation / Rationale |
-|-----------|-----------|
-| Prioritize Refinement | Don't cram too much redundant content into CLAUDE.md. Keep rules clear, concise, focused on the most critical decision points. |
-| Use # to Quickly Write to Memory | During conversations, write a rule starting with #, Claude will prompt you to add it to which CLAUDE.md. |
-| Dynamic / Temporary Memory | For one-off adjustments, short-term rules, you can also write them in the conversation, not necessarily entirely in CLAUDE.md. |
-| Regular Maintenance / Cleanup | As the project evolves, CLAUDE.md may become outdated or messy. Recommend periodic review, adjusting structure and rules. |
-| Be Cautious with Tool Authorization | Claude by default requests authorization before modifying files / Git operations. You can adjust which tools are allowed or not in conversation / configuration. |
-| Have Claude Generate Plan / TODO Checklist First | Before executing code modifications, have it list a plan first, you can confirm if it's reasonable to avoid deviating from expectations. |
-| Provide Sufficient Background / Constraints in Prompts | Even with CLAUDE.md, in complex tasks you can still distill key constraints in prompts to prevent Claude from deviating. |
-| Utilize Subdirectory CLAUDE.md for Refinement | Write local CLAUDE.md in submodules to bring rules closer to business logic. |
-| Enable / Disable Auto-update | If you want to control version stability, you can disable Claude Code's auto-update behavior. |
+1. Verify your API key is valid: visit [gptproto.com](https://gptproto.com) dashboard
+2. Check that `ANTHROPIC_BASE_URL` is set to `https://gptproto.com` (no trailing slash)
+3. Test connectivity:
 
----
+```bash
+curl https://gptproto.com/v1/messages \
+  -H "x-api-key: sk-your-api-key" \
+  -H "anthropic-version: 2023-06-01" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"glm-5","max_tokens":20,"messages":[{"role":"user","content":"Hi"}]}'
+```
 
-## Summary
+## Resources
 
-Claude Code is a powerful AI programming assistant, and CLAUDE.md is the key to making it better understand your project and team standards. Through proper CLAUDE.md configuration, you can:
-
-- Have Claude follow project coding standards and best practices
-- Reduce repetitive work of explaining project background
-- Improve quality of code generation and modification
-- Better control Claude's behavior and permissions
-
-Hope this tutorial helps you use Claude Code better!
+- **GPTProto Dashboard**: [gptproto.com](https://gptproto.com)
+- **GPTProto API Docs**: [docs.gptproto.com](https://docs.gptproto.com)
+- **Claude Code Official Docs**: [docs.anthropic.com/claude-code](https://docs.anthropic.com/en/docs/claude-code)
+- **Node.js Download**: [nodejs.org](https://nodejs.org/en/download/)
