@@ -52,23 +52,48 @@ axios.request(config)
 
 ```
 ```python Python
-import requests
+import http.client
+import mimetypes
+from codecs import encode
 
-url = "https://gptproto.com/v1/videos"
+conn = http.client.HTTPSConnection("gptproto.com")
+dataList = []
+boundary = 'wL36Yn8afVp8Ag7AmP8qZ0SA4n1v9T'
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=model;'))
 
-payload = {'model': 'sora-2',
-'prompt': 'Put a hat on the cat'}
-files=[
-  ('input_reference',('file',open('/path/to/file','rb'),'application/octet-stream'))
-]
+dataList.append(encode('Content-Type: {}'.format('text/plain')))
+dataList.append(encode(''))
+
+dataList.append(encode("sora-2"))
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=input_reference; filename={0}'.format('file')))
+
+fileType = mimetypes.guess_type('/path/to/file')[0] or 'application/octet-stream'
+dataList.append(encode('Content-Type: {}'.format(fileType)))
+dataList.append(encode(''))
+
+with open('/path/to/file', 'rb') as f:
+  dataList.append(f.read())
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=prompt;'))
+
+dataList.append(encode('Content-Type: {}'.format('text/plain')))
+dataList.append(encode(''))
+
+dataList.append(encode("Put a hat on the cat"))
+dataList.append(encode('--'+boundary+'--'))
+dataList.append(encode(''))
+body = b'\r\n'.join(dataList)
+payload = body
 headers = {
-  'Authorization': 'GPTPROTO_API_KEY'
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-type': 'multipart/form-data; boundary={}'.format(boundary)
 }
-
-response = requests.request("POST", url, headers=headers, data=payload, files=files)
-
-print(response.text)
-
+conn.request("POST", "/v1/videos", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
 
 ```
 ```go Go
