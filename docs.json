@@ -959,6 +959,32 @@
                     ]
                   },
                   {
+                    "group": "gemini-3.1-flash-image-preview",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/gptproto-format/image-edit",
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/gptproto-format/text-to-image"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/official-format/image-edit",
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/official-format/text-to-image"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/openai-format/image-edit",
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/openai-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "gemini-3-pro-preview",
                     "pages": [
                       {
