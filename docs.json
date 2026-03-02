@@ -959,32 +959,6 @@
                     ]
                   },
                   {
-                    "group": "gemini-3.1-flash-image-preview",
-                    "pages": [
-                      {
-                        "group": "gptproto-format",
-                        "pages": [
-                          "docs/allapi/Google/gemini-3.1-flash-image-preview/gptproto-format/image-edit",
-                          "docs/allapi/Google/gemini-3.1-flash-image-preview/gptproto-format/text-to-image"
-                        ]
-                      },
-                      {
-                        "group": "official-format",
-                        "pages": [
-                          "docs/allapi/Google/gemini-3.1-flash-image-preview/official-format/image-edit",
-                          "docs/allapi/Google/gemini-3.1-flash-image-preview/official-format/text-to-image"
-                        ]
-                      },
-                      {
-                        "group": "openai-format",
-                        "pages": [
-                          "docs/allapi/Google/gemini-3.1-flash-image-preview/openai-format/image-edit",
-                          "docs/allapi/Google/gemini-3.1-flash-image-preview/openai-format/text-to-image"
-                        ]
-                      }
-                    ]
-                  },
-                  {
                     "group": "gemini-3-pro-preview",
                     "pages": [
                       {
@@ -1024,6 +998,32 @@
                           "docs/allapi/Google/gemini-3-pro-preview-11-2025/openai-format/file-analysis",
                           "docs/allapi/Google/gemini-3-pro-preview-11-2025/openai-format/image-to-text",
                           "docs/allapi/Google/gemini-3-pro-preview-11-2025/openai-format/text-to-text"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "gemini-3.1-flash-image-preview",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/gptproto-format/image-edit",
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/gptproto-format/text-to-image"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/official-format/image-edit",
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/official-format/text-to-image"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/openai-format/image-edit",
+                          "docs/allapi/Google/gemini-3.1-flash-image-preview/openai-format/text-to-image"
                         ]
                       }
                     ]
@@ -1090,10 +1090,9 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/Google/veo3/gptproto-format/image-to-video",
-                          "docs/api/Google/veo3/gptproto-format/reference-to-video",
-                          "docs/api/Google/veo3/gptproto-format/text-to-video",
-                          "docs/api/Google/veo3/gptproto-format/query-task"
+                          "docs/allapi/Google/veo3/gptproto-format/image-to-video",
+                          "docs/allapi/Google/veo3/gptproto-format/reference-to-video",
+                          "docs/allapi/Google/veo3/gptproto-format/text-to-video"
                         ]
                       }
                     ]
@@ -1104,10 +1103,9 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/Google/veo3-fast/gptproto-format/image-to-video",
-                          "docs/api/Google/veo3-fast/gptproto-format/reference-to-video",
-                          "docs/api/Google/veo3-fast/gptproto-format/text-to-video",
-                          "docs/api/Google/veo3-fast/gptproto-format/query-task"
+                          "docs/allapi/Google/veo3-fast/gptproto-format/image-to-video",
+                          "docs/allapi/Google/veo3-fast/gptproto-format/reference-to-video",
+                          "docs/allapi/Google/veo3-fast/gptproto-format/text-to-video"
                         ]
                       }
                     ]
@@ -1118,9 +1116,8 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/Google/veo3-pro/gptproto-format/image-to-video",
-                          "docs/api/Google/veo3-pro/gptproto-format/text-to-video",
-                          "docs/api/Google/veo3-pro/gptproto-format/query-task"
+                          "docs/allapi/Google/veo3-pro/gptproto-format/image-to-video",
+                          "docs/allapi/Google/veo3-pro/gptproto-format/text-to-video"
                         ]
                       }
                     ]
@@ -1144,10 +1141,9 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/api/Google/veo3.1-fast/gptproto-format/image-to-video",
-                          "docs/api/Google/veo3.1-fast/gptproto-format/reference-to-video",
-                          "docs/api/Google/veo3.1-fast/gptproto-format/text-to-video",
-                          "docs/api/Google/veo3.1-fast/gptproto-format/query-task"
+                          "docs/allapi/Google/veo3.1-fast/gptproto-format/image-to-video",
+                          "docs/allapi/Google/veo3.1-fast/gptproto-format/reference-to-video",
+                          "docs/allapi/Google/veo3.1-fast/gptproto-format/text-to-video"
                         ]
                       }
                     ]

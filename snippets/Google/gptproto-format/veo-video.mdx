@@ -1,0 +1,47 @@
+import QueryResult from '/snippets/common/query-result.mdx';
+
+<QueryResult/>
+
+## Parameters
+### Path Parameters
+Endpoint: `https://gptproto.com/api/v3/google/{model}/{scene}`
+<Note>Body parameters may vary depending on the scene. Incorrect scene selection may cause parameters to fail. Please choose the appropriate scene based on your actual needs.</Note>
+| scene | example | Available Models |
+|------|---------|-----------------|
+| `text-to-video` | `https://gptproto.com/api/v3/google/{model}/text-to-video` | All models |
+| `image-to-video` | `https://gptproto.com/api/v3/google/{model}/image-to-video` | All models |
+| `reference-to-video` | `https://gptproto.com/api/v3/google/{model}/reference-to-video` | `veo3` `veo3-fast` `veo3.1` `veo3.1-fast` (not supported by pro models) |
+
+### Core Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `prompt` | string | ✅ Yes | - | - | A text description of the desired video. Supports audio cues for Veo 3 and later. |
+| `image` | string | ❌ No | - | - | Source image URL for image-to-video generation. |
+| `images` | array | ❌ No | - | 1~3 items | Array of reference image URLs for reference-to-video generation. Not supported by pro models. |
+| `last_image` | string | ❌ No | - | - | The last frame image URL for interpolation video generation. Must be used in combination with the `image` parameter. |
+| `aspect_ratio` | string | ❌ No | `16:9` | `16:9`<br />`9:16` | The aspect ratio of the generated video. |
+
+### Advanced Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `enhance_prompt` | boolean | ❌ No | `true` | `true, false` | Whether to enhance the prompt for better video quality. |
+| `enable_upsample` | boolean | ❌ No | - | `true, false` | Whether to enable upsampling for higher resolution output. |
+| `resolution` | string | ❌ No | `720p` | `720p`<br />`1080p`<br />`4k` | The resolution of the generated video. `1080p` and `4k` only support 8s duration. |
+
+## Model Comparison
+
+| Feature | Veo 3.1 / Veo 3.1 Fast | Veo 3.1 Pro | Veo 3 / Veo 3 Fast | Veo 3 Pro |
+|---------|-------------------------|-------------|---------------------|-----------|
+| text-to-video | ✅ | ✅ | ✅ | ✅ |
+| image-to-video | ✅ | ✅ | ✅ | ✅ |
+| reference-to-video | ✅ | ❌ | ✅ | ❌ |
+| Audio cues in prompt | ✅ | ✅ | ✅ | ✅ |
+| Resolution | 720p, 1080p, 4k | 720p, 1080p, 4k | 720p, 1080p, 4k | 720p, 1080p, 4k |
+| Aspect ratios | 16:9, 9:16 | 16:9, 9:16 | 16:9, 9:16 | 16:9, 9:16 |
+
+**Notes:**
+- **Fast models** (`veo3-fast`, `veo3.1-fast`): Optimized for speed with lower latency, suitable for high-volume generation tasks.
+- **Pro models** (`veo3-pro`, `veo3.1-pro`): Higher quality output with enhanced detail and coherence. Does not support reference-to-video.
+- **1080p / 4k resolution**: Only available with 8-second duration.
+- **Video retention**: Generated videos are stored on the server for 2 days, after which they are removed.
+- **Watermarking**: Videos are watermarked using Google SynthID.
