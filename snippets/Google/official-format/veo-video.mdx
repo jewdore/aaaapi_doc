@@ -1,0 +1,163 @@
+## Query Result
+
+After submitting a video generation request, the API returns an operation object. Use the operation name to poll for the result.
+
+<CodeGroup>
+
+```bash cURL
+curl -X GET "https://api.gptproto.com/v1beta/models/{model}/operations/{operation_id}" \
+  -H "x-goog-api-key: GPTPROTO_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+```python Python
+import requests
+
+url = "https://api.gptproto.com/v1beta/models/{model}/operations/{operation_id}"
+headers = {
+    "x-goog-api-key": "GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
+}
+
+response = requests.get(url, headers=headers)
+result = response.json()
+print(result)
+```
+
+```javascript JavaScript
+const url = "https://api.gptproto.com/v1beta/models/{model}/operations/{operation_id}";
+const headers = {
+  "x-goog-api-key": "GPTPROTO_API_KEY",
+  "Content-Type": "application/json"
+};
+
+fetch(url, { method: "GET", headers })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+</CodeGroup>
+
+<Note>
+Query URL uses `api.gptproto.com` domain. Replace `{model}` with the model name and `{operation_id}` with the operation ID from the generation response.
+</Note>
+
+<Accordion title="Response Example">
+```json
+{
+  "name": "models/veo-3.1-generate-preview/operations/abc123",
+  "done": true,
+  "response": {
+    "generateVideoResponse": {
+      "generatedSamples": [
+        {
+          "video": {
+            "uri": "https://api.gptproto.com/upload/v1beta/files/abc:download?alt=media",
+            "encoding": "video/mp4"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+</Accordion>
+
+## Download Video
+
+Once the operation is complete, use the video URI from the response to download the generated video.
+
+<CodeGroup>
+
+```bash cURL
+curl -L "https://api.gptproto.com/upload/v1beta/files/{file_id}:download?alt=media" \
+  -H "x-goog-api-key: GPTPROTO_API_KEY" \
+  -o output.mp4
+```
+
+```python Python
+import requests
+
+url = "https://api.gptproto.com/upload/v1beta/files/{file_id}:download?alt=media"
+headers = {
+    "x-goog-api-key": "GPTPROTO_API_KEY"
+}
+
+response = requests.get(url, headers=headers)
+with open("output.mp4", "wb") as f:
+    f.write(response.content)
+print("Video saved to output.mp4")
+```
+
+```javascript JavaScript
+const url = "https://api.gptproto.com/upload/v1beta/files/{file_id}:download?alt=media";
+const headers = {
+  "x-goog-api-key": "GPTPROTO_API_KEY"
+};
+
+fetch(url, { headers })
+  .then(response => response.blob())
+  .then(blob => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "output.mp4";
+    a.click();
+  });
+```
+
+</CodeGroup>
+
+<Note>
+Replace `{file_id}` with the file ID from the video URI in the query response (e.g. `abc` from `.../files/abc:download?alt=media`).
+</Note>
+
+## Parameters
+
+### Path Parameters
+Endpoint: `https://gptproto.com/v1beta/models/{model}:predictLongRunning`
+
+| Model | Description |
+|-------|-------------|
+| `veo-3.1-generate-preview` | Veo 3.1 standard — highest quality |
+| `veo-3.1-fast-generate-preview` | Veo 3.1 Fast — optimized for speed |
+
+### Request Body
+
+The request uses Google's Vertex AI format with `instances` and `parameters` arrays.
+
+#### instances[0] — Core Parameters
+| Parameter | Type | Required | Default | Description |
+|-----|-----|-----|-----|-----------|
+| `prompt` | string | ✅ Yes | - | A text description of the desired video. Supports audio cues. |
+| `image` | object | ❌ No | - | Source image for image-to-video generation. |
+| `image.mimeType` | string | ❌ No | - | MIME type of the image (e.g. `image/png`, `image/jpeg`). |
+| `image.bytesBase64Encoded` | string | ❌ No | - | Base64-encoded image data. |
+| `video` | object | ❌ No | - | Source video for video-to-video generation (editing/extension). |
+| `video.uri` | string | ❌ No | - | URL of the source video. |
+
+#### parameters — Advanced Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `aspectRatio` | string | ❌ No | `16:9` | `16:9`<br />`9:16` | The aspect ratio of the generated video. |
+| `resolution` | string | ❌ No | `720p` | `720p`<br />`1080p`<br />`4k` | The resolution of the generated video. `1080p` and `4k` only support 8s duration. |
+| `durationSeconds` | string | ❌ No | - | `4, 6, 8` | Length of the generated video in seconds. Must be `8` for 1080p/4k. |
+| `personGeneration` | string | ❌ No | - | `allow_all`<br />`allow_adult` | Controls the generation of people. |
+| `enhancePrompt` | boolean | ❌ No | `true` | `true, false` | Whether to enhance the prompt for better quality. |
+
+## Scene Comparison
+
+| Feature | text-to-video | image-to-video | video-to-video |
+|---------|:---:|:---:|:---:|
+| `prompt` | ✅ Required | ✅ Required | ✅ Required |
+| `image` | ❌ | ✅ Required | ❌ |
+| `video` | ❌ | ❌ | ✅ Required |
+| `aspectRatio` | ✅ | ✅ | ✅ |
+| `resolution` | ✅ | ✅ | ✅ |
+| Audio cues in prompt | ✅ | ✅ | ✅ |
+
+**Notes:**
+- **veo-3.1-generate-preview**: Highest quality, suitable for professional content.
+- **veo-3.1-fast-generate-preview**: Lower latency, suitable for high-volume tasks.
+- **Video retention**: Generated videos are stored for 2 days.
+- **Watermarking**: Videos are watermarked using Google SynthID.

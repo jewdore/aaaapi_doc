@@ -1062,10 +1062,9 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/image-to-video",
-                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/query-task",
-                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/text-to-video",
-                          "docs/api/Google/veo-3.1-fast-generate-preview/official-format/video-to-video"
+                          "docs/allapi/Google/veo-3.1-fast-generate-preview/official-format/image-to-video",
+                          "docs/allapi/Google/veo-3.1-fast-generate-preview/official-format/text-to-video",
+                          "docs/allapi/Google/veo-3.1-fast-generate-preview/official-format/video-to-video"
                         ]
                       }
                     ]
@@ -1076,10 +1075,9 @@
                       {
                         "group": "official-format",
                         "pages": [
-                          "docs/api/Google/veo-3.1-generate-preview/official-format/image-to-video",
-                          "docs/api/Google/veo-3.1-generate-preview/official-format/query-task",
-                          "docs/api/Google/veo-3.1-generate-preview/official-format/text-to-video",
-                          "docs/api/Google/veo-3.1-generate-preview/official-format/video-to-video"
+                          "docs/allapi/Google/veo-3.1-generate-preview/official-format/image-to-video",
+                          "docs/allapi/Google/veo-3.1-generate-preview/official-format/text-to-video",
+                          "docs/allapi/Google/veo-3.1-generate-preview/official-format/video-to-video"
                         ]
                       }
                     ]
