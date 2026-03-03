@@ -5,7 +5,7 @@
 ### 新功能
 
 1. **Request Body 参数增强**
-   - 参数说明现在包含默认值信息
+   - 参数说明现在包含默认值信息1
    - 默认值从 Request Example 中自动提取
    - 格式：`{description} (default: {value})`
    - 示例：
